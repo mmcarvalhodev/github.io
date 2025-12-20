@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Local-first, open-core browser extension for capturing AI conversations. No cloud storage. No tracking. AGPL-3.0. Privacy-first by design.">
+    <meta name="keywords" content="AI, ChatGPT, Claude, Gemini, privacy, open source, AGPL, conversation capture">
+    <meta name="author" content="M. M. Carvalho">
+    
+    <!-- Open Graph / Facebook (uncomment when deploying to production) -->
+    <!--
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mmcarvalhodev.github.io/">
+    <meta property="og:title" content="NODUS - Privacy-First AI Capture | Open Core">
+    <meta property="og:description" content="Local-first browser extension for capturing AI conversations. No cloud. No tracking. AGPL-3.0.">
+    <meta property="og:image" content="https://mmcarvalhodev.github.io/og-image.png">
+    -->
+    
+    <!-- Twitter (uncomment when deploying to production) -->
+    <!--
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mmcarvalhodev.github.io/">
+    <meta property="twitter:title" content="NODUS - Privacy-First AI Capture">
+    <meta property="twitter:description" content="Local-first, open-core browser extension. No cloud. No tracking.">
+    <meta property="twitter:image" content="https://mmcarvalhodev.github.io/og-image.png">
+    -->
+    
+    <title>NODUS - Privacy-First AI Capture | Open Core</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            text-decoration: none;
+        }
+        
+        .header-links a {
+            margin-left: 30px;
+            color: #666;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+        
+        .header-links a:hover {
+            color: #000;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .tagline {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .hero .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #000;
+            color: #fff;
+            border: 2px solid #000;
+        }
+        
+        .btn-primary:hover {
+            background: #fff;
+            color: #000;
+        }
+        
+        .btn-secondary {
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+        
+        .btn-secondary:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        /* Trust Statement */
+        .trust-statement {
+            background: #f8f8f8;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .trust-statement h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .trust-statement p {
+            font-size: 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Features Grid */
+        .features {
+            padding: 100px 0;
+        }
+        
+        .features h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            padding: 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+        
+        .feature-card:hover {
+            border-color: #000;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .feature-card ul li {
+            padding: 8px 0;
+            color: #666;
+        }
+        
+        .feature-card ul li:before {
+            content: "✓ ";
+            color: #000;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: #f8f8f8;
+            padding: 100px 0;
+        }
+        
+        .pricing h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+        }
+        
+        .pricing-card.featured {
+            border-color: #000;
+            position: relative;
+        }
+        
+        .pricing-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-card .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .pricing-card .price small {
+            font-size: 20px;
+            font-weight: 400;
+            color: #666;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 30px 0;
+        }
+        
+        .pricing-card ul li {
+            padding: 10px 0;
+            color: #666;
+        }
+        
+        .pricing-card ul li:before {
+            content: "✓ ";
+            color: #000;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        /* Open Core */
+        .open-core {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .open-core h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
+        
+        .open-core-diagram {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 8px;
+            font-family: monospace;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .verify-code {
+            background: #000;
+            color: #fff;
+            padding: 40px;
+            margin: 60px 0;
+            border-radius: 8px;
+        }
+        
+        .verify-code h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .verify-code code {
+            background: #222;
+            padding: 20px;
+            display: block;
+            border-radius: 4px;
+            margin-top: 20px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #000;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-section .btn-primary {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+        
+        .cta-section .btn-primary:hover {
+            background: #000;
+            color: #fff;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        footer .links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        footer .links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        footer .links a:hover {
+            color: #000;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero .tagline {
+                font-size: 18px;
+            }
+            
+            .features h2,
+            .pricing h2,
+            .open-core h2,
+            .cta-section h2 {
+                font-size: 32px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .header-links a {
+                margin-left: 15px;
+            }
+            
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">NODUS</a>
+                <nav class="header-links">
+                    <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+                    <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/manifesto.md">Manifesto</a>
+                    <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/faq.md">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Privacy-First AI Capture</h1>
+            <p class="tagline">The only way to prove we're not mining your data: show you the code.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-primary">View on GitHub</a>
+                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/manifesto.md" class="btn btn-secondary">Read Manifesto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Statement -->
+    <section class="trust-statement">
+        <div class="container">
+            <h2>100% Local. 100% Open Core. 100% Auditable.</h2>
+            <p>NODUS captures and organizes your AI conversations across ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek. Everything stays on your device. Every line of code is verifiable.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Open Core?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🔓 Open Source Core</h3>
+                    <p>All capture engines, storage, and telemetry are open source under AGPL-3.0.</p>
+                    <ul>
+                        <li>Platform-specific capture engines</li>
+                        <li>Local storage system</li>
+                        <li>Ethical telemetry (k-anonymity)</li>
+                        <li>Dashboard & organization</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔒 Privacy Guaranteed</h3>
+                    <p>Your data never leaves your device during capture. No cloud storage. No tracking.</p>
+                    <ul>
+                        <li>100% local storage</li>
+                        <li>Zero external calls during capture</li>
+                        <li>Optional anonymized telemetry (aggregates only)</li>
+                        <li>Mandatory consent (ethical gate)</li>
+                        <li>Export anytime, any format</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>⚡ Powerful & Free</h3>
+                    <p>Generous free tier designed to provide long-term value without artificial limits.</p>
+                    <ul>
+                        <li>Unlimited chains</li>
+                        <li>3 queues for organization</li>
+                        <li>All 7 platforms supported</li>
+                        <li>Full dashboard with search</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Simple, Honest Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>FREE</h3>
+                    <div class="price">$0<small>/forever</small></div>
+                    <ul>
+                        <li>3 capture methods</li>
+                        <li>Unlimited chains</li>
+                        <li>3 queues</li>
+                        <li>All 7 platforms</li>
+                        <li>Dashboard & search</li>
+                        <li>TXT export</li>
+                        <li>100% local storage</li>
+                    </ul>
+                    <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-secondary">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>PRO</h3>
+                    <div class="price">$4.50<small>/month</small></div>
+                    <p style="margin-bottom: 20px; color: #666;">or $30/year (44% off)</p>
+                    <ul>
+                        <li><strong>Everything in FREE, plus:</strong></li>
+                        <li>Inject Chain (killer feature)</li>
+                        <li>6 queues total</li>
+                        <li>Full Chat Capture</li>
+                        <li>Auto Capture</li>
+                        <li>HTML/DOCX export</li>
+                        <li>Encrypted backups</li>
+                        <li>Advanced stats</li>
+                    </ul>
+                    <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-primary">⭐ Star to Get Notified</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Core Explanation -->
+    <section class="open-core">
+        <div class="container">
+            <h2>Radical Transparency</h2>
+            <p style="font-size: 20px; color: #666; max-width: 800px; margin: 20px auto 40px;">We help you capture and organize your AI conversations. The only way to prove we're not mining your data: show you the code.</p>
+            
+            <div class="open-core-diagram">
+┌─────────────────────────────────────┐<br>
+│        NODUS CORE (Open)            │<br>
+│  • Capture engines (7 platforms)   │<br>
+│  • Local storage system             │<br>
+│  • Queues & chains                  │<br>
+│  • Ethical telemetry                │<br>
+│                                     │<br>
+│  License: AGPL-3.0                  │<br>
+│  Status: Forever Open               │<br>
+└─────────────────────────────────────┘<br>
+              │<br>
+              ▼<br>
+┌─────────────────────────────────────┐<br>
+│      NODUS PRO (Proprietary)        │<br>
+│  • Advanced workflows               │<br>
+│  • Chain injection                  │<br>
+│  • Professional exports             │<br>
+│  • Encrypted backups                │<br>
+│                                     │<br>
+│  Price: $4.50/month or $30/year     │<br>
+└─────────────────────────────────────┘
+            </div>
+            
+            <div class="verify-code">
+                <h3>Don't Trust. Verify.</h3>
+                <p>Audit the code yourself:</p>
+                <code>
+# Clone the repository<br>
+git clone https://github.com/mmcarvalhodev/nodus-core.git<br>
+<br>
+# Read the capture engines<br>
+cat src/engines/chatgpt.engine.js<br>
+<br>
+# Check telemetry implementation<br>
+cat src/telemetry/privacy.js<br>
+<br>
+# Inspect storage code<br>
+cat src/content/all_modules.js
+                </code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Built with Transparency. Funded by Fairness.</h2>
+            <p>Star the repo if you believe in privacy-first AI tools.</p>
+            <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-primary">⭐ Star on GitHub</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 M. M. Carvalho (Márcio Menezes de Carvalho Lima)<br>
+            <span style="font-size: 14px; color: #999; margin-top: 10px; display: inline-block;">Code: AGPL-3.0 | PRO Features: Commercial License</span></p>
+            <p style="font-style: italic; margin-top: 20px;">"The best way to predict the future is to be transparent about the present."</p>
+            <div class="links">
+                <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/manifesto.md">Manifesto</a>
+                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/faq.md">FAQ</a>
+                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/architecture.md">Architecture</a>
+                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/roadmap.md">Roadmap</a>
+                <a href="mailto:mmcarvalho.dev@gmail.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
