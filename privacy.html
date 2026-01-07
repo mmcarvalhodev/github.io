@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - NODUS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fff;
+            padding: 60px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .updated {
+            color: #666;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 24px;
+            margin: 40px 0 15px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        p, li {
+            margin-bottom: 15px;
+            color: #444;
+        }
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #000;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #666;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: #000;
+        }
+        .highlight {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to NODUS</a>
+        
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: January 7, 2026</p>
+
+        <div class="highlight">
+            <strong>TL;DR:</strong> NODUS is privacy-first by design. Your captured conversations stay on your device. We don't collect, store, or sell your data. The code is open source so you can verify this yourself.
+        </div>
+
+        <h2>1. Our Privacy Commitment</h2>
+        <p>NODUS was built on a fundamental principle: your AI conversations are yours alone. We designed the extension to be local-first, meaning your data never leaves your device during normal operation.</p>
+
+        <h2>2. Data We Do NOT Collect</h2>
+        <p>We do not collect, store, or have access to:</p>
+        <ul>
+            <li>Your AI conversations or captured content</li>
+            <li>Your prompts, responses, or any text you interact with</li>
+            <li>Your browsing history or activity</li>
+            <li>Personal identification information through the extension</li>
+            <li>Your files, documents, or exports</li>
+        </ul>
+
+        <h2>3. Data Storage</h2>
+        <p>All data captured by NODUS is stored locally using your browser's built-in storage (IndexedDB). This means:</p>
+        <ul>
+            <li>Data is stored only on your device</li>
+            <li>Data is not synced to any external servers</li>
+            <li>Data is not accessible to us or any third party</li>
+            <li>You can export or delete your data at any time</li>
+            <li>Uninstalling the extension removes all stored data</li>
+        </ul>
+
+        <h2>4. Optional Telemetry</h2>
+        <p>NODUS includes an optional, opt-in telemetry system. If you choose to enable it:</p>
+        <ul>
+            <li><strong>What we collect:</strong> Anonymous, aggregated usage statistics (e.g., which features are used most, error rates)</li>
+            <li><strong>What we DON'T collect:</strong> Any conversation content, personal data, or identifiable information</li>
+            <li><strong>Privacy protection:</strong> We use k-anonymity to ensure individual users cannot be identified</li>
+            <li><strong>Your control:</strong> Telemetry is disabled by default and can be toggled at any time in settings</li>
+        </ul>
+        <p>Purpose: Telemetry helps us understand which features are valuable and identify bugs, improving NODUS for everyone.</p>
+
+        <h2>5. Pro Subscription Data</h2>
+        <p>If you subscribe to NODUS Pro:</p>
+        <ul>
+            <li>Payment processing is handled by Paddle (our Merchant of Record)</li>
+            <li>We receive only: confirmation of active subscription, subscription tier, and billing period</li>
+            <li>We do NOT receive: credit card numbers, bank details, or full billing addresses</li>
+            <li>Paddle's privacy policy applies to payment data: <a href="https://www.paddle.com/legal/privacy" target="_blank">paddle.com/legal/privacy</a></li>
+        </ul>
+
+        <h2>6. Third-Party Services</h2>
+        <p>NODUS interacts with third-party AI platforms (ChatGPT, Claude, Gemini, etc.) only to capture conversations you initiate. We do not:</p>
+        <ul>
+            <li>Send additional requests to these platforms</li>
+            <li>Share any data with these platforms beyond your normal usage</li>
+            <li>Modify or intercept your communications with these platforms</li>
+        </ul>
+
+        <h2>7. Open Source Verification</h2>
+        <p>Our core code is open source under AGPL-3.0. You can verify our privacy claims by:</p>
+        <ul>
+            <li>Reviewing the source code: <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank">github.com/mmcarvalhodev/nodus-core</a></li>
+            <li>Inspecting network requests in your browser's developer tools</li>
+            <li>Auditing the telemetry implementation in <code>src/telemetry/</code></li>
+        </ul>
+
+        <h2>8. Data Security</h2>
+        <p>Your local data is protected by:</p>
+        <ul>
+            <li>Browser-level security for extension storage</li>
+            <li>Optional encrypted backups (Pro feature) using AES-256 encryption</li>
+            <li>No external transmission means no interception risk</li>
+        </ul>
+
+        <h2>9. Your Rights</h2>
+        <p>You have complete control over your data:</p>
+        <ul>
+            <li><strong>Access:</strong> View all captured data through the NODUS dashboard</li>
+            <li><strong>Export:</strong> Export your data in TXT, HTML, or DOCX formats</li>
+            <li><strong>Delete:</strong> Delete individual items or all data at any time</li>
+            <li><strong>Portability:</strong> Your exports are standard formats usable anywhere</li>
+        </ul>
+
+        <h2>10. Children's Privacy</h2>
+        <p>NODUS is not intended for users under 13 years of age. We do not knowingly collect any information from children.</p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy occasionally. Changes will be posted on this page with an updated revision date. Significant changes will be communicated through the extension.</p>
+
+        <h2>12. Contact Us</h2>
+        <p>For privacy-related questions or concerns:</p>
+        <p>Email: <a href="mailto:mmcarvalho.dev@gmail.com">mmcarvalho.dev@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/mmcarvalhodev/nodus-core/issues" target="_blank">Open an issue</a></p>
+
+        <div class="highlight">
+            <strong>Our Promise:</strong> We built NODUS because we believe privacy matters. We will never sell your data, show you ads, or compromise on our local-first architecture. The code is open for you to verify.
+        </div>
+    </div>
+</body>
+</html>
