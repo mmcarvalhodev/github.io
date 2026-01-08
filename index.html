@@ -326,82 +326,6 @@
             font-size: 14px;
         }
         
-        /* Support Section */
-        .support {
-            padding: 100px 0;
-            background: #f8f8f8;
-            text-align: center;
-        }
-        
-        .support h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-        
-        .support-intro {
-            font-size: 20px;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-        
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-        
-        .support-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            transition: border-color 0.2s;
-        }
-        
-        .support-card:hover {
-            border-color: #000;
-        }
-        
-        .support-card h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-        
-        .support-card p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        
-        .support-card ul {
-            list-style: none;
-            margin: 20px 0 30px;
-            text-align: left;
-        }
-        
-        .support-card ul li {
-            padding: 8px 0;
-            color: #666;
-            font-size: 15px;
-        }
-        
-        .support-card ul li:before {
-            content: "• ";
-            color: #000;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        
-        .support-note {
-            font-size: 16px;
-            color: #666;
-            font-style: italic;
-            margin-top: 40px;
-        }
-        
         /* CTA Section */
         .cta-section {
             background: #000;
@@ -474,7 +398,6 @@
             .features h2,
             .pricing h2,
             .open-core h2,
-            .support h2,
             .cta-section h2 {
                 font-size: 32px;
             }
@@ -489,8 +412,7 @@
             }
             
             .features-grid,
-            .pricing-grid,
-            .support-grid {
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -574,7 +496,7 @@
     </section>
 
     <!-- Pricing -->
-    <section class="pricing">
+    <section class="pricing" id="pricing">
         <div class="container">
             <h2>Simple, Honest Pricing</h2>
             <div class="pricing-grid">
@@ -663,45 +585,10 @@ cat src/content/all_modules.js
         </div>
     </section>
 
-    <!-- Support Section -->
-    <section class="support">
-        <div class="container">
-            <h2>❤️ Support NODUS</h2>
-            <p class="support-intro">NODUS is free and open-source. If it saves you time and you want to support independent development:</p>
-            
-            <div class="support-grid">
-                <div class="support-card">
-                    <h3>💙 GitHub Sponsors</h3>
-                    <p>Monthly or one-time support for open source development.</p>
-                    <ul>
-                        <li>$5/month - Coffee Supporter</li>
-                        <li>$10/month - Core Supporter</li>
-                        <li>$25/month - Premium Supporter</li>
-                        <li>$100/month - Platinum Supporter</li>
-                    </ul>
-                    <a href="https://github.com/sponsors/mmcarvalhodev" class="btn btn-secondary">Sponsor on GitHub</a>
-                </div>
-                
-                <div class="support-card">
-                    <h3>☕ Ko-fi</h3>
-                    <p>Quick one-time support. Buy me a coffee!</p>
-                    <ul>
-                        <li>Fast & easy</li>
-                        <li>No commitment</li>
-                        <li>Every coffee counts</li>
-                    </ul>
-                    <a href="https://ko-fi.com/mmcarvalho" class="btn btn-secondary">Support on Ko-fi</a>
-                </div>
-            </div>
-            
-            <p class="support-note">Your support keeps NODUS independent, privacy-focused, and actively maintained. Thank you! 🙏</p>
-        </div>
-    </section>
-
     <!-- Final CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2>Built with Transparency. Funded by Fairness.</h2>
+            <h2>Built with Transparency. Powered by Trust.</h2>
             <p>Star the repo if you believe in privacy-first AI tools.</p>
             <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-primary">⭐ Star on GitHub</a>
         </div>
@@ -715,12 +602,13 @@ cat src/content/all_modules.js
             <p style="font-style: italic; margin-top: 20px;">"The best way to predict the future is to be transparent about the present."</p>
             <div class="links">
                 <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
-                <a href="https://github.com/sponsors/mmcarvalhodev">💙 Sponsor</a>
-                <a href="https://ko-fi.com/mmcarvalho">☕ Ko-fi</a>
                 <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/manifesto.md">Manifesto</a>
                 <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/faq.md">FAQ</a>
                 <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/architecture.md">Architecture</a>
                 <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/roadmap.md">Roadmap</a>
+                <a href="/terms.html">Terms</a>
+                <a href="/privacy.html">Privacy</a>
+                <a href="/refund.html">Refund</a>
                 <a href="mailto:mmcarvalho.dev@gmail.com">Contact</a>
             </div>
         </div>
