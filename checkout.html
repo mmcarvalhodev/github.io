@@ -209,7 +209,7 @@
 
     <div class="plans">
       <!-- Monthly Plan -->
-      <div class="plan" onclick="buyMonthly()">
+      <div class="plan" id="monthly-plan">
         <div class="plan-name">Monthly</div>
         <div class="plan-price">$4.50</div>
         <div class="plan-period">per month</div>
@@ -223,11 +223,11 @@
           <li>Priority Support</li>
         </ul>
 
-        <button class="buy-button">Choose Monthly</button>
+        <button class="buy-button" id="btn-monthly">Choose Monthly</button>
       </div>
 
       <!-- Annual Plan (Recommended) -->
-      <div class="plan recommended" onclick="buyYearly()">
+      <div class="plan recommended" id="annual-plan">
         <span class="badge">Save 44%</span>
         <div class="plan-name">Annual</div>
         <div class="plan-price">$30</div>
@@ -244,7 +244,7 @@
           <li>Best Value!</li>
         </ul>
 
-        <button class="buy-button">Choose Annual</button>
+        <button class="buy-button" id="btn-annual">Choose Annual</button>
       </div>
     </div>
 
@@ -254,36 +254,90 @@
     </div>
 
     <div class="footer">
-      Need help? <a href="/cdn-cgi/l/email-protection#c0b3b5b0b0afb2b480aeafa4b5b3eda1a9eea1b0b0">Contact Support</a> | 
+      Need help? <a href="mailto:support&#64;nodus-ai.app">Contact Support</a> | 
       <a href="https://nodus-ai.app">Back to Home</a>
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Initialize Paddle
-    Paddle.Initialize({
-      token: 'pdl_live_apikey_01kfxx78bwaz00fvt5zdebr3jq_91mJ4pte89e63b6NjwwVw3_Az9',
-      eventCallback: function(data) {
-        if (data.name === "checkout.completed") {
-          // Redirect to success page or show confirmation
-          alert('🎉 Payment successful! Check your email for your license key.');
-          window.location.href = 'https://nodus-ai.app';
-        }
-      }
-    });
-
-    function buyMonthly() {
-      Paddle.Checkout.open({
-        items: [
-          {
+  <script>
+    // Global functions (must be in global scope)
+    window.buyMonthly = function() {
+      console.log('Opening monthly checkout...');
+      try {
+        Paddle.Checkout.open({
+          items: [{
             priceId: 'pri_01ked0qxgasz7rq9kgg8j9fha5',
             quantity: 1
-          }
-        ]
-      });
-    }
+          }]
+        });
+      } catch (error) {
+        console.error('Checkout error:', error);
+        alert('Error opening checkout. Please try again or contact support.');
+      }
+    };
 
-    function buyYearly() {
-      Paddle.Checkout.open({
-        items: [
+    window.buyYearly = function() {
+      console.log('Opening yearly checkout...');
+      try {
+        Paddle.Checkout.open({
+          items: [{
+            priceId: 'pri_01ked0sqxfpz1g6k2acgx2qrxq',
+            quantity: 1
+          }]
+        });
+      } catch (error) {
+        console.error('Checkout error:', error);
+        alert('Error opening checkout. Please try again or contact support.');
+      }
+    };
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Initializing Paddle...');
       
+      try {
+        Paddle.Environment.set('production');
+        Paddle.Initialize({
+          token: 'pdl_live_apikey_01kfxx78bwaz00fvt5zdebr3jq_91mJ4pte89e63b6NjwwVw3_Az9',
+          eventCallback: function(data) {
+            console.log('Paddle event:', data);
+            if (data.name === "checkout.completed") {
+              alert('🎉 Payment successful! Check your email for your license key.');
+              window.location.href = 'https://nodus-ai.app';
+            }
+          }
+        });
+        console.log('Paddle initialized successfully');
+      } catch (error) {
+        console.error('Paddle initialization error:', error);
+      }
+
+      // Add click handlers to buttons
+      document.getElementById('btn-monthly').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.buyMonthly();
+      });
+
+      document.getElementById('btn-annual').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.buyYearly();
+      });
+
+      // Click on card also triggers checkout
+      document.getElementById('monthly-plan').addEventListener('click', function(e) {
+        if (e.target.id !== 'btn-monthly') {
+          window.buyMonthly();
+        }
+      });
+
+      document.getElementById('annual-plan').addEventListener('click', function(e) {
+        if (e.target.id !== 'btn-annual') {
+          window.buyYearly();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
