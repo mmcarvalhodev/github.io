@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS PRO - Checkout</title>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 900px;
+      width: 100%;
+      padding: 60px 40px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 18px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .plans {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .plan {
+      border: 3px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 40px 30px;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .plan:hover {
+      border-color: #667eea;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+    }
+
+    .plan.recommended {
+      border-color: #667eea;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    }
+
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .plan-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 10px;
+    }
+
+    .plan-price {
+      font-size: 48px;
+      font-weight: 800;
+      color: #667eea;
+      margin-bottom: 5px;
+    }
+
+    .plan-period {
+      color: #6b7280;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .savings {
+      background: #dcfce7;
+      color: #16a34a;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .features li {
+      padding: 10px 0;
+      color: #4b5563;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .features li:before {
+      content: "✓";
+      color: #10b981;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .buy-button {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .buy-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .buy-button:active {
+      transform: translateY(0);
+    }
+
+    .trial-notice {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 30px;
+      padding: 20px;
+      background: #f9fafb;
+      border-radius: 12px;
+    }
+
+    .trial-notice strong {
+      color: #667eea;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">NODUS PRO</div>
+      <div class="subtitle">Unlock the full power of AI conversation management</div>
+    </div>
+
+    <div class="plans">
+      <!-- Monthly Plan -->
+      <div class="plan" onclick="buyMonthly()">
+        <div class="plan-name">Monthly</div>
+        <div class="plan-price">$4.50</div>
+        <div class="plan-period">per month</div>
+        
+        <ul class="features">
+          <li>6 Custom Queues</li>
+          <li>Full Chat Capture</li>
+          <li>Inject Chain Feature</li>
+          <li>HTML/DOCX Export</li>
+          <li>Auto Capture</li>
+          <li>Priority Support</li>
+        </ul>
+
+        <button class="buy-button">Choose Monthly</button>
+      </div>
+
+      <!-- Annual Plan (Recommended) -->
+      <div class="plan recommended" onclick="buyYearly()">
+        <span class="badge">Save 44%</span>
+        <div class="plan-name">Annual</div>
+        <div class="plan-price">$30</div>
+        <div class="plan-period">per year</div>
+        <div class="savings">💰 Save $24/year</div>
+        
+        <ul class="features">
+          <li>6 Custom Queues</li>
+          <li>Full Chat Capture</li>
+          <li>Inject Chain Feature</li>
+          <li>HTML/DOCX Export</li>
+          <li>Auto Capture</li>
+          <li>Priority Support</li>
+          <li>Best Value!</li>
+        </ul>
+
+        <button class="buy-button">Choose Annual</button>
+      </div>
+    </div>
+
+    <div class="trial-notice">
+      <strong>🎉 14-Day Free Trial</strong><br>
+      Try NODUS PRO risk-free. Cancel anytime during the trial period with no charges.
+    </div>
+
+    <div class="footer">
+      Need help? <a href="/cdn-cgi/l/email-protection#c0b3b5b0b0afb2b480aeafa4b5b3eda1a9eea1b0b0">Contact Support</a> | 
+      <a href="https://nodus-ai.app">Back to Home</a>
+    </div>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Initialize Paddle
+    Paddle.Initialize({
+      token: 'pdl_live_apikey_01kfxx78bwaz00fvt5zdebr3jq_91mJ4pte89e63b6NjwwVw3_Az9',
+      eventCallback: function(data) {
+        if (data.name === "checkout.completed") {
+          // Redirect to success page or show confirmation
+          alert('🎉 Payment successful! Check your email for your license key.');
+          window.location.href = 'https://nodus-ai.app';
+        }
+      }
+    });
+
+    function buyMonthly() {
+      Paddle.Checkout.open({
+        items: [
+          {
+            priceId: 'pri_01ked0qxgasz7rq9kgg8j9fha5',
+            quantity: 1
+          }
+        ]
+      });
+    }
+
+    function buyYearly() {
+      Paddle.Checkout.open({
+        items: [
+      
