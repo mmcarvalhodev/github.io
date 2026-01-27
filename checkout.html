@@ -271,17 +271,17 @@
     </div>
 
     <div class="footer">
-      Need help? <a href="mailto:support&#64;nodus-ai.app">Contact Support</a> | 
+      Need help? <a href="/cdn-cgi/l/email-protection#80f3f5f0f0eff2f4a6a3b6b4bbeeefe4f5f3ade1e9aee1f0f0">Contact Support</a> | 
       <a href="https://nodus-ai.app">Back to Home</a>
     </div>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Paddle configuration
     const PADDLE_CONFIG = {
       // Client-side token (safe to expose - read-only)
       token: 'live_d9e30b48721ea8b2a1ac2c3a895',
-      environment: 'production',
+      environment: 'sandbox', // MUDADO PARA SANDBOX PARA TESTAR
       seller: 278429,
       prices: {
         monthly: 'pri_01ked0qxgasz7rq9kgg8j9fha5',
@@ -420,10 +420,4 @@
       if (urlParams.get('checkout') === 'success') {
         alert('🎉 Thank you for your purchase! Check your email for your NODUS PRO activation token.');
       }
-      if (urlParams.get('error') === 'payment_failed') {
-        showError('Payment was not completed. Please try again.');
-      }
-    });
-  </script>
-</body>
-</html>
+      if (url
