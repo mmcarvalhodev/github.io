@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NODUS PRO - Checkout</title>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     * {
       margin: 0;
@@ -276,7 +277,19 @@
   </div>
 
   <script>
-    const WORKER_URL = 'https://nodus-worker.mmcarvalho-dev.workers.dev';
+    // Paddle configuration
+    const PADDLE_CONFIG = {
+      // Client-side token (safe to expose - read-only)
+      token: 'live_d9e30b48721ea8b2a1ac2c3a895',
+      environment: 'production',
+      seller: 278429,
+      prices: {
+        monthly: 'pri_01ked0qxgasz7rq9kgg8j9fha5',
+        annual: 'pri_01ked0sqxfpz1g6k2acgx2qrxq'
+      }
+    };
+
+    let paddleInitialized = false;
 
     function showError(message) {
       const errorEl = document.getElementById('error-message');
@@ -292,6 +305,43 @@
       button.textContent = loading ? 'Processing...' : button.dataset.originalText;
     }
 
+    // Initialize Paddle
+    function initializePaddle() {
+      if (paddleInitialized) return Promise.resolve();
+
+      return new Promise((resolve, reject) => {
+        try {
+          console.log('[Paddle] Initializing...');
+          
+          Paddle.Environment.set(PADDLE_CONFIG.environment);
+          Paddle.Initialize({
+            token: PADDLE_CONFIG.token,
+            eventCallback: function(data) {
+              console.log('[Paddle] Event:', data.name);
+              
+              if (data.name === "checkout.completed") {
+                console.log('[Paddle] Payment completed!');
+                alert('🎉 Payment successful! Check your email for your license key.');
+                window.location.href = 'https://nodus-ai.app?checkout=success';
+              }
+              
+              if (data.name === "checkout.error") {
+                console.error('[Paddle] Checkout error:', data);
+                showError('Payment failed. Please try again.');
+              }
+            }
+          });
+          
+          paddleInitialized = true;
+          console.log('[Paddle] Initialized successfully');
+          resolve();
+        } catch (error) {
+          console.error('[Paddle] Initialization error:', error);
+          reject(error);
+        }
+      });
+    }
+
     async function buyPlan(plan) {
       const button = document.getElementById(`btn-${plan}`);
       button.dataset.originalText = button.textContent;
@@ -300,25 +350,36 @@
       setButtonLoading(button, true);
 
       try {
-        // Call Worker to create Paddle checkout
-        const response = await fetch(`${WORKER_URL}/paddle/checkout`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ plan })
-        });
+        // Initialize Paddle if not already done
+        await initializePaddle();
 
-        const result = await response.json();
-
-        if (!response.ok) {
-          throw new Error(result.error || 'Failed to create checkout');
+        const priceId = PADDLE_CONFIG.prices[plan];
+        
+        if (!priceId) {
+          throw new Error('Invalid plan selected');
         }
 
-        console.log('[Checkout] Success! Redirecting to:', result.checkout_url);
-        
-        // Redirect to Paddle checkout
-        window.location.href = result.checkout_url;
+        console.log('[Paddle] Opening checkout for price:', priceId);
+
+        // Open Paddle checkout
+        Paddle.Checkout.open({
+          items: [{
+            priceId: priceId,
+            quantity: 1
+          }],
+          settings: {
+            displayMode: 'overlay',
+            theme: 'light',
+            locale: 'en',
+            successUrl: 'https://nodus-ai.app?checkout=success',
+            allowLogout: false
+          }
+        });
+
+        // Re-enable button after modal opens
+        setTimeout(() => {
+          setButtonLoading(button, false);
+        }, 1000);
 
       } catch (error) {
         console.error('[Checkout] Error:', error);
@@ -331,24 +392,34 @@
     document.addEventListener('DOMContentLoaded', function() {
       console.log('[Checkout] Page loaded');
 
+      // Initialize Paddle on page load
+      initializePaddle().catch(error => {
+        console.error('[Paddle] Failed to initialize:', error);
+        showError('Failed to load payment system. Please refresh the page.');
+      });
+
+      // Button click handlers
       document.getElementById('btn-monthly').addEventListener('click', () => buyPlan('monthly'));
       document.getElementById('btn-annual').addEventListener('click', () => buyPlan('annual'));
 
-      // Also allow clicking on card
+      // Click on card also triggers checkout
       document.getElementById('monthly-plan').addEventListener('click', function(e) {
-        if (e.target.id !== 'btn-monthly') {
+        if (e.target.id !== 'btn-monthly' && !e.target.closest('.buy-button')) {
           document.getElementById('btn-monthly').click();
         }
       });
 
       document.getElementById('annual-plan').addEventListener('click', function(e) {
-        if (e.target.id !== 'btn-annual') {
+        if (e.target.id !== 'btn-annual' && !e.target.closest('.buy-button')) {
           document.getElementById('btn-annual').click();
         }
       });
 
-      // Check for error in URL
+      // Check for success/error in URL
       const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('checkout') === 'success') {
+        alert('🎉 Thank you for your purchase! Check your email for your NODUS PRO activation token.');
+      }
       if (urlParams.get('error') === 'payment_failed') {
         showError('Payment was not completed. Please try again.');
       }
