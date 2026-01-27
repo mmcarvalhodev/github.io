@@ -420,4 +420,10 @@
       if (urlParams.get('checkout') === 'success') {
         alert('🎉 Thank you for your purchase! Check your email for your NODUS PRO activation token.');
       }
-      if (url
+      if (urlParams.get('error') === 'payment_failed') {
+        showError('Payment was not completed. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>
