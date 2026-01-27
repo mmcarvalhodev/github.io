@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NODUS PRO - Checkout</title>
-  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     * {
       margin: 0;
@@ -160,13 +159,18 @@
       transition: all 0.3s ease;
     }
 
-    .buy-button:hover {
+    .buy-button:hover:not(:disabled) {
       transform: translateY(-2px);
       box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
     }
 
     .buy-button:active {
       transform: translateY(0);
+    }
+
+    .buy-button:disabled {
+      opacity: 0.6;
+      cursor: wait;
     }
 
     .trial-notice {
@@ -198,6 +202,16 @@
     .footer a:hover {
       text-decoration: underline;
     }
+
+    .error-message {
+      background: #fee;
+      color: #c33;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -206,6 +220,8 @@
       <div class="logo">NODUS PRO</div>
       <div class="subtitle">Unlock the full power of AI conversation management</div>
     </div>
+
+    <div class="error-message" id="error-message"></div>
 
     <div class="plans">
       <!-- Monthly Plan -->
@@ -260,83 +276,82 @@
   </div>
 
   <script>
-    // Global functions (must be in global scope)
-    window.buyMonthly = function() {
-      console.log('Opening monthly checkout...');
-      try {
-        Paddle.Checkout.open({
-          items: [{
-            priceId: 'pri_01ked0qxgasz7rq9kgg8j9fha5',
-            quantity: 1
-          }]
-        });
-      } catch (error) {
-        console.error('Checkout error:', error);
-        alert('Error opening checkout. Please try again or contact support.');
-      }
-    };
+    const WORKER_URL = 'https://nodus-worker.mmcarvalho-dev.workers.dev';
 
-    window.buyYearly = function() {
-      console.log('Opening yearly checkout...');
-      try {
-        Paddle.Checkout.open({
-          items: [{
-            priceId: 'pri_01ked0sqxfpz1g6k2acgx2qrxq',
-            quantity: 1
-          }]
-        });
-      } catch (error) {
-        console.error('Checkout error:', error);
-        alert('Error opening checkout. Please try again or contact support.');
-      }
-    };
+    function showError(message) {
+      const errorEl = document.getElementById('error-message');
+      errorEl.textContent = message;
+      errorEl.style.display = 'block';
+      setTimeout(() => {
+        errorEl.style.display = 'none';
+      }, 5000);
+    }
 
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Initializing Paddle...');
+    function setButtonLoading(button, loading) {
+      button.disabled = loading;
+      button.textContent = loading ? 'Processing...' : button.dataset.originalText;
+    }
+
+    async function buyPlan(plan) {
+      const button = document.getElementById(`btn-${plan}`);
+      button.dataset.originalText = button.textContent;
       
+      console.log('[Checkout] Starting checkout for:', plan);
+      setButtonLoading(button, true);
+
       try {
-        Paddle.Environment.set('production');
-        Paddle.Initialize({
-          token: 'pdl_live_apikey_01kfxx78bwaz00fvt5zdebr3jq_91mJ4pte89e63b6NjwwVw3_Az9',
-          eventCallback: function(data) {
-            console.log('Paddle event:', data);
-            if (data.name === "checkout.completed") {
-              alert('🎉 Payment successful! Check your email for your license key.');
-              window.location.href = 'https://nodus-ai.app';
-            }
-          }
+        // Call Worker to create Paddle checkout
+        const response = await fetch(`${WORKER_URL}/paddle/checkout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ plan })
         });
-        console.log('Paddle initialized successfully');
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Failed to create checkout');
+        }
+
+        console.log('[Checkout] Success! Redirecting to:', result.checkout_url);
+        
+        // Redirect to Paddle checkout
+        window.location.href = result.checkout_url;
+
       } catch (error) {
-        console.error('Paddle initialization error:', error);
+        console.error('[Checkout] Error:', error);
+        showError('Failed to start checkout. Please try again or contact support.');
+        setButtonLoading(button, false);
       }
+    }
 
-      // Add click handlers to buttons
-      document.getElementById('btn-monthly').addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.buyMonthly();
-      });
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('[Checkout] Page loaded');
 
-      document.getElementById('btn-annual').addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.buyYearly();
-      });
+      document.getElementById('btn-monthly').addEventListener('click', () => buyPlan('monthly'));
+      document.getElementById('btn-annual').addEventListener('click', () => buyPlan('annual'));
 
-      // Click on card also triggers checkout
+      // Also allow clicking on card
       document.getElementById('monthly-plan').addEventListener('click', function(e) {
         if (e.target.id !== 'btn-monthly') {
-          window.buyMonthly();
+          document.getElementById('btn-monthly').click();
         }
       });
 
       document.getElementById('annual-plan').addEventListener('click', function(e) {
         if (e.target.id !== 'btn-annual') {
-          window.buyYearly();
+          document.getElementById('btn-annual').click();
         }
       });
+
+      // Check for error in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('error') === 'payment_failed') {
+        showError('Payment was not completed. Please try again.');
+      }
     });
   </script>
 </body>
