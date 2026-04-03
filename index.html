@@ -1795,8 +1795,8 @@
               <span class="mock-dot mock-dot-r"></span>
               <span class="mock-dot mock-dot-y"></span>
               <span class="mock-dot mock-dot-g"></span>
-              <span class="mock-titlebar-label">NODUS Dashboard</span>
-              <span class="mock-titlebar-badge">Default Queue</span>
+              <span class="mock-titlebar-label" data-i18n="mockDashboard">NODUS Dashboard</span>
+              <span class="mock-titlebar-badge" data-i18n="mockDefaultQueue">Default Queue</span>
             </div>
             <div class="mock-body">
               <!-- Sidebar icons -->
@@ -1813,10 +1813,10 @@
                 <div class="mock-topbar">
                   <div class="mock-search">
                     <span class="mock-search-icon">&#128269;</span>
-                    <span class="mock-search-text">Search captures...</span>
+                    <span class="mock-search-text" data-i18n="mockSearch">Search captures...</span>
                   </div>
                   <div class="mock-queue-tabs">
-                    <div class="mock-tab active">All</div>
+                    <div class="mock-tab active" data-i18n="mockTabAll">All</div>
                     <div class="mock-tab">Quick</div>
                     <div class="mock-tab">Q1</div>
                   </div>
@@ -1825,39 +1825,39 @@
                   <!-- Card 1 -->
                   <div class="mock-card selected">
                     <div class="mock-card-header">
-                      <div class="mock-card-title">Refactor auth middleware with JWT</div>
+                      <div class="mock-card-title" data-i18n="card1title">Refactor auth middleware with JWT</div>
                       <div class="mock-card-platform">Claude</div>
                     </div>
-                    <div class="mock-card-snippet">Here's a cleaner approach using middleware composition. First, extract the token validation logic into a pure function...</div>
+                    <div class="mock-card-snippet" data-i18n="card1snippet">Here's a cleaner approach using middleware composition. First, extract the token validation logic into a pure function...</div>
                     <div class="mock-card-footer">
                       <span class="mock-card-tag">backend</span>
                       <span class="mock-card-tag" style="background:rgba(250,204,21,0.1);color:#fde68a;">auth</span>
-                      <span class="mock-card-time">2 min ago</span>
+                      <span class="mock-card-time" data-i18n="time2min">2 min ago</span>
                     </div>
                   </div>
                   <!-- Card 2 -->
                   <div class="mock-card">
                     <div class="mock-card-header">
-                      <div class="mock-card-title">CSS grid responsive layout breakdown</div>
+                      <div class="mock-card-title" data-i18n="card2title">CSS grid responsive layout breakdown</div>
                       <div class="mock-card-platform" style="background:rgba(16,185,129,0.15);color:#6ee7b7;">ChatGPT</div>
                     </div>
-                    <div class="mock-card-snippet">Use grid-template-areas for semantic layouts. The auto-fill + minmax pattern gives you fluid columns without media queries...</div>
+                    <div class="mock-card-snippet" data-i18n="card2snippet">Use grid-template-areas for semantic layouts. The auto-fill + minmax pattern gives you fluid columns without media queries...</div>
                     <div class="mock-card-footer">
                       <span class="mock-card-tag">css</span>
                       <span class="mock-card-tag" style="background:rgba(139,92,246,0.15);color:#c4b5fd;">design</span>
-                      <span class="mock-card-time">1h ago</span>
+                      <span class="mock-card-time" data-i18n="time1h">1h ago</span>
                     </div>
                   </div>
                   <!-- Card 3 -->
                   <div class="mock-card">
                     <div class="mock-card-header">
-                      <div class="mock-card-title">SQL query optimization for large datasets</div>
+                      <div class="mock-card-title" data-i18n="card3title">SQL query optimization for large datasets</div>
                       <div class="mock-card-platform" style="background:rgba(250,204,21,0.1);color:#fde68a;">Gemini</div>
                     </div>
-                    <div class="mock-card-snippet">Index your foreign keys and consider partial indexes for filtered queries. The EXPLAIN ANALYZE output shows a seq scan...</div>
+                    <div class="mock-card-snippet" data-i18n="card3snippet">Index your foreign keys and consider partial indexes for filtered queries. The EXPLAIN ANALYZE output shows a seq scan...</div>
                     <div class="mock-card-footer">
                       <span class="mock-card-tag">database</span>
-                      <span class="mock-card-time">Yesterday</span>
+                      <span class="mock-card-time" data-i18n="timeYesterday">Yesterday</span>
                     </div>
                   </div>
                 </div>
@@ -1910,12 +1910,12 @@
           <p class="step-desc" data-i18n="step2desc">A floating button pair appears on every AI page. Save captures to your Default queue. Quick captures to your Quick queue instantly.</p>
           <div class="step-visual mt-8">
             <div class="floating-btn-scene">
-              <div class="floating-btn-bg-text">
+              <div class="floating-btn-bg-text" data-i18n-html="floatBgText">
                 <strong>Claude:</strong> Here's how to implement a binary search tree in Python. The key insight is that each node&nbsp;stores a value and optional left/right children...
               </div>
               <div class="floating-save-btn">
-                <div class="flt-btn flt-btn-save">&#128190; Save</div>
-                <div class="flt-btn flt-btn-quick">&#9889; Quick</div>
+                <div class="flt-btn flt-btn-save" data-i18n="floatSave">&#128190; Save</div>
+                <div class="flt-btn flt-btn-quick" data-i18n="floatQuick">&#9889; Quick</div>
               </div>
             </div>
           </div>
@@ -1929,11 +1929,11 @@
           <p class="step-desc" data-i18n="step3desc">Open your NODUS dashboard to add tags, write notes, build chains, search across all platforms, and inject content back into any AI.</p>
           <div class="step-visual mt-8" style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
-              <span class="tag">tags</span>
-              <span class="tag" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">chains</span>
-              <span class="tag" style="background:rgba(16,185,129,0.1);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">notes</span>
-              <span class="tag" style="background:rgba(139,92,246,0.1);color:#c4b5fd;border-color:rgba(139,92,246,0.2);">search</span>
-              <span class="tag" style="background:rgba(249,115,22,0.1);color:#fdba74;border-color:rgba(249,115,22,0.2);">inject</span>
+              <span class="tag" data-i18n="tagTags">tags</span>
+              <span class="tag" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);" data-i18n="tagChains">chains</span>
+              <span class="tag" style="background:rgba(16,185,129,0.1);color:#6ee7b7;border-color:rgba(16,185,129,0.2);" data-i18n="tagNotes">notes</span>
+              <span class="tag" style="background:rgba(139,92,246,0.1);color:#c4b5fd;border-color:rgba(139,92,246,0.2);" data-i18n="tagSearch">search</span>
+              <span class="tag" style="background:rgba(249,115,22,0.1);color:#fdba74;border-color:rgba(249,115,22,0.2);" data-i18n="tagInject">inject</span>
             </div>
           </div>
         </div>
@@ -1960,42 +1960,42 @@
           <!-- Chains sidebar -->
           <div class="chains-sidebar">
             <div class="chains-sidebar-header">
-              <span class="chains-sidebar-title">Chains</span>
+              <span class="chains-sidebar-title" data-i18n="chainsSidebarTitle">Chains</span>
               <span class="chains-sidebar-add">+</span>
             </div>
             <div class="chain-list-item active">
               <span class="chain-icon">&#128279;</span>
               <div class="chain-item-info">
-                <div class="chain-item-name">Auth System Refactor</div>
-                <div class="chain-item-count">4 nodes</div>
+                <div class="chain-item-name" data-i18n="chainName1">Auth System Refactor</div>
+                <div class="chain-item-count" data-i18n="chainNodes4">4 nodes</div>
               </div>
             </div>
             <div class="chain-list-item">
               <span class="chain-icon">&#128279;</span>
               <div class="chain-item-info">
-                <div class="chain-item-name">Landing Page Copy</div>
-                <div class="chain-item-count">3 nodes</div>
+                <div class="chain-item-name" data-i18n="chainName2">Landing Page Copy</div>
+                <div class="chain-item-count" data-i18n="chainNodes3">3 nodes</div>
               </div>
             </div>
             <div class="chain-list-item">
               <span class="chain-icon">&#128279;</span>
               <div class="chain-item-info">
-                <div class="chain-item-name">DB Optimization</div>
-                <div class="chain-item-count">2 nodes</div>
+                <div class="chain-item-name" data-i18n="chainName3">DB Optimization</div>
+                <div class="chain-item-count" data-i18n="chainNodes2">2 nodes</div>
               </div>
             </div>
             <div class="chain-list-item">
               <span class="chain-icon">&#128279;</span>
               <div class="chain-item-info">
-                <div class="chain-item-name">API Design Notes</div>
-                <div class="chain-item-count">6 nodes</div>
+                <div class="chain-item-name" data-i18n="chainName4">API Design Notes</div>
+                <div class="chain-item-count" data-i18n="chainNodes6">6 nodes</div>
               </div>
             </div>
             <div class="chain-list-item">
               <span class="chain-icon">&#128279;</span>
               <div class="chain-item-info">
-                <div class="chain-item-name">Interview Prep</div>
-                <div class="chain-item-count">5 nodes</div>
+                <div class="chain-item-name" data-i18n="chainName5">Interview Prep</div>
+                <div class="chain-item-count" data-i18n="chainNodes5">5 nodes</div>
               </div>
             </div>
           </div>
@@ -2004,10 +2004,10 @@
           <div class="chains-main">
             <div class="chains-main-header">
               <span class="chain-name-big">
-                &#128279; Auth System Refactor
-                <span style="font-size:11px;font-weight:400;color:var(--muted);">4 nodes</span>
+                &#128279; <span data-i18n="chainName1">Auth System Refactor</span>
+                <span style="font-size:11px;font-weight:400;color:var(--muted);" data-i18n="chainNodes4">4 nodes</span>
               </span>
-              <button class="chain-export-btn">&#8659; Export TXT</button>
+              <button class="chain-export-btn" data-i18n="chainExportBtn">&#8659; Export TXT</button>
             </div>
             <div class="chain-nodes">
 
@@ -2017,8 +2017,8 @@
                   <span class="node-platform">Claude</span>
                   <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 28</span>
                 </div>
-                <div class="node-card-title">JWT vs session-based auth tradeoffs</div>
-                <div class="node-card-text">JWTs are stateless and scale horizontally, but revocation is hard without a blocklist. Sessions require server-side state but allow instant invalidation. For your use case with multiple services, JWT with short expiry + refresh tokens is the standard approach.</div>
+                <div class="node-card-title" data-i18n="node1title">JWT vs session-based auth tradeoffs</div>
+                <div class="node-card-text" data-i18n="node1text">JWTs are stateless and scale horizontally, but revocation is hard without a blocklist. Sessions require server-side state but allow instant invalidation. For your use case with multiple services, JWT with short expiry + refresh tokens is the standard approach.</div>
               </div>
 
               <div class="node-connector"><div class="node-connector-line"></div></div>
@@ -2029,8 +2029,8 @@
                   <span class="node-platform">Claude</span>
                   <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 28</span>
                 </div>
-                <div class="node-card-title">Refactor auth middleware implementation</div>
-                <div class="node-card-text">Extract token validation into a pure function. Compose middleware: rateLimiter → tokenExtractor → claimsValidator → permissionsGuard. Each step returns either a validated context or throws typed errors.</div>
+                <div class="node-card-title" data-i18n="node2title">Refactor auth middleware implementation</div>
+                <div class="node-card-text" data-i18n="node2text">Extract token validation into a pure function. Compose middleware: rateLimiter → tokenExtractor → claimsValidator → permissionsGuard. Each step returns either a validated context or throws typed errors.</div>
               </div>
 
               <div class="node-connector"><div class="node-connector-line"></div></div>
@@ -2041,8 +2041,8 @@
                   <span class="node-platform" style="background:rgba(16,185,129,0.12);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">ChatGPT</span>
                   <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 29</span>
                 </div>
-                <div class="node-card-title">Unit tests for auth middleware</div>
-                <div class="node-card-text">Use Jest with custom matchers for auth errors. Mock the token validator at the module boundary. Test each middleware in isolation, then integration-test the composed chain with a mock Express app.</div>
+                <div class="node-card-title" data-i18n="node3title">Unit tests for auth middleware</div>
+                <div class="node-card-text" data-i18n="node3text">Use Jest with custom matchers for auth errors. Mock the token validator at the module boundary. Test each middleware in isolation, then integration-test the composed chain with a mock Express app.</div>
               </div>
 
               <div class="node-connector"><div class="node-connector-line"></div></div>
@@ -2053,8 +2053,8 @@
                   <span class="node-platform" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">Gemini</span>
                   <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 30</span>
                 </div>
-                <div class="node-card-title">Security audit checklist</div>
-                <div class="node-card-text">Checklist: token expiry enforced, HttpOnly cookies, CORS policy locked, refresh token rotation, secrets in env vars only, audit log on failed auth attempts.</div>
+                <div class="node-card-title" data-i18n="node4title">Security audit checklist</div>
+                <div class="node-card-text" data-i18n="node4text">Checklist: token expiry enforced, HttpOnly cookies, CORS policy locked, refresh token rotation, secrets in env vars only, audit log on failed auth attempts.</div>
               </div>
 
             </div>
@@ -2591,7 +2591,35 @@
         footerMITLicense: 'MIT License', footerReportBug: 'Report a bug',
         footerPrivacyPolicy: 'Privacy Policy', footerTerms: 'Terms of Service',
         footerRefund: 'Refund Policy', footerContact: 'Contact',
-        footerCopy: '© 2026 M. M. Carvalho. All rights reserved.'
+        footerCopy: '© 2026 M. M. Carvalho. All rights reserved.',
+        // mockup dashboard
+        mockDashboard: 'NODUS Dashboard', mockDefaultQueue: 'Default Queue',
+        mockSearch: 'Search captures...', mockTabAll: 'All',
+        card1title: 'Refactor auth middleware with JWT',
+        card1snippet: 'Here\'s a cleaner approach using middleware composition. First, extract the token validation logic into a pure function...',
+        card2title: 'CSS grid responsive layout breakdown',
+        card2snippet: 'Use grid-template-areas for semantic layouts. The auto-fill + minmax pattern gives you fluid columns without media queries...',
+        card3title: 'SQL query optimization for large datasets',
+        card3snippet: 'Index your foreign keys and consider partial indexes for filtered queries. The EXPLAIN ANALYZE output shows a seq scan...',
+        time2min: '2 min ago', time1h: '1h ago', timeYesterday: 'Yesterday',
+        floatBgText: '<strong>Claude:</strong> Here\'s how to implement a binary search tree in Python. The key insight is that each node\u00a0stores a value and optional left/right children...',
+        floatSave: '💾 Save', floatQuick: '⚡ Quick',
+        tagTags: 'tags', tagChains: 'chains', tagNotes: 'notes', tagSearch: 'search', tagInject: 'inject',
+        // chains mockup
+        chainsSidebarTitle: 'Chains',
+        chainName1: 'Auth System Refactor', chainName2: 'Landing Page Copy',
+        chainName3: 'DB Optimization', chainName4: 'API Design Notes', chainName5: 'Interview Prep',
+        chainNodes2: '2 nodes', chainNodes3: '3 nodes', chainNodes4: '4 nodes',
+        chainNodes5: '5 nodes', chainNodes6: '6 nodes',
+        chainExportBtn: '↓ Export TXT',
+        node1title: 'JWT vs session-based auth tradeoffs',
+        node1text: 'JWTs are stateless and scale horizontally, but revocation is hard without a blocklist. Sessions require server-side state but allow instant invalidation. For your use case with multiple services, JWT with short expiry + refresh tokens is the standard approach.',
+        node2title: 'Refactor auth middleware implementation',
+        node2text: 'Extract token validation into a pure function. Compose middleware: rateLimiter → tokenExtractor → claimsValidator → permissionsGuard. Each step returns either a validated context or throws typed errors.',
+        node3title: 'Unit tests for auth middleware',
+        node3text: 'Use Jest with custom matchers for auth errors. Mock the token validator at the module boundary. Test each middleware in isolation, then integration-test the composed chain with a mock Express app.',
+        node4title: 'Security audit checklist',
+        node4text: 'Checklist: token expiry enforced, HttpOnly cookies, CORS policy locked, refresh token rotation, secrets in env vars only, audit log on failed auth attempts.'
       },
       pt: {
         announcement: 'NODUS lança Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acesso antecipado PRO</a> &nbsp;·&nbsp; Licença MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Favoritar no GitHub ★</a>',
@@ -2670,7 +2698,35 @@
         footerMITLicense: 'Licença MIT', footerReportBug: 'Reportar um bug',
         footerPrivacyPolicy: 'Política de Privacidade', footerTerms: 'Termos de Uso',
         footerRefund: 'Política de Reembolso', footerContact: 'Contato',
-        footerCopy: '© 2026 M. M. Carvalho. Todos os direitos reservados.'
+        footerCopy: '© 2026 M. M. Carvalho. Todos os direitos reservados.',
+        // mockup dashboard
+        mockDashboard: 'NODUS Dashboard', mockDefaultQueue: 'Fila Padrão',
+        mockSearch: 'Pesquisar capturas...', mockTabAll: 'Todos',
+        card1title: 'Refatorar middleware de auth com JWT',
+        card1snippet: 'Aqui está uma abordagem mais limpa usando composição de middleware. Primeiro, extraia a lógica de validação do token em uma função pura...',
+        card2title: 'CSS grid: layout responsivo em detalhes',
+        card2snippet: 'Use grid-template-areas para layouts semânticos. O padrão auto-fill + minmax dá colunas fluidas sem media queries...',
+        card3title: 'Otimização de queries SQL para grandes volumes',
+        card3snippet: 'Indexe suas chaves estrangeiras e considere índices parciais para queries filtradas. O EXPLAIN ANALYZE mostra um seq scan...',
+        time2min: 'há 2 min', time1h: 'há 1h', timeYesterday: 'Ontem',
+        floatBgText: '<strong>Claude:</strong> Aqui está como implementar uma árvore de busca binária em Python. O ponto chave é que cada nó\u00a0armazena um valor e filhos opcionais à esquerda e à direita...',
+        floatSave: '💾 Salvar', floatQuick: '⚡ Quick',
+        tagTags: 'tags', tagChains: 'cadeias', tagNotes: 'notas', tagSearch: 'busca', tagInject: 'injetar',
+        // chains mockup
+        chainsSidebarTitle: 'Cadeias',
+        chainName1: 'Refatoração do Sistema Auth', chainName2: 'Copy da Landing Page',
+        chainName3: 'Otimização do BD', chainName4: 'Notas de Design de API', chainName5: 'Preparação para Entrevista',
+        chainNodes2: '2 nós', chainNodes3: '3 nós', chainNodes4: '4 nós',
+        chainNodes5: '5 nós', chainNodes6: '6 nós',
+        chainExportBtn: '↓ Exportar TXT',
+        node1title: 'JWT vs autenticação por sessão: trade-offs',
+        node1text: 'JWTs são stateless e escalam horizontalmente, mas a revogação é difícil sem uma blocklist. Sessões requerem estado no servidor mas permitem invalidação instantânea. Para o seu caso com múltiplos serviços, JWT com expiração curta + refresh tokens é a abordagem padrão.',
+        node2title: 'Implementação do refactor do middleware auth',
+        node2text: 'Extraia a validação do token em uma função pura. Componha o middleware: rateLimiter → tokenExtractor → claimsValidator → permissionsGuard. Cada passo retorna um contexto validado ou lança erros tipados.',
+        node3title: 'Testes unitários para middleware auth',
+        node3text: 'Use Jest com matchers personalizados para erros de auth. Mocke o validador de token na fronteira do módulo. Teste cada middleware isoladamente, depois faça testes de integração da cadeia composta com um app Express mock.',
+        node4title: 'Checklist de auditoria de segurança',
+        node4text: 'Checklist: expiração do token enforçada, cookies HttpOnly, política CORS bloqueada, rotação de refresh token, segredos apenas em vars de ambiente, log de auditoria em falhas de auth.'
       },
       es: {
         announcement: 'NODUS lanza Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acceso anticipado PRO</a> &nbsp;·&nbsp; Licencia MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Estrella en GitHub ★</a>',
@@ -2749,7 +2805,35 @@
         footerMITLicense: 'Licencia MIT', footerReportBug: 'Reportar un bug',
         footerPrivacyPolicy: 'Política de Privacidad', footerTerms: 'Términos de Uso',
         footerRefund: 'Política de Reembolso', footerContact: 'Contacto',
-        footerCopy: '© 2026 M. M. Carvalho. Todos los derechos reservados.'
+        footerCopy: '© 2026 M. M. Carvalho. Todos los derechos reservados.',
+        // mockup dashboard
+        mockDashboard: 'NODUS Dashboard', mockDefaultQueue: 'Cola Predeterminada',
+        mockSearch: 'Buscar capturas...', mockTabAll: 'Todos',
+        card1title: 'Refactorizar middleware de auth con JWT',
+        card1snippet: 'Aquí hay un enfoque más limpio usando composición de middleware. Primero, extrae la lógica de validación del token en una función pura...',
+        card2title: 'CSS grid: desglose de layout responsivo',
+        card2snippet: 'Usa grid-template-areas para layouts semánticos. El patrón auto-fill + minmax te da columnas fluidas sin media queries...',
+        card3title: 'Optimización de consultas SQL para grandes datasets',
+        card3snippet: 'Indexa tus claves foráneas y considera índices parciales para consultas filtradas. El EXPLAIN ANALYZE muestra un seq scan...',
+        time2min: 'hace 2 min', time1h: 'hace 1h', timeYesterday: 'Ayer',
+        floatBgText: '<strong>Claude:</strong> Aquí está cómo implementar un árbol de búsqueda binaria en Python. El punto clave es que cada nodo\u00a0almacena un valor e hijos opcionales izquierdo y derecho...',
+        floatSave: '💾 Guardar', floatQuick: '⚡ Quick',
+        tagTags: 'etiquetas', tagChains: 'cadenas', tagNotes: 'notas', tagSearch: 'búsqueda', tagInject: 'inyectar',
+        // chains mockup
+        chainsSidebarTitle: 'Cadenas',
+        chainName1: 'Refactorización del Sistema Auth', chainName2: 'Copy de la Landing Page',
+        chainName3: 'Optimización de BD', chainName4: 'Notas de Diseño de API', chainName5: 'Preparación para Entrevista',
+        chainNodes2: '2 nodos', chainNodes3: '3 nodos', chainNodes4: '4 nodos',
+        chainNodes5: '5 nodos', chainNodes6: '6 nodos',
+        chainExportBtn: '↓ Exportar TXT',
+        node1title: 'JWT vs autenticación por sesión: ventajas e inconvenientes',
+        node1text: 'Los JWT son stateless y escalan horizontalmente, pero la revocación es difícil sin una blocklist. Las sesiones requieren estado en el servidor pero permiten invalidación instantánea. Para tu caso con múltiples servicios, JWT con expiración corta + refresh tokens es el enfoque estándar.',
+        node2title: 'Implementación del refactor del middleware auth',
+        node2text: 'Extrae la validación del token en una función pura. Compón el middleware: rateLimiter → tokenExtractor → claimsValidator → permissionsGuard. Cada paso retorna un contexto validado o lanza errores tipados.',
+        node3title: 'Pruebas unitarias para middleware auth',
+        node3text: 'Usa Jest con matchers personalizados para errores de auth. Mockea el validador de token en el límite del módulo. Prueba cada middleware de forma aislada, luego haz pruebas de integración de la cadena compuesta con una app Express mock.',
+        node4title: 'Lista de verificación de auditoría de seguridad',
+        node4text: 'Checklist: expiración del token enforzada, cookies HttpOnly, política CORS bloqueada, rotación del refresh token, secretos solo en vars de entorno, log de auditoría en fallos de auth.'
       }
     };
 
