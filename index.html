@@ -1,617 +1,2476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Local-first, open-core browser extension for capturing AI conversations. No cloud storage. No tracking. AGPL-3.0. Privacy-first by design.">
-    <meta name="keywords" content="AI, ChatGPT, Claude, Gemini, privacy, open source, AGPL, conversation capture">
-    <meta name="author" content="M. M. Carvalho">
-    
-    <!-- Open Graph / Facebook (uncomment when deploying to production) -->
-    <!--
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mmcarvalhodev.github.io/">
-    <meta property="og:title" content="NODUS - Privacy-First AI Capture | Open Core">
-    <meta property="og:description" content="Local-first browser extension for capturing AI conversations. No cloud. No tracking. AGPL-3.0.">
-    <meta property="og:image" content="https://mmcarvalhodev.github.io/og-image.png">
-    -->
-    
-    <!-- Twitter (uncomment when deploying to production) -->
-    <!--
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mmcarvalhodev.github.io/">
-    <meta property="twitter:title" content="NODUS - Privacy-First AI Capture">
-    <meta property="twitter:description" content="Local-first, open-core browser extension. No cloud. No tracking.">
-    <meta property="twitter:image" content="https://mmcarvalhodev.github.io/og-image.png">
-    -->
-    
-    <title>NODUS - Privacy-First AI Capture | Open Core</title>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            padding: 40px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #000;
-            text-decoration: none;
-        }
-        
-        .header-links a {
-            margin-left: 30px;
-            color: #666;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.2s;
-        }
-        
-        .header-links a:hover {
-            color: #000;
-        }
-        
-        /* Hero */
-        .hero {
-            padding: 100px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero .tagline {
-            font-size: 24px;
-            color: #666;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-        
-        .hero .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 16px 32px;
-            font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.2s;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: #000;
-            color: #fff;
-            border: 2px solid #000;
-        }
-        
-        .btn-primary:hover {
-            background: #fff;
-            color: #000;
-        }
-        
-        .btn-secondary {
-            background: #fff;
-            color: #000;
-            border: 2px solid #000;
-        }
-        
-        .btn-secondary:hover {
-            background: #000;
-            color: #fff;
-        }
-        
-        /* Trust Statement */
-        .trust-statement {
-            background: #f8f8f8;
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .trust-statement h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        
-        .trust-statement p {
-            font-size: 20px;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Features Grid */
-        .features {
-            padding: 100px 0;
-        }
-        
-        .features h2 {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-        
-        .feature-card {
-            padding: 40px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            transition: border-color 0.2s;
-        }
-        
-        .feature-card:hover {
-            border-color: #000;
-        }
-        
-        .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        
-        .feature-card p {
-            color: #666;
-            font-size: 16px;
-            line-height: 1.7;
-        }
-        
-        .feature-card ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-        
-        .feature-card ul li {
-            padding: 8px 0;
-            color: #666;
-        }
-        
-        .feature-card ul li:before {
-            content: "✓ ";
-            color: #000;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        
-        /* Pricing */
-        .pricing {
-            background: #f8f8f8;
-            padding: 100px 0;
-        }
-        
-        .pricing h2 {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .pricing-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            text-align: center;
-        }
-        
-        .pricing-card.featured {
-            border-color: #000;
-            position: relative;
-        }
-        
-        .pricing-card h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .pricing-card .price {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 20px 0;
-        }
-        
-        .pricing-card .price small {
-            font-size: 20px;
-            font-weight: 400;
-            color: #666;
-        }
-        
-        .pricing-card ul {
-            list-style: none;
-            text-align: left;
-            margin: 30px 0;
-        }
-        
-        .pricing-card ul li {
-            padding: 10px 0;
-            color: #666;
-        }
-        
-        .pricing-card ul li:before {
-            content: "✓ ";
-            color: #000;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        
-        /* Open Core */
-        .open-core {
-            padding: 100px 0;
-            text-align: center;
-        }
-        
-        .open-core h2 {
-            font-size: 42px;
-            margin-bottom: 30px;
-        }
-        
-        .open-core-diagram {
-            max-width: 600px;
-            margin: 40px auto;
-            background: #f8f8f8;
-            padding: 40px;
-            border-radius: 8px;
-            font-family: monospace;
-            text-align: left;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-        
-        .verify-code {
-            background: #000;
-            color: #fff;
-            padding: 40px;
-            margin: 60px 0;
-            border-radius: 8px;
-        }
-        
-        .verify-code h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        
-        .verify-code code {
-            background: #222;
-            padding: 20px;
-            display: block;
-            border-radius: 4px;
-            margin-top: 20px;
-            overflow-x: auto;
-            font-size: 14px;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: #000;
-            color: #fff;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .cta-section h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-        
-        .cta-section .btn-primary {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-        
-        .cta-section .btn-primary:hover {
-            background: #000;
-            color: #fff;
-        }
-        
-        /* Footer */
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-        }
-        
-        footer p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        footer .links {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        footer .links a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        footer .links a:hover {
-            color: #000;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero .tagline {
-                font-size: 18px;
-            }
-            
-            .features h2,
-            .pricing h2,
-            .open-core h2,
-            .cta-section h2 {
-                font-size: 32px;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .header-links a {
-                margin-left: 15px;
-            }
-            
-            .features-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — Capture & Organize AI Conversations Locally</title>
+  <meta name="description" content="NODUS is a free browser extension for Chrome, Edge, and Brave that captures and organizes your AI conversations locally. Works with ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NODUS — Capture & Organize AI Conversations Locally" />
+  <meta property="og:description" content="A free, local-first browser extension that saves and organizes your AI conversations across ChatGPT, Claude, Gemini, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nodus-ai.app" />
+  <meta property="og:image" content="https://nodus-ai.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NODUS — Capture & Organize AI Conversations Locally" />
+  <meta name="twitter:description" content="A free, local-first browser extension that saves and organizes your AI conversations." />
+
+  <style>
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0e1117;
+      --panel:    #1a1f29;
+      --border:   #2d3748;
+      --yellow:   #facc15;
+      --yellow-dim: #ca9a05;
+      --text:     #e2e8f0;
+      --sub:      #94a3b8;
+      --muted:    #475569;
+      --green:    #10b981;
+      --blue:     #3b82f6;
+      --red:      #ef4444;
+      --radius:   10px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* =========================================
+       UTILITIES
+    ========================================= */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 18px;
+      color: var(--sub);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--sub);
+    }
+
+    .badge-yellow {
+      background: rgba(250,204,21,0.1);
+      border-color: rgba(250,204,21,0.3);
+      color: var(--yellow);
+    }
+
+    .badge-green {
+      background: rgba(16,185,129,0.1);
+      border-color: rgba(16,185,129,0.3);
+      color: var(--green);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(59,130,246,0.15);
+      color: #93c5fd;
+      border: 1px solid rgba(59,130,246,0.25);
+    }
+
+    /* =========================================
+       SCROLL ANIMATIONS
+    ========================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* =========================================
+       NAV
+    ========================================= */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--yellow);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--sub);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: #0e1117 !important;
+      font-weight: 700 !important;
+      padding: 7px 18px;
+      border-radius: 8px;
+      font-size: 14px !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: #fde047 !important; transform: translateY(-1px); text-decoration: none !important; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      padding: 80px 0 60px;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero-inner { grid-template-columns: 1fr; }
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero-title span {
+      color: var(--yellow);
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--sub);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: #0e1117;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+    .btn-primary:hover {
+      background: #fde047;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(250,204,21,0.25);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .btn-secondary:hover {
+      border-color: var(--sub);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .hero-trust {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-trust-item .dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* =========================================
+       DASHBOARD MOCKUP (CSS)
+    ========================================= */
+    .dashboard-mockup {
+      position: relative;
+      user-select: none;
+    }
+
+    .mock-window {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 24px 80px rgba(0,0,0,0.6),
+        0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    .mock-titlebar {
+      background: #13181f;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mock-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .mock-dot-r { background: #ef4444; }
+    .mock-dot-y { background: #f59e0b; }
+    .mock-dot-g { background: #10b981; }
+
+    .mock-titlebar-label {
+      margin-left: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .mock-titlebar-badge {
+      font-size: 10px;
+      background: rgba(250,204,21,0.15);
+      color: var(--yellow);
+      border: 1px solid rgba(250,204,21,0.25);
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .mock-body {
+      display: flex;
+      height: 380px;
+    }
+
+    .mock-sidebar {
+      width: 56px;
+      background: #13181f;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 12px;
+    }
+
+    .mock-sidebar-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--panel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .mock-sidebar-icon.active {
+      background: rgba(250,204,21,0.15);
+      color: var(--yellow);
+    }
+
+    .mock-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .mock-topbar {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .mock-search {
+      flex: 1;
+      background: #13181f;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mock-search-icon {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .mock-search-text {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .mock-queue-tabs {
+      display: flex;
+      gap: 4px;
+    }
+
+    .mock-tab {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+    }
+    .mock-tab.active {
+      background: rgba(250,204,21,0.12);
+      color: var(--yellow);
+    }
+
+    .mock-cards-area {
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .mock-card {
+      background: #13181f;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 11px 14px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .mock-card:hover { border-color: var(--muted); }
+    .mock-card.selected {
+      border-color: var(--yellow);
+      background: rgba(250,204,21,0.04);
+    }
+
+    .mock-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .mock-card-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .mock-card-platform {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(59,130,246,0.15);
+      color: #93c5fd;
+      white-space: nowrap;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .mock-card-snippet {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .mock-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .mock-card-tag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(16,185,129,0.1);
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    .mock-card-time {
+      font-size: 10px;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    /* Floating button mockup */
+    .floating-btn-scene {
+      position: relative;
+      background: #1e2330;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      overflow: hidden;
+      min-height: 160px;
+    }
+
+    .floating-btn-bg-text {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .floating-btn-bg-text strong {
+      color: var(--sub);
+    }
+
+    .floating-save-btn {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .flt-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .flt-btn-save {
+      background: var(--yellow);
+      color: #0e1117;
+    }
+
+    .flt-btn-quick {
+      background: #1a1f29;
+      color: var(--sub);
+      border: 1px solid var(--border);
+    }
+
+    /* =========================================
+       HOW IT WORKS
+    ========================================= */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 720px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    .step-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .step-card:hover {
+      border-color: rgba(250,204,21,0.3);
+      transform: translateY(-4px);
+    }
+
+    .step-number {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .step-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(250,204,21,0.1);
+      border: 1px solid rgba(250,204,21,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.7;
+    }
+
+    .step-visual {
+      margin-top: 20px;
+    }
+
+    .platform-badges-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .platform-badge-mini {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--sub);
+    }
+
+    /* =========================================
+       CHAINS MOCKUP
+    ========================================= */
+    .chains-mockup {
+      display: flex;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      min-height: 360px;
+    }
+
+    .chains-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: #13181f;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chains-sidebar-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chains-sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sub);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .chains-sidebar-add {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background: rgba(250,204,21,0.1);
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .chain-list-item {
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border-left: 2px solid transparent;
+      transition: background 0.15s;
+    }
+    .chain-list-item:hover { background: rgba(255,255,255,0.03); }
+    .chain-list-item.active {
+      background: rgba(250,204,21,0.06);
+      border-left-color: var(--yellow);
+    }
+
+    .chain-icon {
+      font-size: 14px;
+    }
+
+    .chain-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .chain-item-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chain-item-count {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .chains-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chains-main-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chain-name-big {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chain-export-btn {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--sub);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .chain-nodes {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .node-card {
+      background: #13181f;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      position: relative;
+    }
+
+    .node-card::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: 16px;
+      bottom: 16px;
+      width: 3px;
+      border-radius: 0 2px 2px 0;
+      background: var(--yellow);
+      opacity: 0.6;
+    }
+
+    .node-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .node-index {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--yellow);
+      background: rgba(250,204,21,0.1);
+      border: 1px solid rgba(250,204,21,0.2);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .node-platform {
+      font-size: 10px;
+      color: var(--sub);
+      background: rgba(255,255,255,0.04);
+      padding: 2px 7px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .node-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .node-card-text {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .node-connector {
+      display: flex;
+      align-items: center;
+      padding: 0 0 0 8px;
+      gap: 6px;
+    }
+
+    .node-connector-line {
+      width: 2px;
+      height: 20px;
+      background: linear-gradient(to bottom, rgba(250,204,21,0.4), rgba(250,204,21,0.1));
+      margin-left: 6px;
+    }
+
+    /* =========================================
+       PLATFORMS
+    ========================================= */
+    .platforms-section {
+      background: rgba(26,31,41,0.5);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .platforms-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .platform-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 20px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .platform-pill:hover {
+      border-color: var(--sub);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .platform-emoji {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .platform-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .platform-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* =========================================
+       PRICING
+    ========================================= */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 800px;
+      margin: 56px auto 0;
+    }
+
+    @media (max-width: 620px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    .pricing-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(250,204,21,0.4);
+      background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, var(--panel) 50%);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--yellow);
+      color: #0e1117;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 99px;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+
+    .pricing-tier {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--sub);
+      margin-bottom: 16px;
+    }
+
+    .pricing-price {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .pricing-amount {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .pricing-currency {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--sub);
+      padding-bottom: 6px;
+    }
+
+    .pricing-period {
+      font-size: 14px;
+      color: var(--muted);
+      padding-bottom: 8px;
+    }
+
+    .pricing-alt {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .pricing-alt strong {
+      color: var(--green);
+    }
+
+    .pricing-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .pricing-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--sub);
+      line-height: 1.5;
+    }
+
+    .pricing-feature .check {
+      color: var(--green);
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 14px;
+    }
+
+    .pricing-feature .check-pro {
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 14px;
+    }
+
+    .btn-full {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-full-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-full-outline:hover {
+      border-color: var(--sub);
+      background: rgba(255,255,255,0.04);
+      text-decoration: none;
+    }
+
+    .btn-full-yellow {
+      background: var(--yellow);
+      color: #0e1117;
+      border: none;
+    }
+    .btn-full-yellow:hover {
+      background: #fde047;
+      box-shadow: 0 4px 20px rgba(250,204,21,0.3);
+      text-decoration: none;
+    }
+
+    /* =========================================
+       COMPARISON TABLE
+    ========================================= */
+    .compare-table-wrap {
+      overflow-x: auto;
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .compare-table th {
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      background: #13181f;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table th:not(:first-child) {
+      text-align: center;
+    }
+
+    .compare-table td {
+      padding: 13px 20px;
+      border-bottom: 1px solid rgba(45,55,72,0.5);
+      color: var(--sub);
+      vertical-align: middle;
+    }
+
+    .compare-table td:not(:first-child) {
+      text-align: center;
+    }
+
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-table tr:hover td {
+      background: rgba(255,255,255,0.015);
+    }
+
+    .compare-table .feature-name {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .compare-table .tier-header {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .compare-table .tier-header.pro-header {
+      color: var(--yellow);
+    }
+
+    .check-cell { color: var(--green); font-size: 16px; }
+    .check-cell-pro { color: var(--yellow); font-size: 16px; }
+    .cross-cell { color: var(--muted); font-size: 14px; }
+    .limit-cell { font-size: 12px; font-weight: 600; color: var(--blue); }
+    .limit-cell-pro { font-size: 12px; font-weight: 600; color: var(--yellow); }
+
+    /* =========================================
+       PRIVACY SECTION
+    ========================================= */
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 720px) {
+      .privacy-grid { grid-template-columns: 1fr; }
+    }
+
+    .privacy-diagram {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .privacy-diagram-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--sub);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .privacy-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+    }
+
+    .privacy-node {
+      background: #13181f;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .privacy-node-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .privacy-node-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .privacy-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4px 0;
+      gap: 2px;
+    }
+
+    .privacy-arrow-line {
+      width: 2px;
+      height: 18px;
+      background: var(--border);
+    }
+
+    .privacy-arrow-head {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .privacy-arrow-label {
+      font-size: 10px;
+      color: var(--green);
+      font-weight: 700;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    .privacy-block {
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 10px;
+      padding: 14px 20px;
+      text-align: center;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .privacy-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .privacy-block-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .privacy-points {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .privacy-point {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .privacy-point-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .privacy-point-icon-green {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+    }
+
+    .privacy-point-icon-red {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+
+    .privacy-point-text h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .privacy-point-text p {
+      font-size: 13px;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       OPEN CORE
+    ========================================= */
+    .opencore-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 760px;
+      margin: 48px auto 0;
+    }
+
+    @media (max-width: 600px) {
+      .opencore-grid { grid-template-columns: 1fr; }
+    }
+
+    .opencore-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+    }
+
+    .opencore-card.oss {
+      border-color: rgba(16,185,129,0.3);
+    }
+
+    .opencore-card.pro-lock {
+      border-color: rgba(250,204,21,0.3);
+    }
+
+    .opencore-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .opencore-icon {
+      font-size: 20px;
+    }
+
+    .opencore-card-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .opencore-card-sub {
+      font-size: 13px;
+      color: var(--sub);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .opencore-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opencore-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+
+    .opencore-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-green-sm { background: var(--green); }
+    .dot-yellow-sm { background: var(--yellow); }
+
+    /* =========================================
+       CTA SECTION
+    ========================================= */
+    .cta-section {
+      background: linear-gradient(135deg, #0e1117 0%, #131820 50%, #0e1117 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 96px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse at center, rgba(250,204,21,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .cta-title span { color: var(--yellow); }
+
+    .cta-sub {
+      font-size: 18px;
+      color: var(--sub);
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .cta-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      position: relative;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    .footer {
+      background: #0a0c12;
+      border-top: 1px solid var(--border);
+      padding: 48px 24px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      max-width: 280px;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-kofi {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--sub);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .footer-kofi:hover {
+      background: rgba(255,255,255,0.07);
+      text-decoration: none;
+    }
+
+    .footer-links-group {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .footer-links-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--sub);
+      margin-bottom: 8px;
+      transition: color 0.15s;
+      text-decoration: none;
+    }
+    .footer-links-col a:hover { color: var(--text); }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(45,55,72,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-legal a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .footer-legal a:hover { color: var(--sub); }
+
+    /* =========================================
+       ANNOUNCEMENT BANNER
+    ========================================= */
+    .announcement {
+      background: rgba(250,204,21,0.08);
+      border-bottom: 1px solid rgba(250,204,21,0.2);
+      padding: 10px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .announcement a {
+      color: var(--yellow);
+      font-weight: 700;
+    }
+
+    /* =========================================
+       MISC HELPERS
+    ========================================= */
+    .mt-8  { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-40 { margin-top: 40px; }
+
+    .separator {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* Subtle grid bg */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(45,55,72,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45,55,72,0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero { position: relative; }
+    .hero .container { position: relative; z-index: 1; }
+
+    @media (max-width: 840px) {
+      .chains-sidebar { width: 160px; }
+      .chains-main { display: none; }
+      .privacy-grid, .hero-inner { grid-template-columns: 1fr; }
+    }
+
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">NODUS</a>
-                <nav class="header-links">
-                    <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
-                    <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/manifesto.md">Manifesto</a>
-                    <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/faq.md">FAQ</a>
-                </nav>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div class="announcement">
+    NODUS is launching Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Get PRO early access</a> &nbsp;·&nbsp; MIT licensed &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Star on GitHub ★</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="nav-logo-dot"></span>
+        NODUS
+      </div>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a></li>
+        <li><a href="https://nodus-ai.app/checkout.html" class="nav-cta">Get PRO</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       HERO
+  =========================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Left: copy -->
+        <div>
+          <div class="hero-eyebrow reveal">
+            <span class="badge badge-yellow">Q2 2026 Launch</span>
+            <span class="badge badge-green">Free Forever</span>
+            <span class="badge">MIT License</span>
+          </div>
+
+          <h1 class="hero-title reveal reveal-delay-1">
+            Your AI conversations,<br/>
+            <span>captured &amp; organized</span><br/>
+            locally.
+          </h1>
+
+          <p class="hero-desc reveal reveal-delay-2">
+            NODUS is a browser extension that lets you save, tag, chain, and search
+            AI conversations across ChatGPT, Claude, Gemini, and 4 more platforms —
+            all stored privately on your own machine.
+          </p>
+
+          <div class="hero-actions reveal reveal-delay-3">
+            <a href="https://nodus-ai.app/checkout.html" class="btn-primary">
+              &#9889; Install free
+            </a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary">
+              &#9733; View on GitHub
+            </a>
+          </div>
+
+          <div class="hero-trust reveal reveal-delay-4">
+            <div class="hero-trust-item">
+              <span class="dot-green"></span>
+              No account required
             </div>
-        </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <h1>Privacy-First AI Capture</h1>
-            <p class="tagline">The only way to prove we're not mining your data: show you the code.</p>
-            <div class="cta-buttons">
-                <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-primary">View on GitHub</a>
-                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/manifesto.md" class="btn btn-secondary">Read Manifesto</a>
+            <div class="hero-trust-item">
+              <span class="dot-green"></span>
+              Chrome · Edge · Brave
             </div>
+            <div class="hero-trust-item">
+              <span class="dot-green"></span>
+              7 AI platforms
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Trust Statement -->
-    <section class="trust-statement">
-        <div class="container">
-            <h2>100% Local. 100% Open Core. 100% Auditable.</h2>
-            <p>NODUS captures and organizes your AI conversations across ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek. Everything stays on your device. Every line of code is verifiable.</p>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <h2>Why Open Core?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>🔓 Open Source Core</h3>
-                    <p>All capture engines, storage, and telemetry are open source under AGPL-3.0.</p>
-                    <ul>
-                        <li>Platform-specific capture engines</li>
-                        <li>Local storage system</li>
-                        <li>Ethical telemetry (k-anonymity)</li>
-                        <li>Dashboard & organization</li>
-                    </ul>
+        <!-- Right: Dashboard mockup -->
+        <div class="dashboard-mockup reveal reveal-delay-2">
+          <div class="mock-window">
+            <div class="mock-titlebar">
+              <span class="mock-dot mock-dot-r"></span>
+              <span class="mock-dot mock-dot-y"></span>
+              <span class="mock-dot mock-dot-g"></span>
+              <span class="mock-titlebar-label">NODUS Dashboard</span>
+              <span class="mock-titlebar-badge">Default Queue</span>
+            </div>
+            <div class="mock-body">
+              <!-- Sidebar icons -->
+              <div class="mock-sidebar">
+                <div class="mock-sidebar-icon active">&#9649;</div>
+                <div class="mock-sidebar-icon">&#128279;</div>
+                <div class="mock-sidebar-icon">&#128193;</div>
+                <div class="mock-sidebar-icon">&#128269;</div>
+                <div style="flex:1"></div>
+                <div class="mock-sidebar-icon">&#9881;</div>
+              </div>
+              <!-- Cards area -->
+              <div class="mock-content">
+                <div class="mock-topbar">
+                  <div class="mock-search">
+                    <span class="mock-search-icon">&#128269;</span>
+                    <span class="mock-search-text">Search captures...</span>
+                  </div>
+                  <div class="mock-queue-tabs">
+                    <div class="mock-tab active">All</div>
+                    <div class="mock-tab">Quick</div>
+                    <div class="mock-tab">Q1</div>
+                  </div>
                 </div>
-                
-                <div class="feature-card">
-                    <h3>🔒 Privacy Guaranteed</h3>
-                    <p>Your data never leaves your device during capture. No cloud storage. No tracking.</p>
-                    <ul>
-                        <li>100% local storage</li>
-                        <li>Zero external calls during capture</li>
-                        <li>Optional anonymized telemetry (aggregates only)</li>
-                        <li>Mandatory consent (ethical gate)</li>
-                        <li>Export anytime, any format</li>
-                    </ul>
+                <div class="mock-cards-area">
+                  <!-- Card 1 -->
+                  <div class="mock-card selected">
+                    <div class="mock-card-header">
+                      <div class="mock-card-title">Refactor auth middleware with JWT</div>
+                      <div class="mock-card-platform">Claude</div>
+                    </div>
+                    <div class="mock-card-snippet">Here's a cleaner approach using middleware composition. First, extract the token validation logic into a pure function...</div>
+                    <div class="mock-card-footer">
+                      <span class="mock-card-tag">backend</span>
+                      <span class="mock-card-tag" style="background:rgba(250,204,21,0.1);color:#fde68a;">auth</span>
+                      <span class="mock-card-time">2 min ago</span>
+                    </div>
+                  </div>
+                  <!-- Card 2 -->
+                  <div class="mock-card">
+                    <div class="mock-card-header">
+                      <div class="mock-card-title">CSS grid responsive layout breakdown</div>
+                      <div class="mock-card-platform" style="background:rgba(16,185,129,0.15);color:#6ee7b7;">ChatGPT</div>
+                    </div>
+                    <div class="mock-card-snippet">Use grid-template-areas for semantic layouts. The auto-fill + minmax pattern gives you fluid columns without media queries...</div>
+                    <div class="mock-card-footer">
+                      <span class="mock-card-tag">css</span>
+                      <span class="mock-card-tag" style="background:rgba(139,92,246,0.15);color:#c4b5fd;">design</span>
+                      <span class="mock-card-time">1h ago</span>
+                    </div>
+                  </div>
+                  <!-- Card 3 -->
+                  <div class="mock-card">
+                    <div class="mock-card-header">
+                      <div class="mock-card-title">SQL query optimization for large datasets</div>
+                      <div class="mock-card-platform" style="background:rgba(250,204,21,0.1);color:#fde68a;">Gemini</div>
+                    </div>
+                    <div class="mock-card-snippet">Index your foreign keys and consider partial indexes for filtered queries. The EXPLAIN ANALYZE output shows a seq scan...</div>
+                    <div class="mock-card-footer">
+                      <span class="mock-card-tag">database</span>
+                      <span class="mock-card-time">Yesterday</span>
+                    </div>
+                  </div>
                 </div>
-                
-                <div class="feature-card">
-                    <h3>⚡ Powerful & Free</h3>
-                    <p>Generous free tier designed to provide long-term value without artificial limits.</p>
-                    <ul>
-                        <li>Unlimited chains</li>
-                        <li>3 queues for organization</li>
-                        <li>All 7 platforms supported</li>
-                        <li>Full dashboard with search</li>
-                    </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       HOW IT WORKS
+  =========================================== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">Three steps. That's it.</h2>
+        <p class="section-sub">NODUS sits invisibly in your browser and activates only when you want it to. No paste, no copy, no friction.</p>
+      </div>
+
+      <div class="steps-grid">
+
+        <!-- Step 1 -->
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">Step 01</div>
+          <div class="step-icon">&#129504;</div>
+          <div class="step-title">Browse any AI</div>
+          <p class="step-desc">NODUS activates on 7 platforms the moment you open them. No setup per site — it just works.</p>
+          <div class="step-visual mt-8">
+            <div class="platform-badges-mini">
+              <span class="platform-badge-mini">ChatGPT</span>
+              <span class="platform-badge-mini">Claude</span>
+              <span class="platform-badge-mini">Gemini</span>
+              <span class="platform-badge-mini">Perplexity</span>
+              <span class="platform-badge-mini">Copilot</span>
+              <span class="platform-badge-mini">Grok</span>
+              <span class="platform-badge-mini">DeepSeek</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">Step 02</div>
+          <div class="step-icon">&#128190;</div>
+          <div class="step-title">Click Save or Quick</div>
+          <p class="step-desc">A floating button pair appears on every AI page. Save captures to your Default queue. Quick captures to your Quick queue instantly.</p>
+          <div class="step-visual mt-8">
+            <div class="floating-btn-scene">
+              <div class="floating-btn-bg-text">
+                <strong>Claude:</strong> Here's how to implement a binary search tree in Python. The key insight is that each node&nbsp;stores a value and optional left/right children...
+              </div>
+              <div class="floating-save-btn">
+                <div class="flt-btn flt-btn-save">&#128190; Save</div>
+                <div class="flt-btn flt-btn-quick">&#9889; Quick</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">Step 03</div>
+          <div class="step-icon">&#128218;</div>
+          <div class="step-title">Organize in your dashboard</div>
+          <p class="step-desc">Open your NODUS dashboard to add tags, write notes, build chains, search across all platforms, and inject content back into any AI.</p>
+          <div class="step-visual mt-8" style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="tag">tags</span>
+              <span class="tag" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">chains</span>
+              <span class="tag" style="background:rgba(16,185,129,0.1);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">notes</span>
+              <span class="tag" style="background:rgba(139,92,246,0.1);color:#c4b5fd;border-color:rgba(139,92,246,0.2);">search</span>
+              <span class="tag" style="background:rgba(249,115,22,0.1);color:#fdba74;border-color:rgba(249,115,22,0.2);">inject</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="separator" />
+
+  <!-- ==========================================
+       PRODUCT PREVIEW — CHAINS
+  =========================================== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Product preview</div>
+        <h2 class="section-title">Chains: link your best captures</h2>
+        <p class="section-sub">Group related captures into ordered chains. Build a knowledge trail across sessions, platforms, and topics — then export as TXT, HTML, or DOCX.</p>
+      </div>
+
+      <div class="mt-40 reveal">
+        <div class="chains-mockup">
+          <!-- Chains sidebar -->
+          <div class="chains-sidebar">
+            <div class="chains-sidebar-header">
+              <span class="chains-sidebar-title">Chains</span>
+              <span class="chains-sidebar-add">+</span>
+            </div>
+            <div class="chain-list-item active">
+              <span class="chain-icon">&#128279;</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Auth System Refactor</div>
+                <div class="chain-item-count">4 nodes</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">&#128279;</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Landing Page Copy</div>
+                <div class="chain-item-count">3 nodes</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">&#128279;</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">DB Optimization</div>
+                <div class="chain-item-count">2 nodes</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">&#128279;</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">API Design Notes</div>
+                <div class="chain-item-count">6 nodes</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">&#128279;</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Interview Prep</div>
+                <div class="chain-item-count">5 nodes</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chain content -->
+          <div class="chains-main">
+            <div class="chains-main-header">
+              <span class="chain-name-big">
+                &#128279; Auth System Refactor
+                <span style="font-size:11px;font-weight:400;color:var(--muted);">4 nodes</span>
+              </span>
+              <button class="chain-export-btn">&#8659; Export TXT</button>
+            </div>
+            <div class="chain-nodes">
+
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#1</span>
+                  <span class="node-platform">Claude</span>
+                  <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 28</span>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="node-card-title">JWT vs session-based auth tradeoffs</div>
+                <div class="node-card-text">JWTs are stateless and scale horizontally, but revocation is hard without a blocklist. Sessions require server-side state but allow instant invalidation. For your use case with multiple services, JWT with short expiry + refresh tokens is the standard approach.</div>
+              </div>
 
-    <!-- Pricing -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2>Simple, Honest Pricing</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>FREE</h3>
-                    <div class="price">$0<small>/forever</small></div>
-                    <ul>
-                        <li>3 capture methods</li>
-                        <li>Unlimited chains</li>
-                        <li>3 queues</li>
-                        <li>All 7 platforms</li>
-                        <li>Dashboard & search</li>
-                        <li>TXT export</li>
-                        <li>100% local storage</li>
-                    </ul>
-                    <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-secondary">Get Started</a>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#2</span>
+                  <span class="node-platform">Claude</span>
+                  <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 28</span>
                 </div>
-                
-                <div class="pricing-card featured">
-                    <h3>PRO</h3>
-                    <div class="price">$4.50<small>/month</small></div>
-                    <p style="margin-bottom: 20px; color: #666;">or $30/year (44% off)</p>
-                    <ul>
-                        <li><strong>Everything in FREE, plus:</strong></li>
-                        <li>Inject Chain (killer feature)</li>
-                        <li>6 queues total</li>
-                        <li>Full Chat Capture</li>
-                        <li>Auto Capture</li>
-                        <li>HTML/DOCX export</li>
-                        <li>Encrypted backups</li>
-                        <li>Advanced stats</li>
-                    </ul>
-                    <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-primary">⭐ Star to Get Notified</a>
+                <div class="node-card-title">Refactor auth middleware implementation</div>
+                <div class="node-card-text">Extract token validation into a pure function. Compose middleware: rateLimiter → tokenExtractor → claimsValidator → permissionsGuard. Each step returns either a validated context or throws typed errors.</div>
+              </div>
+
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#3</span>
+                  <span class="node-platform" style="background:rgba(16,185,129,0.12);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">ChatGPT</span>
+                  <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 29</span>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="node-card-title">Unit tests for auth middleware</div>
+                <div class="node-card-text">Use Jest with custom matchers for auth errors. Mock the token validator at the module boundary. Test each middleware in isolation, then integration-test the composed chain with a mock Express app.</div>
+              </div>
 
-    <!-- Open Core Explanation -->
-    <section class="open-core">
-        <div class="container">
-            <h2>Radical Transparency</h2>
-            <p style="font-size: 20px; color: #666; max-width: 800px; margin: 20px auto 40px;">We help you capture and organize your AI conversations. The only way to prove we're not mining your data: show you the code.</p>
-            
-            <div class="open-core-diagram">
-┌─────────────────────────────────────┐<br>
-│        NODUS CORE (Open)            │<br>
-│  • Capture engines (7 platforms)   │<br>
-│  • Local storage system             │<br>
-│  • Queues & chains                  │<br>
-│  • Ethical telemetry                │<br>
-│                                     │<br>
-│  License: AGPL-3.0                  │<br>
-│  Status: Forever Open               │<br>
-└─────────────────────────────────────┘<br>
-              │<br>
-              ▼<br>
-┌─────────────────────────────────────┐<br>
-│      NODUS PRO (Proprietary)        │<br>
-│  • Advanced workflows               │<br>
-│  • Chain injection                  │<br>
-│  • Professional exports             │<br>
-│  • Encrypted backups                │<br>
-│                                     │<br>
-│  Price: $4.50/month or $30/year     │<br>
-└─────────────────────────────────────┘
-            </div>
-            
-            <div class="verify-code">
-                <h3>Don't Trust. Verify.</h3>
-                <p>Audit the code yourself:</p>
-                <code>
-# Clone the repository<br>
-git clone https://github.com/mmcarvalhodev/nodus-core.git<br>
-<br>
-# Read the capture engines<br>
-cat src/engines/chatgpt.engine.js<br>
-<br>
-# Check telemetry implementation<br>
-cat src/telemetry/privacy.js<br>
-<br>
-# Inspect storage code<br>
-cat src/content/all_modules.js
-                </code>
-            </div>
-        </div>
-    </section>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
 
-    <!-- Final CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Built with Transparency. Powered by Trust.</h2>
-            <p>Star the repo if you believe in privacy-first AI tools.</p>
-            <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn btn-primary">⭐ Star on GitHub</a>
-        </div>
-    </section>
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#4</span>
+                  <span class="node-platform" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">Gemini</span>
+                  <span style="font-size:10px;color:var(--muted);margin-left:auto;">Mar 30</span>
+                </div>
+                <div class="node-card-title">Security audit checklist</div>
+                <div class="node-card-text">Checklist: token expiry enforced, HttpOnly cookies, CORS policy locked, refresh token rotation, secrets in env vars only, audit log on failed auth attempts.</div>
+              </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 M. M. Carvalho (Márcio Menezes de Carvalho Lima)<br>
-            <span style="font-size: 14px; color: #999; margin-top: 10px; display: inline-block;">Code: AGPL-3.0 | PRO Features: Commercial License</span></p>
-            <p style="font-style: italic; margin-top: 20px;">"The best way to predict the future is to be transparent about the present."</p>
-            <div class="links">
-                <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
-                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/manifesto.md">Manifesto</a>
-                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/faq.md">FAQ</a>
-                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/architecture.md">Architecture</a>
-                <a href="https://github.com/mmcarvalhodev/nodus-core/blob/docs/docs/roadmap.md">Roadmap</a>
-                <a href="/terms.html">Terms</a>
-                <a href="/privacy.html">Privacy</a>
-                <a href="/refund.html">Refund</a>
-                <a href="mailto:mmcarvalho.dev@gmail.com">Contact</a>
             </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PLATFORMS
+  =========================================== -->
+  <section class="section platforms-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Supported Platforms</div>
+        <h2 class="section-title">7 AI platforms, one dashboard</h2>
+        <p class="section-sub">NODUS works wherever you already work. No switching tabs, no copy-pasting. More platforms coming.</p>
+      </div>
+
+      <div class="platforms-grid reveal reveal-delay-1">
+        <div class="platform-pill">
+          <span class="platform-emoji">&#129504;</span>
+          <div>
+            <div class="platform-name">ChatGPT</div>
+            <div class="platform-note">chat.openai.com</div>
+          </div>
+        </div>
+        <div class="platform-pill">
+          <span class="platform-emoji">&#9654;</span>
+          <div>
+            <div class="platform-name">Claude</div>
+            <div class="platform-note">claude.ai</div>
+          </div>
+        </div>
+        <div class="platform-pill">
+          <span class="platform-emoji">&#128160;</span>
+          <div>
+            <div class="platform-name">Gemini</div>
+            <div class="platform-note">gemini.google.com</div>
+          </div>
+        </div>
+        <div class="platform-pill">
+          <span class="platform-emoji">&#128270;</span>
+          <div>
+            <div class="platform-name">Perplexity</div>
+            <div class="platform-note">perplexity.ai</div>
+          </div>
+        </div>
+        <div class="platform-pill">
+          <span class="platform-emoji">&#129302;</span>
+          <div>
+            <div class="platform-name">Copilot</div>
+            <div class="platform-note">copilot.microsoft.com</div>
+          </div>
+        </div>
+        <div class="platform-pill">
+          <span class="platform-emoji">&#128037;</span>
+          <div>
+            <div class="platform-name">Grok</div>
+            <div class="platform-note">grok.com</div>
+          </div>
+        </div>
+        <div class="platform-pill">
+          <span class="platform-emoji">&#127754;</span>
+          <div>
+            <div class="platform-name">DeepSeek</div>
+            <div class="platform-note">chat.deepseek.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PRICING
+  =========================================== -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Free forever. Upgrade when you're ready.</h2>
+        <p class="section-sub">The FREE plan is genuinely complete for most users. PRO unlocks power features for heavy users and teams.</p>
+      </div>
+
+      <div class="pricing-grid reveal reveal-delay-1">
+
+        <!-- Free -->
+        <div class="pricing-card">
+          <div class="pricing-tier">Free</div>
+          <div class="pricing-price">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-amount">0</span>
+            <span class="pricing-period">/ month</span>
+          </div>
+          <div class="pricing-alt">Free forever — no credit card needed</div>
+          <hr class="pricing-divider" />
+          <ul class="pricing-features">
+            <li class="pricing-feature"><span class="check">&#10003;</span> Save + Quick capture buttons</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> Dashboard: cards, tags, notes, search</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> 3 queues (Quick, Default, Q1)</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> Unlimited chains</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> Chain export TXT</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> Full Chat Capture: 10 / month</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> Projects: up to 3</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> Inject content back into any AI</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> Attachments</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> PT / EN / ES interface</li>
+          </ul>
+          <a href="https://nodus-ai.app/checkout.html" class="btn-full btn-full-outline">Get Free</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">BEST VALUE — SAVE 48%</div>
+          <div class="pricing-tier" style="color:var(--yellow);">Pro</div>
+          <div class="pricing-price">
+            <span class="pricing-currency" style="color:var(--yellow);">$</span>
+            <span class="pricing-amount" style="color:var(--yellow);">4</span>
+            <span class="pricing-period">/month</span>
+          </div>
+          <div class="pricing-alt">or <strong>$25/year</strong> — save 48%</div>
+          <hr class="pricing-divider" />
+          <ul class="pricing-features">
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Everything in Free</li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> 6 queues (+Q2, Q3, Q4)</li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Chain export HTML + DOCX</li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Full Chat Capture: unlimited</li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Projects: unlimited</li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Encrypted backup (AES-256-GCM)</li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Auto Capture (keyword-based)</li>
+          </ul>
+          <a href="https://nodus-ai.app/checkout.html" class="btn-full btn-full-yellow">Get PRO</a>
+        </div>
+
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="mt-40 reveal">
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th style="width:50%">Feature</th>
+                <th class="tier-header">Free</th>
+                <th class="tier-header pro-header">PRO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature-name">Save + Quick capture buttons</td>
+                <td class="check-cell">&#10003;</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Dashboard (cards, tags, notes, search)</td>
+                <td class="check-cell">&#10003;</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Queues</td>
+                <td class="limit-cell">3 queues</td>
+                <td class="limit-cell-pro">6 queues</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Unlimited chains</td>
+                <td class="check-cell">&#10003;</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Chain export</td>
+                <td class="limit-cell">TXT only</td>
+                <td class="limit-cell-pro">TXT + HTML + DOCX</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Full Chat Capture</td>
+                <td class="limit-cell">10 / month</td>
+                <td class="limit-cell-pro">Unlimited</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Projects</td>
+                <td class="limit-cell">Up to 3</td>
+                <td class="limit-cell-pro">Unlimited</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Inject content into any AI</td>
+                <td class="check-cell">&#10003;</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Attachments</td>
+                <td class="check-cell">&#10003;</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Encrypted backup (AES-256-GCM)</td>
+                <td class="cross-cell">—</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Auto Capture (keyword-based per platform)</td>
+                <td class="cross-cell">—</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+              <tr>
+                <td class="feature-name">PT / EN / ES interface</td>
+                <td class="check-cell">&#10003;</td>
+                <td class="check-cell-pro">&#10003;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PRIVACY
+  =========================================== -->
+  <section class="section" id="privacy" style="background: rgba(10,12,18,0.6);">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Privacy First</div>
+        <h2 class="section-title">Your data stays on your machine.</h2>
+        <p class="section-sub">NODUS is built on a local-first principle. Everything you capture is stored in your browser's local storage — never uploaded, never shared, never mined.</p>
+      </div>
+
+      <div class="privacy-grid">
+        <!-- Diagram -->
+        <div class="privacy-diagram reveal reveal-delay-1">
+          <div class="privacy-diagram-title">Data Flow</div>
+          <div class="privacy-flow">
+
+            <div class="privacy-node">
+              <div class="privacy-node-label">&#129504; AI Platform</div>
+              <div class="privacy-node-sub">ChatGPT, Claude, Gemini…</div>
+            </div>
+
+            <div class="privacy-arrow">
+              <div class="privacy-arrow-line"></div>
+              <div class="privacy-arrow-head">&#9660;</div>
+              <div class="privacy-arrow-label">capture (local only)</div>
+              <div class="privacy-arrow-line"></div>
+              <div class="privacy-arrow-head">&#9660;</div>
+            </div>
+
+            <div class="privacy-node" style="border-color:rgba(250,204,21,0.3);background:rgba(250,204,21,0.04);">
+              <div class="privacy-node-label" style="color:var(--yellow);">&#9673; NODUS Extension</div>
+              <div class="privacy-node-sub">browser.storage.local</div>
+            </div>
+
+            <div class="privacy-arrow">
+              <div class="privacy-arrow-line"></div>
+              <div class="privacy-arrow-head">&#9660;</div>
+              <div class="privacy-arrow-label">stored on device</div>
+              <div class="privacy-arrow-line"></div>
+              <div class="privacy-arrow-head">&#9660;</div>
+            </div>
+
+            <div class="privacy-node" style="border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.04);">
+              <div class="privacy-node-label" style="color:var(--green);">&#128187; Your Browser</div>
+              <div class="privacy-node-sub">100% local storage</div>
+            </div>
+
+            <div style="margin-top:12px;width:100%;">
+              <div class="privacy-block">
+                <div class="privacy-block-label">&#128683; Never reaches any server</div>
+                <div class="privacy-block-sub">No NODUS server · No analytics upload · No account sync</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Points -->
+        <div class="privacy-points reveal reveal-delay-2">
+          <div class="privacy-point">
+            <div class="privacy-point-icon privacy-point-icon-green">&#128274;</div>
+            <div class="privacy-point-text">
+              <h4>All data stored locally</h4>
+              <p>Captures, tags, notes, chains, and projects live exclusively in your browser's local storage. Nothing leaves your device unless you explicitly export it.</p>
+            </div>
+          </div>
+          <div class="privacy-point">
+            <div class="privacy-point-icon privacy-point-icon-green">&#128373;</div>
+            <div class="privacy-point-text">
+              <h4>No account, no tracking</h4>
+              <p>NODUS requires no login. There's no user ID, no session, no analytics ping. We don't know who you are and we don't want to.</p>
+            </div>
+          </div>
+          <div class="privacy-point">
+            <div class="privacy-point-icon privacy-point-icon-green">&#128190;</div>
+            <div class="privacy-point-text">
+              <h4>PRO backup is encrypted</h4>
+              <p>PRO's optional backup feature uses AES-256-GCM encryption with a password you set. The encrypted file is only readable with your key — not by us.</p>
+            </div>
+          </div>
+          <div class="privacy-point">
+            <div class="privacy-point-icon privacy-point-icon-red">&#128683;</div>
+            <div class="privacy-point-text">
+              <h4>What we never do</h4>
+              <p>No reading of your conversation content, no telemetry on what you capture, no third-party data sharing, no advertising SDK embedded anywhere.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       OPEN CORE
+  =========================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Open Core</div>
+        <h2 class="section-title">Built in the open.</h2>
+        <p class="section-sub">NODUS core is MIT licensed. You can read the source, fork it, and contribute. PRO features are commercial add-ons that fund ongoing development.</p>
+      </div>
+
+      <div class="opencore-grid">
+        <div class="opencore-card oss reveal reveal-delay-1">
+          <div class="opencore-card-header">
+            <span class="opencore-icon">&#128275;</span>
+            <span class="opencore-card-title">Open Source Core</span>
+          </div>
+          <p class="opencore-card-sub">MIT licensed — free to use, modify, and distribute. No copyleft, no restrictions.</p>
+          <div class="opencore-items">
+            <div class="opencore-item"><div class="dot dot-green-sm"></div> Capture engine</div>
+            <div class="opencore-item"><div class="dot dot-green-sm"></div> Dashboard UI</div>
+            <div class="opencore-item"><div class="dot dot-green-sm"></div> Chains feature</div>
+            <div class="opencore-item"><div class="dot dot-green-sm"></div> Tag &amp; search system</div>
+            <div class="opencore-item"><div class="dot dot-green-sm"></div> All FREE plan features</div>
+            <div class="opencore-item"><div class="dot dot-green-sm"></div> i18n (PT / EN / ES)</div>
+          </div>
+          <div class="mt-16">
+            <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" style="display:inline-flex;">&#9733; View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="opencore-card pro-lock reveal reveal-delay-2">
+          <div class="opencore-card-header">
+            <span class="opencore-icon">&#9889;</span>
+            <span class="opencore-card-title">PRO Add-ons</span>
+          </div>
+          <p class="opencore-card-sub">Commercial features that keep the lights on. $4/month or $25/year funds active development.</p>
+          <div class="opencore-items">
+            <div class="opencore-item"><div class="dot dot-yellow-sm"></div> 6 queues total</div>
+            <div class="opencore-item"><div class="dot dot-yellow-sm"></div> HTML + DOCX export</div>
+            <div class="opencore-item"><div class="dot dot-yellow-sm"></div> Unlimited Full Chat Capture</div>
+            <div class="opencore-item"><div class="dot dot-yellow-sm"></div> Unlimited projects</div>
+            <div class="opencore-item"><div class="dot dot-yellow-sm"></div> AES-256-GCM encrypted backup</div>
+            <div class="opencore-item"><div class="dot dot-yellow-sm"></div> Auto Capture (keyword-based)</div>
+          </div>
+          <div class="mt-16">
+            <a href="https://nodus-ai.app/checkout.html" class="btn-primary" style="display:inline-flex;">Get PRO — $4/mo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CTA
+  =========================================== -->
+  <div class="cta-section">
+    <div class="cta-glow"></div>
+    <h2 class="cta-title reveal">Install free —<br /><span>no account required.</span></h2>
+    <p class="cta-sub reveal reveal-delay-1">Works on Chrome, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.</p>
+    <div class="cta-actions reveal reveal-delay-2">
+      <a href="https://nodus-ai.app/checkout.html" class="btn-primary" style="font-size:17px;padding:15px 36px;">
+        &#9889; Install NODUS Free
+      </a>
+      <a href="https://nodus-ai.app/checkout.html" class="btn-secondary" style="font-size:17px;padding:14px 32px;">
+        Get PRO — $4/month
+      </a>
+    </div>
+    <p class="cta-note reveal reveal-delay-3">MIT licensed &nbsp;·&nbsp; Chrome, Edge, Brave &nbsp;·&nbsp; Launching Q2 2026</p>
+  </div>
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="nav-logo-dot"></span>
+            NODUS
+          </div>
+          <p class="footer-tagline">A local-first browser extension that captures and organizes your AI conversations across 7 platforms. MIT licensed. Built by one developer who got tired of losing good AI responses.</p>
+          <a href="https://ko-fi.com/mmcarvalho" class="footer-kofi">&#9749; Support on Ko-fi</a>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="footer-links-col">
+            <h4>Product</h4>
+            <a href="#how-it-works">How it works</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#privacy">Privacy</a>
+            <a href="https://nodus-ai.app/checkout.html">Get PRO</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Open Source</h4>
+            <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core/blob/main/LICENSE">MIT License</a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core/issues">Report a bug</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Legal</h4>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/refund.html">Refund Policy</a>
+            <a href="mailto:mmcarvalho.dev@gmail.com">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 M. M. Carvalho. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/refund.html">Refund</a>
+          <a href="mailto:mmcarvalho.dev@gmail.com">mmcarvalho.dev@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       SCROLL ANIMATIONS
+  =========================================== -->
+  <script>
+    (function () {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
 </body>
 </html>
