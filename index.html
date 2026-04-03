@@ -1673,12 +1673,43 @@
       .privacy-grid, .hero-inner { grid-template-columns: 1fr; }
     }
 
+    /* =========================================
+       LANG SWITCHER
+    ========================================= */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .lang-btn {
+      padding: 3px 9px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .lang-btn:hover { color: var(--sub); }
+    .lang-btn.active {
+      background: var(--yellow);
+      color: #0e1117;
+    }
+
   </style>
 </head>
 <body>
 
   <!-- ANNOUNCEMENT BANNER -->
-  <div class="announcement">
+  <div class="announcement" data-i18n-html="announcement">
     NODUS is launching Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Get PRO early access</a> &nbsp;·&nbsp; MIT licensed &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Star on GitHub ★</a>
   </div>
 
@@ -1690,13 +1721,18 @@
         NODUS
       </div>
       <ul class="nav-links">
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#how-it-works" data-i18n="navHow">How it works</a></li>
+        <li><a href="#features" data-i18n="navFeatures">Features</a></li>
+        <li><a href="#pricing" data-i18n="navPricing">Pricing</a></li>
+        <li><a href="#privacy" data-i18n="navPrivacy">Privacy</a></li>
         <li><a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a></li>
-        <li><a href="https://nodus-ai.app/checkout.html" class="nav-cta">Get PRO</a></li>
+        <li><a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">Get PRO</a></li>
       </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -1710,9 +1746,9 @@
         <!-- Left: copy -->
         <div>
           <div class="hero-eyebrow reveal">
-            <span class="badge badge-yellow">Q2 2026 Launch</span>
-            <span class="badge badge-green">Free Forever</span>
-            <span class="badge">MIT License</span>
+            <span class="badge badge-yellow" data-i18n="badge1">Q2 2026 Launch</span>
+            <span class="badge badge-green" data-i18n="badge2">Free Forever</span>
+            <span class="badge" data-i18n="badge3">MIT License</span>
           </div>
 
           <h1 class="hero-title reveal reveal-delay-1">
@@ -1721,17 +1757,17 @@
             locally.
           </h1>
 
-          <p class="hero-desc reveal reveal-delay-2">
+          <p class="hero-desc reveal reveal-delay-2" data-i18n="heroDesc">
             NODUS is a browser extension that lets you save, tag, chain, and search
             AI conversations across ChatGPT, Claude, Gemini, and 4 more platforms —
             all stored privately on your own machine.
           </p>
 
           <div class="hero-actions reveal reveal-delay-3">
-            <a href="https://nodus-ai.app/checkout.html" class="btn-primary">
+            <a href="https://nodus-ai.app/checkout.html" class="btn-primary" data-i18n="heroBtn1">
               &#9889; Install free
             </a>
-            <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary">
+            <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">
               &#9733; View on GitHub
             </a>
           </div>
@@ -1739,7 +1775,7 @@
           <div class="hero-trust reveal reveal-delay-4">
             <div class="hero-trust-item">
               <span class="dot-green"></span>
-              No account required
+              <span data-i18n="trust1">No account required</span>
             </div>
             <div class="hero-trust-item">
               <span class="dot-green"></span>
@@ -1747,7 +1783,7 @@
             </div>
             <div class="hero-trust-item">
               <span class="dot-green"></span>
-              7 AI platforms
+              <span data-i18n="trust3">7 AI platforms</span>
             </div>
           </div>
         </div>
@@ -1840,19 +1876,19 @@
   <section class="section" id="how-it-works">
     <div class="container">
       <div class="text-center reveal">
-        <div class="section-label">How it works</div>
-        <h2 class="section-title">Three steps. That's it.</h2>
-        <p class="section-sub">NODUS sits invisibly in your browser and activates only when you want it to. No paste, no copy, no friction.</p>
+        <div class="section-label" data-i18n="howLabel">How it works</div>
+        <h2 class="section-title" data-i18n="howTitle">Three steps. That's it.</h2>
+        <p class="section-sub" data-i18n="howSub">NODUS sits invisibly in your browser and activates only when you want it to. No paste, no copy, no friction.</p>
       </div>
 
       <div class="steps-grid">
 
         <!-- Step 1 -->
         <div class="step-card reveal reveal-delay-1">
-          <div class="step-number">Step 01</div>
+          <div class="step-number" data-i18n="step1num">Step 01</div>
           <div class="step-icon">&#129504;</div>
-          <div class="step-title">Browse any AI</div>
-          <p class="step-desc">NODUS activates on 7 platforms the moment you open them. No setup per site — it just works.</p>
+          <div class="step-title" data-i18n="step1title">Browse any AI</div>
+          <p class="step-desc" data-i18n="step1desc">NODUS activates on 7 platforms the moment you open them. No setup per site — it just works.</p>
           <div class="step-visual mt-8">
             <div class="platform-badges-mini">
               <span class="platform-badge-mini">ChatGPT</span>
@@ -1868,10 +1904,10 @@
 
         <!-- Step 2 -->
         <div class="step-card reveal reveal-delay-2">
-          <div class="step-number">Step 02</div>
+          <div class="step-number" data-i18n="step2num">Step 02</div>
           <div class="step-icon">&#128190;</div>
-          <div class="step-title">Click Save or Quick</div>
-          <p class="step-desc">A floating button pair appears on every AI page. Save captures to your Default queue. Quick captures to your Quick queue instantly.</p>
+          <div class="step-title" data-i18n="step2title">Click Save or Quick</div>
+          <p class="step-desc" data-i18n="step2desc">A floating button pair appears on every AI page. Save captures to your Default queue. Quick captures to your Quick queue instantly.</p>
           <div class="step-visual mt-8">
             <div class="floating-btn-scene">
               <div class="floating-btn-bg-text">
@@ -1887,10 +1923,10 @@
 
         <!-- Step 3 -->
         <div class="step-card reveal reveal-delay-3">
-          <div class="step-number">Step 03</div>
+          <div class="step-number" data-i18n="step3num">Step 03</div>
           <div class="step-icon">&#128218;</div>
-          <div class="step-title">Organize in your dashboard</div>
-          <p class="step-desc">Open your NODUS dashboard to add tags, write notes, build chains, search across all platforms, and inject content back into any AI.</p>
+          <div class="step-title" data-i18n="step3title">Organize in your dashboard</div>
+          <p class="step-desc" data-i18n="step3desc">Open your NODUS dashboard to add tags, write notes, build chains, search across all platforms, and inject content back into any AI.</p>
           <div class="step-visual mt-8" style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
               <span class="tag">tags</span>
@@ -1914,9 +1950,9 @@
   <section class="section" id="features">
     <div class="container">
       <div class="reveal">
-        <div class="section-label">Product preview</div>
-        <h2 class="section-title">Chains: link your best captures</h2>
-        <p class="section-sub">Group related captures into ordered chains. Build a knowledge trail across sessions, platforms, and topics — then export as TXT, HTML, or DOCX.</p>
+        <div class="section-label" data-i18n="chainsLabel">Product preview</div>
+        <h2 class="section-title" data-i18n="chainsTitle">Chains: link your best captures</h2>
+        <p class="section-sub" data-i18n="chainsSub">Group related captures into ordered chains. Build a knowledge trail across sessions, platforms, and topics — then export as TXT, HTML, or DOCX.</p>
       </div>
 
       <div class="mt-40 reveal">
@@ -2034,9 +2070,9 @@
   <section class="section platforms-section">
     <div class="container">
       <div class="text-center reveal">
-        <div class="section-label">Supported Platforms</div>
-        <h2 class="section-title">7 AI platforms, one dashboard</h2>
-        <p class="section-sub">NODUS works wherever you already work. No switching tabs, no copy-pasting. More platforms coming.</p>
+        <div class="section-label" data-i18n="platLabel">Supported Platforms</div>
+        <h2 class="section-title" data-i18n="platTitle">7 AI platforms, one dashboard</h2>
+        <p class="section-sub" data-i18n="platSub">NODUS works wherever you already work. No switching tabs, no copy-pasting. More platforms coming.</p>
       </div>
 
       <div class="platforms-grid reveal reveal-delay-1">
@@ -2099,59 +2135,59 @@
   <section class="section" id="pricing">
     <div class="container">
       <div class="text-center reveal">
-        <div class="section-label">Pricing</div>
-        <h2 class="section-title">Free forever. Upgrade when you're ready.</h2>
-        <p class="section-sub">The FREE plan is genuinely complete for most users. PRO unlocks power features for heavy users and teams.</p>
+        <div class="section-label" data-i18n="pricingLabel">Pricing</div>
+        <h2 class="section-title" data-i18n="pricingTitle">Free forever. Upgrade when you're ready.</h2>
+        <p class="section-sub" data-i18n="pricingSub">The FREE plan is genuinely complete for most users. PRO unlocks power features for heavy users and teams.</p>
       </div>
 
       <div class="pricing-grid reveal reveal-delay-1">
 
         <!-- Free -->
         <div class="pricing-card">
-          <div class="pricing-tier">Free</div>
+          <div class="pricing-tier" data-i18n="freeTier">Free</div>
           <div class="pricing-price">
             <span class="pricing-currency">$</span>
             <span class="pricing-amount">0</span>
-            <span class="pricing-period">/ month</span>
+            <span class="pricing-period" data-i18n="freePeriod">/ month</span>
           </div>
-          <div class="pricing-alt">Free forever — no credit card needed</div>
+          <div class="pricing-alt" data-i18n="freeAlt">Free forever — no credit card needed</div>
           <hr class="pricing-divider" />
           <ul class="pricing-features">
-            <li class="pricing-feature"><span class="check">&#10003;</span> Save + Quick capture buttons</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> Dashboard: cards, tags, notes, search</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> 3 queues (Quick, Default, Q1)</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> Unlimited chains</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> Chain export TXT</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> Full Chat Capture: 10 / month</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> Projects: up to 3</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> Inject content back into any AI</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> Attachments</li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> PT / EN / ES interface</li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_capture">Save + Quick capture buttons</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_dashboard">Dashboard: cards, tags, notes, search</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_queues3">3 queues (Quick, Default, Q1)</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_chains">Unlimited chains</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_exportTxt">Chain export TXT</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_fullChat">Full Chat Capture: unlimited</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_projects3">Projects: up to 3</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_inject">Inject content back into any AI</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_attach">Attachments</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_lang">PT / EN / ES interface</span></li>
           </ul>
-          <a href="https://nodus-ai.app/checkout.html" class="btn-full btn-full-outline">Get Free</a>
+          <a href="https://nodus-ai.app/checkout.html" class="btn-full btn-full-outline" data-i18n="freeBtn">Get Free</a>
         </div>
 
         <!-- Pro -->
         <div class="pricing-card featured">
-          <div class="pricing-badge">BEST VALUE — SAVE 48%</div>
+          <div class="pricing-badge" data-i18n="proBadge">BEST VALUE — SAVE 44%</div>
           <div class="pricing-tier" style="color:var(--yellow);">Pro</div>
           <div class="pricing-price">
             <span class="pricing-currency" style="color:var(--yellow);">$</span>
-            <span class="pricing-amount" style="color:var(--yellow);">4</span>
-            <span class="pricing-period">/month</span>
+            <span class="pricing-amount" style="color:var(--yellow);">4.50</span>
+            <span class="pricing-period" data-i18n="proPeriod">/month</span>
           </div>
-          <div class="pricing-alt">or <strong>$25/year</strong> — save 48%</div>
+          <div class="pricing-alt" data-i18n-html="proAlt">or <strong>$30/year</strong> — save 44%</div>
           <hr class="pricing-divider" />
           <ul class="pricing-features">
-            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Everything in Free</li>
-            <li class="pricing-feature"><span class="check-pro">&#9733;</span> 6 queues (+Q2, Q3, Q4)</li>
-            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Chain export HTML + DOCX</li>
-            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Full Chat Capture: unlimited</li>
-            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Projects: unlimited</li>
-            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Encrypted backup (AES-256-GCM)</li>
-            <li class="pricing-feature"><span class="check-pro">&#9733;</span> Auto Capture (keyword-based)</li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> <span data-i18n="proFeat_all">Everything in Free</span></li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> <span data-i18n="proFeat_queues6">6 queues (+Q2, Q3, Q4)</span></li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> <span data-i18n="proFeat_exportHTML">Chain export HTML + DOCX</span></li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> <span data-i18n="proFeat_fullChatUnlim">Full Chat Capture: unlimited</span></li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> <span data-i18n="proFeat_projectsUnlim">Projects: unlimited</span></li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> <span data-i18n="proFeat_backup">Encrypted backup (AES-256-GCM)</span></li>
+            <li class="pricing-feature"><span class="check-pro">&#9733;</span> <span data-i18n="proFeat_autoCapture">Auto Capture (keyword-based)</span></li>
           </ul>
-          <a href="https://nodus-ai.app/checkout.html" class="btn-full btn-full-yellow">Get PRO</a>
+          <a href="https://nodus-ai.app/checkout.html" class="btn-full btn-full-yellow" data-i18n="proBtn">Get PRO</a>
         </div>
 
       </div>
@@ -2194,9 +2230,9 @@
                 <td class="limit-cell-pro">TXT + HTML + DOCX</td>
               </tr>
               <tr>
-                <td class="feature-name">Full Chat Capture</td>
-                <td class="limit-cell">10 / month</td>
-                <td class="limit-cell-pro">Unlimited</td>
+                <td class="feature-name" data-i18n="compareFullChat">Full Chat Capture</td>
+                <td class="check-cell">&#10003;</td>
+                <td class="check-cell-pro">&#10003;</td>
               </tr>
               <tr>
                 <td class="feature-name">Projects</td>
@@ -2242,15 +2278,15 @@
   <section class="section" id="privacy" style="background: rgba(10,12,18,0.6);">
     <div class="container">
       <div class="reveal">
-        <div class="section-label">Privacy First</div>
-        <h2 class="section-title">Your data stays on your machine.</h2>
-        <p class="section-sub">NODUS is built on a local-first principle. Everything you capture is stored in your browser's local storage — never uploaded, never shared, never mined.</p>
+        <div class="section-label" data-i18n="privacyLabel">Privacy First</div>
+        <h2 class="section-title" data-i18n="privacyTitle">Your data stays on your machine.</h2>
+        <p class="section-sub" data-i18n="privacySub">NODUS is built on a local-first principle. Everything you capture is stored in your browser's local storage — never uploaded, never shared, never mined.</p>
       </div>
 
       <div class="privacy-grid">
         <!-- Diagram -->
         <div class="privacy-diagram reveal reveal-delay-1">
-          <div class="privacy-diagram-title">Data Flow</div>
+          <div class="privacy-diagram-title" data-i18n="diagramTitle">Data Flow</div>
           <div class="privacy-flow">
 
             <div class="privacy-node">
@@ -2299,29 +2335,29 @@
           <div class="privacy-point">
             <div class="privacy-point-icon privacy-point-icon-green">&#128274;</div>
             <div class="privacy-point-text">
-              <h4>All data stored locally</h4>
-              <p>Captures, tags, notes, chains, and projects live exclusively in your browser's local storage. Nothing leaves your device unless you explicitly export it.</p>
+              <h4 data-i18n="privPoint1h">All data stored locally</h4>
+              <p data-i18n="privPoint1p">Captures, tags, notes, chains, and projects live exclusively in your browser's local storage. Nothing leaves your device unless you explicitly export it.</p>
             </div>
           </div>
           <div class="privacy-point">
             <div class="privacy-point-icon privacy-point-icon-green">&#128373;</div>
             <div class="privacy-point-text">
-              <h4>No account, no tracking</h4>
-              <p>NODUS requires no login. There's no user ID, no session, no analytics ping. We don't know who you are and we don't want to.</p>
+              <h4 data-i18n="privPoint2h">No account, no tracking</h4>
+              <p data-i18n="privPoint2p">NODUS requires no login and stores no personal information. Optional anonymous telemetry is off by default — it collects no conversation content, no identity, and is fully auditable in the source code.</p>
             </div>
           </div>
           <div class="privacy-point">
             <div class="privacy-point-icon privacy-point-icon-green">&#128190;</div>
             <div class="privacy-point-text">
-              <h4>PRO backup is encrypted</h4>
-              <p>PRO's optional backup feature uses AES-256-GCM encryption with a password you set. The encrypted file is only readable with your key — not by us.</p>
+              <h4 data-i18n="privPoint3h">PRO backup is encrypted</h4>
+              <p data-i18n="privPoint3p">PRO's optional backup feature uses AES-256-GCM encryption with a password you set. The encrypted file is only readable with your key — not by us.</p>
             </div>
           </div>
           <div class="privacy-point">
             <div class="privacy-point-icon privacy-point-icon-red">&#128683;</div>
             <div class="privacy-point-text">
-              <h4>What we never do</h4>
-              <p>No reading of your conversation content, no telemetry on what you capture, no third-party data sharing, no advertising SDK embedded anywhere.</p>
+              <h4 data-i18n="privPoint4h">What we never do</h4>
+              <p data-i18n="privPoint4p">No reading of your conversation content, no capturing of what you save, no third-party data sharing, no advertising SDK. Telemetry is anonymous, opt-in, and auditable in the source code.</p>
             </div>
           </div>
         </div>
@@ -2335,18 +2371,18 @@
   <section class="section">
     <div class="container">
       <div class="text-center reveal">
-        <div class="section-label">Open Core</div>
-        <h2 class="section-title">Built in the open.</h2>
-        <p class="section-sub">NODUS core is MIT licensed. You can read the source, fork it, and contribute. PRO features are commercial add-ons that fund ongoing development.</p>
+        <div class="section-label" data-i18n="openCoreLabel">Open Core</div>
+        <h2 class="section-title" data-i18n="openCoreTitle">Built in the open.</h2>
+        <p class="section-sub" data-i18n="openCoreSub">NODUS core is MIT licensed. You can read the source, fork it, and contribute. PRO features are commercial add-ons that fund ongoing development.</p>
       </div>
 
       <div class="opencore-grid">
         <div class="opencore-card oss reveal reveal-delay-1">
           <div class="opencore-card-header">
             <span class="opencore-icon">&#128275;</span>
-            <span class="opencore-card-title">Open Source Core</span>
+            <span class="opencore-card-title" data-i18n="openCoreOssTitle">Open Source Core</span>
           </div>
-          <p class="opencore-card-sub">MIT licensed — free to use, modify, and distribute. No copyleft, no restrictions.</p>
+          <p class="opencore-card-sub" data-i18n="openCoreOssSub">MIT licensed — free to use, modify, and distribute. No copyleft, no restrictions.</p>
           <div class="opencore-items">
             <div class="opencore-item"><div class="dot dot-green-sm"></div> Capture engine</div>
             <div class="opencore-item"><div class="dot dot-green-sm"></div> Dashboard UI</div>
@@ -2363,9 +2399,9 @@
         <div class="opencore-card pro-lock reveal reveal-delay-2">
           <div class="opencore-card-header">
             <span class="opencore-icon">&#9889;</span>
-            <span class="opencore-card-title">PRO Add-ons</span>
+            <span class="opencore-card-title" data-i18n="openCoreProTitle">PRO Add-ons</span>
           </div>
-          <p class="opencore-card-sub">Commercial features that keep the lights on. $4/month or $25/year funds active development.</p>
+          <p class="opencore-card-sub" data-i18n="openCoreProSub">Commercial features that keep the lights on. $4.50/month or $30/year funds active development.</p>
           <div class="opencore-items">
             <div class="opencore-item"><div class="dot dot-yellow-sm"></div> 6 queues total</div>
             <div class="opencore-item"><div class="dot dot-yellow-sm"></div> HTML + DOCX export</div>
@@ -2375,7 +2411,7 @@
             <div class="opencore-item"><div class="dot dot-yellow-sm"></div> Auto Capture (keyword-based)</div>
           </div>
           <div class="mt-16">
-            <a href="https://nodus-ai.app/checkout.html" class="btn-primary" style="display:inline-flex;">Get PRO — $4/mo</a>
+            <a href="https://nodus-ai.app/checkout.html" class="btn-primary" style="display:inline-flex;" data-i18n="openCoreProBtn">Get PRO — $4.50/mo</a>
           </div>
         </div>
       </div>
@@ -2388,16 +2424,16 @@
   <div class="cta-section">
     <div class="cta-glow"></div>
     <h2 class="cta-title reveal">Install free —<br /><span>no account required.</span></h2>
-    <p class="cta-sub reveal reveal-delay-1">Works on Chrome, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.</p>
+    <p class="cta-sub reveal reveal-delay-1" data-i18n="ctaSub">Works on Chrome, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.</p>
     <div class="cta-actions reveal reveal-delay-2">
-      <a href="https://nodus-ai.app/checkout.html" class="btn-primary" style="font-size:17px;padding:15px 36px;">
+      <a href="https://nodus-ai.app/checkout.html" class="btn-primary" style="font-size:17px;padding:15px 36px;" data-i18n="ctaBtn1">
         &#9889; Install NODUS Free
       </a>
-      <a href="https://nodus-ai.app/checkout.html" class="btn-secondary" style="font-size:17px;padding:14px 32px;">
-        Get PRO — $4/month
+      <a href="https://nodus-ai.app/checkout.html" class="btn-secondary" style="font-size:17px;padding:14px 32px;" data-i18n="ctaBtn2">
+        Get PRO — $4.50/month
       </a>
     </div>
-    <p class="cta-note reveal reveal-delay-3">MIT licensed &nbsp;·&nbsp; Chrome, Edge, Brave &nbsp;·&nbsp; Launching Q2 2026</p>
+    <p class="cta-note reveal reveal-delay-3" data-i18n="ctaNote">MIT licensed &nbsp;·&nbsp; Chrome, Edge, Brave &nbsp;·&nbsp; Launching Q2 2026</p>
   </div>
 
   <!-- ==========================================
@@ -2411,37 +2447,37 @@
             <span class="nav-logo-dot"></span>
             NODUS
           </div>
-          <p class="footer-tagline">A local-first browser extension that captures and organizes your AI conversations across 7 platforms. MIT licensed. Built by one developer who got tired of losing good AI responses.</p>
-          <a href="https://ko-fi.com/mmcarvalho" class="footer-kofi">&#9749; Support on Ko-fi</a>
+          <p class="footer-tagline" data-i18n="footerTagline">A local-first browser extension that captures and organizes your AI conversations across 7 platforms. MIT licensed. Built by one developer who got tired of losing good AI responses.</p>
+          <a href="https://ko-fi.com/mmcarvalho" class="footer-kofi" data-i18n="footerKofi">&#9749; Support on Ko-fi</a>
         </div>
 
         <div class="footer-links-group">
           <div class="footer-links-col">
-            <h4>Product</h4>
-            <a href="#how-it-works">How it works</a>
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#privacy">Privacy</a>
-            <a href="https://nodus-ai.app/checkout.html">Get PRO</a>
+            <h4 data-i18n="footerProduct">Product</h4>
+            <a href="#how-it-works" data-i18n="footerHowItWorks">How it works</a>
+            <a href="#features" data-i18n="footerFeatures">Features</a>
+            <a href="#pricing" data-i18n="footerPricing">Pricing</a>
+            <a href="#privacy" data-i18n="footerPrivacy">Privacy</a>
+            <a href="https://nodus-ai.app/checkout.html" data-i18n="footerGetPro">Get PRO</a>
           </div>
           <div class="footer-links-col">
             <h4>Open Source</h4>
             <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
-            <a href="https://github.com/mmcarvalhodev/nodus-core/blob/main/LICENSE">MIT License</a>
-            <a href="https://github.com/mmcarvalhodev/nodus-core/issues">Report a bug</a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core/blob/main/LICENSE" data-i18n="footerMITLicense">MIT License</a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core/issues" data-i18n="footerReportBug">Report a bug</a>
           </div>
           <div class="footer-links-col">
             <h4>Legal</h4>
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="/terms.html">Terms of Service</a>
-            <a href="/refund.html">Refund Policy</a>
-            <a href="mailto:mmcarvalho.dev@gmail.com">Contact</a>
+            <a href="/privacy.html" data-i18n="footerPrivacyPolicy">Privacy Policy</a>
+            <a href="/terms.html" data-i18n="footerTerms">Terms of Service</a>
+            <a href="/refund.html" data-i18n="footerRefund">Refund Policy</a>
+            <a href="mailto:mmcarvalho.dev@gmail.com" data-i18n="footerContact">Contact</a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">© 2026 M. M. Carvalho. All rights reserved.</p>
+        <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. All rights reserved.</p>
         <div class="footer-legal">
           <a href="/privacy.html">Privacy</a>
           <a href="/terms.html">Terms</a>
@@ -2470,6 +2506,288 @@
         observer.observe(el);
       });
     })();
+  </script>
+
+  <!-- ==========================================
+       i18n — PT / EN / ES
+  =========================================== -->
+  <script>
+  (function () {
+    var T = {
+      en: {
+        announcement: 'NODUS is launching Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Get PRO early access</a> &nbsp;·&nbsp; MIT licensed &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Star on GitHub ★</a>',
+        navHow: 'How it works', navFeatures: 'Features', navPricing: 'Pricing',
+        navPrivacy: 'Privacy', navGetPro: 'Get PRO',
+        badge1: 'Q2 2026 Launch', badge2: 'Free Forever', badge3: 'MIT License',
+        heroDesc: 'NODUS is a browser extension that lets you save, tag, chain, and search AI conversations across ChatGPT, Claude, Gemini, and 4 more platforms — all stored privately on your own machine.',
+        heroBtn1: '⚡ Install free', heroBtn2: '★ View on GitHub',
+        trust1: 'No account required', trust3: '7 AI platforms',
+        howLabel: 'How it works', howTitle: 'Three steps. That\'s it.',
+        howSub: 'NODUS sits invisibly in your browser and activates only when you want it to. No paste, no copy, no friction.',
+        step1num: 'Step 01', step1title: 'Browse any AI',
+        step1desc: 'NODUS activates on 7 platforms the moment you open them. No setup per site — it just works.',
+        step2num: 'Step 02', step2title: 'Click Save or Quick',
+        step2desc: 'A floating button pair appears on every AI page. Save captures to your Default queue. Quick captures to your Quick queue instantly.',
+        step3num: 'Step 03', step3title: 'Organize in your dashboard',
+        step3desc: 'Open your NODUS dashboard to add tags, write notes, build chains, search across all platforms, and inject content back into any AI.',
+        chainsLabel: 'Product preview', chainsTitle: 'Chains: link your best captures',
+        chainsSub: 'Group related captures into ordered chains. Build a knowledge trail across sessions, platforms, and topics — then export as TXT, HTML, or DOCX.',
+        platLabel: 'Supported Platforms', platTitle: '7 AI platforms, one dashboard',
+        platSub: 'NODUS works wherever you already work. No switching tabs, no copy-pasting. More platforms coming.',
+        pricingLabel: 'Pricing', pricingTitle: 'Free forever. Upgrade when you\'re ready.',
+        pricingSub: 'The FREE plan is genuinely complete for most users. PRO unlocks power features for heavy users and teams.',
+        freeTier: 'Free', freePeriod: '/ month',
+        freeAlt: 'Free forever — no credit card needed',
+        proBadge: 'BEST VALUE — SAVE 44%', proPeriod: '/month',
+        proAlt: 'or <strong>$30/year</strong> — save 44%',
+        pricingFeat_capture: 'Save + Quick capture buttons',
+        pricingFeat_dashboard: 'Dashboard: cards, tags, notes, search',
+        pricingFeat_queues3: '3 queues (Quick, Default, Q1)',
+        pricingFeat_chains: 'Unlimited chains',
+        pricingFeat_exportTxt: 'Chain export TXT',
+        pricingFeat_fullChat: 'Full Chat Capture: unlimited',
+        pricingFeat_projects3: 'Projects: up to 3',
+        pricingFeat_inject: 'Inject content back into any AI',
+        pricingFeat_attach: 'Attachments',
+        pricingFeat_lang: 'PT / EN / ES interface',
+        freeBtn: 'Get Free',
+        proFeat_all: 'Everything in Free', proFeat_queues6: '6 queues (+Q2, Q3, Q4)',
+        proFeat_exportHTML: 'Chain export HTML + DOCX',
+        proFeat_fullChatUnlim: 'Full Chat Capture: unlimited',
+        proFeat_projectsUnlim: 'Projects: unlimited',
+        proFeat_backup: 'Encrypted backup (AES-256-GCM)',
+        proFeat_autoCapture: 'Auto Capture (keyword-based)',
+        proBtn: 'Get PRO',
+        compareFeature: 'Feature', compareFullChat: 'Full Chat Capture',
+        privacyLabel: 'Privacy First', privacyTitle: 'Your data stays on your machine.',
+        privacySub: 'NODUS is built on a local-first principle. Everything you capture is stored in your browser\'s local storage — never uploaded, never shared, never mined.',
+        diagramTitle: 'Data Flow',
+        privPoint1h: 'All data stored locally',
+        privPoint1p: 'Captures, tags, notes, chains, and projects live exclusively in your browser\'s local storage. Nothing leaves your device unless you explicitly export it.',
+        privPoint2h: 'No account, no tracking',
+        privPoint2p: 'NODUS requires no login and stores no personal information. Optional anonymous telemetry is off by default — it collects no conversation content, no identity, and is fully auditable in the source code.',
+        privPoint3h: 'PRO backup is encrypted',
+        privPoint3p: 'PRO\'s optional backup feature uses AES-256-GCM encryption with a password you set. The encrypted file is only readable with your key — not by us.',
+        privPoint4h: 'What we never do',
+        privPoint4p: 'No reading of your conversation content, no capturing of what you save, no third-party data sharing, no advertising SDK. Telemetry is anonymous, opt-in, and auditable in the source code.',
+        openCoreLabel: 'Open Core', openCoreTitle: 'Built in the open.',
+        openCoreSub: 'NODUS core is MIT licensed. You can read the source, fork it, and contribute. PRO features are commercial add-ons that fund ongoing development.',
+        openCoreOssTitle: 'Open Source Core',
+        openCoreOssSub: 'MIT licensed — free to use, modify, and distribute. No copyleft, no restrictions.',
+        openCoreOssBtn: '★ View on GitHub',
+        openCoreProTitle: 'PRO Add-ons',
+        openCoreProSub: 'Commercial features that keep the lights on. $4.50/month or $30/year funds active development.',
+        openCoreProBtn: 'Get PRO — $4.50/mo',
+        ctaSub: 'Works on Chrome, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.',
+        ctaBtn1: '⚡ Install NODUS Free', ctaBtn2: 'Get PRO — $4.50/month',
+        ctaNote: 'MIT licensed · Chrome, Edge, Brave · Launching Q2 2026',
+        footerTagline: 'A local-first browser extension that captures and organizes your AI conversations across 7 platforms. MIT licensed. Built by one developer who got tired of losing good AI responses.',
+        footerKofi: '☕ Support on Ko-fi',
+        footerProduct: 'Product', footerHowItWorks: 'How it works',
+        footerFeatures: 'Features', footerPricing: 'Pricing',
+        footerPrivacy: 'Privacy', footerGetPro: 'Get PRO',
+        footerMITLicense: 'MIT License', footerReportBug: 'Report a bug',
+        footerPrivacyPolicy: 'Privacy Policy', footerTerms: 'Terms of Service',
+        footerRefund: 'Refund Policy', footerContact: 'Contact',
+        footerCopy: '© 2026 M. M. Carvalho. All rights reserved.'
+      },
+      pt: {
+        announcement: 'NODUS lança Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acesso antecipado PRO</a> &nbsp;·&nbsp; Licença MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Favoritar no GitHub ★</a>',
+        navHow: 'Como funciona', navFeatures: 'Recursos', navPricing: 'Preços',
+        navPrivacy: 'Privacidade', navGetPro: 'Obter PRO',
+        badge1: 'Lançamento Q2 2026', badge2: 'Grátis para sempre', badge3: 'Licença MIT',
+        heroDesc: 'NODUS é uma extensão de navegador que permite salvar, organizar, encadear e pesquisar conversas de IA no ChatGPT, Claude, Gemini e mais 4 plataformas — tudo armazenado de forma privada no seu dispositivo.',
+        heroBtn1: '⚡ Instalar grátis', heroBtn2: '★ Ver no GitHub',
+        trust1: 'Sem cadastro necessário', trust3: '7 plataformas de IA',
+        howLabel: 'Como funciona', howTitle: 'Três passos. Só isso.',
+        howSub: 'NODUS fica invisível no seu navegador e ativa apenas quando você quiser. Sem colar, sem copiar, sem atrito.',
+        step1num: 'Passo 01', step1title: 'Acesse qualquer IA',
+        step1desc: 'NODUS ativa em 7 plataformas no momento em que você as abre. Sem configuração por site — simplesmente funciona.',
+        step2num: 'Passo 02', step2title: 'Clique em Save ou Quick',
+        step2desc: 'Um par de botões flutuantes aparece em todas as páginas de IA. Save captura para a fila Padrão. Quick captura para a fila Rápida instantaneamente.',
+        step3num: 'Passo 03', step3title: 'Organize no seu dashboard',
+        step3desc: 'Abra o dashboard NODUS para adicionar tags, escrever notas, criar cadeias, pesquisar em todas as plataformas e injetar conteúdo de volta em qualquer IA.',
+        chainsLabel: 'Prévia do produto', chainsTitle: 'Cadeias: conecte suas melhores capturas',
+        chainsSub: 'Agrupe capturas relacionadas em cadeias ordenadas. Construa uma trilha de conhecimento entre sessões, plataformas e tópicos — e exporte como TXT, HTML ou DOCX.',
+        platLabel: 'Plataformas suportadas', platTitle: '7 plataformas de IA, um dashboard',
+        platSub: 'NODUS funciona onde você já trabalha. Sem trocar de aba, sem copiar e colar. Mais plataformas em breve.',
+        pricingLabel: 'Preços', pricingTitle: 'Grátis para sempre. Faça upgrade quando quiser.',
+        pricingSub: 'O plano GRATUITO é genuinamente completo para a maioria dos usuários. O PRO desbloqueia recursos avançados para usuários intensivos.',
+        freeTier: 'Grátis', freePeriod: '/ mês',
+        freeAlt: 'Grátis para sempre — sem cartão de crédito',
+        proBadge: 'MELHOR VALOR — ECONOMIZE 44%', proPeriod: '/mês',
+        proAlt: 'ou <strong>$30/ano</strong> — economize 44%',
+        pricingFeat_capture: 'Botões Save + Quick capture',
+        pricingFeat_dashboard: 'Dashboard: cards, tags, notas, busca',
+        pricingFeat_queues3: '3 filas (Quick, Padrão, Q1)',
+        pricingFeat_chains: 'Cadeias ilimitadas',
+        pricingFeat_exportTxt: 'Exportar cadeias TXT',
+        pricingFeat_fullChat: 'Full Chat Capture: ilimitado',
+        pricingFeat_projects3: 'Projetos: até 3',
+        pricingFeat_inject: 'Injetar conteúdo em qualquer IA',
+        pricingFeat_attach: 'Anexos',
+        pricingFeat_lang: 'Interface PT / EN / ES',
+        freeBtn: 'Obter Grátis',
+        proFeat_all: 'Tudo do plano Grátis', proFeat_queues6: '6 filas (+Q2, Q3, Q4)',
+        proFeat_exportHTML: 'Exportar cadeias HTML + DOCX',
+        proFeat_fullChatUnlim: 'Full Chat Capture: ilimitado',
+        proFeat_projectsUnlim: 'Projetos: ilimitados',
+        proFeat_backup: 'Backup criptografado (AES-256-GCM)',
+        proFeat_autoCapture: 'Captura automática (por palavras-chave)',
+        proBtn: 'Obter PRO',
+        compareFeature: 'Recurso', compareFullChat: 'Full Chat Capture',
+        privacyLabel: 'Privacidade em Primeiro Lugar', privacyTitle: 'Seus dados ficam na sua máquina.',
+        privacySub: 'NODUS é construído com o princípio local-first. Tudo que você captura é armazenado no armazenamento local do seu navegador — nunca enviado, nunca compartilhado, nunca minerado.',
+        diagramTitle: 'Fluxo de Dados',
+        privPoint1h: 'Todos os dados armazenados localmente',
+        privPoint1p: 'Capturas, tags, notas, cadeias e projetos ficam exclusivamente no armazenamento local do seu navegador. Nada sai do seu dispositivo a menos que você exporte explicitamente.',
+        privPoint2h: 'Sem conta, sem rastreamento',
+        privPoint2p: 'NODUS não exige login e não armazena nenhuma informação pessoal. A telemetria anônima opcional está desativada por padrão — não coleta conteúdo de conversas, nenhuma identidade, e é totalmente auditável no código-fonte.',
+        privPoint3h: 'Backup PRO é criptografado',
+        privPoint3p: 'O recurso de backup opcional do PRO usa criptografia AES-256-GCM com uma senha que você define. O arquivo criptografado só é legível com a sua chave — não por nós.',
+        privPoint4h: 'O que nunca fazemos',
+        privPoint4p: 'Sem leitura do conteúdo das suas conversas, sem captura do que você salva, sem compartilhamento com terceiros, sem SDK de publicidade. A telemetria é anônima, opt-in e auditável no código-fonte.',
+        openCoreLabel: 'Open Core', openCoreTitle: 'Construído de forma aberta.',
+        openCoreSub: 'O núcleo do NODUS tem licença MIT. Você pode ler o código-fonte, fazer fork e contribuir. As funcionalidades PRO são complementos comerciais que financiam o desenvolvimento contínuo.',
+        openCoreOssTitle: 'Núcleo Open Source',
+        openCoreOssSub: 'Licença MIT — livre para usar, modificar e distribuir. Sem copyleft, sem restrições.',
+        openCoreOssBtn: '★ Ver no GitHub',
+        openCoreProTitle: 'Complementos PRO',
+        openCoreProSub: 'Funcionalidades comerciais que mantêm o projeto ativo. $4.50/mês ou $30/ano financiam o desenvolvimento contínuo.',
+        openCoreProBtn: 'Obter PRO — $4.50/mês',
+        ctaSub: 'Funciona no Chrome, Edge e Brave. Seus dados nunca saem do seu navegador. Faça upgrade para PRO quando precisar de mais.',
+        ctaBtn1: '⚡ Instalar NODUS Grátis', ctaBtn2: 'Obter PRO — $4.50/mês',
+        ctaNote: 'Licença MIT · Chrome, Edge, Brave · Lançamento Q2 2026',
+        footerTagline: 'Uma extensão de navegador local-first que captura e organiza suas conversas com IA em 7 plataformas. Licença MIT. Criado por um desenvolvedor que cansou de perder boas respostas de IA.',
+        footerKofi: '☕ Apoiar no Ko-fi',
+        footerProduct: 'Produto', footerHowItWorks: 'Como funciona',
+        footerFeatures: 'Recursos', footerPricing: 'Preços',
+        footerPrivacy: 'Privacidade', footerGetPro: 'Obter PRO',
+        footerMITLicense: 'Licença MIT', footerReportBug: 'Reportar um bug',
+        footerPrivacyPolicy: 'Política de Privacidade', footerTerms: 'Termos de Uso',
+        footerRefund: 'Política de Reembolso', footerContact: 'Contato',
+        footerCopy: '© 2026 M. M. Carvalho. Todos os direitos reservados.'
+      },
+      es: {
+        announcement: 'NODUS lanza Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acceso anticipado PRO</a> &nbsp;·&nbsp; Licencia MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Estrella en GitHub ★</a>',
+        navHow: 'Cómo funciona', navFeatures: 'Funcionalidades', navPricing: 'Precios',
+        navPrivacy: 'Privacidad', navGetPro: 'Obtener PRO',
+        badge1: 'Lanzamiento Q2 2026', badge2: 'Gratis para siempre', badge3: 'Licencia MIT',
+        heroDesc: 'NODUS es una extensión de navegador que te permite guardar, etiquetar, encadenar y buscar conversaciones de IA en ChatGPT, Claude, Gemini y 4 plataformas más — todo almacenado de forma privada en tu dispositivo.',
+        heroBtn1: '⚡ Instalar gratis', heroBtn2: '★ Ver en GitHub',
+        trust1: 'Sin cuenta necesaria', trust3: '7 plataformas de IA',
+        howLabel: 'Cómo funciona', howTitle: 'Tres pasos. Eso es todo.',
+        howSub: 'NODUS permanece invisible en tu navegador y se activa solo cuando tú quieres. Sin pegar, sin copiar, sin fricción.',
+        step1num: 'Paso 01', step1title: 'Navega en cualquier IA',
+        step1desc: 'NODUS se activa en 7 plataformas en el momento en que las abres. Sin configuración por sitio — simplemente funciona.',
+        step2num: 'Paso 02', step2title: 'Haz clic en Save o Quick',
+        step2desc: 'Un par de botones flotantes aparece en todas las páginas de IA. Save captura en tu cola Predeterminada. Quick captura en tu cola Rápida al instante.',
+        step3num: 'Paso 03', step3title: 'Organiza en tu panel',
+        step3desc: 'Abre tu panel NODUS para añadir etiquetas, escribir notas, crear cadenas, buscar en todas las plataformas e inyectar contenido de vuelta en cualquier IA.',
+        chainsLabel: 'Vista previa del producto', chainsTitle: 'Cadenas: enlaza tus mejores capturas',
+        chainsSub: 'Agrupa capturas relacionadas en cadenas ordenadas. Construye un rastro de conocimiento entre sesiones, plataformas y temas — y luego exporta como TXT, HTML o DOCX.',
+        platLabel: 'Plataformas soportadas', platTitle: '7 plataformas de IA, un panel',
+        platSub: 'NODUS funciona donde tú ya trabajas. Sin cambiar de pestaña, sin copiar y pegar. Más plataformas próximamente.',
+        pricingLabel: 'Precios', pricingTitle: 'Gratis para siempre. Mejora cuando estés listo.',
+        pricingSub: 'El plan GRATUITO es genuinamente completo para la mayoría de los usuarios. PRO desbloquea funciones avanzadas para usuarios intensivos.',
+        freeTier: 'Gratis', freePeriod: '/ mes',
+        freeAlt: 'Gratis para siempre — sin tarjeta de crédito',
+        proBadge: 'MEJOR VALOR — AHORRA 44%', proPeriod: '/mes',
+        proAlt: 'o <strong>$30/año</strong> — ahorra 44%',
+        pricingFeat_capture: 'Botones Save + Quick capture',
+        pricingFeat_dashboard: 'Panel: tarjetas, etiquetas, notas, búsqueda',
+        pricingFeat_queues3: '3 colas (Quick, Predeterminada, Q1)',
+        pricingFeat_chains: 'Cadenas ilimitadas',
+        pricingFeat_exportTxt: 'Exportar cadenas TXT',
+        pricingFeat_fullChat: 'Full Chat Capture: ilimitado',
+        pricingFeat_projects3: 'Proyectos: hasta 3',
+        pricingFeat_inject: 'Inyectar contenido en cualquier IA',
+        pricingFeat_attach: 'Adjuntos',
+        pricingFeat_lang: 'Interfaz PT / EN / ES',
+        freeBtn: 'Obtener Gratis',
+        proFeat_all: 'Todo lo del plan Gratis', proFeat_queues6: '6 colas (+Q2, Q3, Q4)',
+        proFeat_exportHTML: 'Exportar cadenas HTML + DOCX',
+        proFeat_fullChatUnlim: 'Full Chat Capture: ilimitado',
+        proFeat_projectsUnlim: 'Proyectos: ilimitados',
+        proFeat_backup: 'Copia de seguridad cifrada (AES-256-GCM)',
+        proFeat_autoCapture: 'Captura automática (por palabras clave)',
+        proBtn: 'Obtener PRO',
+        compareFeature: 'Funcionalidad', compareFullChat: 'Full Chat Capture',
+        privacyLabel: 'Privacidad Primero', privacyTitle: 'Tus datos se quedan en tu máquina.',
+        privacySub: 'NODUS está construido bajo un principio local-first. Todo lo que capturas se almacena en el almacenamiento local de tu navegador — nunca subido, nunca compartido, nunca minado.',
+        diagramTitle: 'Flujo de Datos',
+        privPoint1h: 'Todos los datos almacenados localmente',
+        privPoint1p: 'Las capturas, etiquetas, notas, cadenas y proyectos viven exclusivamente en el almacenamiento local de tu navegador. Nada sale de tu dispositivo a menos que lo exportes explícitamente.',
+        privPoint2h: 'Sin cuenta, sin rastreo',
+        privPoint2p: 'NODUS no requiere inicio de sesión y no almacena información personal. La telemetría anónima opcional está desactivada por defecto — no recopila contenido de conversaciones, ninguna identidad, y es totalmente auditable en el código fuente.',
+        privPoint3h: 'El backup PRO es cifrado',
+        privPoint3p: 'La función de copia de seguridad opcional de PRO usa cifrado AES-256-GCM con una contraseña que tú estableces. El archivo cifrado solo es legible con tu clave — no por nosotros.',
+        privPoint4h: 'Lo que nunca hacemos',
+        privPoint4p: 'Sin lectura del contenido de tus conversaciones, sin captura de lo que guardas, sin compartir datos con terceros, sin SDK publicitario. La telemetría es anónima, opt-in y auditable en el código fuente.',
+        openCoreLabel: 'Open Core', openCoreTitle: 'Construido de forma abierta.',
+        openCoreSub: 'El núcleo de NODUS tiene licencia MIT. Puedes leer el código fuente, hacer fork y contribuir. Las funciones PRO son complementos comerciales que financian el desarrollo continuo.',
+        openCoreOssTitle: 'Núcleo Open Source',
+        openCoreOssSub: 'Licencia MIT — libre para usar, modificar y distribuir. Sin copyleft, sin restricciones.',
+        openCoreOssBtn: '★ Ver en GitHub',
+        openCoreProTitle: 'Complementos PRO',
+        openCoreProSub: 'Funciones comerciales que mantienen el proyecto activo. $4.50/mes o $30/año financian el desarrollo continuo.',
+        openCoreProBtn: 'Obtener PRO — $4.50/mes',
+        ctaSub: 'Funciona en Chrome, Edge y Brave. Tus datos nunca salen de tu navegador. Mejora a PRO cuando necesites más.',
+        ctaBtn1: '⚡ Instalar NODUS Gratis', ctaBtn2: 'Obtener PRO — $4.50/mes',
+        ctaNote: 'Licencia MIT · Chrome, Edge, Brave · Lanzamiento Q2 2026',
+        footerTagline: 'Una extensión de navegador local-first que captura y organiza tus conversaciones con IA en 7 plataformas. Licencia MIT. Creada por un desarrollador que se cansó de perder buenas respuestas de IA.',
+        footerKofi: '☕ Apoyar en Ko-fi',
+        footerProduct: 'Producto', footerHowItWorks: 'Cómo funciona',
+        footerFeatures: 'Funcionalidades', footerPricing: 'Precios',
+        footerPrivacy: 'Privacidad', footerGetPro: 'Obtener PRO',
+        footerMITLicense: 'Licencia MIT', footerReportBug: 'Reportar un bug',
+        footerPrivacyPolicy: 'Política de Privacidad', footerTerms: 'Términos de Uso',
+        footerRefund: 'Política de Reembolso', footerContact: 'Contacto',
+        footerCopy: '© 2026 M. M. Carvalho. Todos los derechos reservados.'
+      }
+    };
+
+    function applyLang(lang) {
+      var t = T[lang] || T['en'];
+      // textContent elements
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      // innerHTML elements (for bold tags etc.)
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      // lang switcher buttons
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      // persist
+      try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
+    }
+
+    function detectLang() {
+      try {
+        var saved = localStorage.getItem('nodus_lang');
+        if (saved && T[saved]) return saved;
+      } catch(e) {}
+      var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      if (nav.startsWith('pt')) return 'pt';
+      if (nav.startsWith('es')) return 'es';
+      return 'en';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var lang = detectLang();
+      applyLang(lang);
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          applyLang(btn.getAttribute('data-lang'));
+        });
+      });
+    });
+  })();
   </script>
 
 </body>
