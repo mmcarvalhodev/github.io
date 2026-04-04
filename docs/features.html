@@ -471,6 +471,16 @@
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; }
+
+    /* ── Lang switcher ── */
+    .lang-switcher { display: flex; gap: 4px; }
+    .lang-btn {
+      padding: 4px 9px; border-radius: 6px; font-size: 12px; font-weight: 700;
+      background: transparent; border: 1px solid var(--border); color: var(--muted);
+      cursor: pointer; transition: all .15s;
+    }
+    .lang-btn.active { background: rgba(250,204,21,.1); border-color: rgba(250,204,21,.3); color: var(--yellow); }
+    .lang-btn:hover:not(.active) { border-color: var(--border2); color: var(--sub); }
   </style>
 </head>
 <body>
@@ -480,23 +490,28 @@
   <div class="nav-inner">
     <div class="nav-logo"><span class="nav-dot"></span> NODUS</div>
     <ul class="nav-links">
-      <li><a href="#capture">Capture</a></li>
-      <li><a href="#dashboard">Dashboard</a></li>
-      <li><a href="#chains">Chains</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#inject">Inject</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="https://nodus-ai.app" class="nav-cta">← Back to site</a></li>
+      <li><a href="#capture"   data-i18n="navCapture">Capture</a></li>
+      <li><a href="#dashboard" data-i18n="navDashboard">Dashboard</a></li>
+      <li><a href="#chains"    data-i18n="navChains">Chains</a></li>
+      <li><a href="#projects"  data-i18n="navProjects">Projects</a></li>
+      <li><a href="#inject"    data-i18n="navInject">Inject</a></li>
+      <li><a href="#pricing"   data-i18n="navPricing">Pricing</a></li>
+      <li><a href="https://nodus-ai.app" class="nav-cta" data-i18n="navBack">← Back to site</a></li>
     </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
   </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="section hero">
   <div class="container">
-    <p class="section-label">Features</p>
-    <h1 class="hero-title">Everything NODUS<br>can do for you</h1>
-    <p class="hero-sub">
+    <p class="section-label" data-i18n="heroLabel">Features</p>
+    <h1 class="hero-title" data-i18n-html="heroTitle">Everything NODUS<br>can do for you</h1>
+    <p class="hero-sub" data-i18n="heroSub">
       Capture AI conversations. Organize them locally. Chain ideas into workflows.
       Inject saved content back into any AI — all without a single account.
     </p>
@@ -521,14 +536,14 @@
     <div class="feat reveal">
 
       <div class="feat-text">
-        <p class="section-label">Step 1</p>
-        <h2 class="section-title">Capture what matters</h2>
-        <p class="section-sub">NODUS adds a Save button to every AI response. One click opens a panel where you title, tag and route the idea to the right queue.</p>
+        <p class="section-label" data-i18n="captureStep">Step 1</p>
+        <h2 class="section-title" data-i18n="captureTitle">Capture what matters</h2>
+        <p class="section-sub" data-i18n="captureSub">NODUS adds a Save button to every AI response. One click opens a panel where you title, tag and route the idea to the right queue.</p>
         <ul>
-          <li>💡 <span>Save button</span> — title, tags, queue, attachment</li>
-          <li>⚡ <span>Quick save</span> — zero-friction, goes straight to your quick queue</li>
-          <li>🔍 <span>Duplicate detection</span> — same content won't be saved twice</li>
-          <li>🤖 <span>Supported platforms</span> — ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek</li>
+          <li>💡 <span data-i18n="captureL1">Save button — title, tags, queue, attachment</span></li>
+          <li>⚡ <span data-i18n="captureL2">Quick save — zero-friction, goes straight to your quick queue</span></li>
+          <li>🔍 <span data-i18n="captureL3">Duplicate detection — same content won't be saved twice</span></li>
+          <li>🤖 <span data-i18n="captureL4">Supported platforms — ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek</span></li>
         </ul>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
           <span class="badge badge-free">✓ FREE</span>
@@ -700,20 +715,20 @@
       </div>
 
       <div class="feat-text">
-        <p class="section-label">Step 2</p>
-        <h2 class="section-title">Your organized AI knowledge base</h2>
-        <p class="section-sub">Every saved idea appears on the dashboard as a card. Search, filter by platform, date or tag. Switch between 1–3 column layouts.</p>
+        <p class="section-label" data-i18n="dashStep">Step 2</p>
+        <h2 class="section-title" data-i18n="dashTitle">Your organized AI knowledge base</h2>
+        <p class="section-sub" data-i18n="dashSub">Every saved idea appears on the dashboard as a card. Search, filter by platform, date or tag. Switch between 1–3 column layouts.</p>
         <ul>
-          <li>🔍 <span>Full text search</span> across all saved ideas</li>
-          <li>🏷️ <span>Filter by tag, platform and date</span> — stack filters</li>
-          <li>📌 <span>Pin mode</span> — keep dashboard open while using the AI</li>
-          <li>✏️ <span>Inline edit</span> — title, content, tags, notes on any card</li>
-          <li>📎 <span>Attachments</span> — add files to any card</li>
-          <li>🗂️ <span>6 queues</span> — Quick, Default, Q1, Q2*, Q3*, Q4*</li>
+          <li>🔍 <span data-i18n="dashL1">Full text search across all saved ideas</span></li>
+          <li>🏷️ <span data-i18n="dashL2">Filter by tag, platform and date — stack filters</span></li>
+          <li>📌 <span data-i18n="dashL3">Pin mode — keep dashboard open while using the AI</span></li>
+          <li>✏️ <span data-i18n="dashL4">Inline edit — title, content, tags, notes on any card</span></li>
+          <li>📎 <span data-i18n="dashL5">Attachments — add files to any card</span></li>
+          <li>🗂️ <span data-i18n="dashL6">6 queues — Quick, Default, Q1, Q2*, Q3*, Q4*</span></li>
         </ul>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
           <span class="badge badge-free">✓ FREE</span>
-          <span class="badge badge-pro">★ PRO unlocks Q2, Q3, Q4</span>
+          <span class="badge badge-pro" data-i18n="dashBadgePro">★ PRO unlocks Q2, Q3, Q4</span>
         </div>
       </div>
 
@@ -729,20 +744,20 @@
     <div class="feat reveal">
 
       <div class="feat-text">
-        <p class="section-label">Step 3</p>
-        <h2 class="section-title">Build structured workflows with Chains</h2>
-        <p class="section-sub">Link multiple captures into an ordered sequence. Use Chains to document research flows, writing drafts or multi-step AI conversations.</p>
+        <p class="section-label" data-i18n="chainsStep">Step 3</p>
+        <h2 class="section-title" data-i18n="chainsTitle">Build structured workflows with Chains</h2>
+        <p class="section-sub" data-i18n="chainsSub">Link multiple captures into an ordered sequence. Use Chains to document research flows, writing drafts or multi-step AI conversations.</p>
         <ul>
-          <li>🔗 <span>Unlimited chains</span> — no cap on number or length</li>
-          <li>📚 <span>Full chat capture</span> — save an entire conversation as a chain</li>
-          <li>📄 <span>Export to TXT</span> — available in FREE</li>
-          <li>🌐 <span>Export to HTML + DOCX</span> — PRO only</li>
-          <li>📎 <span>File attachments</span> per chain node</li>
-          <li>💉 <span>Inject chain content</span> back into any AI</li>
+          <li>🔗 <span data-i18n="chainsL1">Unlimited chains — no cap on number or length</span></li>
+          <li>📚 <span data-i18n="chainsL2">Full chat capture — save an entire conversation as a chain</span></li>
+          <li>📄 <span data-i18n="chainsL3">Export to TXT — available in FREE</span></li>
+          <li>🌐 <span data-i18n="chainsL4">Export to HTML + DOCX — PRO only</span></li>
+          <li>📎 <span data-i18n="chainsL5">File attachments per chain node</span></li>
+          <li>💉 <span data-i18n="chainsL6">Inject chain content back into any AI</span></li>
         </ul>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
-          <span class="badge badge-free">✓ FREE — TXT export</span>
-          <span class="badge badge-pro">★ PRO — HTML + DOCX</span>
+          <span class="badge badge-free" data-i18n="chainsBadgeFree">✓ FREE — TXT export</span>
+          <span class="badge badge-pro" data-i18n="chainsBadgePro">★ PRO — HTML + DOCX</span>
         </div>
       </div>
 
@@ -874,19 +889,19 @@
       </div>
 
       <div class="feat-text">
-        <p class="section-label">Organize</p>
-        <h2 class="section-title">Group ideas and chains by project</h2>
-        <p class="section-sub">Projects bring context to your knowledge base. Drag cards and chains into any project. Switch between them in one click.</p>
+        <p class="section-label" data-i18n="projectsStep">Organize</p>
+        <h2 class="section-title" data-i18n="projectsTitle">Group ideas and chains by project</h2>
+        <p class="section-sub" data-i18n="projectsSub">Projects bring context to your knowledge base. Drag cards and chains into any project. Switch between them in one click.</p>
         <ul>
-          <li>📂 <span>Unlimited projects</span> in PRO</li>
-          <li>💛 <span>General + No Project</span> — always available, zero setup</li>
-          <li>🎨 <span>Custom name and color</span> per project</li>
-          <li>🃏 <span>Cards and chains</span> coexist in the same project</li>
-          <li>🖱️ <span>Drag & drop</span> to reclassify any item</li>
+          <li>📂 <span data-i18n="projectsL1">Unlimited projects in PRO</span></li>
+          <li>💛 <span data-i18n="projectsL2">General + No Project — always available, zero setup</span></li>
+          <li>🎨 <span data-i18n="projectsL3">Custom name and color per project</span></li>
+          <li>🃏 <span data-i18n="projectsL4">Cards and chains coexist in the same project</span></li>
+          <li>🖱️ <span data-i18n="projectsL5">Drag & drop to reclassify any item</span></li>
         </ul>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
-          <span class="badge badge-free">✓ FREE — up to 3 projects</span>
-          <span class="badge badge-pro">★ PRO — unlimited</span>
+          <span class="badge badge-free" data-i18n="projectsBadgeFree">✓ FREE — up to 3 projects</span>
+          <span class="badge badge-pro" data-i18n="projectsBadgePro">★ PRO — unlimited</span>
         </div>
       </div>
 
@@ -902,15 +917,15 @@
     <div class="feat reveal">
 
       <div class="feat-text">
-        <p class="section-label">Close the loop</p>
-        <h2 class="section-title">Send saved content back into any AI</h2>
-        <p class="section-sub">Inject a saved card or chain into the input of any AI platform with one click. Your knowledge base feeds your next conversation.</p>
+        <p class="section-label" data-i18n="injectStep">Close the loop</p>
+        <h2 class="section-title" data-i18n="injectTitle">Send saved content back into any AI</h2>
+        <p class="section-sub" data-i18n="injectSub">Inject a saved card or chain into the input of any AI platform with one click. Your knowledge base feeds your next conversation.</p>
         <ul>
-          <li>💡 <span>Inject answer only</span> — clean and focused</li>
-          <li>💬 <span>Inject question + answer</span> — full context</li>
-          <li>🔗 <span>Inject a chain</span> — as text or Markdown</li>
-          <li>🌐 <span>Cross-platform inject</span> — captured on Claude, inject into ChatGPT</li>
-          <li>✅ <span>Works on all 7 platforms</span></li>
+          <li>💡 <span data-i18n="injectL1">Inject answer only — clean and focused</span></li>
+          <li>💬 <span data-i18n="injectL2">Inject question + answer — full context</span></li>
+          <li>🔗 <span data-i18n="injectL3">Inject a chain — as text or Markdown</span></li>
+          <li>🌐 <span data-i18n="injectL4">Cross-platform inject — captured on Claude, inject into ChatGPT</span></li>
+          <li>✅ <span data-i18n="injectL5">Works on all 7 platforms</span></li>
         </ul>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
           <span class="badge badge-free">✓ FREE</span>
@@ -1011,16 +1026,16 @@
       </div>
 
       <div class="feat-text">
-        <p class="section-label">Always at hand</p>
-        <h2 class="section-title">Your personal AI activity panel</h2>
-        <p class="section-sub">Click the NODUS icon in your browser toolbar for an instant overview of everything you've captured — without opening the full dashboard.</p>
+        <p class="section-label" data-i18n="popupStep">Always at hand</p>
+        <h2 class="section-title" data-i18n="popupTitle">Your personal AI activity panel</h2>
+        <p class="section-sub" data-i18n="popupSub">Click the NODUS icon in your browser toolbar for an instant overview of everything you've captured — without opening the full dashboard.</p>
         <ul>
-          <li>📊 <span>Saves today</span> and total idea count</li>
-          <li>🗂️ <span>Count per queue</span> and per chain</li>
-          <li>📋 <span>Recent activity log</span> with platform labels</li>
-          <li>🏷️ <span>All your tags</span> at a glance</li>
-          <li>💾 <span>Storage usage</span> indicator</li>
-          <li>📤 <span>Send telemetry batch manually</span> from popup</li>
+          <li>📊 <span data-i18n="popupL1">Saves today and total idea count</span></li>
+          <li>🗂️ <span data-i18n="popupL2">Count per queue and per chain</span></li>
+          <li>📋 <span data-i18n="popupL3">Recent activity log with platform labels</span></li>
+          <li>🏷️ <span data-i18n="popupL4">All your tags at a glance</span></li>
+          <li>💾 <span data-i18n="popupL5">Storage usage indicator</span></li>
+          <li>📤 <span data-i18n="popupL6">Send telemetry batch manually from popup</span></li>
         </ul>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
           <span class="badge badge-free">✓ FREE</span>
@@ -1037,35 +1052,35 @@
 <section class="section" id="privacy">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:40px;">
-      <p class="section-label">Privacy</p>
-      <h2 class="section-title">Local-first. Always.</h2>
-      <p class="section-sub" style="margin:0 auto;">Your captured content never leaves your device. No account. No sync. No cloud. The code is open for you to verify.</p>
+      <p class="section-label" data-i18n="privLabel">Privacy</p>
+      <h2 class="section-title" data-i18n="privTitle">Local-first. Always.</h2>
+      <p class="section-sub" style="margin:0 auto;" data-i18n="privSub">Your captured content never leaves your device. No account. No sync. No cloud. The code is open for you to verify.</p>
     </div>
     <div class="privacy-strip reveal d1">
       <div class="priv-item">
         <div class="priv-icon">💾</div>
-        <div class="priv-title">Local storage only</div>
-        <div class="priv-desc">All data lives in <code style="font-size:12px;background:#1a1f29;padding:1px 5px;border-radius:4px;">chrome.storage.local</code> and IndexedDB. Nothing is synced.</div>
+        <div class="priv-title" data-i18n="priv1Title">Local storage only</div>
+        <div class="priv-desc" data-i18n="priv1Desc">All data lives in chrome.storage.local and IndexedDB. Nothing is synced.</div>
       </div>
       <div class="priv-item">
         <div class="priv-icon">🔍</div>
-        <div class="priv-title">Open source core</div>
-        <div class="priv-desc">The capture engines, dashboard, chains, projects and storage layer are MIT licensed and fully auditable.</div>
+        <div class="priv-title" data-i18n="priv2Title">Open source core</div>
+        <div class="priv-desc" data-i18n="priv2Desc">The capture engines, dashboard, chains, projects and storage layer are MIT licensed and fully auditable.</div>
       </div>
       <div class="priv-item">
         <div class="priv-icon">📊</div>
-        <div class="priv-title">Anonymous telemetry</div>
-        <div class="priv-desc">Usage stats are anonymous, aggregated counts — no content, no PII. Can be disabled anytime in Settings.</div>
+        <div class="priv-title" data-i18n="priv3Title">Anonymous telemetry</div>
+        <div class="priv-desc" data-i18n="priv3Desc">Usage stats are anonymous, aggregated counts — no content, no PII. Can be disabled anytime in Settings.</div>
       </div>
       <div class="priv-item">
         <div class="priv-icon">🔐</div>
-        <div class="priv-title">Encrypted backup</div>
-        <div class="priv-desc">PRO backup uses AES-256-GCM with PBKDF2 key derivation. Only you hold the password.</div>
+        <div class="priv-title" data-i18n="priv4Title">Encrypted backup</div>
+        <div class="priv-desc" data-i18n="priv4Desc">PRO backup uses AES-256-GCM with PBKDF2 key derivation. Only you hold the password.</div>
       </div>
       <div class="priv-item">
         <div class="priv-icon">🚫</div>
-        <div class="priv-title">No account required</div>
-        <div class="priv-desc">FREE tier works completely without registration. PRO license is validated locally after purchase.</div>
+        <div class="priv-title" data-i18n="priv5Title">No account required</div>
+        <div class="priv-desc" data-i18n="priv5Desc">FREE tier works completely without registration. PRO license is validated locally after purchase.</div>
       </div>
     </div>
   </div>
@@ -1077,27 +1092,27 @@
 <section class="section" id="pricing">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:40px;">
-      <p class="section-label">Pricing</p>
-      <h2 class="section-title">Simple and fair</h2>
-      <p class="section-sub" style="margin:0 auto;">The core is free forever. PRO adds power for users who live in multiple queues, need structured exports or want encrypted backups.</p>
+      <p class="section-label" data-i18n="pricingLabel">Pricing</p>
+      <h2 class="section-title" data-i18n="pricingTitle">Simple and fair</h2>
+      <p class="section-sub" style="margin:0 auto;" data-i18n="pricingSub">The core is free forever. PRO adds power for users who live in multiple queues, need structured exports or want encrypted backups.</p>
     </div>
 
     <div class="pricing-grid reveal d1">
       <!-- Header -->
-      <div class="pricing-head">Feature</div>
-      <div class="pricing-head col-free">FREE<br><span style="font-size:14px;font-weight:400;">Forever</span></div>
-      <div class="pricing-head col-pro">PRO<br><span style="font-size:14px;font-weight:400;">$4.50/mo or $30/yr</span></div>
+      <div class="pricing-head" data-i18n="pricingColFeature">Feature</div>
+      <div class="pricing-head col-free"><span data-i18n="pricingColFree">FREE</span><br><span style="font-size:14px;font-weight:400;" data-i18n="pricingColFreeSub">Forever</span></div>
+      <div class="pricing-head col-pro"><span data-i18n="pricingColPro">PRO</span><br><span style="font-size:14px;font-weight:400;" data-i18n="pricingColProSub">$4.50/mo or $30/yr</span></div>
 
       <!-- Rows -->
-      <div class="pricing-cell pricing-feature">Capture (Save + Quick)</div>
+      <div class="pricing-cell pricing-feature" data-i18n="pricingR1">Capture (Save + Quick)</div>
       <div class="pricing-cell"><span class="check">✓</span></div>
       <div class="pricing-cell"><span class="check">✓</span></div>
 
-      <div class="pricing-cell pricing-feature">Dashboard — cards, tags, notes, search</div>
+      <div class="pricing-cell pricing-feature" data-i18n="pricingR2">Dashboard — cards, tags, notes, search</div>
       <div class="pricing-cell"><span class="check">✓</span></div>
       <div class="pricing-cell"><span class="check">✓</span></div>
 
-      <div class="pricing-cell pricing-feature">Inject into any AI</div>
+      <div class="pricing-cell pricing-feature" data-i18n="pricingR3">Inject into any AI</div>
       <div class="pricing-cell"><span class="check">✓</span></div>
       <div class="pricing-cell"><span class="check">✓</span></div>
 
@@ -1113,13 +1128,13 @@
       <div class="pricing-cell"><span class="check">✓</span></div>
       <div class="pricing-cell"><span class="check">✓</span></div>
 
-      <div class="pricing-cell pricing-feature">Queues<div class="hint">Quick · Default · Q1</div></div>
-      <div class="pricing-cell"><span style="color:var(--text);font-size:13px;">3</span></div>
-      <div class="pricing-cell"><span class="pro-only">6 ★</span></div>
+      <div class="pricing-cell pricing-feature"><span data-i18n="pricingR7">Queues</span><div class="hint" data-i18n="pricingR7hint">Quick · Default · Q1</div></div>
+      <div class="pricing-cell"><span style="color:var(--text);font-size:13px;" data-i18n="pricingR7free">3</span></div>
+      <div class="pricing-cell"><span class="pro-only" data-i18n="pricingR7pro">6 ★</span></div>
 
-      <div class="pricing-cell pricing-feature">Projects</div>
-      <div class="pricing-cell"><span style="color:var(--text);font-size:13px;">Up to 3</span></div>
-      <div class="pricing-cell"><span class="pro-only">Unlimited ★</span></div>
+      <div class="pricing-cell pricing-feature" data-i18n="pricingR8">Projects</div>
+      <div class="pricing-cell"><span style="color:var(--text);font-size:13px;" data-i18n="pricingR8free">Up to 3</span></div>
+      <div class="pricing-cell"><span class="pro-only" data-i18n="pricingR8pro">Unlimited ★</span></div>
 
       <div class="pricing-cell pricing-feature">Chain export — TXT</div>
       <div class="pricing-cell"><span class="check">✓</span></div>
@@ -1129,11 +1144,11 @@
       <div class="pricing-cell"><span class="cross">—</span></div>
       <div class="pricing-cell"><span class="pro-only">★</span></div>
 
-      <div class="pricing-cell pricing-feature">Encrypted backup<div class="hint">AES-256-GCM</div></div>
+      <div class="pricing-cell pricing-feature"><span data-i18n="pricingR11">Encrypted backup</span><div class="hint">AES-256-GCM</div></div>
       <div class="pricing-cell"><span class="cross">—</span></div>
       <div class="pricing-cell"><span class="pro-only">★</span></div>
 
-      <div class="pricing-cell pricing-feature">Auto Capture<div class="hint">Keyword-based, per platform</div></div>
+      <div class="pricing-cell pricing-feature"><span data-i18n="pricingR12">Auto Capture</span><div class="hint" data-i18n="pricingR12hint">Keyword-based, per platform</div></div>
       <div class="pricing-cell"><span class="cross">—</span></div>
       <div class="pricing-cell"><span class="pro-only">★</span></div>
 
@@ -1154,12 +1169,12 @@
 <section class="section">
   <div class="container">
     <div class="cta-box reveal">
-      <span class="badge badge-yellow" style="margin-bottom:20px;">🚀 Launching Q2 2026</span>
-      <h2 class="cta-title">Ready to capture your best AI insights?</h2>
-      <p class="cta-sub">The Chrome Web Store listing is coming Q2 2026. Star the repository to get notified at launch.</p>
+      <span class="badge badge-yellow" style="margin-bottom:20px;" data-i18n="ctaLaunch">🚀 Launching Q2 2026</span>
+      <h2 class="cta-title" data-i18n="ctaTitle">Ready to capture your best AI insights?</h2>
+      <p class="cta-sub" data-i18n="ctaSub">The Chrome Web Store listing is coming Q2 2026. Star the repository to get notified at launch.</p>
       <div class="cta-btns">
-        <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-primary" style="display:inline-block;">⭐ Star on GitHub</a>
-        <a href="https://nodus-ai.app" class="btn-ghost" style="display:inline-block;">← Back to home</a>
+        <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-primary" style="display:inline-block;" data-i18n="ctaBtn1">⭐ Star on GitHub</a>
+        <a href="https://nodus-ai.app" class="btn-ghost" style="display:inline-block;" data-i18n="ctaBtn2">← Back to home</a>
       </div>
     </div>
   </div>
@@ -1168,7 +1183,7 @@
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div>
-    <strong style="color:var(--text);">NODUS</strong> — Built with transparency. Funded by fairness.<br>
+    <strong style="color:var(--text);">NODUS</strong> — <span data-i18n="footerTagline">Built with transparency. Funded by fairness.</span><br>
     <span style="margin-top:8px;display:block;">
       <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a> ·
       <a href="https://nodus-ai.app">nodus-ai.app</a> ·
@@ -1184,6 +1199,273 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<script>
+(function() {
+  var T = {
+    en: {
+      navCapture:'Capture', navDashboard:'Dashboard', navChains:'Chains',
+      navProjects:'Projects', navInject:'Inject', navPricing:'Pricing',
+      navBack:'← Back to site',
+      heroLabel:'Features',
+      heroTitle:'Everything NODUS<br>can do for you',
+      heroSub:'Capture AI conversations. Organize them locally. Chain ideas into workflows. Inject saved content back into any AI — all without a single account.',
+      captureStep:'Step 1', captureTitle:'Capture what matters',
+      captureSub:'NODUS adds a Save button to every AI response. One click opens a panel where you title, tag and route the idea to the right queue.',
+      captureL1:'Save button — title, tags, queue, attachment',
+      captureL2:'Quick save — zero-friction, goes straight to your quick queue',
+      captureL3:'Duplicate detection — same content won\'t be saved twice',
+      captureL4:'Supported platforms — ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek',
+      dashStep:'Step 2', dashTitle:'Your organized AI knowledge base',
+      dashSub:'Every saved idea appears on the dashboard as a card. Search, filter by platform, date or tag. Switch between 1–3 column layouts.',
+      dashL1:'Full text search across all saved ideas',
+      dashL2:'Filter by tag, platform and date — stack filters',
+      dashL3:'Pin mode — keep dashboard open while using the AI',
+      dashL4:'Inline edit — title, content, tags, notes on any card',
+      dashL5:'Attachments — add files to any card',
+      dashL6:'6 queues — Quick, Default, Q1, Q2*, Q3*, Q4*',
+      dashBadgePro:'★ PRO unlocks Q2, Q3, Q4',
+      chainsStep:'Step 3', chainsTitle:'Build structured workflows with Chains',
+      chainsSub:'Link multiple captures into an ordered sequence. Use Chains to document research flows, writing drafts or multi-step AI conversations.',
+      chainsL1:'Unlimited chains — no cap on number or length',
+      chainsL2:'Full chat capture — save an entire conversation as a chain',
+      chainsL3:'Export to TXT — available in FREE',
+      chainsL4:'Export to HTML + DOCX — PRO only',
+      chainsL5:'File attachments per chain node',
+      chainsL6:'Inject chain content back into any AI',
+      chainsBadgeFree:'✓ FREE — TXT export', chainsBadgePro:'★ PRO — HTML + DOCX',
+      projectsStep:'Organize', projectsTitle:'Group ideas and chains by project',
+      projectsSub:'Projects bring context to your knowledge base. Drag cards and chains into any project. Switch between them in one click.',
+      projectsL1:'Unlimited projects in PRO',
+      projectsL2:'General + No Project — always available, zero setup',
+      projectsL3:'Custom name and color per project',
+      projectsL4:'Cards and chains coexist in the same project',
+      projectsL5:'Drag & drop to reclassify any item',
+      projectsBadgeFree:'✓ FREE — up to 3 projects', projectsBadgePro:'★ PRO — unlimited',
+      injectStep:'Close the loop', injectTitle:'Send saved content back into any AI',
+      injectSub:'Inject a saved card or chain into the input of any AI platform with one click. Your knowledge base feeds your next conversation.',
+      injectL1:'Inject answer only — clean and focused',
+      injectL2:'Inject question + answer — full context',
+      injectL3:'Inject a chain — as text or Markdown',
+      injectL4:'Cross-platform inject — captured on Claude, inject into ChatGPT',
+      injectL5:'Works on all 7 platforms',
+      popupStep:'Always at hand', popupTitle:'Your personal AI activity panel',
+      popupSub:'Click the NODUS icon in your browser toolbar for an instant overview of everything you\'ve captured — without opening the full dashboard.',
+      popupL1:'Saves today and total idea count',
+      popupL2:'Count per queue and per chain',
+      popupL3:'Recent activity log with platform labels',
+      popupL4:'All your tags at a glance',
+      popupL5:'Storage usage indicator',
+      popupL6:'Send telemetry batch manually from popup',
+      privLabel:'Privacy', privTitle:'Local-first. Always.',
+      privSub:'Your captured content never leaves your device. No account. No sync. No cloud. The code is open for you to verify.',
+      priv1Title:'Local storage only', priv1Desc:'All data lives in chrome.storage.local and IndexedDB. Nothing is synced.',
+      priv2Title:'Open source core', priv2Desc:'The capture engines, dashboard, chains, projects and storage layer are MIT licensed and fully auditable.',
+      priv3Title:'Anonymous telemetry', priv3Desc:'Usage stats are anonymous, aggregated counts — no content, no PII. Can be disabled anytime in Settings.',
+      priv4Title:'Encrypted backup', priv4Desc:'PRO backup uses AES-256-GCM with PBKDF2 key derivation. Only you hold the password.',
+      priv5Title:'No account required', priv5Desc:'FREE tier works completely without registration. PRO license is validated locally after purchase.',
+      pricingLabel:'Pricing', pricingTitle:'Simple and fair',
+      pricingSub:'The core is free forever. PRO adds power for users who live in multiple queues, need structured exports or want encrypted backups.',
+      pricingColFeature:'Feature', pricingColFree:'FREE', pricingColFreeSub:'Forever',
+      pricingColPro:'PRO', pricingColProSub:'$4.50/mo or $30/yr',
+      pricingR1:'Capture (Save + Quick)', pricingR2:'Dashboard — cards, tags, notes, search',
+      pricingR3:'Inject into any AI',
+      pricingR7:'Queues', pricingR7hint:'Quick · Default · Q1', pricingR7free:'3', pricingR7pro:'6 ★',
+      pricingR8:'Projects', pricingR8free:'Up to 3', pricingR8pro:'Unlimited ★',
+      pricingR11:'Encrypted backup', pricingR12:'Auto Capture', pricingR12hint:'Keyword-based, per platform',
+      ctaLaunch:'🚀 Launching Q2 2026',
+      ctaTitle:'Ready to capture your best AI insights?',
+      ctaSub:'The Chrome Web Store listing is coming Q2 2026. Star the repository to get notified at launch.',
+      ctaBtn1:'⭐ Star on GitHub', ctaBtn2:'← Back to home',
+      footerTagline:'Built with transparency. Funded by fairness.'
+    },
+    pt: {
+      navCapture:'Capturar', navDashboard:'Dashboard', navChains:'Chains',
+      navProjects:'Projetos', navInject:'Injetar', navPricing:'Preços',
+      navBack:'← Voltar ao site',
+      heroLabel:'Funcionalidades',
+      heroTitle:'Tudo o que o NODUS<br>faz por você',
+      heroSub:'Capture conversas com IA. Organize localmente. Encadeie ideias em fluxos de trabalho. Injete conteúdo salvo de volta em qualquer IA — sem precisar de conta.',
+      captureStep:'Passo 1', captureTitle:'Capture o que importa',
+      captureSub:'O NODUS adiciona um botão Salvar em cada resposta de IA. Um clique abre um painel para você titular, taguear e direcionar a ideia para a fila certa.',
+      captureL1:'Botão Salvar — título, tags, fila, anexo',
+      captureL2:'Quick save — zero atrito, vai direto para sua fila rápida',
+      captureL3:'Detecção de duplicatas — o mesmo conteúdo não é salvo duas vezes',
+      captureL4:'Plataformas suportadas — ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek',
+      dashStep:'Passo 2', dashTitle:'Sua base de conhecimento de IA organizada',
+      dashSub:'Cada ideia salva aparece no dashboard como um card. Pesquise, filtre por plataforma, data ou tag. Alterne entre layouts de 1 a 3 colunas.',
+      dashL1:'Busca em texto completo em todas as ideias salvas',
+      dashL2:'Filtrar por tag, plataforma e data — empilhe filtros',
+      dashL3:'Modo Pin — mantenha o dashboard aberto enquanto usa a IA',
+      dashL4:'Edição inline — título, conteúdo, tags, notas em qualquer card',
+      dashL5:'Anexos — adicione arquivos a qualquer card',
+      dashL6:'6 filas — Quick, Default, Q1, Q2*, Q3*, Q4*',
+      dashBadgePro:'★ PRO desbloqueia Q2, Q3, Q4',
+      chainsStep:'Passo 3', chainsTitle:'Construa fluxos de trabalho estruturados com Chains',
+      chainsSub:'Conecte múltiplas capturas em uma sequência ordenada. Use Chains para documentar fluxos de pesquisa, rascunhos ou conversas de IA em múltiplas etapas.',
+      chainsL1:'Chains ilimitadas — sem limite de quantidade ou tamanho',
+      chainsL2:'Captura de chat completo — salve uma conversa inteira como chain',
+      chainsL3:'Export para TXT — disponível no FREE',
+      chainsL4:'Export para HTML + DOCX — apenas PRO',
+      chainsL5:'Anexos de arquivo por nodo da chain',
+      chainsL6:'Injete o conteúdo da chain de volta em qualquer IA',
+      chainsBadgeFree:'✓ FREE — export TXT', chainsBadgePro:'★ PRO — HTML + DOCX',
+      projectsStep:'Organize', projectsTitle:'Agrupe ideias e chains por projeto',
+      projectsSub:'Projetos trazem contexto para sua base de conhecimento. Arraste cards e chains para qualquer projeto. Alterne entre eles com um clique.',
+      projectsL1:'Projetos ilimitados no PRO',
+      projectsL2:'Geral + Sem Projeto — sempre disponíveis, sem configuração',
+      projectsL3:'Nome e cor personalizados por projeto',
+      projectsL4:'Cards e chains coexistem no mesmo projeto',
+      projectsL5:'Arraste e solte para reclassificar qualquer item',
+      projectsBadgeFree:'✓ FREE — até 3 projetos', projectsBadgePro:'★ PRO — ilimitado',
+      injectStep:'Feche o ciclo', injectTitle:'Envie conteúdo salvo de volta para qualquer IA',
+      injectSub:'Injete um card ou chain salvo no campo de input de qualquer plataforma de IA com um clique. Sua base de conhecimento alimenta sua próxima conversa.',
+      injectL1:'Injetar apenas a resposta — limpo e focado',
+      injectL2:'Injetar pergunta + resposta — contexto completo',
+      injectL3:'Injetar uma chain — como texto ou Markdown',
+      injectL4:'Injeção cross-platform — capturado no Claude, injetar no ChatGPT',
+      injectL5:'Funciona nas 7 plataformas',
+      popupStep:'Sempre à mão', popupTitle:'Seu painel pessoal de atividade de IA',
+      popupSub:'Clique no ícone do NODUS na barra do navegador para ter uma visão instantânea de tudo que você capturou — sem abrir o dashboard completo.',
+      popupL1:'Salvamentos hoje e contagem total de ideias',
+      popupL2:'Contagem por fila e por chain',
+      popupL3:'Log de atividades recentes com labels de plataforma',
+      popupL4:'Todas as suas tags de uma vez',
+      popupL5:'Indicador de uso do storage',
+      popupL6:'Envie o batch de telemetria manualmente pelo popup',
+      privLabel:'Privacidade', privTitle:'Local primeiro. Sempre.',
+      privSub:'Seu conteúdo capturado nunca sai do seu dispositivo. Sem conta. Sem sync. Sem nuvem. O código é aberto para você verificar.',
+      priv1Title:'Armazenamento somente local', priv1Desc:'Todos os dados ficam no chrome.storage.local e IndexedDB. Nada é sincronizado.',
+      priv2Title:'Núcleo open source', priv2Desc:'Os engines de captura, dashboard, chains, projetos e camada de storage são licença MIT e totalmente auditáveis.',
+      priv3Title:'Telemetria anônima', priv3Desc:'Estatísticas de uso são contagens anônimas e agregadas — sem conteúdo, sem dados pessoais. Pode ser desativada nas Configurações a qualquer momento.',
+      priv4Title:'Backup criptografado', priv4Desc:'O backup PRO usa AES-256-GCM com derivação de chave PBKDF2. Só você tem a senha.',
+      priv5Title:'Sem conta necessária', priv5Desc:'O plano FREE funciona completamente sem cadastro. A licença PRO é validada localmente após a compra.',
+      pricingLabel:'Preços', pricingTitle:'Simples e justo',
+      pricingSub:'O núcleo é gratuito para sempre. O PRO adiciona poder para usuários que vivem em múltiplas filas, precisam de exports estruturados ou querem backups criptografados.',
+      pricingColFeature:'Funcionalidade', pricingColFree:'FREE', pricingColFreeSub:'Para sempre',
+      pricingColPro:'PRO', pricingColProSub:'$4,50/mês ou $30/ano',
+      pricingR1:'Captura (Salvar + Quick)', pricingR2:'Dashboard — cards, tags, notas, busca',
+      pricingR3:'Injetar em qualquer IA',
+      pricingR7:'Filas', pricingR7hint:'Quick · Default · Q1', pricingR7free:'3', pricingR7pro:'6 ★',
+      pricingR8:'Projetos', pricingR8free:'Até 3', pricingR8pro:'Ilimitado ★',
+      pricingR11:'Backup criptografado', pricingR12:'Auto Capture', pricingR12hint:'Por palavra-chave, por plataforma',
+      ctaLaunch:'🚀 Lançamento Q2 2026',
+      ctaTitle:'Pronto para capturar suas melhores ideias de IA?',
+      ctaSub:'O listing na Chrome Web Store chega no Q2 2026. Dê uma estrela no repositório para ser notificado no lançamento.',
+      ctaBtn1:'⭐ Star no GitHub', ctaBtn2:'← Voltar ao site',
+      footerTagline:'Construído com transparência. Financiado com justiça.'
+    },
+    es: {
+      navCapture:'Capturar', navDashboard:'Dashboard', navChains:'Chains',
+      navProjects:'Proyectos', navInject:'Inyectar', navPricing:'Precios',
+      navBack:'← Volver al sitio',
+      heroLabel:'Funcionalidades',
+      heroTitle:'Todo lo que NODUS<br>puede hacer por ti',
+      heroSub:'Captura conversaciones de IA. Organízalas localmente. Encadena ideas en flujos de trabajo. Inyecta contenido guardado de vuelta a cualquier IA — sin necesitar una cuenta.',
+      captureStep:'Paso 1', captureTitle:'Captura lo que importa',
+      captureSub:'NODUS agrega un botón Guardar en cada respuesta de IA. Un clic abre un panel donde puedes titular, etiquetar y enrutar la idea a la cola correcta.',
+      captureL1:'Botón Guardar — título, etiquetas, cola, adjunto',
+      captureL2:'Quick save — sin fricción, va directo a tu cola rápida',
+      captureL3:'Detección de duplicados — el mismo contenido no se guarda dos veces',
+      captureL4:'Plataformas soportadas — ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek',
+      dashStep:'Paso 2', dashTitle:'Tu base de conocimiento de IA organizada',
+      dashSub:'Cada idea guardada aparece en el dashboard como una tarjeta. Busca, filtra por plataforma, fecha o etiqueta. Cambia entre diseños de 1 a 3 columnas.',
+      dashL1:'Búsqueda de texto completo en todas las ideas guardadas',
+      dashL2:'Filtrar por etiqueta, plataforma y fecha — apila filtros',
+      dashL3:'Modo Pin — mantén el dashboard abierto mientras usas la IA',
+      dashL4:'Edición inline — título, contenido, etiquetas, notas en cualquier tarjeta',
+      dashL5:'Adjuntos — agrega archivos a cualquier tarjeta',
+      dashL6:'6 colas — Quick, Default, Q1, Q2*, Q3*, Q4*',
+      dashBadgePro:'★ PRO desbloquea Q2, Q3, Q4',
+      chainsStep:'Paso 3', chainsTitle:'Construye flujos de trabajo estructurados con Chains',
+      chainsSub:'Conecta múltiples capturas en una secuencia ordenada. Usa Chains para documentar flujos de investigación, borradores o conversaciones de IA en múltiples pasos.',
+      chainsL1:'Chains ilimitadas — sin límite de cantidad ni longitud',
+      chainsL2:'Captura de chat completo — guarda una conversación entera como chain',
+      chainsL3:'Exportar a TXT — disponible en FREE',
+      chainsL4:'Exportar a HTML + DOCX — solo PRO',
+      chainsL5:'Adjuntos de archivo por nodo de chain',
+      chainsL6:'Inyecta el contenido de la chain de vuelta a cualquier IA',
+      chainsBadgeFree:'✓ FREE — exportar TXT', chainsBadgePro:'★ PRO — HTML + DOCX',
+      projectsStep:'Organiza', projectsTitle:'Agrupa ideas y chains por proyecto',
+      projectsSub:'Los proyectos aportan contexto a tu base de conocimiento. Arrastra tarjetas y chains a cualquier proyecto. Cambia entre ellos con un clic.',
+      projectsL1:'Proyectos ilimitados en PRO',
+      projectsL2:'General + Sin Proyecto — siempre disponibles, sin configuración',
+      projectsL3:'Nombre y color personalizados por proyecto',
+      projectsL4:'Tarjetas y chains coexisten en el mismo proyecto',
+      projectsL5:'Arrastra y suelta para reclasificar cualquier elemento',
+      projectsBadgeFree:'✓ FREE — hasta 3 proyectos', projectsBadgePro:'★ PRO — ilimitado',
+      injectStep:'Cierra el ciclo', injectTitle:'Envía contenido guardado de vuelta a cualquier IA',
+      injectSub:'Inyecta una tarjeta o chain guardada en el campo de input de cualquier plataforma de IA con un clic. Tu base de conocimiento alimenta tu próxima conversación.',
+      injectL1:'Inyectar solo la respuesta — limpio y enfocado',
+      injectL2:'Inyectar pregunta + respuesta — contexto completo',
+      injectL3:'Inyectar una chain — como texto o Markdown',
+      injectL4:'Inyección cross-platform — capturado en Claude, inyectar en ChatGPT',
+      injectL5:'Funciona en las 7 plataformas',
+      popupStep:'Siempre a mano', popupTitle:'Tu panel personal de actividad de IA',
+      popupSub:'Haz clic en el ícono de NODUS en la barra del navegador para obtener una visión instantánea de todo lo que capturaste — sin abrir el dashboard completo.',
+      popupL1:'Guardados hoy y conteo total de ideas',
+      popupL2:'Conteo por cola y por chain',
+      popupL3:'Registro de actividad reciente con etiquetas de plataforma',
+      popupL4:'Todas tus etiquetas de un vistazo',
+      popupL5:'Indicador de uso del almacenamiento',
+      popupL6:'Envía el lote de telemetría manualmente desde el popup',
+      privLabel:'Privacidad', privTitle:'Local primero. Siempre.',
+      privSub:'Tu contenido capturado nunca sale de tu dispositivo. Sin cuenta. Sin sync. Sin nube. El código es abierto para que lo verifiques.',
+      priv1Title:'Almacenamiento solo local', priv1Desc:'Todos los datos viven en chrome.storage.local e IndexedDB. Nada se sincroniza.',
+      priv2Title:'Núcleo open source', priv2Desc:'Los motores de captura, dashboard, chains, proyectos y capa de almacenamiento tienen licencia MIT y son completamente auditables.',
+      priv3Title:'Telemetría anónima', priv3Desc:'Las estadísticas de uso son conteos anónimos y agregados — sin contenido, sin datos personales. Puede desactivarse en Configuración en cualquier momento.',
+      priv4Title:'Backup cifrado', priv4Desc:'El backup PRO usa AES-256-GCM con derivación de clave PBKDF2. Solo tú tienes la contraseña.',
+      priv5Title:'Sin cuenta requerida', priv5Desc:'El plan FREE funciona completamente sin registro. La licencia PRO se valida localmente después de la compra.',
+      pricingLabel:'Precios', pricingTitle:'Simple y justo',
+      pricingSub:'El núcleo es gratuito para siempre. PRO agrega poder para usuarios que viven en múltiples colas, necesitan exportaciones estructuradas o quieren backups cifrados.',
+      pricingColFeature:'Funcionalidad', pricingColFree:'FREE', pricingColFreeSub:'Para siempre',
+      pricingColPro:'PRO', pricingColProSub:'$4.50/mes o $30/año',
+      pricingR1:'Captura (Guardar + Quick)', pricingR2:'Dashboard — tarjetas, etiquetas, notas, búsqueda',
+      pricingR3:'Inyectar en cualquier IA',
+      pricingR7:'Colas', pricingR7hint:'Quick · Default · Q1', pricingR7free:'3', pricingR7pro:'6 ★',
+      pricingR8:'Proyectos', pricingR8free:'Hasta 3', pricingR8pro:'Ilimitado ★',
+      pricingR11:'Backup cifrado', pricingR12:'Auto Capture', pricingR12hint:'Por palabra clave, por plataforma',
+      ctaLaunch:'🚀 Lanzamiento Q2 2026',
+      ctaTitle:'¿Listo para capturar tus mejores ideas de IA?',
+      ctaSub:'El listing en la Chrome Web Store llega en Q2 2026. Marca el repositorio con estrella para recibir notificación en el lanzamiento.',
+      ctaBtn1:'⭐ Star en GitHub', ctaBtn2:'← Volver al inicio',
+      footerTagline:'Construido con transparencia. Financiado con justicia.'
+    }
+  };
+
+  function applyLang(lang) {
+    var t = T[lang] || T['en'];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n');
+      if (t[k] !== undefined) el.textContent = t[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n-html');
+      if (t[k] !== undefined) el.innerHTML = t[k];
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
+  }
+
+  function detectLang() {
+    try { var s = localStorage.getItem('nodus_lang'); if (s && T[s]) return s; } catch(e) {}
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.startsWith('pt')) return 'pt';
+    if (nav.startsWith('es')) return 'es';
+    return 'en';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var lang = detectLang();
+    applyLang(lang);
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() { applyLang(btn.getAttribute('data-lang')); });
+    });
+  });
+})();
 </script>
 
 </body>
