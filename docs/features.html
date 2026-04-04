@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — Features</title>
+  <meta name="description" content="Everything NODUS can do: capture, organize, chain, inject and reuse your AI conversations — 100% locally." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e1117;
+      --panel:     #1a1f29;
+      --panel2:    #262b36;
+      --border:    #2d3748;
+      --border2:   #334155;
+      --yellow:    #facc15;
+      --text:      #e2e8f0;
+      --sub:       #94a3b8;
+      --muted:     #475569;
+      --green:     #10b981;
+      --blue:      #3b82f6;
+      --blue-dim:  #2563eb;
+      --red:       #ef4444;
+      --purple:    #8b5cf6;
+      --pink:      #ec4899;
+      --orange:    #f97316;
+      --radius:    10px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 96px 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+      color: var(--text); line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 17px; color: var(--sub); max-width: 520px; line-height: 1.7; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600;
+      border: 1px solid var(--border); background: var(--panel); color: var(--sub);
+    }
+    .badge-free  { background: rgba(16,185,129,.12); border-color: rgba(16,185,129,.3); color: var(--green); }
+    .badge-pro   { background: rgba(250,204,21,.1);  border-color: rgba(250,204,21,.3); color: var(--yellow); }
+
+    /* ── Feature row ── */
+    .feat {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .feat.reverse .feat-demo { order: -1; }
+    @media (max-width: 860px) {
+      .feat { grid-template-columns: 1fr; gap: 40px; }
+      .feat.reverse .feat-demo { order: 0; }
+    }
+
+    .feat-text { display: flex; flex-direction: column; gap: 12px; }
+    .feat-text ul { padding-left: 20px; color: var(--sub); font-size: 15px; display: flex; flex-direction: column; gap: 6px; }
+    .feat-text li span { color: var(--text); }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; height: 60px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo {
+      font-size: 18px; font-weight: 900; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); }
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--sub); font-size: 14px; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-cta {
+      padding: 7px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      background: rgba(250,204,21,.1); border: 1px solid rgba(250,204,21,.3); color: var(--yellow);
+    }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    .hero { padding: 80px 0 64px; text-align: center; }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 900; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-title span { color: var(--yellow); }
+    .hero-sub { font-size: 18px; color: var(--sub); max-width: 580px; margin: 0 auto 32px; }
+    .hero-tabs {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    }
+    .hero-tab {
+      padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      background: var(--panel); border: 1px solid var(--border); color: var(--sub);
+      cursor: default;
+    }
+    .hero-tab:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ═══════════════════════════════════════
+       UI MOCKUPS
+    ═══════════════════════════════════════ */
+
+    .mockup {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      font-size: 13px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .mockup-bar {
+      background: #161b24;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    /* ── Chat mockup ── */
+    .chat-mock { padding: 16px; background: #0a0d12; }
+    .chat-msg {
+      display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start;
+    }
+    .chat-avatar {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+    }
+    .chat-avatar.user { background: #3b82f6; color: white; }
+    .chat-avatar.ai   { background: #10a37f; color: white; font-size: 11px; }
+    .chat-bubble {
+      background: #1a1f2e; border: 1px solid #2d3748; border-radius: 8px;
+      padding: 10px 14px; color: #c8d3e0; font-size: 13px; line-height: 1.5;
+      flex: 1;
+    }
+    .chat-bubble.user-bubble { background: #1e3a5f; border-color: #2d5a8e; }
+    .nodus-btns {
+      display: flex; gap: 6px; margin-top: 10px; justify-content: flex-end;
+    }
+    .nodus-btn {
+      padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 700;
+      border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;
+    }
+    .nodus-btn-save  { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; }
+    .nodus-btn-quick { background: rgba(250,204,21,.15); border: 1px solid rgba(250,204,21,.4) !important; color: #facc15; }
+    .nodus-btn-dash  {
+      position: fixed; right: 16px; top: 50%; transform: translateY(-50%);
+      background: #1a1f29; border: 1px solid #334155; border-radius: 8px;
+      writing-mode: vertical-rl; padding: 14px 7px; font-size: 11px; font-weight: 700;
+      color: #facc15; letter-spacing: 2px;
+    }
+
+    /* ── Save panel mockup ── */
+    .save-panel {
+      display: grid; grid-template-columns: 1fr 340px;
+      background: #0a0d12; min-height: 340px;
+    }
+    .save-panel-bg { padding: 16px; opacity: .35; }
+    .save-panel-side {
+      background: #0e1117; border-left: 1px solid #262b36;
+      display: flex; flex-direction: column;
+    }
+    .save-panel-header {
+      padding: 18px 16px; border-bottom: 1px solid #262b36;
+      background: linear-gradient(135deg,#1a1f29,#0e1117);
+    }
+    .save-panel-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+    .save-panel-icon {
+      width: 34px; height: 34px; border-radius: 7px;
+      background: linear-gradient(135deg,#facc15,#f59e0b);
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .save-panel-title { font-size: 16px; font-weight: 800; color: #facc15; }
+    .save-panel-sub   { font-size: 10px; color: #64748b; letter-spacing: 1px; }
+    .save-panel-body  { padding: 14px 16px; flex: 1; }
+    .sp-label { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+    .sp-input {
+      width: 100%; background: #1a1f29; border: 1px solid #2d3748; border-radius: 6px;
+      padding: 7px 10px; color: #e2e8f0; font-size: 12px; margin-bottom: 12px;
+    }
+    .sp-dest {
+      background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.25);
+      border-radius: 6px; padding: 8px 10px; margin-bottom: 12px; font-size: 12px;
+    }
+    .sp-dest strong { color: #60a5fa; }
+    .sp-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
+    .sp-tag {
+      padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: 600; color: white;
+    }
+    .save-panel-footer {
+      padding: 12px 16px; border-top: 1px solid #262b36;
+      display: flex; gap: 8px;
+    }
+    .sp-btn {
+      flex: 1; padding: 9px; border-radius: 6px; font-size: 12px;
+      font-weight: 600; border: none; cursor: pointer;
+    }
+    .sp-btn-cancel { background: #374151; color: #e2e8f0; }
+    .sp-btn-save   { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; }
+
+    /* ── Dashboard mockup ── */
+    .dash-mock {
+      background: #0e1117;
+    }
+    .dash-header {
+      background: linear-gradient(135deg,#1a1f29,#0e1117);
+      border-bottom: 1px solid #262b36;
+      padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .dash-logo { font-size: 14px; font-weight: 800; color: #facc15; display: flex; align-items: center; gap: 7px; }
+    .dash-logo-icon { width: 22px; height: 22px; border-radius: 5px; background: linear-gradient(135deg,#facc15,#f59e0b); display: flex; align-items: center; justify-content: center; font-size: 12px; }
+    .dash-controls { display: flex; gap: 6px; }
+    .dash-ctrl { width: 26px; height: 26px; border-radius: 6px; background: #262b36; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; }
+    .dash-tabs {
+      display: flex; border-bottom: 1px solid #262b36; background: #0e1117;
+    }
+    .dash-tab {
+      padding: 10px 16px; font-size: 12px; font-weight: 600; color: #64748b;
+      border-bottom: 2px solid transparent; cursor: pointer;
+    }
+    .dash-tab.active { color: #facc15; border-bottom-color: #facc15; }
+    .dash-toolbar {
+      padding: 10px 14px; display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid #1e2530;
+    }
+    .dash-search {
+      flex: 1; background: #1a1f29; border: 1px solid #2d3748; border-radius: 6px;
+      padding: 6px 10px; color: #64748b; font-size: 12px;
+    }
+    .dash-col-btn {
+      width: 26px; height: 26px; border-radius: 5px; background: #262b36;
+      border: 1px solid #334155; display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: #64748b; cursor: pointer;
+    }
+    .dash-col-btn.active { background: rgba(250,204,21,.1); border-color: rgba(250,204,21,.3); color: #facc15; }
+    .dash-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      padding: 12px 14px;
+    }
+    .card-m {
+      background: #1a1f29; border: 1px solid #2d3748;
+      border-left: 3px solid var(--border);
+      border-radius: 8px; padding: 12px;
+    }
+    .card-m-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .card-m-platform { display: flex; align-items: center; gap: 5px; font-size: 10px; color: #64748b; }
+    .card-m-date { font-size: 10px; color: #475569; }
+    .card-m-title { font-size: 12px; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; line-height: 1.3; }
+    .card-m-preview { font-size: 11px; color: #64748b; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-m-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+    .card-tag { padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+    .card-m-actions { display: flex; gap: 5px; }
+    .card-act { flex: 1; padding: 5px; border-radius: 5px; font-size: 10px; font-weight: 600; border: 1px solid #334155; background: #262b36; color: #94a3b8; text-align: center; cursor: pointer; }
+    .card-act.inject { background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.3); color: #60a5fa; }
+    .card-act.danger { background: rgba(239,68,68,.08); border-color: rgba(239,68,68,.2); color: #f87171; }
+
+    /* ── Chain mockup ── */
+    .chain-list { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .chain-item-m {
+      background: #1a1f29; border: 1px solid #2d3748; border-left: 3px solid #8b5cf6;
+      border-radius: 8px; padding: 12px 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .chain-item-m:nth-child(2) { border-left-color: #10b981; }
+    .chain-info { flex: 1; }
+    .chain-name-m { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 3px; }
+    .chain-meta-m { font-size: 11px; color: #64748b; display: flex; gap: 10px; }
+    .chain-actions-m { display: flex; gap: 5px; }
+    .chain-act { padding: 4px 9px; border-radius: 5px; font-size: 10px; font-weight: 600; border: 1px solid #334155; background: #262b36; color: #94a3b8; }
+    .chain-act.export { color: #60a5fa; border-color: rgba(59,130,246,.3); background: rgba(59,130,246,.08); }
+
+    /* chain editor */
+    .chain-editor { padding: 14px; }
+    .chain-editor-title { font-size: 13px; font-weight: 700; color: #facc15; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .chain-node {
+      background: #1a1f29; border: 1px solid #2d3748; border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 8px; position: relative;
+    }
+    .chain-node::before {
+      content: ''; position: absolute; left: -1px; top: 0; bottom: 0;
+      width: 3px; border-radius: 3px 0 0 3px; background: #8b5cf6;
+    }
+    .chain-node:nth-child(2)::before { background: #10b981; }
+    .chain-node:nth-child(3)::before { background: #3b82f6; }
+    .node-num { font-size: 10px; color: #64748b; margin-bottom: 5px; }
+    .node-title { font-size: 12px; font-weight: 600; color: #e2e8f0; margin-bottom: 4px; }
+    .node-preview { font-size: 11px; color: #64748b; line-height: 1.4; }
+    .chain-connector { text-align: center; font-size: 14px; color: #334155; margin: 2px 0 4px; }
+    .chain-add-btn {
+      width: 100%; padding: 8px; border-radius: 6px; border: 1px dashed #334155;
+      background: transparent; color: #64748b; font-size: 12px; cursor: pointer;
+      text-align: center; margin-top: 4px;
+    }
+
+    /* ── Projects mockup ── */
+    .projects-m { display: grid; grid-template-columns: 180px 1fr; background: #0e1117; }
+    .projects-sidebar-m {
+      background: #111827; border-right: 1px solid #1e2530;
+      padding: 12px 0;
+    }
+    .proj-section-label { font-size: 10px; color: #475569; padding: 0 12px 6px; text-transform: uppercase; letter-spacing: 1px; }
+    .proj-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px; cursor: pointer; border-left: 2px solid transparent;
+    }
+    .proj-item.active { background: #1a2744; border-left-color: #facc15; }
+    .proj-item:hover:not(.active) { background: #1a2332; }
+    .proj-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .proj-name { font-size: 12px; font-weight: 600; color: #94a3b8; flex: 1; }
+    .proj-item.active .proj-name { color: #e2e8f0; }
+    .proj-count { font-size: 10px; background: #1e2530; border-radius: 99px; padding: 1px 6px; color: #64748b; }
+    .proj-new-btn { margin: 10px 12px 0; padding: 7px; border-radius: 6px; border: 1px dashed #334155; background: transparent; color: #64748b; font-size: 11px; text-align: center; cursor: pointer; width: calc(100% - 24px); }
+    .projects-content-m { padding: 14px; }
+    .proj-content-title { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .proj-badge { font-size: 10px; background: #1e2530; border-radius: 99px; padding: 2px 8px; color: #64748b; }
+    .proj-items-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .proj-card-m {
+      background: #1a1f29; border: 1px solid #2d3748; border-left: 3px solid;
+      border-radius: 7px; padding: 10px;
+    }
+    .proj-card-type { font-size: 10px; color: #64748b; margin-bottom: 4px; }
+    .proj-card-title { font-size: 11px; font-weight: 600; color: #e2e8f0; line-height: 1.3; }
+
+    /* ── Inject mockup ── */
+    .inject-mock { background: #0a0d12; padding: 16px; }
+    .inject-chat-input {
+      background: #1a1f29; border: 1px solid #334155; border-radius: 10px;
+      padding: 12px 14px; margin-bottom: 10px;
+    }
+    .inject-chat-input-label { font-size: 10px; color: #475569; margin-bottom: 6px; }
+    .inject-content {
+      font-size: 12px; color: #c8d3e0; line-height: 1.5;
+      border-left: 2px solid #3b82f6; padding-left: 10px;
+    }
+    .inject-source { font-size: 10px; color: #475569; margin-top: 6px; }
+    .inject-actions { display: flex; gap: 8px; justify-content: flex-end; }
+    .inject-send { padding: 8px 18px; border-radius: 7px; font-size: 12px; font-weight: 700; background: linear-gradient(135deg,#10a37f,#0d8f6e); color: white; border: none; }
+    .inject-toast {
+      background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.3);
+      border-radius: 7px; padding: 8px 12px; font-size: 12px; color: #34d399;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ── Popup mockup ── */
+    .popup-mock {
+      background: #0e1117; border: 1px solid #2d3748; border-radius: 12px;
+      width: 300px; margin: 0 auto; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .popup-header {
+      background: linear-gradient(135deg,#1a1f29,#111827);
+      padding: 12px 14px; border-bottom: 1px solid #262b36;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .popup-logo { font-size: 15px; font-weight: 900; color: #facc15; display: flex; align-items: center; gap: 7px; }
+    .popup-tele { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+    .tele-dot { width: 7px; height: 7px; border-radius: 50%; background: #10b981; }
+    .popup-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #1e2530; }
+    .popup-stat { background: #1a1f29; border: 1px solid #262b36; border-radius: 7px; padding: 10px; }
+    .popup-stat-label { font-size: 10px; color: #64748b; margin-bottom: 4px; }
+    .popup-stat-val { font-size: 20px; font-weight: 800; color: #e2e8f0; }
+    .popup-stat-val span { font-size: 12px; color: #64748b; }
+    .popup-section { padding: 10px 14px; border-bottom: 1px solid #1e2530; }
+    .popup-section-title { font-size: 10px; color: #475569; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px; }
+    .popup-queues { display: flex; flex-direction: column; gap: 5px; }
+    .popup-queue-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+    .popup-queue-name { color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+    .popup-queue-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .popup-queue-count { font-weight: 700; color: #e2e8f0; }
+    .popup-log-row { font-size: 11px; color: #64748b; padding: 4px 0; display: flex; gap: 8px; border-bottom: 1px solid #1a1f29; }
+    .popup-log-time { color: #475569; flex-shrink: 0; }
+    .popup-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 14px; }
+    .popup-btn { padding: 9px; border-radius: 7px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; text-align: center; }
+    .popup-btn-dash { background: linear-gradient(135deg,#3b82f6,#2563eb); color: white; }
+    .popup-btn-cfg  { background: #1a1f29; border: 1px solid #334155; color: #94a3b8; }
+
+    /* ── Storage bar ── */
+    .storage-bar { height: 4px; background: #1e2530; border-radius: 99px; margin: 6px 0; overflow: hidden; }
+    .storage-fill { height: 100%; background: linear-gradient(90deg,#3b82f6,#8b5cf6); border-radius: 99px; }
+
+    /* ── Pricing table ── */
+    .pricing-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .pricing-head { background: #161b24; padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: 1px; }
+    .pricing-head.col-free { background: rgba(16,185,129,.05); text-align: center; color: var(--green); }
+    .pricing-head.col-pro  { background: rgba(250,204,21,.05);  text-align: center; color: var(--yellow); }
+    .pricing-row { display: contents; }
+    .pricing-cell { padding: 11px 16px; border-bottom: 1px solid #1e2530; font-size: 13px; }
+    .pricing-cell:nth-child(2), .pricing-cell:nth-child(3) { text-align: center; border-left: 1px solid var(--border); }
+    .pricing-cell:nth-child(2) { background: rgba(16,185,129,.02); }
+    .pricing-cell:nth-child(3) { background: rgba(250,204,21,.02); }
+    .pricing-feature { color: var(--text); }
+    .pricing-feature .hint { font-size: 11px; color: var(--muted); }
+    .check { color: var(--green); font-size: 15px; }
+    .cross { color: var(--muted); font-size: 15px; }
+    .pro-only { color: var(--yellow); font-size: 12px; font-weight: 700; }
+    @media (max-width: 640px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-head:first-child, .pricing-cell:first-child { display: none; }
+    }
+
+    /* ── Privacy strip ── */
+    .privacy-strip {
+      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px;
+    }
+    .priv-item { display: flex; flex-direction: column; gap: 6px; }
+    .priv-icon { font-size: 22px; }
+    .priv-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .priv-desc  { font-size: 13px; color: var(--sub); line-height: 1.5; }
+
+    /* ── CTA ── */
+    .cta-box {
+      background: linear-gradient(135deg,#1a1f29,#0e1117);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 48px; text-align: center;
+    }
+    .cta-title { font-size: clamp(24px,3vw,34px); font-weight: 800; margin-bottom: 12px; }
+    .cta-sub   { font-size: 16px; color: var(--sub); margin-bottom: 28px; }
+    .cta-btns  { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn-primary {
+      padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700;
+      background: var(--yellow); color: #0e1117; border: none; cursor: pointer;
+    }
+    .btn-ghost {
+      padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700;
+      background: transparent; color: var(--text); border: 1px solid var(--border);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 24px;
+      text-align: center; color: var(--muted); font-size: 13px;
+    }
+    footer a { color: var(--sub); }
+
+    /* ── Reveal animation ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="nav-dot"></span> NODUS</div>
+    <ul class="nav-links">
+      <li><a href="#capture">Capture</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#chains">Chains</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#inject">Inject</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://nodus-ai.app" class="nav-cta">← Back to site</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="section hero">
+  <div class="container">
+    <p class="section-label">Features</p>
+    <h1 class="hero-title">Everything NODUS<br>can do for you</h1>
+    <p class="hero-sub">
+      Capture AI conversations. Organize them locally. Chain ideas into workflows.
+      Inject saved content back into any AI — all without a single account.
+    </p>
+    <div class="hero-tabs">
+      <a href="#capture"   class="hero-tab">💡 Capture</a>
+      <a href="#dashboard" class="hero-tab">📇 Dashboard</a>
+      <a href="#chains"    class="hero-tab">🔗 Chains</a>
+      <a href="#projects"  class="hero-tab">📁 Projects</a>
+      <a href="#inject"    class="hero-tab">💉 Inject</a>
+      <a href="#popup"     class="hero-tab">📊 Popup</a>
+      <a href="#privacy"   class="hero-tab">🔒 Privacy</a>
+      <a href="#pricing"   class="hero-tab">💎 Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CAPTURE
+═══════════════════════════════════════ -->
+<section class="section" id="capture">
+  <div class="container">
+    <div class="feat reveal">
+
+      <div class="feat-text">
+        <p class="section-label">Step 1</p>
+        <h2 class="section-title">Capture what matters</h2>
+        <p class="section-sub">NODUS adds a Save button to every AI response. One click opens a panel where you title, tag and route the idea to the right queue.</p>
+        <ul>
+          <li>💡 <span>Save button</span> — title, tags, queue, attachment</li>
+          <li>⚡ <span>Quick save</span> — zero-friction, goes straight to your quick queue</li>
+          <li>🔍 <span>Duplicate detection</span> — same content won't be saved twice</li>
+          <li>🤖 <span>Supported platforms</span> — ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek</li>
+        </ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <span class="badge badge-free">✓ FREE</span>
+          <span class="badge" style="color:var(--sub);">All 7 platforms</span>
+        </div>
+      </div>
+
+      <div class="feat-demo">
+        <!-- Save panel mockup -->
+        <div class="mockup">
+          <div class="mockup-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span style="font-size:11px;color:#475569;margin-left:8px;">chat.openai.com</span>
+          </div>
+          <div class="save-panel">
+            <!-- dimmed chat bg -->
+            <div class="save-panel-bg">
+              <div class="chat-msg">
+                <div class="chat-avatar ai">GP</div>
+                <div class="chat-bubble">
+                  Chain-of-thought prompting works best when you break the problem into explicit steps. Start with the goal, enumerate constraints, then ask for the reasoning trace before the answer.
+                  <div class="nodus-btns">
+                    <button class="nodus-btn nodus-btn-quick">⚡ Quick</button>
+                    <button class="nodus-btn nodus-btn-save">💡 Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- save panel -->
+            <div class="save-panel-side">
+              <div class="save-panel-header">
+                <div class="save-panel-logo">
+                  <div class="save-panel-icon">💡</div>
+                  <div>
+                    <div class="save-panel-title">NODUS</div>
+                    <div class="save-panel-sub">SAVE IDEA</div>
+                  </div>
+                </div>
+              </div>
+              <div class="save-panel-body">
+                <div class="sp-label">Title</div>
+                <div class="sp-input">How to structure a prompt for complex reasoning</div>
+                <div class="sp-dest"><strong>DESTINATION:</strong> <span style="color:#e2e8f0;margin-left:6px;">DEFAULT</span></div>
+                <div class="sp-label">Tags</div>
+                <div class="sp-tags">
+                  <span class="sp-tag" style="background:#6366f1;">TECH</span>
+                  <span class="sp-tag" style="background:#10b981;">CHATGPT</span>
+                </div>
+              </div>
+              <div class="save-panel-footer">
+                <button class="sp-btn sp-btn-cancel">Cancel</button>
+                <button class="sp-btn sp-btn-save">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     DASHBOARD
+═══════════════════════════════════════ -->
+<section class="section" id="dashboard">
+  <div class="container">
+    <div class="feat reverse reveal">
+
+      <div class="feat-demo">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span style="font-size:11px;color:#475569;margin-left:8px;">NODUS Dashboard</span>
+          </div>
+          <div class="dash-mock">
+            <div class="dash-header">
+              <div class="dash-logo"><div class="dash-logo-icon">💡</div> NODUS</div>
+              <div class="dash-controls">
+                <div class="dash-ctrl">🔧</div>
+                <div class="dash-ctrl">📌</div>
+                <div class="dash-ctrl">✕</div>
+              </div>
+            </div>
+            <div class="dash-tabs">
+              <div class="dash-tab active">📇 Cards</div>
+              <div class="dash-tab">🔗 Chains</div>
+              <div class="dash-tab">📁 Projects</div>
+            </div>
+            <div class="dash-toolbar">
+              <div class="dash-search">🔍 Search ideas...</div>
+              <div class="dash-col-btn active">1</div>
+              <div class="dash-col-btn active" style="background:rgba(250,204,21,.1);border-color:rgba(250,204,21,.3);color:#facc15;">2</div>
+              <div class="dash-col-btn">3</div>
+            </div>
+            <div class="dash-cards">
+              <!-- Card 1 -->
+              <div class="card-m" style="border-left-color:#10b981;">
+                <div class="card-m-meta">
+                  <div class="card-m-platform">🤖 ChatGPT</div>
+                  <div class="card-m-date">2h ago</div>
+                </div>
+                <div class="card-m-title">How to structure a prompt for complex reasoning</div>
+                <div class="card-m-preview">Chain-of-thought prompting works best when you break the problem into explicit steps...</div>
+                <div class="card-m-tags">
+                  <span class="card-tag" style="background:rgba(99,102,241,.2);color:#a5b4fc;">TECH</span>
+                  <span class="card-tag" style="background:rgba(16,185,129,.2);color:#6ee7b7;">CHATGPT</span>
+                </div>
+                <div class="card-m-actions">
+                  <div class="card-act inject">💉 Inject</div>
+                  <div class="card-act">📋 Copy</div>
+                  <div class="card-act danger">🗑️</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card-m" style="border-left-color:#3b82f6;">
+                <div class="card-m-meta">
+                  <div class="card-m-platform">🤖 Claude</div>
+                  <div class="card-m-date">1d ago</div>
+                </div>
+                <div class="card-m-title">Book summary — key learning insight</div>
+                <div class="card-m-preview">The most effective learning happens at the edge of your competence — slightly beyond what you can do comfortably...</div>
+                <div class="card-m-tags">
+                  <span class="card-tag" style="background:rgba(236,72,153,.2);color:#f9a8d4;">BOOK</span>
+                </div>
+                <div class="card-m-actions">
+                  <div class="card-act inject">💉 Inject</div>
+                  <div class="card-act">📋 Copy</div>
+                  <div class="card-act danger">🗑️</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card-m" style="border-left-color:#facc15;">
+                <div class="card-m-meta">
+                  <div class="card-m-platform">⚡ Quick</div>
+                  <div class="card-m-date">2d ago</div>
+                </div>
+                <div class="card-m-title">Writing technique: show don't tell</div>
+                <div class="card-m-preview">Replace 'she was nervous' with 'her hands wouldn't stop moving'...</div>
+                <div class="card-m-tags">
+                  <span class="card-tag" style="background:rgba(239,68,68,.2);color:#fca5a5;">WRITING</span>
+                </div>
+                <div class="card-m-actions">
+                  <div class="card-act inject">💉 Inject</div>
+                  <div class="card-act">📋 Copy</div>
+                  <div class="card-act danger">🗑️</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card-m" style="border-left-color:#8b5cf6;">
+                <div class="card-m-meta">
+                  <div class="card-m-platform">🤖 Gemini</div>
+                  <div class="card-m-date">3d ago</div>
+                </div>
+                <div class="card-m-title">Fitness recovery protocol notes</div>
+                <div class="card-m-preview">Sleep is the most underrated performance variable. Prioritize 7–9h before optimizing anything else...</div>
+                <div class="card-m-tags">
+                  <span class="card-tag" style="background:rgba(20,184,166,.2);color:#5eead4;">FITNESS</span>
+                </div>
+                <div class="card-m-actions">
+                  <div class="card-act inject">💉 Inject</div>
+                  <div class="card-act">📋 Copy</div>
+                  <div class="card-act danger">🗑️</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-text">
+        <p class="section-label">Step 2</p>
+        <h2 class="section-title">Your organized AI knowledge base</h2>
+        <p class="section-sub">Every saved idea appears on the dashboard as a card. Search, filter by platform, date or tag. Switch between 1–3 column layouts.</p>
+        <ul>
+          <li>🔍 <span>Full text search</span> across all saved ideas</li>
+          <li>🏷️ <span>Filter by tag, platform and date</span> — stack filters</li>
+          <li>📌 <span>Pin mode</span> — keep dashboard open while using the AI</li>
+          <li>✏️ <span>Inline edit</span> — title, content, tags, notes on any card</li>
+          <li>📎 <span>Attachments</span> — add files to any card</li>
+          <li>🗂️ <span>6 queues</span> — Quick, Default, Q1, Q2*, Q3*, Q4*</li>
+        </ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <span class="badge badge-free">✓ FREE</span>
+          <span class="badge badge-pro">★ PRO unlocks Q2, Q3, Q4</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CHAINS
+═══════════════════════════════════════ -->
+<section class="section" id="chains">
+  <div class="container">
+    <div class="feat reveal">
+
+      <div class="feat-text">
+        <p class="section-label">Step 3</p>
+        <h2 class="section-title">Build structured workflows with Chains</h2>
+        <p class="section-sub">Link multiple captures into an ordered sequence. Use Chains to document research flows, writing drafts or multi-step AI conversations.</p>
+        <ul>
+          <li>🔗 <span>Unlimited chains</span> — no cap on number or length</li>
+          <li>📚 <span>Full chat capture</span> — save an entire conversation as a chain</li>
+          <li>📄 <span>Export to TXT</span> — available in FREE</li>
+          <li>🌐 <span>Export to HTML + DOCX</span> — PRO only</li>
+          <li>📎 <span>File attachments</span> per chain node</li>
+          <li>💉 <span>Inject chain content</span> back into any AI</li>
+        </ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <span class="badge badge-free">✓ FREE — TXT export</span>
+          <span class="badge badge-pro">★ PRO — HTML + DOCX</span>
+        </div>
+      </div>
+
+      <div class="feat-demo">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span style="font-size:11px;color:#475569;margin-left:8px;">Chains</span>
+          </div>
+          <!-- Chain list -->
+          <div class="chain-list" style="background:#0e1117;padding-bottom:0;">
+            <div class="chain-item-m">
+              <div class="chain-info">
+                <div class="chain-name-m">Research workflow</div>
+                <div class="chain-meta-m"><span>🔗 3 nodes</span><span>Apr 4, 2026</span></div>
+              </div>
+              <div class="chain-actions-m">
+                <div class="chain-act">✏️</div>
+                <div class="chain-act">💉</div>
+                <div class="chain-act export">📤 Export</div>
+              </div>
+            </div>
+            <div class="chain-item-m">
+              <div class="chain-info">
+                <div class="chain-name-m">Writing project</div>
+                <div class="chain-meta-m"><span>🔗 2 nodes</span><span>Apr 3, 2026</span></div>
+              </div>
+              <div class="chain-actions-m">
+                <div class="chain-act">✏️</div>
+                <div class="chain-act">💉</div>
+                <div class="chain-act export">📤 Export</div>
+              </div>
+            </div>
+          </div>
+          <!-- Chain editor -->
+          <div class="chain-editor" style="background:#0a0d12;border-top:1px solid #1e2530;">
+            <div class="chain-editor-title">🔗 Research workflow <span style="font-size:11px;color:#475569;font-weight:400;">3 nodes</span></div>
+            <div class="chain-node">
+              <div class="node-num">Node 1</div>
+              <div class="node-title">How to structure a prompt</div>
+              <div class="node-preview">Chain-of-thought prompting works best when you break the problem into explicit steps...</div>
+            </div>
+            <div class="chain-connector">↓</div>
+            <div class="chain-node">
+              <div class="node-num">Node 2</div>
+              <div class="node-title">Book summary — key insight</div>
+              <div class="node-preview">The most effective learning happens at the edge of your competence...</div>
+            </div>
+            <div class="chain-connector">↓</div>
+            <div class="chain-node">
+              <div class="node-num">Node 3</div>
+              <div class="node-title">Writing technique: show don't tell</div>
+              <div class="node-preview">Replace 'she was nervous' with 'her hands wouldn't stop moving'...</div>
+            </div>
+            <button class="chain-add-btn">➕ Add Node</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PROJECTS
+═══════════════════════════════════════ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="feat reverse reveal">
+
+      <div class="feat-demo">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span style="font-size:11px;color:#475569;margin-left:8px;">Projects</span>
+          </div>
+          <div class="projects-m">
+            <div class="projects-sidebar-m">
+              <div class="proj-section-label">Projects</div>
+              <div class="proj-item">
+                <div class="proj-dot" style="background:#facc15;"></div>
+                <div class="proj-name">General</div>
+                <div class="proj-count">12</div>
+              </div>
+              <div class="proj-item">
+                <div class="proj-dot" style="background:#64748b;"></div>
+                <div class="proj-name">No Project</div>
+                <div class="proj-count">4</div>
+              </div>
+              <div style="height:1px;background:#1e2530;margin:8px 0;"></div>
+              <div class="proj-item active">
+                <div class="proj-dot" style="background:#3b82f6;"></div>
+                <div class="proj-name">AI Research</div>
+                <div class="proj-count">3</div>
+              </div>
+              <div class="proj-item">
+                <div class="proj-dot" style="background:#10b981;"></div>
+                <div class="proj-name">Writing</div>
+                <div class="proj-count">5</div>
+              </div>
+              <div class="proj-item">
+                <div class="proj-dot" style="background:#ec4899;"></div>
+                <div class="proj-name">Fitness</div>
+                <div class="proj-count">2</div>
+              </div>
+              <button class="proj-new-btn">➕ New Project</button>
+            </div>
+            <div class="projects-content-m">
+              <div class="proj-content-title">
+                AI Research <span class="proj-badge">3 items</span>
+              </div>
+              <div class="proj-items-grid">
+                <div class="proj-card-m" style="border-left-color:#8b5cf6;">
+                  <div class="proj-card-type">🔗 Chain · 3 nodes</div>
+                  <div class="proj-card-title">Research workflow</div>
+                </div>
+                <div class="proj-card-m" style="border-left-color:#10b981;">
+                  <div class="proj-card-type">🤖 ChatGPT · Card</div>
+                  <div class="proj-card-title">How to structure a prompt</div>
+                </div>
+                <div class="proj-card-m" style="border-left-color:#3b82f6;">
+                  <div class="proj-card-type">🤖 Claude · Card</div>
+                  <div class="proj-card-title">Book summary — key insight</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-text">
+        <p class="section-label">Organize</p>
+        <h2 class="section-title">Group ideas and chains by project</h2>
+        <p class="section-sub">Projects bring context to your knowledge base. Drag cards and chains into any project. Switch between them in one click.</p>
+        <ul>
+          <li>📂 <span>Unlimited projects</span> in PRO</li>
+          <li>💛 <span>General + No Project</span> — always available, zero setup</li>
+          <li>🎨 <span>Custom name and color</span> per project</li>
+          <li>🃏 <span>Cards and chains</span> coexist in the same project</li>
+          <li>🖱️ <span>Drag & drop</span> to reclassify any item</li>
+        </ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <span class="badge badge-free">✓ FREE — up to 3 projects</span>
+          <span class="badge badge-pro">★ PRO — unlimited</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     INJECT
+═══════════════════════════════════════ -->
+<section class="section" id="inject">
+  <div class="container">
+    <div class="feat reveal">
+
+      <div class="feat-text">
+        <p class="section-label">Close the loop</p>
+        <h2 class="section-title">Send saved content back into any AI</h2>
+        <p class="section-sub">Inject a saved card or chain into the input of any AI platform with one click. Your knowledge base feeds your next conversation.</p>
+        <ul>
+          <li>💡 <span>Inject answer only</span> — clean and focused</li>
+          <li>💬 <span>Inject question + answer</span> — full context</li>
+          <li>🔗 <span>Inject a chain</span> — as text or Markdown</li>
+          <li>🌐 <span>Cross-platform inject</span> — captured on Claude, inject into ChatGPT</li>
+          <li>✅ <span>Works on all 7 platforms</span></li>
+        </ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <span class="badge badge-free">✓ FREE</span>
+          <span class="badge" style="color:var(--sub);">All platforms</span>
+        </div>
+      </div>
+
+      <div class="feat-demo">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span style="font-size:11px;color:#475569;margin-left:8px;">chat.openai.com</span>
+          </div>
+          <div class="inject-mock">
+            <div class="inject-toast" style="margin-bottom:12px;">
+              ✅ Content injected from <strong>AI Research</strong> → ChatGPT
+            </div>
+            <div class="inject-chat-input">
+              <div class="inject-chat-input-label">Message input — injected from NODUS:</div>
+              <div class="inject-content">
+                Chain-of-thought prompting works best when you break the problem into explicit steps. Start with the goal, enumerate constraints, then ask for the reasoning trace before the answer.
+              </div>
+              <div class="inject-source">📎 Captured from ChatGPT · Apr 2, 2026 · via NODUS</div>
+            </div>
+            <div class="inject-actions">
+              <button class="inject-send">Send ↑</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     POPUP
+═══════════════════════════════════════ -->
+<section class="section" id="popup">
+  <div class="container">
+    <div class="feat reverse reveal">
+
+      <div class="feat-demo" style="display:flex;justify-content:center;">
+        <div class="popup-mock">
+          <div class="popup-header">
+            <div class="popup-logo">💡 NODUS</div>
+            <div class="popup-tele"><div class="tele-dot"></div><span style="color:#34d399;font-size:11px;font-weight:600;">Analytics ON</span></div>
+          </div>
+          <div class="popup-stat-row">
+            <div class="popup-stat">
+              <div class="popup-stat-label">Today</div>
+              <div class="popup-stat-val">7 <span>saves</span></div>
+            </div>
+            <div class="popup-stat">
+              <div class="popup-stat-label">Total</div>
+              <div class="popup-stat-val">84</div>
+            </div>
+          </div>
+          <div class="popup-section">
+            <div class="popup-section-title">Queues</div>
+            <div class="popup-queues">
+              <div class="popup-queue-row">
+                <div class="popup-queue-name"><div class="popup-queue-dot" style="background:#facc15;"></div> Quick</div>
+                <div class="popup-queue-count">12</div>
+              </div>
+              <div class="popup-queue-row">
+                <div class="popup-queue-name"><div class="popup-queue-dot" style="background:#10b981;"></div> Default</div>
+                <div class="popup-queue-count">31</div>
+              </div>
+              <div class="popup-queue-row">
+                <div class="popup-queue-name"><div class="popup-queue-dot" style="background:#3b82f6;"></div> Q1</div>
+                <div class="popup-queue-count">18</div>
+              </div>
+              <div class="popup-queue-row">
+                <div class="popup-queue-name"><div class="popup-queue-dot" style="background:#8b5cf6;"></div> Chains</div>
+                <div class="popup-queue-count">4 <span style="font-size:10px;color:#64748b;">· 9 nodes</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="popup-section">
+            <div class="popup-section-title">Recent activity</div>
+            <div class="popup-log-row"><span class="popup-log-time">14:22</span><span>💾 Saved · ChatGPT</span></div>
+            <div class="popup-log-row"><span class="popup-log-time">13:55</span><span>⚡ Quick save · Claude</span></div>
+            <div class="popup-log-row"><span class="popup-log-time">11:30</span><span>🔗 Chain created · Gemini</span></div>
+          </div>
+          <div class="popup-section" style="border-bottom:none;">
+            <div class="popup-section-title">Storage</div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px;">
+              <span>2.3 MB used</span><span>5 MB total</span>
+            </div>
+            <div class="storage-bar"><div class="storage-fill" style="width:46%;"></div></div>
+          </div>
+          <div class="popup-btns">
+            <button class="popup-btn popup-btn-dash">📊 Dashboard</button>
+            <button class="popup-btn popup-btn-cfg">⚙️ Settings</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-text">
+        <p class="section-label">Always at hand</p>
+        <h2 class="section-title">Your personal AI activity panel</h2>
+        <p class="section-sub">Click the NODUS icon in your browser toolbar for an instant overview of everything you've captured — without opening the full dashboard.</p>
+        <ul>
+          <li>📊 <span>Saves today</span> and total idea count</li>
+          <li>🗂️ <span>Count per queue</span> and per chain</li>
+          <li>📋 <span>Recent activity log</span> with platform labels</li>
+          <li>🏷️ <span>All your tags</span> at a glance</li>
+          <li>💾 <span>Storage usage</span> indicator</li>
+          <li>📤 <span>Send telemetry batch manually</span> from popup</li>
+        </ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <span class="badge badge-free">✓ FREE</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRIVACY
+═══════════════════════════════════════ -->
+<section class="section" id="privacy">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:40px;">
+      <p class="section-label">Privacy</p>
+      <h2 class="section-title">Local-first. Always.</h2>
+      <p class="section-sub" style="margin:0 auto;">Your captured content never leaves your device. No account. No sync. No cloud. The code is open for you to verify.</p>
+    </div>
+    <div class="privacy-strip reveal d1">
+      <div class="priv-item">
+        <div class="priv-icon">💾</div>
+        <div class="priv-title">Local storage only</div>
+        <div class="priv-desc">All data lives in <code style="font-size:12px;background:#1a1f29;padding:1px 5px;border-radius:4px;">chrome.storage.local</code> and IndexedDB. Nothing is synced.</div>
+      </div>
+      <div class="priv-item">
+        <div class="priv-icon">🔍</div>
+        <div class="priv-title">Open source core</div>
+        <div class="priv-desc">The capture engines, dashboard, chains, projects and storage layer are MIT licensed and fully auditable.</div>
+      </div>
+      <div class="priv-item">
+        <div class="priv-icon">📊</div>
+        <div class="priv-title">Anonymous telemetry</div>
+        <div class="priv-desc">Usage stats are anonymous, aggregated counts — no content, no PII. Can be disabled anytime in Settings.</div>
+      </div>
+      <div class="priv-item">
+        <div class="priv-icon">🔐</div>
+        <div class="priv-title">Encrypted backup</div>
+        <div class="priv-desc">PRO backup uses AES-256-GCM with PBKDF2 key derivation. Only you hold the password.</div>
+      </div>
+      <div class="priv-item">
+        <div class="priv-icon">🚫</div>
+        <div class="priv-title">No account required</div>
+        <div class="priv-desc">FREE tier works completely without registration. PRO license is validated locally after purchase.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRICING
+═══════════════════════════════════════ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:40px;">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">Simple and fair</h2>
+      <p class="section-sub" style="margin:0 auto;">The core is free forever. PRO adds power for users who live in multiple queues, need structured exports or want encrypted backups.</p>
+    </div>
+
+    <div class="pricing-grid reveal d1">
+      <!-- Header -->
+      <div class="pricing-head">Feature</div>
+      <div class="pricing-head col-free">FREE<br><span style="font-size:14px;font-weight:400;">Forever</span></div>
+      <div class="pricing-head col-pro">PRO<br><span style="font-size:14px;font-weight:400;">$4.50/mo or $30/yr</span></div>
+
+      <!-- Rows -->
+      <div class="pricing-cell pricing-feature">Capture (Save + Quick)</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Dashboard — cards, tags, notes, search</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Inject into any AI</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Chains — unlimited</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Full Chat Capture</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Attachments</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Queues<div class="hint">Quick · Default · Q1</div></div>
+      <div class="pricing-cell"><span style="color:var(--text);font-size:13px;">3</span></div>
+      <div class="pricing-cell"><span class="pro-only">6 ★</span></div>
+
+      <div class="pricing-cell pricing-feature">Projects</div>
+      <div class="pricing-cell"><span style="color:var(--text);font-size:13px;">Up to 3</span></div>
+      <div class="pricing-cell"><span class="pro-only">Unlimited ★</span></div>
+
+      <div class="pricing-cell pricing-feature">Chain export — TXT</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Chain export — HTML + DOCX</div>
+      <div class="pricing-cell"><span class="cross">—</span></div>
+      <div class="pricing-cell"><span class="pro-only">★</span></div>
+
+      <div class="pricing-cell pricing-feature">Encrypted backup<div class="hint">AES-256-GCM</div></div>
+      <div class="pricing-cell"><span class="cross">—</span></div>
+      <div class="pricing-cell"><span class="pro-only">★</span></div>
+
+      <div class="pricing-cell pricing-feature">Auto Capture<div class="hint">Keyword-based, per platform</div></div>
+      <div class="pricing-cell"><span class="cross">—</span></div>
+      <div class="pricing-cell"><span class="pro-only">★</span></div>
+
+      <div class="pricing-cell pricing-feature">Languages — PT, EN, ES</div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+
+      <div class="pricing-cell pricing-feature">Anonymous telemetry<div class="hint">Opt-out, disableable in settings</div></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+      <div class="pricing-cell"><span class="check">✓</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="badge badge-yellow" style="margin-bottom:20px;">🚀 Launching Q2 2026</span>
+      <h2 class="cta-title">Ready to capture your best AI insights?</h2>
+      <p class="cta-sub">The Chrome Web Store listing is coming Q2 2026. Star the repository to get notified at launch.</p>
+      <div class="cta-btns">
+        <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-primary" style="display:inline-block;">⭐ Star on GitHub</a>
+        <a href="https://nodus-ai.app" class="btn-ghost" style="display:inline-block;">← Back to home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div>
+    <strong style="color:var(--text);">NODUS</strong> — Built with transparency. Funded by fairness.<br>
+    <span style="margin-top:8px;display:block;">
+      <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a> ·
+      <a href="https://nodus-ai.app">nodus-ai.app</a> ·
+      <a href="mailto:mmcarvalho.dev@gmail.com">Contact</a> ·
+      MIT License
+    </span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
