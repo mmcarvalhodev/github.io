@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — Store Screenshot Review</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0e1117; --panel: #1a1f29; --panel2: #262b36;
+      --border: #2d3748; --yellow: #facc15; --text: #e2e8f0;
+      --sub: #94a3b8; --muted: #475569; --green: #10b981;
+      --blue: #3b82f6; --red: #ef4444; --orange: #f97316;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+    a { color: var(--yellow); }
+
+    /* ── Layout ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .page-header { padding: 40px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .page-title { font-size: 28px; font-weight: 900; color: var(--text); margin-bottom: 8px; }
+    .page-sub { font-size: 15px; color: var(--sub); max-width: 680px; }
+
+    /* ── Requirements banner ── */
+    .req-banner {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 40px; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
+    }
+    .req-item { display: flex; flex-direction: column; gap: 4px; }
+    .req-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+    .req-value { font-size: 14px; font-weight: 600; color: var(--text); }
+    .req-note  { font-size: 12px; color: var(--sub); }
+
+    /* ── Section header ── */
+    .section-header { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section-title { font-size: 18px; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 10px; }
+    .section-badge {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+      background: rgba(250,204,21,.1); border: 1px solid rgba(250,204,21,.3); color: var(--yellow);
+    }
+    .section-badge.optional {
+      background: rgba(148,163,184,.1); border-color: rgba(148,163,184,.2); color: var(--sub);
+    }
+    .section-sub { font-size: 13px; color: var(--sub); margin-top: 6px; }
+
+    /* ── Shot grid ── */
+    .shots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-bottom: 48px; }
+
+    /* ── Shot card ── */
+    .shot-card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .shot-card.has-image { border-color: rgba(16,185,129,.35); }
+    .shot-card.has-image .shot-status { background: rgba(16,185,129,.1); color: var(--green); }
+
+    .shot-img-area {
+      position: relative; width: 100%; background: #0a0d12;
+      border-bottom: 1px solid var(--border);
+      aspect-ratio: 16/10; overflow: hidden; cursor: pointer;
+    }
+    .shot-img-area img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .shot-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; color: var(--muted);
+    }
+    .shot-placeholder-icon { font-size: 32px; opacity: .4; }
+    .shot-placeholder-label { font-size: 12px; font-weight: 600; color: var(--muted); }
+    .shot-placeholder-file {
+      font-size: 10px; font-family: monospace; background: var(--panel2);
+      padding: 3px 8px; border-radius: 4px; color: var(--sub);
+    }
+    .shot-badge-store {
+      position: absolute; top: 8px; left: 8px;
+      background: rgba(250,204,21,.9); color: #0e1117;
+      font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 99px;
+    }
+
+    .shot-info { padding: 14px 16px; flex: 1; }
+    .shot-num { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .shot-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .shot-desc { font-size: 12px; color: var(--sub); line-height: 1.5; margin-bottom: 10px; }
+
+    .shot-checklist { display: flex; flex-direction: column; gap: 4px; }
+    .shot-check { font-size: 11px; color: var(--muted); display: flex; gap: 6px; align-items: flex-start; }
+    .shot-check::before { content: '○'; flex-shrink: 0; color: var(--muted); }
+    .shot-check.done::before { content: '●'; color: var(--green); }
+
+    .shot-footer {
+      padding: 10px 16px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .shot-filename { font-size: 10px; font-family: monospace; color: var(--muted); }
+    .shot-status {
+      font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px;
+      background: rgba(71,85,105,.2); color: var(--muted);
+    }
+
+    /* ── File input overlay ── */
+    .shot-img-area input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+
+    /* ── Summary bar ── */
+    .summary {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(14,17,23,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; gap: 20px;
+    }
+    .summary-logo { font-size: 14px; font-weight: 900; color: var(--yellow); flex-shrink: 0; }
+    .summary-progress { flex: 1; display: flex; align-items: center; gap: 12px; }
+    .summary-bar { flex: 1; height: 4px; background: var(--panel2); border-radius: 99px; overflow: hidden; }
+    .summary-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 99px; transition: width .4s; }
+    .summary-count { font-size: 12px; font-weight: 700; color: var(--sub); white-space: nowrap; }
+    .summary-store { font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .summary-store span { color: var(--green); }
+
+    /* ── Evaluation panel ── */
+    .eval-panel {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px; margin-bottom: 48px;
+    }
+    .eval-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 16px; }
+    .eval-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .eval-item {
+      background: var(--panel2); border-radius: 8px; padding: 12px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .eval-item-label { font-size: 11px; color: var(--sub); }
+    .eval-item-value { font-size: 20px; font-weight: 800; color: var(--text); }
+    .eval-item-note  { font-size: 11px; color: var(--muted); }
+
+    /* ── Instructions ── */
+    .instructions {
+      background: rgba(59,130,246,.05); border: 1px solid rgba(59,130,246,.2);
+      border-radius: 10px; padding: 16px 20px; margin-bottom: 32px;
+    }
+    .instructions h3 { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+    .instructions ol { padding-left: 18px; font-size: 13px; color: var(--sub); display: flex; flex-direction: column; gap: 4px; }
+    .instructions code { background: var(--panel2); padding: 1px 5px; border-radius: 3px; font-size: 11px; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky progress bar ── -->
+<div class="summary" id="summaryBar">
+  <div class="summary-logo">💡 NODUS</div>
+  <div class="summary-progress">
+    <div class="summary-bar"><div class="summary-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="summary-count"><span id="doneCount">0</span> / <span id="totalCount">0</span> screenshots</div>
+  </div>
+  <div class="summary-store">Store: <span id="storeCount">0</span> / 5 ready</div>
+</div>
+
+<div class="container">
+
+  <!-- ── Page header ── -->
+  <div class="page-header">
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Chrome Web Store · Submission Review</p>
+    <h1 class="page-title">Screenshot Review Board</h1>
+    <p class="page-sub">
+      Place your screenshots in <code style="background:var(--panel);padding:2px 6px;border-radius:4px;font-size:12px;">docs/screenshots/</code> with the exact filenames shown below.
+      Each slot updates automatically. When all Store slots are filled, this document is ready for submission review.
+    </p>
+  </div>
+
+  <!-- ── Store requirements ── -->
+  <div class="req-banner">
+    <div class="req-item">
+      <div class="req-label">Screenshot size</div>
+      <div class="req-value">1280 × 800 px</div>
+      <div class="req-note">or 640 × 400 px minimum</div>
+    </div>
+    <div class="req-item">
+      <div class="req-label">Format</div>
+      <div class="req-value">PNG or JPEG</div>
+      <div class="req-note">No alpha channel in JPEG</div>
+    </div>
+    <div class="req-item">
+      <div class="req-label">Store slots</div>
+      <div class="req-value">Up to 5</div>
+      <div class="req-note">Minimum 1 required</div>
+    </div>
+    <div class="req-item">
+      <div class="req-label">Promo tile</div>
+      <div class="req-value">440 × 280 px</div>
+      <div class="req-note">Optional but recommended</div>
+    </div>
+    <div class="req-item">
+      <div class="req-label">Small promo</div>
+      <div class="req-value">920 × 680 px</div>
+      <div class="req-note">Optional</div>
+    </div>
+    <div class="req-item">
+      <div class="req-label">Icon</div>
+      <div class="req-value">128 × 128 px</div>
+      <div class="req-note">PNG, already in extension</div>
+    </div>
+  </div>
+
+  <!-- ── How to use ── -->
+  <div class="instructions">
+    <h3>📋 Como usar este documento</h3>
+    <ol>
+      <li>Siga o roteiro em <code>docs/SCREENSHOT_GUIDE.md</code> para capturar cada tela</li>
+      <li>Salve cada print em <code>docs/screenshots/</code> com o nome exato mostrado em cada slot</li>
+      <li>Recarregue esta página — cada slot preenchido fica verde automaticamente</li>
+      <li>Quando todos os 5 slots da Store estiverem verdes, envie este arquivo para revisão</li>
+      <li>Você também pode clicar em qualquer slot para carregar uma imagem diretamente do seu computador</li>
+    </ol>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       CHROME WEB STORE — 5 SLOTS
+  ═══════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-title">
+      Chrome Web Store
+      <span class="section-badge">5 slots obrigatórios</span>
+    </div>
+    <div class="section-sub">Estes são os 5 prints que o usuário vê antes de instalar. Ordem e qualidade são críticos.</div>
+  </div>
+
+  <div class="shots-grid" id="storeGrid">
+
+    <!-- STORE 1 -->
+    <div class="shot-card" id="card-shot-04" data-file="shot-04-dashboard-cards.png" data-store="true">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-04-dashboard-cards.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">📇</div>
+          <div class="shot-placeholder-label">Dashboard com cards — visão geral</div>
+          <div class="shot-placeholder-file">shot-04-dashboard-cards.png</div>
+        </div>
+        <div class="shot-badge-store">Store #1</div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-04')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 04 · Store Slot 1</div>
+        <div class="shot-name">Dashboard com cards</div>
+        <div class="shot-desc">Primeira impressão do produto. Mostra organização, cards com tags coloridas, layout em 2 colunas, plataformas diferentes.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Pelo menos 3–4 cards visíveis com conteúdo real</div>
+          <div class="shot-check">Tags coloridas visíveis (TECH, BOOK, WRITING...)</div>
+          <div class="shot-check">Borda colorida de fila em cada card</div>
+          <div class="shot-check">Barra de busca e filtros visíveis no topo</div>
+          <div class="shot-check">Abas Cards / Chains / Projetos visíveis</div>
+          <div class="shot-check">1280 × 800 px · zoom 100%</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-04-dashboard-cards.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- STORE 2 -->
+    <div class="shot-card" id="card-shot-01" data-file="shot-01-buttons-chatgpt.png" data-store="true">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-01-buttons-chatgpt.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">💡</div>
+          <div class="shot-placeholder-label">Botões na resposta do ChatGPT</div>
+          <div class="shot-placeholder-file">shot-01-buttons-chatgpt.png</div>
+        </div>
+        <div class="shot-badge-store">Store #2</div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-01')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 01 · Store Slot 2</div>
+        <div class="shot-name">Botões na resposta do ChatGPT</div>
+        <div class="shot-desc">Mostra onde o produto vive. O usuário vê os botões 💡 Save e ⚡ Quick aparecendo numa resposta real do ChatGPT.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Resposta do ChatGPT visível (3–4 parágrafos)</div>
+          <div class="shot-check">Botões 💡 Save e ⚡ Quick visíveis na resposta</div>
+          <div class="shot-check">Botão Dash visível na lateral direita</div>
+          <div class="shot-check">Página do ChatGPT reconhecível (não cortar o header)</div>
+          <div class="shot-check">1280 × 800 px · zoom 100%</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-01-buttons-chatgpt.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- STORE 3 -->
+    <div class="shot-card" id="card-shot-12" data-file="shot-12-inject-chatgpt.png" data-store="true">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-12-inject-chatgpt.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">💉</div>
+          <div class="shot-placeholder-label">Inject no ChatGPT</div>
+          <div class="shot-placeholder-file">shot-12-inject-chatgpt.png</div>
+        </div>
+        <div class="shot-badge-store">Store #3</div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-12')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 12 · Store Slot 3</div>
+        <div class="shot-name">Inject — fechar o ciclo</div>
+        <div class="shot-desc">Demonstra o diferencial: conteúdo salvo sendo injetado de volta no ChatGPT. Mostra o loop completo capturar → reusar.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Dashboard aberto na lateral direita</div>
+          <div class="shot-check">Campo de input do ChatGPT com conteúdo injetado</div>
+          <div class="shot-check">Toast de confirmação visível (se ainda aparecer)</div>
+          <div class="shot-check">Capture antes de pressionar Enter</div>
+          <div class="shot-check">1280 × 800 px · zoom 100%</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-12-inject-chatgpt.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- STORE 4 -->
+    <div class="shot-card" id="card-shot-07" data-file="shot-07-chains-list.png" data-store="true">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-07-chains-list.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">🔗</div>
+          <div class="shot-placeholder-label">Lista de Chains</div>
+          <div class="shot-placeholder-file">shot-07-chains-list.png</div>
+        </div>
+        <div class="shot-badge-store">Store #4</div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-07')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 07 · Store Slot 4</div>
+        <div class="shot-name">Chains — fluxos estruturados</div>
+        <div class="shot-desc">Diferencia o NODUS de simples "bookmarks". Mostra chains como workflows organizados com nodos encadeados.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Pelo menos 2 chains na lista com nomes reais</div>
+          <div class="shot-check">Contagem de nodos visível em cada chain</div>
+          <div class="shot-check">Editor de chain aberto com 2–3 nodos</div>
+          <div class="shot-check">Botões de ação visíveis (Edit, Export)</div>
+          <div class="shot-check">1280 × 800 px · zoom 100%</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-07-chains-list.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- STORE 5 -->
+    <div class="shot-card" id="card-shot-10" data-file="shot-10-projects.png" data-store="true">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-10-projects.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">📁</div>
+          <div class="shot-placeholder-label">Projetos com conteúdo</div>
+          <div class="shot-placeholder-file">shot-10-projects.png</div>
+        </div>
+        <div class="shot-badge-store">Store #5</div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-10')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 10 · Store Slot 5</div>
+        <div class="shot-name">Projetos — organização total</div>
+        <div class="shot-desc">Mostra a profundidade do produto. Sidebar com múltiplos projetos + área de conteúdo com cards e chains misturados.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Sidebar com 3+ projetos visíveis e contadores</div>
+          <div class="shot-check">Projeto selecionado com conteúdo na área principal</div>
+          <div class="shot-check">Cards e chains coexistindo no mesmo projeto</div>
+          <div class="shot-check">Cores dos projetos variadas</div>
+          <div class="shot-check">1280 × 800 px · zoom 100%</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-10-projects.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       FULL SET — 12 SHOTS ADICIONAIS
+  ═══════════════════════════════════ -->
+  <div class="section-header">
+    <div class="section-title">
+      Set Completo — Docs & Divulgação
+      <span class="section-badge optional">12 shots adicionais</span>
+    </div>
+    <div class="section-sub">Para a página docs/features.html, material de divulgação e redes sociais. Não obrigatórios para a Store.</div>
+  </div>
+
+  <div class="shots-grid">
+
+    <!-- SHOT 02 -->
+    <div class="shot-card" id="card-shot-02" data-file="shot-02-save-modal.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-02-save-modal.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">📋</div>
+          <div class="shot-placeholder-label">Modal de salvamento</div>
+          <div class="shot-placeholder-file">shot-02-save-modal.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-02')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 02</div>
+        <div class="shot-name">Modal de salvamento aberto</div>
+        <div class="shot-desc">Panel lateral com título preenchido, tags TECH e CHATGPT, fila DEFAULT selecionada. Botões Cancel / Salvar visíveis.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Título preenchido com texto real</div>
+          <div class="shot-check">Tags coloridas visíveis</div>
+          <div class="shot-check">Indicador de fila visível</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-02-save-modal.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 03 -->
+    <div class="shot-card" id="card-shot-03" data-file="shot-03-quick-save-toast.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-03-quick-save-toast.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">⚡</div>
+          <div class="shot-placeholder-label">Toast do Quick Save</div>
+          <div class="shot-placeholder-file">shot-03-quick-save-toast.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-03')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 03</div>
+        <div class="shot-name">Quick save — toast de confirmação</div>
+        <div class="shot-desc">Toast "✅ Idea saved!" visível no canto. Usar timer de captura — o toast dura ~3 segundos.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Toast verde visível no canto da tela</div>
+          <div class="shot-check">Plataforma diferente do ChatGPT (Claude ou Gemini)</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-03-quick-save-toast.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 05 -->
+    <div class="shot-card" id="card-shot-05" data-file="shot-05-card-actions.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-05-card-actions.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">🃏</div>
+          <div class="shot-placeholder-label">Card com ações visíveis</div>
+          <div class="shot-placeholder-file">shot-05-card-actions.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-05')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 05</div>
+        <div class="shot-name">Card expandido com botões de ação</div>
+        <div class="shot-desc">Card hover ou expandido mostrando os botões: 💉 Injetar Resposta, 📋 Copiar, ✏️ Editar, 🗑️ Deletar.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Todos os botões de ação visíveis</div>
+          <div class="shot-check">Conteúdo real no card</div>
+          <div class="shot-check">Tags visíveis</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-05-card-actions.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 06 -->
+    <div class="shot-card" id="card-shot-06" data-file="shot-06-filters.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-06-filters.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">🔍</div>
+          <div class="shot-placeholder-label">Painel de filtros aberto</div>
+          <div class="shot-placeholder-file">shot-06-filters.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-06')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 06</div>
+        <div class="shot-name">Filtros — Plataforma, Período, Tags</div>
+        <div class="shot-desc">Painel de filtros expandido. Selecionar "Esta semana" em período para mostrar filtro ativo.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Painel expandido com todas as opções</div>
+          <div class="shot-check">Pelo menos um filtro ativo selecionado</div>
+          <div class="shot-check">Cards filtrados visíveis abaixo</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-06-filters.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 08 -->
+    <div class="shot-card" id="card-shot-08" data-file="shot-08-chain-editor.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-08-chain-editor.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">🔗</div>
+          <div class="shot-placeholder-label">Editor de chain aberto</div>
+          <div class="shot-placeholder-file">shot-08-chain-editor.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-08')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 08</div>
+        <div class="shot-name">Chain editor — nodos em sequência</div>
+        <div class="shot-desc">Editor com a chain "Research workflow" aberta mostrando 3 nodos encadeados com conteúdo real.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">3 nodos visíveis com conteúdo real</div>
+          <div class="shot-check">Nome da chain visível no topo</div>
+          <div class="shot-check">Botão "➕ Novo Node" visível</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-08-chain-editor.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 09 -->
+    <div class="shot-card" id="card-shot-09" data-file="shot-09-chain-export.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-09-chain-export.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">📤</div>
+          <div class="shot-placeholder-label">Menu de export da chain</div>
+          <div class="shot-placeholder-file">shot-09-chain-export.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-09')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 09</div>
+        <div class="shot-name">Export menu — TXT / HTML / DOCX</div>
+        <div class="shot-desc">Submenu de export aberto mostrando os 3 formatos com diferenciação visual FREE vs PRO.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Submenu com .txt, .html e .docx visíveis</div>
+          <div class="shot-check">Diferenciação FREE/PRO clara</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-09-chain-export.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 11 -->
+    <div class="shot-card" id="card-shot-11" data-file="shot-11-new-project-modal.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-11-new-project-modal.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">📂</div>
+          <div class="shot-placeholder-label">Modal de novo projeto</div>
+          <div class="shot-placeholder-file">shot-11-new-project-modal.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-11')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 11</div>
+        <div class="shot-name">Criar novo projeto</div>
+        <div class="shot-desc">Modal com nome "AI Research" preenchido, paleta de cores com uma cor selecionada (checkmark visível).</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Nome do projeto preenchido</div>
+          <div class="shot-check">Cor selecionada com checkmark</div>
+          <div class="shot-check">Botões Cancelar / Criar visíveis</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-11-new-project-modal.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 13 -->
+    <div class="shot-card" id="card-shot-13" data-file="shot-13-popup.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-13-popup.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">📊</div>
+          <div class="shot-placeholder-label">Popup com dados reais</div>
+          <div class="shot-placeholder-file">shot-13-popup.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-13')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 13</div>
+        <div class="shot-name">Popup — painel de estatísticas</div>
+        <div class="shot-desc">Popup completo com capturas hoje, total, filas com contagens, logs recentes, tags e barra de storage preenchida.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Capturas hoje: pelo menos 3</div>
+          <div class="shot-check">Logs recentes visíveis</div>
+          <div class="shot-check">Barra de storage com percentual real</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-13-popup.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 14 -->
+    <div class="shot-card" id="card-shot-14" data-file="shot-14-settings-overview.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-14-settings-overview.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">⚙️</div>
+          <div class="shot-placeholder-label">Modal de configurações</div>
+          <div class="shot-placeholder-file">shot-14-settings-overview.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-14')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 14</div>
+        <div class="shot-name">Settings — visão geral</div>
+        <div class="shot-desc">Modal de configurações com seções recolhidas visíveis: Inject, Buttons, Animation, Telemetry, Backup, Language...</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Seções em accordion visíveis</div>
+          <div class="shot-check">Modal centralizado sobre o dashboard</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-14-settings-overview.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 15 -->
+    <div class="shot-card" id="card-shot-15" data-file="shot-15-settings-telemetry.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-15-settings-telemetry.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">📊</div>
+          <div class="shot-placeholder-label">Settings — Telemetria</div>
+          <div class="shot-placeholder-file">shot-15-settings-telemetry.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-15')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 15</div>
+        <div class="shot-name">Settings — Telemetria expandida</div>
+        <div class="shot-desc">Seção de telemetria expandida com toggle ON (verde), painel de stats com eventos e último envio.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Toggle ON visível (verde)</div>
+          <div class="shot-check">Contadores de eventos preenchidos</div>
+          <div class="shot-check">Botão "Ver Estatísticas" visível</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-15-settings-telemetry.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 16 -->
+    <div class="shot-card" id="card-shot-16" data-file="shot-16-settings-backup.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-16-settings-backup.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">💾</div>
+          <div class="shot-placeholder-label">Settings — Backup</div>
+          <div class="shot-placeholder-file">shot-16-settings-backup.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-16')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 16</div>
+        <div class="shot-name">Settings — Backup criptografado</div>
+        <div class="shot-desc">Seção de backup expandida mostrando botões PRO e indicação AES-256-GCM.</div>
+        <div class="shot-checklist">
+          <div class="shot-check">Botões Backup / Restaurar visíveis</div>
+          <div class="shot-check">Badge PRO visível</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-16-settings-backup.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+    <!-- SHOT 17 -->
+    <div class="shot-card" id="card-shot-17" data-file="shot-17-ethical-gate.png">
+      <div class="shot-img-area">
+        <img src="screenshots/shot-17-ethical-gate.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="shot-placeholder" style="display:none">
+          <div class="shot-placeholder-icon">⚖️</div>
+          <div class="shot-placeholder-label">Gate ético (welcome modal)</div>
+          <div class="shot-placeholder-file">shot-17-ethical-gate.png</div>
+        </div>
+        <input type="file" accept="image/*" onchange="loadImage(this, 'card-shot-17')">
+      </div>
+      <div class="shot-info">
+        <div class="shot-num">Shot 17</div>
+        <div class="shot-name">Gate ético — primeira experiência</div>
+        <div class="shot-desc">
+          Welcome modal centralizado. Para forçar: DevTools → Console →
+          <code style="font-size:10px;background:#1a1f29;padding:1px 5px;border-radius:3px;">chrome.storage.local.remove('nodus_accepted_terms', () => location.reload())</code>
+        </div>
+        <div class="shot-checklist">
+          <div class="shot-check">Modal centralizado sobre fundo escurecido</div>
+          <div class="shot-check">Logo + checkmarks visíveis</div>
+          <div class="shot-check">Checkbox e botões visíveis</div>
+          <div class="shot-check">Zoom 100% (compensação automática ativa)</div>
+        </div>
+      </div>
+      <div class="shot-footer">
+        <div class="shot-filename">screenshots/shot-17-ethical-gate.png</div>
+        <div class="shot-status">Pendente</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       AVALIAÇÃO GERAL
+  ═══════════════════════════════════ -->
+  <div class="eval-panel">
+    <div class="eval-title">📊 Status geral</div>
+    <div class="eval-grid">
+      <div class="eval-item">
+        <div class="eval-item-label">Store slots prontos</div>
+        <div class="eval-item-value" id="evalStore">0 / 5</div>
+        <div class="eval-item-note">Mínimo 5 para submissão</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-item-label">Set completo</div>
+        <div class="eval-item-value" id="evalFull">0 / 17</div>
+        <div class="eval-item-note">Para docs e divulgação</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-item-label">Progresso</div>
+        <div class="eval-item-value" id="evalPct">0%</div>
+        <div class="eval-item-note">Screenshots colocadas</div>
+      </div>
+      <div class="eval-item">
+        <div class="eval-item-label">Status</div>
+        <div class="eval-item-value" id="evalStatus" style="font-size:14px;color:var(--muted);">Aguardando prints</div>
+        <div class="eval-item-note" id="evalStatusNote">Coloque os screenshots nas pastas indicadas</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  var TOTAL = 17;
+  var STORE_IDS = ['card-shot-04','card-shot-01','card-shot-12','card-shot-07','card-shot-10'];
+
+  function countReady() {
+    var done = 0, storeDone = 0;
+    document.querySelectorAll('.shot-card').forEach(function(card) {
+      var img = card.querySelector('img');
+      var ready = img && img.style.display !== 'none' && img.complete && img.naturalWidth > 0;
+      if (ready) {
+        done++;
+        card.classList.add('has-image');
+        card.querySelector('.shot-status').textContent = '✓ Pronto';
+        // mark checklist items as done
+        card.querySelectorAll('.shot-check').forEach(function(c) { c.classList.add('done'); });
+        if (STORE_IDS.indexOf(card.id) !== -1) storeDone++;
+      } else {
+        card.classList.remove('has-image');
+        card.querySelector('.shot-status').textContent = 'Pendente';
+      }
+    });
+    return { done: done, storeDone: storeDone };
+  }
+
+  function updateUI() {
+    var r = countReady();
+    var pct = Math.round((r.done / TOTAL) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('doneCount').textContent = r.done;
+    document.getElementById('totalCount').textContent = TOTAL;
+    document.getElementById('storeCount').textContent = r.storeDone;
+    document.getElementById('evalStore').textContent = r.storeDone + ' / 5';
+    document.getElementById('evalFull').textContent = r.done + ' / ' + TOTAL;
+    document.getElementById('evalPct').textContent = pct + '%';
+    var statusEl = document.getElementById('evalStatus');
+    var noteEl   = document.getElementById('evalStatusNote');
+    if (r.storeDone === 5 && r.done === TOTAL) {
+      statusEl.textContent = '🟢 Completo'; statusEl.style.color = 'var(--green)';
+      noteEl.textContent = 'Todos os prints prontos — enviar para revisão';
+    } else if (r.storeDone === 5) {
+      statusEl.textContent = '🟡 Store OK'; statusEl.style.color = 'var(--yellow)';
+      noteEl.textContent = 'Store pronto · Faltam ' + (TOTAL - r.done) + ' do set completo';
+    } else if (r.done > 0) {
+      statusEl.textContent = '🔵 Em progresso'; statusEl.style.color = 'var(--blue)';
+      noteEl.textContent = r.done + ' prontos · Faltam ' + (5 - r.storeDone) + ' slots da Store';
+    } else {
+      statusEl.textContent = 'Aguardando'; statusEl.style.color = 'var(--muted)';
+      noteEl.textContent = 'Coloque os screenshots nas pastas indicadas';
+    }
+  }
+
+  function loadImage(input, cardId) {
+    var file = input.files[0];
+    if (!file) return;
+    var card = document.getElementById(cardId);
+    var img = card.querySelector('img');
+    var placeholder = card.querySelector('.shot-placeholder');
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      img.src = e.target.result;
+      img.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
+      updateUI();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Check images after load
+  window.addEventListener('load', function() {
+    var imgs = document.querySelectorAll('.shot-img-area img');
+    var loaded = 0;
+    function check() { loaded++; if (loaded >= imgs.length) updateUI(); }
+    imgs.forEach(function(img) {
+      if (img.complete) { check(); } else {
+        img.addEventListener('load', check);
+        img.addEventListener('error', check);
+      }
+    });
+    if (imgs.length === 0) updateUI();
+  });
+</script>
+
+</body>
+</html>
