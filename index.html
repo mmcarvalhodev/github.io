@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NODUS — Capture & Organize AI Conversations Locally</title>
   <meta name="description" content="NODUS is a free browser extension for Chrome, Edge, and Brave that captures and organizes your AI conversations locally. Works with ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek." />
+  <meta name="keywords" content="chatgpt extension, save chatgpt conversations, organize ai responses, ai idea capture, chrome extension ai, capture ai conversations, chatgpt chrome extension, ai productivity tool, browser extension chatgpt" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://nodus-ai.app/" />
+  <link rel="alternate" hreflang="en" href="https://nodus-ai.app/?lang=en" />
+  <link rel="alternate" hreflang="pt" href="https://nodus-ai.app/?lang=pt" />
+  <link rel="alternate" hreflang="es" href="https://nodus-ai.app/?lang=es" />
+  <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="NODUS — Capture & Organize AI Conversations Locally" />
@@ -3013,6 +3021,24 @@
       }
     };
 
+    var SEO = {
+      en: {
+        title: 'NODUS — Capture & Organize AI Conversations Locally',
+        description: 'NODUS is a free Chrome extension that captures and organizes your AI conversations locally. Save, tag, chain and search ideas from ChatGPT, Claude, Gemini, Copilot, Grok, DeepSeek and Perplexity.',
+        keywords: 'chatgpt extension, save chatgpt conversations, organize ai responses, ai idea capture, chrome extension ai, capture ai conversations, chatgpt chrome extension, ai productivity tool, browser extension chatgpt, claude ai extension'
+      },
+      pt: {
+        title: 'NODUS — Capture e Organize Conversas de IA Localmente',
+        description: 'NODUS é uma extensão gratuita para Chrome que captura e organiza suas conversas de IA localmente. Salve, etiquete e pesquise ideias do ChatGPT, Claude, Gemini, Copilot, Grok, DeepSeek e Perplexity.',
+        keywords: 'extensão chatgpt, salvar conversas chatgpt, organizar respostas ia, capturar ideias ia, extensão chrome ia, chatgpt extensão chrome, ferramenta produtividade ia, extensão navegador chatgpt'
+      },
+      es: {
+        title: 'NODUS — Captura y Organiza Conversaciones de IA Localmente',
+        description: 'NODUS es una extensión gratuita para Chrome que captura y organiza tus conversaciones de IA localmente. Guarda, etiqueta y busca ideas de ChatGPT, Claude, Gemini, Copilot, Grok, DeepSeek y Perplexity.',
+        keywords: 'extensión chatgpt, guardar conversaciones chatgpt, organizar respuestas ia, capturar ideas ia, extensión chrome ia, chatgpt extensión chrome, herramienta productividad ia, extensión navegador chatgpt'
+      }
+    };
+
     function applyLang(lang) {
       var t = T[lang] || T['en'];
       // textContent elements
@@ -3029,6 +3055,22 @@
       document.querySelectorAll('.lang-btn').forEach(function(btn) {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
       });
+      // SEO meta tags + html lang
+      var seo = SEO[lang] || SEO['en'];
+      document.title = seo.title;
+      document.documentElement.lang = lang;
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', seo.description);
+      var metaKw = document.querySelector('meta[name="keywords"]');
+      if (metaKw) metaKw.setAttribute('content', seo.keywords);
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', seo.title);
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', seo.description);
+      var twTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twTitle) twTitle.setAttribute('content', seo.title);
+      var twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (twDesc) twDesc.setAttribute('content', seo.description);
       // persist
       try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
     }
