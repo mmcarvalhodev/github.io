@@ -1751,6 +1751,24 @@
     .lang-opt:hover { background: rgba(255,255,255,0.07); color: var(--fg); }
     .lang-opt.active { color: var(--yellow); font-weight: 700; }
     #langCurrent { color: var(--yellow); }
+    .lang-globe {
+      display: inline-block;
+      font-size: 13px;
+      line-height: 1;
+      width: 1em;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+    .lang-globe::before {
+      content: '🌍';
+      display: inline-block;
+      animation: globeSpin 2.4s steps(1) infinite;
+    }
+    @keyframes globeSpin {
+      0%   { content: '🌍'; }
+      33%  { content: '🌎'; }
+      66%  { content: '🌏'; }
+    }
 
   </style>
 </head>
@@ -1780,7 +1798,7 @@
       </ul>
       <div class="lang-switcher" id="langSwitcher">
         <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span class="lang-globe"></span>
           <span id="langCurrent">EN</span>
           <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
