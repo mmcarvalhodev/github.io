@@ -4382,11 +4382,18 @@
       if (twTitle) twTitle.setAttribute('content', seo.title);
       var twDesc = document.querySelector('meta[name="twitter:description"]');
       if (twDesc) twDesc.setAttribute('content', seo.description);
+      // canonical per language
+      var canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute('href', 'https://nodus-ai.app/?lang=' + lang);
       // persist
       try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
     }
 
     function detectLang() {
+      try {
+        var urlParam = new URLSearchParams(window.location.search).get('lang');
+        if (urlParam && T[urlParam]) return urlParam;
+      } catch(e) {}
       try {
         var saved = localStorage.getItem('nodus_lang');
         if (saved && T[saved]) return saved;
@@ -4425,8 +4432,14 @@
       document.querySelectorAll('.lang-opt').forEach(function(opt) {
         opt.addEventListener('click', function(e) {
           e.stopPropagation();
-          applyLang(opt.getAttribute('data-lang'));
-          try { localStorage.setItem('nodus_lang', opt.getAttribute('data-lang')); } catch(e2) {}
+          var selectedLang = opt.getAttribute('data-lang');
+          applyLang(selectedLang);
+          try { localStorage.setItem('nodus_lang', selectedLang); } catch(e2) {}
+          try {
+            var url = new URL(window.location.href);
+            url.searchParams.set('lang', selectedLang);
+            history.replaceState(null, '', url.toString());
+          } catch(e3) {}
         });
       });
     });
