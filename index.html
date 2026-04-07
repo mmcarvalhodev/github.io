@@ -653,6 +653,18 @@
       .steps-grid { grid-template-columns: 1fr; }
     }
 
+    .demo-gif {
+      max-width: 780px;
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 720px) {
+      .demo-gif { border-radius: 10px; }
+    }
+
     .step-card {
       background: var(--panel);
       border: 1px solid var(--border);
@@ -2021,6 +2033,18 @@
         </div>
 
       </div>
+
+      <!-- Demo GIF -->
+      <div class="demo-gif-wrap reveal" style="margin-top:48px;text-align:center;">
+        <div class="section-label" style="margin-bottom:16px;" data-i18n="demoLabel">See it in action</div>
+        <img
+          src="demo.gif"
+          alt="NODUS demo — save AI response with one click"
+          class="demo-gif"
+          loading="lazy"
+        />
+      </div>
+
     </div>
   </section>
 
@@ -2689,6 +2713,7 @@
         heroBtn1: '⚡ Install free', heroBtn2: '★ View on GitHub',
         trust1: 'No account required', trust3: '7 AI platforms',
         howLabel: 'How it works', howTitle: 'Three steps. That\'s it.',
+        demoLabel: 'See it in action',
         howSub: 'NODUS sits invisibly in your browser and activates only when you want it to. No paste, no copy, no friction.',
         step1num: 'Step 01', step1title: 'Browse any AI',
         step1desc: 'NODUS activates on 7 platforms the moment you open them. No setup per site — it just works.',
@@ -2828,7 +2853,7 @@
         heroDesc: 'NODUS é uma extensão de navegador que permite salvar, organizar, encadear e pesquisar conversas de IA no ChatGPT, Claude, Gemini e mais 4 plataformas — tudo armazenado de forma privada no seu dispositivo.',
         heroBtn1: '⚡ Instalar grátis', heroBtn2: '★ Ver no GitHub',
         trust1: 'Sem cadastro necessário', trust3: '7 plataformas de IA',
-        howLabel: 'Como funciona', howTitle: 'Três passos. Só isso.',
+        howLabel: 'Como funciona', demoLabel: 'Veja em ação', howTitle: 'Três passos. Só isso.',
         howSub: 'NODUS fica invisível no seu navegador e ativa apenas quando você quiser. Sem colar, sem copiar, sem atrito.',
         step1num: 'Passo 01', step1title: 'Acesse qualquer IA',
         step1desc: 'NODUS ativa em 7 plataformas no momento em que você as abre. Sem configuração por site — simplesmente funciona.',
@@ -2968,7 +2993,7 @@
         heroDesc: 'NODUS es una extensión de navegador que te permite guardar, etiquetar, encadenar y buscar conversaciones de IA en ChatGPT, Claude, Gemini y 4 plataformas más — todo almacenado de forma privada en tu dispositivo.',
         heroBtn1: '⚡ Instalar gratis', heroBtn2: '★ Ver en GitHub',
         trust1: 'Sin cuenta necesaria', trust3: '7 plataformas de IA',
-        howLabel: 'Cómo funciona', howTitle: 'Tres pasos. Eso es todo.',
+        howLabel: 'Cómo funciona', demoLabel: 'Véalo en acción', howTitle: 'Tres pasos. Eso es todo.',
         howSub: 'NODUS permanece invisible en tu navegador y se activa solo cuando tú quieres. Sin pegar, sin copiar, sin fricción.',
         step1num: 'Paso 01', step1title: 'Navega en cualquier IA',
         step1desc: 'NODUS se activa en 7 plataformas en el momento en que las abres. Sin configuración por sitio — simplemente funciona.',
@@ -3108,7 +3133,7 @@
         heroDesc: 'NODUS est une extension de navigateur qui vous permet de sauvegarder, étiqueter, enchaîner et rechercher des conversations IA dans ChatGPT, Claude, Gemini et 4 autres plateformes — tout stocké en privé sur votre appareil.',
         heroBtn1: '⚡ Installer gratuitement', heroBtn2: '★ Voir sur GitHub',
         trust1: 'Aucun compte requis', trust3: '7 plateformes IA',
-        howLabel: 'Comment ça marche', howTitle: 'Trois étapes. C\'est tout.',
+        howLabel: 'Comment ça marche', demoLabel: 'Voir en action', howTitle: 'Trois étapes. C\'est tout.',
         howSub: 'NODUS reste invisible dans votre navigateur et s\'active uniquement quand vous le souhaitez. Sans coller, sans copier, sans friction.',
         step1num: 'Étape 01', step1title: 'Naviguez sur n\'importe quelle IA',
         step1desc: 'NODUS s\'active sur 7 plateformes dès que vous les ouvrez. Aucune configuration par site — ça fonctionne simplement.',
@@ -3246,7 +3271,7 @@
         heroDesc: 'NODUS ist eine Browser-Erweiterung, mit der du KI-Gespräche in ChatGPT, Claude, Gemini und 4 weiteren Plattformen speichern, taggen, verknüpfen und durchsuchen kannst — alles privat auf deinem Gerät gespeichert.',
         heroBtn1: '⚡ Kostenlos installieren', heroBtn2: '★ Auf GitHub ansehen',
         trust1: 'Kein Konto erforderlich', trust3: '7 KI-Plattformen',
-        howLabel: 'So funktioniert\'s', howTitle: 'Drei Schritte. Das war\'s.',
+        howLabel: 'So funktioniert\'s', demoLabel: 'In Aktion sehen', howTitle: 'Drei Schritte. Das war\'s.',
         howSub: 'NODUS bleibt unsichtbar in deinem Browser und aktiviert sich nur, wenn du es willst. Kein Einfügen, kein Kopieren, kein Aufwand.',
         step1num: 'Schritt 01', step1title: 'Beliebige KI öffnen',
         step1desc: 'NODUS aktiviert sich auf 7 Plattformen, sobald du sie öffnest. Keine Einrichtung pro Website — es funktioniert einfach.',
@@ -3384,7 +3409,7 @@
         heroDesc: 'NODUSは、ChatGPT、Claude、Geminiなど7つのプラットフォームでAI会話を保存、タグ付け、チェーン化、検索できるブラウザ拡張機能です — すべてデバイス上でプライベートに保存。',
         heroBtn1: '⚡ 無料でインストール', heroBtn2: '★ GitHubで見る',
         trust1: 'アカウント不要', trust3: '7つのAIプラットフォーム',
-        howLabel: '使い方', howTitle: '3ステップ。それだけ。',
+        howLabel: '使い方', demoLabel: '実際に見る', howTitle: '3ステップ。それだけ。',
         howSub: 'NODUSはブラウザの中で見えない状態で動作し、必要な時だけ起動します。貼り付けも、コピーも、手間もなし。',
         step1num: 'ステップ 01', step1title: '任意のAIを開く',
         step1desc: 'NODUSは7つのプラットフォームを開いた瞬間に起動します。サイトごとの設定は不要 — ただ動きます。',
@@ -3537,7 +3562,7 @@
         heroBtn2: '★ Vedi su GitHub',
         trust1: 'Nessun Account Richiesto',
         trust3: '7 Piattaforme AI',
-        howLabel: 'Come Funziona',
+        howLabel: 'Come Funziona', demoLabel: 'Guarda in azione',
         howTitle: '3 Passi. Solo quelli.',
         howSub: 'NODUS funziona in modo invisibile nel tuo browser e si attiva solo quando ne hai bisogno. Niente incolla, niente copia, niente sforzo.',
         step1num: 'Passo 01',
@@ -3734,7 +3759,7 @@
         heroBtn2: '★ 在GitHub上查看',
         trust1: '无需账户',
         trust3: '7个AI平台',
-        howLabel: '如何使用',
+        howLabel: '如何使用', demoLabel: '实际演示',
         howTitle: '3步。就这样。',
         howSub: 'NODUS在您的浏览器中静默运行，只在需要时激活。无需粘贴，无需复制，无需费力。',
         step1num: '第01步',
@@ -3930,7 +3955,7 @@
         heroBtn2: '★ GitHub에서 보기',
         trust1: '계정 불필요',
         trust3: '7개 AI 플랫폼',
-        howLabel: '사용 방법',
+        howLabel: '사용 방법', demoLabel: '실제로 보기',
         howTitle: '3단계. 그게 전부입니다.',
         howSub: 'NODUS는 브라우저 안에서 눈에 띄지 않게 동작하며 필요할 때만 활성화됩니다. 붙여넣기도, 복사도, 수고도 필요 없습니다.',
         step1num: '단계 01',
@@ -4126,7 +4151,7 @@
         heroBtn2: '★ GitHub पर देखें',
         trust1: 'कोई खाता नहीं चाहिए',
         trust3: '7 AI प्लेटफ़ॉर्म',
-        howLabel: 'कैसे काम करता है',
+        howLabel: 'कैसे काम करता है', demoLabel: 'एक्शन में देखें',
         howTitle: '3 कदम। बस इतना।',
         howSub: 'NODUS आपके ब्राउज़र में अदृश्य रूप से काम करता है और केवल तब सक्रिय होता है जब आपको इसकी ज़रूरत होती है। कोई पेस्ट नहीं, कोई कॉपी नहीं, कोई मेहनत नहीं।',
         step1num: 'चरण 01',
