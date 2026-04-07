@@ -26,7 +26,6 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo-icon { width: 28px; height: 28px; }
     .nav-logo-text { font-size: 16px; font-weight: 800; color: var(--yellow); letter-spacing: -0.5px; }
     .nav-links { display: flex; gap: 24px; }
     .nav-links a { color: var(--sub); text-decoration: none; font-size: 14px; transition: color 0.2s; }
@@ -66,7 +65,7 @@
     }
     .section-divider { height: 1px; background: var(--border); margin: 0 0 32px; }
 
-    /* ── Store grid (5 slots, highlighted) ── */
+    /* ── Shot grid ── */
     .store-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -78,7 +77,7 @@
       background: var(--panel); border: 1px solid var(--border);
       border-radius: 12px; overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
+      cursor: zoom-in;
     }
     .shot:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.5); }
     .shot.store { border-color: rgba(250,204,21,.35); }
@@ -87,7 +86,12 @@
       position: relative; width: 100%; aspect-ratio: 16/10;
       background: #080b10; overflow: hidden;
     }
-    .shot-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .shot-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.3s;
+    }
+    .shot:hover .shot-img img { transform: scale(1.02); }
+
     .store-badge {
       position: absolute; top: 8px; left: 8px;
       background: rgba(250,204,21,.92); color: #0e1117;
@@ -100,24 +104,61 @@
 
     /* ── Lightbox ── */
     .lb-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+      position: fixed; inset: 0; background: rgba(0,0,0,0.94);
       z-index: 9999; display: none; align-items: center; justify-content: center;
-      padding: 24px;
+      padding: 0;
+      cursor: zoom-out;
     }
     .lb-overlay.active { display: flex; }
-    .lb-img { max-width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 24px 60px rgba(0,0,0,0.8); }
+
+    .lb-inner {
+      position: relative;
+      max-width: 98vw;
+      max-height: 96vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-img {
+      display: block;
+      max-width: 98vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.9);
+      cursor: default;
+    }
+
     .lb-close {
-      position: absolute; top: 20px; right: 24px;
-      background: none; border: none; color: #fff; font-size: 32px;
-      cursor: pointer; opacity: 0.7; transition: opacity 0.2s;
+      position: fixed; top: 16px; right: 20px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 22px; line-height: 1;
+      cursor: pointer; opacity: 0.85; transition: opacity 0.2s, background 0.2s;
+      width: 40px; height: 40px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
     }
-    .lb-close:hover { opacity: 1; }
+    .lb-close:hover { opacity: 1; background: rgba(255,255,255,0.18); }
+
     .lb-caption {
-      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
       color: var(--sub); font-size: 12px; padding: 6px 16px;
-      border-radius: 99px; white-space: nowrap;
+      border-radius: 99px; white-space: nowrap; max-width: 90vw;
+      overflow: hidden; text-overflow: ellipsis;
     }
+
+    .lb-open-btn {
+      position: fixed; top: 16px; right: 68px;
+      background: rgba(250,204,21,0.15); border: 1px solid rgba(250,204,21,0.3);
+      color: var(--yellow); font-size: 12px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+      padding: 0 14px; height: 40px; border-radius: 8px;
+      display: flex; align-items: center; gap: 6px;
+      text-decoration: none;
+    }
+    .lb-open-btn:hover { background: rgba(250,204,21,0.25); }
 
     /* ── Footer ── */
     footer {
@@ -131,7 +172,6 @@
 
   <nav>
     <a class="nav-logo" href="../index.html">
-      <img class="nav-logo-icon" src="../icons/nodus-48.png" alt="NODUS" onerror="this.style.display='none'">
       <span class="nav-logo-text">NODUS</span>
     </a>
     <div class="nav-links">
@@ -158,9 +198,9 @@
       <div class="section-divider"></div>
       <div class="store-grid">
 
-        <div class="shot store" onclick="openLb('screenshots/shot-04-dashboard-cards.png','Dashboard — Cards view with Quick Save')">
+        <div class="shot store" onclick="openLb('screenshots/image9.png','Dashboard — Cards view with Quick Save')">
           <div class="shot-img">
-            <img src="screenshots/shot-04-dashboard-cards.png" alt="Dashboard Cards">
+            <img src="screenshots/image9.png" alt="Dashboard Cards">
             <div class="store-badge">Store #1</div>
           </div>
           <div class="shot-info">
@@ -169,9 +209,9 @@
           </div>
         </div>
 
-        <div class="shot store" onclick="openLb('screenshots/shot-01-buttons-chatgpt.png','Capture buttons on a ChatGPT response')">
+        <div class="shot store" onclick="openLb('screenshots/image2.png','Capture buttons on a ChatGPT response')">
           <div class="shot-img">
-            <img src="screenshots/shot-01-buttons-chatgpt.png" alt="Buttons on ChatGPT">
+            <img src="screenshots/image2.png" alt="Buttons on ChatGPT">
             <div class="store-badge">Store #2</div>
           </div>
           <div class="shot-info">
@@ -180,9 +220,9 @@
           </div>
         </div>
 
-        <div class="shot store" onclick="openLb('screenshots/shot-12-inject-chatgpt.png','Inject idea into ChatGPT — confirmation toast')">
+        <div class="shot store" onclick="openLb('screenshots/image19.png','Inject idea into ChatGPT — confirmation toast')">
           <div class="shot-img">
-            <img src="screenshots/shot-12-inject-chatgpt.png" alt="Inject into ChatGPT">
+            <img src="screenshots/image19.png" alt="Inject into ChatGPT">
             <div class="store-badge">Store #3</div>
           </div>
           <div class="shot-info">
@@ -191,9 +231,9 @@
           </div>
         </div>
 
-        <div class="shot store" onclick="openLb('screenshots/shot-07-chains-list.png','Chains — linked ideas across conversations')">
+        <div class="shot store" onclick="openLb('screenshots/image3.png','Chains — linked ideas across conversations')">
           <div class="shot-img">
-            <img src="screenshots/shot-07-chains-list.png" alt="Chains list">
+            <img src="screenshots/image3.png" alt="Chains list">
             <div class="store-badge">Store #4</div>
           </div>
           <div class="shot-info">
@@ -202,14 +242,14 @@
           </div>
         </div>
 
-        <div class="shot store" onclick="openLb('screenshots/shot-10-projects.png','Projects — organize ideas by project')">
+        <div class="shot store" onclick="openLb('screenshots/image11.png','Popup stats — quick overview from toolbar')">
           <div class="shot-img">
-            <img src="screenshots/shot-10-projects.png" alt="Projects">
+            <img src="screenshots/image11.png" alt="Popup stats">
             <div class="store-badge">Store #5</div>
           </div>
           <div class="shot-info">
-            <div class="shot-name">Projects</div>
-            <div class="shot-desc">Organize cards and chains into color-coded projects</div>
+            <div class="shot-name">Quick Stats</div>
+            <div class="shot-desc">Captures and usage at a glance from the toolbar icon</div>
           </div>
         </div>
 
@@ -225,91 +265,99 @@
       <div class="section-divider"></div>
       <div class="store-grid">
 
-        <div class="shot" onclick="openLb('screenshots/shot-02-save-modal.png','Save modal — queues, tags and metadata')">
-          <div class="shot-img"><img src="screenshots/shot-02-save-modal.png" alt="Save modal"></div>
+        <div class="shot" onclick="openLb('screenshots/image1.png','Save modal — queues, tags and metadata')">
+          <div class="shot-img"><img src="screenshots/image1.png" alt="Save modal"></div>
           <div class="shot-info">
             <div class="shot-name">Save Modal</div>
             <div class="shot-desc">Full save dialog with queues, tags and quick actions</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-03-quick-save-toast.png','Quick Save — one-click capture with toast feedback')">
-          <div class="shot-img"><img src="screenshots/shot-03-quick-save-toast.png" alt="Quick Save toast"></div>
+        <div class="shot" onclick="openLb('screenshots/image4.png','Quick Save — one-click capture with toast feedback')">
+          <div class="shot-img"><img src="screenshots/image4.png" alt="Quick Save toast"></div>
           <div class="shot-info">
             <div class="shot-name">Quick Save</div>
             <div class="shot-desc">One-click capture with instant confirmation toast</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-05-card-actions.png','Card expanded — question and answer with actions')">
-          <div class="shot-img"><img src="screenshots/shot-05-card-actions.png" alt="Card actions"></div>
+        <div class="shot" onclick="openLb('screenshots/image5.png','Card expanded — question and answer with actions')">
+          <div class="shot-img"><img src="screenshots/image5.png" alt="Card actions"></div>
           <div class="shot-info">
             <div class="shot-name">Card Detail</div>
-            <div class="shot-desc">Expanded card showing Q&A content with copy, edit and delete actions</div>
+            <div class="shot-desc">Expanded card showing Q&amp;A content with copy, edit and delete actions</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-06-filters.png','Filters panel — by platform, date and tags')">
-          <div class="shot-img"><img src="screenshots/shot-06-filters.png" alt="Filters"></div>
+        <div class="shot" onclick="openLb('screenshots/image6.png','Filters panel — by platform, date and tags')">
+          <div class="shot-img"><img src="screenshots/image6.png" alt="Filters"></div>
           <div class="shot-info">
             <div class="shot-name">Filters</div>
             <div class="shot-desc">Filter ideas by platform, date range and tags</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-08-chain-editor.png','Chain editor — nodes and linked ideas')">
-          <div class="shot-img"><img src="screenshots/shot-08-chain-editor.png" alt="Chain editor"></div>
+        <div class="shot" onclick="openLb('screenshots/image7.png','Chain editor — nodes and linked ideas')">
+          <div class="shot-img"><img src="screenshots/image7.png" alt="Chain editor"></div>
           <div class="shot-info">
             <div class="shot-name">Chain Editor</div>
             <div class="shot-desc">Build and manage chains of linked ideas</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-11-new-project-modal.png','New Project modal — name and color')">
-          <div class="shot-img"><img src="screenshots/shot-11-new-project-modal.png" alt="New project"></div>
+        <div class="shot" onclick="openLb('screenshots/image8.png','Dashboard search — find ideas across all platforms')">
+          <div class="shot-img"><img src="screenshots/image8.png" alt="Search"></div>
+          <div class="shot-info">
+            <div class="shot-name">Search</div>
+            <div class="shot-desc">Search across all your captured ideas in real time</div>
+          </div>
+        </div>
+
+        <div class="shot" onclick="openLb('screenshots/image10.png','New Project modal — name and color')">
+          <div class="shot-img"><img src="screenshots/image10.png" alt="New project"></div>
           <div class="shot-info">
             <div class="shot-name">New Project</div>
             <div class="shot-desc">Create a color-coded project to organize your ideas</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-13-popup.png','Extension popup — stats at a glance')">
-          <div class="shot-img"><img src="screenshots/shot-13-popup.png" alt="Popup stats"></div>
+        <div class="shot" onclick="openLb('screenshots/image12.png','Extension popup — stats at a glance')">
+          <div class="shot-img"><img src="screenshots/image12.png" alt="Popup"></div>
           <div class="shot-info">
-            <div class="shot-name">Popup Stats</div>
+            <div class="shot-name">Extension Popup</div>
             <div class="shot-desc">Quick overview of captures, tags and storage from the toolbar icon</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-14-settings-overview.png','Settings — full menu overview')">
-          <div class="shot-img"><img src="screenshots/shot-14-settings-overview.png" alt="Settings"></div>
+        <div class="shot" onclick="openLb('screenshots/image13.png','Settings — full menu overview')">
+          <div class="shot-img"><img src="screenshots/image13.png" alt="Settings"></div>
           <div class="shot-info">
             <div class="shot-name">Settings</div>
             <div class="shot-desc">Full settings panel with language, backup, telemetry and more</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-15-metrics.png','Personal Metrics — local usage stats')">
-          <div class="shot-img"><img src="screenshots/shot-15-metrics.png" alt="Metrics"></div>
+        <div class="shot" onclick="openLb('screenshots/image14.png','Personal Metrics — local usage stats')">
+          <div class="shot-img"><img src="screenshots/image14.png" alt="Metrics"></div>
           <div class="shot-info">
             <div class="shot-name">Personal Metrics</div>
             <div class="shot-desc">Usage stats calculated locally — total events, reuse rate, platforms</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-16-settings-backup.png','Backup & Restore — PRO feature')">
-          <div class="shot-img"><img src="screenshots/shot-16-settings-backup.png" alt="Backup PRO"></div>
+        <div class="shot" onclick="openLb('screenshots/image15.png','Backup &amp; Restore — PRO feature')">
+          <div class="shot-img"><img src="screenshots/image15.png" alt="Backup PRO"></div>
           <div class="shot-info">
             <div class="shot-name">Backup &amp; Restore <span style="font-size:10px;background:rgba(245,158,11,.2);color:#f59e0b;padding:1px 6px;border-radius:4px;font-weight:700;">PRO</span></div>
             <div class="shot-desc">Encrypted backup and cross-device restore for PRO users</div>
           </div>
         </div>
 
-        <div class="shot" onclick="openLb('screenshots/shot-17-ethical-gate.png','Welcome gate — ethics and privacy first')">
-          <div class="shot-img"><img src="screenshots/shot-17-ethical-gate.png" alt="Ethical gate"></div>
+        <div class="shot" onclick="openLb('screenshots/image16.png','Welcome gate — ethics and privacy first')">
+          <div class="shot-img"><img src="screenshots/image16.png" alt="Welcome gate"></div>
           <div class="shot-info">
             <div class="shot-name">Welcome Gate</div>
-            <div class="shot-desc">Transparent ethics & privacy summary shown on first launch</div>
+            <div class="shot-desc">Transparent ethics &amp; privacy summary shown on first launch</div>
           </div>
         </div>
 
@@ -318,9 +366,14 @@
   </div>
 
   <!-- Lightbox -->
-  <div class="lb-overlay" id="lb" onclick="closeLb(event)">
-    <button class="lb-close" onclick="closeLb()">×</button>
-    <img class="lb-img" id="lb-img" src="" alt="">
+  <div class="lb-overlay" id="lb" onclick="closeLbOverlay(event)">
+    <div class="lb-inner" onclick="event.stopPropagation()">
+      <img class="lb-img" id="lb-img" src="" alt="">
+    </div>
+    <button class="lb-close" onclick="closeLb()" title="Close (Esc)">✕</button>
+    <a class="lb-open-btn" id="lb-open" href="#" target="_blank" rel="noopener">
+      ↗ Open full size
+    </a>
     <div class="lb-caption" id="lb-cap"></div>
   </div>
 
@@ -330,16 +383,26 @@
 
   <script>
     function openLb(src, cap) {
-      document.getElementById('lb-img').src = src;
-      document.getElementById('lb-cap').textContent = cap;
+      var img = document.getElementById('lb-img');
+      var capEl = document.getElementById('lb-cap');
+      var openBtn = document.getElementById('lb-open');
+      img.src = src;
+      img.alt = cap;
+      capEl.textContent = cap;
+      openBtn.href = src;
       document.getElementById('lb').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
-    function closeLb(e) {
-      if (!e || e.target === document.getElementById('lb') || e.target.classList.contains('lb-close')) {
-        document.getElementById('lb').classList.remove('active');
-      }
+    function closeLb() {
+      document.getElementById('lb').classList.remove('active');
+      document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(e); });
+    function closeLbOverlay(e) {
+      if (e.target === document.getElementById('lb')) closeLb();
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLb();
+    });
   </script>
 </body>
 </html>
