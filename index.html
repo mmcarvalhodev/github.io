@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NODUS — Capture & Organize AI Conversations Locally</title>
-  <meta name="description" content="NODUS is a free browser extension for Chrome, Edge, and Brave that captures and organizes your AI conversations locally. Works with ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek." />
+  <meta name="description" content="NODUS is a free browser extension for Chrome, Firefox, Edge, and Brave that captures and organizes your AI conversations locally. Works with ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, and DeepSeek." />
   <meta name="keywords" content="chatgpt extension, save chatgpt conversations, save claude conversations, save gemini conversations, save copilot conversations, save grok conversations, save deepseek conversations, save perplexity conversations, claude ai extension, gemini extension chrome, copilot extension, grok extension, deepseek extension, perplexity extension, organize ai responses, ai idea capture, capture ai conversations, chrome extension ai, ai productivity tool, save ai responses, browser extension ai, chatgpt chrome extension, claude chrome extension, gemini chrome extension, ai conversation manager, ai notes extension" />
 
   <!-- Canonical & hreflang -->
@@ -21,12 +21,15 @@
   <link rel="alternate" hreflang="hi" href="https://nodus-ai.app/?lang=hi" />
   <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E" />
+
   <!-- Open Graph -->
   <meta property="og:title" content="NODUS — Capture & Organize AI Conversations Locally" />
   <meta property="og:description" content="A free, local-first browser extension that saves and organizes your AI conversations across ChatGPT, Claude, Gemini, and more." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nodus-ai.app" />
-  <meta property="og:image" content="https://nodus-ai.app/og-image.png" />
+  <meta property="og:image" content="https://nodus-ai.app/docs/screenshots/image9.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NODUS — Capture & Organize AI Conversations Locally" />
   <meta name="twitter:description" content="A free, local-first browser extension that saves and organizes your AI conversations." />
@@ -229,8 +232,63 @@
     }
     .nav-cta:hover { background: #fde047 !important; transform: translateY(-1px); text-decoration: none !important; }
 
+    /* Mobile hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .nav-hamburger:hover { background: rgba(255,255,255,0.06); }
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--sub);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     @media (max-width: 640px) {
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(14,17,23,0.97);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px 24px;
+        gap: 4px;
+        z-index: 99;
+      }
+      .nav-links.mobile-open li { width: 100%; }
+      .nav-links.mobile-open a {
+        display: block;
+        padding: 10px 0;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(45,55,72,0.4);
+      }
+      .nav-links.mobile-open .nav-cta {
+        margin-top: 12px;
+        text-align: center;
+        padding: 12px 20px;
+        display: block;
+        border-radius: 10px;
+        border-bottom: none;
+      }
     }
 
     /* =========================================
@@ -1810,6 +1868,9 @@
         <li><a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a></li>
         <li><a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">Get PRO</a></li>
       </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
       <div class="lang-switcher" id="langSwitcher">
         <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
           <span class="lang-globe"></span>
@@ -1875,7 +1936,7 @@
             </div>
             <div class="hero-trust-item">
               <span class="dot-green"></span>
-              Chrome · Edge · Brave
+              Chrome · Firefox · Edge · Brave
             </div>
             <div class="hero-trust-item">
               <span class="dot-green"></span>
@@ -2345,7 +2406,7 @@
             <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_projects3">Projects: up to 3</span></li>
             <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_inject">Inject content back into any AI</span></li>
             <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_attach">Attachments</span></li>
-            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_lang">PT / EN / ES interface</span></li>
+            <li class="pricing-feature"><span class="check">&#10003;</span> <span data-i18n="pricingFeat_lang">10 languages interface</span></li>
           </ul>
           <a href="https://nodus-ai.app/checkout.html" class="btn-full btn-full-outline" data-i18n="freeBtn">Get Free</a>
         </div>
@@ -2607,7 +2668,7 @@
   <div class="cta-section">
     <div class="cta-glow"></div>
     <h2 class="cta-title reveal" data-i18n-html="ctaTitle">Install free —<br /><span>no account required.</span></h2>
-    <p class="cta-sub reveal reveal-delay-1" data-i18n="ctaSub">Works on Chrome, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.</p>
+    <p class="cta-sub reveal reveal-delay-1" data-i18n="ctaSub">Works on Chrome, Firefox, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.</p>
     <div class="cta-actions reveal reveal-delay-2">
       <a href="https://nodus-ai.app/checkout.html" class="btn-primary" style="font-size:17px;padding:15px 36px;" data-i18n="ctaBtn1">
         &#9889; Install NODUS Free
@@ -2616,7 +2677,7 @@
         Get PRO — $4.50/month
       </a>
     </div>
-    <p class="cta-note reveal reveal-delay-3" data-i18n="ctaNote">MIT licensed &nbsp;·&nbsp; Chrome, Edge, Brave &nbsp;·&nbsp; Launching Q2 2026</p>
+    <p class="cta-note reveal reveal-delay-3" data-i18n="ctaNote">MIT licensed &nbsp;·&nbsp; Chrome · Firefox · Edge · Brave &nbsp;·&nbsp; Launching Q2 2026</p>
   </div>
 
   <!-- ==========================================
@@ -2797,9 +2858,9 @@
         openCoreProSub: 'Commercial features that keep the lights on. $4.50/month or $30/year funds active development.',
         openCoreProBtn: 'Get PRO — $4.50/mo',
         ctaTitle: 'Install free —<br /><span>no account required.</span>',
-        ctaSub: 'Works on Chrome, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.',
+        ctaSub: 'Works on Chrome, Firefox, Edge, and Brave. Your data never leaves your browser. Upgrade to PRO whenever you need more.',
         ctaBtn1: '⚡ Install NODUS Free', ctaBtn2: 'Get PRO — $4.50/month',
-        ctaNote: 'MIT licensed · Chrome, Edge, Brave · Launching Q2 2026',
+        ctaNote: 'MIT licensed · Chrome · Firefox · Edge · Brave · Launching Q2 2026',
         footerTagline: 'A local-first browser extension that captures and organizes your AI conversations across 7 platforms. MIT licensed. Built by one developer who got tired of losing good AI responses.',
         footerKofi: '☕ Support on Ko-fi',
         footerProduct: 'Product', footerHowItWorks: 'How it works',
@@ -2937,9 +2998,9 @@
         openCoreProSub: 'Funcionalidades comerciais que mantêm o projeto ativo. $4.50/mês ou $30/ano financiam o desenvolvimento contínuo.',
         openCoreProBtn: 'Obter PRO — $4.50/mês',
         ctaTitle: 'Instale grátis —<br /><span>sem conta necessária.</span>',
-        ctaSub: 'Funciona no Chrome, Edge e Brave. Seus dados nunca saem do seu navegador. Faça upgrade para PRO quando precisar de mais.',
+        ctaSub: 'Funciona no Chrome, Firefox, Edge e Brave. Seus dados nunca saem do seu navegador. Faça upgrade para PRO quando precisar de mais.',
         ctaBtn1: '⚡ Instalar NODUS Grátis', ctaBtn2: 'Obter PRO — $4.50/mês',
-        ctaNote: 'Licença MIT · Chrome, Edge, Brave · Lançamento Q2 2026',
+        ctaNote: 'Licença MIT · Chrome · Firefox · Edge · Brave · Lançamento Q2 2026',
         footerTagline: 'Uma extensão de navegador local-first que captura e organiza suas conversas com IA em 7 plataformas. Licença MIT. Criado por um desenvolvedor que cansou de perder boas respostas de IA.',
         footerKofi: '☕ Apoiar no Ko-fi',
         footerProduct: 'Produto', footerHowItWorks: 'Como funciona',
@@ -4455,6 +4516,29 @@
           trigger.setAttribute('aria-expanded', 'false');
         });
       }
+      // Hamburger menu toggle
+      var hamburger = document.getElementById('navHamburger');
+      var navLinks = document.querySelector('.nav-links');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          hamburger.classList.toggle('open');
+          navLinks.classList.toggle('mobile-open');
+        });
+        document.addEventListener('click', function(e) {
+          if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            hamburger.classList.remove('open');
+            navLinks.classList.remove('mobile-open');
+          }
+        });
+        navLinks.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            hamburger.classList.remove('open');
+            navLinks.classList.remove('mobile-open');
+          });
+        });
+      }
+
       // Lang option clicks
       document.querySelectorAll('.lang-opt').forEach(function(opt) {
         opt.addEventListener('click', function(e) {
