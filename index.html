@@ -2853,7 +2853,8 @@
       if (ev) { ev.stopPropagation(); ev.preventDefault(); }
       window.closeInstallModal();
       var store = btn.getAttribute('data-store');
-      var t = T[detectLang()] || T['en'];
+      var _T = window.T || {}; var _dl = window.detectLang || function(){ return 'en'; };
+      var t = _T[_dl()] || _T['en'] || {};
       var backdrop = document.getElementById('csBackdrop');
       var titleEl  = document.getElementById('csTitle');
       var subEl    = document.getElementById('csSub');
@@ -4658,6 +4659,10 @@
       if (nav.startsWith('hi')) return 'hi';
       return 'en';
     }
+
+    /* Expose T and detectLang globally so other scripts can use them */
+    window.T = T;
+    window.detectLang = detectLang;
 
     document.addEventListener('DOMContentLoaded', function() {
       var lang = detectLang();
