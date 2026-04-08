@@ -307,6 +307,9 @@
     }
 
     @media (max-width: 840px) {
+      .hero-inner { gap: 36px; }
+    }
+    @media (max-width: 680px) {
       .hero-inner { grid-template-columns: 1fr; }
     }
 
@@ -1758,7 +1761,10 @@
     @media (max-width: 840px) {
       .chains-sidebar { display: none; }
       .chains-main { display: flex; }
-      .privacy-grid, .hero-inner { grid-template-columns: 1fr; }
+      .privacy-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .hero-inner { grid-template-columns: 1fr !important; }
     }
 
     /* =========================================
@@ -1878,15 +1884,20 @@
     .store-card-arrow { color:rgba(255,255,255,0.2); flex-shrink:0; transition:color 0.15s,transform 0.15s; }
     .install-store-card:hover .store-card-arrow { color:var(--sub); transform:translateX(2px); }
     .coming-soon-toast {
-      display: none; position: fixed; bottom: 28px; left: 50%;
+      display: flex; position: fixed; bottom: 28px; left: 50%;
       transform: translateX(-50%) translateY(10px);
       background: #1e2530; border: 1px solid var(--border); border-radius: 10px;
       padding: 12px 22px; font-size: 13px; font-weight: 600; color: var(--text);
       box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 9999;
       gap: 8px; align-items: center; opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
+      visibility: hidden; pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s, visibility 0s linear 0.25s;
     }
-    .coming-soon-toast.show { display: flex; opacity: 1; transform: translateX(-50%) translateY(0); }
+    .coming-soon-toast.show {
+      opacity: 1; visibility: visible; pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+      transition: opacity 0.25s, transform 0.25s, visibility 0s linear 0s;
+    }
   </style>
 </head>
 <body>
@@ -4697,11 +4708,7 @@
     </button>
     <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="firefox">
       <div class="store-card-icon">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <circle cx="15" cy="15" r="11" fill="#0060DF"/>
-              <path d="M15 4C9 4 4.5 8.5 4.5 15C4.5 19.5 7 23.3 10.7 25.2C9.5 22.5 10.2 19.5 12 18C12.8 21 15 22.5 15 26C19.5 24 22.5 19.5 22.5 15C22.5 11 20.5 7.5 17.5 5.8C17.8 8.5 16 10.5 14 10C15 8 15.5 6 15 4Z" fill="#FF9500"/>
-              <path d="M15 4C9.5 5 6 9.5 6 15C6 19 7.8 22.5 10.7 24.8C10 22 11 19.5 13 18.5C13.5 21 15 22.5 15 26C18.5 23.8 21 20 21 15C21 11.5 19.5 8.5 17 6.5C17 9 15.5 10.5 14 10C15 8 15.5 6 15 4Z" fill="#FF6B35"/>
-            </svg>
+        <span style="font-size:22px;line-height:1;display:block;">🦊</span>
       </div>
       <div class="store-card-info">
         <div class="store-card-name">Firefox Add-ons</div>
