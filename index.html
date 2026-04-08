@@ -2801,16 +2801,14 @@
         observer.observe(el);
       });
 
-    function toggleInstallDrop(e) {
+    window.toggleInstallDrop = function(e) {
       e.stopPropagation();
       var wrap = document.getElementById('installBtn').parentElement;
       wrap.classList.toggle('open');
-    }
-    function showComingSoon(btn) {
-      // close dropdown
+    };
+    window.showComingSoon = function(btn) {
       var wrap = document.getElementById('installBtn').parentElement;
       wrap.classList.remove('open');
-      // show toast
       var toast = document.getElementById('comingSoonToast');
       var msg = document.getElementById('comingSoonMsg');
       var store = btn.getAttribute('data-store');
@@ -2821,8 +2819,7 @@
       toast.classList.add('show');
       clearTimeout(window._toastTimer);
       window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3000);
-    }
-    // Close dropdown on outside click
+    };
     document.addEventListener('click', function() {
       var wrap = document.getElementById('installBtn');
       if (wrap) wrap.parentElement.classList.remove('open');
