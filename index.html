@@ -2831,18 +2831,23 @@
       document.removeEventListener('click', window._closePopoverOutside);
       window.removeEventListener('scroll', window._closePopoverOnScroll);
     };
-    window.showComingSoon = function(btn) {
+    window.showComingSoon = function(btn, ev) {
+      if (ev) { ev.stopPropagation(); ev.preventDefault(); }
       window.closeInstallModal();
-      var toast = document.getElementById('comingSoonToast');
-      var msg = document.getElementById('comingSoonMsg');
       var store = btn.getAttribute('data-store');
       var t = T[detectLang()] || T['en'];
-      msg.textContent = store === 'chrome'
+      var text = store === 'chrome'
         ? (t.comingSoonChrome || 'Coming soon on the Chrome Web Store')
         : (t.comingSoonFirefox || 'Coming soon on Firefox Add-ons');
-      toast.classList.add('show');
       clearTimeout(window._toastTimer);
-      window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3000);
+      setTimeout(function() {
+        var toast = document.getElementById('comingSoonToast');
+        var msg  = document.getElementById('comingSoonMsg');
+        if (!toast || !msg) return;
+        msg.textContent = text;
+        toast.classList.add('show');
+        window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3000);
+      }, 80);
     };
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') window.closeInstallModal();
@@ -4693,7 +4698,7 @@
 
   <!-- Install Popover -->
   <div class="install-popover" id="installPopover">
-    <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="chrome">
+    <button class="install-store-card" onclick="window.showComingSoon(this,event)" data-store="chrome">
       <div class="store-card-icon">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <g transform="rotate(-90 15 15)">
@@ -4711,38 +4716,9 @@
       </div>
       <svg class="store-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
-    <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="firefox">
+    <button class="install-store-card" onclick="window.showComingSoon(this,event)" data-store="firefox">
       <div class="store-card-icon">
-        <svg width="30" height="30" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="fx1" cx="48%" cy="43%" r="57%" gradientUnits="userSpaceOnUse" fx="200" fy="200">
-              <stop offset="0%" stop-color="#FF980E"/>
-              <stop offset="35%" stop-color="#FF3750"/>
-              <stop offset="72%" stop-color="#C50042"/>
-              <stop offset="100%" stop-color="#9400FF"/>
-            </radialGradient>
-            <radialGradient id="fx2" cx="55%" cy="20%" r="65%" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#FFF44F"/>
-              <stop offset="25%" stop-color="#FFBD4F"/>
-              <stop offset="55%" stop-color="#FF980E"/>
-              <stop offset="78%" stop-color="#FF3750"/>
-              <stop offset="100%" stop-color="#C50042"/>
-            </radialGradient>
-            <radialGradient id="fx3" cx="45%" cy="45%" r="55%" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#80E5FF"/>
-              <stop offset="50%" stop-color="#0060DF"/>
-              <stop offset="100%" stop-color="#0D1B85"/>
-            </radialGradient>
-          </defs>
-          <!-- Outer flame body -->
-          <path d="M479 241c-3-11-7-22-12-33a184 184 0 00-34-53c5 20 6 40 3 57-12-43-38-82-73-109 4 17 5 36 1 52-14-50-46-94-91-122 5 23 3 48-7 70-32-62-95-104-166-109 29 25 47 61 47 100 0 4 0 8-1 12-18-24-44-41-74-47 20 22 30 52 27 82-45-35-72-88-72-148 0-20 3-38 9-56C14 183 0 228 0 276c0 141 114 256 256 256s256-115 256-256c0-12-1-24-3-35z" fill="url(#fx1)"/>
-          <!-- Inner flame highlight -->
-          <path d="M479 241c-3-11-7-22-12-33a172 172 0 00-20-35c-2 19-9 37-20 52 4-36-6-73-27-103 2 22-4 44-16 62-20-56-60-103-113-131 8 28 7 59-2 87-16-36-43-66-77-86 14 28 19 61 14 93-22-29-53-50-88-58 20 22 30 52 27 82-45-35-72-88-72-148 0-20 3-38 9-56C14 183 0 228 0 276c0 141 114 256 256 256 113 0 209-73 244-175-17-37-23-79-21-116z" fill="url(#fx2)" opacity="0.85"/>
-          <!-- Blue globe -->
-          <circle cx="256" cy="312" r="152" fill="url(#fx3)"/>
-          <!-- Globe shine -->
-          <ellipse cx="210" cy="265" rx="50" ry="75" fill="rgba(255,255,255,0.12)" transform="rotate(-20 210 265)"/>
-        </svg>
+        <img src="firefox-icon.svg" width="30" height="30" alt="Firefox" style="border-radius:4px;"/>
       </div>
       <div class="store-card-info">
         <div class="store-card-name">Firefox Add-ons</div>
