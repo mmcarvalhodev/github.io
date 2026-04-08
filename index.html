@@ -1843,30 +1843,44 @@
     }
 
 
-    /* Install dropdown */
-    .install-wrap { position: relative; display: inline-block; }
-    .install-chevron { transition: transform 0.2s; margin-left: 2px; opacity: 0.7; }
-    .install-wrap.open .install-chevron { transform: rotate(180deg); }
-    .install-drop {
-      display: none; position: absolute; top: calc(100% + 8px); left: 0;
-      background: #131720; border: 1px solid var(--border); border-radius: 10px;
-      padding: 5px; min-width: 200px; z-index: 200;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    /* Install modal */
+    .install-modal-backdrop {
+      display:none; position:fixed; inset:0;
+      background:rgba(0,0,0,0.65); backdrop-filter:blur(4px);
+      z-index:1000; align-items:center; justify-content:center;
     }
-    .install-wrap.open .install-drop { display: flex; flex-direction: column; gap: 2px; }
-    .install-opt {
-      display: flex; align-items: center; gap: 8px;
-      width: 100%; padding: 9px 12px; border: none; border-radius: 7px;
-      background: transparent; color: var(--sub); font-size: 13px; font-weight: 600;
-      cursor: pointer; text-align: left; transition: background 0.12s, color 0.12s;
+    .install-modal-backdrop.open { display:flex; animation:backdropIn 0.2s ease; }
+    @keyframes backdropIn { from{opacity:0} to{opacity:1} }
+    .install-modal {
+      background:#131720; border:1px solid rgba(255,255,255,0.1);
+      border-radius:16px; padding:24px; width:340px; max-width:90vw;
+      box-shadow:0 24px 64px rgba(0,0,0,0.7);
+      animation:modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
     }
-    .install-opt:hover { background: rgba(255,255,255,0.07); color: var(--text); }
-    .install-opt svg { flex-shrink: 0; opacity: 0.6; }
-    .opt-soon {
-      margin-left: auto; font-size: 9px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.3px; background: rgba(250,204,21,0.12); color: var(--yellow);
-      border: 1px solid rgba(250,204,21,0.25); padding: 1px 6px; border-radius: 4px;
+    @keyframes modalIn { from{opacity:0;transform:scale(0.88)} to{opacity:1;transform:scale(1)} }
+    .install-modal-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px; }
+    .install-modal-title { font-size:17px; font-weight:800; color:var(--text); }
+    .install-modal-sub { font-size:12px; color:var(--muted); margin-top:3px; }
+    .install-modal-close {
+      background:rgba(255,255,255,0.07); border:none; color:var(--muted);
+      width:28px; height:28px; border-radius:6px; cursor:pointer; font-size:12px;
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.15s,color 0.15s; flex-shrink:0;
     }
+    .install-modal-close:hover { background:rgba(255,255,255,0.12); color:var(--text); }
+    .install-modal-options { display:flex; flex-direction:column; gap:10px; }
+    .install-store-card {
+      display:flex; align-items:center; gap:14px; width:100%;
+      padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03); cursor:pointer; text-align:left;
+      transition:border-color 0.15s,background 0.15s,transform 0.15s;
+    }
+    .install-store-card:hover { border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.07); transform:translateY(-1px); }
+    .store-card-icon { width:44px; height:44px; border-radius:10px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .store-card-info { flex:1; }
+    .store-card-name { font-size:14px; font-weight:700; color:var(--text); }
+    .store-card-sub { font-size:11px; color:var(--yellow); font-weight:600; margin-top:2px; }
+    .store-card-arrow { color:var(--muted); flex-shrink:0; }
     .coming-soon-toast {
       display: none; position: fixed; bottom: 28px; left: 50%;
       transform: translateX(-50%) translateY(10px);
@@ -1956,28 +1970,9 @@
           </p>
 
           <div class="hero-actions reveal reveal-delay-3">
-            <div class="install-wrap">
-              <button class="btn-primary" onclick="toggleInstallDrop(event)" id="installBtn" data-i18n="heroBtn1">
-                &#9889; Install free
-                <svg class="install-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
-              <div class="install-drop" id="installDrop">
-                <button class="install-opt" onclick="showComingSoon(this)" data-store="chrome">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/></svg>
-                  Chrome Web Store
-                  <span class="opt-soon" data-i18n="storeSoon">Em breve</span>
-                </button>
-                <button class="install-opt" onclick="showComingSoon(this)" data-store="firefox">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4.5" stroke-dasharray="7 3"/></svg>
-                  Firefox Add-ons
-                  <span class="opt-soon" data-i18n="storeSoon">Em breve</span>
-                </button>
-              </div>
-            </div>
-            <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">
-              &#9733; View on GitHub
-            </a>
-          </div>
+                        <button class="btn-primary" onclick="window.openInstallModal()" data-i18n="heroBtn1">
+              &#9889; Install free
+            </button>
           <div class="coming-soon-toast" id="comingSoonToast"><span>&#128640;</span> <span id="comingSoonMsg"></span></div>
 
           <div class="hero-trust reveal reveal-delay-4">
@@ -2801,14 +2796,14 @@
         observer.observe(el);
       });
 
-    window.toggleInstallDrop = function(e) {
-      e.stopPropagation();
-      var wrap = document.getElementById('installBtn').parentElement;
-      wrap.classList.toggle('open');
+    window.openInstallModal = function() {
+      document.getElementById('installBackdrop').classList.add('open');
+    };
+    window.closeInstallModal = function() {
+      document.getElementById('installBackdrop').classList.remove('open');
     };
     window.showComingSoon = function(btn) {
-      var wrap = document.getElementById('installBtn').parentElement;
-      wrap.classList.remove('open');
+      window.closeInstallModal();
       var toast = document.getElementById('comingSoonToast');
       var msg = document.getElementById('comingSoonMsg');
       var store = btn.getAttribute('data-store');
@@ -2820,10 +2815,10 @@
       clearTimeout(window._toastTimer);
       window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3000);
     };
-    document.addEventListener('click', function() {
-      var wrap = document.getElementById('installBtn');
-      if (wrap) wrap.parentElement.classList.remove('open');
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.closeInstallModal();
     });
+
     })();
   </script>
 
@@ -4665,5 +4660,51 @@
 
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8cf5ba125f7f4cafbcc126f5d97042cf"}'></script>
+
+  <!-- Install Modal -->
+  <div class="install-modal-backdrop" id="installBackdrop" onclick="window.closeInstallModal()">
+    <div class="install-modal" onclick="event.stopPropagation()">
+      <div class="install-modal-header">
+        <div>
+          <div class="install-modal-title" data-i18n="installModalTitle">Install NODUS</div>
+          <div class="install-modal-sub" data-i18n="installModalSub">Choose your browser store</div>
+        </div>
+        <button class="install-modal-close" onclick="window.closeInstallModal()">&#10005;</button>
+      </div>
+      <div class="install-modal-options">
+        <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="chrome">
+          <div class="store-card-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="7" fill="white"/>
+              <path d="M14 7 L25 7" stroke="#EA4335" stroke-width="4" stroke-linecap="round"/>
+              <path d="M14 7 L8.5 16.5" stroke="#34A853" stroke-width="4" stroke-linecap="round"/>
+              <path d="M8.5 16.5 L25 7" stroke="#FBBC04" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="14" cy="14" r="5.5" fill="white"/>
+              <circle cx="14" cy="14" r="3.5" fill="#4285F4"/>
+            </svg>
+          </div>
+          <div class="store-card-info">
+            <div class="store-card-name">Chrome Web Store</div>
+            <div class="store-card-sub" data-i18n="storeSoon">Em breve</div>
+          </div>
+          <svg class="store-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="firefox">
+          <div class="store-card-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="11" stroke="#FF9500" stroke-width="2"/>
+              <circle cx="14" cy="14" r="6" stroke="#FF6B35" stroke-width="2.5"/>
+              <circle cx="14" cy="14" r="2.5" fill="#FF6B35"/>
+            </svg>
+          </div>
+          <div class="store-card-info">
+            <div class="store-card-name">Firefox Add-ons</div>
+            <div class="store-card-sub" data-i18n="storeSoon">Em breve</div>
+          </div>
+          <svg class="store-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
