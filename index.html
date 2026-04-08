@@ -1756,8 +1756,8 @@
     .hero .container { position: relative; z-index: 1; }
 
     @media (max-width: 840px) {
-      .chains-sidebar { width: 160px; }
-      .chains-main { display: none; }
+      .chains-sidebar { display: none; }
+      .chains-main { display: flex; }
       .privacy-grid, .hero-inner { grid-template-columns: 1fr; }
     }
 
@@ -1842,6 +1842,31 @@
       66%  { content: '🌏'; }
     }
 
+
+    .store-btns { display: flex; align-items: center; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+    .store-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 14px; border: 1px solid var(--border); border-radius: 8px;
+      background: rgba(255,255,255,0.03); color: var(--muted);
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .store-btn:hover { border-color: var(--sub); color: var(--sub); background: rgba(255,255,255,0.06); }
+    .store-badge {
+      font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px;
+      background: rgba(250,204,21,0.12); color: var(--yellow);
+      border: 1px solid rgba(250,204,21,0.25); padding: 1px 6px; border-radius: 4px;
+    }
+    .coming-soon-toast {
+      display: none; position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: #1e2530; border: 1px solid var(--border); border-radius: 10px;
+      padding: 12px 22px; font-size: 13px; font-weight: 600; color: var(--text);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 9999;
+      gap: 8px; align-items: center; opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .coming-soon-toast.show { display: flex; opacity: 1; transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
@@ -1928,6 +1953,18 @@
               &#9733; View on GitHub
             </a>
           </div>
+          <div class="store-btns">
+            <button class="store-btn" onclick="showComingSoon(this)" data-store="chrome">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/></svg>
+              <span>Chrome</span>
+            </button>
+            <button class="store-btn" onclick="showComingSoon(this)" data-store="firefox">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5" stroke-dasharray="8 4"/></svg>
+              <span>Firefox</span>
+              <span class="store-badge" data-i18n="storeSoon">Em breve</span>
+            </button>
+          </div>
+          <div class="coming-soon-toast" id="comingSoonToast"><span>&#128640;</span> <span id="comingSoonMsg"></span></div>
 
           <div class="hero-trust reveal reveal-delay-4">
             <div class="hero-trust-item">
@@ -2749,6 +2786,19 @@
       document.querySelectorAll('.reveal').forEach(function (el) {
         observer.observe(el);
       });
+
+    function showComingSoon(btn) {
+      var toast = document.getElementById('comingSoonToast');
+      var msg = document.getElementById('comingSoonMsg');
+      var store = btn.getAttribute('data-store');
+      var t = T[detectLang()] || T['en'];
+      msg.textContent = store === 'chrome'
+        ? (t.comingSoonChrome || 'Coming soon on the Chrome Web Store')
+        : (t.comingSoonFirefox || 'Coming soon on Firefox Add-ons');
+      toast.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3000);
+    }
     })();
   </script>
 
@@ -2897,7 +2947,10 @@
         node3title: 'Unit tests for auth middleware',
         node3text: 'Use Jest with custom matchers for auth errors. Mock the token validator at the module boundary. Test each middleware in isolation, then integration-test the composed chain with a mock Express app.',
         node4title: 'Security audit checklist',
-        node4text: 'Checklist: token expiry enforced, HttpOnly cookies, CORS policy locked, refresh token rotation, secrets in env vars only, audit log on failed auth attempts.'
+        node4text: 'Checklist: token expiry enforced, HttpOnly cookies, CORS policy locked, refresh token rotation, secrets in env vars only, audit log on failed auth attempts.',
+        storeSoon: 'Soon',
+        comingSoonChrome: 'Coming soon on the Chrome Web Store',
+        comingSoonFirefox: 'Coming soon on Firefox Add-ons'
       },
       pt: {
         announcement: 'NODUS lança Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acesso antecipado PRO</a> &nbsp;·&nbsp; Licença MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Favoritar no GitHub ★</a>',
@@ -3037,7 +3090,10 @@
         node3title: 'Testes unitários para middleware auth',
         node3text: 'Use Jest com matchers personalizados para erros de auth. Mocke o validador de token na fronteira do módulo. Teste cada middleware isoladamente, depois faça testes de integração da cadeia composta com um app Express mock.',
         node4title: 'Checklist de auditoria de segurança',
-        node4text: 'Checklist: expiração do token enforçada, cookies HttpOnly, política CORS bloqueada, rotação de refresh token, segredos apenas em vars de ambiente, log de auditoria em falhas de auth.'
+        node4text: 'Checklist: expiração do token enforçada, cookies HttpOnly, política CORS bloqueada, rotação de refresh token, segredos apenas em vars de ambiente, log de auditoria em falhas de auth.',
+        storeSoon: 'Em breve',
+        comingSoonChrome: 'Em breve na Chrome Web Store',
+        comingSoonFirefox: 'Em breve nos Add-ons do Firefox'
       },
       es: {
         announcement: 'NODUS lanza Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acceso anticipado PRO</a> &nbsp;·&nbsp; Licencia MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Estrella en GitHub ★</a>',
@@ -3177,7 +3233,10 @@
         node3title: 'Pruebas unitarias para middleware auth',
         node3text: 'Usa Jest con matchers personalizados para errores de auth. Mockea el validador de token en el límite del módulo. Prueba cada middleware de forma aislada, luego haz pruebas de integración de la cadena compuesta con una app Express mock.',
         node4title: 'Lista de verificación de auditoría de seguridad',
-        node4text: 'Checklist: expiración del token enforzada, cookies HttpOnly, política CORS bloqueada, rotación del refresh token, secretos solo en vars de entorno, log de auditoría en fallos de auth.'
+        node4text: 'Checklist: expiración del token enforzada, cookies HttpOnly, política CORS bloqueada, rotación del refresh token, secretos solo en vars de entorno, log de auditoría en fallos de auth.',
+        storeSoon: 'Pronto',
+        comingSoonChrome: 'Próximamente en Chrome Web Store',
+        comingSoonFirefox: 'Próximamente en Firefox Add-ons'
       },
       fr: {
         announcement: 'NODUS lance Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accès anticipé PRO</a> &nbsp;·&nbsp; Licence MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Étoile sur GitHub ★</a>',
@@ -3315,7 +3374,10 @@
         node3title: 'Tests unitaires pour le middleware auth',
         node3text: 'Utilisez Jest avec des matchers personnalisés pour les erreurs d\'auth. Moquez le validateur de token à la frontière du module. Testez chaque middleware isolément, puis faites des tests d\'intégration de la chaîne composée avec une app Express mock.',
         node4title: 'Liste de vérification d\'audit de sécurité',
-        node4text: 'Checklist : expiration du token appliquée, cookies HttpOnly, politique CORS verrouillée, rotation des refresh tokens, secrets uniquement dans les vars d\'environnement, log d\'audit sur les échecs d\'auth.'
+        node4text: 'Checklist : expiration du token appliquée, cookies HttpOnly, politique CORS verrouillée, rotation des refresh tokens, secrets uniquement dans les vars d\'environnement, log d\'audit sur les échecs d\'auth.',
+        storeSoon: 'Bientôt',
+        comingSoonChrome: 'Bientôt sur le Chrome Web Store',
+        comingSoonFirefox: 'Bientôt sur Firefox Add-ons'
       },
       de: {
         announcement: 'NODUS startet Q2 2026 — <a href="https://nodus-ai.app/checkout.html">PRO Früher Zugang</a> &nbsp;·&nbsp; MIT-Lizenz &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Stern auf GitHub ★</a>',
@@ -3453,7 +3515,10 @@
         node3title: 'Unit-Tests für Auth-Middleware',
         node3text: 'Verwende Jest mit benutzerdefinierten Matchern für Auth-Fehler. Mocke den Token-Validator an der Modulgrenze. Teste jede Middleware isoliert, dann Integrationstest der komponierten Kette mit einer Mock-Express-App.',
         node4title: 'Sicherheits-Audit-Checkliste',
-        node4text: 'Checkliste: Token-Ablauf erzwungen, HttpOnly-Cookies, CORS-Richtlinie gesperrt, Refresh-Token-Rotation, Secrets nur in Umgebungsvariablen, Audit-Log bei fehlgeschlagenen Auth-Versuchen.'
+        node4text: 'Checkliste: Token-Ablauf erzwungen, HttpOnly-Cookies, CORS-Richtlinie gesperrt, Refresh-Token-Rotation, Secrets nur in Umgebungsvariablen, Audit-Log bei fehlgeschlagenen Auth-Versuchen.',
+        storeSoon: 'Bald',
+        comingSoonChrome: 'Demnächst im Chrome Web Store',
+        comingSoonFirefox: 'Demnächst bei Firefox Add-ons'
       },
       ja: {
         announcement: 'NODUS 2026年Q2リリース — <a href="https://nodus-ai.app/checkout.html">PRO早期アクセス</a> &nbsp;·&nbsp; MITライセンス &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHubでスター ★</a>',
@@ -3591,7 +3656,10 @@
         node3title: 'Auth middlewareのユニットテスト',
         node3text: 'Authエラー用のカスタムマッチャーでJestを使用します。モジュール境界でトークンバリデーターをモックします。各middlewareを独立してテストし、次にモックExpressアプリで合成チェーンの統合テストを実施します。',
         node4title: 'セキュリティ監査チェックリスト',
-        node4text: 'チェックリスト：トークン有効期限の強制、HttpOnlyクッキー、CORSポリシーのロック、リフレッシュトークンのローテーション、シークレットは環境変数のみ、Auth失敗時の監査ログ。'
+        node4text: 'チェックリスト：トークン有効期限の強制、HttpOnlyクッキー、CORSポリシーのロック、リフレッシュトークンのローテーション、シークレットは環境変数のみ、Auth失敗時の監査ログ。',
+        storeSoon: '近日',
+        comingSoonChrome: 'まもなくChrome Web Storeに公開',
+        comingSoonFirefox: 'まもなくFirefox Add-onsに公開'
       },
       it: {
         announcement: 'NODUS Lancio Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accesso Anticipato PRO</a> &nbsp;·&nbsp; Licenza MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Star su GitHub ★</a>',
@@ -3788,7 +3856,10 @@
         node3text: 'Usa Jest con matcher personalizzati per gli errori Auth. Mock il validatore token ai confini del modulo. Testa ogni middleware indipendentemente, poi esegui test di integrazione della catena composta con un\'app Express mock.',
         node4title: 'Checklist Audit Sicurezza',
         node4text: 'Checklist: forza la scadenza del token, cookie HttpOnly, blocca la policy CORS, rotazione refresh token, segreti solo in variabili d\'ambiente, log di audit sugli errori Auth.',
-        openCoreSub_free: 'Licenza MIT — libero di usare, modificare e distribuire. Nessun copyleft, nessuna restrizione.'
+        openCoreSub_free: 'Licenza MIT — libero di usare, modificare e distribuire. Nessun copyleft, nessuna restrizione.',
+        storeSoon: 'Presto',
+        comingSoonChrome: 'Presto su Chrome Web Store',
+        comingSoonFirefox: 'Presto su Firefox Add-ons'
       },
       zh: {
         announcement: 'NODUS 2026年Q2发布 — <a href="https://nodus-ai.app/checkout.html">PRO抢先体验</a> &nbsp;·&nbsp; MIT许可证 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub点星 ★</a>',
@@ -3984,7 +4055,10 @@
         node3title: 'Auth中间件单元测试',
         node3text: '使用Jest和Auth错误的自定义匹配器。在模块边界处模拟令牌验证器。独立测试每个中间件，然后用模拟Express应用对组合链进行集成测试。',
         node4title: '安全审计清单',
-        node4text: '清单：强制令牌过期，HttpOnly cookie，锁定CORS策略，刷新令牌轮换，密钥仅在环境变量中，Auth失败时的审计日志。'
+        node4text: '清单：强制令牌过期，HttpOnly cookie，锁定CORS策略，刷新令牌轮换，密钥仅在环境变量中，Auth失败时的审计日志。',
+        storeSoon: '即将',
+        comingSoonChrome: '即将在Chrome网上应用店上线',
+        comingSoonFirefox: '即将在Firefox附加组件上线'
       },
       ko: {
         announcement: 'NODUS 2026년 Q2 출시 — <a href="https://nodus-ai.app/checkout.html">PRO 얼리 액세스</a> &nbsp;·&nbsp; MIT 라이선스 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub에서 스타 ★</a>',
@@ -4180,7 +4254,10 @@
         node3title: 'Auth 미들웨어 단위 테스트',
         node3text: 'Auth 오류에 대한 커스텀 매처로 Jest를 사용하세요. 모듈 경계에서 토큰 검증기를 모킹하세요. 각 미들웨어를 독립적으로 테스트한 다음 모킹된 Express 앱으로 구성된 체인의 통합 테스트를 수행하세요.',
         node4title: '보안 감사 체크리스트',
-        node4text: '체크리스트: 토큰 만료 강제, HttpOnly 쿠키, CORS 정책 잠금, 리프레시 토큰 교체, 환경 변수에만 비밀, Auth 실패 시 감사 로그.'
+        node4text: '체크리스트: 토큰 만료 강제, HttpOnly 쿠키, CORS 정책 잠금, 리프레시 토큰 교체, 환경 변수에만 비밀, Auth 실패 시 감사 로그.',
+        storeSoon: '곧 출시',
+        comingSoonChrome: 'Chrome 웹 스토어에 곧 출시 예정',
+        comingSoonFirefox: 'Firefox 부가 기능에 곧 출시 예정'
       },
       hi: {
         announcement: 'NODUS Q2 2026 लॉन्च — <a href="https://nodus-ai.app/checkout.html">PRO अर्ली एक्सेस</a> &nbsp;·&nbsp; MIT लाइसेंस &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub पर स्टार ★</a>',
@@ -4376,7 +4453,10 @@
         node3title: 'Auth Middleware Unit Tests',
         node3text: 'Auth errors के लिए custom matchers के साथ Jest का उपयोग करें। Module boundaries पर token validator को mock करें। प्रत्येक middleware को independently test करें, फिर mock Express app के साथ composed chain का integration test करें।',
         node4title: 'Security Audit Checklist',
-        node4text: 'Checklist: token expiry enforce करें, HttpOnly cookies, CORS policy lock करें, refresh token rotation, secrets केवल env variables में, Auth failures पर audit logs।'
+        node4text: 'Checklist: token expiry enforce करें, HttpOnly cookies, CORS policy lock करें, refresh token rotation, secrets केवल env variables में, Auth failures पर audit logs।',
+        storeSoon: 'जल्द',
+        comingSoonChrome: 'Chrome Web Store पर जल्द आ रहा है',
+        comingSoonFirefox: 'Firefox Add-ons पर जल्द आ रहा है'
       }
     };
 
