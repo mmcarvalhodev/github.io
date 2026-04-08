@@ -1843,44 +1843,40 @@
     }
 
 
-    /* Install modal */
-    .install-modal-backdrop {
-      display:none; position:fixed; inset:0;
-      background:rgba(0,0,0,0.65); backdrop-filter:blur(4px);
-      z-index:1000; align-items:center; justify-content:center;
+    /* Install popover */
+    .install-popover {
+      position: fixed;
+      background: #161c28;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 6px;
+      width: 270px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.04);
+      z-index: 1000;
+      transform-origin: top left;
+      transform: scale(0.82) translateY(-6px);
+      opacity: 0;
+      transition: transform 0.42s cubic-bezier(0.34,1.5,0.64,1), opacity 0.28s ease;
+      pointer-events: none;
     }
-    .install-modal-backdrop.open { display:flex; animation:backdropIn 0.2s ease; }
-    @keyframes backdropIn { from{opacity:0} to{opacity:1} }
-    .install-modal {
-      background:#131720; border:1px solid rgba(255,255,255,0.1);
-      border-radius:16px; padding:24px; width:340px; max-width:90vw;
-      box-shadow:0 24px 64px rgba(0,0,0,0.7);
-      animation:modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    .install-popover.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
     }
-    @keyframes modalIn { from{opacity:0;transform:scale(0.88)} to{opacity:1;transform:scale(1)} }
-    .install-modal-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px; }
-    .install-modal-title { font-size:17px; font-weight:800; color:var(--text); }
-    .install-modal-sub { font-size:12px; color:var(--muted); margin-top:3px; }
-    .install-modal-close {
-      background:rgba(255,255,255,0.07); border:none; color:var(--muted);
-      width:28px; height:28px; border-radius:6px; cursor:pointer; font-size:12px;
-      display:flex; align-items:center; justify-content:center;
-      transition:background 0.15s,color 0.15s; flex-shrink:0;
-    }
-    .install-modal-close:hover { background:rgba(255,255,255,0.12); color:var(--text); }
-    .install-modal-options { display:flex; flex-direction:column; gap:10px; }
     .install-store-card {
-      display:flex; align-items:center; gap:14px; width:100%;
-      padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.03); cursor:pointer; text-align:left;
-      transition:border-color 0.15s,background 0.15s,transform 0.15s;
+      display:flex; align-items:center; gap:12px; width:100%;
+      padding:12px 14px; border-radius:10px; border:none;
+      background:transparent; cursor:pointer; text-align:left;
+      transition:background 0.15s,transform 0.15s;
     }
-    .install-store-card:hover { border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.07); transform:translateY(-1px); }
-    .store-card-icon { width:44px; height:44px; border-radius:10px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .install-store-card:hover { background:rgba(255,255,255,0.07); transform:translateX(2px); }
+    .store-card-icon { width:42px; height:42px; border-radius:10px; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .store-card-info { flex:1; }
-    .store-card-name { font-size:14px; font-weight:700; color:var(--text); }
-    .store-card-sub { font-size:11px; color:var(--yellow); font-weight:600; margin-top:2px; }
-    .store-card-arrow { color:var(--muted); flex-shrink:0; }
+    .store-card-name { font-size:13px; font-weight:700; color:var(--text); }
+    .store-card-avail { display:none; }
+    .store-card-arrow { color:rgba(255,255,255,0.2); flex-shrink:0; transition:color 0.15s,transform 0.15s; }
+    .install-store-card:hover .store-card-arrow { color:var(--sub); transform:translateX(2px); }
     .coming-soon-toast {
       display: none; position: fixed; bottom: 28px; left: 50%;
       transform: translateX(-50%) translateY(10px);
@@ -1970,7 +1966,7 @@
           </p>
 
           <div class="hero-actions reveal reveal-delay-3">
-                        <button class="btn-primary" onclick="window.openInstallModal()" data-i18n="heroBtn1">
+                        <button class="btn-primary" id="installBtn" onclick="window.openInstallModal()" data-i18n="heroBtn1">
               &#9889; Install free
             </button>
           <div class="coming-soon-toast" id="comingSoonToast"><span>&#128640;</span> <span id="comingSoonMsg"></span></div>
@@ -2797,10 +2793,27 @@
       });
 
     window.openInstallModal = function() {
-      document.getElementById('installBackdrop').classList.add('open');
+      var btn = document.getElementById('installBtn');
+      var pop = document.getElementById('installPopover');
+      if (!btn || !pop) return;
+      var rect = btn.getBoundingClientRect();
+      pop.style.top = (rect.bottom + 8) + 'px';
+      pop.style.left = rect.left + 'px';
+      pop.classList.add('open');
+      setTimeout(function() {
+        document.addEventListener('click', window._closePopoverOutside);
+      }, 10);
+    };
+    window._closePopoverOutside = function(e) {
+      var pop = document.getElementById('installPopover');
+      if (pop && !pop.contains(e.target)) {
+        window.closeInstallModal();
+      }
     };
     window.closeInstallModal = function() {
-      document.getElementById('installBackdrop').classList.remove('open');
+      var pop = document.getElementById('installPopover');
+      if (pop) pop.classList.remove('open');
+      document.removeEventListener('click', window._closePopoverOutside);
     };
     window.showComingSoon = function(btn) {
       window.closeInstallModal();
@@ -4661,50 +4674,41 @@
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8cf5ba125f7f4cafbcc126f5d97042cf"}'></script>
 
-  <!-- Install Modal -->
-  <div class="install-modal-backdrop" id="installBackdrop" onclick="window.closeInstallModal()">
-    <div class="install-modal" onclick="event.stopPropagation()">
-      <div class="install-modal-header">
-        <div>
-          <div class="install-modal-title" data-i18n="installModalTitle">Install NODUS</div>
-          <div class="install-modal-sub" data-i18n="installModalSub">Choose your browser store</div>
-        </div>
-        <button class="install-modal-close" onclick="window.closeInstallModal()">&#10005;</button>
-      </div>
-      <div class="install-modal-options">
-        <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="chrome">
-          <div class="store-card-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="7" fill="white"/>
-              <path d="M14 7 L25 7" stroke="#EA4335" stroke-width="4" stroke-linecap="round"/>
-              <path d="M14 7 L8.5 16.5" stroke="#34A853" stroke-width="4" stroke-linecap="round"/>
-              <path d="M8.5 16.5 L25 7" stroke="#FBBC04" stroke-width="4" stroke-linecap="round"/>
-              <circle cx="14" cy="14" r="5.5" fill="white"/>
-              <circle cx="14" cy="14" r="3.5" fill="#4285F4"/>
+
+  <!-- Install Popover -->
+  <div class="install-popover" id="installPopover">
+    <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="chrome">
+      <div class="store-card-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <g transform="rotate(-90 15 15)">
+                <circle cx="15" cy="15" r="12" fill="none" stroke="#EA4335" stroke-width="6" stroke-dasharray="25.13 50.27"/>
+                <circle cx="15" cy="15" r="12" fill="none" stroke="#34A853" stroke-width="6" stroke-dasharray="25.13 50.27" stroke-dashoffset="-25.13"/>
+                <circle cx="15" cy="15" r="12" fill="none" stroke="#FBBC04" stroke-width="6" stroke-dasharray="25.13 50.27" stroke-dashoffset="-50.27"/>
+              </g>
+              <circle cx="15" cy="15" r="9" fill="white"/>
+              <circle cx="15" cy="15" r="5.5" fill="#4285F4"/>
             </svg>
-          </div>
-          <div class="store-card-info">
-            <div class="store-card-name">Chrome Web Store</div>
-            <div class="store-card-sub" data-i18n="storeSoon">Em breve</div>
-          </div>
-          <svg class="store-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="firefox">
-          <div class="store-card-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="11" stroke="#FF9500" stroke-width="2"/>
-              <circle cx="14" cy="14" r="6" stroke="#FF6B35" stroke-width="2.5"/>
-              <circle cx="14" cy="14" r="2.5" fill="#FF6B35"/>
-            </svg>
-          </div>
-          <div class="store-card-info">
-            <div class="store-card-name">Firefox Add-ons</div>
-            <div class="store-card-sub" data-i18n="storeSoon">Em breve</div>
-          </div>
-          <svg class="store-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
       </div>
-    </div>
+      <div class="store-card-info">
+        <div class="store-card-name">Chrome Web Store</div>
+        <div class="store-card-avail" data-i18n="storeSoon">Em breve</div>
+      </div>
+      <svg class="store-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="firefox">
+      <div class="store-card-icon">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="11" fill="#0060DF"/>
+              <path d="M15 4C9 4 4.5 8.5 4.5 15C4.5 19.5 7 23.3 10.7 25.2C9.5 22.5 10.2 19.5 12 18C12.8 21 15 22.5 15 26C19.5 24 22.5 19.5 22.5 15C22.5 11 20.5 7.5 17.5 5.8C17.8 8.5 16 10.5 14 10C15 8 15.5 6 15 4Z" fill="#FF9500"/>
+              <path d="M15 4C9.5 5 6 9.5 6 15C6 19 7.8 22.5 10.7 24.8C10 22 11 19.5 13 18.5C13.5 21 15 22.5 15 26C18.5 23.8 21 20 21 15C21 11.5 19.5 8.5 17 6.5C17 9 15.5 10.5 14 10C15 8 15.5 6 15 4Z" fill="#FF6B35"/>
+            </svg>
+      </div>
+      <div class="store-card-info">
+        <div class="store-card-name">Firefox Add-ons</div>
+        <div class="store-card-avail" data-i18n="storeSoon">Em breve</div>
+      </div>
+      <svg class="store-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
   </div>
 </body>
 </html>
