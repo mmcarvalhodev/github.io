@@ -1843,18 +1843,28 @@
     }
 
 
-    .store-btns { display: flex; align-items: center; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
-    .store-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 7px 14px; border: 1px solid var(--border); border-radius: 8px;
-      background: rgba(255,255,255,0.03); color: var(--muted);
-      font-size: 12px; font-weight: 600; cursor: pointer;
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    /* Install dropdown */
+    .install-wrap { position: relative; display: inline-block; }
+    .install-chevron { transition: transform 0.2s; margin-left: 2px; opacity: 0.7; }
+    .install-wrap.open .install-chevron { transform: rotate(180deg); }
+    .install-drop {
+      display: none; position: absolute; top: calc(100% + 8px); left: 0;
+      background: #131720; border: 1px solid var(--border); border-radius: 10px;
+      padding: 5px; min-width: 200px; z-index: 200;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     }
-    .store-btn:hover { border-color: var(--sub); color: var(--sub); background: rgba(255,255,255,0.06); }
-    .store-badge {
-      font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px;
-      background: rgba(250,204,21,0.12); color: var(--yellow);
+    .install-wrap.open .install-drop { display: flex; flex-direction: column; gap: 2px; }
+    .install-opt {
+      display: flex; align-items: center; gap: 8px;
+      width: 100%; padding: 9px 12px; border: none; border-radius: 7px;
+      background: transparent; color: var(--sub); font-size: 13px; font-weight: 600;
+      cursor: pointer; text-align: left; transition: background 0.12s, color 0.12s;
+    }
+    .install-opt:hover { background: rgba(255,255,255,0.07); color: var(--text); }
+    .install-opt svg { flex-shrink: 0; opacity: 0.6; }
+    .opt-soon {
+      margin-left: auto; font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.3px; background: rgba(250,204,21,0.12); color: var(--yellow);
       border: 1px solid rgba(250,204,21,0.25); padding: 1px 6px; border-radius: 4px;
     }
     .coming-soon-toast {
@@ -1946,23 +1956,27 @@
           </p>
 
           <div class="hero-actions reveal reveal-delay-3">
-            <a href="https://nodus-ai.app/checkout.html" class="btn-primary" data-i18n="heroBtn1">
-              &#9889; Install free
-            </a>
+            <div class="install-wrap">
+              <button class="btn-primary" onclick="toggleInstallDrop(event)" id="installBtn" data-i18n="heroBtn1">
+                &#9889; Install free
+                <svg class="install-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="install-drop" id="installDrop">
+                <button class="install-opt" onclick="showComingSoon(this)" data-store="chrome">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/></svg>
+                  Chrome Web Store
+                  <span class="opt-soon" data-i18n="storeSoon">Em breve</span>
+                </button>
+                <button class="install-opt" onclick="showComingSoon(this)" data-store="firefox">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4.5" stroke-dasharray="7 3"/></svg>
+                  Firefox Add-ons
+                  <span class="opt-soon" data-i18n="storeSoon">Em breve</span>
+                </button>
+              </div>
+            </div>
             <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">
               &#9733; View on GitHub
             </a>
-          </div>
-          <div class="store-btns">
-            <button class="store-btn" onclick="showComingSoon(this)" data-store="chrome">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/></svg>
-              <span>Chrome</span>
-            </button>
-            <button class="store-btn" onclick="showComingSoon(this)" data-store="firefox">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5" stroke-dasharray="8 4"/></svg>
-              <span>Firefox</span>
-              <span class="store-badge" data-i18n="storeSoon">Em breve</span>
-            </button>
           </div>
           <div class="coming-soon-toast" id="comingSoonToast"><span>&#128640;</span> <span id="comingSoonMsg"></span></div>
 
@@ -2787,7 +2801,16 @@
         observer.observe(el);
       });
 
+    function toggleInstallDrop(e) {
+      e.stopPropagation();
+      var wrap = document.getElementById('installBtn').parentElement;
+      wrap.classList.toggle('open');
+    }
     function showComingSoon(btn) {
+      // close dropdown
+      var wrap = document.getElementById('installBtn').parentElement;
+      wrap.classList.remove('open');
+      // show toast
       var toast = document.getElementById('comingSoonToast');
       var msg = document.getElementById('comingSoonMsg');
       var store = btn.getAttribute('data-store');
@@ -2799,6 +2822,11 @@
       clearTimeout(window._toastTimer);
       window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3000);
     }
+    // Close dropdown on outside click
+    document.addEventListener('click', function() {
+      var wrap = document.getElementById('installBtn');
+      if (wrap) wrap.parentElement.classList.remove('open');
+    });
     })();
   </script>
 
