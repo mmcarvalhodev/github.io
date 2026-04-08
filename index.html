@@ -1883,21 +1883,34 @@
     .store-card-avail { display:none; }
     .store-card-arrow { color:rgba(255,255,255,0.2); flex-shrink:0; transition:color 0.15s,transform 0.15s; }
     .install-store-card:hover .store-card-arrow { color:var(--sub); transform:translateX(2px); }
-    .coming-soon-toast {
-      display: flex; position: fixed; bottom: 28px; left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: #1e2530; border: 1px solid var(--border); border-radius: 10px;
-      padding: 12px 22px; font-size: 13px; font-weight: 600; color: var(--text);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 9999;
-      gap: 8px; align-items: center; opacity: 0;
-      visibility: hidden; pointer-events: none;
-      transition: opacity 0.25s, transform 0.25s, visibility 0s linear 0.25s;
+    /* Coming Soon Modal */
+    .cs-backdrop {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+      z-index: 10000; align-items: center; justify-content: center;
     }
-    .coming-soon-toast.show {
-      opacity: 1; visibility: visible; pointer-events: all;
-      transform: translateX(-50%) translateY(0);
-      transition: opacity 0.25s, transform 0.25s, visibility 0s linear 0s;
+    .cs-backdrop.open { display: flex; }
+    .cs-modal {
+      background: #1a1f29; border: 1px solid #2d3748;
+      border-radius: 20px; padding: 44px 48px 36px;
+      text-align: center; max-width: 340px; width: 90%;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.7);
+      transform: scale(0.85) translateY(16px); opacity: 0;
+      transition: transform 0.35s cubic-bezier(0.34,1.5,0.64,1), opacity 0.25s ease;
     }
+    .cs-backdrop.open .cs-modal {
+      transform: scale(1) translateY(0); opacity: 1;
+    }
+    .cs-rocket { font-size: 48px; display: block; margin-bottom: 16px; }
+    .cs-title { font-size: 22px; font-weight: 800; color: #facc15; margin-bottom: 8px; }
+    .cs-sub { font-size: 14px; color: #94a3b8; margin-bottom: 28px; line-height: 1.5; }
+    .cs-close {
+      background: #facc15; color: #0e1117; border: none;
+      border-radius: 10px; padding: 10px 28px;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .cs-close:hover { background: #fbbf24; }
   </style>
 </head>
 <body>
@@ -2836,21 +2849,29 @@
       window.closeInstallModal();
       var store = btn.getAttribute('data-store');
       var t = T[detectLang()] || T['en'];
-      var text = store === 'chrome'
-        ? (t.comingSoonChrome || 'Coming soon on the Chrome Web Store')
+      var backdrop = document.getElementById('csBackdrop');
+      var titleEl  = document.getElementById('csTitle');
+      var subEl    = document.getElementById('csSub');
+      if (!backdrop) return;
+      titleEl.textContent = t.storeSoon || 'Coming soon';
+      subEl.textContent   = store === 'chrome'
+        ? (t.comingSoonChrome  || 'Coming soon on the Chrome Web Store')
         : (t.comingSoonFirefox || 'Coming soon on Firefox Add-ons');
-      clearTimeout(window._toastTimer);
-      setTimeout(function() {
-        var toast = document.getElementById('comingSoonToast');
-        var msg  = document.getElementById('comingSoonMsg');
-        if (!toast || !msg) return;
-        msg.textContent = text;
-        toast.classList.add('show');
-        window._toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 3000);
-      }, 80);
+      backdrop.classList.add('open');
+    };
+    window.closeComingSoon = function(ev) {
+      var backdrop = document.getElementById('csBackdrop');
+      var modal    = document.getElementById('csModal');
+      if (!backdrop) return;
+      /* only close if clicking outside the modal card, or on the OK button */
+      if (ev && ev.target !== backdrop && !ev.target.classList.contains('cs-close')) return;
+      backdrop.classList.remove('open');
     };
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') window.closeInstallModal();
+      if (e.key === 'Escape') {
+        window.closeInstallModal();
+        window.closeComingSoon({ target: document.getElementById('csBackdrop') });
+      }
     });
 
     })();
@@ -4729,7 +4750,15 @@
   </div>
 
   <!-- Toast (must be outside any element with transform to keep position:fixed working) -->
-  <div class="coming-soon-toast" id="comingSoonToast"><span>&#128640;</span> <span id="comingSoonMsg"></span></div>
+  <!-- Coming Soon Modal -->
+  <div class="cs-backdrop" id="csBackdrop" onclick="window.closeComingSoon(event)">
+    <div class="cs-modal" id="csModal">
+      <span class="cs-rocket">🚀</span>
+      <div class="cs-title" id="csTitle">Em breve</div>
+      <div class="cs-sub" id="csSub">Estamos finalizando a publicação.<br/>Em breve disponível!</div>
+      <button class="cs-close" onclick="window.closeComingSoon(event)">OK</button>
+    </div>
+  </div>
 
 </body>
 </html>
