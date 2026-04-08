@@ -306,10 +306,10 @@
       align-items: center;
     }
 
-    @media (max-width: 840px) {
-      .hero-inner { gap: 36px; }
+    @media (max-width: 860px) {
+      .hero-inner { gap: 32px; }
     }
-    @media (max-width: 680px) {
+    @media (max-width: 560px) {
       .hero-inner { grid-template-columns: 1fr; }
     }
 
@@ -1763,7 +1763,7 @@
       .chains-main { display: flex; }
       .privacy-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 680px) {
+    @media (max-width: 560px) {
       .hero-inner { grid-template-columns: 1fr !important; }
     }
 
@@ -4713,33 +4713,34 @@
     </button>
     <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="firefox">
       <div class="store-card-icon">
-        <svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg width="30" height="30" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="ffBg" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#7B68EE"/>
-              <stop offset="60%" stop-color="#2B4AE0"/>
-              <stop offset="100%" stop-color="#1B2FBF"/>
+            <radialGradient id="ffEarth" cx="38%" cy="34%" r="66%">
+              <stop offset="0%" stop-color="#80E5FF"/>
+              <stop offset="40%" stop-color="#0060DF"/>
+              <stop offset="100%" stop-color="#20123A"/>
             </radialGradient>
-            <radialGradient id="ffFire" cx="65%" cy="20%" r="75%">
-              <stop offset="0%" stop-color="#FFD000"/>
-              <stop offset="30%" stop-color="#FF7200"/>
-              <stop offset="70%" stop-color="#E5003E"/>
-              <stop offset="100%" stop-color="#C00030"/>
+            <radialGradient id="ffOuter" cx="68%" cy="12%" r="90%">
+              <stop offset="0%" stop-color="#FFF44F"/>
+              <stop offset="18%" stop-color="#FFBD4F"/>
+              <stop offset="38%" stop-color="#FF980E"/>
+              <stop offset="60%" stop-color="#FF3750"/>
+              <stop offset="82%" stop-color="#EB0878"/>
+              <stop offset="100%" stop-color="#9400FF"/>
             </radialGradient>
           </defs>
           <!-- Globe -->
-          <circle cx="50" cy="54" r="36" fill="url(#ffBg)"/>
-          <!-- Flame/fox body wrapping the globe -->
-          <path d="M82 26 C90 14 88 4 78 2 C86 8 84 18 76 22 C80 16 76 8 68 8
-                   C72 12 72 18 68 22 C64 14 54 10 44 12 C36 14 28 20 24 28
-                   C18 36 18 46 22 54 C16 48 14 38 18 28 C10 36 10 50 16 60
-                   C22 70 32 76 44 78 C38 72 36 64 40 58 C44 68 52 74 62 74
-                   C72 74 80 66 82 56 C86 62 84 72 78 78 C86 70 90 58 88 46
-                   C90 38 88 30 82 26Z" fill="url(#ffFire)"/>
-          <!-- Fox face highlight -->
-          <path d="M44 12 C36 16 30 24 30 34 C36 28 44 26 50 28 C44 24 44 16 44 12Z" fill="#FF9800"/>
-          <!-- Inner globe light -->
-          <ellipse cx="44" cy="44" rx="8" ry="12" fill="rgba(255,255,255,0.12)" transform="rotate(-20,44,44)"/>
+          <circle cx="32" cy="36" r="22" fill="url(#ffEarth)"/>
+          <!-- Fox flame — wraps top-right → left → bottom -->
+          <path d="M43,6 C50,3 57,8 57,18 C57,25 53,31 47,34
+                   C52,27 53,17 48,11 C53,9 53,3 47,3
+                   C43,3 41,5 41,9 C37,3 31,1 25,3
+                   C17,5 11,12 9,20 C7,28 9,37 15,44
+                   C9,38 7,28 9,20 C4,28 4,40 11,51
+                   C18,62 30,66 41,63 C35,56 33,46 37,40
+                   C41,50 49,56 57,55 C57,47 53,56 47,60
+                   C53,52 55,38 51,26 C54,18 51,6 45,4 Z"
+                fill="url(#ffOuter)"/>
         </svg>
       </div>
       <div class="store-card-info">
