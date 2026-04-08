@@ -2813,6 +2813,7 @@
       pop.classList.add('open');
       setTimeout(function() {
         document.addEventListener('click', window._closePopoverOutside);
+        window.addEventListener('scroll', window._closePopoverOnScroll, { passive: true });
       }, 10);
     };
     window._closePopoverOutside = function(e) {
@@ -2821,10 +2822,14 @@
         window.closeInstallModal();
       }
     };
+    window._closePopoverOnScroll = function() {
+      window.closeInstallModal();
+    };
     window.closeInstallModal = function() {
       var pop = document.getElementById('installPopover');
       if (pop) pop.classList.remove('open');
       document.removeEventListener('click', window._closePopoverOutside);
+      window.removeEventListener('scroll', window._closePopoverOnScroll);
     };
     window.showComingSoon = function(btn) {
       window.closeInstallModal();
@@ -4708,7 +4713,34 @@
     </button>
     <button class="install-store-card" onclick="window.showComingSoon(this)" data-store="firefox">
       <div class="store-card-icon">
-        <span style="font-size:22px;line-height:1;display:block;">🦊</span>
+        <svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="ffBg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#7B68EE"/>
+              <stop offset="60%" stop-color="#2B4AE0"/>
+              <stop offset="100%" stop-color="#1B2FBF"/>
+            </radialGradient>
+            <radialGradient id="ffFire" cx="65%" cy="20%" r="75%">
+              <stop offset="0%" stop-color="#FFD000"/>
+              <stop offset="30%" stop-color="#FF7200"/>
+              <stop offset="70%" stop-color="#E5003E"/>
+              <stop offset="100%" stop-color="#C00030"/>
+            </radialGradient>
+          </defs>
+          <!-- Globe -->
+          <circle cx="50" cy="54" r="36" fill="url(#ffBg)"/>
+          <!-- Flame/fox body wrapping the globe -->
+          <path d="M82 26 C90 14 88 4 78 2 C86 8 84 18 76 22 C80 16 76 8 68 8
+                   C72 12 72 18 68 22 C64 14 54 10 44 12 C36 14 28 20 24 28
+                   C18 36 18 46 22 54 C16 48 14 38 18 28 C10 36 10 50 16 60
+                   C22 70 32 76 44 78 C38 72 36 64 40 58 C44 68 52 74 62 74
+                   C72 74 80 66 82 56 C86 62 84 72 78 78 C86 70 90 58 88 46
+                   C90 38 88 30 82 26Z" fill="url(#ffFire)"/>
+          <!-- Fox face highlight -->
+          <path d="M44 12 C36 16 30 24 30 34 C36 28 44 26 50 28 C44 24 44 16 44 12Z" fill="#FF9800"/>
+          <!-- Inner globe light -->
+          <ellipse cx="44" cy="44" rx="8" ry="12" fill="rgba(255,255,255,0.12)" transform="rotate(-20,44,44)"/>
+        </svg>
       </div>
       <div class="store-card-info">
         <div class="store-card-name">Firefox Add-ons</div>
