@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — Cattura e organizza le conversazioni AI localmente</title>
+  <meta name="description" content="NODUS è un'estensione Chrome gratuita che cattura e organizza le tue conversazioni AI localmente. Salva, etichetta e cerca idee da ChatGPT, Claude, Gemini, Copilot, Grok, DeepSeek e Perplexity." />
+  <meta name="keywords" content="estensione chatgpt, salvare conversazioni chatgpt, salvare conversazioni claude, estensione chrome ai, strumento produttività ai, gestore conversazioni ai" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://nodus-ai.app/it/" />
+  <link rel="alternate" hreflang="en"        href="https://nodus-ai.app/" />
+  <link rel="alternate" hreflang="pt"        href="https://nodus-ai.app/pt/" />
+  <link rel="alternate" hreflang="es"        href="https://nodus-ai.app/es/" />
+  <link rel="alternate" hreflang="fr"        href="https://nodus-ai.app/fr/" />
+  <link rel="alternate" hreflang="de"        href="https://nodus-ai.app/de/" />
+  <link rel="alternate" hreflang="ja"        href="https://nodus-ai.app/ja/" />
+  <link rel="alternate" hreflang="it"        href="https://nodus-ai.app/it/" />
+  <link rel="alternate" hreflang="zh"        href="https://nodus-ai.app/zh/" />
+  <link rel="alternate" hreflang="ko"        href="https://nodus-ai.app/ko/" />
+  <link rel="alternate" hreflang="hi"        href="https://nodus-ai.app/hi/" />
+  <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NODUS — Cattura e organizza le conversazioni AI localmente" />
+  <meta property="og:description" content="NODUS è un'estensione Chrome gratuita che cattura e organizza le tue conversazioni AI localmente. Salva, etichetta e cerca idee da ChatGPT, Claude, Gemini, Copilot, Grok, DeepSeek e Perplexity." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nodus-ai.app/it/" />
+  <meta property="og:image" content="https://nodus-ai.app/docs/screenshots/image9.png" />
+  <meta property="og:locale" content="it_IT" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NODUS — Cattura e organizza le conversazioni AI localmente" />
+  <meta name="twitter:description" content="NODUS è un'estensione Chrome gratuita che cattura e organizza le tue conversazioni AI localmente. Salva, etichetta e cerca idee da ChatGPT, Claude, Gemini, Copilot, Grok, DeepSeek e Perplexity." />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NODUS",
+    "applicationCategory": "BrowserApplication",
+    "applicationSubCategory": "Productivity",
+    "operatingSystem": "Chrome, Firefox, Edge, Brave",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "NODUS è un'estensione Chrome gratuita che cattura e organizza le tue conversazioni AI localmente. Salva, etichetta e cerca idee da ChatGPT, Claude, Gemini, Copilot, Grok, DeepSeek e Perplexity.",
+    "url": "https://nodus-ai.app/it/",
+    "screenshot": "https://nodus-ai.app/docs/screenshots/image9.png",
+    "softwareVersion": "5.0.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "NODUS",
+      "url": "https://nodus-ai.app/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Force this language before the i18n script runs -->
+  <script>window._forcedLang = 'it';</script>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div class="announcement" data-i18n-html="announcement">
+    NODUS lancia Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accesso anticipato PRO</a> &nbsp;·&nbsp; Licenza MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Stella su GitHub ★</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app/" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="https://nodus-ai.app/#how" data-i18n="navHow">Come funziona</a>
+        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">Funzionalità</a>
+        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">Prezzi</a>
+        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">Privacy</a>
+        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">Schermate</a>
+        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">Ottieni PRO</a>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <span id="langCurrent">IT</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+          </button>
+          <ul class="lang-dropdown" role="listbox">
+            <li class="lang-opt" data-lang="en" role="option">EN</li>
+            <li class="lang-opt" data-lang="pt" role="option">PT</li>
+            <li class="lang-opt" data-lang="es" role="option">ES</li>
+            <li class="lang-opt" data-lang="fr" role="option">FR</li>
+            <li class="lang-opt" data-lang="de" role="option">DE</li>
+            <li class="lang-opt" data-lang="ja" role="option">JA</li>
+            <li class="lang-opt" data-lang="it" role="option">IT</li>
+            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
+            <li class="lang-opt" data-lang="ko" role="option">KO</li>
+            <li class="lang-opt" data-lang="hi" role="option">HI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badges">
+          <span class="badge" data-i18n="badge1">Q2 2026 Launch</span>
+          <span class="badge badge-green" data-i18n="badge2">Free Forever</span>
+          <span class="badge" data-i18n="badge3">MIT License</span>
+        </div>
+        <h1 data-i18n-html="heroTitle">Le tue conversazioni AI,<br/><span>catturate &amp; organizzate</span><br/>localmente.</h1>
+        <p data-i18n="heroDesc">NODUS è un'estensione browser gratuita che cattura, etichetta, collega e cerca le tue conversazioni AI da ChatGPT, Claude, Gemini e altre 4 piattaforme — tutto archiviato privatamente sul tuo dispositivo.</p>
+        <div class="hero-cta">
+          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ Installa gratis</a>
+          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ View on GitHub</a>
+        </div>
+        <div class="trust-row">
+          <span data-i18n="trust1">No account required</span>
+          <span data-i18n="trust3">7 AI platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="howLabel">Come funziona</p>
+      <h2 data-i18n="howTitle">Tre passi. Tutto qui.</h2>
+      <p class="section-sub" data-i18n="howSub">NODUS rimane invisibile nel tuo browser e si attiva solo quando vuoi.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" data-i18n="step1num">Step 01</div>
+          <h3 data-i18n="step1title">Apri qualsiasi IA</h3>
+          <p data-i18n="step1desc">NODUS si attiva su 7 piattaforme nel momento in cui le apri. Nessuna configurazione per sito — funziona e basta.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step2num">Step 02</div>
+          <h3 data-i18n="step2title">Clicca su Save o Quick</h3>
+          <p data-i18n="step2desc">Una coppia di pulsanti galleggianti appare su ogni pagina IA. Save cattura nella tua coda predefinita. Quick cattura nella tua coda rapida istantaneamente.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step3num">Step 03</div>
+          <h3 data-i18n="step3title">Organizza nel tuo pannello</h3>
+          <p data-i18n="step3desc">Apri il pannello NODUS per aggiungere tag, scrivere note, creare catene e cercare su tutte le piattaforme.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING (pre-rendered label) -->
+  <section class="pricing" id="pricing">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="pricingLabel">Pricing</p>
+      <h2 data-i18n="pricingTitle">Gratuito per sempre. Aggiorna quando sei pronto.</h2>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy" id="privacy">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="privacyLabel">Privacy First</p>
+      <h2 data-i18n="privacyTitle">I tuoi dati rimangono sul tuo dispositivo.</h2>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2 data-i18n-html="ctaTitle">Installa gratis — nessun account richiesto.</h2>
+      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ Installa gratis</a>
+    </div>
+  </section>
+
+  <!-- FAQ (pre-rendered for SEO) -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <h2 data-i18n="faqTitle">Domande frequenti</h2>
+      <p class="section-sub" data-i18n="faqSub">Risposte rapide alle domande più comuni su NODUS.</p>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq1q">Come salvare le conversazioni di ChatGPT?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq1a">Installa NODUS e appare un pulsante fluttuante su tutte le pagine IA supportate. Clicca su Salva per catturare la conversazione istantaneamente nel tuo pannello locale — senza copia-incolla, senza account.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq2q">Come esportare la cronologia delle conversazioni AI?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq2a">Esporta le tue catture come TXT, HTML o DOCX. Puoi anche collegare catture correlate tra sessioni ed esportare interi percorsi di conoscenza.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq3q">Funziona con Claude e Gemini?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq3a">NODUS salva le conversazioni da 7 piattaforme: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok e DeepSeek — tutto in un pannello, archiviato localmente sul tuo dispositivo.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq4q">I miei dati di conversazione sono privati?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq4a">100% privato. NODUS archivia tutto nel storage locale del browser — niente viene mai caricato su server, sincronizzato nel cloud o condiviso con terzi.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq5q">NODUS è gratuito?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq5a">Sì, le funzionalità principali sono gratuite per sempre. Il piano PRO sblocca funzionalità avanzate per gli utenti intensivi.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq6q">Quali browser sono supportati?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq6a">NODUS funziona su Chrome, Firefox, Edge e Brave. Installalo una volta e funziona su tutte le tue piattaforme IA automaticamente.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq7q">Come non perdere mai più una risposta di ChatGPT?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq7a">NODUS cattura le risposte nel momento in cui clicchi su Salva — prima di chiudere la scheda, aggiornare o che ChatGPT cancelli la sessione. La tua cronologia di conversazioni è sempre al sicuro nel tuo dashboard locale.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq8q">Come esportare una conversazione di ChatGPT in Word o PDF?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq8a">Con NODUS, esporta qualsiasi conversazione salvata come DOCX (Word) o HTML (che puoi stampare come PDF). Collega più catture ed esportale insieme come un unico documento strutturato.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq9q">Come salvare conversazioni di Gemini o Perplexity?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq9a">NODUS funziona nativamente su Gemini, Perplexity, Copilot, Grok e DeepSeek — non solo ChatGPT. Lo stesso pulsante flottante Salva appare automaticamente su tutte le piattaforme supportate.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq10q">Come organizzare le conversazioni AI in un unico posto?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq10a">NODUS ti offre un dashboard unificato dove puoi etichettare, cercare e collegare catture da qualsiasi piattaforma AI. Filtra per piattaforma, etichetta o data — tutto in un posto, archiviato localmente.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq11q">Come fare backup delle conversazioni AI offline?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq11a">NODUS archivia tutto nello storage locale del browser — funziona completamente offline. Non è necessaria alcuna connessione internet per accedere, cercare o esportare le tue conversazioni salvate.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq12q">Esiste un'estensione per salvare le risposte di Claude AI?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq12a">Sì — NODUS è un'estensione gratuita che salva le risposte di Claude AI localmente con un clic. Etichettale, collegale alle catture di ChatGPT o Gemini e cerca tutto nel tuo dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </div>
+      <p class="footer-tagline" data-i18n="footerTagline"></p>
+      <div class="footer-links">
+        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Privacy Policy</a>
+        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">Ottieni PRO</a>
+        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+      </div>
+      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Load the full i18n script from root — it will applyLang(window._forcedLang) -->
+  <script src="/i18n.js"></script>
+
+</body>
+</html>

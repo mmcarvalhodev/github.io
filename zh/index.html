@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — 本地捕获和整理AI对话</title>
+  <meta name="description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。" />
+  <meta name="keywords" content="chatgpt扩展, 保存chatgpt对话, 保存claude对话, chrome扩展ai, ai生产力工具, ai对话管理器" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://nodus-ai.app/zh/" />
+  <link rel="alternate" hreflang="en"        href="https://nodus-ai.app/" />
+  <link rel="alternate" hreflang="pt"        href="https://nodus-ai.app/pt/" />
+  <link rel="alternate" hreflang="es"        href="https://nodus-ai.app/es/" />
+  <link rel="alternate" hreflang="fr"        href="https://nodus-ai.app/fr/" />
+  <link rel="alternate" hreflang="de"        href="https://nodus-ai.app/de/" />
+  <link rel="alternate" hreflang="ja"        href="https://nodus-ai.app/ja/" />
+  <link rel="alternate" hreflang="it"        href="https://nodus-ai.app/it/" />
+  <link rel="alternate" hreflang="zh"        href="https://nodus-ai.app/zh/" />
+  <link rel="alternate" hreflang="ko"        href="https://nodus-ai.app/ko/" />
+  <link rel="alternate" hreflang="hi"        href="https://nodus-ai.app/hi/" />
+  <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NODUS — 本地捕获和整理AI对话" />
+  <meta property="og:description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nodus-ai.app/zh/" />
+  <meta property="og:image" content="https://nodus-ai.app/docs/screenshots/image9.png" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NODUS — 本地捕获和整理AI对话" />
+  <meta name="twitter:description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。" />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NODUS",
+    "applicationCategory": "BrowserApplication",
+    "applicationSubCategory": "Productivity",
+    "operatingSystem": "Chrome, Firefox, Edge, Brave",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。",
+    "url": "https://nodus-ai.app/zh/",
+    "screenshot": "https://nodus-ai.app/docs/screenshots/image9.png",
+    "softwareVersion": "5.0.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "NODUS",
+      "url": "https://nodus-ai.app/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Force this language before the i18n script runs -->
+  <script>window._forcedLang = 'zh';</script>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div class="announcement" data-i18n-html="announcement">
+    NODUS 将于2026年Q2发布 — <a href="https://nodus-ai.app/checkout.html">PRO早期访问</a> &nbsp;·&nbsp; MIT许可证 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">在GitHub ★</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app/" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="https://nodus-ai.app/#how" data-i18n="navHow">使用方法</a>
+        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">功能</a>
+        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">价格</a>
+        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">隐私</a>
+        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">截图</a>
+        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">获取PRO</a>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <span id="langCurrent">ZH</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+          </button>
+          <ul class="lang-dropdown" role="listbox">
+            <li class="lang-opt" data-lang="en" role="option">EN</li>
+            <li class="lang-opt" data-lang="pt" role="option">PT</li>
+            <li class="lang-opt" data-lang="es" role="option">ES</li>
+            <li class="lang-opt" data-lang="fr" role="option">FR</li>
+            <li class="lang-opt" data-lang="de" role="option">DE</li>
+            <li class="lang-opt" data-lang="ja" role="option">JA</li>
+            <li class="lang-opt" data-lang="it" role="option">IT</li>
+            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
+            <li class="lang-opt" data-lang="ko" role="option">KO</li>
+            <li class="lang-opt" data-lang="hi" role="option">HI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badges">
+          <span class="badge" data-i18n="badge1">Q2 2026 Launch</span>
+          <span class="badge badge-green" data-i18n="badge2">Free Forever</span>
+          <span class="badge" data-i18n="badge3">MIT License</span>
+        </div>
+        <h1 data-i18n-html="heroTitle">您的AI对话，<br/><span>捕获并整理</span><br/>在本地。</h1>
+        <p data-i18n="heroDesc">NODUS是一款免费浏览器扩展程序，可从ChatGPT、Claude、Gemini等7个AI平台捕获、标记、链接和搜索您的对话 — 全部私密存储在您的设备上。</p>
+        <div class="hero-cta">
+          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ 免费安装</a>
+          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ View on GitHub</a>
+        </div>
+        <div class="trust-row">
+          <span data-i18n="trust1">No account required</span>
+          <span data-i18n="trust3">7 AI platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="howLabel">使用方法</p>
+      <h2 data-i18n="howTitle">三个步骤。就这样。</h2>
+      <p class="section-sub" data-i18n="howSub">NODUS在您的浏览器中保持隐形，只在您需要时激活。</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" data-i18n="step1num">Step 01</div>
+          <h3 data-i18n="step1title">打开任意AI平台</h3>
+          <p data-i18n="step1desc">NODUS在7个平台打开时立即激活。无需每个网站单独配置 — 直接可用。</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step2num">Step 02</div>
+          <h3 data-i18n="step2title">点击Save或Quick</h3>
+          <p data-i18n="step2desc">每个AI页面上会出现一对浮动按钮。Save捕获到默认队列，Quick立即捕获到快速队列。</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step3num">Step 03</div>
+          <h3 data-i18n="step3title">在仪表板中整理</h3>
+          <p data-i18n="step3desc">打开NODUS仪表板添加标签、写笔记、创建链条并跨平台搜索。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING (pre-rendered label) -->
+  <section class="pricing" id="pricing">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="pricingLabel">Pricing</p>
+      <h2 data-i18n="pricingTitle">永久免费。准备好了再升级。</h2>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy" id="privacy">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="privacyLabel">Privacy First</p>
+      <h2 data-i18n="privacyTitle">您的数据留在您的设备上。</h2>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2 data-i18n-html="ctaTitle">免费安装 — 无需账号。</h2>
+      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ 免费安装</a>
+    </div>
+  </section>
+
+  <!-- FAQ (pre-rendered for SEO) -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <h2 data-i18n="faqTitle">常见问题</h2>
+      <p class="section-sub" data-i18n="faqSub">关于NODUS最常见问题的快速解答。</p>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq1q">如何保存ChatGPT对话？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq1a">安装NODUS后，所有受支持的AI页面上会出现一个浮动按钮。点击保存即可立即将对话捕获到本地仪表板 — 无需复制粘贴，无需账号。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq2q">如何导出AI对话历史？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq2a">将您的捕获导出为TXT、HTML或DOCX。您还可以将相关捕获跨会话链接，并一次性导出完整的知识轨迹。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq3q">支持Claude和Gemini吗？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq3a">NODUS支持7个平台的对话保存：ChatGPT、Claude、Gemini、Perplexity、Copilot、Grok和DeepSeek — 全部在一个仪表板中，本地存储在您的设备上。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq4q">我的对话数据是私密的吗？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq4a">100%私密。NODUS将所有内容存储在浏览器的本地存储中 — 永远不会上传到任何服务器、同步到云端或与第三方共享。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq5q">NODUS是免费的吗？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq5a">是的，核心功能永久免费。PRO计划为重度用户解锁高级功能。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq6q">支持哪些浏览器？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq6a">NODUS支持Chrome、Firefox、Edge和Brave。安装一次，自动在所有AI平台上运行。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq7q">如何再也不丢失ChatGPT的回复？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq7a">NODUS在您点击保存的那一刻就捕获回复——在您关闭标签、刷新或ChatGPT清除会话之前。您的对话历史始终安全地保存在本地仪表板中。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq8q">如何将ChatGPT对话导出为Word或PDF？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq8a">使用NODUS，将任何保存的对话导出为DOCX（Word）或HTML（可以打印为PDF）。将多个捕获链接在一起，作为单个结构化文档一起导出。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq9q">如何保存Gemini或Perplexity对话？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq9a">NODUS在Gemini、Perplexity、Copilot、Grok和DeepSeek上原生工作——不仅仅是ChatGPT。同样的浮动保存按钮会自动出现在所有支持的平台上。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq10q">如何在一个地方组织AI对话？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq10a">NODUS为您提供统一的仪表板，您可以在其中标记、搜索和链接来自任何AI平台的捕获。按平台、标签或日期过滤——一切都在一个地方，本地存储。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq11q">如何离线备份AI对话？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq11a">NODUS将所有内容存储在浏览器的本地存储中——完全离线工作。访问、搜索或导出您保存的AI对话无需任何网络连接。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq12q">有没有保存Claude AI回复的扩展？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq12a">有——NODUS是一个免费的浏览器扩展，只需一键即可在本地保存Claude AI回复。给它们打标签，将它们链接到ChatGPT或Gemini捕获，并在您的仪表板中搜索所有内容。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </div>
+      <p class="footer-tagline" data-i18n="footerTagline"></p>
+      <div class="footer-links">
+        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Privacy Policy</a>
+        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">获取PRO</a>
+        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+      </div>
+      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Load the full i18n script from root — it will applyLang(window._forcedLang) -->
+  <script src="/i18n.js"></script>
+
+</body>
+</html>

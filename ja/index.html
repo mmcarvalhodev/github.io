@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — AI会話をローカルでキャプチャ＆整理</title>
+  <meta name="description" content="NODUSはAI会話をローカルでキャプチャ・整理する無料Chrome拡張機能です。ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、PerplexityのアイデアをC保存・タグ付け・検索。" />
+  <meta name="keywords" content="chatgpt 拡張機能, chatgpt 会話 保存, claude 会話 保存, chrome 拡張機能 ai, ai 生産性ツール, ai 会話 管理" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://nodus-ai.app/ja/" />
+  <link rel="alternate" hreflang="en"        href="https://nodus-ai.app/" />
+  <link rel="alternate" hreflang="pt"        href="https://nodus-ai.app/pt/" />
+  <link rel="alternate" hreflang="es"        href="https://nodus-ai.app/es/" />
+  <link rel="alternate" hreflang="fr"        href="https://nodus-ai.app/fr/" />
+  <link rel="alternate" hreflang="de"        href="https://nodus-ai.app/de/" />
+  <link rel="alternate" hreflang="ja"        href="https://nodus-ai.app/ja/" />
+  <link rel="alternate" hreflang="it"        href="https://nodus-ai.app/it/" />
+  <link rel="alternate" hreflang="zh"        href="https://nodus-ai.app/zh/" />
+  <link rel="alternate" hreflang="ko"        href="https://nodus-ai.app/ko/" />
+  <link rel="alternate" hreflang="hi"        href="https://nodus-ai.app/hi/" />
+  <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NODUS — AI会話をローカルでキャプチャ＆整理" />
+  <meta property="og:description" content="NODUSはAI会話をローカルでキャプチャ・整理する無料Chrome拡張機能です。ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、PerplexityのアイデアをC保存・タグ付け・検索。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nodus-ai.app/ja/" />
+  <meta property="og:image" content="https://nodus-ai.app/docs/screenshots/image9.png" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NODUS — AI会話をローカルでキャプチャ＆整理" />
+  <meta name="twitter:description" content="NODUSはAI会話をローカルでキャプチャ・整理する無料Chrome拡張機能です。ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、PerplexityのアイデアをC保存・タグ付け・検索。" />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NODUS",
+    "applicationCategory": "BrowserApplication",
+    "applicationSubCategory": "Productivity",
+    "operatingSystem": "Chrome, Firefox, Edge, Brave",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "NODUSはAI会話をローカルでキャプチャ・整理する無料Chrome拡張機能です。ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、PerplexityのアイデアをC保存・タグ付け・検索。",
+    "url": "https://nodus-ai.app/ja/",
+    "screenshot": "https://nodus-ai.app/docs/screenshots/image9.png",
+    "softwareVersion": "5.0.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "NODUS",
+      "url": "https://nodus-ai.app/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Force this language before the i18n script runs -->
+  <script>window._forcedLang = 'ja';</script>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div class="announcement" data-i18n-html="announcement">
+    NODUS は2026年Q2にローンチ — <a href="https://nodus-ai.app/checkout.html">PRO早期アクセス</a> &nbsp;·&nbsp; MITライセンス &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHubで★</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app/" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="https://nodus-ai.app/#how" data-i18n="navHow">使い方</a>
+        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">機能</a>
+        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">料金</a>
+        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">プライバシー</a>
+        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">スクリーンショット</a>
+        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">PROを取得</a>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <span id="langCurrent">JA</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+          </button>
+          <ul class="lang-dropdown" role="listbox">
+            <li class="lang-opt" data-lang="en" role="option">EN</li>
+            <li class="lang-opt" data-lang="pt" role="option">PT</li>
+            <li class="lang-opt" data-lang="es" role="option">ES</li>
+            <li class="lang-opt" data-lang="fr" role="option">FR</li>
+            <li class="lang-opt" data-lang="de" role="option">DE</li>
+            <li class="lang-opt" data-lang="ja" role="option">JA</li>
+            <li class="lang-opt" data-lang="it" role="option">IT</li>
+            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
+            <li class="lang-opt" data-lang="ko" role="option">KO</li>
+            <li class="lang-opt" data-lang="hi" role="option">HI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badges">
+          <span class="badge" data-i18n="badge1">Q2 2026 Launch</span>
+          <span class="badge badge-green" data-i18n="badge2">Free Forever</span>
+          <span class="badge" data-i18n="badge3">MIT License</span>
+        </div>
+        <h1 data-i18n-html="heroTitle">AIとの会話を<br/><span>キャプチャして整理</span><br/>ローカルに。</h1>
+        <p data-i18n="heroDesc">NODUSはChatGPT、Claude、Geminiなど7つのAIプラットフォームの会話をローカルでキャプチャする無料ブラウザ拡張機能です。タグ付け、チェーン、検索が一つのダッシュボードで。アカウント不要、100%プライベート。</p>
+        <div class="hero-cta">
+          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ 無料インストール</a>
+          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ View on GitHub</a>
+        </div>
+        <div class="trust-row">
+          <span data-i18n="trust1">No account required</span>
+          <span data-i18n="trust3">7 AI platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="howLabel">使い方</p>
+      <h2 data-i18n="howTitle">3ステップ。それだけ。</h2>
+      <p class="section-sub" data-i18n="howSub">NODUSはブラウザの中で静かに待機し、使いたいときだけ起動します。</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" data-i18n="step1num">Step 01</div>
+          <h3 data-i18n="step1title">AIサイトを開く</h3>
+          <p data-i18n="step1desc">7つのプラットフォームで開いた瞬間に起動します。サイトごとの設定不要 — そのまま動作します。</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step2num">Step 02</div>
+          <h3 data-i18n="step2title">SaveまたはQuickをクリック</h3>
+          <p data-i18n="step2desc">各AIページにフローティングボタンが表示されます。Saveはデフォルトキューに、Quickはクイックキューに即座にキャプチャします。</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step3num">Step 03</div>
+          <h3 data-i18n="step3title">ダッシュボードで整理</h3>
+          <p data-i18n="step3desc">NODUSダッシュボードを開いて、タグ追加、メモ記入、チェーン作成、全プラットフォーム横断検索を行えます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING (pre-rendered label) -->
+  <section class="pricing" id="pricing">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="pricingLabel">Pricing</p>
+      <h2 data-i18n="pricingTitle">永久無料。必要になったらアップグレード。</h2>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy" id="privacy">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="privacyLabel">Privacy First</p>
+      <h2 data-i18n="privacyTitle">あなたのデータはあなたのマシンに留まります。</h2>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2 data-i18n-html="ctaTitle">無料インストール — アカウント不要。</h2>
+      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ 無料インストール</a>
+    </div>
+  </section>
+
+  <!-- FAQ (pre-rendered for SEO) -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <h2 data-i18n="faqTitle">よくある質問</h2>
+      <p class="section-sub" data-i18n="faqSub">NODUSに関するよくある質問への回答。</p>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq1q">ChatGPTの会話を保存するには？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq1a">NODUSをインストールすると、対応するすべてのAIページにフローティングボタンが表示されます。「保存」をクリックするだけで、コピペなしでローカルダッシュボードに即座にキャプチャできます。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq2q">AI会話履歴をエクスポートするには？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq2a">キャプチャをTXT、HTML、DOCXとしてエクスポートできます。セッションをまたいだチェーンを組んで、知識の軌跡として一括エクスポートも可能です。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq3q">ClaudeやGeminiでも使えますか？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq3a">NODUSは7つのプラットフォームに対応：ChatGPT、Claude、Gemini、Perplexity、Copilot、Grok、DeepSeek — すべて一つのダッシュボードでローカル保存。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq4q">会話データはプライベートですか？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq4a">100%プライベートです。NODUSはすべてブラウザのローカルストレージに保存 — サーバーへのアップロード、クラウド同期、第三者への共有は一切行いません。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq5q">NODUSは無料ですか？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq5a">はい、コア機能は永久無料です。PROプランはヘビーユーザー向けの高度な機能を提供します。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq6q">対応ブラウザは？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq6a">Chrome、Firefox、Edge、Braveに対応しています。一度インストールすれば、すべてのAIプラットフォームで自動的に機能します。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq7q">ChatGPTの返答を二度と失わないようにするには？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq7a">NODUSは保存ボタンをクリックした瞬間に応答をキャプチャします。タブを閉じたり、更新したり、ChatGPTがセッションをクリアする前に。会話履歴はローカルダッシュボードで常に安全です。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq8q">ChatGPTの会話をWordやPDFにエクスポートするには？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq8a">NODUSを使えば、保存した会話をDOCX（Word）またはHTML（PDFとして印刷可能）としてエクスポートできます。複数のキャプチャをチェーンして、1つの構造化ドキュメントとしてまとめてエクスポートできます。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq9q">GeminiやPerplexityの会話を保存するには？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq9a">NODUSはGemini、Perplexity、Copilot、Grok、DeepSeekでネイティブに動作します。ChatGPTだけではありません。同じフローティング保存ボタンがサポートされているすべてのプラットフォームに自動的に表示されます。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq10q">AI会話を一か所で整理するには？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq10a">NODUSは統合ダッシュボードを提供し、任意のAIプラットフォームからのキャプチャをタグ付け、検索、チェーンできます。プラットフォーム、タグ、日付でフィルタリング — すべてが一か所に、ローカルに保存されています。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq11q">AI会話をオフラインでバックアップするには？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq11a">NODUSはすべてをブラウザのローカルストレージに保存します。完全にオフラインで動作します。保存されたAI会話にアクセス、検索、エクスポートするためにインターネット接続は必要ありません。</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq12q">Claude AIの返答を保存する拡張機能はありますか？</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq12a">はい — NODUSはワンクリックでClaude AIの返答をローカルに保存する無料のブラウザ拡張機能です。タグを付け、ChatGPTやGeminiのキャプチャにリンクして、ダッシュボードですべてを検索できます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </div>
+      <p class="footer-tagline" data-i18n="footerTagline"></p>
+      <div class="footer-links">
+        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Privacy Policy</a>
+        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">PROを取得</a>
+        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+      </div>
+      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Load the full i18n script from root — it will applyLang(window._forcedLang) -->
+  <script src="/i18n.js"></script>
+
+</body>
+</html>
