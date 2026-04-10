@@ -1269,7 +1269,7 @@
         node4title: 'Security audit checklist',
         node4text: 'Checklist: token expiry enforced, HttpOnly cookies, CORS policy locked, refresh token rotation, secrets in env vars only, audit log on failed auth attempts.'
 ,
-        storeSoon: 'Soon',
+        storeSoon: 'Soon', storeAvail: 'Available',
         comingSoonChrome: 'Coming soon on the Chrome Web Store',
         comingSoonFirefox: 'Coming soon on Firefox Add-ons'
       },
@@ -1426,7 +1426,7 @@
         node4title: 'Checklist de auditoria de segurança',
         node4text: 'Checklist: expiração do token enforçada, cookies HttpOnly, política CORS bloqueada, rotação de refresh token, segredos apenas em vars de ambiente, log de auditoria em falhas de auth.'
 ,
-        storeSoon: 'Em breve',
+        storeSoon: 'Em breve', storeAvail: 'Disponível',
         comingSoonChrome: 'Em breve na Chrome Web Store',
         comingSoonFirefox: 'Em breve nos Add-ons do Firefox'
       },
@@ -1583,7 +1583,7 @@
         node4title: 'Lista de verificación de auditoría de seguridad',
         node4text: 'Checklist: expiración del token enforzada, cookies HttpOnly, política CORS bloqueada, rotación del refresh token, secretos solo en vars de entorno, log de auditoría en fallos de auth.'
 ,
-        storeSoon: 'Pronto',
+        storeSoon: 'Pronto', storeAvail: 'Disponible',
         comingSoonChrome: 'Próximamente en Chrome Web Store',
         comingSoonFirefox: 'Próximamente en Firefox Add-ons'
       },
@@ -1738,7 +1738,7 @@
         node4title: 'Liste de vérification d\'audit de sécurité',
         node4text: 'Checklist : expiration du token appliquée, cookies HttpOnly, politique CORS verrouillée, rotation des refresh tokens, secrets uniquement dans les vars d\'environnement, log d\'audit sur les échecs d\'auth.'
 ,
-        storeSoon: 'Bientôt',
+        storeSoon: 'Bientôt', storeAvail: 'Disponible',
         comingSoonChrome: 'Bientôt sur le Chrome Web Store',
         comingSoonFirefox: 'Bientôt sur Firefox Add-ons'
       },
@@ -1893,7 +1893,7 @@
         node4title: 'Sicherheits-Audit-Checkliste',
         node4text: 'Checkliste: Token-Ablauf erzwungen, HttpOnly-Cookies, CORS-Richtlinie gesperrt, Refresh-Token-Rotation, Secrets nur in Umgebungsvariablen, Audit-Log bei fehlgeschlagenen Auth-Versuchen.'
 ,
-        storeSoon: 'Bald',
+        storeSoon: 'Bald', storeAvail: 'Verfügbar',
         comingSoonChrome: 'Demnächst im Chrome Web Store',
         comingSoonFirefox: 'Demnächst bei Firefox Add-ons'
       },
@@ -2048,7 +2048,7 @@
         node4title: 'セキュリティ監査チェックリスト',
         node4text: 'チェックリスト：トークン有効期限の強制、HttpOnlyクッキー、CORSポリシーのロック、リフレッシュトークンのローテーション、シークレットは環境変数のみ、Auth失敗時の監査ログ。'
 ,
-        storeSoon: '近日',
+        storeSoon: '近日', storeAvail: '利用可能',
         comingSoonChrome: 'まもなくChrome Web Storeに公開',
         comingSoonFirefox: 'まもなくFirefox Add-onsに公開'
       },
@@ -2262,7 +2262,7 @@
         node4text: 'Checklist: forza la scadenza del token, cookie HttpOnly, blocca la policy CORS, rotazione refresh token, segreti solo in variabili d\'ambiente, log di audit sugli errori Auth.',
         openCoreSub_free: 'Licenza MIT — libero di usare, modificare e distribuire. Nessun copyleft, nessuna restrizione.'
 ,
-        storeSoon: 'Presto',
+        storeSoon: 'Presto', storeAvail: 'Disponibile',
         comingSoonChrome: 'Presto su Chrome Web Store',
         comingSoonFirefox: 'Presto su Firefox Add-ons'
       },
@@ -2475,7 +2475,7 @@
         node4title: '安全审计清单',
         node4text: '清单：强制令牌过期，HttpOnly cookie，锁定CORS策略，刷新令牌轮换，密钥仅在环境变量中，Auth失败时的审计日志。'
 ,
-        storeSoon: '即将',
+        storeSoon: '即将', storeAvail: '可用',
         comingSoonChrome: '即将在Chrome网上应用店上线',
         comingSoonFirefox: '即将在Firefox附加组件上线'
       },
@@ -2688,7 +2688,7 @@
         node4title: '보안 감사 체크리스트',
         node4text: '체크리스트: 토큰 만료 강제, HttpOnly 쿠키, CORS 정책 잠금, 리프레시 토큰 교체, 환경 변수에만 비밀, Auth 실패 시 감사 로그.'
 ,
-        storeSoon: '곧 출시',
+        storeSoon: '곧 출시', storeAvail: '이용 가능',
         comingSoonChrome: 'Chrome 웹 스토어에 곧 출시 예정',
         comingSoonFirefox: 'Firefox 부가 기능에 곧 출시 예정'
       },
@@ -2901,7 +2901,7 @@
         node4title: 'Security Audit Checklist',
         node4text: 'Checklist: token expiry enforce करें, HttpOnly cookies, CORS policy lock करें, refresh token rotation, secrets केवल env variables में, Auth failures पर audit logs।'
 ,
-        storeSoon: 'जल्द',
+        storeSoon: 'जल्द', storeAvail: 'उपलब्ध',
         comingSoonChrome: 'Chrome Web Store पर जल्द आ रहा है',
         comingSoonFirefox: 'Firefox Add-ons पर जल्द आ रहा है'
       }
@@ -3113,16 +3113,16 @@
       </div>
       <svg class="store-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
-    <button class="install-store-card" onclick="window.showComingSoon(this,event)" data-store="firefox">
+    <a class="install-store-card" href="https://addons.mozilla.org/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
       <div class="store-card-icon">
         <img src="firefox-icon.svg" width="30" height="30" alt="Firefox" style="border-radius:4px;"/>
       </div>
       <div class="store-card-info">
         <div class="store-card-name">Firefox Add-ons</div>
-        <div class="store-card-avail" data-i18n="storeSoon">Em breve</div>
+        <div class="store-card-avail" data-i18n="storeAvail">Disponível</div>
       </div>
       <svg class="store-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
+    </a>
   </div>
 
   <!-- Toast (must be outside any element with transform to keep position:fixed working) -->
