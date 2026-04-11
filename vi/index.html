@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — Ghi lại &amp; Tổ chức Cuộc Trò chuyện AI Cục bộ</title>
+  <meta name="description" content="Lưu cuộc trò chuyện từ ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek với NODUS — tiện ích mở rộng trình duyệt miễn phí. Gắn thẻ, xuất và tìm kiếm. Tất cả 100% cục bộ, không cần tài khoản." />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://nodus-ai.app/vi/" />
+  <link rel="alternate" hreflang="en"        href="https://nodus-ai.app/" />
+  <link rel="alternate" hreflang="pt"        href="https://nodus-ai.app/pt/" />
+  <link rel="alternate" hreflang="es"        href="https://nodus-ai.app/es/" />
+  <link rel="alternate" hreflang="fr"        href="https://nodus-ai.app/fr/" />
+  <link rel="alternate" hreflang="de"        href="https://nodus-ai.app/de/" />
+  <link rel="alternate" hreflang="ja"        href="https://nodus-ai.app/ja/" />
+  <link rel="alternate" hreflang="it"        href="https://nodus-ai.app/it/" />
+  <link rel="alternate" hreflang="zh"        href="https://nodus-ai.app/zh/" />
+  <link rel="alternate" hreflang="ko"        href="https://nodus-ai.app/ko/" />
+  <link rel="alternate" hreflang="hi"        href="https://nodus-ai.app/hi/" />
+  <link rel="alternate" hreflang="ru"        href="https://nodus-ai.app/ru/" />
+  <link rel="alternate" hreflang="tr"        href="https://nodus-ai.app/tr/" />
+  <link rel="alternate" hreflang="pl"        href="https://nodus-ai.app/pl/" />
+  <link rel="alternate" hreflang="nl"        href="https://nodus-ai.app/nl/" />
+  <link rel="alternate" hreflang="id"        href="https://nodus-ai.app/id/" />
+  <link rel="alternate" hreflang="vi"        href="https://nodus-ai.app/vi/" />
+  <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NODUS — Ghi lại &amp; Tổ chức Cuộc Trò chuyện AI Cục bộ" />
+  <meta property="og:description" content="Lưu cuộc trò chuyện từ ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek với NODUS — tiện ích mở rộng trình duyệt miễn phí. Tất cả 100% cục bộ, không cần tài khoản." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nodus-ai.app/vi/" />
+  <meta property="og:image" content="https://nodus-ai.app/docs/screenshots/image9.png" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NODUS — Ghi lại &amp; Tổ chức Cuộc Trò chuyện AI Cục bộ" />
+  <meta name="twitter:description" content="Lưu cuộc trò chuyện từ ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek với NODUS — tiện ích mở rộng trình duyệt miễn phí. Tất cả 100% cục bộ, không cần tài khoản." />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NODUS",
+    "applicationCategory": "BrowserApplication",
+    "applicationSubCategory": "Productivity",
+    "operatingSystem": "Chrome, Firefox, Edge, Brave",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Lưu cuộc trò chuyện từ ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek với NODUS — tiện ích mở rộng trình duyệt miễn phí. Tất cả 100% cục bộ, không cần tài khoản.",
+    "url": "https://nodus-ai.app/vi/",
+    "screenshot": "https://nodus-ai.app/docs/screenshots/image9.png",
+    "softwareVersion": "5.0.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "NODUS",
+      "url": "https://nodus-ai.app/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Force this language before the i18n script runs -->
+  <script>window._forcedLang = 'vi';</script>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div class="announcement" data-i18n-html="announcement">
+    NODUS đã có trên Firefox — <a href="https://nodus-ai.app/checkout.html">Truy cập sớm PRO</a> &nbsp;·&nbsp; Giấy phép MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Gắn sao GitHub ★</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app/" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="https://nodus-ai.app/#how" data-i18n="navHow">Cách hoạt động</a>
+        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">Tính năng</a>
+        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">Giá cả</a>
+        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">Quyền riêng tư</a>
+        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">Ảnh chụp màn hình</a>
+        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">Mua PRO</a>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <span id="langCurrent">VI</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+          </button>
+          <ul class="lang-dropdown" role="listbox">
+            <li class="lang-opt" data-lang="en" role="option">EN</li>
+            <li class="lang-opt" data-lang="pt" role="option">PT</li>
+            <li class="lang-opt" data-lang="es" role="option">ES</li>
+            <li class="lang-opt" data-lang="fr" role="option">FR</li>
+            <li class="lang-opt" data-lang="de" role="option">DE</li>
+            <li class="lang-opt" data-lang="ja" role="option">JA</li>
+            <li class="lang-opt" data-lang="it" role="option">IT</li>
+            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
+            <li class="lang-opt" data-lang="ko" role="option">KO</li>
+            <li class="lang-opt" data-lang="hi" role="option">HI</li>
+            <li class="lang-opt" data-lang="ru" role="option">RU</li>
+            <li class="lang-opt" data-lang="tr" role="option">TR</li>
+            <li class="lang-opt" data-lang="pl" role="option">PL</li>
+            <li class="lang-opt" data-lang="nl" role="option">NL</li>
+            <li class="lang-opt" data-lang="id" role="option">ID</li>
+            <li class="lang-opt" data-lang="vi" role="option">VI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badges">
+          <span class="badge" data-i18n="badge1">Có trên Firefox</span>
+          <span class="badge badge-green" data-i18n="badge2">Miễn phí mãi mãi</span>
+          <span class="badge" data-i18n="badge3">Giấy phép MIT</span>
+        </div>
+        <h1 data-i18n-html="heroTitle">Cuộc trò chuyện AI của bạn,<br/><span>được lưu lại &amp; tổ chức</span><br/>cục bộ.</h1>
+        <p data-i18n="heroDesc">Lưu cuộc trò chuyện từ 7 nền tảng AI (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek) với NODUS — tiện ích mở rộng miễn phí. Gắn thẻ, xuất và tìm kiếm. Tất cả 100% cục bộ, không cần tài khoản.</p>
+        <div class="hero-cta">
+          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ Cài đặt miễn phí</a>
+          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ GitHub</a>
+        </div>
+        <div class="trust-row">
+          <span data-i18n="trust1">Không cần tài khoản</span>
+          <span data-i18n="trust3">7 nền tảng AI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="howLabel">Cách hoạt động</p>
+      <h2 data-i18n="howTitle">Ba bước. Chỉ vậy thôi.</h2>
+      <p class="section-sub" data-i18n="howSub">NODUS chạy ẩn trong trình duyệt và chỉ kích hoạt khi bạn muốn.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" data-i18n="step1num">Bước 01</div>
+          <h3 data-i18n="step1title">Mở bất kỳ AI nào</h3>
+          <p data-i18n="step1desc">NODUS kích hoạt trên 7 nền tảng ngay khi bạn mở chúng. Không cần cài đặt từng trang — tự động hoạt động.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step2num">Bước 02</div>
+          <h3 data-i18n="step2title">Nhấn Save hoặc Quick</h3>
+          <p data-i18n="step2desc">Các nút nổi xuất hiện trên tất cả các trang AI. Save lưu vào hàng đợi tiêu chuẩn, Quick lưu ngay vào hàng đợi nhanh.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step3num">Bước 03</div>
+          <h3 data-i18n="step3title">Tổ chức trong bảng điều khiển</h3>
+          <p data-i18n="step3desc">Mở bảng điều khiển NODUS để thêm thẻ, ghi chú, tạo chuỗi và tìm kiếm trên tất cả các nền tảng.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="pricingLabel">Giá cả</p>
+      <h2 data-i18n="pricingTitle">Miễn phí mãi mãi. Nâng cấp khi sẵn sàng.</h2>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy" id="privacy">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="privacyLabel">Quyền riêng tư trước tiên</p>
+      <h2 data-i18n="privacyTitle">Dữ liệu của bạn ở lại trên thiết bị của bạn.</h2>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2 data-i18n-html="ctaTitle">Cài đặt miễn phí — không cần tài khoản.</h2>
+      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ Cài đặt miễn phí</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <h2 data-i18n="faqTitle">Câu hỏi thường gặp</h2>
+      <p class="section-sub" data-i18n="faqSub">Trả lời nhanh các câu hỏi phổ biến nhất về NODUS.</p>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq1q">Làm thế nào để lưu cuộc trò chuyện ChatGPT?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq1a">Cài NODUS và nút nổi sẽ xuất hiện trên mọi trang AI được hỗ trợ. Nhấn Save để lưu ngay cuộc trò chuyện vào bảng điều khiển cục bộ — không sao chép dán, không cần tài khoản.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq2q">Tôi có thể xuất lịch sử trò chuyện AI không?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq2a">Có. Xuất bản lưu của bạn dưới dạng TXT, HTML hoặc DOCX. Bạn cũng có thể liên kết các bản lưu liên quan giữa các phiên và xuất toàn bộ chuỗi kiến thức.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq3q">Có hoạt động với Claude và Gemini không?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq3a">NODUS lưu cuộc trò chuyện từ 7 nền tảng AI: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek — tất cả trong một bảng điều khiển, được lưu trữ cục bộ trên thiết bị của bạn.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq4q">Dữ liệu trò chuyện của tôi có riêng tư không?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq4a">100% riêng tư. NODUS lưu trữ mọi thứ trong bộ nhớ cục bộ của trình duyệt — không có gì được tải lên máy chủ hoặc chia sẻ với bên thứ ba.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq5q">NODUS có miễn phí không?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq5a">Có, các tính năng cốt lõi miễn phí mãi mãi. Lưu, gắn thẻ, tìm kiếm và xuất lịch sử trò chuyện AI miễn phí. Gói PRO mở khóa các tính năng nâng cao.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq6q">Trình duyệt nào được hỗ trợ?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq6a">NODUS hoạt động trên Chrome, Firefox, Edge và Brave. Cài một lần — tự động hoạt động trên tất cả các nền tảng AI của bạn.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq7q">Làm thế nào để không bao giờ mất câu trả lời ChatGPT nữa?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq7a">NODUS ghi lại câu trả lời ngay khi bạn nhấn Save — trước khi đóng tab, làm mới hoặc ChatGPT xóa phiên. Lịch sử trò chuyện của bạn luôn an toàn trong bảng điều khiển cục bộ.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq8q">Làm thế nào để xuất cuộc trò chuyện ChatGPT sang Word hoặc PDF?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq8a">Với NODUS, xuất bất kỳ cuộc trò chuyện đã lưu nào dưới dạng DOCX (Word) hoặc HTML (có thể in thành PDF). Liên kết nhiều bản lưu và xuất chúng cùng nhau thành một tài liệu.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq9q">Làm thế nào để lưu cuộc trò chuyện Gemini hoặc Perplexity?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq9a">NODUS hoạt động native trên Gemini, Perplexity, Copilot, Grok và DeepSeek — không chỉ ChatGPT. Cùng nút Save nổi xuất hiện tự động trên tất cả các nền tảng được hỗ trợ.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq10q">Làm thế nào để tổ chức cuộc trò chuyện AI ở một nơi?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq10a">NODUS cung cấp bảng điều khiển thống nhất nơi bạn gắn thẻ, tìm kiếm và liên kết bản lưu từ bất kỳ nền tảng AI nào. Lọc theo nền tảng, thẻ hoặc ngày — mọi thứ ở một nơi, được lưu trữ cục bộ.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq11q">Làm thế nào để sao lưu cuộc trò chuyện AI ngoại tuyến?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq11a">NODUS lưu trữ mọi thứ trong bộ nhớ cục bộ của trình duyệt — hoạt động hoàn toàn ngoại tuyến. Không cần kết nối internet để truy cập, tìm kiếm hoặc xuất các cuộc trò chuyện AI đã lưu.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq12q">Có tiện ích mở rộng nào để lưu phản hồi Claude AI không?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq12a">Có — NODUS là tiện ích mở rộng trình duyệt miễn phí lưu phản hồi Claude AI cục bộ chỉ với một cú nhấp. Gắn thẻ chúng, liên kết với bản lưu ChatGPT hoặc Gemini và tìm kiếm mọi thứ trong bảng điều khiển.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </div>
+      <p class="footer-tagline" data-i18n="footerTagline">Tiện ích mở rộng trình duyệt cục bộ để ghi lại và tổ chức cuộc trò chuyện AI trên 7 nền tảng. Giấy phép MIT.</p>
+      <div class="footer-links">
+        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Chính sách Quyền riêng tư</a>
+        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">Mua PRO</a>
+        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+      </div>
+      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <script src="/i18n.js"></script>
+
+</body>
+</html>

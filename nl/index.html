@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODUS — Leg AI-gesprekken vast en organiseer ze lokaal</title>
+  <meta name="description" content="Sla gesprekken op van ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok en DeepSeek met NODUS — gratis browserextensie. Tag, exporteer en zoek. Alles 100% lokaal, geen account nodig." />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://nodus-ai.app/nl/" />
+  <link rel="alternate" hreflang="en"        href="https://nodus-ai.app/" />
+  <link rel="alternate" hreflang="pt"        href="https://nodus-ai.app/pt/" />
+  <link rel="alternate" hreflang="es"        href="https://nodus-ai.app/es/" />
+  <link rel="alternate" hreflang="fr"        href="https://nodus-ai.app/fr/" />
+  <link rel="alternate" hreflang="de"        href="https://nodus-ai.app/de/" />
+  <link rel="alternate" hreflang="ja"        href="https://nodus-ai.app/ja/" />
+  <link rel="alternate" hreflang="it"        href="https://nodus-ai.app/it/" />
+  <link rel="alternate" hreflang="zh"        href="https://nodus-ai.app/zh/" />
+  <link rel="alternate" hreflang="ko"        href="https://nodus-ai.app/ko/" />
+  <link rel="alternate" hreflang="hi"        href="https://nodus-ai.app/hi/" />
+  <link rel="alternate" hreflang="ru"        href="https://nodus-ai.app/ru/" />
+  <link rel="alternate" hreflang="tr"        href="https://nodus-ai.app/tr/" />
+  <link rel="alternate" hreflang="pl"        href="https://nodus-ai.app/pl/" />
+  <link rel="alternate" hreflang="nl"        href="https://nodus-ai.app/nl/" />
+  <link rel="alternate" hreflang="id"        href="https://nodus-ai.app/id/" />
+  <link rel="alternate" hreflang="vi"        href="https://nodus-ai.app/vi/" />
+  <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NODUS — Leg AI-gesprekken vast en organiseer ze lokaal" />
+  <meta property="og:description" content="Sla gesprekken op van ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok en DeepSeek met NODUS — gratis browserextensie. Alles 100% lokaal, geen account nodig." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nodus-ai.app/nl/" />
+  <meta property="og:image" content="https://nodus-ai.app/docs/screenshots/image9.png" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NODUS — Leg AI-gesprekken vast en organiseer ze lokaal" />
+  <meta name="twitter:description" content="Sla gesprekken op van ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok en DeepSeek met NODUS — gratis browserextensie. Alles 100% lokaal, geen account nodig." />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NODUS",
+    "applicationCategory": "BrowserApplication",
+    "applicationSubCategory": "Productivity",
+    "operatingSystem": "Chrome, Firefox, Edge, Brave",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Sla gesprekken op van ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok en DeepSeek met NODUS — gratis browserextensie. Alles 100% lokaal, geen account nodig.",
+    "url": "https://nodus-ai.app/nl/",
+    "screenshot": "https://nodus-ai.app/docs/screenshots/image9.png",
+    "softwareVersion": "5.0.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "NODUS",
+      "url": "https://nodus-ai.app/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Force this language before the i18n script runs -->
+  <script>window._forcedLang = 'nl';</script>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div class="announcement" data-i18n-html="announcement">
+    NODUS is nu beschikbaar op Firefox — <a href="https://nodus-ai.app/checkout.html">PRO vroege toegang</a> &nbsp;·&nbsp; MIT-licentie &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Ster op GitHub ★</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app/" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="https://nodus-ai.app/#how" data-i18n="navHow">Hoe het werkt</a>
+        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">Functies</a>
+        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">Prijzen</a>
+        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">Privacy</a>
+        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">Screenshots</a>
+        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">PRO halen</a>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <span id="langCurrent">NL</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+          </button>
+          <ul class="lang-dropdown" role="listbox">
+            <li class="lang-opt" data-lang="en" role="option">EN</li>
+            <li class="lang-opt" data-lang="pt" role="option">PT</li>
+            <li class="lang-opt" data-lang="es" role="option">ES</li>
+            <li class="lang-opt" data-lang="fr" role="option">FR</li>
+            <li class="lang-opt" data-lang="de" role="option">DE</li>
+            <li class="lang-opt" data-lang="ja" role="option">JA</li>
+            <li class="lang-opt" data-lang="it" role="option">IT</li>
+            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
+            <li class="lang-opt" data-lang="ko" role="option">KO</li>
+            <li class="lang-opt" data-lang="hi" role="option">HI</li>
+            <li class="lang-opt" data-lang="ru" role="option">RU</li>
+            <li class="lang-opt" data-lang="tr" role="option">TR</li>
+            <li class="lang-opt" data-lang="pl" role="option">PL</li>
+            <li class="lang-opt" data-lang="nl" role="option">NL</li>
+            <li class="lang-opt" data-lang="id" role="option">ID</li>
+            <li class="lang-opt" data-lang="vi" role="option">VI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badges">
+          <span class="badge" data-i18n="badge1">Nu op Firefox</span>
+          <span class="badge badge-green" data-i18n="badge2">Voor altijd gratis</span>
+          <span class="badge" data-i18n="badge3">MIT-licentie</span>
+        </div>
+        <h1 data-i18n-html="heroTitle">Jouw AI-gesprekken,<br/><span>vastgelegd en georganiseerd</span><br/>lokaal.</h1>
+        <p data-i18n="heroDesc">Sla gesprekken op van 7 AI-platforms (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek) met NODUS — gratis browserextensie. Tag, exporteer en zoek. Alles 100% lokaal, geen account nodig.</p>
+        <div class="hero-cta">
+          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ Gratis installeren</a>
+          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ GitHub</a>
+        </div>
+        <div class="trust-row">
+          <span data-i18n="trust1">Geen account vereist</span>
+          <span data-i18n="trust3">7 AI-platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="howLabel">Hoe het werkt</p>
+      <h2 data-i18n="howTitle">Drie stappen. Dat is alles.</h2>
+      <p class="section-sub" data-i18n="howSub">NODUS werkt op de achtergrond en activeert alleen wanneer jij dat wilt.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" data-i18n="step1num">Stap 01</div>
+          <h3 data-i18n="step1title">Open een AI-platform</h3>
+          <p data-i18n="step1desc">NODUS activeert op 7 platforms zodra je ze opent. Geen instelling per site — het werkt gewoon.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step2num">Stap 02</div>
+          <h3 data-i18n="step2title">Klik op Save of Quick</h3>
+          <p data-i18n="step2desc">Zwevende knoppen verschijnen op alle AI-pagina's. Save slaat op in de standaardwachtrij, Quick slaat direct op in de snelle wachtrij.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" data-i18n="step3num">Stap 03</div>
+          <h3 data-i18n="step3title">Organiseer in je dashboard</h3>
+          <p data-i18n="step3desc">Open het NODUS-dashboard om tags toe te voegen, notities te schrijven, ketens te maken en over alle platforms te zoeken.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="pricingLabel">Prijzen</p>
+      <h2 data-i18n="pricingTitle">Voor altijd gratis. Upgrade wanneer je klaar bent.</h2>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy" id="privacy">
+    <div class="section-inner">
+      <p class="section-label" data-i18n="privacyLabel">Privacy eerst</p>
+      <h2 data-i18n="privacyTitle">Jouw gegevens blijven op jouw apparaat.</h2>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2 data-i18n-html="ctaTitle">Gratis installeren — geen account nodig.</h2>
+      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ Gratis installeren</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <h2 data-i18n="faqTitle">Veelgestelde vragen</h2>
+      <p class="section-sub" data-i18n="faqSub">Snelle antwoorden op de meest gestelde vragen over NODUS.</p>
+      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq1q">Hoe sla ik ChatGPT-gesprekken op?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq1a">Installeer NODUS en er verschijnt een zwevende knop op elke ondersteunde AI-pagina. Klik op Save om het gesprek direct op te slaan in je lokale dashboard — geen kopiëren, geen account.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq2q">Kan ik mijn AI-chatgeschiedenis exporteren?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq2a">Ja. Exporteer je opnames als TXT, HTML of DOCX. Je kunt ook gerelateerde opnames tussen sessies koppelen en volledige kennispaden exporteren.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq3q">Werkt het met Claude en Gemini?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq3a">NODUS slaat gesprekken op van 7 AI-platforms: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok en DeepSeek — alles in één dashboard, lokaal opgeslagen op je apparaat.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq4q">Zijn mijn gespreksgegevens privé?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq4a">100% privé. NODUS slaat alles op in de lokale opslag van de browser — er wordt nooit iets geüpload naar servers of gedeeld met derden.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq5q">Is NODUS gratis?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq5a">Ja, de kernfuncties zijn voor altijd gratis. Sla je AI-gespreksgeschiedenis gratis op, tag, zoek en exporteer. Een PRO-plan ontgrendelt geavanceerde functies.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq6q">Welke browsers worden ondersteund?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq6a">NODUS werkt op Chrome, Firefox, Edge en Brave. Eenmalig installeren en het werkt automatisch op al je AI-platforms.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq7q">Hoe verlies je nooit meer een ChatGPT-antwoord?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq7a">NODUS legt antwoorden vast op het moment dat je op Save klikt — voordat je het tabblad sluit, vernieuwt of ChatGPT de sessie wist. Je gespreksgeschiedenis is altijd veilig in je lokale dashboard.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq8q">Hoe exporteer ik een ChatGPT-gesprek naar Word of PDF?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq8a">Met NODUS exporteer je elk opgeslagen gesprek als DOCX (Word) of HTML (dat je als PDF kunt afdrukken). Koppel meerdere opnames en exporteer ze samen als één document.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq9q">Hoe sla ik Gemini- of Perplexity-gesprekken op?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq9a">NODUS werkt native op Gemini, Perplexity, Copilot, Grok en DeepSeek — niet alleen ChatGPT. Dezelfde zwevende Save-knop verschijnt automatisch op alle ondersteunde platforms.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq10q">Hoe organiseer ik AI-gesprekken op één plek?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq10a">NODUS biedt een unified dashboard waar je opnames van elk AI-platform kunt taggen, doorzoeken en koppelen. Filter op platform, tag of datum — alles op één plek, lokaal opgeslagen.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq11q">Hoe maak ik offline back-ups van AI-gesprekken?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq11a">NODUS slaat alles op in de lokale opslag van de browser — werkt volledig offline. Geen internetverbinding nodig om opgeslagen AI-gesprekken te openen, doorzoeken of exporteren.</p>
+          </div>
+        </div>
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name" data-i18n="faq12q">Is er een extensie om Claude AI-antwoorden op te slaan?</h3>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text" data-i18n="faq12a">Ja — NODUS is een gratis browserextensie die Claude AI-antwoorden met één klik lokaal opslaat. Tag ze, koppel ze aan ChatGPT- of Gemini-opnames en doorzoek alles in je dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0e1117"/>
+          <circle cx="16" cy="16" r="9" fill="#facc15"/>
+          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
+        </svg>
+        NODUS
+      </div>
+      <p class="footer-tagline" data-i18n="footerTagline">Een lokale browserextensie die AI-gesprekken vastlegt en organiseert op 7 platforms. MIT-licentie.</p>
+      <div class="footer-links">
+        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Privacybeleid</a>
+        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">PRO halen</a>
+        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+      </div>
+      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. Alle rechten voorbehouden.</p>
+    </div>
+  </footer>
+
+  <script src="/i18n.js"></script>
+
+</body>
+</html>
