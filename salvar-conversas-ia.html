@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como salvar conversas de IA — Guia completo 2025 | NODUS</title>
+  <meta name="description" content="Guia completo para salvar, organizar e exportar conversas do ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot e DeepSeek. Com o NODUS, um clique salva tudo localmente." />
+  <link rel="canonical" href="https://nodus-ai.github.io/salvar-conversas-ia" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0e1117; --panel:#1a1f29; --border:#2d3748; --yellow:#facc15; --text:#e2e8f0; --sub:#94a3b8; --muted:#475569; --green:#10b981; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(14,17,23,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { font-size: 13px; color: var(--sub); }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-cta { background: var(--yellow); color: #0e1117; font-size: 13px; font-weight: 800; padding: 7px 18px; border-radius: 8px; }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+    .breadcrumb a { color: var(--muted); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 20px; background: rgba(250,204,21,0.1); color: var(--yellow); border: 1px solid rgba(250,204,21,0.25); }
+    h1 { font-size: clamp(28px, 5vw, 46px); font-weight: 900; line-height: 1.15; margin-bottom: 20px; }
+    h1 span { color: var(--yellow); }
+    .hero-sub { font-size: 17px; color: var(--sub); line-height: 1.75; max-width: 620px; margin-bottom: 32px; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-yellow { background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 800; padding: 11px 24px; border-radius: 8px; }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost { background: transparent; color: var(--sub); font-size: 14px; font-weight: 600; padding: 11px 24px; border-radius: 8px; border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); text-decoration: none; }
+
+    .content { padding: 56px 0; }
+    .content h2 { font-size: 22px; font-weight: 800; margin: 48px 0 16px; }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 { font-size: 16px; font-weight: 700; margin: 28px 0 10px; color: var(--text); }
+    .content p { font-size: 15px; color: var(--sub); line-height: 1.8; margin-bottom: 14px; }
+    .content p strong { color: var(--text); }
+    .content ul { margin: 0 0 16px 20px; }
+    .content li { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 6px; }
+    .content li strong { color: var(--text); }
+
+    .platform-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; margin: 28px 0; }
+    .platform-card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; }
+    .platform-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .platform-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .platform-card-header strong { font-size: 15px; font-weight: 700; }
+    .platform-card p { font-size: 13px; color: var(--sub); line-height: 1.6; margin-bottom: 10px; }
+    .platform-card-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .platform-pill-link { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); }
+    .platform-pill-link:hover { border-color: var(--yellow); color: var(--yellow); text-decoration: none; }
+
+    .steps { counter-reset: step; display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
+    .step { display: flex; gap: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+    .step-num { counter-increment: step; width: 30px; height: 30px; border-radius: 50%; background: var(--yellow); color: #0e1117; font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-num::before { content: counter(step); }
+    .step-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .step-body p { font-size: 13px; color: var(--sub); margin: 0; }
+
+    .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px; }
+    .compare-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .compare-table td { padding: 12px 14px; border-bottom: 1px solid rgba(45,55,72,0.5); color: var(--sub); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { font-weight: 600; color: var(--text); }
+    .check { color: var(--green); }
+    .cross { color: #ef4444; }
+
+    .cluster-block { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 40px 0; }
+    .cluster-block h3 { font-size: 15px; font-weight: 700; margin-bottom: 20px; }
+    .cluster-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; margin-top: 20px; }
+    .cluster-group-title:first-of-type { margin-top: 0; }
+    .cluster-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+    .cluster-link { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); display: inline-flex; align-items: center; gap: 6px; }
+    .cluster-link:hover { border-color: var(--yellow); color: var(--yellow); text-decoration: none; }
+    .cluster-link-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    .cta-block { background: linear-gradient(135deg, rgba(250,204,21,0.07), rgba(16,185,129,0.04)); border: 1px solid rgba(250,204,21,0.2); border-radius: 16px; padding: 40px; text-align: center; margin: 40px 0; }
+    .cta-block h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+    .cta-block p { font-size: 15px; color: var(--sub); margin-bottom: 24px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; }
+    footer p { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="index.html" class="nav-logo">&#9733; NODUS</a>
+        <div class="nav-links">
+          <a href="faq.html">FAQ</a>
+          <a href="index.html#funcionalidades">Funcionalidades</a>
+        </div>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar gr&#225;tis</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">NODUS</a> &#8250; Guia: salvar conversas de IA</div>
+      <div class="hero-eyebrow">&#9998; Guia completo 2025</div>
+      <h1>Como salvar conversas de IA<br><span>sem perder nada importante</span></h1>
+      <p class="hero-sub">ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot, DeepSeek — todas as plataformas têm o mesmo problema: o que você encontrou hoje pode sumir amanhã. O NODUS resolve com um clique.</p>
+      <div class="hero-cta">
+        <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="btn-yellow" target="_blank" rel="noopener">Instalar no Chrome &#8212; gr&#225;tis</a>
+        <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" class="btn-ghost" target="_blank" rel="noopener">Firefox</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+
+      <h2>O problema com o hist&#243;rico nativo das IAs</h2>
+      <p>Todas as plataformas de IA guardam suas conversas internamente &#8212; mas de forma ineficiente para quem precisa recuperar e reutilizar respostas:</p>
+      <ul>
+        <li><strong>Sem busca full-text:</strong> não dá para pesquisar dentro das respostas, só pelo título da conversa.</li>
+        <li><strong>Sem organização por tema:</strong> nenhuma plataforma oferece tags, pastas ou filtros por assunto.</li>
+        <li><strong>Sem exportação por resposta:</strong> só é possível exportar conversas inteiras, não respostas individuais.</li>
+        <li><strong>Dependência de conta:</strong> se perder acesso à conta, perde tudo.</li>
+      </ul>
+      <p>O NODUS resolve cada um desses pontos com uma extensão de navegador leve, local e gratuita.</p>
+
+      <h2>Como o NODUS funciona</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Instale o NODUS</h4><p>Chrome Web Store ou Firefox Add-ons &#8212; gratuito, sem conta, sem cadastro. A instala&#231;&#227;o leva menos de 1 minuto.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Abra qualquer plataforma de IA</h4><p>ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot ou DeepSeek. O NODUS detecta automaticamente e injeta os bot&#245;es de captura ao lado de cada resposta.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Clique em Salvar ou R&#225;pido</h4><p><strong>Salvar</strong> abre o painel para adicionar tags e escolher a fila. <strong>R&#225;pido</strong> captura instantaneamente sem interromper o fluxo.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Acesse pelo painel Dash</h4><p>Todas as capturas ficam no painel NODUS &#8212; organizadas por data, plataforma e tag. Busca full-text em tudo, export em HTML, Markdown ou DOC.</p></div></div>
+      </div>
+
+      <h2>Por plataforma: o que falta e como resolver</h2>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="platform-card-header"><div class="platform-dot" style="background:#10b981;"></div><strong>ChatGPT</strong></div>
+          <p>O hist&#243;rico nativo n&#227;o tem busca full-text nem exporta&#231;&#227;o por resposta individual. Conversas &#250;teis ficam enterradas na rolagem.</p>
+          <div class="platform-card-links">
+            <a href="faq/como-salvar-conversas-chatgpt.html" class="platform-pill-link">Salvar</a>
+            <a href="faq/como-exportar-conversas-chatgpt.html" class="platform-pill-link">Exportar</a>
+            <a href="faq/como-guardar-respostas-chatgpt.html" class="platform-pill-link">Guardar</a>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-header"><div class="platform-dot" style="background:#8b5cf6;"></div><strong>Claude</strong></div>
+          <p>Projetos com contexto longo, mas sem exporta&#231;&#227;o estruturada fora da plataforma. Respostas anal&#237;ticas longas se perdem com o tempo.</p>
+          <div class="platform-card-links">
+            <a href="faq/como-salvar-conversas-claude.html" class="platform-pill-link">Salvar</a>
+            <a href="faq/como-exportar-conversas-claude.html" class="platform-pill-link">Exportar</a>
+            <a href="faq/como-guardar-respostas-claude.html" class="platform-pill-link">Guardar</a>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-header"><div class="platform-dot" style="background:#3b82f6;"></div><strong>Gemini</strong></div>
+          <p>Integra com o Google Workspace, mas conversas ficam presas na interface. Exporta&#231;&#227;o para o Docs perde formata&#231;&#227;o e estrutura.</p>
+          <div class="platform-card-links">
+            <a href="faq/como-salvar-conversas-gemini.html" class="platform-pill-link">Salvar</a>
+            <a href="faq/como-exportar-conversas-gemini.html" class="platform-pill-link">Exportar</a>
+            <a href="faq/como-guardar-respostas-gemini.html" class="platform-pill-link">Guardar</a>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-header"><div class="platform-dot" style="background:#06b6d4;"></div><strong>Perplexity</strong></div>
+          <p>Respostas com fontes citadas somem do hist&#243;rico. Sem exporta&#231;&#227;o nativa. Ideal para pesquisa &#8212; mas in&#250;til se as refer&#234;ncias se perderem.</p>
+          <div class="platform-card-links">
+            <a href="faq/como-salvar-conversas-perplexity.html" class="platform-pill-link">Salvar</a>
+            <a href="faq/como-exportar-conversas-perplexity.html" class="platform-pill-link">Exportar</a>
+            <a href="faq/como-guardar-respostas-perplexity.html" class="platform-pill-link">Guardar</a>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-header"><div class="platform-dot" style="background:#ec4899;"></div><strong>Grok</strong></div>
+          <p>Hist&#243;rico misturado ao feed do X/Twitter. Sem exporta&#231;&#227;o. Respostas &#250;teis se perdem em meio ao volume da timeline.</p>
+          <div class="platform-card-links">
+            <a href="faq/como-salvar-conversas-grok.html" class="platform-pill-link">Salvar</a>
+            <a href="faq/como-exportar-conversas-grok.html" class="platform-pill-link">Exportar</a>
+            <a href="faq/como-guardar-respostas-grok.html" class="platform-pill-link">Guardar</a>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-header"><div class="platform-dot" style="background:#0284c7;"></div><strong>Copilot</strong></div>
+          <p>Integrado ao Edge e Office 365, mas sem exporta&#231;&#227;o local por resposta. Links de compartilhamento expiram e dependem de conta Microsoft.</p>
+          <div class="platform-card-links">
+            <a href="faq/como-salvar-conversas-copilot.html" class="platform-pill-link">Salvar</a>
+            <a href="faq/como-exportar-conversas-copilot.html" class="platform-pill-link">Exportar</a>
+            <a href="faq/como-guardar-respostas-copilot.html" class="platform-pill-link">Guardar</a>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-card-header"><div class="platform-dot" style="background:#6366f1;"></div><strong>DeepSeek</strong></div>
+          <p>Forte em c&#243;digo e racioc&#237;nio t&#233;cnico. Sem exporta&#231;&#227;o nativa. Snippets &#250;teis e an&#225;lises longas ficam presos na interface.</p>
+          <div class="platform-card-links">
+            <a href="faq/como-salvar-conversas-deepseek.html" class="platform-pill-link">Salvar</a>
+            <a href="faq/como-exportar-conversas-deepseek.html" class="platform-pill-link">Exportar</a>
+            <a href="faq/como-guardar-respostas-deepseek.html" class="platform-pill-link">Guardar</a>
+          </div>
+        </div>
+      </div>
+
+      <h2>Compara&#231;&#227;o: hist&#243;rico nativo vs. NODUS</h2>
+      <table class="compare-table">
+        <thead>
+          <tr><th>Funcionalidade</th><th>Hist&#243;rico nativo</th><th>NODUS</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Busca full-text nas respostas</td><td class="cross">&#10007; N&#227;o</td><td class="check">&#10003; Sim</td></tr>
+          <tr><td>Tags e categoriza&#231;&#227;o</td><td class="cross">&#10007; N&#227;o</td><td class="check">&#10003; Sim</td></tr>
+          <tr><td>Exportar resposta individual</td><td class="cross">&#10007; N&#227;o</td><td class="check">&#10003; HTML, MD, DOC</td></tr>
+          <tr><td>Funciona em 7 plataformas</td><td class="cross">&#10007; N&#227;o</td><td class="check">&#10003; Sim</td></tr>
+          <tr><td>Armazenamento local (sem conta)</td><td class="cross">&#10007; N&#227;o</td><td class="check">&#10003; Sim</td></tr>
+          <tr><td>Conectar respostas em seq&#252;&#234;ncia</td><td class="cross">&#10007; N&#227;o</td><td class="check">&#10003; Cadeias</td></tr>
+          <tr><td>Gratuito</td><td class="check">&#10003; Sim</td><td class="check">&#10003; Sim</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Todos os guias por plataforma e inten&#231;&#227;o</h2>
+      <div class="cluster-block">
+        <h3>Guias dispon&#237;veis</h3>
+
+        <div class="cluster-group-title">Como salvar conversas</div>
+        <div class="cluster-links">
+          <a href="faq/como-salvar-conversas-chatgpt.html" class="cluster-link"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+          <a href="faq/como-salvar-conversas-claude.html" class="cluster-link"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+          <a href="faq/como-salvar-conversas-gemini.html" class="cluster-link"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+          <a href="faq/como-salvar-conversas-perplexity.html" class="cluster-link"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+          <a href="faq/como-salvar-conversas-grok.html" class="cluster-link"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+          <a href="faq/como-salvar-conversas-copilot.html" class="cluster-link"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+          <a href="faq/como-salvar-conversas-deepseek.html" class="cluster-link"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+        </div>
+
+        <div class="cluster-group-title">Como exportar conversas</div>
+        <div class="cluster-links">
+          <a href="faq/como-exportar-conversas-chatgpt.html" class="cluster-link"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+          <a href="faq/como-exportar-conversas-claude.html" class="cluster-link"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+          <a href="faq/como-exportar-conversas-gemini.html" class="cluster-link"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+          <a href="faq/como-exportar-conversas-perplexity.html" class="cluster-link"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+          <a href="faq/como-exportar-conversas-grok.html" class="cluster-link"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+          <a href="faq/como-exportar-conversas-copilot.html" class="cluster-link"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+          <a href="faq/como-exportar-conversas-deepseek.html" class="cluster-link"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+        </div>
+
+        <div class="cluster-group-title">Como guardar respostas</div>
+        <div class="cluster-links">
+          <a href="faq/como-guardar-respostas-chatgpt.html" class="cluster-link"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+          <a href="faq/como-guardar-respostas-claude.html" class="cluster-link"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+          <a href="faq/como-guardar-respostas-gemini.html" class="cluster-link"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+          <a href="faq/como-guardar-respostas-perplexity.html" class="cluster-link"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+          <a href="faq/como-guardar-respostas-grok.html" class="cluster-link"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+          <a href="faq/como-guardar-respostas-copilot.html" class="cluster-link"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+          <a href="faq/como-guardar-respostas-deepseek.html" class="cluster-link"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+        </div>
+
+        <div class="cluster-group-title">Outros guias</div>
+        <div class="cluster-links">
+          <a href="faq/como-exportar-historico-ia-word.html" class="cluster-link"><span class="cluster-link-dot" style="background:#facc15;"></span>Exportar para Word</a>
+          <a href="faq/como-baixar-historico-conversas-ia.html" class="cluster-link"><span class="cluster-link-dot" style="background:#facc15;"></span>Baixar hist&#243;rico</a>
+          <a href="faq/como-organizar-conversas-ia.html" class="cluster-link"><span class="cluster-link-dot" style="background:#facc15;"></span>Organizar conversas</a>
+          <a href="faq/como-nao-perder-resposta-ia.html" class="cluster-link"><span class="cluster-link-dot" style="background:#facc15;"></span>Nunca mais perder resposta</a>
+          <a href="faq/extensao-salvar-conversas-ia.html" class="cluster-link"><span class="cluster-link-dot" style="background:#facc15;"></span>Extens&#227;o para salvar</a>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>Comece agora &#8212; &#233; gr&#225;tis</h3>
+        <p>Instale o NODUS e salve sua pr&#243;xima resposta de IA com um clique. Sem conta, sem servidor, sem perder nada.</p>
+        <div class="cta-btns">
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="btn-yellow" target="_blank" rel="noopener">Instalar no Chrome</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" class="btn-ghost" target="_blank" rel="noopener">Instalar no Firefox</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer><div class="container"><p>&#169; 2025 NODUS &#183; <a href="faq.html">FAQ</a> &#183; <a href="index.html">Site</a> &#183; <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank">GitHub</a></p></div></footer>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Como salvar conversas do ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"Com o NODUS instalado, abra o ChatGPT. Clique em Salvar ao lado de qualquer resposta para capturar pergunta e resposta no painel local, com tags e organização. Ou use Rápido para salvar com um único clique."}},
+    {"@type":"Question","name":"Como salvar conversas do Claude?","acceptedAnswer":{"@type":"Answer","text":"O NODUS funciona nativamente no Claude.ai. Os botões de captura aparecem ao lado das respostas. Clique em Salvar para guardar localmente, com tags, no seu painel NODUS."}},
+    {"@type":"Question","name":"Como salvar conversas do Gemini?","acceptedAnswer":{"@type":"Answer","text":"Instale o NODUS e acesse gemini.google.com. Os botões aparecem ao lado das respostas do Gemini. Clique em Salvar para guardar localmente, fora do ecossistema Google."}},
+    {"@type":"Question","name":"Como exportar conversas de IA para Word?","acceptedAnswer":{"@type":"Answer","text":"Com o NODUS, salve a conversa e abra o painel. Clique em Exportar e escolha DOC para baixar um arquivo Word com formatação preservada. Funciona com ChatGPT, Claude, Gemini e mais 4 plataformas."}},
+    {"@type":"Question","name":"Existe extensão para salvar conversas de IA?","acceptedAnswer":{"@type":"Answer","text":"Sim. O NODUS é uma extensão gratuita para Chrome e Firefox que salva conversas de 7 plataformas de IA (ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot, DeepSeek) com um clique, localmente, sem conta."}},
+    {"@type":"Question","name":"Como organizar conversas de IA?","acceptedAnswer":{"@type":"Answer","text":"O NODUS organiza suas capturas por tags (até 4 por captura), filas (Quick, Default, Q1, Q2) e plataforma. O painel tem busca full-text, filtros e suporte a Cadeias para conectar capturas relacionadas."}},
+    {"@type":"Question","name":"Como salvar conversas do Perplexity com as fontes?","acceptedAnswer":{"@type":"Answer","text":"O NODUS captura a resposta completa do Perplexity incluindo as fontes citadas. Clique em Salvar ao lado da resposta e tudo fica guardado no painel local — resposta, contexto e referências juntos."}}
+  ]}
+  </script>
+</body>
+</html>

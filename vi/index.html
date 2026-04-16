@@ -71,240 +71,1153 @@
 
   <!-- Force this language before the i18n script runs -->
   <script>window._forcedLang = 'vi';</script>
+
+  <style>
+    .problema-section {
+      background: linear-gradient(180deg, #0a0d14 0%, #0e1117 100%);
+      padding: 60px 0 52px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .problema-headline {
+      font-size: clamp(22px, 3.5vw, 34px); font-weight: 800;
+      color: #f1f5f9; text-align: center; margin-bottom: 8px; letter-spacing: -0.5px;
+    }
+    .problema-headline em { color: #facc15; font-style: normal; }
+    .problema-sub { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 48px; }
+    .problema-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; max-width: 860px; margin: 0 auto 48px;
+    }
+    .problema-item {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .problema-item-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .problema-item-text { font-size: 14px; color: #cbd5e1; line-height: 1.55; }
+    .problema-item-text strong {
+      display: block; color: #f1f5f9; font-weight: 700;
+      font-size: 15px; margin-bottom: 4px;
+    }
+    .problema-arrow { text-align: center; }
+    .problema-arrow-text {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 99px; padding: 10px 22px;
+      color: #facc15; font-size: 14px; font-weight: 700;
+    }
+    .avd-section {
+      padding: 60px 0;
+      background: #0a0d14;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .avd-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; max-width: 720px; margin: 40px auto 0;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
+    }
+    @media (max-width: 560px) { .avd-grid { grid-template-columns: 1fr; } }
+    .avd-col { padding: 28px 32px; }
+    .avd-col.sem {
+      background: rgba(239,68,68,0.04);
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .avd-col.com { background: rgba(16,185,129,0.04); }
+    .avd-col-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .avd-col.sem .avd-col-label { color: #f87171; }
+    .avd-col.com .avd-col-label { color: #34d399; }
+    .avd-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .avd-list li {
+      font-size: 14px; color: #cbd5e1;
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+    }
+    .avd-col.sem .avd-list li::before { content: '✕'; color: #f87171; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .avd-col.com .avd-list li::before { content: '✓'; color: #34d399; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .tech-section {
+      padding: 60px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px; max-width: 740px; margin: 40px auto 0;
+    }
+    @media (max-width: 560px) {
+      .tech-grid { grid-template-columns: 1fr; }
+    }
+    .tech-item {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 20px 22px;
+    }
+    .tech-item-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #10b981; margin-bottom: 12px;
+      box-shadow: 0 0 8px rgba(16,185,129,0.5);
+    }
+    .tech-item-title {
+      font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px;
+    }
+    .tech-item-desc { font-size: 13px; color: #64748b; line-height: 1.55; }
+    .chains-repositioned-header { max-width: 680px; }
+    .chains-tag {
+      display: inline-block; background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.3); color: #c4b5fd;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      padding: 4px 12px; border-radius: 99px; margin-bottom: 16px;
+    }
+    .chains-new-title {
+      font-size: clamp(24px, 3vw, 36px); font-weight: 800;
+      color: #f1f5f9; line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 12px;
+    }
+    .chains-new-title span { color: #c4b5fd; }
+    .chains-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .chains-flow-node {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09);
+      border-left: 3px solid; border-left-color: #334155;
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 13px; color: #e2e8f0;
+    }
+    .chains-flow-node span { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+    .chains-flow-arrow { color: #475569; font-size: 16px; font-weight: 700; }
+    /* màu theo nền tảng */
+    .chains-flow-node[data-plat="chatgpt"]   { border-left-color: #10b981; background: rgba(16,185,129,0.05); }
+    .chains-flow-node[data-plat="chatgpt"]   span { color: #6ee7b7; }
+    .chains-flow-node[data-plat="claude"]    { border-left-color: #8b5cf6; background: rgba(139,92,246,0.05); }
+    .chains-flow-node[data-plat="claude"]    span { color: #c4b5fd; }
+    .chains-flow-node[data-plat="gemini"]    { border-left-color: #3b82f6; background: rgba(59,130,246,0.05); }
+    .chains-flow-node[data-plat="gemini"]    span { color: #93c5fd; }
+    .chains-flow-node[data-plat="perplexity"]{ border-left-color: #06b6d4; background: rgba(6,182,212,0.05); }
+    .chains-flow-node[data-plat="perplexity"]span { color: #67e8f9; }
+    .chains-flow-node[data-plat="grok"]      { border-left-color: #ec4899; background: rgba(236,72,153,0.05); }
+    .chains-flow-node[data-plat="grok"]      span { color: #f9a8d4; }
+    .chains-flow-node.highlight { border-left-color: #facc15; background: rgba(250,204,21,0.07); border-color: rgba(250,204,21,0.3); }
+    .chains-flow-node.highlight span { color: #facc15; }
+    .forwho-section { padding: 52px 0; }
+    .forwho-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; max-width: 760px; margin: 40px auto 0;
+    }
+    @media (max-width: 600px) { .forwho-grid { grid-template-columns: 1fr; } }
+    .forwho-card { border-radius: 14px; padding: 28px; }
+    .forwho-card.nao { background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15); }
+    .forwho-card.sim { background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.18); }
+    .forwho-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .forwho-card.nao .forwho-label { color: #f87171; }
+    .forwho-card.sim .forwho-label { color: #34d399; }
+    .forwho-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .forwho-list li {
+      font-size: 14px; color: #cbd5e1;
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+    }
+    .forwho-list li::before { flex-shrink: 0; margin-top: 2px; }
+    .forwho-card.nao .forwho-list li::before { content: '✕'; color: #f87171; font-weight: 700; }
+    .forwho-card.sim .forwho-list li::before { content: '✓'; color: #34d399; font-weight: 700; }
+  </style>
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div class="announcement" data-i18n-html="announcement">
-    NODUS đã có trên Firefox — <a href="https://nodus-ai.app/checkout.html">Truy cập sớm PRO</a> &nbsp;·&nbsp; Giấy phép MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Gắn sao GitHub ★</a>
+  <!-- BANNER -->
+  <div class="announcement">
+    NODUS hiện có trên Chrome &amp; Firefox — <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Cài đặt miễn phí</a> &nbsp;·&nbsp; Giấy phép MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Sao trên GitHub ★</a>
   </div>
 
   <!-- NAV -->
-  <nav class="nav" id="mainNav">
+  <nav class="nav">
     <div class="nav-inner">
-      <a href="https://nodus-ai.app/" class="nav-logo">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#0e1117"/>
-          <circle cx="16" cy="16" r="9" fill="#facc15"/>
-          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
-        </svg>
+      <div class="nav-logo">
+        <span class="nav-logo-dot"></span>
         NODUS
-      </a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links">
-        <a href="https://nodus-ai.app/#how" data-i18n="navHow">Cách hoạt động</a>
-        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">Tính năng</a>
-        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">Giá cả</a>
-        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">Quyền riêng tư</a>
-        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">Ảnh chụp màn hình</a>
-        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">Mua PRO</a>
-        <div class="lang-switcher" id="langSwitcher">
-          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
-            <span id="langCurrent">VI</span>
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
-          </button>
-          <ul class="lang-dropdown" role="listbox">
-            <li class="lang-opt" data-lang="en" role="option">EN</li>
-            <li class="lang-opt" data-lang="pt" role="option">PT</li>
-            <li class="lang-opt" data-lang="es" role="option">ES</li>
-            <li class="lang-opt" data-lang="fr" role="option">FR</li>
-            <li class="lang-opt" data-lang="de" role="option">DE</li>
-            <li class="lang-opt" data-lang="ja" role="option">JA</li>
-            <li class="lang-opt" data-lang="it" role="option">IT</li>
-            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
-            <li class="lang-opt" data-lang="ko" role="option">KO</li>
-            <li class="lang-opt" data-lang="hi" role="option">HI</li>
-            <li class="lang-opt" data-lang="ru" role="option">RU</li>
-            <li class="lang-opt" data-lang="tr" role="option">TR</li>
-            <li class="lang-opt" data-lang="pl" role="option">PL</li>
-            <li class="lang-opt" data-lang="nl" role="option">NL</li>
-            <li class="lang-opt" data-lang="id" role="option">ID</li>
-            <li class="lang-opt" data-lang="vi" role="option">VI</li>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#cach-hoat-dong">Cách hoạt động</a></li>
+        <li><a href="#chuoi">Chuỗi</a></li>
+        <li><a href="#pricing">Giá cả</a></li>
+        <li><a href="#rieng-tu">Quyền riêng tư</a></li>
+        <li><a href="../docs/screenshots.html">Screenshots</a></li>
+        <li><a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a></li>
+        <li><a href="../checkout.html" class="nav-cta">Dùng PRO</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div>
+          <div class="hero-eyebrow reveal">
+            <span class="badge badge-green">Miễn phí mãi mãi</span>
+            <span class="badge">Giấy phép MIT</span>
+          </div>
+
+          <h1 class="hero-title reveal reveal-delay-1" id="hero-headline">
+            <span id="hero-line1">Biến các cuộc trò chuyện AI</span><br/>
+            <span id="hero-line2" class="hero-alt-span">thành kiến thức có cấu trúc.</span>
+          </h1>
+
+          <p class="hero-local-first reveal reveal-delay-1">
+            🔒 Cục bộ. Không cần tài khoản. Dữ liệu của bạn ở lại trên máy của bạn.
+          </p>
+
+          <p class="hero-desc reveal reveal-delay-2">
+            Ghi lại ý tưởng ngay tại chỗ, tiếp tục chúng trên các nền tảng và xây dựng
+            hệ thống kiến thức không bao giờ mất — tất cả trong trình duyệt của bạn, không có máy chủ.
+          </p>
+
+          <p style="font-size:13px; font-weight:700; color:#facc15; margin-bottom:12px;" class="reveal reveal-delay-3">⚡ Mỗi ý tưởng đều đáng được lưu giữ</p>
+          <div class="hero-actions reveal reveal-delay-3">
+            <a class="btn-primary" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" fill="#4285F4"/><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 7h8.66A10 10 0 0 0 12 2v5z" fill="#EA4335"/><path d="M4.22 17.5l4.33-7.5H2a10 10 0 0 0 2.22 7.5z" fill="#FBBC05"/><path d="M12 17l-4.33 7.5A10 10 0 0 0 20.78 17.5L12 17z" fill="#34A853"/></svg>
+              Cài trên Chrome
+            </a>
+            <a class="btn-firefox" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" fill="#FF6611"/><path d="M12 4c-2.2 0-4.1.9-5.5 2.3C7.8 5.9 9.3 5.5 11 5.5c3.6 0 6.5 2.9 6.5 6.5S14.6 18.5 11 18.5c-2.5 0-4.7-1.4-5.8-3.5C6.4 17.3 9 19 12 19c3.9 0 7-3.1 7-7s-3.1-7-7-7z" fill="white" opacity=".9"/></svg>
+              Firefox
+            </a>
+          </div>
+
+          <div class="hero-trust reveal reveal-delay-4">
+            <div class="hero-trust-item"><span class="dot-green"></span> Không cần tài khoản</div>
+            <div class="hero-trust-item"><span class="dot-green"></span> Chrome · Firefox · Edge · Brave</div>
+            <div class="hero-trust-item"><span class="dot-green"></span> 7 nền tảng AI</div>
+          </div>
+        </div>
+
+        <!-- Dashboard mockup -->
+        <div class="dashboard-mockup reveal reveal-delay-2">
+          <div style="
+            background:#13181f;
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:0 0 0 1px rgba(255,255,255,0.07), 0 32px 80px rgba(0,0,0,0.7);
+            width:100%;
+            font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+          ">
+
+            <!-- Header -->
+            <div style="background:#0d1117; border-bottom:1px solid #2d3748; padding:9px 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:14px; font-weight:900; color:#facc15; letter-spacing:-0.5px;">★ NODUS</span>
+                <span style="font-size:9px; background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.3); padding:1px 6px; border-radius:99px; font-weight:800;">PRO</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:14px; color:#475569; font-size:12px;">
+                <span>⚙</span><span>✕</span>
+              </div>
+            </div>
+
+            <!-- Tabs -->
+            <div style="background:#0d1117; border-bottom:1px solid #2d3748; display:flex; padding:0 14px; gap:2px;">
+              <div style="font-size:11px; font-weight:700; color:#facc15; padding:8px 12px 7px; border-bottom:2px solid #facc15;">Thẻ</div>
+              <div style="font-size:11px; color:#475569; padding:8px 12px 7px; border-bottom:2px solid transparent;">Chuỗi</div>
+              <div style="font-size:11px; color:#475569; padding:8px 12px 7px; border-bottom:2px solid transparent;">Dự án</div>
+            </div>
+
+            <!-- Search + bộ lọc -->
+            <div style="background:#1a1f29; padding:10px 12px; border-bottom:1px solid #2d3748;">
+              <div style="background:#0d1117; border:1px solid #2d3748; border-radius:8px; padding:7px 10px; display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:12px; color:#475569;">🔍</span>
+                <span style="font-size:11px; color:#475569; flex:1;">Tìm kiếm bản ghi...</span>
+                <span style="font-size:10px; color:#64748b; background:#0d1117; border:1px solid #2d3748; padding:2px 8px; border-radius:5px; font-weight:600;">Lọc</span>
+              </div>
+              <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.25);">● Tất cả</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(16,185,129,0.08); color:#6ee7b7; border:1px solid rgba(16,185,129,0.2);">ChatGPT</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(168,85,247,0.08); color:#d8b4fe; border:1px solid rgba(168,85,247,0.2);">Claude</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(59,130,246,0.08); color:#93c5fd; border:1px solid rgba(59,130,246,0.2);">Gemini</span>
+              </div>
+            </div>
+
+            <!-- Count bar -->
+            <div style="background:#151b24; border-bottom:1px solid #2d3748; padding:5px 14px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:10px; color:#475569;">24 bản ghi</span>
+              <span style="font-size:10px; color:#facc15; font-weight:700; cursor:pointer;">+ Mới</span>
+            </div>
+
+            <!-- Card grid (2 columns) -->
+            <div style="background:#1a1f29; padding:10px; display:grid; grid-template-columns:1fr 1fr; gap:8px; position:relative; overflow:hidden; max-height:300px;">
+
+              <!-- Card 1 -->
+              <div style="background:#1a1f29; border:2px solid #fbbf24; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Claude</span>
+                  <span style="font-size:9px; color:#6b7280;">2 phút</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">Tái cấu trúc auth với JWT stateless</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">Dùng middleware composition + lazy token validation...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">backend</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">jwt</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;">
+                  <span>💉 3x</span><span>🔗 src</span><span>📎</span><span>📝</span>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div style="background:#1a1f29; border:2px solid #10b981; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">ChatGPT</span>
+                  <span style="font-size:9px; color:#6b7280;">1 giờ</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">CSS Grid: auto-fill vs auto-fit</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">auto-fill giữ cột ma, auto-fit thu gọn...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">css</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">layout</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;">
+                  <span>💉 1x</span><span>🔗 src</span><span>📎</span><span>📝</span>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div style="background:#1a1f29; border:2px solid #3b82f6; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Gemini</span>
+                  <span style="font-size:9px; color:#6b7280;">hôm qua</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">Partial index trong Postgres không downtime</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">CREATE INDEX CONCURRENTLY không khóa. EXPLAIN trước và sau...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">sql</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">perf</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;">
+                  <span>💉 5x</span><span>🔗 src</span><span>📎</span><span>📝</span>
+                </div>
+              </div>
+
+              <!-- Card 4 (partially visible) -->
+              <div style="background:#1a1f29; border:2px solid #8b5cf6; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px; opacity:0.5;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Claude</span>
+                  <span style="font-size:9px; color:#6b7280;">2 ngày</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">useReducer cho state phức tạp</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">Tách actions theo domain. Kết hợp với useContext...</div>
+              </div>
+
+              <!-- Fade gradient -->
+              <div style="position:absolute; bottom:0; left:0; right:0; height:70px; background:linear-gradient(transparent,#1a1f29); pointer-events:none; grid-column:1/-1;"></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PHẦN VẤN ĐỀ -->
+  <section class="problema-section">
+    <div class="container">
+      <h2 class="problema-headline">Bạn đã bao giờ <em>mất</em> điều này chưa?</h2>
+      <p class="problema-sub">Điều này xảy ra mọi lúc. AI không tổ chức điều này cho bạn.</p>
+
+      <div class="problema-grid">
+        <div class="problema-item">
+          <span class="problema-item-icon">💬</span>
+          <div class="problema-item-text">
+            <strong>Một ý tưởng hay giữa cuộc trò chuyện dài</strong>
+            Cuộn vô tận để tìm lại. Không bao giờ tìm thấy nữa.
+          </div>
+        </div>
+        <div class="problema-item">
+          <span class="problema-item-icon">🔍</span>
+          <div class="problema-item-text">
+            <strong>Câu trả lời hoàn hảo đã biến mất</strong>
+            Bạn nhớ Claude đã giải thích rõ ràng. Trong cuộc trò chuyện nào vậy?
+          </div>
+        </div>
+        <div class="problema-item">
+          <span class="problema-item-icon">🔗</span>
+          <div class="problema-item-text">
+            <strong>Ý tưởng rải rác trên 4 nền tảng khác nhau</strong>
+            Một cái ở ChatGPT, một cái ở Gemini, một cái ở Claude. Tất cả bị ngắt kết nối.
+          </div>
+        </div>
+      </div>
+
+      <div class="problema-arrow">
+        <span class="problema-arrow-text">
+          ⚡ NODUS giải quyết điều này — không máy chủ, không tài khoản, ngay bây giờ
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- XEM HOẠT ĐỘNG — GIF quick save -->
+  <section style="padding: 72px 0; background: #0a0d14;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom: 36px;">
+        <div class="section-label">Xem hoạt động</div>
+        <h2 class="section-title">Một cú nhấp. Ý tưởng được lưu.</h2>
+        <p class="section-sub">Không sao chép, không dán, không mất mạch trò chuyện.</p>
+      </div>
+
+      <div class="reveal" style="max-width: 780px; margin: 0 auto;">
+        <div style="
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 28px 72px rgba(0,0,0,0.65);
+          background: #13181f;
+        ">
+          <!-- Browser bar fake -->
+          <div style="
+            background: #1a1f29;
+            border-bottom: 1px solid #2d3748;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          ">
+            <div style="display:flex; gap:6px;">
+              <span style="width:11px;height:11px;border-radius:50%;background:#ef4444;display:block;"></span>
+              <span style="width:11px;height:11px;border-radius:50%;background:#f59e0b;display:block;"></span>
+              <span style="width:11px;height:11px;border-radius:50%;background:#10b981;display:block;"></span>
+            </div>
+            <div style="
+              flex: 1;
+              background: #0e1117;
+              border: 1px solid #2d3748;
+              border-radius: 6px;
+              padding: 4px 12px;
+              font-size: 11px;
+              color: #475569;
+            ">chatgpt.com</div>
+          </div>
+          <!-- GIF -->
+          <img
+            src="../gif/Animação.gif"
+            alt="NODUS hoạt động — lưu câu trả lời ChatGPT chỉ một cú nhấp"
+            style="width: 100%; display: block;"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TRƯỚC VS SAU -->
+  <section class="avd-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Sự khác biệt trong thực tế</div>
+        <h2 class="section-title">Không có NODUS vs Có NODUS</h2>
+      </div>
+
+      <div class="avd-grid reveal">
+        <div class="avd-col sem">
+          <div class="avd-col-label">✕ &nbsp;Không có NODUS</div>
+          <ul class="avd-list">
+            <li>Cuộc trò chuyện bị mất không có tìm kiếm xuyên nền tảng</li>
+            <li>Ý tưởng bị ngắt kết nối ở ChatGPT, Claude, Gemini</li>
+            <li>Cuộn vô tận tìm câu trả lời đã biến mất</li>
+            <li>Ngữ cảnh bắt đầu từ đầu mỗi cuộc trò chuyện</li>
+            <li>Không có lịch sử cá nhân được tổ chức</li>
+          </ul>
+        </div>
+        <div class="avd-col com">
+          <div class="avd-col-label">✓ &nbsp;Có NODUS</div>
+          <ul class="avd-list">
+            <li>Ý tưởng được lưu một cú nhấp, với thẻ và ghi chú</li>
+            <li>Tìm kiếm thống nhất trên tất cả các nền tảng</li>
+            <li>Chuỗi kết nối các cuộc trò chuyện AI khác nhau</li>
+            <li>Kiến thức tích lũy, có thể tái sử dụng và tiêm vào</li>
+            <li>100% cục bộ — không có gì rời khỏi máy của bạn</li>
           </ul>
         </div>
       </div>
     </div>
-  </nav>
+  </section>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badges">
-          <span class="badge" data-i18n="badge1">Có trên Firefox</span>
-          <span class="badge badge-green" data-i18n="badge2">Miễn phí mãi mãi</span>
-          <span class="badge" data-i18n="badge3">Giấy phép MIT</span>
+
+  <!-- CÁCH HOẠT ĐỘNG -->
+  <section class="section" id="cach-hoat-dong">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Cách hoạt động</div>
+        <h2 class="section-title">Ba bước. Chỉ vậy thôi.</h2>
+        <p class="section-sub">NODUS ẩn trong trình duyệt và chỉ kích hoạt khi bạn muốn. Không sao chép, không dán, không ma sát.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">Bước 01</div>
+          <div class="step-icon">🧠</div>
+          <div class="step-title">Truy cập bất kỳ AI nào</div>
+          <p class="step-desc">NODUS kích hoạt trên 7 nền tảng ngay khi bạn mở. Không cần cấu hình từng trang — hoạt động ngay.</p>
+          <div class="step-visual mt-8">
+            <div class="platform-badges-mini">
+              <span class="platform-badge-mini">ChatGPT</span>
+              <span class="platform-badge-mini">Claude</span>
+              <span class="platform-badge-mini">Gemini</span>
+              <span class="platform-badge-mini">Perplexity</span>
+              <span class="platform-badge-mini">Copilot</span>
+              <span class="platform-badge-mini">Grok</span>
+              <span class="platform-badge-mini">DeepSeek</span>
+            </div>
+          </div>
         </div>
-        <h1 data-i18n-html="heroTitle">Cuộc trò chuyện AI của bạn,<br/><span>được lưu lại &amp; tổ chức</span><br/>cục bộ.</h1>
-        <p data-i18n="heroDesc">Lưu cuộc trò chuyện từ 7 nền tảng AI (ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok, DeepSeek) với NODUS — tiện ích mở rộng miễn phí. Gắn thẻ, xuất và tìm kiếm. Tất cả 100% cục bộ, không cần tài khoản.</p>
-        <div class="hero-cta">
-          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ Cài đặt miễn phí</a>
-          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ GitHub</a>
+
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">Bước 02</div>
+          <div class="step-icon">💾</div>
+          <div class="step-title">Nhấp Lưu hoặc Nhanh</div>
+          <p class="step-desc">Một cặp nút nổi xuất hiện ở mỗi câu trả lời. Lưu vào hàng đợi. Nhanh chụp ngay lập tức, không có màn hình nào.</p>
+          <div class="step-visual mt-8">
+            <div class="floating-btn-scene">
+              <div class="floating-btn-bg-text">
+                <strong>Claude:</strong> Đây là cách tiếp cận gọn gàng hơn sử dụng middleware composition. Đầu tiên, trích xuất logic xác thực...
+              </div>
+              <div class="floating-save-btn">
+                <div class="flt-btn flt-btn-save">💾 Lưu</div>
+                <div class="flt-btn flt-btn-quick">⚡ Nhanh</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="trust-row">
-          <span data-i18n="trust1">Không cần tài khoản</span>
-          <span data-i18n="trust3">7 nền tảng AI</span>
+
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">Bước 03</div>
+          <div class="step-icon">📚</div>
+          <div class="step-title">Tiếp tục ý tưởng trong bảng điều khiển</div>
+          <p class="step-desc">Mở bảng NODUS để thêm thẻ, tạo chuỗi, tìm kiếm xuyên nền tảng và tiêm kiến thức trở lại bất kỳ AI nào.</p>
+          <div class="step-visual mt-8" style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="tag">thẻ</span>
+              <span class="tag" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">chuỗi</span>
+              <span class="tag" style="background:rgba(16,185,129,0.1);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">tìm kiếm thống nhất</span>
+              <span class="tag" style="background:rgba(249,115,22,0.1);color:#fdba74;border-color:rgba(249,115,22,0.2);">tiêm</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="howLabel">Cách hoạt động</p>
-      <h2 data-i18n="howTitle">Ba bước. Chỉ vậy thôi.</h2>
-      <p class="section-sub" data-i18n="howSub">NODUS chạy ẩn trong trình duyệt và chỉ kích hoạt khi bạn muốn.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num" data-i18n="step1num">Bước 01</div>
-          <h3 data-i18n="step1title">Mở bất kỳ AI nào</h3>
-          <p data-i18n="step1desc">NODUS kích hoạt trên 7 nền tảng ngay khi bạn mở chúng. Không cần cài đặt từng trang — tự động hoạt động.</p>
+  <hr class="separator" />
+
+
+  <!-- PHẦN KỸ THUẬT -->
+  <section class="tech-section" id="rieng-tu">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Quyền riêng tư thực sự</div>
+        <h2 class="section-title">Dữ liệu của bạn ở lại với bạn.</h2>
+        <p class="section-sub">Không có tài khoản. Không có máy chủ. Không có công ty nào truy cập cuộc trò chuyện của bạn.</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-item reveal reveal-delay-1">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Tất cả trên thiết bị của bạn</div>
+          <div class="tech-item-desc">Bản ghi của bạn được lưu trực tiếp trên máy tính — không phải trên máy chủ của chúng tôi hay bên thứ ba nào.</div>
         </div>
-        <div class="step">
-          <div class="step-num" data-i18n="step2num">Bước 02</div>
-          <h3 data-i18n="step2title">Nhấn Save hoặc Quick</h3>
-          <p data-i18n="step2desc">Các nút nổi xuất hiện trên tất cả các trang AI. Save lưu vào hàng đợi tiêu chuẩn, Quick lưu ngay vào hàng đợi nhanh.</p>
+        <div class="tech-item reveal reveal-delay-2">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Không tài khoản, không theo dõi</div>
+          <div class="tech-item-desc">Chúng tôi không yêu cầu email, không tạo hồ sơ, không theo dõi những gì bạn lưu. Đây là tiện ích mở rộng, không phải dịch vụ.</div>
         </div>
-        <div class="step">
-          <div class="step-num" data-i18n="step3num">Bước 03</div>
-          <h3 data-i18n="step3title">Tổ chức trong bảng điều khiển</h3>
-          <p data-i18n="step3desc">Mở bảng điều khiển NODUS để thêm thẻ, ghi chú, tạo chuỗi và tìm kiếm trên tất cả các nền tảng.</p>
+        <div class="tech-item reveal reveal-delay-3">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Bạn kiểm soát tất cả</div>
+          <div class="tech-item-desc">Xuất, xóa hoặc di chuyển dữ liệu bất cứ lúc nào. Không có gì bị khóa — đây là lịch sử của bạn, quy tắc của bạn.</div>
+        </div>
+        <div class="tech-item reveal reveal-delay-4">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Mã nguồn mở và có thể xác minh</div>
+          <div class="tech-item-desc">NODUS là mã nguồn mở. Bạn không cần tin vào lời chúng tôi — mã nguồn trên GitHub để bất kỳ ai muốn xem.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="pricingLabel">Giá cả</p>
-      <h2 data-i18n="pricingTitle">Miễn phí mãi mãi. Nâng cấp khi sẵn sàng.</h2>
+  <hr class="separator" />
+
+
+  <!-- CHUỖI -->
+  <section class="section" id="chuoi" style="padding-bottom: 80px;">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="reveal chains-repositioned-header">
+        <span class="chains-tag">🔗 TÍNH NĂNG ĐỘC QUYỀN</span>
+        <h2 class="chains-new-title">
+          Chuỗi: suy nghĩ của bạn<br/>
+          <span>không bao giờ bắt đầu lại từ đầu</span>
+        </h2>
+        <p class="section-sub" style="text-align:left; max-width:620px; margin-bottom: 0;">
+          Chuỗi là con đường ý tưởng được kết nối theo thứ tự — từ bất kỳ nền tảng nào,
+          bất kỳ cuộc trò chuyện nào, theo bất kỳ thứ tự nào bạn muốn. Bạn xây dựng
+          lý luận dần dần. NODUS giữ tất cả được kết nối.
+        </p>
+      </div>
+
+      <!-- Tính năng Chuỗi -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin-top: 40px; max-width: 900px;" class="reveal">
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">📎</div>
+          <div class="tech-item-title">Kết nối ý tưởng từ các nền tảng khác nhau</div>
+          <div class="tech-item-desc">Một câu trả lời từ ChatGPT, một từ Claude, một từ Gemini — tất cả trong cùng một chuỗi.</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">🗓️</div>
+          <div class="tech-item-title">Xây dựng theo thời gian</div>
+          <div class="tech-item-desc">Thêm node mới bất cứ lúc nào. Chuỗi có thể phát triển qua nhiều ngày, tuần, cả dự án.</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">💉</div>
+          <div class="tech-item-title">Tiêm lại vào bất kỳ AI nào</div>
+          <div class="tech-item-desc">Chọn chuỗi và gửi ngữ cảnh đầy đủ để tiếp tục cuộc trò chuyện từ nơi đã dừng.</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">📤</div>
+          <div class="tech-item-title">Xuất bất cứ lúc nào</div>
+          <div class="tech-item-desc">Xuất chuỗi dưới dạng văn bản có cấu trúc để tài liệu, chia sẻ hoặc lưu trữ.</div>
+        </div>
+      </div>
+
+      <!-- Ba ví dụ luồng -->
+      <div style="margin-top: 56px;" class="reveal">
+        <div class="chains-example-label" style="font-size:11px; font-weight:700; letter-spacing:1px; color:#64748b; text-transform:uppercase; margin-bottom: 20px;">
+          Ví dụ thực tế sử dụng
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+
+          <!-- Ví dụ 1: Phát triển -->
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">💻 PHÁT TRIỂN PHẦN MỀM</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="chatgpt"><span>ChatGPT</span>Kiến trúc hệ thống ban đầu</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>Tinh chỉnh và xem xét mã</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="gemini"><span>Gemini</span>Trường hợp kiểm thử và edge cases</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>Chuỗi hoàn chỉnh ✓</div>
+            </div>
+          </div>
+
+          <!-- Ví dụ 2: Viết / nội dung -->
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">✍️ VIẾT &amp; NỘI DUNG</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="perplexity"><span>Perplexity</span>Nghiên cứu và nguồn về chủ đề</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>Cấu trúc và lập luận chính</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="chatgpt"><span>ChatGPT</span>Chỉnh sửa giọng điệu và biến thể</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>Sẵn sàng xuất bản ✓</div>
+            </div>
+          </div>
+
+          <!-- Ví dụ 3: Nghiên cứu -->
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">🔬 NGHIÊN CỨU &amp; PHÂN TÍCH</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="perplexity"><span>Perplexity</span>Tổng quan thị trường ban đầu</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="gemini"><span>Gemini</span>Phân tích đối thủ cạnh tranh</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>Tổng hợp và kết luận</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>Báo cáo có cấu trúc ✓</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Visual mockup -->
+      <div class="mt-40 reveal">
+        <div class="chains-example-label" style="font-size:11px; font-weight:700; letter-spacing:1px; color:#64748b; text-transform:uppercase; margin-bottom: 20px;">
+          Hiển thị trong bảng điều khiển
+        </div>
+        <div class="chains-mockup">
+          <div class="chains-sidebar">
+            <div class="chains-sidebar-header">
+              <span class="chains-sidebar-title">Chuỗi</span>
+              <span class="chains-sidebar-add">+</span>
+            </div>
+            <div class="chain-list-item active">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Tái cấu trúc Auth</div>
+                <div class="chain-item-count">4 node</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Copy Landing Page</div>
+                <div class="chain-item-count">3 node</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Tối ưu hóa Database</div>
+                <div class="chain-item-count">2 node</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Thiết kế API</div>
+                <div class="chain-item-count">6 node</div>
+              </div>
+            </div>
+          </div>
+          <div class="chains-main">
+            <div class="chains-main-header">
+              <span class="chain-name-big">🔗 Tái cấu trúc Auth <span style="font-size:11px;font-weight:400;color:#475569;">4 node</span></span>
+              <button class="chain-export-btn">↓ Xuất TXT</button>
+            </div>
+            <div class="chain-nodes">
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#1</span>
+                  <span class="node-platform">Claude</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">28 Tháng 3</span>
+                </div>
+                <div class="node-card-title">Ưu nhược điểm: JWT vs xác thực dựa trên phiên</div>
+                <div class="node-card-text">JWT là stateless và mở rộng theo chiều ngang nhưng thu hồi khó nếu không có danh sách chặn. Phiên yêu cầu trạng thái phía máy chủ nhưng cho phép vô hiệu hóa ngay lập tức.</div>
+              </div>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#2</span>
+                  <span class="node-platform" style="background:rgba(16,185,129,0.12);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">ChatGPT</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">29 Tháng 3</span>
+                </div>
+                <div class="node-card-title">Unit test cho middleware xác thực</div>
+                <div class="node-card-text">Dùng Jest với custom matchers cho lỗi xác thực. Mock token validator tại ranh giới module và kiểm thử từng middleware độc lập.</div>
+              </div>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#3</span>
+                  <span class="node-platform" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">Gemini</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">30 Tháng 3</span>
+                </div>
+                <div class="node-card-title">Edge case cần kiểm thử trước khi lên production</div>
+                <div class="node-card-text">Token hết hạn trong request dài, thu hồi bắt buộc khi đổi mật khẩu, nhiều phiên đang hoạt động và cố gắng tái sử dụng token sau khi đăng xuất.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- PRIVACY -->
-  <section class="privacy" id="privacy">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="privacyLabel">Quyền riêng tư trước tiên</p>
-      <h2 data-i18n="privacyTitle">Dữ liệu của bạn ở lại trên thiết bị của bạn.</h2>
+  <hr class="separator" />
+
+
+  <!-- DÀNH CHO AI -->
+  <section class="forwho-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Dành cho ai</div>
+        <h2 class="section-title">NODUS lý tưởng cho bạn nếu bạn...</h2>
+      </div>
+
+      <div style="max-width:560px; margin: 40px auto 0;" class="reveal">
+        <div class="forwho-card sim" style="padding:32px 36px;">
+          <ul class="forwho-list" style="gap:14px;">
+            <li>sử dụng AI mỗi ngày để làm việc</li>
+            <li>xây dựng, viết hoặc nghiên cứu với AI</li>
+            <li>đã từng mất một ý tưởng hay giữa cuộc trò chuyện</li>
+            <li>sử dụng nhiều hơn một nền tảng AI và muốn kết nối tất cả</li>
+            <li>không muốn dữ liệu của mình trên bất kỳ máy chủ nào</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="section-inner">
-      <h2 data-i18n-html="ctaTitle">Cài đặt miễn phí — không cần tài khoản.</h2>
-      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ Cài đặt miễn phí</a>
-    </div>
-  </section>
+  <hr class="separator" />
+
 
   <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="section-inner">
-      <h2 data-i18n="faqTitle">Câu hỏi thường gặp</h2>
-      <p class="section-sub" data-i18n="faqSub">Trả lời nhanh các câu hỏi phổ biến nhất về NODUS.</p>
-      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq1q">Làm thế nào để lưu cuộc trò chuyện ChatGPT?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq1a">Cài NODUS và nút nổi sẽ xuất hiện trên mọi trang AI được hỗ trợ. Nhấn Save để lưu ngay cuộc trò chuyện vào bảng điều khiển cục bộ — không sao chép dán, không cần tài khoản.</p>
-          </div>
+  <section id="faq" style="padding: 80px 0 64px; border-top: 1px solid #2d3748;">
+    <div class="container">
+
+      <div class="text-center reveal" style="margin-bottom:48px;">
+        <div class="section-label">Câu hỏi thường gặp</div>
+        <h2 class="section-title">Câu hỏi và trả lời</h2>
+        <p class="section-sub">Các câu hỏi phổ biến nhất về NODUS — được trả lời trong vài giây.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:860px; margin: 0 auto;" class="reveal">
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">NODUS có miễn phí không?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Có, các chức năng chính <strong style="color:#e2e8f0;">miễn phí mãi mãi</strong>. Lưu, tổ chức, tìm kiếm và xuất bản ghi mà không mất phí. Gói PRO mở khóa hàng đợi bổ sung, Chuỗi không giới hạn và xuất nâng cao.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq2q">Tôi có thể xuất lịch sử trò chuyện AI không?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq2a">Có. Xuất bản lưu của bạn dưới dạng TXT, HTML hoặc DOCX. Bạn cũng có thể liên kết các bản lưu liên quan giữa các phiên và xuất toàn bộ chuỗi kiến thức.</p>
-          </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Cách lưu cuộc trò chuyện ChatGPT?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Cài NODUS và nút nổi xuất hiện trên tất cả các nền tảng được hỗ trợ. Nhấp <strong style="color:#e2e8f0;">Lưu</strong> để chụp câu trả lời vào bảng cục bộ — không sao chép dán, không cần tài khoản.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq3q">Có hoạt động với Claude và Gemini không?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq3a">NODUS lưu cuộc trò chuyện từ 7 nền tảng AI: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek — tất cả trong một bảng điều khiển, được lưu trữ cục bộ trên thiết bị của bạn.</p>
-          </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Có hoạt động với Claude, Gemini và các AI khác không?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">NODUS hỗ trợ <strong style="color:#e2e8f0;">7 nền tảng</strong>: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek. Cùng một nút xuất hiện trên tất cả — tất cả vào một bảng thống nhất duy nhất.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq4q">Dữ liệu trò chuyện của tôi có riêng tư không?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq4a">100% riêng tư. NODUS lưu trữ mọi thứ trong bộ nhớ cục bộ của trình duyệt — không có gì được tải lên máy chủ hoặc chia sẻ với bên thứ ba.</p>
-          </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Dữ liệu của tôi có riêng tư không?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;"><strong style="color:#e2e8f0;">Không có gì rời khỏi thiết bị của bạn.</strong> NODUS lưu trữ tất cả trong local storage của trình duyệt — không có máy chủ riêng, không có tài khoản, không đồng bộ đám mây.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq5q">NODUS có miễn phí không?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq5a">Có, các tính năng cốt lõi miễn phí mãi mãi. Lưu, gắn thẻ, tìm kiếm và xuất lịch sử trò chuyện AI miễn phí. Gói PRO mở khóa các tính năng nâng cao.</p>
-          </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Trình duyệt nào được hỗ trợ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">NODUS hoạt động trên <strong style="color:#e2e8f0;">Chrome, Firefox, Edge và Brave</strong>. Bất kỳ trình duyệt dựa trên Chromium nào cũng hoạt động tự động. Cài một lần, hoạt động trên tất cả nền tảng AI.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq6q">Trình duyệt nào được hỗ trợ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq6a">NODUS hoạt động trên Chrome, Firefox, Edge và Brave. Cài một lần — tự động hoạt động trên tất cả các nền tảng AI của bạn.</p>
-          </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Tôi có thể xuất bản ghi không?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Có. NODUS xuất dưới dạng <strong style="color:#e2e8f0;">HTML</strong>, <strong style="color:#e2e8f0;">Markdown</strong> và <strong style="color:#e2e8f0;">DOC (Word)</strong>. Với Chuỗi, xuất nhiều bản ghi cùng lúc như tài liệu có cấu trúc.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq7q">Làm thế nào để không bao giờ mất câu trả lời ChatGPT nữa?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq7a">NODUS ghi lại câu trả lời ngay khi bạn nhấn Save — trước khi đóng tab, làm mới hoặc ChatGPT xóa phiên. Lịch sử trò chuyện của bạn luôn an toàn trong bảng điều khiển cục bộ.</p>
-          </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Chuỗi hoạt động như thế nào?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Chuỗi kết nối bản ghi từ <strong style="color:#e2e8f0;">các cuộc trò chuyện khác nhau</strong> — từ các nền tảng khác nhau, vào các ngày khác nhau — theo trình tự logic. Sợi lý luận chạy xuyên suốt lịch sử AI của bạn.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq8q">Làm thế nào để xuất cuộc trò chuyện ChatGPT sang Word hoặc PDF?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq8a">Với NODUS, xuất bất kỳ cuộc trò chuyện đã lưu nào dưới dạng DOCX (Word) hoặc HTML (có thể in thành PDF). Liên kết nhiều bản lưu và xuất chúng cùng nhau thành một tài liệu.</p>
-          </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Nếu gỡ cài đặt, tôi có mất tất cả không?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Trước khi gỡ cài đặt, hãy dùng <strong style="color:#e2e8f0;">xuất đầy đủ</strong> để sao lưu tất cả bản ghi dưới dạng JSON. Dữ liệu nằm trong local storage — gỡ cài đặt sẽ xóa bộ nhớ đó.</p>
         </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq9q">Làm thế nào để lưu cuộc trò chuyện Gemini hoặc Perplexity?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq9a">NODUS hoạt động native trên Gemini, Perplexity, Copilot, Grok và DeepSeek — không chỉ ChatGPT. Cùng nút Save nổi xuất hiện tự động trên tất cả các nền tảng được hỗ trợ.</p>
+
+      </div>
+
+      <!-- Link đến FAQ đầy đủ -->
+      <div class="text-center reveal" style="margin-top:40px;">
+        <a href="../faq.html" style="display:inline-flex; align-items:center; gap:8px; color:#94a3b8; font-size:13px; font-weight:600; border:1px solid #2d3748; padding:10px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s;"
+          onmouseover="this.style.borderColor='#facc15';this.style.color='#facc15'"
+          onmouseout="this.style.borderColor='#2d3748';this.style.color='#94a3b8'">
+          Xem tất cả câu hỏi thường gặp →
+        </a>
+        <p style="font-size:12px; color:#475569; margin-top:10px;">Cài đặt, gói dịch vụ, quyền riêng tư, xuất và nhiều hơn nữa</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "NODUS có miễn phí không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Có — các chức năng chính miễn phí mãi mãi. Lưu, tổ chức, tìm kiếm và xuất bản ghi mà không mất phí. Gói PRO mở khóa hàng đợi bổ sung, Chuỗi không giới hạn và xuất nâng cao." }
+      },
+      {
+        "@type": "Question",
+        "name": "Cách lưu cuộc trò chuyện ChatGPT?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Cài NODUS và nút nổi xuất hiện trên tất cả nền tảng được hỗ trợ. Nhấp Lưu và câu trả lời được chụp ngay vào bảng cục bộ — không sao chép dán, không cần tài khoản." }
+      },
+      {
+        "@type": "Question",
+        "name": "Có hoạt động với Claude, Gemini và các AI khác ngoài ChatGPT không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Có. NODUS hỗ trợ 7 nền tảng: ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok và DeepSeek. Cùng một nút xuất hiện trên tất cả — tất cả vào một bảng thống nhất duy nhất." }
+      },
+      {
+        "@type": "Question",
+        "name": "Dữ liệu của tôi có riêng tư không? Có gì gửi lên đám mây không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Không có gì rời khỏi thiết bị của bạn. NODUS lưu trữ tất cả trong local storage trình duyệt — không máy chủ riêng, không tài khoản, không đồng bộ đám mây." }
+      },
+      {
+        "@type": "Question",
+        "name": "Trình duyệt nào được hỗ trợ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Chrome, Firefox, Edge và Brave. Bất kỳ trình duyệt dựa trên Chromium nào cũng hoạt động tự động." }
+      },
+      {
+        "@type": "Question",
+        "name": "Tôi có thể xuất cuộc trò chuyện sang Word hoặc PDF không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Có. Xuất bất kỳ bản ghi nào dưới dạng DOCX (Word) hoặc HTML (có thể in thành PDF). Với Chuỗi, bạn có thể xâu nhiều bản ghi và xuất tất cả cùng như tài liệu có cấu trúc." }
+      },
+      {
+        "@type": "Question",
+        "name": "Chuỗi hoạt động như thế nào?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Chuỗi cho phép kết nối bản ghi từ các cuộc trò chuyện khác nhau — từ các nền tảng khác nhau, vào các ngày khác nhau — theo trình tự logic. Giống như tạo sợi lý luận chạy xuyên suốt lịch sử AI của bạn." }
+      },
+      {
+        "@type": "Question",
+        "name": "Điều gì xảy ra nếu tôi gỡ cài đặt tiện ích mở rộng? Tôi có mất tất cả không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Trước khi gỡ cài đặt, hãy dùng chức năng xuất đầy đủ để sao lưu tất cả bản ghi. Dữ liệu nằm trong local storage trình duyệt — gỡ cài đặt sẽ xóa bộ nhớ đó." }
+      }
+    ]
+  }
+  </script>
+
+  <hr class="separator" />
+
+
+  <!-- SCREENSHOTS -->
+  <section class="section" id="screenshots" style="padding-bottom:64px;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:40px;">
+        <div class="section-label">Trong thực tế</div>
+        <h2 class="section-title">Xem hoạt động</h2>
+        <p class="section-sub">Ảnh chụp màn hình thực của NODUS chạy trong ChatGPT và các nền tảng khác — không có mockup.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:28px;" class="reveal">
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid rgba(250,204,21,.3);background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image9.png" alt="Thẻ Dashboard" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;top:8px;left:8px;background:rgba(250,204,21,.9);color:#0e1117;font-size:10px;font-weight:800;padding:3px 9px;border-radius:99px;">Dashboard</div>
           </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq10q">Làm thế nào để tổ chức cuộc trò chuyện AI ở một nơi?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq10a">NODUS cung cấp bảng điều khiển thống nhất nơi bạn gắn thẻ, tìm kiếm và liên kết bản lưu từ bất kỳ nền tảng AI nào. Lọc theo nền tảng, thẻ hoặc ngày — mọi thứ ở một nơi, được lưu trữ cục bộ.</p>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">Chế độ xem thẻ</div>
+            <div style="font-size:11px;color:#94a3b8;">Ý tưởng trong lưới với Lưu Nhanh</div>
           </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq11q">Làm thế nào để sao lưu cuộc trò chuyện AI ngoại tuyến?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq11a">NODUS lưu trữ mọi thứ trong bộ nhớ cục bộ của trình duyệt — hoạt động hoàn toàn ngoại tuyến. Không cần kết nối internet để truy cập, tìm kiếm hoặc xuất các cuộc trò chuyện AI đã lưu.</p>
+        </a>
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid #2d3748;background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image3.png" alt="Chuỗi" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq12q">Có tiện ích mở rộng nào để lưu phản hồi Claude AI không?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq12a">Có — NODUS là tiện ích mở rộng trình duyệt miễn phí lưu phản hồi Claude AI cục bộ chỉ với một cú nhấp. Gắn thẻ chúng, liên kết với bản lưu ChatGPT hoặc Gemini và tìm kiếm mọi thứ trong bảng điều khiển.</p>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">Chuỗi</div>
+            <div style="font-size:11px;color:#94a3b8;">Ý tưởng được kết nối giữa các cuộc trò chuyện</div>
           </div>
-        </div>
+        </a>
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid #2d3748;background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image2.png" alt="Nút ghi lại" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">Nút ghi lại</div>
+            <div style="font-size:11px;color:#94a3b8;">Lưu, Nhanh và Dash ở mỗi câu trả lời</div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center reveal">
+        <a href="../docs/screenshots.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(250,204,21,.1);border:1px solid rgba(250,204,21,.3);color:#facc15;font-size:13px;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none;">
+          📸 Xem tất cả ảnh chụp màn hình →
+        </a>
       </div>
     </div>
   </section>
 
+
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#0e1117"/>
-          <circle cx="16" cy="16" r="9" fill="#facc15"/>
-          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
-        </svg>
-        NODUS
+  <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
+    <div class="container">
+
+      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+
+        <!-- Cột 1 — thương hiệu -->
+        <div>
+          <div style="font-size:18px; font-weight:900; color:#facc15; letter-spacing:-0.5px; margin-bottom:14px;">★ NODUS</div>
+          <p style="font-size:13px; color:#475569; line-height:1.7; max-width:280px; margin-bottom:20px;">Ghi lại, tổ chức và tái sử dụng các cuộc trò chuyện AI tốt nhất của bạn. Không máy chủ. Không tài khoản. Dữ liệu của bạn ở lại với bạn.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf"
+               target="_blank" rel="noopener"
+               style="display:inline-flex; align-items:center; gap:6px; background:#facc15; color:#080b10; font-size:12px; font-weight:800; padding:7px 14px; border-radius:7px; text-decoration:none;">
+              Cài đặt miễn phí
+            </a>
+            <a href="../checkout.html"
+               style="display:inline-flex; align-items:center; gap:6px; border:1px solid #2d3748; color:#94a3b8; font-size:12px; font-weight:600; padding:7px 14px; border-radius:7px; text-decoration:none;">
+              Dùng PRO
+            </a>
+          </div>
+        </div>
+
+        <!-- Cột 2 — sản phẩm -->
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Sản phẩm</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="../index.html#cach-hoat-dong" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Cách hoạt động</a>
+            <a href="../index.html#chuoi" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Chuỗi</a>
+            <a href="../index.html#pricing" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Giá cả</a>
+            <a href="../index.html#rieng-tu" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Quyền riêng tư</a>
+            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Ảnh chụp màn hình</a>
+            <a href="../faq.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">FAQ đầy đủ</a>
+          </div>
+        </div>
+
+        <!-- Cột 3 — tài nguyên -->
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Tài nguyên</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Changelog</a>
+            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Báo cáo lỗi</a>
+            <a href="../checkout.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Dùng PRO</a>
+          </div>
+        </div>
+
+        <!-- Cột 4 — pháp lý -->
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Pháp lý</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="../privacy.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Chính sách Bảo mật</a>
+            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Điều khoản Sử dụng</a>
+            <a href="mailto:suporte@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Liên hệ</a>
+          </div>
+        </div>
+
       </div>
-      <p class="footer-tagline" data-i18n="footerTagline">Tiện ích mở rộng trình duyệt cục bộ để ghi lại và tổ chức cuộc trò chuyện AI trên 7 nền tảng. Giấy phép MIT.</p>
-      <div class="footer-links">
-        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Chính sách Quyền riêng tư</a>
-        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">Mua PRO</a>
-        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+
+      <!-- Bottom line -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 0; flex-wrap:wrap; gap:12px;">
+        <p style="font-size:12px; color:#334155;">© 2025 NODUS. Giấy phép MIT. Dữ liệu của bạn ở lại với bạn.</p>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <span style="font-size:11px; color:#1e2736; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.15); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-weight:600;">● v5.0 ổn định</span>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener" style="font-size:12px; color:#334155; text-decoration:none;">Chrome Web Store ↗</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener" style="font-size:12px; color:#334155; text-decoration:none;">Firefox Add-ons ↗</a>
+        </div>
       </div>
-      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. Tất cả quyền được bảo lưu.</p>
+
     </div>
   </footer>
 
-  <script src="/i18n.js"></script>
 
-  <!-- Cloudflare Web Analytics --></body>
+  <!-- FAQ ACCORDION CSS + JS -->
+  <style>
+    .faq-item {
+      border-bottom: 1px solid #2d3748;
+    }
+    .faq-item:first-child {
+      border-top: 1px solid #2d3748;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      text-align: left;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: #facc15; }
+    .faq-q[aria-expanded="true"] { color: #facc15; }
+    .faq-chevron {
+      font-size: 18px;
+      color: #475569;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .faq-q[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+      color: #facc15;
+    }
+    .faq-a {
+      display: none;
+      padding: 0 0 20px;
+    }
+    .faq-a p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+    .faq-a p strong { color: #e2e8f0; }
+    .faq-item.open .faq-a { display: block; }
+  </style>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+  <!-- SCROLL ANIMATION JS -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- HERO HEADLINE ROTATION -->
+  <style>
+    #hero-headline { position: relative; }
+    #hero-line1, #hero-line2 {
+      display: inline;
+      transition: opacity 0.6s ease;
+    }
+    #hero-line1 { color: var(--text); }
+    #hero-line2 { color: var(--yellow); }
+
+    #hero-headline.fading #hero-line1,
+    #hero-headline.fading #hero-line2 {
+      opacity: 0;
+    }
+  </style>
+  <script>
+    const headlines = [
+      {
+        line1: 'Biến các cuộc trò chuyện AI',
+        line2: 'thành kiến thức có cấu trúc.',
+        line2Color: '#facc15'
+      },
+      {
+        line1: 'Cuộc trò chuyện AI của bạn,',
+        line2: 'được ghi lại và tổ chức cục bộ.',
+        line2Color: '#facc15'
+      }
+    ];
+
+    let current = 0;
+    const h1    = document.getElementById('hero-headline');
+    const line1 = document.getElementById('hero-line1');
+    const line2 = document.getElementById('hero-line2');
+
+    setInterval(() => {
+      h1.classList.add('fading');
+
+      setTimeout(() => {
+        current = (current + 1) % headlines.length;
+        line1.textContent = headlines[current].line1;
+        line2.textContent = headlines[current].line2;
+
+        h1.classList.remove('fading');
+      }, 650);
+
+    }, 5000);
+  </script>
+
+  <!-- i18n -->
+  <script src="/i18n.js"></script>
+</body>
 </html>

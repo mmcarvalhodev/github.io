@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como guardar respostas do Claude &#8212; NODUS</title>
+  <meta name="description" content="Aprenda como guardar respostas do Claude com um clique usando o NODUS. Organize localmente por tags, sem copiar e colar, sem conta." />
+  <link rel="canonical" href="https://nodus-ai.github.io/faq/como-guardar-respostas-claude" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0e1117; --panel:#1a1f29; --border:#2d3748; --yellow:#facc15; --text:#e2e8f0; --sub:#94a3b8; --muted:#475569; --green:#10b981; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(14,17,23,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); }
+    .nav-back { font-size: 13px; color: var(--sub); }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta { background: var(--yellow); color: #0e1117; font-size: 13px; font-weight: 800; padding: 7px 18px; border-radius: 8px; }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+    .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--muted); }
+    .topic-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 16px; }
+    h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero-sub { font-size: 16px; color: var(--sub); line-height: 1.7; }
+    .content { padding: 48px 0; }
+    .content h2 { font-size: 20px; font-weight: 700; margin: 40px 0 16px; color: var(--text); }
+    .content h2:first-child { margin-top: 0; }
+    .content p { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 14px; }
+    .content p strong { color: var(--text); }
+    .content ul { margin: 0 0 16px 20px; }
+    .content li { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 6px; }
+    .content li strong { color: var(--text); }
+    .steps { counter-reset: step; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+    .step { display: flex; gap: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .step-num { counter-increment: step; width: 32px; height: 32px; border-radius: 50%; background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-num::before { content: counter(step); }
+    .step-body h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .step-body p { font-size: 13px; color: var(--sub); line-height: 1.6; margin: 0; }
+    .platforms-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    .plat-pill { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); }
+    .related { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 40px 0; }
+    .related h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .related-links { display: flex; flex-direction: column; gap: 10px; }
+    .related-links a { font-size: 14px; color: var(--sub); }
+    .related-links a:hover { color: var(--yellow); text-decoration: none; }
+    .cta-block { background: linear-gradient(135deg, rgba(250,204,21,0.06), rgba(16,185,129,0.04)); border: 1px solid rgba(250,204,21,0.2); border-radius: 16px; padding: 36px; text-align: center; margin: 40px 0; }
+    .cta-block h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow { background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 800; padding: 10px 22px; border-radius: 8px; }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost { background: transparent; color: var(--sub); font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 8px; border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); text-decoration: none; }
+    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; }
+    footer p { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">&#9733; NODUS</a>
+        <a href="../faq.html" class="nav-back">&#8592; Perguntas frequentes</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar gr&#225;tis</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">NODUS</a> &#8250; <a href="../faq.html">FAQ</a> &#8250; Como guardar respostas do Claude</div>
+      <div class="topic-tag" style="background:rgba(139,92,246,0.1); color:#c4b5fd; border:1px solid rgba(139,92,246,0.25);">Claude &#183; Guardar</div>
+      <h1>Como guardar respostas do Claude</h1>
+      <p class="hero-sub">Nunca mais perca uma resposta &#250;til do Claude. O NODUS guarda qualquer resposta com um clique &#8212; com tags, organizado, acess&#237;vel no seu painel local.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2>Resposta r&#225;pida</h2>
+      <p>Guardar e salvar s&#227;o a mesma coisa no NODUS. Com a extens&#227;o instalada no Chrome ou Firefox, um bot&#227;o aparece ao lado de cada resposta do Claude. Clique em <strong>Salvar</strong> para guardar com tags e fila, ou <strong>R&#225;pido</strong> para guardar instantaneamente sem configura&#231;&#227;o.</p>
+
+      <h2>Por que guardar respostas do Claude?</h2>
+      <p>O Claude produz respostas longas e bem estruturadas — análises, planos, código comentado. Sem uma forma de guardá-las fora da plataforma, você perde o contexto quando a conversa envelhece ou a conta muda. O NODUS guarda com tags para encontrar exatamente o que precisa, quando precisar.</p>
+
+      <h2>Passo a passo</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Instale o NODUS no Chrome ou Firefox</h3><p>Gratuito, sem conta. Ap&#243;s a instala&#231;&#227;o, os bot&#245;es aparecem automaticamente ao lado de cada resposta do Claude.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o Claude e use normalmente</h3><p>Nenhuma configura&#231;&#227;o adicional &#233; necess&#225;ria. O NODUS detecta automaticamente as respostas e injeta os bot&#245;es de captura.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Clique em Salvar ou R&#225;pido ao lado da resposta</h3><p><strong>Salvar</strong> abre o painel lateral para adicionar tags e escolher a fila. <strong>R&#225;pido</strong> guarda imediatamente na fila padr&#227;o sem interromper o fluxo.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Acesse todas as respostas guardadas no painel NODUS</h3><p>Clique em <strong>Dash</strong> a qualquer momento para abrir o painel com todas as capturas organizadas. Use a busca para encontrar qualquer resposta guardada.</p></div></div>
+      </div>
+
+      <h2>Como organizar o que voc&#234; guarda</h2>
+      <ul>
+        <li><strong>Tags:</strong> adicione at&#233; 4 tags por captura (ex: &ldquo;pesquisa&rdquo;, &ldquo;trabalho&rdquo;, &ldquo;projeto X&rdquo;) para categorizar e filtrar depois.</li>
+        <li><strong>Filas:</strong> Quick para urgente, Default para uso geral, filas personalizadas no PRO para projetos diferentes.</li>
+        <li><strong>Busca:</strong> pesquise por texto em todas as capturas guardadas &#8212; a busca cobre t&#237;tulo, pergunta e resposta completa.</li>
+      </ul>
+
+      <h2>Qual a diferen&#231;a entre Salvar e R&#225;pido?</h2>
+      <p><strong>Salvar</strong> abre o painel para adicionar tags e escolher fila. <strong>R&#225;pido</strong> guarda direto na fila padr&#227;o sem interromper o fluxo. Use R&#225;pido quando n&#227;o quiser parar, e organize as capturas depois no painel.</p>
+      <p>Ambos capturam a pergunta e a resposta juntas &#8212; voc&#234; nunca perde o contexto do que foi perguntado.</p>
+
+      <h2>Plataformas suportadas</h2>
+      <p>O NODUS funciona com Claude e mais 6 plataformas de IA &#8212; tudo no mesmo painel:</p>
+      <div class="platforms-grid">
+        <span class="plat-pill">ChatGPT</span>
+        <span class="plat-pill">Claude</span>
+        <span class="plat-pill">Gemini</span>
+        <span class="plat-pill">Perplexity</span>
+        <span class="plat-pill">Grok</span>
+        <span class="plat-pill">Copilot</span>
+        <span class="plat-pill">DeepSeek</span>
+      </div>
+
+      <div class="related">
+        <h3>Veja tamb&#233;m</h3>
+        <div class="related-links">
+          <a href="como-salvar-conversas-claude.html">&#8594; Como salvar conversas do Claude</a>
+          <a href="como-exportar-conversas-claude.html">&#8594; Como exportar conversas do Claude</a>
+          <a href="como-nao-perder-resposta-ia.html">&#8594; Como nunca mais perder uma resposta de IA</a>
+          <a href="../faq.html">&#8594; Ver todas as perguntas frequentes</a>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>Comece a guardar agora</h3>
+        <p>Instale o NODUS gratuitamente e guarde respostas do Claude com um clique &#8212; organizado, local, sem conta.</p>
+        <div class="cta-btns">
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="btn-yellow" target="_blank" rel="noopener">Instalar no Chrome</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" class="btn-ghost" target="_blank" rel="noopener">Instalar no Firefox</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="container"><p>&#169; 2025 NODUS &#183; <a href="../faq.html">FAQ</a> &#183; <a href="../index.html">Site</a> &#183; <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank">GitHub</a></p></div></footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como guardar respostas do Claude?","acceptedAnswer":{"@type":"Answer","text":"Com o NODUS instalado, clique em Salvar ou Rapido ao lado de qualquer resposta do Claude. Salvar abre o painel para adicionar tags. Rapido guarda instantaneamente. Tudo fica acessivel no painel local."}}]}</script>
+</body>
+</html>

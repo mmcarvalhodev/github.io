@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como exportar conversas do DeepSeek — NODUS</title>
+  <meta name="description" content="Exporte conversas do DeepSeek em HTML, Markdown ou DOC usando o NODUS. Salve localmente e exporte com um clique — sem conta, sem servidor." />
+  <link rel="canonical" href="https://nodus-ai.github.io/faq/como-exportar-conversas-deepseek" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0e1117; --panel:#1a1f29; --border:#2d3748; --yellow:#facc15; --text:#e2e8f0; --sub:#94a3b8; --muted:#475569; --green:#10b981; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(14,17,23,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); }
+    .nav-back { font-size: 13px; color: var(--sub); }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta { background: var(--yellow); color: #0e1117; font-size: 13px; font-weight: 800; padding: 7px 18px; border-radius: 8px; }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+    .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--muted); }
+    .topic-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 16px; }
+    h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero-sub { font-size: 16px; color: var(--sub); line-height: 1.7; }
+    .content { padding: 48px 0; }
+    .content h2 { font-size: 20px; font-weight: 700; margin: 40px 0 16px; color: var(--text); }
+    .content h2:first-child { margin-top: 0; }
+    .content p { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 14px; }
+    .content p strong { color: var(--text); }
+    .content ul, .content ol { margin: 0 0 16px 20px; }
+    .content li { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 6px; }
+    .content li strong { color: var(--text); }
+    .steps { counter-reset: step; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+    .step { display: flex; gap: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .step-num { counter-increment: step; width: 32px; height: 32px; border-radius: 50%; background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-num::before { content: counter(step); }
+    .step-body h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .step-body p { font-size: 13px; color: var(--sub); line-height: 1.6; margin: 0; }
+    .formats-grid { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
+    .format-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 160px; }
+    .format-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .format-card p { font-size: 12px; color: var(--muted); margin: 0; }
+    .platforms-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    .plat-pill { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); }
+    .related { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 40px 0; }
+    .related h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .related-links { display: flex; flex-direction: column; gap: 10px; }
+    .related-links a { font-size: 14px; color: var(--sub); }
+    .related-links a:hover { color: var(--yellow); text-decoration: none; }
+    .cta-block { background: linear-gradient(135deg, rgba(250,204,21,0.06), rgba(16,185,129,0.04)); border: 1px solid rgba(250,204,21,0.2); border-radius: 16px; padding: 36px; text-align: center; margin: 40px 0; }
+    .cta-block h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow { background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 800; padding: 10px 22px; border-radius: 8px; }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost { background: transparent; color: var(--sub); font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 8px; border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); text-decoration: none; }
+    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; }
+    footer p { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">&#9733; NODUS</a>
+        <a href="../faq.html" class="nav-back">&#8592; Perguntas frequentes</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar gr&#225;tis</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">NODUS</a> &#8250; <a href="../faq.html">FAQ</a> &#8250; Como exportar conversas do DeepSeek</div>
+      <div class="topic-tag" style="background:rgba(99,102,241,0.1); color:#a5b4fc; border:1px solid rgba(99,102,241,0.25);">Exportar &#183; DeepSeek</div>
+      <h1>Como exportar conversas do DeepSeek</h1>
+      <p class="hero-sub">O NODUS captura respostas do DeepSeek e permite export&#225;-las em HTML, Markdown ou DOC &#8212; com formata&#231;&#227;o preservada, sem copiar e colar.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2>Resposta r&#225;pida</h2>
+      <p>Com o NODUS instalado, salve a conversa do DeepSeek clicando em Salvar. No painel, abra o card e clique em <strong>Exportar</strong> para baixar em <strong>HTML</strong>, <strong>Markdown</strong> ou <strong>DOC</strong>. Toda a formata&#231;&#227;o &#8212; listas, c&#243;digo, t&#237;tulos &#8212; &#233; preservada.</p>
+
+      <h2>Por que exportar conversas do DeepSeek?</h2>
+      <p>O DeepSeek é popular para análises técnicas e código. Sem exportação nativa, snippets e análises ficam presos na tela. O NODUS exporta em Markdown com a estrutura de código preservada — ideal para usar no VS Code, Obsidian ou GitHub, sem reescrever nada à mão.</p>
+
+      <h2>Passo a passo</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Instale o NODUS e salve a conversa desejada</h3><p>Abra o DeepSeek normalmente. Ao encontrar uma resposta &#250;til, clique em <strong>Salvar</strong> (abre o painel com op&#231;&#245;es) ou <strong>R&#225;pido</strong> (salva instantaneamente na fila padr&#227;o).</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o painel NODUS clicando em Dash</h3><p>O bot&#227;o <strong>Dash</strong> ao lado de qualquer resposta abre o painel completo onde todas as suas capturas ficam organizadas.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Encontre o card e clique em Exportar</h3><p>Localize a captura desejada no painel. Abra o card e clique no bot&#227;o <strong>Exportar</strong> para ver as op&#231;&#245;es de formato dispon&#237;veis.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Escolha o formato de exporta&#231;&#227;o</h3><p>Selecione <strong>HTML</strong> para visualizar no navegador, <strong>Markdown</strong> para editores como Notion e Obsidian, ou <strong>DOC</strong> para abrir no Word e Google Docs. O arquivo &#233; baixado automaticamente.</p></div></div>
+      </div>
+
+      <h2>Formatos dispon&#237;veis</h2>
+      <div class="formats-grid">
+        <div class="format-card"><h4>HTML</h4><p>Abre no navegador, imprim&#237;vel, formata&#231;&#227;o completa com estilos preservados.</p></div>
+        <div class="format-card"><h4>Markdown</h4><p>Compat&#237;vel com Notion, Obsidian, VS Code e qualquer editor que suporte .md.</p></div>
+        <div class="format-card"><h4>DOC</h4><p>Abre no Microsoft Word, Google Docs e LibreOffice sem perder a estrutura.</p></div>
+      </div>
+
+      <h2>Exportar v&#225;rias capturas de uma vez</h2>
+      <p>Com a funcionalidade de <strong>Cadeias</strong>, voc&#234; conecta m&#250;ltiplas capturas do DeepSeek (ou de outras plataformas) numa sequ&#234;ncia e exporta tudo junto como um documento estruturado &#8212; ideal para relat&#243;rios e documenta&#231;&#227;o.</p>
+      <p>Basta criar uma cadeia no painel, adicionar os cards desejados em ordem, e exportar a cadeia inteira em um &#250;nico clique. O resultado &#233; um arquivo coeso com todas as capturas encadeadas logicamente.</p>
+
+      <h2>Plataformas suportadas</h2>
+      <p>O NODUS exporta capturas de todas as plataformas suportadas no mesmo painel:</p>
+      <div class="platforms-grid">
+        <span class="plat-pill">ChatGPT</span>
+        <span class="plat-pill">Claude</span>
+        <span class="plat-pill">Gemini</span>
+        <span class="plat-pill">Perplexity</span>
+        <span class="plat-pill">Grok</span>
+        <span class="plat-pill">Copilot</span>
+        <span class="plat-pill">DeepSeek</span>
+      </div>
+
+      <div class="related">
+        <h3>Veja tamb&#233;m</h3>
+        <div class="related-links">
+          <a href="como-salvar-conversas-deepseek.html">&#8594; Como salvar conversas do DeepSeek</a>
+          <a href="como-exportar-historico-ia-word.html">&#8594; Como exportar hist&#243;rico de conversas de IA para Word</a>
+          <a href="como-baixar-historico-conversas-ia.html">&#8594; Como baixar o hist&#243;rico de conversas de IA</a>
+          <a href="../faq.html">&#8594; Ver todas as perguntas frequentes</a>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>Exporte suas conversas do DeepSeek agora</h3>
+        <p>Instale o NODUS gratuitamente e nunca mais perca uma resposta importante do DeepSeek.</p>
+        <div class="cta-btns">
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="btn-yellow" target="_blank" rel="noopener">Instalar no Chrome</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" class="btn-ghost" target="_blank" rel="noopener">Instalar no Firefox</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="container"><p>&#169; 2025 NODUS &#183; <a href="../faq.html">FAQ</a> &#183; <a href="../index.html">Site</a> &#183; <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank">GitHub</a></p></div></footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como exportar conversas do DeepSeek?","acceptedAnswer":{"@type":"Answer","text":"Com o NODUS, salve a conversa e abra o painel. Clique em Exportar e escolha HTML, Markdown ou DOC. A formatacao e preservada. Com Cadeias, exporte varias capturas juntas como um documento estruturado."}}]}</script>
+</body>
+</html>

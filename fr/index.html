@@ -72,235 +72,1072 @@
 
   <!-- Force this language before the i18n script runs -->
   <script>window._forcedLang = 'fr';</script>
+
+  <style>
+    .problema-section {
+      background: linear-gradient(180deg, #0a0d14 0%, #0e1117 100%);
+      padding: 60px 0 52px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .problema-headline {
+      font-size: clamp(22px, 3.5vw, 34px); font-weight: 800;
+      color: #f1f5f9; text-align: center; margin-bottom: 8px; letter-spacing: -0.5px;
+    }
+    .problema-headline em { color: #facc15; font-style: normal; }
+    .problema-sub { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 48px; }
+    .problema-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; max-width: 860px; margin: 0 auto 48px;
+    }
+    .problema-item {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .problema-item-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .problema-item-text { font-size: 14px; color: #cbd5e1; line-height: 1.55; }
+    .problema-item-text strong {
+      display: block; color: #f1f5f9; font-weight: 700;
+      font-size: 15px; margin-bottom: 4px;
+    }
+    .problema-arrow { text-align: center; }
+    .problema-arrow-text {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 99px; padding: 10px 22px;
+      color: #facc15; font-size: 14px; font-weight: 700;
+    }
+    .avd-section {
+      padding: 60px 0;
+      background: #0a0d14;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .avd-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; max-width: 720px; margin: 40px auto 0;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
+    }
+    @media (max-width: 560px) { .avd-grid { grid-template-columns: 1fr; } }
+    .avd-col { padding: 28px 32px; }
+    .avd-col.sem {
+      background: rgba(239,68,68,0.04);
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .avd-col.com { background: rgba(16,185,129,0.04); }
+    .avd-col-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .avd-col.sem .avd-col-label { color: #f87171; }
+    .avd-col.com .avd-col-label { color: #34d399; }
+    .avd-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .avd-list li {
+      font-size: 14px; color: #cbd5e1;
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+    }
+    .avd-col.sem .avd-list li::before { content: '✕'; color: #f87171; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .avd-col.com .avd-list li::before { content: '✓'; color: #34d399; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .tech-section {
+      padding: 60px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px; max-width: 740px; margin: 40px auto 0;
+    }
+    @media (max-width: 560px) {
+      .tech-grid { grid-template-columns: 1fr; }
+    }
+    .tech-item {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 20px 22px;
+    }
+    .tech-item-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #10b981; margin-bottom: 12px;
+      box-shadow: 0 0 8px rgba(16,185,129,0.5);
+    }
+    .tech-item-title {
+      font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px;
+    }
+    .tech-item-desc { font-size: 13px; color: #64748b; line-height: 1.55; }
+    .chains-repositioned-header { max-width: 680px; }
+    .chains-tag {
+      display: inline-block; background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.3); color: #c4b5fd;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      padding: 4px 12px; border-radius: 99px; margin-bottom: 16px;
+    }
+    .chains-new-title {
+      font-size: clamp(24px, 3vw, 36px); font-weight: 800;
+      color: #f1f5f9; line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 12px;
+    }
+    .chains-new-title span { color: #c4b5fd; }
+    .chains-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .chains-flow-node {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09);
+      border-left: 3px solid; border-left-color: #334155;
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 13px; color: #e2e8f0;
+    }
+    .chains-flow-node span { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+    .chains-flow-arrow { color: #475569; font-size: 16px; font-weight: 700; }
+    /* couleurs par plateforme */
+    .chains-flow-node[data-plat="chatgpt"]   { border-left-color: #10b981; background: rgba(16,185,129,0.05); }
+    .chains-flow-node[data-plat="chatgpt"]   span { color: #6ee7b7; }
+    .chains-flow-node[data-plat="claude"]    { border-left-color: #8b5cf6; background: rgba(139,92,246,0.05); }
+    .chains-flow-node[data-plat="claude"]    span { color: #c4b5fd; }
+    .chains-flow-node[data-plat="gemini"]    { border-left-color: #3b82f6; background: rgba(59,130,246,0.05); }
+    .chains-flow-node[data-plat="gemini"]    span { color: #93c5fd; }
+    .chains-flow-node[data-plat="perplexity"]{ border-left-color: #06b6d4; background: rgba(6,182,212,0.05); }
+    .chains-flow-node[data-plat="perplexity"]span { color: #67e8f9; }
+    .chains-flow-node[data-plat="grok"]      { border-left-color: #ec4899; background: rgba(236,72,153,0.05); }
+    .chains-flow-node[data-plat="grok"]      span { color: #f9a8d4; }
+    .chains-flow-node.highlight { border-left-color: #facc15; background: rgba(250,204,21,0.07); border-color: rgba(250,204,21,0.3); }
+    .chains-flow-node.highlight span { color: #facc15; }
+    .forwho-section { padding: 52px 0; }
+    .forwho-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; max-width: 760px; margin: 40px auto 0;
+    }
+    @media (max-width: 600px) { .forwho-grid { grid-template-columns: 1fr; } }
+    .forwho-card { border-radius: 14px; padding: 28px; }
+    .forwho-card.nao { background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15); }
+    .forwho-card.sim { background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.18); }
+    .forwho-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .forwho-card.nao .forwho-label { color: #f87171; }
+    .forwho-card.sim .forwho-label { color: #34d399; }
+    .forwho-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .forwho-list li {
+      font-size: 14px; color: #cbd5e1;
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+    }
+    .forwho-list li::before { flex-shrink: 0; margin-top: 2px; }
+    .forwho-card.nao .forwho-list li::before { content: '✕'; color: #f87171; font-weight: 700; }
+    .forwho-card.sim .forwho-list li::before { content: '✓'; color: #34d399; font-weight: 700; }
+  </style>
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div class="announcement" data-i18n-html="announcement">
-    NODUS lance Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accès anticipé PRO</a> &nbsp;·&nbsp; Licence MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Étoile sur GitHub ★</a>
+  <!-- BANNIÈRE -->
+  <div class="announcement">
+    NODUS maintenant sur Chrome &amp; Firefox — <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Installer gratuitement</a> &nbsp;·&nbsp; Licence MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Étoile sur GitHub ★</a>
   </div>
 
   <!-- NAV -->
-  <nav class="nav" id="mainNav">
+  <nav class="nav">
     <div class="nav-inner">
-      <a href="https://nodus-ai.app/" class="nav-logo">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#0e1117"/>
-          <circle cx="16" cy="16" r="9" fill="#facc15"/>
-          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
-        </svg>
+      <div class="nav-logo">
+        <span class="nav-logo-dot"></span>
         NODUS
-      </a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links">
-        <a href="https://nodus-ai.app/#how" data-i18n="navHow">Comment ça marche</a>
-        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">Fonctionnalités</a>
-        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">Tarifs</a>
-        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">Confidentialité</a>
-        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">Captures</a>
-        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">Obtenir PRO</a>
-        <div class="lang-switcher" id="langSwitcher">
-          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
-            <span id="langCurrent">FR</span>
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
-          </button>
-          <ul class="lang-dropdown" role="listbox">
-            <li class="lang-opt" data-lang="en" role="option">EN</li>
-            <li class="lang-opt" data-lang="pt" role="option">PT</li>
-            <li class="lang-opt" data-lang="es" role="option">ES</li>
-            <li class="lang-opt" data-lang="fr" role="option">FR</li>
-            <li class="lang-opt" data-lang="de" role="option">DE</li>
-            <li class="lang-opt" data-lang="ja" role="option">JA</li>
-            <li class="lang-opt" data-lang="it" role="option">IT</li>
-            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
-            <li class="lang-opt" data-lang="ko" role="option">KO</li>
-            <li class="lang-opt" data-lang="hi" role="option">HI</li>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#como-funciona">Comment ça marche</a></li>
+        <li><a href="#cadeias">Chaînes</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#privacidade">Confidentialité</a></li>
+        <li><a href="../docs/screenshots.html">Screenshots</a></li>
+        <li><a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a></li>
+        <li><a href="../checkout.html" class="nav-cta">Obtenir PRO</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div>
+          <div class="hero-eyebrow reveal">
+            <span class="badge badge-green">Gratuit pour toujours</span>
+            <span class="badge">Licence MIT</span>
+          </div>
+
+          <!-- HEADLINE: alterne entre V1 et V2 -->
+          <h1 class="hero-title reveal reveal-delay-1" id="hero-headline">
+            <span id="hero-line1">Transformez vos conversations avec l'IA</span><br/>
+            <span id="hero-line2" class="hero-alt-span">en connaissances structurées.</span>
+          </h1>
+
+          <!-- LOCAL-FIRST -->
+          <p class="hero-local-first reveal reveal-delay-1">
+            🔒 Local. Sans compte. Vos données restent sur votre machine.
+          </p>
+
+          <!-- SUBHEADLINE -->
+          <p class="hero-desc reveal reveal-delay-2">
+            Capturez des idées sur le moment, continuez-les entre plateformes et construisez
+            un système de connaissances qui ne se perd jamais — tout dans votre navigateur,
+            sans serveur.
+          </p>
+
+          <!-- CTA -->
+          <p style="font-size:13px; font-weight:700; color:#facc15; margin-bottom:12px;" class="reveal reveal-delay-3">⚡ Chaque idée mérite d'être sauvegardée</p>
+          <div class="hero-actions reveal reveal-delay-3">
+            <a class="btn-primary" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" fill="#4285F4"/><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 7h8.66A10 10 0 0 0 12 2v5z" fill="#EA4335"/><path d="M4.22 17.5l4.33-7.5H2a10 10 0 0 0 2.22 7.5z" fill="#FBBC05"/><path d="M12 17l-4.33 7.5A10 10 0 0 0 20.78 17.5L12 17z" fill="#34A853"/></svg>
+              Installer sur Chrome
+            </a>
+            <a class="btn-firefox" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" fill="#FF6611"/><path d="M12 4c-2.2 0-4.1.9-5.5 2.3C7.8 5.9 9.3 5.5 11 5.5c3.6 0 6.5 2.9 6.5 6.5S14.6 18.5 11 18.5c-2.5 0-4.7-1.4-5.8-3.5C6.4 17.3 9 19 12 19c3.9 0 7-3.1 7-7s-3.1-7-7-7z" fill="white" opacity=".9"/></svg>
+              Firefox
+            </a>
+          </div>
+
+          <div class="hero-trust reveal reveal-delay-4">
+            <div class="hero-trust-item"><span class="dot-green"></span> Sans compte requis</div>
+            <div class="hero-trust-item"><span class="dot-green"></span> Chrome · Firefox · Edge · Brave</div>
+            <div class="hero-trust-item"><span class="dot-green"></span> 7 plateformes IA</div>
+          </div>
+        </div>
+
+        <!-- Dashboard mockup -->
+        <div class="dashboard-mockup reveal reveal-delay-2">
+          <div style="
+            background:#13181f;
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:0 0 0 1px rgba(255,255,255,0.07), 0 32px 80px rgba(0,0,0,0.7);
+            width:100%;
+            font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+          ">
+
+            <!-- Header -->
+            <div style="background:#0d1117; border-bottom:1px solid #2d3748; padding:9px 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:14px; font-weight:900; color:#facc15; letter-spacing:-0.5px;">★ NODUS</span>
+                <span style="font-size:9px; background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.3); padding:1px 6px; border-radius:99px; font-weight:800;">PRO</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:14px; color:#475569; font-size:12px;">
+                <span>⚙</span><span>✕</span>
+              </div>
+            </div>
+
+            <!-- Tabs -->
+            <div style="background:#0d1117; border-bottom:1px solid #2d3748; display:flex; padding:0 14px; gap:2px;">
+              <div style="font-size:11px; font-weight:700; color:#facc15; padding:8px 12px 7px; border-bottom:2px solid #facc15;">Cartes</div>
+              <div style="font-size:11px; color:#475569; padding:8px 12px 7px; border-bottom:2px solid transparent;">Chaînes</div>
+              <div style="font-size:11px; color:#475569; padding:8px 12px 7px; border-bottom:2px solid transparent;">Projets</div>
+            </div>
+
+            <!-- Search + filters -->
+            <div style="background:#1a1f29; padding:10px 12px; border-bottom:1px solid #2d3748;">
+              <div style="background:#0d1117; border:1px solid #2d3748; border-radius:8px; padding:7px 10px; display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:12px; color:#475569;">🔍</span>
+                <span style="font-size:11px; color:#475569; flex:1;">Rechercher des captures...</span>
+                <span style="font-size:10px; color:#64748b; background:#0d1117; border:1px solid #2d3748; padding:2px 8px; border-radius:5px; font-weight:600;">Filtres</span>
+              </div>
+              <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.25);">● Toutes</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(16,185,129,0.08); color:#6ee7b7; border:1px solid rgba(16,185,129,0.2);">ChatGPT</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(168,85,247,0.08); color:#d8b4fe; border:1px solid rgba(168,85,247,0.2);">Claude</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(59,130,246,0.08); color:#93c5fd; border:1px solid rgba(59,130,246,0.2);">Gemini</span>
+              </div>
+            </div>
+
+            <!-- Count bar -->
+            <div style="background:#151b24; border-bottom:1px solid #2d3748; padding:5px 14px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:10px; color:#475569;">24 captures</span>
+              <span style="font-size:10px; color:#facc15; font-weight:700; cursor:pointer;">+ Nouveau</span>
+            </div>
+
+            <!-- Card grid (2 columns) -->
+            <div style="background:#1a1f29; padding:10px; display:grid; grid-template-columns:1fr 1fr; gap:8px; position:relative; overflow:hidden; max-height:300px;">
+
+              <!-- Card 1 -->
+              <div style="background:#1a1f29; border:2px solid #fbbf24; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Claude</span>
+                  <span style="font-size:9px; color:#6b7280;">2 min</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">Refactoriser auth avec JWT stateless</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">Utiliser composition middleware + validation lazy du token...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">backend</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">jwt</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;">
+                  <span>💉 3x</span><span>🔗 src</span><span>📎</span><span>📝</span>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div style="background:#1a1f29; border:2px solid #10b981; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">ChatGPT</span>
+                  <span style="font-size:9px; color:#6b7280;">1h</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">CSS Grid : auto-fill vs auto-fit</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">auto-fill garde les colonnes fantômes, auto-fit s'effondre...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">css</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">layout</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;">
+                  <span>💉 1x</span><span>🔗 src</span><span>📎</span><span>📝</span>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div style="background:#1a1f29; border:2px solid #3b82f6; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Gemini</span>
+                  <span style="font-size:9px; color:#6b7280;">hier</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">Index partiel sur Postgres sans downtime</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">CREATE INDEX CONCURRENTLY ne verrouille pas. EXPLAIN avant et après...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">sql</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">perf</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;">
+                  <span>💉 5x</span><span>🔗 src</span><span>📎</span><span>📝</span>
+                </div>
+              </div>
+
+              <!-- Card 4 (partially visible) -->
+              <div style="background:#1a1f29; border:2px solid #8b5cf6; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px; opacity:0.5;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Claude</span>
+                  <span style="font-size:9px; color:#6b7280;">2 jours</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">useReducer pour état complexe</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">Séparez les actions par domaine. Combinez avec useContext...</div>
+              </div>
+
+              <!-- Fade gradient -->
+              <div style="position:absolute; bottom:0; left:0; right:0; height:70px; background:linear-gradient(transparent,#1a1f29); pointer-events:none; grid-column:1/-1;"></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION PROBLÈME -->
+  <section class="problema-section">
+    <div class="container">
+      <h2 class="problema-headline">Avez-vous déjà <em>perdu</em> ça ?</h2>
+      <p class="problema-sub">Ça arrive tout le temps. L'IA n'organise pas ça pour vous.</p>
+
+      <div class="problema-grid">
+        <div class="problema-item">
+          <span class="problema-item-icon">💬</span>
+          <div class="problema-item-text">
+            <strong>Une bonne idée enfouie dans un long chat</strong>
+            Scroll infini pour essayer de la retrouver. Jamais retrouvée.
+          </div>
+        </div>
+        <div class="problema-item">
+          <span class="problema-item-icon">🔍</span>
+          <div class="problema-item-text">
+            <strong>Une réponse parfaite qui a disparu</strong>
+            Vous vous souvenez que Claude l'avait très bien expliqué. Dans quelle conversation ?
+          </div>
+        </div>
+        <div class="problema-item">
+          <span class="problema-item-icon">🔗</span>
+          <div class="problema-item-text">
+            <strong>Des idées dispersées sur 4 plateformes différentes</strong>
+            Une chose sur ChatGPT, une autre sur Gemini, une autre sur Claude. Tout déconnecté.
+          </div>
+        </div>
+      </div>
+
+      <div class="problema-arrow">
+        <span class="problema-arrow-text">
+          ⚡ NODUS règle ça — sans serveur, sans compte, maintenant
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VOIR EN ACTION — GIF -->
+  <section style="padding: 72px 0; background: #0a0d14;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom: 36px;">
+        <div class="section-label">Voir en action</div>
+        <h2 class="section-title">Un clic. L'idée sauvegardée.</h2>
+        <p class="section-sub">Sans copier, sans coller, sans perdre le fil.</p>
+      </div>
+
+      <!-- Browser frame + GIF -->
+      <div class="reveal" style="max-width: 780px; margin: 0 auto;">
+        <div style="
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 28px 72px rgba(0,0,0,0.65);
+          background: #13181f;
+        ">
+          <!-- Fake browser bar -->
+          <div style="
+            background: #1a1f29;
+            border-bottom: 1px solid #2d3748;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          ">
+            <div style="display:flex; gap:6px;">
+              <span style="width:11px;height:11px;border-radius:50%;background:#ef4444;display:block;"></span>
+              <span style="width:11px;height:11px;border-radius:50%;background:#f59e0b;display:block;"></span>
+              <span style="width:11px;height:11px;border-radius:50%;background:#10b981;display:block;"></span>
+            </div>
+            <div style="
+              flex: 1;
+              background: #0e1117;
+              border: 1px solid #2d3748;
+              border-radius: 6px;
+              padding: 4px 12px;
+              font-size: 11px;
+              color: #475569;
+            ">chatgpt.com</div>
+          </div>
+          <!-- GIF -->
+          <img
+            src="../gif/Animação.gif"
+            alt="NODUS en action — sauvegarde d'une réponse ChatGPT en un clic"
+            style="width: 100%; display: block;"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- AVANT VS APRÈS -->
+  <section class="avd-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">La différence en pratique</div>
+        <h2 class="section-title">Sans NODUS vs Avec NODUS</h2>
+      </div>
+
+      <div class="avd-grid reveal">
+        <div class="avd-col sem">
+          <div class="avd-col-label">✕ &nbsp;Sans NODUS</div>
+          <ul class="avd-list">
+            <li>Conversations perdues sans recherche inter-plateformes</li>
+            <li>Idées déconnectées entre ChatGPT, Claude, Gemini</li>
+            <li>Scroll infini pour retrouver une réponse disparue</li>
+            <li>Le contexte repart de zéro à chaque conversation</li>
+            <li>Aucun historique personnel organisé</li>
+          </ul>
+        </div>
+        <div class="avd-col com">
+          <div class="avd-col-label">✓ &nbsp;Avec NODUS</div>
+          <ul class="avd-list">
+            <li>Idées sauvegardées en un clic, avec étiquette et note</li>
+            <li>Recherche unifiée sur toutes les plateformes</li>
+            <li>Chaînes reliant des conversations d'IA différentes</li>
+            <li>Connaissances accumulées, réutilisables et injectables</li>
+            <li>100% local — rien ne quitte votre machine</li>
           </ul>
         </div>
       </div>
     </div>
-  </nav>
+  </section>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badges">
-          <span class="badge" data-i18n="badge1">Q2 2026 Launch</span>
-          <span class="badge badge-green" data-i18n="badge2">Free Forever</span>
-          <span class="badge" data-i18n="badge3">MIT License</span>
-        </div>
-        <h1 data-i18n-html="heroTitle">Vos conversations IA,<br/><span>capturées &amp; organisées</span><br/>localement.</h1>
-        <p data-i18n="heroDesc">NODUS est une extension de navigateur gratuite qui capture, étiquette, chaîne et recherche vos conversations IA de ChatGPT, Claude, Gemini et 4 autres plateformes — tout stocké en privé sur votre appareil.</p>
-        <div class="hero-cta">
-          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ Installer gratuitement</a>
-          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ View on GitHub</a>
-        </div>
-        <div class="trust-row">
-          <span data-i18n="trust1">No account required</span>
-          <span data-i18n="trust3">7 AI platforms</span>
-        </div>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Comment ça marche</div>
+        <h2 class="section-title">Trois étapes. C'est tout.</h2>
+        <p class="section-sub">NODUS reste invisible dans votre navigateur et s'active uniquement quand vous le souhaitez. Sans copier, sans coller, sans friction.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="howLabel">Comment ça marche</p>
-      <h2 data-i18n="howTitle">Trois étapes. C'est tout.</h2>
-      <p class="section-sub" data-i18n="howSub">NODUS reste invisible dans votre navigateur et s'active uniquement quand vous le souhaitez.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num" data-i18n="step1num">Step 01</div>
-          <h3 data-i18n="step1title">Naviguez sur n'importe quelle IA</h3>
-          <p data-i18n="step1desc">NODUS s'active sur 7 plateformes dès que vous les ouvrez. Aucune configuration par site — ça fonctionne tout simplement.</p>
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">Étape 01</div>
+          <div class="step-icon">🧠</div>
+          <div class="step-title">Ouvrez n'importe quelle IA</div>
+          <p class="step-desc">NODUS s'active sur 7 plateformes dès que vous les ouvrez. Aucune configuration par site — ça marche directement.</p>
+          <div class="step-visual mt-8">
+            <div class="platform-badges-mini">
+              <span class="platform-badge-mini">ChatGPT</span>
+              <span class="platform-badge-mini">Claude</span>
+              <span class="platform-badge-mini">Gemini</span>
+              <span class="platform-badge-mini">Perplexity</span>
+              <span class="platform-badge-mini">Copilot</span>
+              <span class="platform-badge-mini">Grok</span>
+              <span class="platform-badge-mini">DeepSeek</span>
+            </div>
+          </div>
         </div>
-        <div class="step">
-          <div class="step-num" data-i18n="step2num">Step 02</div>
-          <h3 data-i18n="step2title">Cliquez sur Save ou Quick</h3>
-          <p data-i18n="step2desc">Une paire de boutons flottants apparaît sur chaque page IA. Save capture dans votre file par défaut. Quick capture dans votre file rapide instantanément.</p>
-        </div>
-        <div class="step">
-          <div class="step-num" data-i18n="step3num">Step 03</div>
-          <h3 data-i18n="step3title">Organisez dans votre tableau de bord</h3>
-          <p data-i18n="step3desc">Ouvrez votre tableau de bord NODUS pour ajouter des étiquettes, écrire des notes, créer des chaînes et rechercher sur toutes les plateformes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PRICING (pre-rendered label) -->
-  <section class="pricing" id="pricing">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="pricingLabel">Pricing</p>
-      <h2 data-i18n="pricingTitle">Gratuit pour toujours. Passez à la version supérieure quand vous êtes prêt.</h2>
-    </div>
-  </section>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">Étape 02</div>
+          <div class="step-icon">💾</div>
+          <div class="step-title">Cliquez sur Enregistrer ou Rapide</div>
+          <p class="step-desc">Une paire de boutons flottants apparaît sur chaque réponse. Enregistrer va dans votre file. Rapide capture instantanément, sans aucun écran.</p>
+          <div class="step-visual mt-8">
+            <div class="floating-btn-scene">
+              <div class="floating-btn-bg-text">
+                <strong>Claude :</strong> Voici une approche plus propre en utilisant la composition de middleware. D'abord, extrayez la logique de validation...
+              </div>
+              <div class="floating-save-btn">
+                <div class="flt-btn flt-btn-save">💾 Enregistrer</div>
+                <div class="flt-btn flt-btn-quick">⚡ Rapide</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <!-- PRIVACY -->
-  <section class="privacy" id="privacy">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="privacyLabel">Privacy First</p>
-      <h2 data-i18n="privacyTitle">Vos données restent sur votre machine.</h2>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="section-inner">
-      <h2 data-i18n-html="ctaTitle">Installez gratuitement — sans compte requis.</h2>
-      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ Installer gratuitement</a>
-    </div>
-  </section>
-
-  <!-- FAQ (pre-rendered for SEO) -->
-  <section class="faq" id="faq">
-    <div class="section-inner">
-      <h2 data-i18n="faqTitle">Questions fréquentes</h2>
-      <p class="section-sub" data-i18n="faqSub">Réponses rapides aux questions les plus courantes sur NODUS.</p>
-      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq1q">Comment sauvegarder les conversations ChatGPT ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq1a">Installez NODUS et un bouton flottant apparaît sur toutes les pages IA prises en charge. Cliquez sur Enregistrer pour capturer la conversation instantanément dans votre tableau de bord local — sans copier-coller, sans compte.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq2q">Comment exporter l'historique des conversations IA ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq2a">Exportez vos captures au format TXT, HTML ou DOCX. Vous pouvez également chaîner des captures liées entre sessions et exporter des pistes de connaissances complètes.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq3q">Fonctionne-t-il avec Claude et Gemini ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq3a">NODUS sauvegarde les conversations de 7 plateformes : ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok et DeepSeek — tout dans un tableau de bord, stocké localement sur votre appareil.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq4q">Mes données de conversation sont-elles privées ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq4a">100% privé. NODUS stocke tout dans le stockage local du navigateur — rien n'est jamais envoyé à un serveur, synchronisé dans le cloud ou partagé avec des tiers.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq5q">NODUS est-il gratuit ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq5a">Oui, les fonctionnalités principales sont gratuites pour toujours. Le plan PRO débloque des fonctionnalités avancées pour les utilisateurs intensifs.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq6q">Quels navigateurs sont pris en charge ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq6a">NODUS fonctionne sur Chrome, Firefox, Edge et Brave. Installez-le une fois et il fonctionne sur toutes vos plateformes IA automatiquement.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq7q">Comment ne plus jamais perdre une réponse de ChatGPT ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq7a">NODUS capture les réponses dès que vous cliquez sur Enregistrer — avant de fermer l'onglet, d'actualiser ou que ChatGPT efface la session. Votre historique est toujours en sécurité dans votre tableau de bord local.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq8q">Comment exporter une conversation ChatGPT en Word ou PDF ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq8a">Avec NODUS, exportez n'importe quelle conversation enregistrée en DOCX (Word) ou HTML (que vous pouvez imprimer en PDF). Enchaînez plusieurs captures et exportez-les ensemble comme un seul document structuré.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq9q">Comment enregistrer des conversations Gemini ou Perplexity ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq9a">NODUS fonctionne nativement sur Gemini, Perplexity, Copilot, Grok et DeepSeek — pas seulement ChatGPT. Le même bouton flottant Enregistrer apparaît automatiquement sur toutes les plateformes supportées.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq10q">Comment organiser les conversations IA en un seul endroit ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq10a">NODUS vous offre un tableau de bord unifié où vous pouvez étiqueter, rechercher et enchaîner des captures de n'importe quelle plateforme IA. Filtrez par plateforme, étiquette ou date — tout au même endroit, stocké localement.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq11q">Comment sauvegarder des conversations IA hors ligne ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq11a">NODUS stocke tout dans le stockage local du navigateur — il fonctionne complètement hors ligne. Aucune connexion Internet n'est nécessaire pour accéder, rechercher ou exporter vos conversations enregistrées.</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq12q">Existe-t-il une extension pour enregistrer les réponses de Claude AI ?</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq12a">Oui — NODUS est une extension gratuite qui enregistre les réponses de Claude AI localement en un clic. Étiquetez-les, liez-les à des captures ChatGPT ou Gemini, et recherchez dans tout votre tableau de bord.</p>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">Étape 03</div>
+          <div class="step-icon">📚</div>
+          <div class="step-title">Continuez les idées dans le tableau de bord</div>
+          <p class="step-desc">Ouvrez le panneau NODUS pour ajouter des étiquettes, créer des chaînes, rechercher entre plateformes et injecter des connaissances dans n'importe quelle IA.</p>
+          <div class="step-visual mt-8" style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="tag">étiquettes</span>
+              <span class="tag" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">chaînes</span>
+              <span class="tag" style="background:rgba(16,185,129,0.1);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">recherche unifiée</span>
+              <span class="tag" style="background:rgba(249,115,22,0.1);color:#fdba74;border-color:rgba(249,115,22,0.2);">injecter</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#0e1117"/>
-          <circle cx="16" cy="16" r="9" fill="#facc15"/>
-          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
-        </svg>
-        NODUS
+  <hr class="separator" />
+
+
+  <!-- SECTION TECHNIQUE -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Vraie confidentialité</div>
+        <h2 class="section-title">Vos données restent chez vous.</h2>
+        <p class="section-sub">Sans compte. Sans serveur. Sans entreprise ayant accès à vos conversations.</p>
       </div>
-      <p class="footer-tagline" data-i18n="footerTagline"></p>
-      <div class="footer-links">
-        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Privacy Policy</a>
-        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">Obtenir PRO</a>
-        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+
+      <div class="tech-grid">
+        <div class="tech-item reveal reveal-delay-1">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Tout sur votre appareil</div>
+          <div class="tech-item-desc">Vos captures sont sauvegardées directement sur votre ordinateur — pas sur un serveur, ni le nôtre ni celui d'un tiers.</div>
+        </div>
+        <div class="tech-item reveal reveal-delay-2">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Sans compte, sans traçage</div>
+          <div class="tech-item-desc">Nous ne demandons pas d'e-mail, ne créons pas de profil, ne surveillons pas ce que vous sauvegardez. C'est une extension, pas un service.</div>
+        </div>
+        <div class="tech-item reveal reveal-delay-3">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Vous contrôlez tout</div>
+          <div class="tech-item-desc">Exportez, supprimez ou déplacez vos données quand vous voulez. Rien n'est verrouillé — c'est votre historique, vos règles.</div>
+        </div>
+        <div class="tech-item reveal reveal-delay-4">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">Open source et vérifiable</div>
+          <div class="tech-item-desc">NODUS est open source. Pas besoin de nous faire confiance sur parole — le code est sur GitHub pour que chacun puisse le vérifier.</div>
+        </div>
       </div>
-      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. All rights reserved.</p>
+    </div>
+  </section>
+
+  <hr class="separator" />
+
+
+  <!-- CHAÎNES -->
+  <section class="section" id="cadeias" style="padding-bottom: 80px;">
+    <div class="container">
+
+      <!-- En-tête -->
+      <div class="reveal chains-repositioned-header">
+        <span class="chains-tag">🔗 FONCTIONNALITÉ EXCLUSIVE</span>
+        <h2 class="chains-new-title">
+          Chaînes : votre pensée<br/>
+          <span>ne repart jamais de zéro</span>
+        </h2>
+        <p class="section-sub" style="text-align:left; max-width:620px; margin-bottom: 0;">
+          Une chaîne est un parcours ordonné d'idées connectées — de n'importe quelle plateforme,
+          de n'importe quelle conversation, dans l'ordre que vous souhaitez. Vous construisez
+          le raisonnement progressivement, sur plusieurs jours. NODUS garde tout lié.
+        </p>
+      </div>
+
+      <!-- Ce que vous pouvez faire avec les Chaînes -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin-top: 40px; max-width: 900px;" class="reveal">
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">📎</div>
+          <div class="tech-item-title">Connectez des idées de différentes plateformes</div>
+          <div class="tech-item-desc">Une réponse de ChatGPT, une autre de Claude, une autre de Gemini — tout dans la même chaîne.</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">🗓️</div>
+          <div class="tech-item-title">Construisez dans le temps</div>
+          <div class="tech-item-desc">Ajoutez de nouveaux nœuds quand vous voulez. Une chaîne peut grandir sur des jours, des semaines, des projets entiers.</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">💉</div>
+          <div class="tech-item-title">Injectez dans n'importe quelle IA</div>
+          <div class="tech-item-desc">Sélectionnez une chaîne et envoyez le contexte complet pour continuer la conversation là où vous l'aviez laissée.</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">📤</div>
+          <div class="tech-item-title">Exportez quand vous voulez</div>
+          <div class="tech-item-desc">Exportez la chaîne en texte structuré pour documenter, partager ou archiver.</div>
+        </div>
+      </div>
+
+      <!-- Trois exemples de flux -->
+      <div style="margin-top: 56px;" class="reveal">
+        <div class="chains-example-label" style="font-size:11px; font-weight:700; letter-spacing:1px; color:#64748b; text-transform:uppercase; margin-bottom: 20px;">
+          Exemples réels d'utilisation
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+
+          <!-- Exemple 1: Développement -->
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">💻 DÉVELOPPEMENT LOGICIEL</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="chatgpt"><span>ChatGPT</span>Architecture initiale du système</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>Affinage et revue de code</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="gemini"><span>Gemini</span>Cas de test et cas limites</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>Chaîne complète ✓</div>
+            </div>
+          </div>
+
+          <!-- Exemple 2: Écriture -->
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">✍️ ÉCRITURE ET CONTENU</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="perplexity"><span>Perplexity</span>Recherche et sources sur le sujet</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>Structure et argument principal</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="chatgpt"><span>ChatGPT</span>Révision du ton et variations</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>Prêt à publier ✓</div>
+            </div>
+          </div>
+
+          <!-- Exemple 3: Recherche -->
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">🔬 RECHERCHE ET ANALYSE</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="perplexity"><span>Perplexity</span>Panorama initial du marché</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="gemini"><span>Gemini</span>Analyse de la concurrence</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>Synthèse et conclusions</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>Rapport structuré ✓</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mockup visuel -->
+      <div class="mt-40 reveal">
+        <div class="chains-example-label" style="font-size:11px; font-weight:700; letter-spacing:1px; color:#64748b; text-transform:uppercase; margin-bottom: 20px;">
+          Comment ça apparaît dans le panneau
+        </div>
+        <div class="chains-mockup">
+          <div class="chains-sidebar">
+            <div class="chains-sidebar-header">
+              <span class="chains-sidebar-title">Chaînes</span>
+              <span class="chains-sidebar-add">+</span>
+            </div>
+            <div class="chain-list-item active">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Refactor Auth</div>
+                <div class="chain-item-count">4 nœuds</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Texte Landing</div>
+                <div class="chain-item-count">3 nœuds</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Optimisation BDD</div>
+                <div class="chain-item-count">2 nœuds</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">Conception API</div>
+                <div class="chain-item-count">6 nœuds</div>
+              </div>
+            </div>
+          </div>
+          <div class="chains-main">
+            <div class="chains-main-header">
+              <span class="chain-name-big">🔗 Refactor Auth <span style="font-size:11px;font-weight:400;color:#475569;">4 nœuds</span></span>
+              <button class="chain-export-btn">↓ Exporter TXT</button>
+            </div>
+            <div class="chain-nodes">
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#1</span>
+                  <span class="node-platform">Claude</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">28 mars</span>
+                </div>
+                <div class="node-card-title">Avantages et inconvénients : JWT vs authentification par session</div>
+                <div class="node-card-text">Les JWT sont stateless et évoluent horizontalement, mais la révocation est difficile sans liste de blocage. Les sessions nécessitent un état serveur mais permettent une invalidation immédiate.</div>
+              </div>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#2</span>
+                  <span class="node-platform" style="background:rgba(16,185,129,0.12);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">ChatGPT</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">29 mars</span>
+                </div>
+                <div class="node-card-title">Tests unitaires pour le middleware d'authentification</div>
+                <div class="node-card-text">Utilisez Jest avec des matchers personnalisés pour les erreurs d'auth. Simulez le validateur de token à la frontière du module et testez chaque middleware de manière isolée.</div>
+              </div>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#3</span>
+                  <span class="node-platform" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">Gemini</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">30 mars</span>
+                </div>
+                <div class="node-card-title">Cas limites à tester avant de passer en production</div>
+                <div class="node-card-text">Token expiré lors d'une longue requête, révocation forcée lors d'un changement de mot de passe, sessions multiples actives et tentatives de réutilisation de token après déconnexion.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="separator" />
+
+
+  <!-- POUR QUI -->
+  <section class="forwho-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Fait pour qui</div>
+        <h2 class="section-title">NODUS est idéal pour vous si...</h2>
+      </div>
+
+      <div style="max-width:560px; margin: 40px auto 0;" class="reveal">
+        <div class="forwho-card sim" style="padding:32px 36px;">
+          <ul class="forwho-list" style="gap:14px;">
+            <li>vous utilisez l'IA tous les jours pour travailler</li>
+            <li>vous construisez, écrivez ou faites des recherches avec l'IA</li>
+            <li>vous avez déjà perdu une bonne idée au milieu d'un chat</li>
+            <li>vous utilisez plus d'une plateforme IA et voulez tout connecter</li>
+            <li>vous ne voulez pas vos données sur un serveur</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="separator" />
+
+
+  <!-- FAQ -->
+  <section id="faq" style="padding: 80px 0 64px; border-top: 1px solid #2d3748;">
+    <div class="container">
+
+      <div class="text-center reveal" style="margin-bottom:48px;">
+        <div class="section-label">Questions fréquentes</div>
+        <h2 class="section-title">Questions et réponses</h2>
+        <p class="section-sub">Les questions les plus courantes sur NODUS — répondues en quelques secondes.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:860px; margin: 0 auto;" class="reveal">
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">NODUS est-il gratuit ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Oui, les fonctionnalités principales sont <strong style="color:#e2e8f0;">gratuites pour toujours</strong>. Sauvegardez, organisez, recherchez et exportez vos captures sans rien payer. Le plan PRO débloque des files supplémentaires, des Chaînes illimitées et l'export avancé.</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Comment sauvegarder une conversation ChatGPT ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Installez NODUS et un bouton flottant apparaît sur toutes les plateformes supportées. Cliquez sur <strong style="color:#e2e8f0;">Enregistrer</strong> pour capturer la réponse dans votre panneau local — sans copier-coller, sans compte requis.</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Fonctionne-t-il avec Claude, Gemini et d'autres IA ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">NODUS supporte <strong style="color:#e2e8f0;">7 plateformes</strong> : ChatGPT, Claude, Gemini, Perplexity, Copilot, Grok et DeepSeek. Le même bouton apparaît sur toutes — tout va dans un panneau unifié unique.</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Mes données sont-elles privées ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;"><strong style="color:#e2e8f0;">Rien ne quitte votre appareil.</strong> NODUS stocke tout dans le stockage local du navigateur — sans serveur propre, sans compte, sans synchronisation cloud.</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Quels navigateurs sont supportés ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">NODUS fonctionne sur <strong style="color:#e2e8f0;">Chrome, Firefox, Edge et Brave</strong>. Tout navigateur basé sur Chromium fonctionne automatiquement. Installez une fois, ça marche sur toutes les plateformes IA.</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Puis-je exporter mes captures ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Oui. NODUS exporte en <strong style="color:#e2e8f0;">HTML</strong>, <strong style="color:#e2e8f0;">Markdown</strong> et <strong style="color:#e2e8f0;">DOC (Word)</strong>. Avec les Chaînes, exportez plusieurs captures ensemble comme un document structuré.</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Comment fonctionnent les Chaînes ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Les Chaînes connectent des captures de <strong style="color:#e2e8f0;">conversations différentes</strong> — de plateformes différentes, à des dates différentes — dans une séquence logique. Un fil de raisonnement qui traverse tout votre historique avec l'IA.</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">Si je désinstalle, je perds tout ?</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">Avant de désinstaller, utilisez <strong style="color:#e2e8f0;">l'export complet</strong> pour sauvegarder toutes vos captures en JSON. Les données vivent dans le stockage local — désinstaller efface ce stockage.</p>
+        </div>
+
+      </div>
+
+      <!-- Lien vers FAQ complète -->
+      <div class="text-center reveal" style="margin-top:40px;">
+        <a href="../faq.html" style="display:inline-flex; align-items:center; gap:8px; color:#94a3b8; font-size:13px; font-weight:600; border:1px solid #2d3748; padding:10px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s;"
+          onmouseover="this.style.borderColor='#facc15';this.style.color='#facc15'"
+          onmouseout="this.style.borderColor='#2d3748';this.style.color='#94a3b8'">
+          Voir toutes les questions fréquentes →
+        </a>
+        <p style="font-size:12px; color:#475569; margin-top:10px;">Installation, abonnements, confidentialité, export et bien plus</p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="separator" />
+
+
+  <!-- SCREENSHOTS -->
+  <section class="section" id="screenshots" style="padding-bottom:64px;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:40px;">
+        <div class="section-label">En pratique</div>
+        <h2 class="section-title">Voyez-le fonctionner</h2>
+        <p class="section-sub">Captures d'écran réelles de NODUS fonctionnant dans ChatGPT et d'autres plateformes — sans maquettes.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:28px;" class="reveal">
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid rgba(250,204,21,.3);background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image9.png" alt="Tableau de bord Cartes" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;top:8px;left:8px;background:rgba(250,204,21,.9);color:#0e1117;font-size:10px;font-weight:800;padding:3px 9px;border-radius:99px;">Dashboard</div>
+          </div>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">Vue cartes</div>
+            <div style="font-size:11px;color:#94a3b8;">Idées en grille avec Capture Rapide</div>
+          </div>
+        </a>
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid #2d3748;background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image3.png" alt="Chaînes" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">Chaînes</div>
+            <div style="font-size:11px;color:#94a3b8;">Idées connectées entre conversations et plateformes</div>
+          </div>
+        </a>
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid #2d3748;background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image2.png" alt="Boutons de capture" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">Boutons de capture</div>
+            <div style="font-size:11px;color:#94a3b8;">Enregistrer, Rapide et Panneau sur chaque réponse</div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center reveal">
+        <a href="../docs/screenshots.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(250,204,21,.1);border:1px solid rgba(250,204,21,.3);color:#facc15;font-size:13px;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none;">
+          📸 Voir toutes les captures →
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PIED DE PAGE -->
+  <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
+    <div class="container">
+
+      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+
+        <!-- Colonne 1 — marque -->
+        <div>
+          <div style="font-size:18px; font-weight:900; color:#facc15; letter-spacing:-0.5px; margin-bottom:14px;">★ NODUS</div>
+          <p style="font-size:13px; color:#475569; line-height:1.7; max-width:280px; margin-bottom:20px;">Capturez, organisez et réutilisez vos meilleures conversations IA. Sans serveur. Sans compte. Vos données restent chez vous.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf"
+               target="_blank" rel="noopener"
+               style="display:inline-flex; align-items:center; gap:6px; background:#facc15; color:#080b10; font-size:12px; font-weight:800; padding:7px 14px; border-radius:7px; text-decoration:none;">
+              Installer gratuitement
+            </a>
+            <a href="../checkout.html"
+               style="display:inline-flex; align-items:center; gap:6px; border:1px solid #2d3748; color:#94a3b8; font-size:12px; font-weight:600; padding:7px 14px; border-radius:7px; text-decoration:none;">
+              Obtenir PRO
+            </a>
+          </div>
+        </div>
+
+        <!-- Colonne 2 — produit -->
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Produit</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="#como-funciona" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Comment ça marche</a>
+            <a href="#cadeias" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Chaînes</a>
+            <a href="#pricing" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Tarifs</a>
+            <a href="#privacidade" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Confidentialité</a>
+            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Screenshots</a>
+            <a href="../faq.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">FAQ complète</a>
+          </div>
+        </div>
+
+        <!-- Colonne 3 — ressources -->
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Ressources</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Changelog</a>
+            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Twitter / X</a>
+            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Signaler un bug</a>
+            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Obtenir PRO</a>
+          </div>
+        </div>
+
+        <!-- Colonne 4 — légal -->
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Légal</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="../privacy.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Politique de confidentialité</a>
+            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Conditions d'utilisation</a>
+            <a href="mailto:contact@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Contact</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ligne inférieure -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 0; flex-wrap:wrap; gap:12px;">
+        <p style="font-size:12px; color:#334155;">© 2025 NODUS. Licence MIT. Vos données restent chez vous.</p>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <span style="font-size:11px; color:#1e2736; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.15); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-weight:600;">● v5.0 stable</span>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener" style="font-size:12px; color:#334155; text-decoration:none;">Chrome Web Store ↗</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener" style="font-size:12px; color:#334155; text-decoration:none;">Firefox Add-ons ↗</a>
+        </div>
+      </div>
+
     </div>
   </footer>
 
-  <!-- Load the full i18n script from root — it will applyLang(window._forcedLang) -->
-  <script src="/i18n.js"></script>
 
-  <!-- Cloudflare Web Analytics --></body>
+  <!-- FAQ ACCORDION CSS + JS -->
+  <style>
+    .faq-item { border-bottom: 1px solid #2d3748; }
+    .faq-item:first-child { border-top: 1px solid #2d3748; }
+    .faq-q {
+      width: 100%; background: none; border: none; padding: 20px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer; font-size: 15px; font-weight: 600; color: #e2e8f0;
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-q:hover { color: #facc15; }
+    .faq-q[aria-expanded="true"] { color: #facc15; }
+    .faq-chevron { font-size: 18px; color: #475569; transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: #facc15; }
+    .faq-a { display: none; padding: 0 0 20px; }
+    .faq-a p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+    .faq-a p strong { color: #e2e8f0; }
+    .faq-item.open .faq-a { display: block; }
+  </style>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+  <!-- SCROLL ANIMATION JS -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- HERO HEADLINE ALTERNANCE -->
+  <style>
+    #hero-headline { position: relative; }
+    #hero-line1, #hero-line2 { display: inline; transition: opacity 0.6s ease; }
+    #hero-line1 { color: var(--text); }
+    #hero-line2 { color: var(--yellow); }
+    #hero-headline.fading #hero-line1,
+    #hero-headline.fading #hero-line2 { opacity: 0; }
+  </style>
+  <script>
+    const headlines = [
+      {
+        line1: 'Transformez vos conversations avec l\'IA',
+        line2: 'en connaissances structurées.',
+        line2Color: '#facc15'
+      },
+      {
+        line1: 'Vos conversations avec l\'IA,',
+        line2: 'capturées et organisées localement.',
+        line2Color: '#facc15'
+      }
+    ];
+
+    let current = 0;
+    const h1    = document.getElementById('hero-headline');
+    const line1 = document.getElementById('hero-line1');
+    const line2 = document.getElementById('hero-line2');
+
+    setInterval(() => {
+      h1.classList.add('fading');
+      setTimeout(() => {
+        current = (current + 1) % headlines.length;
+        line1.textContent = headlines[current].line1;
+        line2.textContent = headlines[current].line2;
+        h1.classList.remove('fading');
+      }, 650);
+    }, 5000);
+  </script>
+
+  <!-- i18n -->
+  <script src="/i18n.js"></script>
+</body>
 </html>

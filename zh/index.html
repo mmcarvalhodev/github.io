@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NODUS — 本地捕获和整理AI对话</title>
-  <meta name="description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。" />
-  <meta name="keywords" content="chatgpt扩展, 保存chatgpt对话, 保存claude对话, chrome扩展ai, ai生产力工具, ai对话管理器" />
+  <title>NODUS — 在本地捕获和整理AI对话</title>
+  <meta name="description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理AI对话。从ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、Perplexity保存、标记和搜索您的想法。" />
+  <meta name="keywords" content="chatgpt扩展, 保存chatgpt对话, 保存claude对话, 保存gemini对话, chrome AI扩展, AI生产力工具, AI对话管理器" />
 
   <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://nodus-ai.app/zh/" />
@@ -31,15 +31,15 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NODUS — 本地捕获和整理AI对话" />
-  <meta property="og:description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。" />
+  <meta property="og:title" content="NODUS — 在本地捕获和整理AI对话" />
+  <meta property="og:description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理AI对话。从ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、Perplexity保存、标记和搜索您的想法。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nodus-ai.app/zh/" />
   <meta property="og:image" content="https://nodus-ai.app/docs/screenshots/image9.png" />
   <meta property="og:locale" content="zh_CN" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NODUS — 本地捕获和整理AI对话" />
-  <meta name="twitter:description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。" />
+  <meta name="twitter:title" content="NODUS — 在本地捕获和整理AI对话" />
+  <meta name="twitter:description" content="NODUS是一款免费Chrome扩展程序，可在本地捕获和整理AI对话。从ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、Perplexity保存、标记和搜索您的想法。" />
 
   <!-- Structured Data: SoftwareApplication -->
   <script type="application/ld+json">
@@ -55,7 +55,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "NODUS是一款免费Chrome扩展程序，可在本地捕获和整理您的AI对话。保存、标记和搜索来自ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek和Perplexity的想法。",
+    "description": "NODUS是一款免费Chrome扩展程序，可在本地捕获和整理AI对话。从ChatGPT、Claude、Gemini、Copilot、Grok、DeepSeek、Perplexity保存、标记和搜索您的想法。",
     "url": "https://nodus-ai.app/zh/",
     "screenshot": "https://nodus-ai.app/docs/screenshots/image9.png",
     "softwareVersion": "5.0.0",
@@ -68,239 +68,959 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="../style.css" />
 
   <!-- Force this language before the i18n script runs -->
   <script>window._forcedLang = 'zh';</script>
+
+  <style>
+    .problema-section {
+      background: linear-gradient(180deg, #0a0d14 0%, #0e1117 100%);
+      padding: 60px 0 52px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .problema-headline {
+      font-size: clamp(22px, 3.5vw, 34px); font-weight: 800;
+      color: #f1f5f9; text-align: center; margin-bottom: 8px; letter-spacing: -0.5px;
+    }
+    .problema-headline em { color: #facc15; font-style: normal; }
+    .problema-sub { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 48px; }
+    .problema-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; max-width: 860px; margin: 0 auto 48px;
+    }
+    .problema-item {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 20px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .problema-item-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .problema-item-text { font-size: 14px; color: #cbd5e1; line-height: 1.55; }
+    .problema-item-text strong {
+      display: block; color: #f1f5f9; font-weight: 700;
+      font-size: 15px; margin-bottom: 4px;
+    }
+    .problema-arrow { text-align: center; }
+    .problema-arrow-text {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 99px; padding: 10px 22px;
+      color: #facc15; font-size: 14px; font-weight: 700;
+    }
+    .avd-section {
+      padding: 60px 0;
+      background: #0a0d14;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .avd-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; max-width: 720px; margin: 40px auto 0;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
+    }
+    @media (max-width: 560px) { .avd-grid { grid-template-columns: 1fr; } }
+    .avd-col { padding: 28px 32px; }
+    .avd-col.sem {
+      background: rgba(239,68,68,0.04);
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .avd-col.com { background: rgba(16,185,129,0.04); }
+    .avd-col-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .avd-col.sem .avd-col-label { color: #f87171; }
+    .avd-col.com .avd-col-label { color: #34d399; }
+    .avd-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .avd-list li {
+      font-size: 14px; color: #cbd5e1;
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+    }
+    .avd-col.sem .avd-list li::before { content: '✕'; color: #f87171; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .avd-col.com .avd-list li::before { content: '✓'; color: #34d399; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .tech-section {
+      padding: 60px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px; max-width: 740px; margin: 40px auto 0;
+    }
+    @media (max-width: 560px) {
+      .tech-grid { grid-template-columns: 1fr; }
+    }
+    .tech-item {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 20px 22px;
+    }
+    .tech-item-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #10b981; margin-bottom: 12px;
+      box-shadow: 0 0 8px rgba(16,185,129,0.5);
+    }
+    .tech-item-title {
+      font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px;
+    }
+    .tech-item-desc { font-size: 13px; color: #64748b; line-height: 1.55; }
+    .chains-repositioned-header { max-width: 680px; }
+    .chains-tag {
+      display: inline-block; background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.3); color: #c4b5fd;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      padding: 4px 12px; border-radius: 99px; margin-bottom: 16px;
+    }
+    .chains-new-title {
+      font-size: clamp(24px, 3vw, 36px); font-weight: 800;
+      color: #f1f5f9; line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 12px;
+    }
+    .chains-new-title span { color: #c4b5fd; }
+    .chains-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .chains-flow-node {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09);
+      border-left: 3px solid; border-left-color: #334155;
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 13px; color: #e2e8f0;
+    }
+    .chains-flow-node span { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+    .chains-flow-arrow { color: #475569; font-size: 16px; font-weight: 700; }
+    .chains-flow-node[data-plat="chatgpt"]   { border-left-color: #10b981; background: rgba(16,185,129,0.05); }
+    .chains-flow-node[data-plat="chatgpt"]   span { color: #6ee7b7; }
+    .chains-flow-node[data-plat="claude"]    { border-left-color: #8b5cf6; background: rgba(139,92,246,0.05); }
+    .chains-flow-node[data-plat="claude"]    span { color: #c4b5fd; }
+    .chains-flow-node[data-plat="gemini"]    { border-left-color: #3b82f6; background: rgba(59,130,246,0.05); }
+    .chains-flow-node[data-plat="gemini"]    span { color: #93c5fd; }
+    .chains-flow-node[data-plat="perplexity"]{ border-left-color: #06b6d4; background: rgba(6,182,212,0.05); }
+    .chains-flow-node[data-plat="perplexity"]span { color: #67e8f9; }
+    .chains-flow-node[data-plat="grok"]      { border-left-color: #ec4899; background: rgba(236,72,153,0.05); }
+    .chains-flow-node[data-plat="grok"]      span { color: #f9a8d4; }
+    .chains-flow-node.highlight { border-left-color: #facc15; background: rgba(250,204,21,0.07); border-color: rgba(250,204,21,0.3); }
+    .chains-flow-node.highlight span { color: #facc15; }
+    .forwho-section { padding: 52px 0; }
+    .forwho-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; max-width: 760px; margin: 40px auto 0;
+    }
+    @media (max-width: 600px) { .forwho-grid { grid-template-columns: 1fr; } }
+    .forwho-card { border-radius: 14px; padding: 28px; }
+    .forwho-card.nao { background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15); }
+    .forwho-card.sim { background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.18); }
+    .forwho-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .forwho-card.nao .forwho-label { color: #f87171; }
+    .forwho-card.sim .forwho-label { color: #34d399; }
+    .forwho-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .forwho-list li {
+      font-size: 14px; color: #cbd5e1;
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+    }
+    .forwho-list li::before { flex-shrink: 0; margin-top: 2px; }
+    .forwho-card.nao .forwho-list li::before { content: '✕'; color: #f87171; font-weight: 700; }
+    .forwho-card.sim .forwho-list li::before { content: '✓'; color: #34d399; font-weight: 700; }
+  </style>
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div class="announcement" data-i18n-html="announcement">
-    NODUS 将于2026年Q2发布 — <a href="https://nodus-ai.app/checkout.html">PRO早期访问</a> &nbsp;·&nbsp; MIT许可证 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">在GitHub ★</a>
+  <!-- BANNER -->
+  <div class="announcement">
+    NODUS 现已登陆 Chrome 和 Firefox — <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">免费安装</a> &nbsp;·&nbsp; MIT 许可证 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub 点星 ★</a>
   </div>
 
   <!-- NAV -->
-  <nav class="nav" id="mainNav">
+  <nav class="nav">
     <div class="nav-inner">
-      <a href="https://nodus-ai.app/" class="nav-logo">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#0e1117"/>
-          <circle cx="16" cy="16" r="9" fill="#facc15"/>
-          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
-        </svg>
+      <div class="nav-logo">
+        <span class="nav-logo-dot"></span>
         NODUS
-      </a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links">
-        <a href="https://nodus-ai.app/#how" data-i18n="navHow">使用方法</a>
-        <a href="https://nodus-ai.app/#features" data-i18n="navFeatures">功能</a>
-        <a href="https://nodus-ai.app/#pricing" data-i18n="navPricing">价格</a>
-        <a href="https://nodus-ai.app/#privacy" data-i18n="navPrivacy">隐私</a>
-        <a href="https://nodus-ai.app/docs/screenshots.html" data-i18n="navScreenshots">截图</a>
-        <a href="https://nodus-ai.app/checkout.html" class="nav-cta" data-i18n="navGetPro">获取PRO</a>
-        <div class="lang-switcher" id="langSwitcher">
-          <button class="lang-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
-            <span id="langCurrent">ZH</span>
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
-          </button>
-          <ul class="lang-dropdown" role="listbox">
-            <li class="lang-opt" data-lang="en" role="option">EN</li>
-            <li class="lang-opt" data-lang="pt" role="option">PT</li>
-            <li class="lang-opt" data-lang="es" role="option">ES</li>
-            <li class="lang-opt" data-lang="fr" role="option">FR</li>
-            <li class="lang-opt" data-lang="de" role="option">DE</li>
-            <li class="lang-opt" data-lang="ja" role="option">JA</li>
-            <li class="lang-opt" data-lang="it" role="option">IT</li>
-            <li class="lang-opt" data-lang="zh" role="option">ZH</li>
-            <li class="lang-opt" data-lang="ko" role="option">KO</li>
-            <li class="lang-opt" data-lang="hi" role="option">HI</li>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#como-funciona">工作原理</a></li>
+        <li><a href="#cadeias">链条</a></li>
+        <li><a href="#pricing">价格</a></li>
+        <li><a href="#privacidade">隐私</a></li>
+        <li><a href="../docs/screenshots.html">截图</a></li>
+        <li><a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a></li>
+        <li><a href="../checkout.html" class="nav-cta">获取 PRO</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div>
+          <div class="hero-eyebrow reveal">
+            <span class="badge badge-green">永久免费</span>
+            <span class="badge">MIT 许可证</span>
+          </div>
+
+          <h1 class="hero-title reveal reveal-delay-1" id="hero-headline">
+            <span id="hero-line1">将AI对话转化为</span><br/>
+            <span id="hero-line2" class="hero-alt-span">结构化知识。</span>
+          </h1>
+
+          <p class="hero-local-first reveal reveal-delay-1">
+            🔒 本地存储。无需账户。数据留在您的设备上。
+          </p>
+
+          <p class="hero-desc reveal reveal-delay-2">
+            即时捕获想法，跨平台延续，构建永不丢失的知识系统 — 一切都在浏览器内完成，无需服务器。
+          </p>
+
+          <p style="font-size:13px; font-weight:700; color:#facc15; margin-bottom:12px;" class="reveal reveal-delay-3">⚡ 每个想法都值得保存</p>
+          <div class="hero-actions reveal reveal-delay-3">
+            <a class="btn-primary" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" fill="#4285F4"/><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 7h8.66A10 10 0 0 0 12 2v5z" fill="#EA4335"/><path d="M4.22 17.5l4.33-7.5H2a10 10 0 0 0 2.22 7.5z" fill="#FBBC05"/><path d="M12 17l-4.33 7.5A10 10 0 0 0 20.78 17.5L12 17z" fill="#34A853"/></svg>
+              安装到 Chrome
+            </a>
+            <a class="btn-firefox" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" fill="#FF6611"/><path d="M12 4c-2.2 0-4.1.9-5.5 2.3C7.8 5.9 9.3 5.5 11 5.5c3.6 0 6.5 2.9 6.5 6.5S14.6 18.5 11 18.5c-2.5 0-4.7-1.4-5.8-3.5C6.4 17.3 9 19 12 19c3.9 0 7-3.1 7-7s-3.1-7-7-7z" fill="white" opacity=".9"/></svg>
+              Firefox
+            </a>
+          </div>
+
+          <div class="hero-trust reveal reveal-delay-4">
+            <div class="hero-trust-item"><span class="dot-green"></span> 无需账户</div>
+            <div class="hero-trust-item"><span class="dot-green"></span> Chrome · Firefox · Edge · Brave</div>
+            <div class="hero-trust-item"><span class="dot-green"></span> 7个AI平台</div>
+          </div>
+        </div>
+
+        <!-- Dashboard mockup -->
+        <div class="dashboard-mockup reveal reveal-delay-2">
+          <div style="background:#13181f; border-radius:14px; overflow:hidden; box-shadow:0 0 0 1px rgba(255,255,255,0.07), 0 32px 80px rgba(0,0,0,0.7); width:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+            <div style="background:#0d1117; border-bottom:1px solid #2d3748; padding:9px 14px; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:14px; font-weight:900; color:#facc15; letter-spacing:-0.5px;">★ NODUS</span>
+                <span style="font-size:9px; background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.3); padding:1px 6px; border-radius:99px; font-weight:800;">PRO</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:14px; color:#475569; font-size:12px;"><span>⚙</span><span>✕</span></div>
+            </div>
+            <div style="background:#0d1117; border-bottom:1px solid #2d3748; display:flex; padding:0 14px; gap:2px;">
+              <div style="font-size:11px; font-weight:700; color:#facc15; padding:8px 12px 7px; border-bottom:2px solid #facc15;">卡片</div>
+              <div style="font-size:11px; color:#475569; padding:8px 12px 7px; border-bottom:2px solid transparent;">链条</div>
+              <div style="font-size:11px; color:#475569; padding:8px 12px 7px; border-bottom:2px solid transparent;">项目</div>
+            </div>
+            <div style="background:#1a1f29; padding:10px 12px; border-bottom:1px solid #2d3748;">
+              <div style="background:#0d1117; border:1px solid #2d3748; border-radius:8px; padding:7px 10px; display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:12px; color:#475569;">🔍</span>
+                <span style="font-size:11px; color:#475569; flex:1;">搜索捕获内容...</span>
+                <span style="font-size:10px; color:#64748b; background:#0d1117; border:1px solid #2d3748; padding:2px 8px; border-radius:5px; font-weight:600;">筛选</span>
+              </div>
+              <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.25);">● 全部</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(16,185,129,0.08); color:#6ee7b7; border:1px solid rgba(16,185,129,0.2);">ChatGPT</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(168,85,247,0.08); color:#d8b4fe; border:1px solid rgba(168,85,247,0.2);">Claude</span>
+                <span style="font-size:9px; font-weight:700; padding:3px 8px; border-radius:99px; background:rgba(59,130,246,0.08); color:#93c5fd; border:1px solid rgba(59,130,246,0.2);">Gemini</span>
+              </div>
+            </div>
+            <div style="background:#151b24; border-bottom:1px solid #2d3748; padding:5px 14px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:10px; color:#475569;">24 条捕获</span>
+              <span style="font-size:10px; color:#facc15; font-weight:700; cursor:pointer;">+ 新建</span>
+            </div>
+            <div style="background:#1a1f29; padding:10px; display:grid; grid-template-columns:1fr 1fr; gap:8px; position:relative; overflow:hidden; max-height:300px;">
+              <div style="background:#1a1f29; border:2px solid #fbbf24; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Claude</span>
+                  <span style="font-size:9px; color:#6b7280;">2分钟前</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">用JWT重构身份验证</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">使用中间件组合+延迟令牌验证...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">backend</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">jwt</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;"><span>💉 3x</span><span>🔗 src</span><span>📎</span><span>📝</span></div>
+              </div>
+              <div style="background:#1a1f29; border:2px solid #10b981; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">ChatGPT</span>
+                  <span style="font-size:9px; color:#6b7280;">1小时前</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">CSS Grid: auto-fill vs auto-fit</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">auto-fill保留空列，auto-fit折叠...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">css</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">layout</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;"><span>💉 1x</span><span>🔗 src</span><span>📎</span><span>📝</span></div>
+              </div>
+              <div style="background:#1a1f29; border:2px solid #3b82f6; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Gemini</span>
+                  <span style="font-size:9px; color:#6b7280;">昨天</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">Postgres无停机部分索引</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">CREATE INDEX CONCURRENTLY不锁表。前后EXPLAIN...</div>
+                <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:2px;">
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">sql</span>
+                  <span style="background:#262b36; color:#e2e8f0; padding:2px 7px; border-radius:5px; font-size:9px; border:1px solid #3a4255;">perf</span>
+                </div>
+                <div style="border-top:1px solid #2d3748; padding-top:6px; display:flex; gap:10px; font-size:9px; color:#6b7280;"><span>💉 5x</span><span>🔗 src</span><span>📎</span><span>📝</span></div>
+              </div>
+              <div style="background:#1a1f29; border:2px solid #8b5cf6; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:6px; opacity:0.5;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:10px; color:#a0aec0; font-weight:600;">Claude</span>
+                  <span style="font-size:9px; color:#6b7280;">2天前</span>
+                </div>
+                <div style="font-size:11.5px; font-weight:600; color:#e2e8f0; line-height:1.4;">复杂状态的useReducer</div>
+                <div style="font-size:10px; color:#a0aec0; line-height:1.5;">按域分离action。与useContext结合...</div>
+              </div>
+              <div style="position:absolute; bottom:0; left:0; right:0; height:70px; background:linear-gradient(transparent,#1a1f29); pointer-events:none; grid-column:1/-1;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROBLEMA -->
+  <section class="problema-section">
+    <div class="container">
+      <h2 class="problema-headline">你是否曾经<em>丢失</em>过这些？</h2>
+      <p class="problema-sub">这种情况一直在发生。AI不会为你整理这些。</p>
+
+      <div class="problema-grid">
+        <div class="problema-item">
+          <span class="problema-item-icon">💬</span>
+          <div class="problema-item-text">
+            <strong>淹没在长对话中的好想法</strong>
+            之后无限滚动尝试找到。再也找不到了。
+          </div>
+        </div>
+        <div class="problema-item">
+          <span class="problema-item-icon">🔍</span>
+          <div class="problema-item-text">
+            <strong>消失的完美回答</strong>
+            记得Claude当时解释得很好。是在哪个对话里？
+          </div>
+        </div>
+        <div class="problema-item">
+          <span class="problema-item-icon">🔗</span>
+          <div class="problema-item-text">
+            <strong>散落在4个不同平台的想法</strong>
+            一个在ChatGPT，一个在Gemini，一个在Claude。全都不相连。
+          </div>
+        </div>
+      </div>
+
+      <div class="problema-arrow">
+        <span class="problema-arrow-text">
+          ⚡ NODUS 解决这一问题 — 无服务器，无账户，立即开始
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GIF -->
+  <section style="padding: 72px 0; background: #0a0d14;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom: 36px;">
+        <div class="section-label">观看实际操作</div>
+        <h2 class="section-title">一键点击。想法已保存。</h2>
+        <p class="section-sub">无需复制，无需粘贴，不打断对话。</p>
+      </div>
+      <div class="reveal" style="max-width: 780px; margin: 0 auto;">
+        <div style="border-radius: 14px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 28px 72px rgba(0,0,0,0.65); background: #13181f;">
+          <div style="background: #1a1f29; border-bottom: 1px solid #2d3748; padding: 10px 14px; display: flex; align-items: center; gap: 10px;">
+            <div style="display:flex; gap:6px;">
+              <span style="width:11px;height:11px;border-radius:50%;background:#ef4444;display:block;"></span>
+              <span style="width:11px;height:11px;border-radius:50%;background:#f59e0b;display:block;"></span>
+              <span style="width:11px;height:11px;border-radius:50%;background:#10b981;display:block;"></span>
+            </div>
+            <div style="flex: 1; background: #0e1117; border: 1px solid #2d3748; border-radius: 6px; padding: 4px 12px; font-size: 11px; color: #475569;">chatgpt.com</div>
+          </div>
+          <img src="../gif/Animação.gif" alt="NODUS in action — saving a ChatGPT response with one click" style="width: 100%; display: block;" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ANTES VS DEPOIS -->
+  <section class="avd-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">实际区别</div>
+        <h2 class="section-title">没有NODUS vs 有NODUS</h2>
+      </div>
+      <div class="avd-grid reveal">
+        <div class="avd-col sem">
+          <div class="avd-col-label">✕ &nbsp;没有NODUS</div>
+          <ul class="avd-list">
+            <li>没有跨平台搜索，对话丢失</li>
+            <li>ChatGPT、Claude、Gemini的想法各自分散</li>
+            <li>无限滚动寻找消失的回答</li>
+            <li>每次对话都从头开始上下文</li>
+            <li>没有有组织的个人记录</li>
+          </ul>
+        </div>
+        <div class="avd-col com">
+          <div class="avd-col-label">✓ &nbsp;有NODUS</div>
+          <ul class="avd-list">
+            <li>一键保存带标签和备注的想法</li>
+            <li>跨所有平台统一搜索</li>
+            <li>连接不同AI对话的链条</li>
+            <li>积累可重用的知识</li>
+            <li>100%本地 — 数据不离开您的设备</li>
           </ul>
         </div>
       </div>
     </div>
-  </nav>
+  </section>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badges">
-          <span class="badge" data-i18n="badge1">Q2 2026 Launch</span>
-          <span class="badge badge-green" data-i18n="badge2">Free Forever</span>
-          <span class="badge" data-i18n="badge3">MIT License</span>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">工作原理</div>
+        <h2 class="section-title">三个步骤。就这样。</h2>
+        <p class="section-sub">NODUS静静存在于您的浏览器中，只在您需要时激活。无需复制，无需粘贴，零摩擦。</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">步骤 01</div>
+          <div class="step-icon">🧠</div>
+          <div class="step-title">访问任何AI</div>
+          <p class="step-desc">NODUS一打开就在7个平台上激活。无需逐站配置 — 直接运行。</p>
+          <div class="step-visual mt-8">
+            <div class="platform-badges-mini">
+              <span class="platform-badge-mini">ChatGPT</span>
+              <span class="platform-badge-mini">Claude</span>
+              <span class="platform-badge-mini">Gemini</span>
+              <span class="platform-badge-mini">Perplexity</span>
+              <span class="platform-badge-mini">Copilot</span>
+              <span class="platform-badge-mini">Grok</span>
+              <span class="platform-badge-mini">DeepSeek</span>
+            </div>
+          </div>
         </div>
-        <h1 data-i18n-html="heroTitle">您的AI对话，<br/><span>捕获并整理</span><br/>在本地。</h1>
-        <p data-i18n="heroDesc">NODUS是一款免费浏览器扩展程序，可从ChatGPT、Claude、Gemini等7个AI平台捕获、标记、链接和搜索您的对话 — 全部私密存储在您的设备上。</p>
-        <div class="hero-cta">
-          <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="heroBtn1">⚡ 免费安装</a>
-          <a href="https://github.com/mmcarvalhodev/nodus-core" class="btn-secondary" data-i18n="heroBtn2">★ View on GitHub</a>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">步骤 02</div>
+          <div class="step-icon">💾</div>
+          <div class="step-title">点击保存或快速保存</div>
+          <p class="step-desc">每个回答旁出现一对浮动按钮。保存加入队列，快速保存无需任何界面即时捕获。</p>
+          <div class="step-visual mt-8">
+            <div class="floating-btn-scene">
+              <div class="floating-btn-bg-text">
+                <strong>Claude:</strong> 这里是使用中间件组合的更简洁的方法。首先，提取验证逻辑...
+              </div>
+              <div class="floating-save-btn">
+                <div class="flt-btn flt-btn-save">💾 保存</div>
+                <div class="flt-btn flt-btn-quick">⚡ 快速</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="trust-row">
-          <span data-i18n="trust1">No account required</span>
-          <span data-i18n="trust3">7 AI platforms</span>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">步骤 03</div>
+          <div class="step-icon">📚</div>
+          <div class="step-title">在仪表板中继续想法</div>
+          <p class="step-desc">打开NODUS面板添加标签、创建链条、跨平台搜索，并将知识注入到任何AI中。</p>
+          <div class="step-visual mt-8" style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="tag">标签</span>
+              <span class="tag" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">链条</span>
+              <span class="tag" style="background:rgba(16,185,129,0.1);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">统一搜索</span>
+              <span class="tag" style="background:rgba(249,115,22,0.1);color:#fdba74;border-color:rgba(249,115,22,0.2);">注入</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="howLabel">使用方法</p>
-      <h2 data-i18n="howTitle">三个步骤。就这样。</h2>
-      <p class="section-sub" data-i18n="howSub">NODUS在您的浏览器中保持隐形，只在您需要时激活。</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num" data-i18n="step1num">Step 01</div>
-          <h3 data-i18n="step1title">打开任意AI平台</h3>
-          <p data-i18n="step1desc">NODUS在7个平台打开时立即激活。无需每个网站单独配置 — 直接可用。</p>
+  <hr class="separator" />
+
+
+  <!-- TECH -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">真正的隐私</div>
+        <h2 class="section-title">您的数据与您同在。</h2>
+        <p class="section-sub">无账户。无服务器。没有任何公司访问您的对话。</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item reveal reveal-delay-1">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">全部存储在您的设备上</div>
+          <div class="tech-item-desc">您的捕获内容直接保存在您的计算机上 — 不在我们或任何第三方的服务器上。</div>
         </div>
-        <div class="step">
-          <div class="step-num" data-i18n="step2num">Step 02</div>
-          <h3 data-i18n="step2title">点击Save或Quick</h3>
-          <p data-i18n="step2desc">每个AI页面上会出现一对浮动按钮。Save捕获到默认队列，Quick立即捕获到快速队列。</p>
+        <div class="tech-item reveal reveal-delay-2">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">无账户，无追踪</div>
+          <div class="tech-item-desc">我们不要求电子邮件，不创建档案，不监控您保存的内容。是扩展程序，不是服务。</div>
         </div>
-        <div class="step">
-          <div class="step-num" data-i18n="step3num">Step 03</div>
-          <h3 data-i18n="step3title">在仪表板中整理</h3>
-          <p data-i18n="step3desc">打开NODUS仪表板添加标签、写笔记、创建链条并跨平台搜索。</p>
+        <div class="tech-item reveal reveal-delay-3">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">您掌控一切</div>
+          <div class="tech-item-desc">随时导出、删除或移动您的数据。没有任何锁定 — 您的历史，您的规则。</div>
+        </div>
+        <div class="tech-item reveal reveal-delay-4">
+          <div class="tech-item-dot"></div>
+          <div class="tech-item-title">开源可验证</div>
+          <div class="tech-item-desc">NODUS是开源的。无需相信我们的话 — 代码在GitHub上，任何人都可以查看。</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING (pre-rendered label) -->
-  <section class="pricing" id="pricing">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="pricingLabel">Pricing</p>
-      <h2 data-i18n="pricingTitle">永久免费。准备好了再升级。</h2>
+  <hr class="separator" />
+
+
+  <!-- CHAINS -->
+  <section class="section" id="cadeias" style="padding-bottom: 80px;">
+    <div class="container">
+
+      <div class="reveal chains-repositioned-header">
+        <span class="chains-tag">🔗 专属功能</span>
+        <h2 class="chains-new-title">
+          链条：您的思维<br/>
+          <span>再也不从零开始</span>
+        </h2>
+        <p class="section-sub" style="text-align:left; max-width:620px; margin-bottom: 0;">
+          链条是有序的连接想法轨迹 — 来自任何平台，任何对话，按您想要的顺序。每天一点一点地构建推理。NODUS将所有内容链接保存。
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin-top: 40px; max-width: 900px;" class="reveal">
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">📎</div>
+          <div class="tech-item-title">连接不同平台的想法</div>
+          <div class="tech-item-desc">ChatGPT的回答、Claude的回答、Gemini的回答 — 全部在同一个链条中。</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">🗓️</div>
+          <div class="tech-item-title">随时间构建</div>
+          <div class="tech-item-desc">随时添加新节点。一个链条可以跨越数天、数周、整个项目成长。</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">💉</div>
+          <div class="tech-item-title">注入到任何AI中</div>
+          <div class="tech-item-desc">选择一个链条，发送完整上下文，从中断的地方继续对话。</div>
+        </div>
+        <div class="tech-item">
+          <div style="font-size:20px; margin-bottom:10px;">📤</div>
+          <div class="tech-item-title">随时导出</div>
+          <div class="tech-item-desc">将链条导出为结构化文本，用于记录、分享或存档。</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 56px;" class="reveal">
+        <div class="chains-example-label" style="font-size:11px; font-weight:700; letter-spacing:1px; color:#64748b; text-transform:uppercase; margin-bottom: 20px;">
+          真实使用案例
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">💻 软件开发</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="chatgpt"><span>ChatGPT</span>系统初始架构</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>代码优化与审查</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="gemini"><span>Gemini</span>测试用例与边缘情况</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>完整链条 ✓</div>
+            </div>
+          </div>
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">✍️ 写作与内容</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="perplexity"><span>Perplexity</span>主题调研与来源</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>结构与主要论点</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="chatgpt"><span>ChatGPT</span>语气审查与变体</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>发布就绪 ✓</div>
+            </div>
+          </div>
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 22px;">
+            <div style="font-size:11px; font-weight:700; color:#94a3b8; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">🔬 研究与分析</div>
+            <div class="chains-flow">
+              <div class="chains-flow-node" data-plat="perplexity"><span>Perplexity</span>市场初步概览</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="gemini"><span>Gemini</span>竞争对手分析</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node" data-plat="claude"><span>Claude</span>综合与结论</div>
+              <div class="chains-flow-arrow">→</div>
+              <div class="chains-flow-node highlight"><span>NODUS</span>结构化报告 ✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-40 reveal">
+        <div class="chains-example-label" style="font-size:11px; font-weight:700; letter-spacing:1px; color:#64748b; text-transform:uppercase; margin-bottom: 20px;">
+          在面板中的显示方式
+        </div>
+        <div class="chains-mockup">
+          <div class="chains-sidebar">
+            <div class="chains-sidebar-header">
+              <span class="chains-sidebar-title">链条</span>
+              <span class="chains-sidebar-add">+</span>
+            </div>
+            <div class="chain-list-item active">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">身份验证重构</div>
+                <div class="chain-item-count">4 个节点</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">落地页文案</div>
+                <div class="chain-item-count">3 个节点</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">数据库优化</div>
+                <div class="chain-item-count">2 个节点</div>
+              </div>
+            </div>
+            <div class="chain-list-item">
+              <span class="chain-icon">🔗</span>
+              <div class="chain-item-info">
+                <div class="chain-item-name">API设计</div>
+                <div class="chain-item-count">6 个节点</div>
+              </div>
+            </div>
+          </div>
+          <div class="chains-main">
+            <div class="chains-main-header">
+              <span class="chain-name-big">🔗 身份验证重构 <span style="font-size:11px;font-weight:400;color:#475569;">4 个节点</span></span>
+              <button class="chain-export-btn">↓ 导出TXT</button>
+            </div>
+            <div class="chain-nodes">
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#1</span>
+                  <span class="node-platform">Claude</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">3月28日</span>
+                </div>
+                <div class="node-card-title">优缺点：JWT与会话身份验证</div>
+                <div class="node-card-text">JWT是无状态的，水平扩展容易，但没有阻止列表就难以吊销。会话需要服务器状态，但允许立即失效。</div>
+              </div>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#2</span>
+                  <span class="node-platform" style="background:rgba(16,185,129,0.12);color:#6ee7b7;border-color:rgba(16,185,129,0.2);">ChatGPT</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">3月29日</span>
+                </div>
+                <div class="node-card-title">认证中间件的单元测试</div>
+                <div class="node-card-text">使用Jest配合身份验证错误的自定义匹配器。在模块边界模拟令牌验证器，独立测试每个中间件。</div>
+              </div>
+              <div class="node-connector"><div class="node-connector-line"></div></div>
+              <div class="node-card">
+                <div class="node-card-header">
+                  <span class="node-index">#3</span>
+                  <span class="node-platform" style="background:rgba(250,204,21,0.1);color:#fde68a;border-color:rgba(250,204,21,0.2);">Gemini</span>
+                  <span style="font-size:10px;color:#475569;margin-left:auto;">3月30日</span>
+                </div>
+                <div class="node-card-title">上线前需测试的边缘情况</div>
+                <div class="node-card-text">长请求期间令牌过期、密码更改触发的强制吊销、多个活动会话以及退出后令牌重用尝试。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- PRIVACY -->
-  <section class="privacy" id="privacy">
-    <div class="section-inner">
-      <p class="section-label" data-i18n="privacyLabel">Privacy First</p>
-      <h2 data-i18n="privacyTitle">您的数据留在您的设备上。</h2>
-    </div>
-  </section>
+  <hr class="separator" />
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="section-inner">
-      <h2 data-i18n-html="ctaTitle">免费安装 — 无需账号。</h2>
-      <a href="https://nodus-ai.app/#install" class="btn-primary" data-i18n="ctaBtn1">⚡ 免费安装</a>
-    </div>
-  </section>
 
-  <!-- FAQ (pre-rendered for SEO) -->
-  <section class="faq" id="faq">
-    <div class="section-inner">
-      <h2 data-i18n="faqTitle">常见问题</h2>
-      <p class="section-sub" data-i18n="faqSub">关于NODUS最常见问题的快速解答。</p>
-      <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq1q">如何保存ChatGPT对话？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq1a">安装NODUS后，所有受支持的AI页面上会出现一个浮动按钮。点击保存即可立即将对话捕获到本地仪表板 — 无需复制粘贴，无需账号。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq2q">如何导出AI对话历史？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq2a">将您的捕获导出为TXT、HTML或DOCX。您还可以将相关捕获跨会话链接，并一次性导出完整的知识轨迹。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq3q">支持Claude和Gemini吗？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq3a">NODUS支持7个平台的对话保存：ChatGPT、Claude、Gemini、Perplexity、Copilot、Grok和DeepSeek — 全部在一个仪表板中，本地存储在您的设备上。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq4q">我的对话数据是私密的吗？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq4a">100%私密。NODUS将所有内容存储在浏览器的本地存储中 — 永远不会上传到任何服务器、同步到云端或与第三方共享。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq5q">NODUS是免费的吗？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq5a">是的，核心功能永久免费。PRO计划为重度用户解锁高级功能。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq6q">支持哪些浏览器？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq6a">NODUS支持Chrome、Firefox、Edge和Brave。安装一次，自动在所有AI平台上运行。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq7q">如何再也不丢失ChatGPT的回复？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq7a">NODUS在您点击保存的那一刻就捕获回复——在您关闭标签、刷新或ChatGPT清除会话之前。您的对话历史始终安全地保存在本地仪表板中。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq8q">如何将ChatGPT对话导出为Word或PDF？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq8a">使用NODUS，将任何保存的对话导出为DOCX（Word）或HTML（可以打印为PDF）。将多个捕获链接在一起，作为单个结构化文档一起导出。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq9q">如何保存Gemini或Perplexity对话？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq9a">NODUS在Gemini、Perplexity、Copilot、Grok和DeepSeek上原生工作——不仅仅是ChatGPT。同样的浮动保存按钮会自动出现在所有支持的平台上。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq10q">如何在一个地方组织AI对话？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq10a">NODUS为您提供统一的仪表板，您可以在其中标记、搜索和链接来自任何AI平台的捕获。按平台、标签或日期过滤——一切都在一个地方，本地存储。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq11q">如何离线备份AI对话？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq11a">NODUS将所有内容存储在浏览器的本地存储中——完全离线工作。访问、搜索或导出您保存的AI对话无需任何网络连接。</p>
-          </div>
-        </div>
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" data-i18n="faq12q">有没有保存Claude AI回复的扩展？</h3>
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-            <p itemprop="text" data-i18n="faq12a">有——NODUS是一个免费的浏览器扩展，只需一键即可在本地保存Claude AI回复。给它们打标签，将它们链接到ChatGPT或Gemini捕获，并在您的仪表板中搜索所有内容。</p>
-          </div>
+  <!-- PARA QUEM -->
+  <section class="forwho-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">为谁而做</div>
+        <h2 class="section-title">NODUS 非常适合您，如果您...</h2>
+      </div>
+      <div style="max-width:560px; margin: 40px auto 0;" class="reveal">
+        <div class="forwho-card sim" style="padding:32px 36px;">
+          <ul class="forwho-list" style="gap:14px;">
+            <li>每天使用AI工作</li>
+            <li>用AI开发、写作或研究</li>
+            <li>曾经在对话中途丢失过好想法</li>
+            <li>使用多个AI平台并希望将所有内容连接起来</li>
+            <li>不想将数据存储在服务器上</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
+
+  <hr class="separator" />
+
+
+  <!-- FAQ -->
+  <section id="faq" style="padding: 80px 0 64px; border-top: 1px solid #2d3748;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:48px;">
+        <div class="section-label">常见问题</div>
+        <h2 class="section-title">问题与解答</h2>
+        <p class="section-sub">关于NODUS最常见的疑问 — 即时解答。</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:860px; margin: 0 auto;" class="reveal">
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">NODUS是免费的吗？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">是的，主要功能<strong style="color:#e2e8f0;">永久免费</strong>。保存、整理、搜索和导出您的捕获内容，无需付费。PRO计划解锁额外队列、无限链条和高级导出。</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">如何保存ChatGPT对话？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">安装NODUS后，所有支持的平台上会出现一个浮动按钮。点击<strong style="color:#e2e8f0;">保存</strong>，回答立即捕获到您的本地面板 — 无需复制粘贴，无需账户。</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">支持Claude、Gemini和其他AI吗？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">NODUS支持<strong style="color:#e2e8f0;">7个平台</strong>：ChatGPT、Claude、Gemini、Perplexity、Copilot、Grok和DeepSeek。相同的按钮出现在所有平台上 — 全部汇入一个统一面板。</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">我的数据是私密的吗？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;"><strong style="color:#e2e8f0;">没有任何内容离开您的设备。</strong> NODUS将所有内容存储在浏览器的本地存储中 — 没有自己的服务器，没有账户，没有云同步。</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">支持哪些浏览器？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">NODUS在<strong style="color:#e2e8f0;">Chrome、Firefox、Edge和Brave</strong>上运行。任何基于Chromium的浏览器都能自动工作。安装一次，在所有AI平台上运行。</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">可以导出捕获内容吗？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">可以。NODUS可以导出为<strong style="color:#e2e8f0;">HTML</strong>、<strong style="color:#e2e8f0;">Markdown</strong>和<strong style="color:#e2e8f0;">DOC（Word）</strong>。使用链条，可以将多个捕获一起导出为结构化文档。</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">链条是如何工作的？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">链条将<strong style="color:#e2e8f0;">不同对话</strong>的捕获内容 — 来自不同平台、不同日期 — 以逻辑顺序连接起来。贯穿您整个AI历史的推理线索。</p>
+        </div>
+
+        <div style="background:#1a1f29; border:1px solid #2d3748; border-radius:14px; padding:24px;">
+          <h3 style="font-size:15px; font-weight:700; color:#facc15; margin-bottom:10px;">卸载后数据会丢失吗？</h3>
+          <p style="font-size:13px; color:#94a3b8; line-height:1.6;">卸载前，请使用<strong style="color:#e2e8f0;">完整导出</strong>功能将所有捕获内容备份为JSON。数据存储在本地存储中 — 卸载会清除该存储。</p>
+        </div>
+
+      </div>
+      <div class="text-center reveal" style="margin-top:40px;">
+        <a href="../faq.html" style="display:inline-flex; align-items:center; gap:8px; color:#94a3b8; font-size:13px; font-weight:600; border:1px solid #2d3748; padding:10px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s;"
+          onmouseover="this.style.borderColor='#facc15';this.style.color='#facc15'"
+          onmouseout="this.style.borderColor='#2d3748';this.style.color='#94a3b8'">
+          查看完整FAQ →
+        </a>
+        <p style="font-size:12px; color:#475569; margin-top:10px;">安装、计划、隐私、导出等更多内容</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "NODUS是免费的吗？", "acceptedAnswer": { "@type": "Answer", "text": "是的，主要功能永久免费。PRO计划解锁额外队列、无限链条和高级导出。" } },
+      { "@type": "Question", "name": "如何保存ChatGPT对话？", "acceptedAnswer": { "@type": "Answer", "text": "安装NODUS后，所有支持的平台上会出现浮动按钮。点击保存，回答立即捕获到您的本地面板。" } },
+      { "@type": "Question", "name": "支持Claude、Gemini和其他AI吗？", "acceptedAnswer": { "@type": "Answer", "text": "NODUS支持7个平台：ChatGPT、Claude、Gemini、Perplexity、Copilot、Grok和DeepSeek。" } },
+      { "@type": "Question", "name": "我的数据是私密的吗？", "acceptedAnswer": { "@type": "Answer", "text": "没有任何内容离开您的设备。NODUS将所有内容存储在浏览器的本地存储中。" } },
+      { "@type": "Question", "name": "支持哪些浏览器？", "acceptedAnswer": { "@type": "Answer", "text": "Chrome、Firefox、Edge和Brave。任何基于Chromium的浏览器都能自动工作。" } },
+      { "@type": "Question", "name": "可以导出捕获内容吗？", "acceptedAnswer": { "@type": "Answer", "text": "可以。可以导出为HTML、Markdown和DOC（Word）。使用链条，可以将多个捕获一起导出为结构化文档。" } },
+      { "@type": "Question", "name": "链条是如何工作的？", "acceptedAnswer": { "@type": "Answer", "text": "链条将不同对话的捕获内容以逻辑顺序连接起来。贯穿您整个AI历史的推理线索。" } },
+      { "@type": "Question", "name": "卸载后数据会丢失吗？", "acceptedAnswer": { "@type": "Answer", "text": "卸载前，请使用完整导出功能将所有捕获内容备份为JSON。" } }
+    ]
+  }
+  </script>
+
+  <hr class="separator" />
+
+
+  <!-- SCREENSHOTS -->
+  <section class="section" id="screenshots" style="padding-bottom:64px;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:40px;">
+        <div class="section-label">实际操作</div>
+        <h2 class="section-title">查看运行效果</h2>
+        <p class="section-sub">无模型图 — NODUS在ChatGPT和其他平台上运行的真实截图。</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:28px;" class="reveal">
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid rgba(250,204,21,.3);background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image9.png" alt="Dashboard Cards" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;top:8px;left:8px;background:rgba(250,204,21,.9);color:#0e1117;font-size:10px;font-weight:800;padding:3px 9px;border-radius:99px;">Dashboard</div>
+          </div>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">卡片视图</div>
+            <div style="font-size:11px;color:#94a3b8;">带快速保存的网格想法</div>
+          </div>
+        </a>
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid #2d3748;background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image3.png" alt="Chains" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">链条</div>
+            <div style="font-size:11px;color:#94a3b8;">跨对话连接的想法</div>
+          </div>
+        </a>
+        <a href="../docs/screenshots.html" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid #2d3748;background:#1a1f29;">
+          <div style="position:relative;aspect-ratio:16/10;background:#080b10;overflow:hidden;">
+            <img src="../docs/screenshots/image2.png" alt="Capture buttons" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="padding:11px 14px;">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:2px;">捕获按钮</div>
+            <div style="font-size:11px;color:#94a3b8;">每个回答的保存、快速和仪表板</div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center reveal">
+        <a href="../docs/screenshots.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(250,204,21,.1);border:1px solid rgba(250,204,21,.3);color:#facc15;font-size:13px;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none;">
+          📸 查看所有截图 →
+        </a>
+      </div>
+    </div>
+  </section>
+
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#0e1117"/>
-          <circle cx="16" cy="16" r="9" fill="#facc15"/>
-          <circle cx="16" cy="16" r="4" fill="#0e1117"/>
-        </svg>
-        NODUS
+  <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+        <div>
+          <div style="font-size:18px; font-weight:900; color:#facc15; letter-spacing:-0.5px; margin-bottom:14px;">★ NODUS</div>
+          <p style="font-size:13px; color:#475569; line-height:1.7; max-width:280px; margin-bottom:20px;">捕获、整理和重用您最好的AI对话。无服务器。无账户。您的数据与您同在。</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; background:#facc15; color:#080b10; font-size:12px; font-weight:800; padding:7px 14px; border-radius:7px; text-decoration:none;">免费安装</a>
+            <a href="../checkout.html" style="display:inline-flex; align-items:center; gap:6px; border:1px solid #2d3748; color:#94a3b8; font-size:12px; font-weight:600; padding:7px 14px; border-radius:7px; text-decoration:none;">获取 PRO</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">产品</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="../index.html#como-funciona" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">工作原理</a>
+            <a href="../index.html#cadeias" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">链条</a>
+            <a href="../index.html#pricing" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">价格</a>
+            <a href="../index.html#privacidade" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">隐私</a>
+            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">截图</a>
+            <a href="../faq.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">完整FAQ</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">资源</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
+            <a href="https://github.com/mmcarvalhodev/nodus-core/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">变更日志</a>
+            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">反馈问题</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">法律</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="../privacy.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">隐私政策</a>
+            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">使用条款</a>
+            <a href="mailto:suporte@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">联系我们</a>
+          </div>
+        </div>
       </div>
-      <p class="footer-tagline" data-i18n="footerTagline"></p>
-      <div class="footer-links">
-        <a href="https://nodus-ai.app/privacy.html" data-i18n="footerPrivacyPolicy">Privacy Policy</a>
-        <a href="https://nodus-ai.app/checkout.html" data-i18n="navGetPro">获取PRO</a>
-        <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 0; flex-wrap:wrap; gap:12px;">
+        <p style="font-size:12px; color:#334155;">© 2025 NODUS. MIT 许可证. 您的数据与您同在。</p>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <span style="font-size:11px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.15); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-weight:600;">● v5.0 稳定版</span>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener" style="font-size:12px; color:#334155; text-decoration:none;">Chrome Web Store ↗</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener" style="font-size:12px; color:#334155; text-decoration:none;">Firefox Add-ons ↗</a>
+        </div>
       </div>
-      <p class="footer-copy" data-i18n="footerCopy">© 2026 M. M. Carvalho. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Load the full i18n script from root — it will applyLang(window._forcedLang) -->
-  <script src="/i18n.js"></script>
 
-  <!-- Cloudflare Web Analytics --></body>
+  <!-- FAQ ACCORDION CSS + JS -->
+  <style>
+    .faq-item { border-bottom: 1px solid #2d3748; }
+    .faq-item:first-child { border-top: 1px solid #2d3748; }
+    .faq-q { width: 100%; background: none; border: none; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; font-size: 15px; font-weight: 600; color: #e2e8f0; text-align: left; transition: color 0.2s; }
+    .faq-q:hover { color: #facc15; }
+    .faq-q[aria-expanded="true"] { color: #facc15; }
+    .faq-chevron { font-size: 18px; color: #475569; transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: #facc15; }
+    .faq-a { display: none; padding: 0 0 20px; }
+    .faq-a p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+    .faq-a p strong { color: #e2e8f0; }
+    .faq-item.open .faq-a { display: block; }
+  </style>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+  <!-- SCROLL ANIMATION JS -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- HERO HEADLINE ROTATION -->
+  <style>
+    #hero-headline { position: relative; }
+    #hero-line1, #hero-line2 { display: inline; transition: opacity 0.6s ease; }
+    #hero-line1 { color: var(--text); }
+    #hero-line2 { color: var(--yellow); }
+    #hero-headline.fading #hero-line1, #hero-headline.fading #hero-line2 { opacity: 0; }
+  </style>
+  <script>
+    const headlines = [
+      { line1: '将AI对话转化为', line2: '结构化知识。', line2Color: '#facc15' },
+      { line1: '您的AI对话，', line2: '本地捕获并整理。', line2Color: '#facc15' }
+    ];
+    let current = 0;
+    const h1    = document.getElementById('hero-headline');
+    const line1 = document.getElementById('hero-line1');
+    const line2 = document.getElementById('hero-line2');
+    setInterval(() => {
+      h1.classList.add('fading');
+      setTimeout(() => {
+        current = (current + 1) % headlines.length;
+        line1.textContent = headlines[current].line1;
+        line2.textContent = headlines[current].line2;
+        h1.classList.remove('fading');
+      }, 650);
+    }, 5000);
+  </script>
+
+  <!-- i18n -->
+  <script src="/i18n.js"></script>
+</body>
 </html>
