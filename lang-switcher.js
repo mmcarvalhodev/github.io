@@ -1,73 +1,84 @@
 (function () {
-  const lang = window._forcedLang || 'en';
-  const subdirs = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
-  const isSubdir = subdirs.includes(lang);
-  const root = isSubdir ? '../' : './';
+  var lang = window._forcedLang || 'en';
+  var subdirs = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
+  var isSubdir = subdirs.includes(lang);
+  var root = isSubdir ? '../' : './';
 
-  // Sync current page language to localStorage so auto-detect remembers the preference
+  // Sync current page language to localStorage
   try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
 
-  const allLangs = [
+  var allLangs = [
     ['en','EN'], ['pt','PT'], ['es','ES'], ['fr','FR'],
     ['de','DE'], ['it','IT'], ['nl','NL'], ['pl','PL'],
     ['id','ID'], ['vi','VI'], ['ja','JA'], ['ko','KO'],
     ['zh','ZH'], ['ru','RU'], ['hi','HI'], ['tr','TR']
   ];
 
-  const links = allLangs.map(function(pair) {
-    var code = pair[0], label = pair[1];
-    var href = code === 'en' ? root : root + code + '/';
-    var cls  = code === lang ? ' lsp-active' : '';
-    return '<a href="' + href + '" class="lsp-link' + cls + '" data-lang="' + code + '">' + label + '</a>';
-  }).join('');
-
+  // Inject CSS matching the old style
   var style = '<style>' +
-    '.lsp-wrap{position:relative;margin-left:8px;}' +
-    '.lsp-btn{background:none;border:1px solid #2d3748;color:#94a3b8;' +
-      'font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px;' +
-      'cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap;' +
-      'font-family:inherit;line-height:1;}' +
-    '.lsp-btn:hover{border-color:#facc15;color:#facc15;}' +
-    '.lsp-drop{display:none;position:absolute;right:0;top:calc(100% + 8px);' +
-      'background:#1a1f29;border:1px solid #2d3748;border-radius:10px;' +
-      'padding:8px;z-index:9999;' +
-      'display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:180px;}' +
-    '.lsp-wrap:not(.open) .lsp-drop{display:none;}' +
-    '.lsp-wrap.open .lsp-drop{display:grid;}' +
-    '.lsp-link{font-size:11px;font-weight:700;padding:5px 4px;border-radius:5px;' +
-      'text-align:center;color:#64748b;text-decoration:none;transition:background 0.15s,color 0.15s;}' +
-    '.lsp-link:hover{background:rgba(250,204,21,0.1);color:#facc15;text-decoration:none;}' +
-    '.lsp-active{color:#facc15;background:rgba(250,204,21,0.07);}' +
-    '@media(max-width:768px){.lsp-wrap{display:none;}}' +
+    '.lang-switcher{position:relative;margin-left:8px;}' +
+    '.lang-trigger{display:flex;align-items:center;gap:5px;padding:5px 10px;' +
+      'border:1px solid #2d3748;border-radius:8px;background:rgba(255,255,255,0.03);' +
+      'cursor:pointer;font-size:12px;font-weight:600;color:#94a3b8;' +
+      'font-family:inherit;line-height:1;transition:border-color 0.15s,color 0.15s;}' +
+    '.lang-trigger:hover{border-color:#facc15;color:#facc15;}' +
+    '.lang-current{color:#facc15;font-weight:700;}' +
+    '.lang-chevron{transition:transform 0.2s;opacity:0.7;font-size:10px;}' +
+    '.lang-switcher.open .lang-chevron{transform:rotate(180deg);}' +
+    '.lang-globe{display:inline-block;font-size:13px;line-height:1;width:1em;overflow:hidden;vertical-align:middle;}' +
+    '.lang-globe::before{content:"🌍";display:inline-block;animation:globeSpin 2.4s steps(1) infinite;}' +
+    '@keyframes globeSpin{0%{content:"🌍"}33%{content:"🌎"}66%{content:"🌏"}}' +
+    '.lang-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;' +
+      'background:#131720;border:1px solid #2d3748;border-radius:10px;padding:5px;' +
+      'min-width:155px;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.45);}' +
+    '.lang-switcher.open .lang-dropdown{display:grid;grid-template-columns:1fr 1fr;gap:2px;}' +
+    '.lang-opt{display:block;width:100%;padding:6px 10px;border:none;background:transparent;' +
+      'color:#64748b;font-size:12px;font-weight:500;text-align:left;cursor:pointer;' +
+      'border-radius:6px;transition:background 0.12s,color 0.12s;white-space:nowrap;' +
+      'text-decoration:none;font-family:inherit;}' +
+    '.lang-opt:hover{background:rgba(255,255,255,0.07);color:#e2e8f0;text-decoration:none;}' +
+    '.lang-opt.active{color:#facc15;font-weight:700;}' +
+    '@media(max-width:768px){.lang-switcher{display:none;}}' +
     '</style>';
 
   document.head.insertAdjacentHTML('beforeend', style);
 
+  var opts = allLangs.map(function(pair) {
+    var code = pair[0], label = pair[1];
+    var href = code === 'en' ? root : root + code + '/';
+    var active = code === lang ? ' active' : '';
+    return '<a href="' + href + '" class="lang-opt' + active + '" data-lang="' + code + '">' + label + '</a>';
+  }).join('');
+
   var wrap = document.createElement('div');
-  wrap.className = 'lsp-wrap';
-  wrap.id = 'lspWrap';
+  wrap.className = 'lang-switcher';
+  wrap.id = 'langSwitcher';
   wrap.innerHTML =
-    '<button class="lsp-btn" id="lspBtn">🌐 ' + lang.toUpperCase() + '</button>' +
-    '<div class="lsp-drop">' + links + '</div>';
+    '<button class="lang-trigger" id="langTrigger">' +
+      '<span class="lang-globe"></span>' +
+      '<span class="lang-current">' + lang.toUpperCase() + '</span>' +
+      '<span class="lang-chevron">▾</span>' +
+    '</button>' +
+    '<div class="lang-dropdown">' + opts + '</div>';
 
   document.addEventListener('DOMContentLoaded', function () {
     var navInner = document.querySelector('.nav-inner');
     if (navInner) navInner.appendChild(wrap);
 
-    // Save language preference when user manually picks one
-    wrap.querySelectorAll('.lsp-link').forEach(function(a) {
+    // Save lang preference on manual click
+    wrap.querySelectorAll('.lang-opt').forEach(function(a) {
       a.addEventListener('click', function() {
         try { localStorage.setItem('nodus_lang', a.getAttribute('data-lang')); } catch(e) {}
       });
     });
 
-    document.getElementById('lspBtn').addEventListener('click', function (e) {
+    document.getElementById('langTrigger').addEventListener('click', function(e) {
       e.stopPropagation();
-      document.getElementById('lspWrap').classList.toggle('open');
+      document.getElementById('langSwitcher').classList.toggle('open');
     });
 
-    document.addEventListener('click', function () {
-      var w = document.getElementById('lspWrap');
+    document.addEventListener('click', function() {
+      var w = document.getElementById('langSwitcher');
       if (w) w.classList.remove('open');
     });
   });
