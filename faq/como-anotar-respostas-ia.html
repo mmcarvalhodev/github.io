@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como anotar e destacar respostas de IA &#8212; NODUS</title>
+  <meta name="description" content="Aprenda como anotar, destacar e adicionar notas às respostas do ChatGPT, Claude e Gemini com o NODUS. Organize o que importa com tags e notas personalizadas." />
+  <link rel="canonical" href="https://nodus-ai.github.io/faq/como-anotar-respostas-ia" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0e1117; --panel:#1a1f29; --border:#2d3748; --yellow:#facc15; --text:#e2e8f0; --sub:#94a3b8; --muted:#475569; --green:#10b981; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(14,17,23,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); }
+    .nav-back { font-size: 13px; color: var(--sub); }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta { background: var(--yellow); color: #0e1117; font-size: 13px; font-weight: 800; padding: 7px 18px; border-radius: 8px; }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+    .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--muted); }
+    .topic-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 16px; background: rgba(250,204,21,0.1); color: var(--yellow); border: 1px solid rgba(250,204,21,0.25); }
+    h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero-sub { font-size: 16px; color: var(--sub); line-height: 1.7; }
+    .content { padding: 48px 0; }
+    .content h2 { font-size: 20px; font-weight: 700; margin: 40px 0 16px; color: var(--text); }
+    .content h2:first-child { margin-top: 0; }
+    .content p { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 14px; }
+    .content p strong { color: var(--text); }
+    .content ul, .content ol { margin: 0 0 16px 20px; }
+    .content li { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 6px; }
+    .content li strong { color: var(--text); }
+    .steps { counter-reset: step; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+    .step { display: flex; gap: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .step-num { counter-increment: step; width: 32px; height: 32px; border-radius: 50%; background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-num::before { content: counter(step); }
+    .step-body h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .step-body p { font-size: 13px; color: var(--sub); line-height: 1.6; margin: 0; }
+    .formats-grid { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
+    .format-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 160px; }
+    .format-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .format-card p { font-size: 12px; color: var(--muted); margin: 0; }
+    .platforms-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    .plat-pill { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); }
+    .related { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 40px 0; }
+    .related h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .related-links { display: flex; flex-direction: column; gap: 10px; }
+    .related-links a { font-size: 14px; color: var(--sub); }
+    .related-links a:hover { color: var(--yellow); text-decoration: none; }
+    .cta-block { background: linear-gradient(135deg, rgba(250,204,21,0.06), rgba(16,185,129,0.04)); border: 1px solid rgba(250,204,21,0.2); border-radius: 16px; padding: 36px; text-align: center; margin: 40px 0; }
+    .cta-block h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow { background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 800; padding: 10px 22px; border-radius: 8px; }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost { background: transparent; color: var(--sub); font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 8px; border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); text-decoration: none; }
+    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; }
+    footer p { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">&#9733; NODUS</a>
+        <a href="../faq.html" class="nav-back">&#8592; Perguntas frequentes</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar gr&#225;tis</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">NODUS</a> &#8250; <a href="../faq.html">FAQ</a> &#8250; Como anotar e destacar respostas de IA</div>
+      <div class="topic-tag">Notas &#183; Tags &#183; Organizar</div>
+      <h1>Como anotar e destacar respostas de IA</h1>
+      <p class="hero-sub">N&#227;o basta salvar &#8212; voc&#234; precisa encontrar depois. O NODUS permite adicionar tags, notas e t&#237;tulos personalizados a cada captura para criar um sistema de anota&#231;&#245;es que realmente funciona.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+
+      <h2>Resposta r&#225;pida</h2>
+      <p>Ao salvar com o bot&#227;o <strong>Salvar</strong> (n&#227;o R&#225;pido), o painel lateral abre e permite fazer tudo antes de confirmar a captura:</p>
+      <ul>
+        <li>Adicionar at&#233; <strong>4 tags</strong> para categorizar a captura</li>
+        <li>Escrever uma <strong>nota</strong> com contexto, ideias ou observa&#231;&#245;es</li>
+        <li>Editar o <strong>t&#237;tulo</strong> da captura para facilitar a busca</li>
+        <li>Escolher a <strong>fila</strong> onde a captura vai ficar (Quick, Default ou Q1&#8211;Q4 no PRO)</li>
+      </ul>
+
+      <h2>Como usar tags de forma eficiente</h2>
+      <p>Tags funcionam como categorias clic&#225;veis no painel &#8212; ao clicar em uma tag, voc&#234; filtra todas as capturas com aquela categoria instantaneamente. Algumas sugest&#245;es de sistema:</p>
+      <ul>
+        <li><strong>Por tema:</strong> backend, design, marketing, copy, dados</li>
+        <li><strong>Por projeto:</strong> projeto-x, cliente-y, lançamento-2025</li>
+        <li><strong>Por tipo:</strong> refer&#234;ncia, ideia, c&#243;digo, template, resumo</li>
+        <li><strong>Por prioridade:</strong> urgente, depois, arquivado, revisar</li>
+      </ul>
+      <p>Escolha um sistema e mantenha consist&#234;ncia. Tags s&#227;o mais &#250;teis quando voc&#234; usa as mesmas palavras para as mesmas categorias sempre.</p>
+
+      <h2>Editando capturas depois de salvar</h2>
+      <p>Salvou sem tags ou quer corrigir o t&#237;tulo? Qualquer captura pode ser editada a qualquer momento diretamente no painel.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o painel NODUS</h3><p>Clique no bot&#227;o <strong>Dash</strong> em qualquer plataforma suportada, ou abra o painel pela extens&#227;o no menu do navegador.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Clique em um card para abrir a visualiza&#231;&#227;o</h3><p>Cada captura exibe t&#237;tulo, plataforma, data e um trecho do conte&#250;do. Clique no card para ver o conte&#250;do completo.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Clique em Editar para modificar</h3><p>No modo de edi&#231;&#227;o, voc&#234; pode alterar o t&#237;tulo, adicionar ou remover tags, reescrever a nota e mover a captura para outra fila.</p></div></div>
+      </div>
+
+      <h2>Diferen&#231;a entre Salvar e R&#225;pido para anota&#231;&#245;es</h2>
+      <p><strong>R&#225;pido</strong> captura sem parar o fluxo da conversa &#8212; ideal no meio de uma sess&#227;o quando voc&#234; n&#227;o quer interromper o racioc&#237;nio. A captura entra na fila padr&#227;o sem tags, e voc&#234; organiza depois no painel quando tiver tempo.</p>
+      <p><strong>Salvar</strong> abre o painel de configura&#231;&#227;o imediatamente &#8212; ideal quando voc&#234; j&#225; sabe a categoria da captura e quer chegar no painel organizado, sem deixar nada para depois.</p>
+      <p>Use <strong>R&#225;pido</strong> no fluxo, <strong>Salvar</strong> quando j&#225; tem contexto claro. Os dois funcionam bem juntos: capture tudo com R&#225;pido, organize em lote com Editar no painel.</p>
+
+      <h2>Plataformas suportadas</h2>
+      <p>O NODUS funciona com as principais plataformas de IA:</p>
+      <div class="platforms-grid">
+        <span class="plat-pill">ChatGPT</span>
+        <span class="plat-pill">Claude</span>
+        <span class="plat-pill">Gemini</span>
+        <span class="plat-pill">Perplexity</span>
+        <span class="plat-pill">Grok</span>
+        <span class="plat-pill">Copilot</span>
+        <span class="plat-pill">DeepSeek</span>
+      </div>
+
+      <div class="related">
+        <h3>Veja tamb&#233;m</h3>
+        <div class="related-links">
+          <a href="como-organizar-conversas-ia.html">&#8594; Como organizar conversas de IA</a>
+          <a href="como-pesquisar-historico-ia.html">&#8594; Como pesquisar no hist&#243;rico de IA</a>
+          <a href="extensao-salvar-conversas-ia.html">&#8594; Extens&#227;o para salvar conversas de IA</a>
+          <a href="../faq.html">&#8594; Ver todas as perguntas frequentes</a>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <h3>Instale o NODUS agora</h3>
+        <p>Extens&#227;o gratuita para Chrome e Firefox. Sem conta, sem servidor, sem limite de capturas no plano gratuito.</p>
+        <div class="cta-btns">
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="btn-yellow" target="_blank" rel="noopener">Instalar no Chrome</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" class="btn-ghost" target="_blank" rel="noopener">Instalar no Firefox</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer><div class="container"><p>&#169; 2025 NODUS &#183; <a href="../faq.html">FAQ</a> &#183; <a href="../index.html">Site</a> &#183; <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank">GitHub</a></p></div></footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como anotar respostas de IA?","acceptedAnswer":{"@type":"Answer","text":"Com o NODUS, ao clicar em Salvar, um painel abre para adicionar até 4 tags, escrever uma nota e editar o título da captura. Você também pode editar qualquer captura depois no painel NODUS."}}]}</script>
+</body>
+</html>
