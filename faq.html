@@ -227,8 +227,62 @@
     footer p { font-size: 13px; color: var(--muted); }
     footer a { color: var(--sub); }
   </style>
+  <script src="/lang-switcher.js"></script>
 </head>
 <body>
+
+  <!-- Language notice for non-PT users -->
+  <script>
+  (function(){
+    try {
+      var l = localStorage.getItem('nodus_lang') || 'en';
+      if (l === 'pt') return;
+      var labels = {
+        en:'This FAQ hub is in Portuguese.',
+        es:'Este hub de FAQ está en portugués.',
+        fr:'Ce hub FAQ est en portugais.',
+        de:'Dieser FAQ-Hub ist auf Portugiesisch.',
+        it:'Questo hub FAQ è in portoghese.',
+        nl:'Deze FAQ-hub is in het Portugees.',
+        pl:'Ten hub FAQ jest po portugalsku.',
+        id:'Hub FAQ ini dalam bahasa Portugis.',
+        vi:'Trung tâm FAQ này bằng tiếng Bồ Đào Nha.',
+        ja:'このFAQハブはポルトガル語です。',
+        ko:'이 FAQ 허브는 포르투갈어입니다.',
+        zh:'此FAQ中心为葡萄牙语。',
+        ru:'Этот FAQ-хаб на португальском.',
+        hi:'यह FAQ हब पुर्तगाली में है।',
+        tr:'Bu SSS merkezi Portekizce'dir.'
+      };
+      var backLabels = {
+        en:'← Back to English FAQs',
+        es:'← Volver a FAQ en español',
+        fr:'← Retour aux FAQ en français',
+        de:'← Zurück zu deutschen FAQs',
+        it:'← Torna alle FAQ in italiano',
+        nl:'← Terug naar FAQ in het Nederlands',
+        pl:'← Wróć do FAQ po polsku',
+        id:'← Kembali ke FAQ bahasa Indonesia',
+        vi:'← Quay lại FAQ tiếng Việt',
+        ja:'← 日本語のFAQに戻る',
+        ko:'← 한국어 FAQ로 돌아가기',
+        zh:'← 返回中文FAQ',
+        ru:'← Вернуться к FAQ на русском',
+        hi:'← हिंदी FAQ पर वापस जाएं',
+        tr:'← Türkçe SSS'ye dön'
+      };
+      var backHref = l === 'en' ? '/#faq' : '/' + l + '/#faq';
+      var div = document.createElement('div');
+      div.style.cssText = 'background:rgba(250,204,21,0.08);border-bottom:1px solid rgba(250,204,21,0.2);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:16px;font-size:13px;';
+      div.innerHTML = '<span style="color:#94a3b8;">' + (labels[l]||labels.en) + '</span>' +
+        '<a href="' + backHref + '" style="color:#facc15;font-weight:700;text-decoration:none;">' +
+        (backLabels[l]||backLabels.en) + '</a>';
+      document.addEventListener('DOMContentLoaded', function(){
+        document.body.insertBefore(div, document.body.firstChild);
+      });
+    } catch(e){}
+  })();
+  </script>
 
   <!-- NAV -->
   <nav>
