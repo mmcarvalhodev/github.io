@@ -4,6 +4,9 @@
   const isSubdir = subdirs.includes(lang);
   const root = isSubdir ? '../' : './';
 
+  // Sync current page language to localStorage so auto-detect remembers the preference
+  try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
+
   const allLangs = [
     ['en','EN'], ['pt','PT'], ['es','ES'], ['fr','FR'],
     ['de','DE'], ['it','IT'], ['nl','NL'], ['pl','PL'],
@@ -15,7 +18,7 @@
     var code = pair[0], label = pair[1];
     var href = code === 'en' ? root : root + code + '/';
     var cls  = code === lang ? ' lsp-active' : '';
-    return '<a href="' + href + '" class="lsp-link' + cls + '">' + label + '</a>';
+    return '<a href="' + href + '" class="lsp-link' + cls + '" data-lang="' + code + '">' + label + '</a>';
   }).join('');
 
   var style = '<style>' +
@@ -50,6 +53,13 @@
   document.addEventListener('DOMContentLoaded', function () {
     var navInner = document.querySelector('.nav-inner');
     if (navInner) navInner.appendChild(wrap);
+
+    // Save language preference when user manually picks one
+    wrap.querySelectorAll('.lsp-link').forEach(function(a) {
+      a.addEventListener('click', function() {
+        try { localStorage.setItem('nodus_lang', a.getAttribute('data-lang')); } catch(e) {}
+      });
+    });
 
     document.getElementById('lspBtn').addEventListener('click', function (e) {
       e.stopPropagation();
