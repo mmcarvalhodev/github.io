@@ -335,6 +335,34 @@
       text-decoration: none;
     }
 
+    .btn-firefox {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,102,17,0.08);
+      color: #ff8844;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,102,17,0.3);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+    .btn-firefox:hover {
+      background: rgba(255,102,17,0.16);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .btn-firefox img {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      display: block;
+    }
+
     .btn-secondary {
       display: inline-flex;
       align-items: center;
