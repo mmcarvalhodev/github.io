@@ -14,7 +14,7 @@
   ];
 
   // Pages that have a translated version in every language subdir
-  var translatedPages = ['privacy.html'];
+  var translatedPages = ['privacy.html', 'faq.html'];
 
   // Determine destination URL for a target language code
   function getHref(code) {

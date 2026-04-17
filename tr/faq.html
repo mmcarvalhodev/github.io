@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sıkça Sorulan Sorular — NODUS | AI konuşmalarını kaydetme, dışa aktarma ve düzenleme</title>
+  <meta name="description" content="NODUS hakkında tüm sorularınızın yanıtları: ChatGPT, Claude, Gemini ve daha fazlasından konuşmalar nasıl kaydedilir. Dışa aktarma, düzenleme, gizlilik, planlar ve çok daha fazlası." />
+  <link rel="canonical" href="https://nodus-ai.app/tr/faq" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #0e1117;
+      --panel:  #1a1f29;
+      --border: #2d3748;
+      --yellow: #facc15;
+      --text:   #e2e8f0;
+      --sub:    #94a3b8;
+      --muted:  #475569;
+      --green:  #10b981;
+      --radius: 10px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta {
+      background: var(--yellow); color: #0e1117;
+      font-size: 13px; font-weight: 800;
+      padding: 7px 18px; border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ── HERO ── */
+    .faq-hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-hero-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 14px;
+    }
+    .faq-hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    }
+    .faq-hero p {
+      font-size: 17px; color: var(--sub); max-width: 560px; line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .faq-platforms {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .plat-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--sub);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .plat-badge:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── SIDEBAR + LAYOUT ── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 48px 0 80px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { display: none; }
+    }
+    .faq-sidebar {
+      position: sticky; top: 72px;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sidebar-links { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-link {
+      font-size: 13px; color: var(--sub);
+      padding: 6px 10px; border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-link:hover {
+      background: var(--panel); color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar-link.active { color: var(--yellow); background: rgba(250,204,21,0.06); }
+    .sidebar-count {
+      margin-left: auto; font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORIAS ── */
+    .faq-category { margin-bottom: 56px; }
+    .faq-category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-category-icon { font-size: 20px; }
+    .faq-category-title {
+      font-size: 19px; font-weight: 700; color: var(--text);
+    }
+    .faq-category-count {
+      font-size: 12px; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 99px;
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer;
+      font-size: 14px; font-weight: 600; color: var(--text);
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-q[aria-expanded="true"] { color: var(--yellow); }
+    .faq-chevron {
+      font-size: 16px; color: var(--muted);
+      transition: transform 0.3s; flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--yellow); }
+    .faq-a { display: none; padding: 0 0 18px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p {
+      font-size: 14px; color: var(--sub); line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text); }
+    .faq-a a { color: var(--yellow); }
+    .faq-a ul { margin: 8px 0 8px 20px; }
+    .faq-a li { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    .faq-a .page-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; font-size: 13px; font-weight: 600;
+      color: var(--yellow); border: 1px solid rgba(250,204,21,0.25);
+      padding: 5px 12px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .faq-a .page-link:hover {
+      background: rgba(250,204,21,0.08); text-decoration: none;
+    }
+
+    /* ── CTA BLOCO ── */
+    .faq-cta-block {
+      background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, rgba(16,185,129,0.04) 100%);
+      border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 16px; padding: 36px 40px;
+      text-align: center; margin: 0 0 56px;
+    }
+    .faq-cta-block h3 {
+      font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    }
+    .faq-cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow {
+      background: var(--yellow); color: #0e1117;
+      font-size: 14px; font-weight: 800;
+      padding: 10px 22px; border-radius: 8px;
+      transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost {
+      background: transparent; color: var(--sub);
+      font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--text); color: var(--text); text-decoration: none; }
+
+    /* ── GUIAS CLUSTER ── */
+    .cluster-section { margin: 0 0 56px; }
+    .cluster-section h3 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .cluster-section > p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .cluster-group { margin-bottom: 32px; }
+    .cluster-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
+    .cluster-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+    .cluster-link { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--sub); transition: border-color 0.2s, color 0.2s; }
+    .cluster-link:hover { border-color: var(--yellow); color: var(--text); text-decoration: none; }
+    .cluster-link-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--sub); }
+  </style>
+  <script>window._forcedLang='tr';</script>
+  <script src="/lang-switcher.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">★ NODUS</a>
+        <a href="../index.html" class="nav-back">← Siteye dön</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Ücretsiz yükle</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="container">
+      <div class="faq-hero-label">Yardım merkezi</div>
+      <h1>Sıkça <span style="color:var(--yellow)">sorulan sorular</span></h1>
+      <p>AI konuşmalarınızı kaydetme, dışa aktarma ve düzenleme hakkında her şey — hesap yok, sunucu yok, zahmetsiz.</p>
+      <div class="faq-platforms">
+        <span class="plat-badge">ChatGPT</span>
+        <span class="plat-badge">Claude</span>
+        <span class="plat-badge">Gemini</span>
+        <span class="plat-badge">Perplexity</span>
+        <span class="plat-badge">Grok</span>
+        <span class="plat-badge">Copilot</span>
+        <span class="plat-badge">DeepSeek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="container-wide">
+    <div class="faq-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="faq-sidebar">
+        <div class="sidebar-label">Kategoriler</div>
+        <nav class="sidebar-links">
+          <a href="#comecar" class="sidebar-link">🚀 Başlarken <span class="sidebar-count">6</span></a>
+          <a href="#salvar" class="sidebar-link">💾 Konuşmaları kaydet <span class="sidebar-count">9</span></a>
+          <a href="#exportar" class="sidebar-link">📤 Dışa aktarma ve indirme <span class="sidebar-count">7</span></a>
+          <a href="#organizar" class="sidebar-link">🗂️ Düzenleme <span class="sidebar-count">7</span></a>
+          <a href="#cadeias" class="sidebar-link">🔗 Zincirler <span class="sidebar-count">6</span></a>
+          <a href="#privacidade" class="sidebar-link">🔒 Gizlilik <span class="sidebar-count">7</span></a>
+          <a href="#planos" class="sidebar-link">💳 Planlar ve fiyatlar <span class="sidebar-count">6</span></a>
+          <a href="#plataformas" class="sidebar-link">🌐 Platforma göre <span class="sidebar-count">6</span></a>
+        </nav>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- CTA topo -->
+        <div class="faq-cta-block">
+          <h3>Henüz NODUS'unuz yok mu?</h3>
+          <p>30 saniyede ücretsiz yükleyin. ChatGPT, Claude, Gemini ve 4 platformda daha çalışır.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Chrome'a yükle
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+        <!-- ══ 1. BAŞLARKEN ══ -->
+        <section class="faq-category" id="comecar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🚀</span>
+            <h2 class="faq-category-title">Başlarken</h2>
+            <span class="faq-category-count">6 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS nedir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS, tek tıkla <strong>AI yanıtlarını kaydetmenize, düzenlemenize ve yeniden kullanmanıza</strong> olanak tanıyan bir tarayıcı uzantısıdır. ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot ve DeepSeek ile çalışır. Her şey cihazınızda yerel olarak saklanır — hesap yok, sunucu yok, zorunlu abonelik yok.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS nasıl yüklenir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Kurulum 30 saniyeden az sürer:</p>
+              <ul>
+                <li><strong>Chrome / Edge / Brave:</strong> Chrome Web Mağazası'nı ziyaret edin ve "Chrome'a Ekle"ye tıklayın</li>
+                <li><strong>Firefox:</strong> Mozilla Eklentileri'ni ziyaret edin ve "Firefox'a Ekle"ye tıklayın</li>
+              </ul>
+              <p>Yükledikten sonra desteklenen herhangi bir AI platformunu açın — NODUS düğmeleri otomatik olarak görünür.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS'u kullanmak için hesap oluşturmam gerekiyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Hayır.</strong> NODUS kayıt gerektirmeden, e-posta veya şifre olmadan çalışır. Yükleyin ve hemen kullanmaya başlayın. Verileriniz tarayıcının yerel depolama alanında kalır.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hangi tarayıcılar destekleniyor? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS şu tarayıcılarda çalışır:</p>
+              <ul>
+                <li><strong>Chrome</strong> (sürüm 88+)</li>
+                <li><strong>Firefox</strong> (sürüm 109+)</li>
+                <li><strong>Edge</strong> (Chromium tabanlı)</li>
+                <li><strong>Brave</strong> ve diğer Chromium tarayıcıları</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kaydet düğmesi nasıl çalışır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Desteklenen herhangi bir platformu açtığınızda, NODUS AI yanıtlarının yanına kayan düğmeler ekler. Soruyu ve yanıtı anında kaydetmek için <strong>Kaydet</strong>'e tıklayın. Ayarlar panelini açmadan kaydetmek için <strong>Hızlı</strong>'ya tıklayın. Kayıt panonuzu açmak için <strong>Pano</strong>'ya tıklayın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS hangi AI platformlarıyla çalışır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS şu anda <strong>7 platformu</strong> desteklemektedir:</p>
+              <ul>
+                <li>ChatGPT (chat.openai.com)</li>
+                <li>Claude (claude.ai)</li>
+                <li>Gemini (gemini.google.com)</li>
+                <li>Perplexity (perplexity.ai)</li>
+                <li>Grok (grok.com / x.com)</li>
+                <li>Microsoft Copilot (copilot.microsoft.com)</li>
+                <li>DeepSeek (chat.deepseek.com)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ 2. KONUŞMALARI KAYDET ══ -->
+        <section class="faq-category" id="salvar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💾</span>
+            <h2 class="faq-category-title">Konuşmaları Kaydet</h2>
+            <span class="faq-category-count">9 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">ChatGPT konuşması nasıl kaydedilir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS yüklüyken ChatGPT'yi normal şekilde açın. Her yanıtın yanında NODUS düğmeleri görünür. Kayıt panelini açmak, etiket eklemek ve hedef kuyruğu seçmek için <strong>Kaydet</strong>'e tıklayın — ya da herhangi bir yapılandırma olmadan tek tıkla kaydetmek için <strong>Hızlı</strong>'ya tıklayın.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-chatgpt.html">Eksiksiz kılavuz: ChatGPT konuşmalarını kaydetme →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Claude konuşması nasıl kaydedilir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS, Claude.ai üzerinde yerel olarak çalışır. Kayıt düğmeleri yanıtların yanında otomatik olarak görünür. Soruyu ve yanıtı yerel panonuza kaydetmek için <strong>Kaydet</strong>'e tıklayın. Claude projeleri ve normal konuşmalar için eşit şekilde çalışır.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-claude.html">Eksiksiz kılavuz: Claude konuşmalarını kaydetme →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Gemini konuşması nasıl kaydedilir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS'u yükleyin ve gemini.google.com adresini ziyaret edin. Gemini yanıtlarının yanında kayıt düğmeleri görünür. Konuşmayı etiketler ve diğer platformlarla aynı düzenle yerel olarak saklamak için <strong>Kaydet</strong>'e tıklayın.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-gemini.html">Eksiksiz kılavuz: Gemini konuşmalarını kaydetme →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Perplexity yanıtı nasıl kaydedilir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS, Perplexity.ai üzerindeki yanıtları otomatik olarak algılar ve kayıt düğmelerini ekler. Yanıtı alıntılanan kaynaklarla birlikte kaydetmek için <strong>Kaydet</strong>'e tıklayın. Daha sonra başvurmak isteyeceğiniz araştırmalar için idealdir.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Grok yanıtları nasıl arşivlenir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS hem grok.com hem de x.com/grok üzerinde çalışır. Grok ile bir konuşma açtığınızda, yanıtların yanında kayıt düğmeleri görünür. NODUS panonuzda yerel olarak arşivlemek için <strong>Kaydet</strong>'e tıklayın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">DeepSeek yanıtları nasıl kaydedilir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS, DeepSeek'i (chat.deepseek.com) yerel olarak destekler. Yanıtların yanında kayıt düğmeleri görünür. Soruyu ve yanıtı yerel panonuza kaydetmek için <strong>Kaydet</strong>'e tıklayın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Birden fazla yanıtı aynı anda kaydedebilir miyim? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Her kayıt aynı anda bir soru ve yanıt kaydeder. Bir konuşmadan birden fazla yanıt kaydetmek için kaydetmek istediğiniz her yanıtta <strong>Kaydet</strong>'e tıklayın. Ardından bu kayıtları mantıklı bir sıraya bağlamak için <strong>Zincirler</strong>'i kullanın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hızlı Kayıt nedir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Hızlı Kayıt (<strong>Hızlı</strong> düğmesi), ayarlar panelini açmadan yanıtı doğrudan varsayılan kuyruğa kaydeder. Konuşma akışınızı kesmeden hızla bir şey kaydetmek istediğinizde idealdir. Kayıt, daha sonra düzenlemek için panoda mevcuttur.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Önemli bir AI yanıtını bir daha asla kaybetmemek için ne yapmalıyım? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS'u yükleyin ve bir yanıt işe yarar göründüğünde <strong>Hızlı</strong> düğmesini kullanın — ne için kullanacağınızdan emin olmasanız bile. Sekmeyi kapatmadan önce kaydetme alışkanlığı, bilgi kaybını ortadan kaldırır. Panonuz her şeyi biriktirir ve tam metin arama, daha sonra herhangi bir kaydı bulmanızı sağlar.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 3. DIŞA AKTARMA VE İNDİRME ══ -->
+        <section class="faq-category" id="exportar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">📤</span>
+            <h2 class="faq-category-title">Dışa Aktarma &amp; İndirme</h2>
+            <span class="faq-category-count">7 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">ChatGPT konuşması Word'e nasıl aktarılır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS panonuzu açın, istediğiniz kaydı seçin ve <strong>Dışa Aktar → DOCX</strong>'e tıklayın. Word dosyası doğrudan tarayıcınızda oluşturulur ve bilgisayarınıza kaydedilir. Zincirler ile birden fazla kaydı zincirleyebilir ve her şeyi yapılandırılmış bir belge olarak birlikte dışa aktarabilirsiniz.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Claude konuşması PDF olarak nasıl indirilir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS <strong>HTML</strong> formatında dışa aktarır; bunu doğrudan tarayıcıdan PDF olarak yazdırabilirsiniz (Ctrl+P → PDF olarak kaydet). Doğrudan PDF dışa aktarımı için HTML olarak dışa aktarmanızı ve tarayıcının yazdırma işlevini kullanmanızı öneririz — sonuç iyi biçimlendirilmiş olur.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hangi dışa aktarma biçimleri destekleniyor? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS şu biçimlerde dışa aktarmayı destekler:</p>
+              <ul>
+                <li><strong>TXT</strong> — düz metin, herhangi bir editörle uyumlu</li>
+                <li><strong>HTML</strong> — biçimlendirilmiş, PDF olarak yazdırılabilir</li>
+                <li><strong>DOCX</strong> — Word, Google Docs ve LibreOffice ile uyumlu</li>
+              </ul>
+              <p>Zincirlenmiş kayıtlar (Zincirler) tek bir belge olarak birlikte dışa aktarılabilir.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tüm AI konuşma geçmişim nasıl çıkarılır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS panosunda <strong>Ayarlar → Tümünü dışa aktar</strong>'a gidin. Bu, tüm kayıtlarınızı JSON formatında içeren bir dosya oluşturur (NODUS'a yeniden aktarmak için) veya her kuyruğu ayrı ayrı DOCX ya da HTML olarak dışa aktarabilirsiniz.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Biçimlendirilmiş bir ChatGPT yanıtı nasıl kopyalanır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Panodaki kart görünümünde <strong>Kopyala</strong>'ya tıklayın. İçerik, Markdown biçimlendirmesi korunarak kopyalanır — başlıklar, listeler, kod — Markdown destekleyen herhangi bir editöre yapıştırmaya hazır.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tüm kayıtlarımı yedekleyebilir miyim? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. <strong>Ayarlar → Veriyi dışa aktar</strong> bölümünde tüm kayıtlarınızla birlikte bir JSON dosyası indirirsiniz. Bu dosya başka bir bilgisayarda veya uzantıyı yeniden yükledikten sonra NODUS'a geri aktarılabilir.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">AI konuşmaları nasıl çalışma belgesi haline getirilir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Farklı oturumlardan (hatta farklı platformlardan) ilgili kayıtları bağlamak için <strong>Zincirler</strong>'i kullanın. Ardından tüm zinciri DOCX olarak dışa aktarın — sonuç, tüm soru ve yanıtların mantıklı sırayla zincirlendiği yapılandırılmış bir belgedir.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 4. DÜZENLEME ══ -->
+        <section class="faq-category" id="organizar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🗂️</span>
+            <h2 class="faq-category-title">Düzenleme</h2>
+            <span class="faq-category-count">7 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kayıtları düzenlemek için etiketler nasıl kullanılır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Bir kayıt kaydederken içeriği kategorize etmek için en fazla 4 etiket ekleyebilirsiniz. Etiketler pano kartlarında görünür ve filtre görevi görür — yalnızca o kategorideki kayıtları görmek için bir etikete tıklayın. "backend", "çalışma", "fikirler", "iş" gibi etiketler oluşturun veya sizin için anlamlı olan herhangi bir kategori kullanın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kuyruklar nedir (Hızlı, Varsayılan, K1, K2...)? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Kuyruklar, kayıtları bağlama veya önceliğe göre düzenlemek için ayrı koleksiyonlardır. <strong>Hızlı Kuyruk</strong>, kategorizasyon olmadan hızlı kayıtlar içindir. <strong>Varsayılan</strong>, genel kuyruğudur. K1–K4 kuyrukları (PRO planı), tema, proje veya müşteriye göre özelleştirilebilir. Her kuyruğun kartlarda farklı bir kenarlık rengi vardır.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kayıtlarım içinde nasıl arama yapabilirim? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS panosunda üstteki arama çubuğunu kullanın. Arama <strong>gerçek zamanlı</strong> çalışır ve tüm kayıtların başlığını, sorusunu ve yanıtını kapsar. Tam aradığınızı bulmak için aramayı platform veya etiket filtreleriyle birleştirin.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kayıtlar AI platformuna göre nasıl filtrelenir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Panoda arama çubuğunun altındaki platform rozetlerine tıklayın. Yalnızca o kaynaktan gelen kayıtları görmek için <strong>ChatGPT</strong>, <strong>Claude</strong>, <strong>Gemini</strong> veya herhangi bir platforma tıklayın. Filtreyi kaldırmak için tekrar tıklayın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Farklı bağlamları ayırmak için Projeler nasıl kullanılır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Projeler (PRO planı), tamamen ayrı alanlar oluşturmanıza olanak tanır — örneğin "İş", "Çalışma" ve "Kişisel". Her projenin kendi kuyrukları ve kayıtları vardır. Farklı içerikleri karıştırmadan projeler arasında tek tıkla geçiş yapın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kaydettikten sonra bir kaydı düzenleyebilir miyim? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. Panoda kartı açın ve <strong>Düzenle</strong>'ye tıklayın. Başlığı değiştirebilir, etiket ekleyip çıkarabilir ve kaydı kuyruklar arasında taşıyabilirsiniz. Orijinal içerik (soru ve yanıt) korunur.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Haftalarca önce kaydettiğim bir AI yanıtını nasıl bulabilirim? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Panodaki metin aramasını kullanın — yalnızca başlığı değil, tüm kayıtların tam içeriğini kapsar. Yanıttan herhangi bir anahtar kelimeyi hatırlıyorsanız yazmanız yeterli. Nereden geldiğini biliyorsanız platform filtresiyle (örn. Claude) birleştirin.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 5. ZİNCİRLER ══ -->
+        <section class="faq-category" id="cadeias">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔗</span>
+            <h2 class="faq-category-title">Zincirler</h2>
+            <span class="faq-category-count">6 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Zincirler nedir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Zincirler, <strong>farklı konuşmalardan gelen kayıtları</strong> mantıklı bir sıraya bağlamanıza olanak tanır. ChatGPT'de bir konuyu araştırdığınızı, ardından Claude'da derinleştirdiğinizi ve Gemini'de örnekler bulduğunuzu hayal edin — bir Zincir, farklı platformlardan gelse bile bu üç kaydı sürekli bir düşünce dizisine bağlar.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Zincir nasıl oluşturulur? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Panodaki <strong>Zincirler</strong> sekmesinde "Yeni Zincir"e tıklayın. Zincire bir ad verin ve mevcut kayıtları istenen sıraya sürükleyerek ekleyin. Herhangi bir platformdan kayıt ekleyebilir ve bunları istediğiniz zaman yeniden düzenleyebilirsiniz.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Aynı Zincirde ChatGPT ve Claude kayıtlarını karıştırabilir miyim? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Evet</strong> — bu, Zincirlerin ana avantajlarından biridir. ChatGPT, Claude, Gemini, Perplexity ve desteklenen diğer platformlardan gelen kayıtları tek bir sırada bağlayabilirsiniz. Her kart kaynak platformunun kimliğini korur.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Zincir nasıl dışa aktarılır? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Panoda Zinciri açın ve <strong>Dışa Aktar</strong>'a tıklayın. Tüm diziyi DOCX veya HTML olarak dışa aktarabilirsiniz — sonuç, tüm soru ve yanıtların sırayla yer aldığı yapılandırılmış bir belgedir; raporlar, çalışmalar veya dokümantasyon için idealdir.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bir Zincirdeki kayıt sınırı nedir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ücretsiz planda her Zincir en fazla <strong>5 kayıt</strong> içerebilir. PRO planda sınır önemli ölçüde daha yüksektir ve karmaşık projeler için kapsamlı zincirler oluşturulabilir.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bir Zinciri AI konuşmasına enjekte etmenin amacı nedir? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Enjeksiyon özelliğiyle, bir Zincirin içeriğini doğrudan desteklenen herhangi bir platformun istem alanına ekleyebilirsiniz. AI'ya önceki araştırmaların tam bağlamını vermek gibidir — her yanıtı tek tek kopyalayıp yapıştırmadan.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 6. GİZLİLİK ══ -->
+        <section class="faq-category" id="privacidade">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔒</span>
+            <h2 class="faq-category-title">Gizlilik &amp; Güvenlik</h2>
+            <span class="faq-category-count">7 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS verilerimi herhangi bir sunucuya gönderiyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Hayır.</strong> NODUS'un kayıtlarınızı alan kendi sunucusu yoktur. Her şey tarayıcınızın yerel depolama alanında saklanır (chrome.storage.local / browser.storage.local). Hiçbir kayıt, etiket veya içerik cihazınızı terk etmez.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS, AI konuşmalarıma iznim olmadan erişiyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Hayır.</strong> NODUS yalnızca siz aktif olarak Kaydet veya Hızlı'ya tıkladığınızda sayfa içeriğini okur. Kaydetmeyi seçmediğiniz konuşmaların otomatik kaydı, pasif izlenmesi veya okunması söz konusu değildir.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Biri bilgisayarıma erişirse verilerim güvende mi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Kayıtlar, işletim sisteminizin kullanıcı profilindeki tarayıcı profilinde saklanır. Bilgisayardaki kullanıcı profiliniz bir parola ile korunuyorsa, kayıtlar da aynı şekilde korunur. NODUS ekstra şifreleme eklemez — fiziksel güvenlik için işletim sisteminizin korumalarını kullanın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS açık kaynaklı mı? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. NODUS çekirdeği MIT lisansı altında GitHub'da mevcuttur. Herkes kodu denetleyebilir ve gizli veri toplamanın olmadığını doğrulayabilir. Sözümüze güvenmek zorunda değilsiniz — koda bakın.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS'u kaldırırsam verilerime ne olur? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Uzantıyı kaldırdığınızda, ilişkili yerel depolama tarayıcı tarafından silinir. <strong>Önce yedekleyin:</strong> tüm kayıtlarınızı JSON olarak indirmek için Ayarlar → Veriyi dışa aktar'a gidin. Yeniden yükledikten sonra geri aktarabilirsiniz.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS hangi izinleri istiyor ve neden? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS yalnızca çalışması için gerekli izinleri ister:</p>
+              <ul>
+                <li><strong>AI sayfalarını okuma</strong> — yanıtları algılamak ve düğmeleri eklemek için</li>
+                <li><strong>Yerel depolama</strong> — kayıtlarınızı cihaza kaydetmek için</li>
+                <li><strong>Sekme erişimi</strong> — hangi platformda olduğunuzu bilmek için</li>
+              </ul>
+              <p>Kamera, mikrofon, tarama geçmişi veya parolalar için hiçbir izin talep edilmez.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS çevrimdışı çalışıyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS panosu tamamen <strong>çevrimdışı</strong> çalışır — internet bağlantısı olmadan kayıtlara erişebilir, arama yapabilir ve dışa aktarabilirsiniz. Yeni konuşmalar kaydetmek bağlantı gerektirir çünkü AI platformlarının kendisi erişilebilir olmalıdır.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 7. PLANLAR VE FİYATLAR ══ -->
+        <section class="faq-category" id="planos">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💳</span>
+            <h2 class="faq-category-title">Planlar &amp; Fiyatlar</h2>
+            <span class="faq-category-count">6 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS ücretsiz mi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. Ücretsiz plan, süre sınırı olmaksızın kayıtları kaydetmeyi, düzenlemeyi, aramayı ve dışa aktarmayı kapsar. Sonsuza kadar ücretsizdir — deneme sürümü değil. PRO planı, daha ileri gitmek isteyenler için gelişmiş özelliklerin kilidini açar.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Ücretsiz plan neler içeriyor? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>Sınırsız konuşma kaydı (ChatGPT, Claude, Gemini ve 4 platform daha)</li>
+                <li>Arama ve filtreli birleşik pano</li>
+                <li>Etiketler ve Hızlı Kuyruk</li>
+                <li>5 kayda kadar Zincirler</li>
+                <li>TXT, HTML ve DOCX olarak dışa aktarma</li>
+                <li>1 ek kuyruk (K1)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">PRO planı neler ekliyor? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>Gelişmiş düzenleme için 3 ek kuyruk (K2, K3, K4)</li>
+                <li>Projeler — bağlama göre ayrı alanlar</li>
+                <li>Sınırsız Zincir boyutu</li>
+                <li>AI konuşmalarına Zincir enjeksiyonu</li>
+                <li>Öncelikli destek</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">PRO abonelik mi yoksa tek seferlik satın alma mı? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>PRO planı, ömür boyu erişimle <strong>tek seferlik satın alma</strong> olarak sunulmaktadır. Aylık abonelik yok, otomatik yenileme yok, faturanızda sürpriz yok.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">PRO'yu birden fazla bilgisayarda kullanabilir miyim? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. PRO lisansı cihaza değil, lisans hesabınıza bağlıdır. Aynı lisans anahtarıyla ihtiyaç duyduğunuz kadar çok bilgisayarda PRO'yu etkinleştirebilirsiniz.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">İade politikası var mı? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. Satın alma tarihinden itibaren <strong>7 gün</strong> içinde, soru sormaksızın iade sunuyoruz. Sipariş numaranızla destek e-postası üzerinden bize ulaşın.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 8. PLATFORMA GÖRE ══ -->
+        <section class="faq-category" id="plataformas">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🌐</span>
+            <h2 class="faq-category-title">Platforma Göre</h2>
+            <span class="faq-category-count">6 soru</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS, İngilizce dışındaki dillerde ChatGPT ile çalışıyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. NODUS herhangi bir dildeki konuşmaları yakalar — Türkçe, İngilizce, Portekizce, İspanyolca veya diğerleri. Konuşmanın dili, kayıt düğmelerinin nasıl çalıştığını etkilemez.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Claude Sonnet ve Claude Opus ile çalışıyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. NODUS, Sonnet, Haiku ve Opus dahil claude.ai'da mevcut tüm Claude sürümleriyle çalışır. Konuşmada kullanılan model kaydı etkilemez.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS, Gemini Advanced ile çalışıyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. NODUS, Gemini Advanced dahil gemini.google.com'da mevcut tüm sürümlerde Gemini yanıtlarını yakalar.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Microsoft Copilot ile çalışıyor mu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. NODUS, copilot.microsoft.com adresinde Microsoft Copilot'u destekler. Kayıt düğmeleri yanıtların yanında otomatik olarak görünür.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Daha fazla platform ekleme planı var mı? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Evet. NODUS aktif olarak geliştirilmektedir ve talebe göre yeni platformlar eklenmektedir. Sık talep edilen platformlar arasında Poe, Pi ve diğerleri yer almaktadır. Güncellemeleri GitHub'da takip edin.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS, AI tarafından oluşturulan görselleri (DALL·E, Midjourney) yakalar mı? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS, desteklenen platformlarda bir yanıtta göründüklerinde oluşturulan görselleri yakalar (örn. ChatGPT tarafından DALL·E ile oluşturulan görseller). Midjourney gibi özel görsel platformları şu anda desteklenmemektedir.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ DETAYLI KILAVUZLAR ══ -->
+        <div class="cluster-section">
+          <h3>Platforma göre ayrıntılı kılavuzlar</h3>
+          <p>Her AI platformu ve her kullanım senaryosu için adım adım talimatlar.</p>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Konuşmalar nasıl kaydedilir</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-salvar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Konuşmalar nasıl dışa aktarılır</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Yanıtlar nasıl kaydedilir</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-guardar-respostas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Eksiksiz kılavuz</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../salvar-conversas-ia.html" style="border-color:rgba(250,204,21,0.3);"><span class="cluster-link-dot" style="background:#facc15;"></span>AI konuşmaları nasıl kaydedilir — ana kılavuz</a>
+            </div>
+          </div>
+
+          <div class="cluster-group" style="margin-bottom:0;">
+            <div class="cluster-group-title">Diğer kılavuzlar</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-historico-ia-word.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Word'e aktarma</a>
+              <a class="cluster-link" href="../faq/como-baixar-historico-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>AI geçmişini indir</a>
+              <a class="cluster-link" href="../faq/como-organizar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Konuşmaları düzenle</a>
+              <a class="cluster-link" href="../faq/como-nao-perder-resposta-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Yanıtı asla kaybetme</a>
+              <a class="cluster-link" href="../faq/extensao-salvar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Konuşma kaydetme uzantısı</a>
+              <a class="cluster-link" href="../faq/como-pesquisar-historico-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>AI geçmişinde ara</a>
+              <a class="cluster-link" href="../faq/como-fazer-backup-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Konuşmaları yedekle</a>
+              <a class="cluster-link" href="../faq/recuperar-historico-chatgpt.html"><span class="cluster-link-dot" style="background:#facc15;"></span>ChatGPT geçmişi kayboldu</a>
+              <a class="cluster-link" href="../faq/como-anotar-respostas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>AI yanıtlarına not ekle</a>
+              <a class="cluster-link" href="../faq/como-usar-nodus.html"><span class="cluster-link-dot" style="background:#facc15;"></span>NODUS nasıl kullanılır</a>
+              <a class="cluster-link" href="../faq/nodus-vs-historico-nativo-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>NODUS ve yerel geçmiş karşılaştırması</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA fundo -->
+        <div class="faq-cta-block" style="margin-top:8px;">
+          <h3>Başlamaya hazır mısınız?</h3>
+          <p>Ücretsiz yükleyin ve bir dakikadan kısa sürede bir sonraki AI konuşmanızı kaydedin. ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot ve DeepSeek ile çalışır.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Chrome'a yükle — ücretsiz
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:8px;">
+        <a href="../index.html">★ NODUS</a> &nbsp;·&nbsp;
+        <a href="../index.html#privacidade">Gizlilik</a> &nbsp;·&nbsp;
+        <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="../checkout.html">PRO Planı</a>
+      </p>
+      <p>© 2025 NODUS. Tarayıcı uzantısı. Verileriniz sizde kalır.</p>
+    </div>
+  </footer>
+
+  <!-- ACCORDION JS -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Highlight sidebar link no scroll
+    const sections = document.querySelectorAll('.faq-category');
+    const sideLinks = document.querySelectorAll('.sidebar-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          sideLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "NODUS nedir?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS, tek tıkla AI yanıtlarını kaydetmenize, düzenlemenize ve yeniden kullanmanıza olanak tanıyan bir tarayıcı uzantısıdır. ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot ve DeepSeek ile çalışır. Her şey cihazınızda yerel olarak saklanır." } },
+      { "@type": "Question", "name": "ChatGPT konuşması nasıl kaydedilir?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS yüklüyken ChatGPT'yi açın. Her yanıtın yanında NODUS düğmeleri görünür. Soruyu ve yanıtı kaydetmek için Kaydet'e, tek tıkla kaydetmek için Hızlı'ya tıklayın." } },
+      { "@type": "Question", "name": "Claude konuşması nasıl kaydedilir?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS, Claude.ai üzerinde yerel olarak çalışır. Kayıt düğmeleri yanıtların yanında otomatik olarak görünür. Soruyu ve yanıtı yerel panonuza kaydetmek için Kaydet'e tıklayın." } },
+      { "@type": "Question", "name": "NODUS verilerimi herhangi bir sunucuya gönderiyor mu?", "acceptedAnswer": { "@type": "Answer", "text": "Hayır. NODUS'un kayıtlarınızı alan kendi sunucusu yoktur. Her şey tarayıcınızın yerel depolama alanında saklanır. Hiçbir kayıt cihazınızı terk etmez." } },
+      { "@type": "Question", "name": "NODUS ücretsiz mi?", "acceptedAnswer": { "@type": "Answer", "text": "Evet. Ücretsiz plan, süre sınırı olmaksızın kayıtları kaydetmeyi, düzenlemeyi, aramayı ve dışa aktarmayı kapsar. Sonsuza kadar ücretsizdir. PRO planı gelişmiş özelliklerin kilidini açar." } },
+      { "@type": "Question", "name": "Hangi tarayıcılar destekleniyor?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS Chrome, Firefox, Edge ve Brave'de çalışır. Chromium tabanlı tüm tarayıcılar uyumludur." } },
+      { "@type": "Question", "name": "ChatGPT konuşması Word'e nasıl aktarılır?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS panonuzu açın, kaydı seçin ve Dışa Aktar → DOCX'e tıklayın. Word dosyası doğrudan tarayıcınızda oluşturulur ve bilgisayarınıza kaydedilir." } },
+      { "@type": "Question", "name": "Zincirler nedir?", "acceptedAnswer": { "@type": "Answer", "text": "Zincirler, farklı konuşmalardan gelen kayıtları mantıklı bir sıraya bağlamanıza olanak tanır; farklı platformlardan bile olsa. ChatGPT, Claude ve Gemini'den gelen kayıtları tek bir dizide bağlayabilir ve her şeyi birlikte dışa aktarabilirsiniz." } },
+      { "@type": "Question", "name": "NODUS'u kaldırırsam verilerime ne olur?", "acceptedAnswer": { "@type": "Answer", "text": "Uzantıyı kaldırdığınızda, yerel depolama tarayıcı tarafından silinir. Önce Ayarlar → Veriyi dışa aktar'dan tüm kayıtlarınızı JSON olarak indirin." } },
+      { "@type": "Question", "name": "NODUS hangi AI platformlarıyla çalışır?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS 7 platformu destekler: ChatGPT, Claude, Gemini, Perplexity, Grok, Microsoft Copilot ve DeepSeek." } }
+    ]
+  }
+  </script>
+
+</body>
+</html>

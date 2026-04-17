@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domande Frequenti — NODUS | Come salvare, esportare e organizzare le conversazioni IA</title>
+  <meta name="description" content="Tutte le tue domande su NODUS con risposta: come salvare conversazioni da ChatGPT, Claude, Gemini e altri. Esportare, organizzare, privacy, piani e molto altro." />
+  <link rel="canonical" href="https://nodus-ai.app/it/faq" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #0e1117;
+      --panel:  #1a1f29;
+      --border: #2d3748;
+      --yellow: #facc15;
+      --text:   #e2e8f0;
+      --sub:    #94a3b8;
+      --muted:  #475569;
+      --green:  #10b981;
+      --radius: 10px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta {
+      background: var(--yellow); color: #0e1117;
+      font-size: 13px; font-weight: 800;
+      padding: 7px 18px; border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ── HERO ── */
+    .faq-hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-hero-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 14px;
+    }
+    .faq-hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    }
+    .faq-hero p {
+      font-size: 17px; color: var(--sub); max-width: 560px; line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .faq-platforms {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .plat-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--sub);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .plat-badge:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── SIDEBAR + LAYOUT ── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 48px 0 80px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { display: none; }
+    }
+    .faq-sidebar {
+      position: sticky; top: 72px;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sidebar-links { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-link {
+      font-size: 13px; color: var(--sub);
+      padding: 6px 10px; border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-link:hover {
+      background: var(--panel); color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar-link.active { color: var(--yellow); background: rgba(250,204,21,0.06); }
+    .sidebar-count {
+      margin-left: auto; font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORIAS ── */
+    .faq-category { margin-bottom: 56px; }
+    .faq-category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-category-icon { font-size: 20px; }
+    .faq-category-title {
+      font-size: 19px; font-weight: 700; color: var(--text);
+    }
+    .faq-category-count {
+      font-size: 12px; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 99px;
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer;
+      font-size: 14px; font-weight: 600; color: var(--text);
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-q[aria-expanded="true"] { color: var(--yellow); }
+    .faq-chevron {
+      font-size: 16px; color: var(--muted);
+      transition: transform 0.3s; flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--yellow); }
+    .faq-a { display: none; padding: 0 0 18px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p {
+      font-size: 14px; color: var(--sub); line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text); }
+    .faq-a a { color: var(--yellow); }
+    .faq-a ul { margin: 8px 0 8px 20px; }
+    .faq-a li { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    .faq-a .page-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; font-size: 13px; font-weight: 600;
+      color: var(--yellow); border: 1px solid rgba(250,204,21,0.25);
+      padding: 5px 12px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .faq-a .page-link:hover {
+      background: rgba(250,204,21,0.08); text-decoration: none;
+    }
+
+    /* ── CTA BLOCO ── */
+    .faq-cta-block {
+      background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, rgba(16,185,129,0.04) 100%);
+      border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 16px; padding: 36px 40px;
+      text-align: center; margin: 0 0 56px;
+    }
+    .faq-cta-block h3 {
+      font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    }
+    .faq-cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow {
+      background: var(--yellow); color: #0e1117;
+      font-size: 14px; font-weight: 800;
+      padding: 10px 22px; border-radius: 8px;
+      transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost {
+      background: transparent; color: var(--sub);
+      font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--text); color: var(--text); text-decoration: none; }
+
+    /* ── GUIAS CLUSTER ── */
+    .cluster-section { margin: 0 0 56px; }
+    .cluster-section h3 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .cluster-section > p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .cluster-group { margin-bottom: 32px; }
+    .cluster-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
+    .cluster-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+    .cluster-link { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--sub); transition: border-color 0.2s, color 0.2s; }
+    .cluster-link:hover { border-color: var(--yellow); color: var(--text); text-decoration: none; }
+    .cluster-link-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--sub); }
+  </style>
+  <script>window._forcedLang='it';</script>
+  <script src="/lang-switcher.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">★ NODUS</a>
+        <a href="../index.html" class="nav-back">← Torna al sito</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Installa gratis</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="container">
+      <div class="faq-hero-label">Centro assistenza</div>
+      <h1>Domande <span style="color:var(--yellow)">frequenti</span></h1>
+      <p>Tutto su come salvare, esportare e organizzare le tue conversazioni IA — senza account, senza server, senza complicazioni.</p>
+      <div class="faq-platforms">
+        <span class="plat-badge">ChatGPT</span>
+        <span class="plat-badge">Claude</span>
+        <span class="plat-badge">Gemini</span>
+        <span class="plat-badge">Perplexity</span>
+        <span class="plat-badge">Grok</span>
+        <span class="plat-badge">Copilot</span>
+        <span class="plat-badge">DeepSeek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="container-wide">
+    <div class="faq-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="faq-sidebar">
+        <div class="sidebar-label">Categorie</div>
+        <nav class="sidebar-links">
+          <a href="#comecar" class="sidebar-link">🚀 Iniziare <span class="sidebar-count">6</span></a>
+          <a href="#salvar" class="sidebar-link">💾 Salvare conversazioni <span class="sidebar-count">9</span></a>
+          <a href="#exportar" class="sidebar-link">📤 Esportare e scaricare <span class="sidebar-count">7</span></a>
+          <a href="#organizar" class="sidebar-link">🗂️ Organizzare <span class="sidebar-count">7</span></a>
+          <a href="#cadeias" class="sidebar-link">🔗 Catene <span class="sidebar-count">6</span></a>
+          <a href="#privacidade" class="sidebar-link">🔒 Privacy <span class="sidebar-count">7</span></a>
+          <a href="#planos" class="sidebar-link">💳 Piani e prezzi <span class="sidebar-count">6</span></a>
+          <a href="#plataformas" class="sidebar-link">🌐 Per piattaforma <span class="sidebar-count">6</span></a>
+        </nav>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- CTA topo -->
+        <div class="faq-cta-block">
+          <h3>Non hai ancora NODUS?</h3>
+          <p>Installa gratis in 30 secondi. Funziona con ChatGPT, Claude, Gemini e altre 4 piattaforme.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Installa su Chrome
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+        <!-- ══ 1. INIZIARE ══ -->
+        <section class="faq-category" id="comecar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🚀</span>
+            <h2 class="faq-category-title">Iniziare</h2>
+            <span class="faq-category-count">6 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Cos'è NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS è un'estensione per browser che ti permette di <strong>salvare, organizzare e riutilizzare le risposte IA</strong> con un clic. Funziona con ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot e DeepSeek. Tutto viene archiviato localmente sul tuo dispositivo — nessun account, nessun server, nessun abbonamento obbligatorio.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si installa NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>L'installazione richiede meno di 30 secondi:</p>
+              <ul>
+                <li><strong>Chrome / Edge / Brave:</strong> visita il Chrome Web Store e clicca su "Aggiungi a Chrome"</li>
+                <li><strong>Firefox:</strong> visita Mozilla Add-ons e clicca su "Aggiungi a Firefox"</li>
+              </ul>
+              <p>Dopo l'installazione, apri qualsiasi piattaforma IA supportata — i pulsanti NODUS compaiono automaticamente.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Devo creare un account per usare NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>No.</strong> NODUS funziona senza registrazione, nessuna email, nessuna password. Installa e inizia a usarlo subito. I tuoi dati rimangono nel local storage del browser.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Quali browser sono supportati? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS funziona in:</p>
+              <ul>
+                <li><strong>Chrome</strong> (versione 88+)</li>
+                <li><strong>Firefox</strong> (versione 109+)</li>
+                <li><strong>Edge</strong> (basato su Chromium)</li>
+                <li><strong>Brave</strong> e altri browser basati su Chromium</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come funziona il pulsante di salvataggio? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Quando apri una piattaforma supportata, NODUS inserisce pulsanti fluttuanti accanto alle risposte IA. Clicca <strong>Salva</strong> per acquisire la domanda e la risposta immediatamente. Clicca <strong>Rapido</strong> per salvare senza aprire il pannello delle impostazioni. Clicca <strong>Dash</strong> per aprire la dashboard delle acquisizioni.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Con quali piattaforme IA funziona NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS supporta attualmente <strong>7 piattaforme</strong>:</p>
+              <ul>
+                <li>ChatGPT (chat.openai.com)</li>
+                <li>Claude (claude.ai)</li>
+                <li>Gemini (gemini.google.com)</li>
+                <li>Perplexity (perplexity.ai)</li>
+                <li>Grok (grok.com / x.com)</li>
+                <li>Microsoft Copilot (copilot.microsoft.com)</li>
+                <li>DeepSeek (chat.deepseek.com)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ 2. SALVARE CONVERSAZIONI ══ -->
+        <section class="faq-category" id="salvar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💾</span>
+            <h2 class="faq-category-title">Salvare conversazioni</h2>
+            <span class="faq-category-count">9 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si salva una conversazione di ChatGPT? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Con NODUS installato, apri ChatGPT normalmente. I pulsanti NODUS compaiono accanto a ogni risposta. Clicca <strong>Salva</strong> per aprire il pannello di acquisizione, aggiungere tag e scegliere la coda di destinazione — oppure clicca <strong>Rapido</strong> per salvare con un solo clic senza alcuna configurazione.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-chatgpt.html">Guida completa: salvare conversazioni ChatGPT →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si salva una conversazione di Claude? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS funziona nativamente su Claude.ai. I pulsanti di acquisizione compaiono accanto alle risposte automaticamente. Clicca <strong>Salva</strong> per acquisire la domanda e la risposta nella tua dashboard locale. Funziona ugualmente per i progetti Claude e le conversazioni normali.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-claude.html">Guida completa: salvare conversazioni Claude →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si salva una conversazione di Gemini? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Installa NODUS e visita gemini.google.com. I pulsanti di acquisizione compaiono accanto alle risposte di Gemini. Clicca <strong>Salva</strong> per archiviare la conversazione localmente, con tag e la stessa organizzazione delle altre piattaforme.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-gemini.html">Guida completa: salvare conversazioni Gemini →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si salva una risposta di Perplexity? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS rileva automaticamente le risposte su Perplexity.ai e inserisce i pulsanti di acquisizione. Clicca <strong>Salva</strong> per registrare la risposta insieme alle fonti citate. Ideale per ricerche a cui vorrai fare riferimento in seguito.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si archiviano le risposte di Grok? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS funziona sia su grok.com che su x.com/grok. Quando apri una conversazione con Grok, i pulsanti di acquisizione compaiono accanto alle risposte. Clicca <strong>Salva</strong> per archiviarle localmente nella tua dashboard NODUS.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si salvano le risposte di DeepSeek? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS supporta nativamente DeepSeek (chat.deepseek.com). I pulsanti di acquisizione compaiono accanto alle risposte. Clicca <strong>Salva</strong> per registrare la domanda e la risposta nella tua dashboard locale.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Posso salvare più risposte contemporaneamente? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ogni acquisizione salva una domanda e una risposta alla volta. Per salvare più risposte da una conversazione, clicca <strong>Salva</strong> su ogni risposta che vuoi conservare. Poi usa le <strong>Catene</strong> per collegare quelle acquisizioni in una sequenza logica.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Cos'è l'acquisizione rapida? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>L'acquisizione rapida (il pulsante <strong>Rapido</strong>) salva la risposta direttamente nella coda predefinita senza aprire il pannello delle impostazioni. È ideale quando vuoi registrare qualcosa velocemente senza interrompere il flusso della conversazione. L'acquisizione è disponibile nella dashboard per essere organizzata in seguito.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come non perdere mai più una risposta IA importante? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Installa NODUS e usa il pulsante <strong>Rapido</strong> ogni volta che una risposta sembra utile — anche se non sai ancora a cosa servirà. L'abitudine di acquisire prima di chiudere la scheda elimina la perdita di informazioni. La tua dashboard accumula tutto e la ricerca full-text ti permette di trovare qualsiasi acquisizione in seguito.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 3. ESPORTARE E SCARICARE ══ -->
+        <section class="faq-category" id="exportar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">📤</span>
+            <h2 class="faq-category-title">Esportare &amp; scaricare</h2>
+            <span class="faq-category-count">7 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si esporta una conversazione di ChatGPT in Word? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Apri la tua dashboard NODUS, seleziona l'acquisizione desiderata e clicca su <strong>Esporta → DOCX</strong>. Il file Word viene generato direttamente nel browser e salvato sul tuo computer. Puoi collegare più acquisizioni con le Catene ed esportare tutto insieme come documento strutturato.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si scarica una conversazione di Claude come PDF? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS esporta in <strong>HTML</strong>, che puoi stampare come PDF direttamente dal browser (Ctrl+P → Salva come PDF). Per l'esportazione diretta in PDF, consigliamo di esportare in HTML e usare la funzione di stampa del browser — il risultato è ben formattato.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Quali formati di esportazione sono supportati? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS supporta l'esportazione in:</p>
+              <ul>
+                <li><strong>TXT</strong> — testo semplice, compatibile con qualsiasi editor</li>
+                <li><strong>HTML</strong> — formattato, stampabile come PDF</li>
+                <li><strong>DOCX</strong> — compatibile con Word, Google Docs e LibreOffice</li>
+              </ul>
+              <p>Le acquisizioni concatenate (Catene) possono essere esportate insieme come un unico documento.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si estrae la cronologia completa delle conversazioni IA? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Nella dashboard NODUS, vai su <strong>Impostazioni → Esporta tutto</strong>. Viene generato un file con tutte le tue acquisizioni in formato JSON (per reimportarle in NODUS), oppure puoi esportare ogni coda individualmente come DOCX o HTML.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si copia una risposta di ChatGPT formattata? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Nella visualizzazione a schede della dashboard, clicca su <strong>Copia</strong>. Il contenuto viene copiato con la formattazione Markdown preservata — intestazioni, elenchi, codice — pronto per essere incollato in qualsiasi editor che supporti Markdown.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Posso fare un backup di tutte le mie acquisizioni? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. In <strong>Impostazioni → Esporta dati</strong>, scarichi un file JSON con tutte le tue acquisizioni. Questo file può essere reimportato in NODUS su un altro computer o dopo aver reinstallato l'estensione.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si organizzano le conversazioni IA in un documento di studio? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Usa le <strong>Catene</strong> per collegare acquisizioni correlate da sessioni diverse (anche da piattaforme diverse). Poi esporta l'intera catena come DOCX — il risultato è un documento strutturato con tutte le domande e risposte concatenate in ordine logico.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 4. ORGANIZZARE ══ -->
+        <section class="faq-category" id="organizar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🗂️</span>
+            <h2 class="faq-category-title">Organizzare</h2>
+            <span class="faq-category-count">7 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si usano i tag per organizzare le acquisizioni? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Quando salvi un'acquisizione, puoi aggiungere fino a 4 tag per categorizzare il contenuto. I tag compaiono sulle schede della dashboard e fungono da filtri — clicca su un tag per vedere solo le acquisizioni con quella categoria. Crea tag come "backend", "studio", "idee", "lavoro" o qualsiasi categoria abbia senso per te.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Cosa sono le code (Rapida, Predefinita, C1, C2...)? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Le code sono raccolte separate per organizzare le acquisizioni per contesto o priorità. La <strong>Coda rapida</strong> è per le acquisizioni veloci, senza categorizzazione. La <strong>Predefinita</strong> è la coda generale. Le code C1–C4 (piano PRO) sono personalizzabili per tema, progetto o cliente. Ogni coda ha un colore di bordo diverso sulle schede.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si cerca tra le proprie acquisizioni? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Nella dashboard NODUS, usa la barra di ricerca in alto. La ricerca funziona in <strong>tempo reale</strong> e copre il titolo, la domanda e la risposta di tutte le acquisizioni. Combina la ricerca con i filtri per piattaforma o tag per trovare esattamente quello che cerchi.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si filtrano le acquisizioni per piattaforma IA? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Nella dashboard, clicca sui badge delle piattaforme sotto la barra di ricerca. Clicca su <strong>ChatGPT</strong>, <strong>Claude</strong>, <strong>Gemini</strong> o qualsiasi altra piattaforma per vedere solo le acquisizioni da quella fonte. Clicca di nuovo per rimuovere il filtro.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si usano i Progetti per separare contesti diversi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>I Progetti (piano PRO) ti permettono di creare spazi completamente separati — ad esempio, "Lavoro", "Studio" e "Personale". Ogni progetto ha le proprie code e acquisizioni. Passa da un progetto all'altro con un solo clic senza mescolare contenuti diversi.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Posso modificare un'acquisizione dopo averla salvata? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. Apri la scheda nella dashboard e clicca su <strong>Modifica</strong>. Puoi modificare il titolo, aggiungere o rimuovere tag e spostare l'acquisizione tra le code. Il contenuto originale (domanda e risposta) viene preservato.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si trova una risposta IA salvata settimane fa? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Usa la ricerca testuale nella dashboard — copre il contenuto completo di tutte le acquisizioni, non solo il titolo. Se ricordi una parola chiave dalla risposta, digitala. Combina con il filtro per piattaforma (es. Claude) se sai da dove proviene.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 5. CATENE ══ -->
+        <section class="faq-category" id="cadeias">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔗</span>
+            <h2 class="faq-category-title">Catene</h2>
+            <span class="faq-category-count">6 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Cosa sono le Catene? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Le Catene ti permettono di <strong>collegare acquisizioni da conversazioni diverse</strong> in una sequenza logica. Immagina di aver ricercato un argomento su ChatGPT, poi approfondito su Claude e trovato esempi su Gemini — una Catena collega quelle tre acquisizioni in un filo continuo di ragionamento, anche se provengono da piattaforme diverse.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si crea una Catena? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Nella scheda <strong>Catene</strong> della dashboard, clicca su "Nuova catena". Dai un nome alla catena e aggiungi le acquisizioni esistenti trascinandole nell'ordine desiderato. Puoi aggiungere acquisizioni da qualsiasi piattaforma e riorganizzarle in qualsiasi momento.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Posso mescolare acquisizioni di ChatGPT e Claude nella stessa Catena? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Sì</strong> — questo è uno dei principali vantaggi delle Catene. Puoi collegare acquisizioni di ChatGPT, Claude, Gemini, Perplexity e qualsiasi altra piattaforma supportata in un'unica sequenza. Ogni scheda mantiene l'identificazione della piattaforma di origine.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Come si esporta una Catena? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Apri la Catena nella dashboard e clicca su <strong>Esporta</strong>. Puoi esportare la sequenza completa come DOCX o HTML — il risultato è un documento strutturato con tutte le domande e risposte in ordine, ideale per report, studi o documentazione.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Qual è il limite di acquisizioni in una Catena? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Con il piano gratuito, ogni Catena può avere fino a <strong>5 acquisizioni</strong>. Con il piano PRO, il limite è significativamente più alto, consentendo catene estese per progetti complessi.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">A cosa serve iniettare una Catena in una conversazione IA? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Con la funzione di iniezione, puoi inserire il contenuto di una Catena direttamente nel campo del prompt di qualsiasi piattaforma supportata. È come dare all'IA il contesto completo delle ricerche precedenti — senza copiare e incollare manualmente ogni risposta.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 6. PRIVACY ══ -->
+        <section class="faq-category" id="privacidade">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔒</span>
+            <h2 class="faq-category-title">Privacy &amp; Sicurezza</h2>
+            <span class="faq-category-count">7 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS invia i miei dati a qualche server? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>No.</strong> NODUS non ha un server proprio che riceve le tue acquisizioni. Tutto viene archiviato nel local storage del tuo browser (chrome.storage.local / browser.storage.local). Nessuna acquisizione, tag o contenuto lascia mai il tuo dispositivo.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS accede alle mie conversazioni IA senza che io lo chieda? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>No.</strong> NODUS legge il contenuto della pagina solo quando clicchi attivamente su Salva o Rapido. Non esiste acquisizione automatica, monitoraggio passivo o lettura di conversazioni che non hai scelto di salvare.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">I miei dati sono al sicuro se qualcuno accede al mio computer? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Le acquisizioni vengono archiviate nel profilo del browser del tuo utente del sistema operativo. Se il tuo profilo utente sul computer è protetto da una password, anche le acquisizioni sono ugualmente protette. NODUS non aggiunge cifratura extra — usa le protezioni del tuo sistema operativo per la sicurezza fisica.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS è open source? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. Il nucleo di NODUS è disponibile su GitHub sotto la licenza MIT. Chiunque può verificare il codice e confermare che non esiste raccolta nascosta di dati. Non devi fidarti della nostra parola — controlla il codice tu stesso.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Cosa succede ai miei dati se disinstallo NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Quando disinstalli l'estensione, il local storage associato viene eliminato dal browser. <strong>Fai prima un backup:</strong> vai su Impostazioni → Esporta dati per scaricare tutte le tue acquisizioni come JSON. Potrai reimportarle dopo aver reinstallato.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Quali permessi richiede NODUS e perché? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS richiede solo i permessi necessari per funzionare:</p>
+              <ul>
+                <li><strong>Lettura delle pagine IA</strong> — per rilevare le risposte e iniettare i pulsanti</li>
+                <li><strong>Archiviazione locale</strong> — per salvare le acquisizioni sul dispositivo</li>
+                <li><strong>Accesso alle schede</strong> — per sapere su quale piattaforma ti trovi</li>
+              </ul>
+              <p>Non viene richiesto alcun permesso per fotocamera, microfono, cronologia di navigazione o password.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS funziona offline? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>La dashboard NODUS funziona completamente <strong>offline</strong> — puoi accedere, cercare ed esportare le acquisizioni senza una connessione internet. L'acquisizione di nuove conversazioni richiede una connessione perché le piattaforme IA stesse devono essere accessibili.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 7. PIANI E PREZZI ══ -->
+        <section class="faq-category" id="planos">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💳</span>
+            <h2 class="faq-category-title">Piani &amp; Prezzi</h2>
+            <span class="faq-category-count">6 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS è gratuito? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. Il piano gratuito include il salvataggio, l'organizzazione, la ricerca e l'esportazione delle acquisizioni senza limiti di tempo. È gratuito per sempre — non è una prova. Il piano PRO sblocca funzionalità avanzate per chi vuole andare oltre.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Cosa è incluso nel piano gratuito? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>Acquisizioni illimitate di conversazioni (ChatGPT, Claude, Gemini e altre 4)</li>
+                <li>Dashboard unificata con ricerca e filtri</li>
+                <li>Tag e Coda rapida</li>
+                <li>Catene con fino a 5 acquisizioni</li>
+                <li>Esportazione in TXT, HTML e DOCX</li>
+                <li>1 coda aggiuntiva (C1)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Cosa aggiunge il piano PRO? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>3 code aggiuntive (C2, C3, C4) per un'organizzazione avanzata</li>
+                <li>Progetti — spazi separati per contesto</li>
+                <li>Dimensione illimitata delle Catene</li>
+                <li>Iniezione di Catene nelle conversazioni IA</li>
+                <li>Supporto prioritario</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">PRO è un abbonamento o un acquisto una tantum? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Il piano PRO è disponibile come <strong>acquisto una tantum</strong> con accesso a vita. Nessun abbonamento mensile, nessun rinnovo automatico, nessuna sorpresa in fattura.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Posso usare PRO su più di un computer? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. La licenza PRO è legata al tuo account di licenza, non al dispositivo. Puoi attivare PRO su tutti i computer di cui hai bisogno con la stessa chiave di licenza.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Esiste una politica di rimborso? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. Offriamo un rimborso entro <strong>7 giorni</strong> dall'acquisto, senza domande. Contattaci via email di supporto con il tuo numero d'ordine.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 8. PER PIATTAFORMA ══ -->
+        <section class="faq-category" id="plataformas">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🌐</span>
+            <h2 class="faq-category-title">Per piattaforma</h2>
+            <span class="faq-category-count">6 domande</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS funziona con ChatGPT in lingue diverse dall'inglese? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. NODUS acquisisce conversazioni in qualsiasi lingua — italiano, inglese, spagnolo o qualsiasi altra. La lingua della conversazione non influisce sul funzionamento dei pulsanti di acquisizione.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Funziona con Claude Sonnet e Claude Opus? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. NODUS funziona con tutte le versioni di Claude disponibili su claude.ai, incluse Sonnet, Haiku e Opus. Il modello usato nella conversazione non influisce sull'acquisizione.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS funziona con Gemini Advanced? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. NODUS acquisisce le risposte di Gemini in tutte le versioni disponibili su gemini.google.com, inclusa Gemini Advanced.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Funziona con Microsoft Copilot? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. NODUS supporta Microsoft Copilot su copilot.microsoft.com. I pulsanti di acquisizione compaiono accanto alle risposte automaticamente.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Ci sono piani per aggiungere altre piattaforme? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Sì. NODUS è in sviluppo attivo e vengono aggiunte nuove piattaforme in base alla domanda. Tra le piattaforme più richieste ci sono Poe, Pi e altre. Segui gli aggiornamenti su GitHub.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS acquisisce le immagini generate dall'IA (DALL·E, Midjourney)? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS acquisisce le immagini generate nelle piattaforme supportate quando compaiono in una risposta (es. immagini generate da ChatGPT tramite DALL·E). Le piattaforme di immagini dedicate come Midjourney non sono supportate al momento.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ GUIDE DETTAGLIATE ══ -->
+        <div class="cluster-section">
+          <h3>Guide dettagliate per piattaforma</h3>
+          <p>Istruzioni passo dopo passo per ogni piattaforma IA e ogni caso d'uso.</p>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Come salvare conversazioni</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-salvar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Come esportare conversazioni</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Come salvare le risposte</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-guardar-respostas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Guida completa</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../salvar-conversas-ia.html" style="border-color:rgba(250,204,21,0.3);"><span class="cluster-link-dot" style="background:#facc15;"></span>Come salvare conversazioni IA — guida pilastro</a>
+            </div>
+          </div>
+
+          <div class="cluster-group" style="margin-bottom:0;">
+            <div class="cluster-group-title">Altre guide</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-historico-ia-word.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Esportare in Word</a>
+              <a class="cluster-link" href="../faq/como-baixar-historico-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Scaricare la cronologia IA</a>
+              <a class="cluster-link" href="../faq/como-organizar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Organizzare conversazioni</a>
+              <a class="cluster-link" href="../faq/como-nao-perder-resposta-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Non perdere mai più una risposta</a>
+              <a class="cluster-link" href="../faq/extensao-salvar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Estensione per salvare conversazioni</a>
+              <a class="cluster-link" href="../faq/como-pesquisar-historico-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Cercare nella cronologia IA</a>
+              <a class="cluster-link" href="../faq/como-fazer-backup-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Backup delle conversazioni</a>
+              <a class="cluster-link" href="../faq/recuperar-historico-chatgpt.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Cronologia ChatGPT scomparsa</a>
+              <a class="cluster-link" href="../faq/como-anotar-respostas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Annotare risposte IA</a>
+              <a class="cluster-link" href="../faq/como-usar-nodus.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Come usare NODUS</a>
+              <a class="cluster-link" href="../faq/nodus-vs-historico-nativo-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>NODUS vs cronologia nativa</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA fundo -->
+        <div class="faq-cta-block" style="margin-top:8px;">
+          <h3>Pronto per iniziare?</h3>
+          <p>Installa gratis e salva la tua prossima conversazione IA in meno di 1 minuto. Funziona con ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot e DeepSeek.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Installa su Chrome — gratis
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:8px;">
+        <a href="../index.html">★ NODUS</a> &nbsp;·&nbsp;
+        <a href="../index.html#privacidade">Privacy</a> &nbsp;·&nbsp;
+        <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="../checkout.html">Piano PRO</a>
+      </p>
+      <p>© 2025 NODUS. Estensione per browser. I tuoi dati rimangono con te.</p>
+    </div>
+  </footer>
+
+  <!-- ACCORDION JS -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Highlight sidebar link no scroll
+    const sections = document.querySelectorAll('.faq-category');
+    const sideLinks = document.querySelectorAll('.sidebar-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          sideLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Cos'è NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS è un'estensione per browser che ti permette di salvare, organizzare e riutilizzare le risposte IA con un clic. Funziona con ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot e DeepSeek. Tutto viene archiviato localmente sul tuo dispositivo." } },
+      { "@type": "Question", "name": "Come si salva una conversazione di ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "Con NODUS installato, apri ChatGPT. I pulsanti NODUS compaiono accanto a ogni risposta. Clicca Salva per acquisire la domanda e la risposta, oppure clicca Rapido per salvare con un solo clic." } },
+      { "@type": "Question", "name": "Come si salva una conversazione di Claude?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS funziona nativamente su Claude.ai. I pulsanti di acquisizione compaiono accanto alle risposte automaticamente. Clicca Salva per acquisire la domanda e la risposta nella tua dashboard locale." } },
+      { "@type": "Question", "name": "NODUS invia i miei dati a qualche server?", "acceptedAnswer": { "@type": "Answer", "text": "No. NODUS non ha un server proprio che riceve le tue acquisizioni. Tutto viene archiviato nel local storage del tuo browser. Nessuna acquisizione lascia mai il tuo dispositivo." } },
+      { "@type": "Question", "name": "NODUS è gratuito?", "acceptedAnswer": { "@type": "Answer", "text": "Sì. Il piano gratuito include il salvataggio, l'organizzazione, la ricerca e l'esportazione delle acquisizioni senza limiti di tempo. È gratuito per sempre. Il piano PRO sblocca funzionalità avanzate." } },
+      { "@type": "Question", "name": "Quali browser sono supportati?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS funziona in Chrome, Firefox, Edge e Brave. Qualsiasi browser basato su Chromium è compatibile." } },
+      { "@type": "Question", "name": "Come si esporta una conversazione di ChatGPT in Word?", "acceptedAnswer": { "@type": "Answer", "text": "Apri la tua dashboard NODUS, seleziona l'acquisizione e clicca su Esporta → DOCX. Il file Word viene generato direttamente nel browser e salvato sul tuo computer." } },
+      { "@type": "Question", "name": "Cosa sono le Catene?", "acceptedAnswer": { "@type": "Answer", "text": "Le Catene ti permettono di collegare acquisizioni da conversazioni diverse in una sequenza logica, anche da piattaforme diverse. Puoi collegare acquisizioni di ChatGPT, Claude e Gemini in un'unica sequenza ed esportare tutto insieme." } },
+      { "@type": "Question", "name": "Cosa succede ai miei dati se disinstallo NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "Quando disinstalli l'estensione, il local storage viene eliminato dal browser. Fai prima un backup in Impostazioni → Esporta dati per scaricare tutte le tue acquisizioni come JSON." } },
+      { "@type": "Question", "name": "Con quali piattaforme IA funziona NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS supporta 7 piattaforme: ChatGPT, Claude, Gemini, Perplexity, Grok, Microsoft Copilot e DeepSeek." } }
+    ]
+  }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常见问题 — NODUS | 如何保存、导出和整理AI对话</title>
+  <meta name="description" content="关于NODUS的所有问题解答：如何从ChatGPT、Claude、Gemini等平台保存对话。导出、整理、隐私、套餐及更多内容。" />
+  <link rel="canonical" href="https://nodus-ai.app/zh/faq" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #0e1117;
+      --panel:  #1a1f29;
+      --border: #2d3748;
+      --yellow: #facc15;
+      --text:   #e2e8f0;
+      --sub:    #94a3b8;
+      --muted:  #475569;
+      --green:  #10b981;
+      --radius: 10px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta {
+      background: var(--yellow); color: #0e1117;
+      font-size: 13px; font-weight: 800;
+      padding: 7px 18px; border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ── HERO ── */
+    .faq-hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-hero-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 14px;
+    }
+    .faq-hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    }
+    .faq-hero p {
+      font-size: 17px; color: var(--sub); max-width: 560px; line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .faq-platforms {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .plat-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--sub);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .plat-badge:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── SIDEBAR + LAYOUT ── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 48px 0 80px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { display: none; }
+    }
+    .faq-sidebar {
+      position: sticky; top: 72px;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sidebar-links { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-link {
+      font-size: 13px; color: var(--sub);
+      padding: 6px 10px; border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-link:hover {
+      background: var(--panel); color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar-link.active { color: var(--yellow); background: rgba(250,204,21,0.06); }
+    .sidebar-count {
+      margin-left: auto; font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORIAS ── */
+    .faq-category { margin-bottom: 56px; }
+    .faq-category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-category-icon { font-size: 20px; }
+    .faq-category-title {
+      font-size: 19px; font-weight: 700; color: var(--text);
+    }
+    .faq-category-count {
+      font-size: 12px; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 99px;
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer;
+      font-size: 14px; font-weight: 600; color: var(--text);
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-q[aria-expanded="true"] { color: var(--yellow); }
+    .faq-chevron {
+      font-size: 16px; color: var(--muted);
+      transition: transform 0.3s; flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--yellow); }
+    .faq-a { display: none; padding: 0 0 18px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p {
+      font-size: 14px; color: var(--sub); line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text); }
+    .faq-a a { color: var(--yellow); }
+    .faq-a ul { margin: 8px 0 8px 20px; }
+    .faq-a li { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    .faq-a .page-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; font-size: 13px; font-weight: 600;
+      color: var(--yellow); border: 1px solid rgba(250,204,21,0.25);
+      padding: 5px 12px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .faq-a .page-link:hover {
+      background: rgba(250,204,21,0.08); text-decoration: none;
+    }
+
+    /* ── CTA BLOCO ── */
+    .faq-cta-block {
+      background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, rgba(16,185,129,0.04) 100%);
+      border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 16px; padding: 36px 40px;
+      text-align: center; margin: 0 0 56px;
+    }
+    .faq-cta-block h3 {
+      font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    }
+    .faq-cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow {
+      background: var(--yellow); color: #0e1117;
+      font-size: 14px; font-weight: 800;
+      padding: 10px 22px; border-radius: 8px;
+      transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost {
+      background: transparent; color: var(--sub);
+      font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--text); color: var(--text); text-decoration: none; }
+
+    /* ── GUIAS CLUSTER ── */
+    .cluster-section { margin: 0 0 56px; }
+    .cluster-section h3 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .cluster-section > p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .cluster-group { margin-bottom: 32px; }
+    .cluster-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
+    .cluster-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+    .cluster-link { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--sub); transition: border-color 0.2s, color 0.2s; }
+    .cluster-link:hover { border-color: var(--yellow); color: var(--text); text-decoration: none; }
+    .cluster-link-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--sub); }
+  </style>
+  <script>window._forcedLang='zh';</script>
+  <script src="/lang-switcher.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">★ NODUS</a>
+        <a href="../index.html" class="nav-back">← 返回网站</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">免费安装</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="container">
+      <div class="faq-hero-label">帮助中心</div>
+      <h1>常见<span style="color:var(--yellow)">问题</span></h1>
+      <p>关于如何保存、导出和整理AI对话的一切解答——无需账号、无需服务器、简单易用。</p>
+      <div class="faq-platforms">
+        <span class="plat-badge">ChatGPT</span>
+        <span class="plat-badge">Claude</span>
+        <span class="plat-badge">Gemini</span>
+        <span class="plat-badge">Perplexity</span>
+        <span class="plat-badge">Grok</span>
+        <span class="plat-badge">Copilot</span>
+        <span class="plat-badge">DeepSeek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="container-wide">
+    <div class="faq-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="faq-sidebar">
+        <div class="sidebar-label">分类</div>
+        <nav class="sidebar-links">
+          <a href="#comecar" class="sidebar-link">🚀 快速开始 <span class="sidebar-count">6</span></a>
+          <a href="#salvar" class="sidebar-link">💾 保存对话 <span class="sidebar-count">9</span></a>
+          <a href="#exportar" class="sidebar-link">📤 导出与下载 <span class="sidebar-count">7</span></a>
+          <a href="#organizar" class="sidebar-link">🗂️ 整理 <span class="sidebar-count">7</span></a>
+          <a href="#cadeias" class="sidebar-link">🔗 链条 <span class="sidebar-count">6</span></a>
+          <a href="#privacidade" class="sidebar-link">🔒 隐私 <span class="sidebar-count">7</span></a>
+          <a href="#planos" class="sidebar-link">💳 套餐与定价 <span class="sidebar-count">6</span></a>
+          <a href="#plataformas" class="sidebar-link">🌐 按平台 <span class="sidebar-count">6</span></a>
+        </nav>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- CTA topo -->
+        <div class="faq-cta-block">
+          <h3>还没有安装 NODUS？</h3>
+          <p>30秒内免费安装完成。支持 ChatGPT、Claude、Gemini 及另外4个平台。</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              安装到 Chrome
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+        <!-- ══ 1. 快速开始 ══ -->
+        <section class="faq-category" id="comecar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🚀</span>
+            <h2 class="faq-category-title">快速开始</h2>
+            <span class="faq-category-count">6 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 是什么？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS 是一款浏览器扩展，让你能够一键<strong>保存、整理和重用 AI 回复</strong>。支持 ChatGPT、Claude、Gemini、Perplexity、Grok、Copilot 和 DeepSeek。所有内容均存储在你的设备本地——无需账号、无需服务器、无强制订阅。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何安装 NODUS？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>安装不超过30秒：</p>
+              <ul>
+                <li><strong>Chrome / Edge / Brave：</strong>访问 Chrome 网上应用店，点击"添加至 Chrome"</li>
+                <li><strong>Firefox：</strong>访问 Mozilla 附加组件页面，点击"添加至 Firefox"</li>
+              </ul>
+              <p>安装后，打开任意支持的 AI 平台——NODUS 按钮将自动出现。</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">使用 NODUS 需要创建账号吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>不需要。</strong>NODUS 无需注册，无需邮箱，无需密码。安装后即可立即使用。你的数据保存在浏览器的本地存储中。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">支持哪些浏览器？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS 支持以下浏览器：</p>
+              <ul>
+                <li><strong>Chrome</strong>（88版本及以上）</li>
+                <li><strong>Firefox</strong>（109版本及以上）</li>
+                <li><strong>Edge</strong>（基于Chromium）</li>
+                <li><strong>Brave</strong> 及其他基于Chromium的浏览器</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">保存按钮是如何工作的？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>当你打开任意支持的平台时，NODUS 会在 AI 回复旁注入浮动按钮。点击<strong>保存</strong>可立即捕获问题和回复。点击<strong>快速</strong>可在不打开设置面板的情况下一键保存。点击<strong>仪表板</strong>可打开你的捕获记录仪表板。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 支持哪些 AI 平台？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS 目前支持 <strong>7 个平台</strong>：</p>
+              <ul>
+                <li>ChatGPT (chat.openai.com)</li>
+                <li>Claude (claude.ai)</li>
+                <li>Gemini (gemini.google.com)</li>
+                <li>Perplexity (perplexity.ai)</li>
+                <li>Grok (grok.com / x.com)</li>
+                <li>Microsoft Copilot (copilot.microsoft.com)</li>
+                <li>DeepSeek (chat.deepseek.com)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ 2. 保存对话 ══ -->
+        <section class="faq-category" id="salvar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💾</span>
+            <h2 class="faq-category-title">保存对话</h2>
+            <span class="faq-category-count">9 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何保存 ChatGPT 对话？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>安装 NODUS 后，正常打开 ChatGPT。每条回复旁会出现 NODUS 按钮。点击<strong>保存</strong>打开捕获面板，添加标签并选择目标队列——或点击<strong>快速</strong>一键保存，无需任何配置。</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-chatgpt.html">完整指南：保存 ChatGPT 对话 →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何保存 Claude 对话？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS 原生支持 Claude.ai。捕获按钮会自动出现在回复旁。点击<strong>保存</strong>可将问题和回复捕获至你的本地仪表板。同样适用于 Claude 项目和普通对话。</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-claude.html">完整指南：保存 Claude 对话 →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何保存 Gemini 对话？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>安装 NODUS 后访问 gemini.google.com。捕获按钮会出现在 Gemini 回复旁。点击<strong>保存</strong>可将对话与标签本地存储，与其他平台的整理方式相同。</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-gemini.html">完整指南：保存 Gemini 对话 →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何保存 Perplexity 回复？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS 会自动检测 Perplexity.ai 上的回复并注入捕获按钮。点击<strong>保存</strong>可连同引用来源一起记录回复。非常适合保存日后需要参考的研究内容。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何存档 Grok 回复？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS 同时支持 grok.com 和 x.com/grok。当你打开与 Grok 的对话时，捕获按钮会出现在回复旁。点击<strong>保存</strong>可将其存档至你的 NODUS 仪表板本地。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何保存 DeepSeek 回复？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS 原生支持 DeepSeek（chat.deepseek.com）。捕获按钮会出现在回复旁。点击<strong>保存</strong>可将问题和回复记录至你的本地仪表板。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">可以一次保存多条回复吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>每次捕获保存一对问题和回复。若要保存对话中的多条回复，请对每条想要的回复点击<strong>保存</strong>。然后使用<strong>链条</strong>将这些捕获连接成一个逻辑序列。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">什么是快速捕获？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>快速捕获（<strong>快速</strong>按钮）可直接将回复保存到默认队列，无需打开设置面板。非常适合在不中断对话流程的情况下快速记录内容。捕获内容会保存至仪表板，供日后整理。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何再也不丢失重要的 AI 回复？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>安装 NODUS，每当遇到有用的回复时就点击<strong>快速</strong>按钮——即使当时还不确定有何用处。养成在关闭标签前先捕获的习惯，可消除信息丢失的问题。你的仪表板会积累所有内容，全文搜索让你随时找到任意捕获记录。</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 3. 导出与下载 ══ -->
+        <section class="faq-category" id="exportar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">📤</span>
+            <h2 class="faq-category-title">导出与下载</h2>
+            <span class="faq-category-count">7 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何将 ChatGPT 对话导出为 Word？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>打开你的 NODUS 仪表板，选择所需的捕获记录，点击<strong>导出 → DOCX</strong>。Word 文件直接在浏览器中生成并保存到你的电脑。你可以通过链条将多条捕获连接起来，将所有内容一起导出为结构化文档。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何将 Claude 对话下载为 PDF？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS 支持导出为 <strong>HTML</strong> 格式，你可以直接从浏览器打印为 PDF（Ctrl+P → 保存为 PDF）。如需直接导出 PDF，建议先导出为 HTML，再使用浏览器的打印功能——效果排版精良。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">支持哪些导出格式？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS 支持以下格式导出：</p>
+              <ul>
+                <li><strong>TXT</strong> — 纯文本，兼容任意编辑器</li>
+                <li><strong>HTML</strong> — 格式化，可打印为 PDF</li>
+                <li><strong>DOCX</strong> — 兼容 Word、Google Docs 和 LibreOffice</li>
+              </ul>
+              <p>通过链条连接的捕获记录可作为单个文档一起导出。</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何提取我完整的 AI 对话历史？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>在 NODUS 仪表板中，前往<strong>设置 → 导出全部</strong>。这将生成包含所有捕获记录的 JSON 格式文件（可重新导入 NODUS），或者你也可以将每个队列分别导出为 DOCX 或 HTML。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何复制格式化的 ChatGPT 回复？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>在仪表板的卡片视图中，点击<strong>复制</strong>。内容将以保留 Markdown 格式复制——包括标题、列表、代码——可直接粘贴到任何支持 Markdown 的编辑器中。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">可以备份所有捕获记录吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>可以。在<strong>设置 → 导出数据</strong>中，下载包含所有捕获记录的 JSON 文件。该文件可在另一台电脑上重新导入 NODUS，或在重新安装扩展后使用。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何将 AI 对话整理成学习文档？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>使用<strong>链条</strong>将不同会话（甚至不同平台）中的相关捕获记录连接起来。然后将整条链条导出为 DOCX——结果是一个结构化文档，所有问题和回复按逻辑顺序排列。</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 4. 整理 ══ -->
+        <section class="faq-category" id="organizar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🗂️</span>
+            <h2 class="faq-category-title">整理</h2>
+            <span class="faq-category-count">7 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何使用标签整理捕获记录？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>保存捕获记录时，你可以添加最多4个标签对内容分类。标签会显示在仪表板卡片上，并作为筛选器——点击标签可只查看该类别的捕获记录。创建"后端"、"学习"、"想法"、"工作"等标签，或任何对你有意义的类别。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">什么是队列（快速、默认、Q1、Q2……）？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>队列是按上下文或优先级整理捕获记录的独立集合。<strong>快速队列</strong>用于快速捕获，无需分类。<strong>默认</strong>是通用队列。Q1–Q4 队列（PRO 套餐）可按主题、项目或客户自定义。每个队列在卡片上有不同的边框颜色。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何在捕获记录中搜索？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>在 NODUS 仪表板中，使用顶部的搜索栏。搜索<strong>实时</strong>生效，涵盖所有捕获记录的标题、问题和回复内容。结合平台或标签筛选器，可精准找到你想要的内容。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何按 AI 平台筛选捕获记录？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>在仪表板中，点击搜索栏下方的平台徽章。点击 <strong>ChatGPT</strong>、<strong>Claude</strong>、<strong>Gemini</strong> 或任意其他平台，可只查看来自该来源的捕获记录。再次点击可取消筛选。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何使用项目分隔不同上下文？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>项目（PRO 套餐）让你创建完全独立的空间——例如"工作"、"学习"和"个人"。每个项目有自己的队列和捕获记录。一键切换项目，内容互不混淆。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">保存后可以编辑捕获记录吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>可以。在仪表板中打开卡片并点击<strong>编辑</strong>。你可以修改标题、添加或删除标签，以及在队列之间移动捕获记录。原始内容（问题和回复）将被保留。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何找到几周前保存的 AI 回复？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>使用仪表板中的文字搜索——它涵盖所有捕获记录的完整内容，不只是标题。如果你记得回复中的任意关键词，直接输入即可。若知道来源平台（如 Claude），可结合平台筛选器一起使用。</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 5. 链条 ══ -->
+        <section class="faq-category" id="cadeias">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔗</span>
+            <h2 class="faq-category-title">链条</h2>
+            <span class="faq-category-count">6 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">什么是链条？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>链条让你能够将<strong>来自不同对话的捕获记录连接</strong>成逻辑序列。试想你在 ChatGPT 上研究了一个主题，在 Claude 上深入探讨，又在 Gemini 上找到了示例——链条将这三条捕获记录串联成一个连续的推理线索，即使来自不同平台也没有问题。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何创建链条？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>在仪表板的<strong>链条</strong>标签页中，点击"新建链条"。为链条命名，然后将现有捕获记录拖入所需顺序。你可以添加来自任意平台的捕获记录，并随时重新排列。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">可以在同一条链条中混合 ChatGPT 和 Claude 的捕获记录吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>可以</strong>——这正是链条的主要优势之一。你可以在单个序列中连接来自 ChatGPT、Claude、Gemini、Perplexity 及任意其他支持平台的捕获记录。每张卡片都保留其来源平台的标识。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如何导出链条？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>在仪表板中打开链条，点击<strong>导出</strong>。你可以将完整序列导出为 DOCX 或 HTML——结果是一个包含所有按顺序排列的问题和回复的结构化文档，非常适合报告、学习或文档编写。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">链条中的捕获记录数量限制是多少？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>免费套餐中，每条链条最多包含 <strong>5 条</strong>捕获记录。PRO 套餐的限制大幅提升，支持为复杂项目创建大型链条。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">将链条注入 AI 对话有什么用途？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>通过注入功能，你可以将链条的内容直接插入任意支持平台的提示框中。就像是将之前研究的完整上下文交给 AI——无需手动复制粘贴每条回复。</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 6. 隐私 ══ -->
+        <section class="faq-category" id="privacidade">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔒</span>
+            <h2 class="faq-category-title">隐私与安全</h2>
+            <span class="faq-category-count">7 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 会将我的数据发送到任何服务器吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>不会。</strong>NODUS 没有自己的服务器来接收你的捕获记录。所有内容均存储在你浏览器的本地存储中（chrome.storage.local / browser.storage.local）。任何捕获记录、标签或内容都不会离开你的设备。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 会在我不知情的情况下访问我的 AI 对话吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>不会。</strong>只有当你主动点击保存或快速按钮时，NODUS 才会读取页面内容。不存在自动捕获、被动监控或读取你未选择保存的对话。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">如果有人访问我的电脑，我的数据安全吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>捕获记录存储在你操作系统用户的浏览器配置文件中。如果你电脑上的用户配置文件受密码保护，捕获记录同样受到保护。NODUS 不提供额外加密——请使用操作系统的保护功能来确保物理安全。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 是开源的吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>是的。NODUS 核心代码以 MIT 许可证在 GitHub 上公开。任何人都可以审查代码，验证没有隐藏的数据收集行为。你无需相信我们的一面之词——请自行查看代码。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">卸载 NODUS 后我的数据会怎样？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>卸载扩展时，关联的本地存储会被浏览器删除。<strong>请提前备份：</strong>前往设置 → 导出数据，将所有捕获记录下载为 JSON 文件。重新安装后可将其重新导入。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 请求了哪些权限，为什么？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS 只请求运行所必需的权限：</p>
+              <ul>
+                <li><strong>读取 AI 页面</strong> — 用于检测回复并注入按钮</li>
+                <li><strong>本地存储</strong> — 用于在设备上保存捕获记录</li>
+                <li><strong>标签页访问</strong> — 用于识别当前所在平台</li>
+              </ul>
+              <p>不请求摄像头、麦克风、浏览历史或密码相关权限。</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 可以离线使用吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS 仪表板完全支持<strong>离线</strong>使用——你可以在没有网络连接的情况下访问、搜索和导出捕获记录。捕获新对话需要网络连接，因为 AI 平台本身需要在线访问。</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 7. 套餐与定价 ══ -->
+        <section class="faq-category" id="planos">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💳</span>
+            <h2 class="faq-category-title">套餐与定价</h2>
+            <span class="faq-category-count">6 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 是免费的吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>是的。免费套餐包含无时间限制的保存、整理、搜索和导出功能。永久免费——不是试用期。PRO 套餐为希望进一步使用的用户解锁高级功能。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">免费套餐包含什么？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>无限对话捕获（ChatGPT、Claude、Gemini 及另外4个平台）</li>
+                <li>统一仪表板，支持搜索和筛选</li>
+                <li>标签和快速队列</li>
+                <li>最多包含5条捕获记录的链条</li>
+                <li>TXT、HTML 和 DOCX 格式导出</li>
+                <li>1个额外队列（Q1）</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">PRO 套餐新增了什么？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>3个额外队列（Q2、Q3、Q4），用于高级整理</li>
+                <li>项目——按上下文分隔的独立空间</li>
+                <li>无限链条大小</li>
+                <li>链条注入 AI 对话</li>
+                <li>优先支持</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">PRO 是订阅制还是一次性购买？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>PRO 套餐提供<strong>一次性购买</strong>、终身使用的方式。无月费订阅、无自动续费、账单无意外。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">可以在多台电脑上使用 PRO 吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>可以。PRO 许可证与你的许可账户绑定，而非设备。你可以使用同一许可证密钥在任意多台电脑上激活 PRO。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">有退款政策吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>有。我们提供购买后 <strong>7天</strong>内的退款，无需说明原因。请通过支持邮件联系我们并提供订单号。</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 8. 按平台 ══ -->
+        <section class="faq-category" id="plataformas">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🌐</span>
+            <h2 class="faq-category-title">按平台</h2>
+            <span class="faq-category-count">6 个问题</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 支持非英语的 ChatGPT 对话吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>支持。NODUS 可捕获任意语言的对话——英语、中文、葡萄牙语、西班牙语或其他任何语言。对话语言不影响捕获按钮的工作方式。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">支持 Claude Sonnet 和 Claude Opus 吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>支持。NODUS 适用于 claude.ai 上所有可用的 Claude 版本，包括 Sonnet、Haiku 和 Opus。对话中使用的模型不影响捕获功能。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 支持 Gemini Advanced 吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>支持。NODUS 可捕获 gemini.google.com 上所有可用版本的 Gemini 回复，包括 Gemini Advanced。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">支持 Microsoft Copilot 吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>支持。NODUS 支持 copilot.microsoft.com 上的 Microsoft Copilot。捕获按钮会自动出现在回复旁。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">是否计划增加更多平台？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>是的。NODUS 正在积极开发中，新平台会根据需求陆续添加。常被请求的平台包括 Poe、Pi 等。请关注 GitHub 上的更新动态。</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS 可以捕获 AI 生成的图像（DALL·E、Midjourney）吗？ <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS 可捕获在支持平台回复中出现的生成图像（例如 ChatGPT 通过 DALL·E 生成的图像）。目前不支持 Midjourney 等专用图像平台。</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 各平台详细指南 ══ -->
+        <div class="cluster-section">
+          <h3>各平台详细指南</h3>
+          <p>针对每个 AI 平台和每种使用场景的分步操作说明。</p>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">如何保存对话</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-salvar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">如何导出对话</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">如何保存回复</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-guardar-respostas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">完整指南</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../salvar-conversas-ia.html" style="border-color:rgba(250,204,21,0.3);"><span class="cluster-link-dot" style="background:#facc15;"></span>如何保存 AI 对话——核心指南</a>
+            </div>
+          </div>
+
+          <div class="cluster-group" style="margin-bottom:0;">
+            <div class="cluster-group-title">其他指南</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-historico-ia-word.html"><span class="cluster-link-dot" style="background:#facc15;"></span>导出到 Word</a>
+              <a class="cluster-link" href="../faq/como-baixar-historico-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>下载 AI 历史记录</a>
+              <a class="cluster-link" href="../faq/como-organizar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>整理对话</a>
+              <a class="cluster-link" href="../faq/como-nao-perder-resposta-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>再也不丢失回复</a>
+              <a class="cluster-link" href="../faq/extensao-salvar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>保存对话的扩展</a>
+              <a class="cluster-link" href="../faq/como-pesquisar-historico-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>搜索 AI 历史记录</a>
+              <a class="cluster-link" href="../faq/como-fazer-backup-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>备份对话</a>
+              <a class="cluster-link" href="../faq/recuperar-historico-chatgpt.html"><span class="cluster-link-dot" style="background:#facc15;"></span>ChatGPT 历史记录消失了</a>
+              <a class="cluster-link" href="../faq/como-anotar-respostas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>为 AI 回复添加注释</a>
+              <a class="cluster-link" href="../faq/como-usar-nodus.html"><span class="cluster-link-dot" style="background:#facc15;"></span>如何使用 NODUS</a>
+              <a class="cluster-link" href="../faq/nodus-vs-historico-nativo-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>NODUS 与原生历史记录对比</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA fundo -->
+        <div class="faq-cta-block" style="margin-top:8px;">
+          <h3>准备好开始了吗？</h3>
+          <p>免费安装，在不到1分钟内保存你的下一条 AI 对话。支持 ChatGPT、Claude、Gemini、Perplexity、Grok、Copilot 和 DeepSeek。</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              安装到 Chrome — 免费
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:8px;">
+        <a href="../index.html">★ NODUS</a> &nbsp;·&nbsp;
+        <a href="../index.html#privacidade">隐私</a> &nbsp;·&nbsp;
+        <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="../checkout.html">PRO 套餐</a>
+      </p>
+      <p>© 2025 NODUS. 浏览器扩展。你的数据由你掌控。</p>
+    </div>
+  </footer>
+
+  <!-- ACCORDION JS -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Highlight sidebar link no scroll
+    const sections = document.querySelectorAll('.faq-category');
+    const sideLinks = document.querySelectorAll('.sidebar-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          sideLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "NODUS 是什么？", "acceptedAnswer": { "@type": "Answer", "text": "NODUS 是一款浏览器扩展，让你能够一键保存、整理和重用 AI 回复。支持 ChatGPT、Claude、Gemini、Perplexity、Grok、Copilot 和 DeepSeek。所有内容均存储在你的设备本地。" } },
+      { "@type": "Question", "name": "如何保存 ChatGPT 对话？", "acceptedAnswer": { "@type": "Answer", "text": "安装 NODUS 后，打开 ChatGPT。每条回复旁会出现 NODUS 按钮。点击保存可捕获问题和回复，或点击快速一键保存。" } },
+      { "@type": "Question", "name": "如何保存 Claude 对话？", "acceptedAnswer": { "@type": "Answer", "text": "NODUS 原生支持 Claude.ai。捕获按钮会自动出现在回复旁。点击保存可将问题和回复捕获至你的本地仪表板。" } },
+      { "@type": "Question", "name": "NODUS 会将我的数据发送到任何服务器吗？", "acceptedAnswer": { "@type": "Answer", "text": "不会。NODUS 没有自己的服务器来接收你的捕获记录。所有内容均存储在你浏览器的本地存储中。任何捕获记录都不会离开你的设备。" } },
+      { "@type": "Question", "name": "NODUS 是免费的吗？", "acceptedAnswer": { "@type": "Answer", "text": "是的。免费套餐包含无时间限制的保存、整理、搜索和导出功能。永久免费。PRO 套餐解锁高级功能。" } },
+      { "@type": "Question", "name": "支持哪些浏览器？", "acceptedAnswer": { "@type": "Answer", "text": "NODUS 支持 Chrome、Firefox、Edge 和 Brave。所有基于 Chromium 的浏览器均兼容。" } },
+      { "@type": "Question", "name": "如何将 ChatGPT 对话导出为 Word？", "acceptedAnswer": { "@type": "Answer", "text": "打开你的 NODUS 仪表板，选择捕获记录，点击导出 → DOCX。Word 文件直接在浏览器中生成并保存到你的电脑。" } },
+      { "@type": "Question", "name": "什么是链条？", "acceptedAnswer": { "@type": "Answer", "text": "链条让你能够将来自不同对话的捕获记录连接成逻辑序列，即使来自不同平台也没有问题。你可以将 ChatGPT、Claude 和 Gemini 的捕获记录连接在单个序列中并一起导出。" } },
+      { "@type": "Question", "name": "卸载 NODUS 后我的数据会怎样？", "acceptedAnswer": { "@type": "Answer", "text": "卸载扩展时，本地存储会被浏览器删除。请提前在设置 → 导出数据中将所有捕获记录下载为 JSON 文件进行备份。" } },
+      { "@type": "Question", "name": "NODUS 支持哪些 AI 平台？", "acceptedAnswer": { "@type": "Answer", "text": "NODUS 支持7个平台：ChatGPT、Claude、Gemini、Perplexity、Grok、Microsoft Copilot 和 DeepSeek。" } }
+    ]
+  }
+  </script>
+
+</body>
+</html>

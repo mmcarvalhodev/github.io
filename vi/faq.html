@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Câu hỏi thường gặp — NODUS | Cách lưu, xuất và tổ chức hội thoại AI</title>
+  <meta name="description" content="Tất cả câu hỏi về NODUS được giải đáp: cách lưu hội thoại từ ChatGPT, Claude, Gemini và nhiều hơn nữa. Xuất, tổ chức, quyền riêng tư, gói dịch vụ và nhiều thông tin khác." />
+  <link rel="canonical" href="https://nodus-ai.app/vi/faq" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #0e1117;
+      --panel:  #1a1f29;
+      --border: #2d3748;
+      --yellow: #facc15;
+      --text:   #e2e8f0;
+      --sub:    #94a3b8;
+      --muted:  #475569;
+      --green:  #10b981;
+      --radius: 10px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta {
+      background: var(--yellow); color: #0e1117;
+      font-size: 13px; font-weight: 800;
+      padding: 7px 18px; border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ── HERO ── */
+    .faq-hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-hero-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 14px;
+    }
+    .faq-hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    }
+    .faq-hero p {
+      font-size: 17px; color: var(--sub); max-width: 560px; line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .faq-platforms {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .plat-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--sub);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .plat-badge:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── SIDEBAR + LAYOUT ── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 48px 0 80px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { display: none; }
+    }
+    .faq-sidebar {
+      position: sticky; top: 72px;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sidebar-links { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-link {
+      font-size: 13px; color: var(--sub);
+      padding: 6px 10px; border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-link:hover {
+      background: var(--panel); color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar-link.active { color: var(--yellow); background: rgba(250,204,21,0.06); }
+    .sidebar-count {
+      margin-left: auto; font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORIAS ── */
+    .faq-category { margin-bottom: 56px; }
+    .faq-category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-category-icon { font-size: 20px; }
+    .faq-category-title {
+      font-size: 19px; font-weight: 700; color: var(--text);
+    }
+    .faq-category-count {
+      font-size: 12px; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 99px;
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer;
+      font-size: 14px; font-weight: 600; color: var(--text);
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-q[aria-expanded="true"] { color: var(--yellow); }
+    .faq-chevron {
+      font-size: 16px; color: var(--muted);
+      transition: transform 0.3s; flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--yellow); }
+    .faq-a { display: none; padding: 0 0 18px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p {
+      font-size: 14px; color: var(--sub); line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text); }
+    .faq-a a { color: var(--yellow); }
+    .faq-a ul { margin: 8px 0 8px 20px; }
+    .faq-a li { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    .faq-a .page-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; font-size: 13px; font-weight: 600;
+      color: var(--yellow); border: 1px solid rgba(250,204,21,0.25);
+      padding: 5px 12px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .faq-a .page-link:hover {
+      background: rgba(250,204,21,0.08); text-decoration: none;
+    }
+
+    /* ── CTA BLOCO ── */
+    .faq-cta-block {
+      background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, rgba(16,185,129,0.04) 100%);
+      border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 16px; padding: 36px 40px;
+      text-align: center; margin: 0 0 56px;
+    }
+    .faq-cta-block h3 {
+      font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    }
+    .faq-cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow {
+      background: var(--yellow); color: #0e1117;
+      font-size: 14px; font-weight: 800;
+      padding: 10px 22px; border-radius: 8px;
+      transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost {
+      background: transparent; color: var(--sub);
+      font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--text); color: var(--text); text-decoration: none; }
+
+    /* ── GUIAS CLUSTER ── */
+    .cluster-section { margin: 0 0 56px; }
+    .cluster-section h3 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .cluster-section > p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .cluster-group { margin-bottom: 32px; }
+    .cluster-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
+    .cluster-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+    .cluster-link { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--sub); transition: border-color 0.2s, color 0.2s; }
+    .cluster-link:hover { border-color: var(--yellow); color: var(--text); text-decoration: none; }
+    .cluster-link-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--sub); }
+  </style>
+  <script>window._forcedLang='vi';</script>
+  <script src="/lang-switcher.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">★ NODUS</a>
+        <a href="../index.html" class="nav-back">← Quay lại trang</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Cài đặt miễn phí</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="container">
+      <div class="faq-hero-label">Trung tâm trợ giúp</div>
+      <h1>Câu hỏi <span style="color:var(--yellow)">thường gặp</span></h1>
+      <p>Tất cả về cách lưu, xuất và tổ chức hội thoại AI của bạn — không cần tài khoản, không cần máy chủ, không phức tạp.</p>
+      <div class="faq-platforms">
+        <span class="plat-badge">ChatGPT</span>
+        <span class="plat-badge">Claude</span>
+        <span class="plat-badge">Gemini</span>
+        <span class="plat-badge">Perplexity</span>
+        <span class="plat-badge">Grok</span>
+        <span class="plat-badge">Copilot</span>
+        <span class="plat-badge">DeepSeek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="container-wide">
+    <div class="faq-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="faq-sidebar">
+        <div class="sidebar-label">Danh mục</div>
+        <nav class="sidebar-links">
+          <a href="#comecar" class="sidebar-link">🚀 Bắt đầu <span class="sidebar-count">6</span></a>
+          <a href="#salvar" class="sidebar-link">💾 Lưu hội thoại <span class="sidebar-count">9</span></a>
+          <a href="#exportar" class="sidebar-link">📤 Xuất &amp; tải xuống <span class="sidebar-count">7</span></a>
+          <a href="#organizar" class="sidebar-link">🗂️ Tổ chức <span class="sidebar-count">7</span></a>
+          <a href="#cadeias" class="sidebar-link">🔗 Chuỗi <span class="sidebar-count">6</span></a>
+          <a href="#privacidade" class="sidebar-link">🔒 Quyền riêng tư <span class="sidebar-count">7</span></a>
+          <a href="#planos" class="sidebar-link">💳 Gói &amp; giá <span class="sidebar-count">6</span></a>
+          <a href="#plataformas" class="sidebar-link">🌐 Theo nền tảng <span class="sidebar-count">6</span></a>
+        </nav>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- CTA topo -->
+        <div class="faq-cta-block">
+          <h3>Bạn chưa có NODUS?</h3>
+          <p>Cài đặt miễn phí trong 30 giây. Hoạt động với ChatGPT, Claude, Gemini và 4 nền tảng khác.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Cài đặt trên Chrome
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+        <!-- ══ 1. BẮT ĐẦU ══ -->
+        <section class="faq-category" id="comecar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🚀</span>
+            <h2 class="faq-category-title">Bắt đầu</h2>
+            <span class="faq-category-count">6 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS là gì? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS là tiện ích mở rộng trình duyệt cho phép bạn <strong>lưu, tổ chức và tái sử dụng các phản hồi AI</strong> chỉ với một cú nhấp. Hoạt động với ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot và DeepSeek. Tất cả được lưu trữ cục bộ trên thiết bị của bạn — không cần tài khoản, không cần máy chủ, không cần đăng ký bắt buộc.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để cài đặt NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Cài đặt mất chưa đến 30 giây:</p>
+              <ul>
+                <li><strong>Chrome / Edge / Brave:</strong> truy cập Chrome Web Store và nhấp "Thêm vào Chrome"</li>
+                <li><strong>Firefox:</strong> truy cập Mozilla Add-ons và nhấp "Thêm vào Firefox"</li>
+              </ul>
+              <p>Sau khi cài đặt, mở bất kỳ nền tảng AI nào được hỗ trợ — các nút NODUS xuất hiện tự động.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tôi có cần tạo tài khoản để dùng NODUS không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Không.</strong> NODUS hoạt động mà không cần đăng ký, không cần email, không cần mật khẩu. Cài đặt xong là dùng ngay. Dữ liệu của bạn được lưu trong bộ nhớ cục bộ của trình duyệt.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Những trình duyệt nào được hỗ trợ? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS hoạt động trên:</p>
+              <ul>
+                <li><strong>Chrome</strong> (phiên bản 88 trở lên)</li>
+                <li><strong>Firefox</strong> (phiên bản 109 trở lên)</li>
+                <li><strong>Edge</strong> (dựa trên Chromium)</li>
+                <li><strong>Brave</strong> và các trình duyệt Chromium khác</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Nút lưu hoạt động như thế nào? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Khi bạn mở bất kỳ nền tảng nào được hỗ trợ, NODUS chèn các nút nổi bên cạnh các phản hồi AI. Nhấp <strong>Save</strong> để ghi lại câu hỏi và phản hồi ngay lập tức. Nhấp <strong>Quick</strong> để lưu mà không mở bảng cài đặt. Nhấp <strong>Dash</strong> để mở bảng điều khiển các bản ghi của bạn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS hoạt động với những nền tảng AI nào? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS hiện hỗ trợ <strong>7 nền tảng</strong>:</p>
+              <ul>
+                <li>ChatGPT (chat.openai.com)</li>
+                <li>Claude (claude.ai)</li>
+                <li>Gemini (gemini.google.com)</li>
+                <li>Perplexity (perplexity.ai)</li>
+                <li>Grok (grok.com / x.com)</li>
+                <li>Microsoft Copilot (copilot.microsoft.com)</li>
+                <li>DeepSeek (chat.deepseek.com)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ 2. LƯU HỘI THOẠI ══ -->
+        <section class="faq-category" id="salvar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💾</span>
+            <h2 class="faq-category-title">Lưu hội thoại</h2>
+            <span class="faq-category-count">9 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để lưu một hội thoại ChatGPT? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Với NODUS đã cài đặt, mở ChatGPT bình thường. Các nút NODUS xuất hiện bên cạnh mỗi phản hồi. Nhấp <strong>Save</strong> để mở bảng ghi lại, thêm thẻ và chọn hàng đợi đích — hoặc nhấp <strong>Quick</strong> để lưu chỉ với một cú nhấp mà không cần cấu hình gì thêm.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-chatgpt.html">Hướng dẫn đầy đủ: lưu hội thoại ChatGPT →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để lưu một hội thoại Claude? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS hoạt động tự nhiên trên Claude.ai. Các nút ghi lại xuất hiện bên cạnh phản hồi một cách tự động. Nhấp <strong>Save</strong> để ghi lại câu hỏi và phản hồi vào bảng điều khiển cục bộ của bạn. Hoạt động với cả dự án Claude và các hội thoại thông thường.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-claude.html">Hướng dẫn đầy đủ: lưu hội thoại Claude →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để lưu một hội thoại Gemini? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Cài đặt NODUS và truy cập gemini.google.com. Các nút ghi lại xuất hiện bên cạnh phản hồi của Gemini. Nhấp <strong>Save</strong> để lưu hội thoại cục bộ, với các thẻ và tổ chức tương tự như các nền tảng khác.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-gemini.html">Hướng dẫn đầy đủ: lưu hội thoại Gemini →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để lưu một phản hồi Perplexity? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS tự động nhận diện các phản hồi trên Perplexity.ai và chèn các nút ghi lại. Nhấp <strong>Save</strong> để ghi lại phản hồi cùng với các nguồn trích dẫn. Lý tưởng cho các nghiên cứu mà bạn muốn tham khảo sau này.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để lưu trữ phản hồi Grok? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS hoạt động trên cả grok.com và x.com/grok. Khi bạn mở hội thoại với Grok, các nút ghi lại xuất hiện bên cạnh các phản hồi. Nhấp <strong>Save</strong> để lưu trữ cục bộ vào bảng điều khiển NODUS của bạn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để lưu phản hồi DeepSeek? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS hỗ trợ DeepSeek (chat.deepseek.com) một cách tự nhiên. Các nút ghi lại xuất hiện bên cạnh các phản hồi. Nhấp <strong>Save</strong> để ghi lại câu hỏi và phản hồi vào bảng điều khiển cục bộ của bạn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tôi có thể lưu nhiều phản hồi cùng một lúc không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Mỗi lần ghi lại sẽ lưu một câu hỏi và một phản hồi. Để lưu nhiều phản hồi từ một hội thoại, nhấp <strong>Save</strong> trên từng phản hồi bạn muốn. Sau đó dùng <strong>Chuỗi</strong> để kết nối các bản ghi đó thành một chuỗi logic.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Quick Capture là gì? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Quick Capture (nút <strong>Quick</strong>) lưu phản hồi trực tiếp vào hàng đợi mặc định mà không mở bảng cài đặt. Lý tưởng khi bạn muốn ghi lại nội dung nhanh mà không làm gián đoạn luồng hội thoại. Bản ghi sẽ có trong bảng điều khiển để bạn tổ chức sau.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để không bao giờ mất đi một phản hồi AI quan trọng? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Cài đặt NODUS và dùng nút <strong>Quick</strong> bất cứ khi nào một phản hồi có vẻ hữu ích — dù bạn chưa chắc để làm gì. Thói quen ghi lại trước khi đóng tab giúp loại bỏ việc mất thông tin. Bảng điều khiển của bạn tích lũy tất cả và tìm kiếm toàn văn cho phép bạn tìm lại bất kỳ bản ghi nào sau này.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 3. XUẤT & TẢI XUỐNG ══ -->
+        <section class="faq-category" id="exportar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">📤</span>
+            <h2 class="faq-category-title">Xuất &amp; tải xuống</h2>
+            <span class="faq-category-count">7 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để xuất hội thoại ChatGPT sang Word? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Mở bảng điều khiển NODUS, chọn bản ghi mong muốn và nhấp <strong>Export → DOCX</strong>. File Word được tạo trực tiếp trong trình duyệt của bạn và lưu vào máy tính. Bạn có thể kết nối nhiều bản ghi bằng Chuỗi và xuất tất cả cùng nhau thành một tài liệu có cấu trúc.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để tải xuống hội thoại Claude dưới dạng PDF? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS xuất sang <strong>HTML</strong>, mà bạn có thể in thành PDF trực tiếp từ trình duyệt (Ctrl+P → Lưu dưới dạng PDF). Để xuất PDF trực tiếp, chúng tôi khuyến nghị xuất dưới dạng HTML và sử dụng chức năng in của trình duyệt — kết quả được định dạng tốt.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Những định dạng xuất nào được hỗ trợ? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS hỗ trợ xuất dưới dạng:</p>
+              <ul>
+                <li><strong>TXT</strong> — văn bản thuần, tương thích với mọi trình soạn thảo</li>
+                <li><strong>HTML</strong> — được định dạng, có thể in thành PDF</li>
+                <li><strong>DOCX</strong> — tương thích với Word, Google Docs và LibreOffice</li>
+              </ul>
+              <p>Các bản ghi được kết chuỗi (Chuỗi) có thể được xuất cùng nhau thành một tài liệu duy nhất.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để trích xuất toàn bộ lịch sử hội thoại AI của tôi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Trong bảng điều khiển NODUS, vào <strong>Cài đặt → Xuất tất cả</strong>. Thao tác này tạo ra một file với tất cả các bản ghi của bạn ở định dạng JSON (để nhập lại vào NODUS), hoặc bạn có thể xuất từng hàng đợi riêng lẻ dưới dạng DOCX hoặc HTML.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để sao chép một phản hồi ChatGPT có định dạng? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Trong chế độ xem thẻ ở bảng điều khiển, nhấp <strong>Sao chép</strong>. Nội dung được sao chép với định dạng Markdown được giữ nguyên — tiêu đề, danh sách, mã — sẵn sàng để dán vào bất kỳ trình soạn thảo nào hỗ trợ Markdown.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tôi có thể sao lưu tất cả các bản ghi của mình không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. Trong <strong>Cài đặt → Xuất dữ liệu</strong>, bạn tải xuống một file JSON với tất cả các bản ghi. File này có thể được nhập lại vào NODUS trên máy tính khác hoặc sau khi cài đặt lại tiện ích.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để tổ chức hội thoại AI thành một tài liệu học tập? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Dùng <strong>Chuỗi</strong> để kết nối các bản ghi liên quan từ các phiên khác nhau (thậm chí từ các nền tảng khác nhau). Sau đó xuất toàn bộ chuỗi dưới dạng DOCX — kết quả là một tài liệu có cấu trúc với tất cả câu hỏi và phản hồi được sắp xếp theo thứ tự logic.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 4. TỔ CHỨC ══ -->
+        <section class="faq-category" id="organizar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🗂️</span>
+            <h2 class="faq-category-title">Tổ chức</h2>
+            <span class="faq-category-count">7 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để dùng thẻ để tổ chức các bản ghi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Khi lưu một bản ghi, bạn có thể thêm tối đa 4 thẻ để phân loại nội dung. Thẻ xuất hiện trên các thẻ bảng điều khiển và hoạt động như bộ lọc — nhấp vào thẻ để chỉ xem các bản ghi thuộc danh mục đó. Tạo các thẻ như "backend", "học tập", "ý tưởng", "công việc" hoặc bất kỳ danh mục nào phù hợp với bạn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Các hàng đợi (Quick, Default, Q1, Q2...) là gì? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Hàng đợi là các bộ sưu tập riêng biệt để tổ chức các bản ghi theo ngữ cảnh hoặc mức độ ưu tiên. <strong>Quick Queue</strong> dành cho các bản ghi nhanh, không cần phân loại. <strong>Default</strong> là hàng đợi chung. Hàng đợi Q1–Q4 (gói PRO) có thể tùy chỉnh theo chủ đề, dự án hoặc khách hàng. Mỗi hàng đợi có màu viền khác nhau trên thẻ.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để tìm kiếm trong các bản ghi của tôi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Trong bảng điều khiển NODUS, dùng thanh tìm kiếm ở trên cùng. Tìm kiếm hoạt động <strong>theo thời gian thực</strong> và bao gồm tiêu đề, câu hỏi và phản hồi của tất cả các bản ghi. Kết hợp tìm kiếm với bộ lọc nền tảng hoặc thẻ để tìm chính xác những gì bạn cần.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để lọc bản ghi theo nền tảng AI? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Trong bảng điều khiển, nhấp vào các huy hiệu nền tảng bên dưới thanh tìm kiếm. Nhấp <strong>ChatGPT</strong>, <strong>Claude</strong>, <strong>Gemini</strong> hoặc bất kỳ nền tảng nào khác để chỉ xem các bản ghi từ nguồn đó. Nhấp lại để bỏ bộ lọc.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để dùng Dự án để phân tách các ngữ cảnh khác nhau? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Dự án (gói PRO) cho phép bạn tạo các không gian hoàn toàn riêng biệt — ví dụ: "Công việc", "Học tập" và "Cá nhân". Mỗi dự án có các hàng đợi và bản ghi riêng. Chuyển đổi giữa các dự án chỉ với một cú nhấp mà không trộn lẫn các nội dung khác nhau.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tôi có thể chỉnh sửa bản ghi sau khi lưu không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. Mở thẻ trong bảng điều khiển và nhấp <strong>Chỉnh sửa</strong>. Bạn có thể thay đổi tiêu đề, thêm hoặc xóa thẻ và di chuyển bản ghi giữa các hàng đợi. Nội dung gốc (câu hỏi và phản hồi) được giữ nguyên.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để tìm một phản hồi AI tôi đã lưu vài tuần trước? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Dùng tìm kiếm văn bản trong bảng điều khiển — nó bao gồm toàn bộ nội dung của tất cả các bản ghi, không chỉ tiêu đề. Nếu bạn nhớ bất kỳ từ khóa nào trong phản hồi, chỉ cần gõ vào. Kết hợp với bộ lọc nền tảng (ví dụ: Claude) nếu bạn biết nguồn gốc của nó.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 5. CHUỖI ══ -->
+        <section class="faq-category" id="cadeias">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔗</span>
+            <h2 class="faq-category-title">Chuỗi</h2>
+            <span class="faq-category-count">6 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Chuỗi là gì? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Chuỗi cho phép bạn <strong>kết nối các bản ghi từ các hội thoại khác nhau</strong> thành một chuỗi logic. Hãy tưởng tượng bạn đã nghiên cứu một chủ đề trên ChatGPT, sau đó tìm hiểu sâu hơn trên Claude và tìm ví dụ trên Gemini — một Chuỗi liên kết ba bản ghi đó thành một luồng suy luận liên tục, dù đến từ các nền tảng khác nhau.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để tạo một Chuỗi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Trong tab <strong>Chuỗi</strong> của bảng điều khiển, nhấp "Chuỗi mới". Đặt tên cho chuỗi và thêm các bản ghi hiện có bằng cách kéo chúng vào thứ tự mong muốn. Bạn có thể thêm bản ghi từ bất kỳ nền tảng nào và sắp xếp lại bất kỳ lúc nào.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tôi có thể trộn bản ghi từ ChatGPT và Claude trong cùng một Chuỗi không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Có</strong> — đó là một trong những lợi thế chính của Chuỗi. Bạn có thể kết nối các bản ghi từ ChatGPT, Claude, Gemini, Perplexity và bất kỳ nền tảng nào được hỗ trợ khác trong một chuỗi duy nhất. Mỗi thẻ vẫn giữ nguyên nhận dạng nền tảng nguồn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Làm thế nào để xuất một Chuỗi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Mở Chuỗi trong bảng điều khiển và nhấp <strong>Xuất</strong>. Bạn có thể xuất toàn bộ chuỗi dưới dạng DOCX hoặc HTML — kết quả là một tài liệu có cấu trúc với tất cả câu hỏi và phản hồi theo thứ tự, lý tưởng cho báo cáo, nghiên cứu hoặc tài liệu.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Giới hạn số bản ghi trong một Chuỗi là bao nhiêu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Với gói miễn phí, mỗi Chuỗi có thể có tối đa <strong>5 bản ghi</strong>. Với gói PRO, giới hạn cao hơn đáng kể, cho phép tạo các chuỗi mở rộng cho các dự án phức tạp.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Mục đích của việc chèn một Chuỗi vào hội thoại AI là gì? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Với tính năng chèn, bạn có thể đưa nội dung của một Chuỗi trực tiếp vào trường nhập liệu của bất kỳ nền tảng nào được hỗ trợ. Giống như việc cung cấp cho AI toàn bộ ngữ cảnh của các nghiên cứu trước đó — mà không cần sao chép và dán thủ công từng phản hồi.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 6. QUYỀN RIÊNG TƯ ══ -->
+        <section class="faq-category" id="privacidade">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔒</span>
+            <h2 class="faq-category-title">Quyền riêng tư &amp; bảo mật</h2>
+            <span class="faq-category-count">7 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có gửi dữ liệu của tôi đến bất kỳ máy chủ nào không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Không.</strong> NODUS không có máy chủ riêng để nhận các bản ghi của bạn. Tất cả được lưu trữ trong bộ nhớ cục bộ của trình duyệt (chrome.storage.local / browser.storage.local). Không có bản ghi, thẻ hay nội dung nào rời khỏi thiết bị của bạn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có truy cập hội thoại AI của tôi mà không có sự đồng ý không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Không.</strong> NODUS chỉ đọc nội dung trang khi bạn chủ động nhấp Save hoặc Quick. Không có tính năng ghi lại tự động, giám sát thụ động hoặc đọc các hội thoại mà bạn chưa chọn lưu.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Dữ liệu của tôi có an toàn nếu ai đó truy cập máy tính của tôi không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Các bản ghi được lưu trong hồ sơ trình duyệt của người dùng hệ điều hành của bạn. Nếu hồ sơ người dùng trên máy tính được bảo vệ bằng mật khẩu, các bản ghi cũng được bảo vệ tương tự. NODUS không thêm mã hóa bổ sung — hãy sử dụng các biện pháp bảo vệ của hệ điều hành để đảm bảo an toàn vật lý.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có mã nguồn mở không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. Lõi NODUS có sẵn trên GitHub theo giấy phép MIT. Bất kỳ ai cũng có thể kiểm tra mã nguồn và xác minh rằng không có thu thập dữ liệu ẩn. Bạn không cần tin vào lời chúng tôi — hãy xem mã nguồn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Điều gì xảy ra với dữ liệu của tôi nếu tôi gỡ cài đặt NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Khi bạn gỡ cài đặt tiện ích, bộ nhớ cục bộ liên kết sẽ bị trình duyệt xóa. <strong>Hãy sao lưu trước:</strong> vào Cài đặt → Xuất dữ liệu để tải xuống tất cả các bản ghi dưới dạng JSON. Bạn có thể nhập lại sau khi cài đặt lại.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS yêu cầu những quyền nào và tại sao? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS chỉ yêu cầu những quyền cần thiết để hoạt động:</p>
+              <ul>
+                <li><strong>Đọc trang AI</strong> — để phát hiện phản hồi và chèn các nút</li>
+                <li><strong>Bộ nhớ cục bộ</strong> — để lưu các bản ghi trên thiết bị</li>
+                <li><strong>Truy cập tab</strong> — để biết bạn đang ở nền tảng nào</li>
+              </ul>
+              <p>Không có quyền nào về camera, microphone, lịch sử duyệt web hoặc mật khẩu được yêu cầu.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có hoạt động offline không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Bảng điều khiển NODUS hoạt động hoàn toàn <strong>offline</strong> — bạn có thể truy cập, tìm kiếm và xuất các bản ghi mà không cần kết nối internet. Việc ghi lại các hội thoại mới yêu cầu kết nối vì bản thân các nền tảng AI cần có thể truy cập được.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 7. GÓI & GIÁ ══ -->
+        <section class="faq-category" id="planos">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💳</span>
+            <h2 class="faq-category-title">Gói &amp; giá</h2>
+            <span class="faq-category-count">6 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có miễn phí không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. Gói miễn phí bao gồm lưu, tổ chức, tìm kiếm và xuất các bản ghi không giới hạn thời gian. Miễn phí mãi mãi — không phải bản dùng thử. Gói PRO mở khóa các tính năng nâng cao cho những ai muốn đi xa hơn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Gói miễn phí bao gồm những gì? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>Ghi lại hội thoại không giới hạn (ChatGPT, Claude, Gemini và 4 nền tảng nữa)</li>
+                <li>Bảng điều khiển thống nhất với tìm kiếm và bộ lọc</li>
+                <li>Thẻ và Quick Queue</li>
+                <li>Chuỗi với tối đa 5 bản ghi</li>
+                <li>Xuất dưới dạng TXT, HTML và DOCX</li>
+                <li>1 hàng đợi bổ sung (Q1)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Gói PRO thêm những gì? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>3 hàng đợi bổ sung (Q2, Q3, Q4) để tổ chức nâng cao</li>
+                <li>Dự án — các không gian riêng biệt theo ngữ cảnh</li>
+                <li>Kích thước Chuỗi không giới hạn</li>
+                <li>Chèn Chuỗi vào hội thoại AI</li>
+                <li>Hỗ trợ ưu tiên</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">PRO là đăng ký hay mua một lần? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Gói PRO có sẵn dưới dạng <strong>mua một lần</strong> với quyền truy cập trọn đời. Không có đăng ký hàng tháng, không gia hạn tự động, không có bất ngờ trên hóa đơn của bạn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Tôi có thể dùng PRO trên nhiều máy tính không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. Giấy phép PRO được gắn với tài khoản giấy phép của bạn, không phải thiết bị. Bạn có thể kích hoạt PRO trên bao nhiêu máy tính tùy ý với cùng một khóa giấy phép.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Có chính sách hoàn tiền không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. Chúng tôi cung cấp hoàn tiền trong vòng <strong>7 ngày</strong> kể từ ngày mua, không cần hỏi lý do. Liên hệ với chúng tôi qua email hỗ trợ với số đơn hàng của bạn.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 8. THEO NỀN TẢNG ══ -->
+        <section class="faq-category" id="plataformas">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🌐</span>
+            <h2 class="faq-category-title">Theo nền tảng</h2>
+            <span class="faq-category-count">6 câu hỏi</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có hoạt động với ChatGPT bằng các ngôn ngữ khác ngoài tiếng Anh không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. NODUS ghi lại hội thoại bằng bất kỳ ngôn ngữ nào — tiếng Anh, tiếng Bồ Đào Nha, tiếng Tây Ban Nha hoặc bất kỳ ngôn ngữ nào khác. Ngôn ngữ của hội thoại không ảnh hưởng đến cách các nút ghi lại hoạt động.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Có hoạt động với Claude Sonnet và Claude Opus không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. NODUS hoạt động với tất cả các phiên bản Claude có sẵn trên claude.ai, bao gồm Sonnet, Haiku và Opus. Mô hình được sử dụng trong hội thoại không ảnh hưởng đến việc ghi lại.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có hoạt động với Gemini Advanced không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. NODUS ghi lại phản hồi từ Gemini trong tất cả các phiên bản có sẵn trên gemini.google.com, bao gồm Gemini Advanced.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Có hoạt động với Microsoft Copilot không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. NODUS hỗ trợ Microsoft Copilot tại copilot.microsoft.com. Các nút ghi lại xuất hiện bên cạnh phản hồi một cách tự động.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Có kế hoạch thêm nhiều nền tảng hơn không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Có. NODUS đang được phát triển tích cực và các nền tảng mới được thêm dựa trên nhu cầu. Các nền tảng được yêu cầu thường xuyên bao gồm Poe, Pi và nhiều nền tảng khác. Theo dõi cập nhật trên GitHub.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">NODUS có ghi lại hình ảnh do AI tạo ra (DALL·E, Midjourney) không? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS ghi lại hình ảnh được tạo trong các nền tảng được hỗ trợ khi chúng xuất hiện trong phản hồi (ví dụ: hình ảnh được tạo bởi ChatGPT qua DALL·E). Các nền tảng hình ảnh chuyên dụng như Midjourney hiện chưa được hỗ trợ.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ HƯỚNG DẪN CHI TIẾT ══ -->
+        <div class="cluster-section">
+          <h3>Hướng dẫn chi tiết theo nền tảng</h3>
+          <p>Hướng dẫn từng bước cho từng nền tảng AI và từng trường hợp sử dụng.</p>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Cách lưu hội thoại</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-salvar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Cách xuất hội thoại</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Cách lưu phản hồi</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-guardar-respostas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Hướng dẫn đầy đủ</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../salvar-conversas-ia.html" style="border-color:rgba(250,204,21,0.3);"><span class="cluster-link-dot" style="background:#facc15;"></span>Cách lưu hội thoại AI — hướng dẫn tổng quan</a>
+            </div>
+          </div>
+
+          <div class="cluster-group" style="margin-bottom:0;">
+            <div class="cluster-group-title">Hướng dẫn khác</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-historico-ia-word.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Xuất sang Word</a>
+              <a class="cluster-link" href="../faq/como-baixar-historico-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Tải xuống lịch sử AI</a>
+              <a class="cluster-link" href="../faq/como-organizar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Tổ chức hội thoại</a>
+              <a class="cluster-link" href="../faq/como-nao-perder-resposta-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Không bao giờ mất phản hồi nữa</a>
+              <a class="cluster-link" href="../faq/extensao-salvar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Tiện ích lưu hội thoại</a>
+              <a class="cluster-link" href="../faq/como-pesquisar-historico-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Tìm kiếm lịch sử AI</a>
+              <a class="cluster-link" href="../faq/como-fazer-backup-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Sao lưu hội thoại</a>
+              <a class="cluster-link" href="../faq/recuperar-historico-chatgpt.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Lịch sử ChatGPT biến mất</a>
+              <a class="cluster-link" href="../faq/como-anotar-respostas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Ghi chú phản hồi AI</a>
+              <a class="cluster-link" href="../faq/como-usar-nodus.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Cách dùng NODUS</a>
+              <a class="cluster-link" href="../faq/nodus-vs-historico-nativo-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>NODUS so với lịch sử gốc</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA fundo -->
+        <div class="faq-cta-block" style="margin-top:8px;">
+          <h3>Sẵn sàng bắt đầu?</h3>
+          <p>Cài đặt miễn phí và lưu hội thoại AI tiếp theo của bạn trong chưa đầy 1 phút. Hoạt động với ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot và DeepSeek.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Cài đặt trên Chrome — miễn phí
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:8px;">
+        <a href="../index.html">★ NODUS</a> &nbsp;·&nbsp;
+        <a href="../index.html#privacidade">Quyền riêng tư</a> &nbsp;·&nbsp;
+        <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="../checkout.html">Gói PRO</a>
+      </p>
+      <p>© 2025 NODUS. Tiện ích trình duyệt. Dữ liệu của bạn ở lại với bạn.</p>
+    </div>
+  </footer>
+
+  <!-- ACCORDION JS -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Highlight sidebar link no scroll
+    const sections = document.querySelectorAll('.faq-category');
+    const sideLinks = document.querySelectorAll('.sidebar-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          sideLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "NODUS là gì?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS là tiện ích mở rộng trình duyệt cho phép bạn lưu, tổ chức và tái sử dụng các phản hồi AI chỉ với một cú nhấp. Hoạt động với ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot và DeepSeek. Tất cả được lưu trữ cục bộ trên thiết bị của bạn." } },
+      { "@type": "Question", "name": "Làm thế nào để lưu một hội thoại ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "Với NODUS đã cài đặt, mở ChatGPT. Các nút NODUS xuất hiện bên cạnh mỗi phản hồi. Nhấp Save để ghi lại câu hỏi và phản hồi, hoặc nhấp Quick để lưu chỉ với một cú nhấp." } },
+      { "@type": "Question", "name": "Làm thế nào để lưu một hội thoại Claude?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS hoạt động tự nhiên trên Claude.ai. Các nút ghi lại xuất hiện bên cạnh phản hồi một cách tự động. Nhấp Save để ghi lại câu hỏi và phản hồi vào bảng điều khiển cục bộ của bạn." } },
+      { "@type": "Question", "name": "NODUS có gửi dữ liệu của tôi đến bất kỳ máy chủ nào không?", "acceptedAnswer": { "@type": "Answer", "text": "Không. NODUS không có máy chủ riêng để nhận các bản ghi của bạn. Tất cả được lưu trữ trong bộ nhớ cục bộ của trình duyệt. Không có bản ghi nào rời khỏi thiết bị của bạn." } },
+      { "@type": "Question", "name": "NODUS có miễn phí không?", "acceptedAnswer": { "@type": "Answer", "text": "Có. Gói miễn phí bao gồm lưu, tổ chức, tìm kiếm và xuất các bản ghi không giới hạn thời gian. Miễn phí mãi mãi. Gói PRO mở khóa các tính năng nâng cao." } },
+      { "@type": "Question", "name": "Những trình duyệt nào được hỗ trợ?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS hoạt động trên Chrome, Firefox, Edge và Brave. Bất kỳ trình duyệt nào dựa trên Chromium đều tương thích." } },
+      { "@type": "Question", "name": "Làm thế nào để xuất hội thoại ChatGPT sang Word?", "acceptedAnswer": { "@type": "Answer", "text": "Mở bảng điều khiển NODUS, chọn bản ghi và nhấp Export → DOCX. File Word được tạo trực tiếp trong trình duyệt của bạn và lưu vào máy tính." } },
+      { "@type": "Question", "name": "Chuỗi là gì?", "acceptedAnswer": { "@type": "Answer", "text": "Chuỗi cho phép bạn kết nối các bản ghi từ các hội thoại khác nhau thành một chuỗi logic, dù từ các nền tảng khác nhau. Bạn có thể kết nối các bản ghi từ ChatGPT, Claude và Gemini trong một chuỗi duy nhất và xuất tất cả cùng nhau." } },
+      { "@type": "Question", "name": "Điều gì xảy ra với dữ liệu của tôi nếu tôi gỡ cài đặt NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "Khi bạn gỡ cài đặt tiện ích, bộ nhớ cục bộ bị trình duyệt xóa. Hãy sao lưu trước trong Cài đặt → Xuất dữ liệu để tải xuống tất cả các bản ghi dưới dạng JSON." } },
+      { "@type": "Question", "name": "NODUS hoạt động với những nền tảng AI nào?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS hỗ trợ 7 nền tảng: ChatGPT, Claude, Gemini, Perplexity, Grok, Microsoft Copilot và DeepSeek." } }
+    ]
+  }
+  </script>
+
+</body>
+</html>

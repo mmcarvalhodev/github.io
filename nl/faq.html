@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veelgestelde Vragen — NODUS | AI-gesprekken opslaan, exporteren en organiseren</title>
+  <meta name="description" content="Al je vragen over NODUS beantwoord: hoe je gesprekken opslaat van ChatGPT, Claude, Gemini en meer. Exporteren, organiseren, privacy, plannen en nog veel meer." />
+  <link rel="canonical" href="https://nodus-ai.app/nl/faq" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #0e1117;
+      --panel:  #1a1f29;
+      --border: #2d3748;
+      --yellow: #facc15;
+      --text:   #e2e8f0;
+      --sub:    #94a3b8;
+      --muted:  #475569;
+      --green:  #10b981;
+      --radius: 10px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta {
+      background: var(--yellow); color: #0e1117;
+      font-size: 13px; font-weight: 800;
+      padding: 7px 18px; border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ── HERO ── */
+    .faq-hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-hero-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 14px;
+    }
+    .faq-hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    }
+    .faq-hero p {
+      font-size: 17px; color: var(--sub); max-width: 560px; line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .faq-platforms {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .plat-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--sub);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .plat-badge:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── SIDEBAR + LAYOUT ── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 48px 0 80px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { display: none; }
+    }
+    .faq-sidebar {
+      position: sticky; top: 72px;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sidebar-links { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-link {
+      font-size: 13px; color: var(--sub);
+      padding: 6px 10px; border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-link:hover {
+      background: var(--panel); color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar-link.active { color: var(--yellow); background: rgba(250,204,21,0.06); }
+    .sidebar-count {
+      margin-left: auto; font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORIAS ── */
+    .faq-category { margin-bottom: 56px; }
+    .faq-category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-category-icon { font-size: 20px; }
+    .faq-category-title {
+      font-size: 19px; font-weight: 700; color: var(--text);
+    }
+    .faq-category-count {
+      font-size: 12px; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 99px;
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer;
+      font-size: 14px; font-weight: 600; color: var(--text);
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-q[aria-expanded="true"] { color: var(--yellow); }
+    .faq-chevron {
+      font-size: 16px; color: var(--muted);
+      transition: transform 0.3s; flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--yellow); }
+    .faq-a { display: none; padding: 0 0 18px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p {
+      font-size: 14px; color: var(--sub); line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text); }
+    .faq-a a { color: var(--yellow); }
+    .faq-a ul { margin: 8px 0 8px 20px; }
+    .faq-a li { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    .faq-a .page-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; font-size: 13px; font-weight: 600;
+      color: var(--yellow); border: 1px solid rgba(250,204,21,0.25);
+      padding: 5px 12px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .faq-a .page-link:hover {
+      background: rgba(250,204,21,0.08); text-decoration: none;
+    }
+
+    /* ── CTA BLOCO ── */
+    .faq-cta-block {
+      background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, rgba(16,185,129,0.04) 100%);
+      border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 16px; padding: 36px 40px;
+      text-align: center; margin: 0 0 56px;
+    }
+    .faq-cta-block h3 {
+      font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    }
+    .faq-cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow {
+      background: var(--yellow); color: #0e1117;
+      font-size: 14px; font-weight: 800;
+      padding: 10px 22px; border-radius: 8px;
+      transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost {
+      background: transparent; color: var(--sub);
+      font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--text); color: var(--text); text-decoration: none; }
+
+    /* ── GUIAS CLUSTER ── */
+    .cluster-section { margin: 0 0 56px; }
+    .cluster-section h3 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .cluster-section > p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .cluster-group { margin-bottom: 32px; }
+    .cluster-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
+    .cluster-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+    .cluster-link { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--sub); transition: border-color 0.2s, color 0.2s; }
+    .cluster-link:hover { border-color: var(--yellow); color: var(--text); text-decoration: none; }
+    .cluster-link-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--sub); }
+  </style>
+  <script>window._forcedLang='nl';</script>
+  <script src="/lang-switcher.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">★ NODUS</a>
+        <a href="../index.html" class="nav-back">← Terug naar site</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Gratis installeren</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="container">
+      <div class="faq-hero-label">Helpcentrum</div>
+      <h1>Veelgestelde <span style="color:var(--yellow)">vragen</span></h1>
+      <p>Alles over het opslaan, exporteren en organiseren van je AI-gesprekken — geen account, geen server, geen gedoe.</p>
+      <div class="faq-platforms">
+        <span class="plat-badge">ChatGPT</span>
+        <span class="plat-badge">Claude</span>
+        <span class="plat-badge">Gemini</span>
+        <span class="plat-badge">Perplexity</span>
+        <span class="plat-badge">Grok</span>
+        <span class="plat-badge">Copilot</span>
+        <span class="plat-badge">DeepSeek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="container-wide">
+    <div class="faq-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="faq-sidebar">
+        <div class="sidebar-label">Categorieën</div>
+        <nav class="sidebar-links">
+          <a href="#comecar" class="sidebar-link">🚀 Aan de slag <span class="sidebar-count">6</span></a>
+          <a href="#salvar" class="sidebar-link">💾 Gesprekken opslaan <span class="sidebar-count">9</span></a>
+          <a href="#exportar" class="sidebar-link">📤 Exporteren &amp; downloaden <span class="sidebar-count">7</span></a>
+          <a href="#organizar" class="sidebar-link">🗂️ Organiseren <span class="sidebar-count">7</span></a>
+          <a href="#cadeias" class="sidebar-link">🔗 Ketens <span class="sidebar-count">6</span></a>
+          <a href="#privacidade" class="sidebar-link">🔒 Privacy <span class="sidebar-count">7</span></a>
+          <a href="#planos" class="sidebar-link">💳 Plannen &amp; prijzen <span class="sidebar-count">6</span></a>
+          <a href="#plataformas" class="sidebar-link">🌐 Per platform <span class="sidebar-count">6</span></a>
+        </nav>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- CTA topo -->
+        <div class="faq-cta-block">
+          <h3>NODUS nog niet geïnstalleerd?</h3>
+          <p>Gratis installeren in 30 seconden. Werkt met ChatGPT, Claude, Gemini en 4 andere platforms.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Installeren in Chrome
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+        <!-- ══ 1. AAN DE SLAG ══ -->
+        <section class="faq-category" id="comecar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🚀</span>
+            <h2 class="faq-category-title">Aan de slag</h2>
+            <span class="faq-category-count">6 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat is NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS is een browserextensie waarmee je <strong>AI-antwoorden kunt opslaan, organiseren en hergebruiken</strong> met één klik. Het werkt met ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot en DeepSeek. Alles wordt lokaal op je apparaat opgeslagen — geen account, geen server, geen verplicht abonnement.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe installeer ik NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Installeren duurt minder dan 30 seconden:</p>
+              <ul>
+                <li><strong>Chrome / Edge / Brave:</strong> bezoek de Chrome Web Store en klik op "Toevoegen aan Chrome"</li>
+                <li><strong>Firefox:</strong> bezoek Mozilla Add-ons en klik op "Toevoegen aan Firefox"</li>
+              </ul>
+              <p>Na het installeren open je een ondersteund AI-platform — NODUS-knoppen verschijnen automatisch.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Moet ik een account aanmaken om NODUS te gebruiken? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Nee.</strong> NODUS werkt zonder registratie, geen e-mail, geen wachtwoord. Installeer en gebruik het direct. Je gegevens blijven in de lokale opslag van de browser.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Welke browsers worden ondersteund? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS werkt in:</p>
+              <ul>
+                <li><strong>Chrome</strong> (versie 88+)</li>
+                <li><strong>Firefox</strong> (versie 109+)</li>
+                <li><strong>Edge</strong> (op Chromium gebaseerd)</li>
+                <li><strong>Brave</strong> en andere Chromium-browsers</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe werkt de opslaanknop? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Wanneer je een ondersteund platform opent, plaatst NODUS zwevende knoppen naast AI-antwoorden. Klik op <strong>Opslaan</strong> om de vraag en het antwoord direct vast te leggen. Klik op <strong>Snel</strong> om op te slaan zonder het instellingenpaneel te openen. Klik op <strong>Dashboard</strong> om je vastgelegde items te bekijken.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Met welke AI-platforms werkt NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS ondersteunt momenteel <strong>7 platforms</strong>:</p>
+              <ul>
+                <li>ChatGPT (chat.openai.com)</li>
+                <li>Claude (claude.ai)</li>
+                <li>Gemini (gemini.google.com)</li>
+                <li>Perplexity (perplexity.ai)</li>
+                <li>Grok (grok.com / x.com)</li>
+                <li>Microsoft Copilot (copilot.microsoft.com)</li>
+                <li>DeepSeek (chat.deepseek.com)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ 2. GESPREKKEN OPSLAAN ══ -->
+        <section class="faq-category" id="salvar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💾</span>
+            <h2 class="faq-category-title">Gesprekken opslaan</h2>
+            <span class="faq-category-count">9 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe sla ik een ChatGPT-gesprek op? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Met NODUS geïnstalleerd open je ChatGPT zoals gewoonlijk. NODUS-knoppen verschijnen naast elk antwoord. Klik op <strong>Opslaan</strong> om het vastlegpaneel te openen, voeg tags toe en kies de doelwachtrij — of klik op <strong>Snel</strong> om met één klik op te slaan zonder configuratie.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-chatgpt.html">Volledige gids: ChatGPT-gesprekken opslaan →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe sla ik een Claude-gesprek op? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS werkt native op Claude.ai. Vastlegknoppen verschijnen automatisch naast antwoorden. Klik op <strong>Opslaan</strong> om de vraag en het antwoord vast te leggen in je lokale dashboard. Werkt ook voor Claude-projecten en gewone gesprekken.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-claude.html">Volledige gids: Claude-gesprekken opslaan →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe sla ik een Gemini-gesprek op? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Installeer NODUS en bezoek gemini.google.com. Vastlegknoppen verschijnen naast Gemini-antwoorden. Klik op <strong>Opslaan</strong> om het gesprek lokaal op te slaan, met tags en dezelfde organisatie als andere platforms.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-gemini.html">Volledige gids: Gemini-gesprekken opslaan →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe sla ik een Perplexity-antwoord op? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS detecteert automatisch antwoorden op Perplexity.ai en plaatst vastlegknoppen. Klik op <strong>Opslaan</strong> om het antwoord op te slaan samen met de geciteerde bronnen. Ideaal voor onderzoek waar je later naar wilt verwijzen.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe archiveer ik Grok-antwoorden? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS werkt op zowel grok.com als x.com/grok. Wanneer je een gesprek met Grok opent, verschijnen vastlegknoppen naast de antwoorden. Klik op <strong>Opslaan</strong> om ze lokaal te archiveren in je NODUS-dashboard.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe sla ik DeepSeek-antwoorden op? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS ondersteunt DeepSeek (chat.deepseek.com) native. Vastlegknoppen verschijnen naast antwoorden. Klik op <strong>Opslaan</strong> om de vraag en het antwoord vast te leggen in je lokale dashboard.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kan ik meerdere antwoorden tegelijk opslaan? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Elk vastgelegd item slaat één vraag en één antwoord op. Om meerdere antwoorden uit een gesprek op te slaan, klik je op <strong>Opslaan</strong> bij elk antwoord dat je wilt bewaren. Gebruik daarna <strong>Ketens</strong> om die vastgelegde items samen te voegen tot een logische reeks.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat is Snel vastleggen? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Snel vastleggen (de knop <strong>Snel</strong>) slaat het antwoord direct op in de standaardwachtrij zonder het instellingenpaneel te openen. Ideaal als je snel iets wilt vastleggen zonder je gespreksflow te onderbreken. Het vastgelegde item is beschikbaar in het dashboard om later te organiseren.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe verlies ik nooit meer een belangrijk AI-antwoord? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Installeer NODUS en gebruik de knop <strong>Snel</strong> telkens wanneer een antwoord nuttig lijkt — ook als je nog niet zeker weet waarvoor. De gewoonte om vast te leggen voordat je het tabblad sluit, voorkomt informatieverlies. Je dashboard verzamelt alles en met de zoekfunctie vind je elk vastgelegd item later terug.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 3. EXPORTEREN & DOWNLOADEN ══ -->
+        <section class="faq-category" id="exportar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">📤</span>
+            <h2 class="faq-category-title">Exporteren &amp; downloaden</h2>
+            <span class="faq-category-count">7 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe exporteer ik een ChatGPT-gesprek naar Word? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Open je NODUS-dashboard, selecteer het gewenste vastgelegde item en klik op <strong>Exporteren → DOCX</strong>. Het Word-bestand wordt direct in je browser gegenereerd en opgeslagen op je computer. Je kunt meerdere vastgelegde items samenvoegen met Ketens en alles samen exporteren als een gestructureerd document.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe download ik een Claude-gesprek als PDF? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS exporteert naar <strong>HTML</strong>, wat je direct vanuit de browser kunt afdrukken als PDF (Ctrl+P → Opslaan als PDF). Voor directe PDF-export raden we aan om als HTML te exporteren en de afdrukfunctie van de browser te gebruiken — het resultaat is goed opgemaakt.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Welke exportformaten worden ondersteund? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS ondersteunt export in:</p>
+              <ul>
+                <li><strong>TXT</strong> — platte tekst, compatibel met elke editor</li>
+                <li><strong>HTML</strong> — opgemaakt, afdrukbaar als PDF</li>
+                <li><strong>DOCX</strong> — compatibel met Word, Google Docs en LibreOffice</li>
+              </ul>
+              <p>Aaneengeschakelde vastgelegde items (Ketens) kunnen samen worden geëxporteerd als één document.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe extraheer ik mijn volledige AI-gespreksgeschiedenis? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ga in het NODUS-dashboard naar <strong>Instellingen → Alles exporteren</strong>. Dit genereert een bestand met al je vastgelegde items in JSON-formaat (voor herimport in NODUS), of je kunt elke wachtrij afzonderlijk exporteren als DOCX of HTML.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe kopieer ik een opgemaakt ChatGPT-antwoord? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Klik in de kaartweergave in het dashboard op <strong>Kopiëren</strong>. De inhoud wordt gekopieerd met behoud van de Markdown-opmaak — koppen, lijsten, code — klaar om te plakken in elke editor die Markdown ondersteunt.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kan ik een back-up maken van al mijn vastgelegde items? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. Ga naar <strong>Instellingen → Gegevens exporteren</strong> en download een JSON-bestand met al je vastgelegde items. Dit bestand kan opnieuw worden geïmporteerd in NODUS op een andere computer of na het opnieuw installeren van de extensie.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe organiseer ik AI-gesprekken in een studiedocument? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Gebruik <strong>Ketens</strong> om gerelateerde vastgelegde items uit verschillende sessies te koppelen (zelfs van verschillende platforms). Exporteer daarna de volledige keten als DOCX — het resultaat is een gestructureerd document met alle vragen en antwoorden in logische volgorde.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 4. ORGANISEREN ══ -->
+        <section class="faq-category" id="organizar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🗂️</span>
+            <h2 class="faq-category-title">Organiseren</h2>
+            <span class="faq-category-count">7 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe gebruik ik tags om vastgelegde items te organiseren? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Bij het opslaan van een item kun je tot 4 tags toevoegen om de inhoud te categoriseren. Tags verschijnen op dashboardkaarten en fungeren als filters — klik op een tag om alleen items met die categorie te zien. Maak tags zoals "backend", "studie", "ideeën", "werk" of elke categorie die voor jou zinvol is.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat zijn wachtrijen (Snel, Standaard, W1, W2...)? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Wachtrijen zijn afzonderlijke verzamelingen voor het organiseren van vastgelegde items per context of prioriteit. De <strong>Snelle wachtrij</strong> is voor snelle vastlegging, zonder categorisering. De <strong>Standaard</strong> is de algemene wachtrij. Wachtrijen W1–W4 (PRO-plan) zijn aanpasbaar per thema, project of klant. Elke wachtrij heeft een andere randkleur op de kaarten.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe zoek ik binnen mijn vastgelegde items? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Gebruik in het NODUS-dashboard de zoekbalk bovenaan. Zoeken werkt <strong>in realtime</strong> en doorzoekt de titel, vraag en het antwoord van alle vastgelegde items. Combineer zoeken met platform- of tagfilters om precies te vinden wat je zoekt.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe filter ik vastgelegde items op AI-platform? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Klik in het dashboard op de platformbadges onder de zoekbalk. Klik op <strong>ChatGPT</strong>, <strong>Claude</strong>, <strong>Gemini</strong> of een ander platform om alleen items van die bron te zien. Klik opnieuw om het filter te verwijderen.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe gebruik ik Projecten om verschillende contexten te scheiden? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Projecten (PRO-plan) laten je volledig gescheiden ruimtes aanmaken — bijvoorbeeld "Werk", "Studie" en "Persoonlijk". Elk project heeft zijn eigen wachtrijen en vastgelegde items. Schakel met één klik tussen projecten zonder verschillende inhoud te vermengen.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kan ik een vastgelegd item bewerken na het opslaan? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. Open de kaart in het dashboard en klik op <strong>Bewerken</strong>. Je kunt de titel aanpassen, tags toevoegen of verwijderen en het item verplaatsen tussen wachtrijen. De originele inhoud (vraag en antwoord) blijft behouden.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe vind ik een AI-antwoord dat ik weken geleden heb opgeslagen? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Gebruik de tekstzoekfunctie in het dashboard — die doorzoekt de volledige inhoud van alle vastgelegde items, niet alleen de titel. Als je een trefwoord uit het antwoord herinnert, typ het gewoon in. Combineer dit met het platformfilter (bijv. Claude) als je weet waar het vandaan komt.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 5. KETENS ══ -->
+        <section class="faq-category" id="cadeias">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔗</span>
+            <h2 class="faq-category-title">Ketens</h2>
+            <span class="faq-category-count">6 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat zijn Ketens? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ketens laten je <strong>vastgelegde items uit verschillende gesprekken</strong> samenvoegen in een logische reeks. Stel je voor dat je een onderwerp hebt onderzocht op ChatGPT, daarna dieper bent gegaan op Claude en voorbeelden hebt gevonden op Gemini — een Keten verbindt die drie items tot een aaneengesloten redenering, ook al komen ze van verschillende platforms.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe maak ik een Keten aan? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Klik op het tabblad <strong>Ketens</strong> in het dashboard op "Nieuwe keten". Geef de keten een naam en voeg bestaande vastgelegde items toe door ze in de gewenste volgorde te slepen. Je kunt items van elk platform toevoegen en ze op elk moment herordenen.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kan ik ChatGPT- en Claude-items in dezelfde Keten combineren? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Ja</strong> — dat is een van de belangrijkste voordelen van Ketens. Je kunt vastgelegde items van ChatGPT, Claude, Gemini, Perplexity en elk ander ondersteund platform samenvoegen in één reeks. Elke kaart behoudt de identificatie van het bronplatform.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Hoe exporteer ik een Keten? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Open de Keten in het dashboard en klik op <strong>Exporteren</strong>. Je kunt de volledige reeks exporteren als DOCX of HTML — het resultaat is een gestructureerd document met alle vragen en antwoorden in volgorde, ideaal voor rapporten, studies of documentatie.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat is de limiet voor vastgelegde items in een Keten? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>In het gratis plan kan elke Keten maximaal <strong>5 vastgelegde items</strong> bevatten. In het PRO-plan is de limiet aanzienlijk hoger, waardoor uitgebreide ketens voor complexe projecten mogelijk zijn.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat is het doel van het injecteren van een Keten in een AI-gesprek? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Met de injectiefunctie kun je de inhoud van een Keten rechtstreeks in het promptveld van een ondersteund platform invoegen. Het is alsof je de AI de volledige context van eerder onderzoek geeft — zonder elk antwoord handmatig te kopiëren en plakken.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 6. PRIVACY ══ -->
+        <section class="faq-category" id="privacidade">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔒</span>
+            <h2 class="faq-category-title">Privacy &amp; beveiliging</h2>
+            <span class="faq-category-count">7 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Stuurt NODUS mijn gegevens naar een server? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Nee.</strong> NODUS heeft geen eigen server die je vastgelegde items ontvangt. Alles wordt opgeslagen in de lokale opslag van je browser (chrome.storage.local / browser.storage.local). Geen enkel vastgelegd item, tag of stukje inhoud verlaat ooit je apparaat.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Heeft NODUS toegang tot mijn AI-gesprekken zonder dat ik daarom vraag? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Nee.</strong> NODUS leest pagina-inhoud alleen wanneer je actief op Opslaan of Snel klikt. Er is geen automatische vastlegging, passieve monitoring of het lezen van gesprekken die je niet hebt gekozen om op te slaan.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Zijn mijn gegevens veilig als iemand toegang heeft tot mijn computer? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Vastgelegde items worden opgeslagen in het browserprofiel van je besturingssysteemgebruiker. Als je gebruikersprofiel op de computer beveiligd is met een wachtwoord, zijn vastgelegde items eveneens beveiligd. NODUS voegt geen extra versleuteling toe — gebruik de beveiligingsfuncties van je besturingssysteem voor fysieke beveiliging.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Is NODUS open source? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. De NODUS-kern is beschikbaar op GitHub onder de MIT-licentie. Iedereen kan de code controleren en verifiëren dat er geen verborgen gegevensverzameling plaatsvindt. Je hoeft ons niet op ons woord te geloven — bekijk de code zelf.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat gebeurt er met mijn gegevens als ik NODUS verwijder? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Wanneer je de extensie verwijdert, wordt de bijbehorende lokale opslag door de browser verwijderd. <strong>Maak eerst een back-up:</strong> ga naar Instellingen → Gegevens exporteren om al je vastgelegde items als JSON te downloaden. Je kunt ze opnieuw importeren na herinstallatie.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Welke machtigingen vraagt NODUS aan en waarom? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS vraagt alleen de machtigingen aan die nodig zijn om te werken:</p>
+              <ul>
+                <li><strong>AI-pagina's lezen</strong> — om antwoorden te detecteren en de knoppen in te voegen</li>
+                <li><strong>Lokale opslag</strong> — om je vastgelegde items op het apparaat op te slaan</li>
+                <li><strong>Toelichting op tabblad</strong> — om te weten op welk platform je je bevindt</li>
+              </ul>
+              <p>Er worden geen machtigingen gevraagd voor camera, microfoon, browsegeschiedenis of wachtwoorden.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Werkt NODUS offline? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Het NODUS-dashboard werkt volledig <strong>offline</strong> — je kunt vastgelegde items openen, doorzoeken en exporteren zonder internetverbinding. Het vastleggen van nieuwe gesprekken vereist een verbinding omdat de AI-platforms zelf toegankelijk moeten zijn.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 7. PLANNEN & PRIJZEN ══ -->
+        <section class="faq-category" id="planos">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💳</span>
+            <h2 class="faq-category-title">Plannen &amp; prijzen</h2>
+            <span class="faq-category-count">6 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Is NODUS gratis? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. Het gratis plan bevat het opslaan, organiseren, doorzoeken en exporteren van vastgelegde items zonder tijdslimiet. Het is voor altijd gratis — geen proefperiode. Het PRO-plan ontgrendelt geavanceerde functies voor wie verder wil gaan.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat is inbegrepen in het gratis plan? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>Onbeperkt gesprekken vastleggen (ChatGPT, Claude, Gemini en 4 meer)</li>
+                <li>Unified dashboard met zoekfunctie en filters</li>
+                <li>Tags en snelle wachtrij</li>
+                <li>Ketens met maximaal 5 vastgelegde items</li>
+                <li>Export in TXT, HTML en DOCX</li>
+                <li>1 extra wachtrij (W1)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Wat voegt het PRO-plan toe? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>3 extra wachtrijen (W2, W3, W4) voor geavanceerde organisatie</li>
+                <li>Projecten — gescheiden ruimtes per context</li>
+                <li>Onbeperkte ketengrootte</li>
+                <li>Ketens injecteren in AI-gesprekken</li>
+                <li>Prioriteitsondersteuning</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Is PRO een abonnement of een eenmalige aankoop? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Het PRO-plan is beschikbaar als <strong>eenmalige aankoop</strong> met levenslange toegang. Geen maandelijkse abonnementen, geen automatische verlenging, geen verrassingen op je rekening.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Kan ik PRO op meer dan één computer gebruiken? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. De PRO-licentie is gekoppeld aan je licentieaccount, niet aan het apparaat. Je kunt PRO activeren op zo veel computers als je nodig hebt met dezelfde licentiesleutel.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Is er een terugbetalingsbeleid? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. We bieden een terugbetaling binnen <strong>7 dagen</strong> na aankoop, zonder vragen. Neem contact op via het ondersteunings-e-mailadres met je bestelnummer.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 8. PER PLATFORM ══ -->
+        <section class="faq-category" id="plataformas">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🌐</span>
+            <h2 class="faq-category-title">Per platform</h2>
+            <span class="faq-category-count">6 vragen</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Werkt NODUS met ChatGPT in andere talen dan Engels? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. NODUS legt gesprekken vast in elke taal — Engels, Nederlands, Spaans of elke andere. De taal van het gesprek heeft geen invloed op hoe de vastlegknoppen werken.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Werkt het met Claude Sonnet en Claude Opus? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. NODUS werkt met alle Claude-versies die beschikbaar zijn op claude.ai, inclusief Sonnet, Haiku en Opus. Het model dat in het gesprek wordt gebruikt, heeft geen invloed op de vastlegging.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Werkt NODUS met Gemini Advanced? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. NODUS legt antwoorden vast van Gemini in alle versies die beschikbaar zijn op gemini.google.com, inclusief Gemini Advanced.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Werkt het met Microsoft Copilot? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. NODUS ondersteunt Microsoft Copilot op copilot.microsoft.com. Vastlegknoppen verschijnen automatisch naast antwoorden.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Zijn er plannen om meer platforms toe te voegen? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ja. NODUS wordt actief ontwikkeld en nieuwe platforms worden toegevoegd op basis van vraag. Vaak gevraagde platforms zijn onder meer Poe, Pi en andere. Volg updates op GitHub.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Legt NODUS door AI gegenereerde afbeeldingen vast (DALL·E, Midjourney)? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS legt afbeeldingen vast die binnen ondersteunde platforms zijn gegenereerd en in een antwoord verschijnen (bijv. afbeeldingen gegenereerd door ChatGPT via DALL·E). Speciale afbeeldingsplatforms zoals Midjourney worden momenteel niet ondersteund.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ GEDETAILLEERDE GIDSEN ══ -->
+        <div class="cluster-section">
+          <h3>Gedetailleerde gidsen per platform</h3>
+          <p>Stapsgewijze instructies voor elk AI-platform en elk gebruiksscenario.</p>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Hoe gesprekken opslaan</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-salvar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Hoe gesprekken exporteren</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Hoe antwoorden opslaan</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-guardar-respostas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Volledige gids</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../salvar-conversas-ia.html" style="border-color:rgba(250,204,21,0.3);"><span class="cluster-link-dot" style="background:#facc15;"></span>Hoe AI-gesprekken opslaan — hoofdgids</a>
+            </div>
+          </div>
+
+          <div class="cluster-group" style="margin-bottom:0;">
+            <div class="cluster-group-title">Andere gidsen</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-historico-ia-word.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Exporteren naar Word</a>
+              <a class="cluster-link" href="../faq/como-baixar-historico-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>AI-geschiedenis downloaden</a>
+              <a class="cluster-link" href="../faq/como-organizar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Gesprekken organiseren</a>
+              <a class="cluster-link" href="../faq/como-nao-perder-resposta-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Nooit meer een antwoord verliezen</a>
+              <a class="cluster-link" href="../faq/extensao-salvar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Extensie om gesprekken op te slaan</a>
+              <a class="cluster-link" href="../faq/como-pesquisar-historico-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>AI-geschiedenis doorzoeken</a>
+              <a class="cluster-link" href="../faq/como-fazer-backup-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Back-up van gesprekken maken</a>
+              <a class="cluster-link" href="../faq/recuperar-historico-chatgpt.html"><span class="cluster-link-dot" style="background:#facc15;"></span>ChatGPT-geschiedenis verdwenen</a>
+              <a class="cluster-link" href="../faq/como-anotar-respostas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>AI-antwoorden annoteren</a>
+              <a class="cluster-link" href="../faq/como-usar-nodus.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Hoe NODUS te gebruiken</a>
+              <a class="cluster-link" href="../faq/nodus-vs-historico-nativo-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>NODUS vs. native geschiedenis</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA fundo -->
+        <div class="faq-cta-block" style="margin-top:8px;">
+          <h3>Klaar om te beginnen?</h3>
+          <p>Gratis installeren en je volgende AI-gesprek opslaan in minder dan 1 minuut. Werkt met ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot en DeepSeek.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Installeren in Chrome — gratis
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:8px;">
+        <a href="../index.html">★ NODUS</a> &nbsp;·&nbsp;
+        <a href="../index.html#privacidade">Privacy</a> &nbsp;·&nbsp;
+        <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="../checkout.html">PRO-plan</a>
+      </p>
+      <p>© 2025 NODUS. Browserextensie. Je gegevens blijven bij jou.</p>
+    </div>
+  </footer>
+
+  <!-- ACCORDION JS -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Highlight sidebar link no scroll
+    const sections = document.querySelectorAll('.faq-category');
+    const sideLinks = document.querySelectorAll('.sidebar-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          sideLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Wat is NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS is een browserextensie waarmee je AI-antwoorden kunt opslaan, organiseren en hergebruiken met één klik. Het werkt met ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot en DeepSeek. Alles wordt lokaal op je apparaat opgeslagen." } },
+      { "@type": "Question", "name": "Hoe sla ik een ChatGPT-gesprek op?", "acceptedAnswer": { "@type": "Answer", "text": "Met NODUS geïnstalleerd open je ChatGPT. NODUS-knoppen verschijnen naast elk antwoord. Klik op Opslaan om de vraag en het antwoord vast te leggen, of klik op Snel om met één klik op te slaan." } },
+      { "@type": "Question", "name": "Hoe sla ik een Claude-gesprek op?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS werkt native op Claude.ai. Vastlegknoppen verschijnen automatisch naast antwoorden. Klik op Opslaan om de vraag en het antwoord vast te leggen in je lokale dashboard." } },
+      { "@type": "Question", "name": "Stuurt NODUS mijn gegevens naar een server?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. NODUS heeft geen eigen server die je vastgelegde items ontvangt. Alles wordt opgeslagen in de lokale opslag van je browser. Geen enkel vastgelegd item verlaat ooit je apparaat." } },
+      { "@type": "Question", "name": "Is NODUS gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Het gratis plan bevat het opslaan, organiseren, doorzoeken en exporteren van vastgelegde items zonder tijdslimiet. Het is voor altijd gratis. Het PRO-plan ontgrendelt geavanceerde functies." } },
+      { "@type": "Question", "name": "Welke browsers worden ondersteund?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS werkt in Chrome, Firefox, Edge en Brave. Elke op Chromium gebaseerde browser is compatibel." } },
+      { "@type": "Question", "name": "Hoe exporteer ik een ChatGPT-gesprek naar Word?", "acceptedAnswer": { "@type": "Answer", "text": "Open je NODUS-dashboard, selecteer het vastgelegde item en klik op Exporteren → DOCX. Het Word-bestand wordt direct in je browser gegenereerd en opgeslagen op je computer." } },
+      { "@type": "Question", "name": "Wat zijn Ketens?", "acceptedAnswer": { "@type": "Answer", "text": "Ketens laten je vastgelegde items uit verschillende gesprekken samenvoegen in een logische reeks, ook van verschillende platforms. Je kunt items van ChatGPT, Claude en Gemini in één reeks verbinden en alles samen exporteren." } },
+      { "@type": "Question", "name": "Wat gebeurt er met mijn gegevens als ik NODUS verwijder?", "acceptedAnswer": { "@type": "Answer", "text": "Wanneer je de extensie verwijdert, wordt de lokale opslag door de browser verwijderd. Maak eerst een back-up via Instellingen → Gegevens exporteren om al je vastgelegde items als JSON te downloaden." } },
+      { "@type": "Question", "name": "Met welke AI-platforms werkt NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS ondersteunt 7 platforms: ChatGPT, Claude, Gemini, Perplexity, Grok, Microsoft Copilot en DeepSeek." } }
+    ]
+  }
+  </script>
+
+</body>
+</html>

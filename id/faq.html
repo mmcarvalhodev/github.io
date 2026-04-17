@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pertanyaan yang Sering Diajukan — NODUS | Cara menyimpan, mengekspor, dan mengorganisir percakapan AI</title>
+  <meta name="description" content="Semua pertanyaan Anda tentang NODUS dijawab: cara menyimpan percakapan dari ChatGPT, Claude, Gemini, dan lainnya. Ekspor, organisir, privasi, paket, dan masih banyak lagi." />
+  <link rel="canonical" href="https://nodus-ai.app/id/faq" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #0e1117;
+      --panel:  #1a1f29;
+      --border: #2d3748;
+      --yellow: #facc15;
+      --text:   #e2e8f0;
+      --sub:    #94a3b8;
+      --muted:  #475569;
+      --green:  #10b981;
+      --radius: 10px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,17,23,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+    .nav-cta {
+      background: var(--yellow); color: #0e1117;
+      font-size: 13px; font-weight: 800;
+      padding: 7px 18px; border-radius: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ── HERO ── */
+    .faq-hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-hero-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 14px;
+    }
+    .faq-hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+    }
+    .faq-hero p {
+      font-size: 17px; color: var(--sub); max-width: 560px; line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .faq-platforms {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .plat-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--sub);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .plat-badge:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── SIDEBAR + LAYOUT ── */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      padding: 48px 0 80px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { display: none; }
+    }
+    .faq-sidebar {
+      position: sticky; top: 72px;
+    }
+    .sidebar-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .sidebar-links { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-link {
+      font-size: 13px; color: var(--sub);
+      padding: 6px 10px; border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-link:hover {
+      background: var(--panel); color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar-link.active { color: var(--yellow); background: rgba(250,204,21,0.06); }
+    .sidebar-count {
+      margin-left: auto; font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORIAS ── */
+    .faq-category { margin-bottom: 56px; }
+    .faq-category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-category-icon { font-size: 20px; }
+    .faq-category-title {
+      font-size: 19px; font-weight: 700; color: var(--text);
+    }
+    .faq-category-count {
+      font-size: 12px; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 99px;
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer;
+      font-size: 14px; font-weight: 600; color: var(--text);
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-q[aria-expanded="true"] { color: var(--yellow); }
+    .faq-chevron {
+      font-size: 16px; color: var(--muted);
+      transition: transform 0.3s; flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--yellow); }
+    .faq-a { display: none; padding: 0 0 18px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p {
+      font-size: 14px; color: var(--sub); line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text); }
+    .faq-a a { color: var(--yellow); }
+    .faq-a ul { margin: 8px 0 8px 20px; }
+    .faq-a li { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    .faq-a .page-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; font-size: 13px; font-weight: 600;
+      color: var(--yellow); border: 1px solid rgba(250,204,21,0.25);
+      padding: 5px 12px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .faq-a .page-link:hover {
+      background: rgba(250,204,21,0.08); text-decoration: none;
+    }
+
+    /* ── CTA BLOCO ── */
+    .faq-cta-block {
+      background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, rgba(16,185,129,0.04) 100%);
+      border: 1px solid rgba(250,204,21,0.2);
+      border-radius: 16px; padding: 36px 40px;
+      text-align: center; margin: 0 0 56px;
+    }
+    .faq-cta-block h3 {
+      font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    }
+    .faq-cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-yellow {
+      background: var(--yellow); color: #0e1117;
+      font-size: 14px; font-weight: 800;
+      padding: 10px 22px; border-radius: 8px;
+      transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
+    .btn-ghost {
+      background: transparent; color: var(--sub);
+      font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--text); color: var(--text); text-decoration: none; }
+
+    /* ── GUIAS CLUSTER ── */
+    .cluster-section { margin: 0 0 56px; }
+    .cluster-section h3 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .cluster-section > p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .cluster-group { margin-bottom: 32px; }
+    .cluster-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
+    .cluster-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+    .cluster-link { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--sub); transition: border-color 0.2s, color 0.2s; }
+    .cluster-link:hover { border-color: var(--yellow); color: var(--text); text-decoration: none; }
+    .cluster-link-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--sub); }
+  </style>
+  <script>window._forcedLang='id';</script>
+  <script src="/lang-switcher.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="../index.html" class="nav-logo">★ NODUS</a>
+        <a href="../index.html" class="nav-back">← Kembali ke situs</a>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Pasang gratis</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="container">
+      <div class="faq-hero-label">Pusat bantuan</div>
+      <h1>Pertanyaan yang <span style="color:var(--yellow)">sering diajukan</span></h1>
+      <p>Semua tentang cara menyimpan, mengekspor, dan mengorganisir percakapan AI Anda — tanpa akun, tanpa server, tanpa kerumitan.</p>
+      <div class="faq-platforms">
+        <span class="plat-badge">ChatGPT</span>
+        <span class="plat-badge">Claude</span>
+        <span class="plat-badge">Gemini</span>
+        <span class="plat-badge">Perplexity</span>
+        <span class="plat-badge">Grok</span>
+        <span class="plat-badge">Copilot</span>
+        <span class="plat-badge">DeepSeek</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="container-wide">
+    <div class="faq-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="faq-sidebar">
+        <div class="sidebar-label">Kategori</div>
+        <nav class="sidebar-links">
+          <a href="#comecar" class="sidebar-link">🚀 Memulai <span class="sidebar-count">6</span></a>
+          <a href="#salvar" class="sidebar-link">💾 Menyimpan percakapan <span class="sidebar-count">9</span></a>
+          <a href="#exportar" class="sidebar-link">📤 Ekspor &amp; unduh <span class="sidebar-count">7</span></a>
+          <a href="#organizar" class="sidebar-link">🗂️ Mengorganisir <span class="sidebar-count">7</span></a>
+          <a href="#cadeias" class="sidebar-link">🔗 Rantai <span class="sidebar-count">6</span></a>
+          <a href="#privacidade" class="sidebar-link">🔒 Privasi <span class="sidebar-count">7</span></a>
+          <a href="#planos" class="sidebar-link">💳 Paket &amp; harga <span class="sidebar-count">6</span></a>
+          <a href="#plataformas" class="sidebar-link">🌐 Berdasarkan platform <span class="sidebar-count">6</span></a>
+        </nav>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- CTA topo -->
+        <div class="faq-cta-block">
+          <h3>Belum punya NODUS?</h3>
+          <p>Pasang gratis dalam 30 detik. Berfungsi dengan ChatGPT, Claude, Gemini, dan 4 platform lainnya.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Pasang di Chrome
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+        <!-- ══ 1. MEMULAI ══ -->
+        <section class="faq-category" id="comecar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🚀</span>
+            <h2 class="faq-category-title">Memulai</h2>
+            <span class="faq-category-count">6 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa itu NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS adalah ekstensi browser yang memungkinkan Anda <strong>menyimpan, mengorganisir, dan menggunakan kembali respons AI</strong> hanya dengan satu klik. Berfungsi dengan ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot, dan DeepSeek. Semua data tersimpan secara lokal di perangkat Anda — tanpa akun, tanpa server, tanpa langganan wajib.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara memasang NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Pemasangan membutuhkan kurang dari 30 detik:</p>
+              <ul>
+                <li><strong>Chrome / Edge / Brave:</strong> kunjungi Chrome Web Store dan klik "Tambahkan ke Chrome"</li>
+                <li><strong>Firefox:</strong> kunjungi Mozilla Add-ons dan klik "Tambahkan ke Firefox"</li>
+              </ul>
+              <p>Setelah dipasang, buka platform AI yang didukung — tombol NODUS akan muncul secara otomatis.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah saya perlu membuat akun untuk menggunakan NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Tidak.</strong> NODUS berfungsi tanpa registrasi, tanpa email, tanpa kata sandi. Pasang dan langsung gunakan. Data Anda tersimpan di local storage browser.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Browser apa saja yang didukung? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS berfungsi di:</p>
+              <ul>
+                <li><strong>Chrome</strong> (versi 88+)</li>
+                <li><strong>Firefox</strong> (versi 109+)</li>
+                <li><strong>Edge</strong> (berbasis Chromium)</li>
+                <li><strong>Brave</strong> dan browser Chromium lainnya</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara kerja tombol simpan? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Saat Anda membuka platform yang didukung, NODUS menyuntikkan tombol mengambang di samping respons AI. Klik <strong>Simpan</strong> untuk menangkap pertanyaan dan respons secara instan. Klik <strong>Cepat</strong> untuk menyimpan tanpa membuka panel pengaturan. Klik <strong>Dasbor</strong> untuk membuka dasbor tangkapan Anda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Platform AI apa saja yang didukung NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS saat ini mendukung <strong>7 platform</strong>:</p>
+              <ul>
+                <li>ChatGPT (chat.openai.com)</li>
+                <li>Claude (claude.ai)</li>
+                <li>Gemini (gemini.google.com)</li>
+                <li>Perplexity (perplexity.ai)</li>
+                <li>Grok (grok.com / x.com)</li>
+                <li>Microsoft Copilot (copilot.microsoft.com)</li>
+                <li>DeepSeek (chat.deepseek.com)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ 2. MENYIMPAN PERCAKAPAN ══ -->
+        <section class="faq-category" id="salvar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💾</span>
+            <h2 class="faq-category-title">Menyimpan Percakapan</h2>
+            <span class="faq-category-count">9 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menyimpan percakapan ChatGPT? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Dengan NODUS terpasang, buka ChatGPT seperti biasa. Tombol NODUS muncul di samping setiap respons. Klik <strong>Simpan</strong> untuk membuka panel tangkapan, tambahkan tag dan pilih antrean tujuan — atau klik <strong>Cepat</strong> untuk menyimpan dengan satu klik tanpa konfigurasi apa pun.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-chatgpt.html">Panduan lengkap: menyimpan percakapan ChatGPT →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menyimpan percakapan Claude? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS berfungsi secara native di Claude.ai. Tombol tangkap muncul di samping respons secara otomatis. Klik <strong>Simpan</strong> untuk menangkap pertanyaan dan respons ke dasbor lokal Anda. Berfungsi sama untuk proyek Claude maupun percakapan biasa.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-claude.html">Panduan lengkap: menyimpan percakapan Claude →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menyimpan percakapan Gemini? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>Pasang NODUS dan kunjungi gemini.google.com. Tombol tangkap muncul di samping respons Gemini. Klik <strong>Simpan</strong> untuk menyimpan percakapan secara lokal, dengan tag dan pengorganisiran yang sama seperti platform lain.</p>
+              <a class="page-link" href="../faq/como-salvar-conversas-gemini.html">Panduan lengkap: menyimpan percakapan Gemini →</a>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menyimpan respons Perplexity? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS secara otomatis mendeteksi respons di Perplexity.ai dan menyuntikkan tombol tangkap. Klik <strong>Simpan</strong> untuk merekam respons beserta sumber yang dikutip. Ideal untuk riset yang ingin Anda rujuk nanti.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara mengarsipkan respons Grok? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS berfungsi di grok.com maupun x.com/grok. Saat Anda membuka percakapan dengan Grok, tombol tangkap muncul di samping respons. Klik <strong>Simpan</strong> untuk mengarsipkannya secara lokal di dasbor NODUS Anda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menyimpan respons DeepSeek? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS mendukung DeepSeek (chat.deepseek.com) secara native. Tombol tangkap muncul di samping respons. Klik <strong>Simpan</strong> untuk merekam pertanyaan dan respons di dasbor lokal Anda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bisakah saya menyimpan beberapa respons sekaligus? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Setiap tangkapan menyimpan satu pertanyaan dan respons dalam satu waktu. Untuk menyimpan beberapa respons dari satu percakapan, klik <strong>Simpan</strong> pada setiap respons yang Anda inginkan. Kemudian gunakan <strong>Rantai</strong> untuk menghubungkan tangkapan-tangkapan tersebut menjadi urutan yang logis.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa itu Tangkap Cepat? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Tangkap Cepat (tombol <strong>Cepat</strong>) menyimpan respons langsung ke antrean default tanpa membuka panel pengaturan. Ideal saat Anda ingin merekam sesuatu dengan cepat tanpa mengganggu alur percakapan. Tangkapan tersedia di dasbor untuk diorganisir nanti.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana caranya agar tidak pernah kehilangan respons AI penting lagi? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Pasang NODUS dan gunakan tombol <strong>Cepat</strong> setiap kali ada respons yang berguna — meskipun Anda belum yakin untuk apa. Kebiasaan menangkap sebelum menutup tab menghilangkan kehilangan informasi. Dasbor Anda mengumpulkan segalanya dan pencarian teks lengkap memungkinkan Anda menemukan tangkapan apa pun nanti.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 3. EKSPOR & UNDUH ══ -->
+        <section class="faq-category" id="exportar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">📤</span>
+            <h2 class="faq-category-title">Ekspor &amp; Unduh</h2>
+            <span class="faq-category-count">7 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara mengekspor percakapan ChatGPT ke Word? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Buka dasbor NODUS, pilih tangkapan yang diinginkan dan klik <strong>Ekspor → DOCX</strong>. File Word dibuat langsung di browser Anda dan disimpan ke komputer. Anda dapat menghubungkan beberapa tangkapan dengan Rantai dan mengekspor semuanya bersama sebagai dokumen terstruktur.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara mengunduh percakapan Claude sebagai PDF? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS mengekspor ke <strong>HTML</strong>, yang dapat Anda cetak sebagai PDF langsung dari browser (Ctrl+P → Simpan sebagai PDF). Untuk ekspor PDF langsung, kami menyarankan ekspor sebagai HTML dan menggunakan fungsi cetak browser — hasilnya berformat baik.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Format ekspor apa saja yang didukung? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS mendukung ekspor dalam format:</p>
+              <ul>
+                <li><strong>TXT</strong> — teks biasa, kompatibel dengan editor apa pun</li>
+                <li><strong>HTML</strong> — berformat, dapat dicetak sebagai PDF</li>
+                <li><strong>DOCX</strong> — kompatibel dengan Word, Google Docs, dan LibreOffice</li>
+              </ul>
+              <p>Tangkapan yang dirantai (Rantai) dapat diekspor bersama sebagai satu dokumen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara mengekstrak riwayat percakapan AI lengkap saya? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Di dasbor NODUS, buka <strong>Pengaturan → Ekspor semua</strong>. Ini menghasilkan file dengan semua tangkapan Anda dalam format JSON (untuk diimpor kembali ke NODUS), atau Anda dapat mengekspor setiap antrean secara individual sebagai DOCX atau HTML.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menyalin respons ChatGPT yang berformat? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Di tampilan kartu di dasbor, klik <strong>Salin</strong>. Konten disalin dengan format Markdown yang terjaga — judul, daftar, kode — siap ditempel ke editor apa pun yang mendukung Markdown.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bisakah saya mencadangkan semua tangkapan saya? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. Di <strong>Pengaturan → Ekspor data</strong>, Anda mengunduh file JSON dengan semua tangkapan Anda. File ini dapat diimpor kembali ke NODUS di komputer lain atau setelah memasang ulang ekstensi.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara mengorganisir percakapan AI menjadi dokumen belajar? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Gunakan <strong>Rantai</strong> untuk menghubungkan tangkapan terkait dari sesi berbeda (bahkan dari platform berbeda). Kemudian ekspor seluruh rantai sebagai DOCX — hasilnya adalah dokumen terstruktur dengan semua pertanyaan dan respons yang dirantai dalam urutan logis.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 4. MENGORGANISIR ══ -->
+        <section class="faq-category" id="organizar">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🗂️</span>
+            <h2 class="faq-category-title">Mengorganisir</h2>
+            <span class="faq-category-count">7 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menggunakan tag untuk mengorganisir tangkapan? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Saat menyimpan tangkapan, Anda dapat menambahkan hingga 4 tag untuk mengkategorikan konten. Tag muncul di kartu dasbor dan berfungsi sebagai filter — klik tag untuk melihat hanya tangkapan dengan kategori tersebut. Buat tag seperti "backend", "belajar", "ide", "kerja", atau kategori apa pun yang masuk akal untuk Anda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa itu antrean (Cepat, Default, Q1, Q2...)? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Antrean adalah koleksi terpisah untuk mengorganisir tangkapan berdasarkan konteks atau prioritas. <strong>Antrean Cepat</strong> untuk tangkapan cepat, tanpa kategorisasi. <strong>Default</strong> adalah antrean umum. Antrean Q1–Q4 (paket PRO) dapat dikustomisasi berdasarkan tema, proyek, atau klien. Setiap antrean memiliki warna border berbeda pada kartu.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara mencari di dalam tangkapan saya? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Di dasbor NODUS, gunakan bilah pencarian di bagian atas. Pencarian bekerja <strong>secara real time</strong> dan mencakup judul, pertanyaan, dan respons dari semua tangkapan. Kombinasikan pencarian dengan filter platform atau tag untuk menemukan tepat apa yang Anda cari.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara memfilter tangkapan berdasarkan platform AI? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Di dasbor, klik lencana platform di bawah bilah pencarian. Klik <strong>ChatGPT</strong>, <strong>Claude</strong>, <strong>Gemini</strong>, atau platform lainnya untuk melihat hanya tangkapan dari sumber tersebut. Klik lagi untuk menghapus filter.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menggunakan Proyek untuk memisahkan konteks berbeda? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Proyek (paket PRO) memungkinkan Anda membuat ruang yang sepenuhnya terpisah — misalnya, "Kerja", "Belajar", dan "Pribadi". Setiap proyek memiliki antrean dan tangkapannya sendiri. Beralih antara proyek dengan satu klik tanpa mencampuradukkan konten yang berbeda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bisakah saya mengedit tangkapan setelah menyimpannya? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. Buka kartu di dasbor dan klik <strong>Edit</strong>. Anda dapat mengubah judul, menambah atau menghapus tag, dan memindahkan tangkapan antar antrean. Konten asli (pertanyaan dan respons) tetap terjaga.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara menemukan respons AI yang saya simpan beberapa minggu lalu? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Gunakan pencarian teks di dasbor — mencakup konten lengkap semua tangkapan, bukan hanya judulnya. Jika Anda ingat kata kunci apa pun dari respons, cukup ketikkan. Kombinasikan dengan filter platform (misalnya Claude) jika Anda tahu dari mana asalnya.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 5. RANTAI ══ -->
+        <section class="faq-category" id="cadeias">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔗</span>
+            <h2 class="faq-category-title">Rantai</h2>
+            <span class="faq-category-count">6 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa itu Rantai? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Rantai memungkinkan Anda <strong>menghubungkan tangkapan dari percakapan berbeda</strong> menjadi urutan yang logis. Bayangkan Anda meneliti topik di ChatGPT, lalu mendalaminya di Claude dan menemukan contoh di Gemini — sebuah Rantai menghubungkan ketiga tangkapan tersebut menjadi benang penalaran yang berkelanjutan, meskipun berasal dari platform yang berbeda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara membuat Rantai? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Di tab <strong>Rantai</strong> di dasbor, klik "Rantai Baru". Beri nama rantai dan tambahkan tangkapan yang ada dengan menyeretnya ke urutan yang diinginkan. Anda dapat menambahkan tangkapan dari platform apa pun dan mengatur ulang urutannya kapan saja.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bisakah saya mencampur tangkapan ChatGPT dan Claude dalam Rantai yang sama? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Ya</strong> — itulah salah satu keunggulan utama Rantai. Anda dapat menghubungkan tangkapan dari ChatGPT, Claude, Gemini, Perplexity, dan platform lain yang didukung dalam satu urutan. Setiap kartu tetap mempertahankan identifikasi platform sumbernya.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bagaimana cara mengekspor Rantai? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Buka Rantai di dasbor dan klik <strong>Ekspor</strong>. Anda dapat mengekspor urutan lengkap sebagai DOCX atau HTML — hasilnya adalah dokumen terstruktur dengan semua pertanyaan dan respons secara berurutan, ideal untuk laporan, studi, atau dokumentasi.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Berapa batas tangkapan dalam satu Rantai? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Pada paket gratis, setiap Rantai dapat memiliki hingga <strong>5 tangkapan</strong>. Pada paket PRO, batasnya jauh lebih tinggi, memungkinkan rantai yang panjang untuk proyek kompleks.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa tujuan menyuntikkan Rantai ke percakapan AI? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Dengan fitur injeksi, Anda dapat menyisipkan konten Rantai langsung ke kolom prompt platform apa pun yang didukung. Ini seperti memberikan AI konteks lengkap dari penelitian sebelumnya — tanpa harus menyalin dan menempel setiap respons secara manual.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 6. PRIVASI ══ -->
+        <section class="faq-category" id="privacidade">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🔒</span>
+            <h2 class="faq-category-title">Privasi &amp; Keamanan</h2>
+            <span class="faq-category-count">7 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS mengirim data saya ke server manapun? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Tidak.</strong> NODUS tidak memiliki server sendiri yang menerima tangkapan Anda. Semua disimpan di local storage browser Anda (chrome.storage.local / browser.storage.local). Tidak ada tangkapan, tag, atau konten yang pernah meninggalkan perangkat Anda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS mengakses percakapan AI saya tanpa sepengetahuan saya? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p><strong>Tidak.</strong> NODUS hanya membaca konten halaman saat Anda secara aktif mengklik Simpan atau Cepat. Tidak ada tangkapan otomatis, pemantauan pasif, atau pembacaan percakapan yang tidak Anda pilih untuk disimpan.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah data saya aman jika seseorang mengakses komputer saya? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Tangkapan disimpan di profil browser pengguna sistem operasi Anda. Jika profil pengguna di komputer dilindungi dengan kata sandi, tangkapan juga terlindungi. NODUS tidak menambahkan enkripsi ekstra — gunakan perlindungan sistem operasi Anda untuk keamanan fisik.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS open source? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. Inti NODUS tersedia di GitHub di bawah lisensi MIT. Siapa saja dapat mengaudit kode dan memverifikasi tidak ada pengumpulan data tersembunyi. Anda tidak perlu percaya begitu saja — lihat kodenya.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa yang terjadi pada data saya jika saya mencopot NODUS? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Saat Anda mencabut ekstensi, local storage yang terkait dihapus oleh browser. <strong>Cadangkan terlebih dahulu:</strong> buka Pengaturan → Ekspor data untuk mengunduh semua tangkapan Anda sebagai JSON. Anda dapat mengimpornya kembali setelah memasang ulang.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Izin apa yang diminta NODUS dan mengapa? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <p>NODUS hanya meminta izin yang diperlukan untuk berfungsi:</p>
+              <ul>
+                <li><strong>Membaca halaman AI</strong> — untuk mendeteksi respons dan menyuntikkan tombol</li>
+                <li><strong>Local storage</strong> — untuk menyimpan tangkapan Anda di perangkat</li>
+                <li><strong>Akses tab</strong> — untuk mengetahui platform mana yang sedang Anda gunakan</li>
+              </ul>
+              <p>Tidak ada izin untuk kamera, mikrofon, riwayat penelusuran, atau kata sandi yang diminta.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS berfungsi offline? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Dasbor NODUS berfungsi sepenuhnya <strong>offline</strong> — Anda dapat mengakses, mencari, dan mengekspor tangkapan tanpa koneksi internet. Menangkap percakapan baru memerlukan koneksi karena platform AI itu sendiri perlu dapat diakses.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 7. PAKET & HARGA ══ -->
+        <section class="faq-category" id="planos">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">💳</span>
+            <h2 class="faq-category-title">Paket &amp; Harga</h2>
+            <span class="faq-category-count">6 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS gratis? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. Paket gratis mencakup penyimpanan, pengorganisiran, pencarian, dan pengeksporan tangkapan tanpa batas waktu. Gratis selamanya — bukan uji coba. Paket PRO membuka fitur lanjutan bagi yang ingin melangkah lebih jauh.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa yang termasuk dalam paket gratis? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>Tangkapan percakapan tanpa batas (ChatGPT, Claude, Gemini, dan 4 lainnya)</li>
+                <li>Dasbor terpadu dengan pencarian dan filter</li>
+                <li>Tag dan Antrean Cepat</li>
+                <li>Rantai dengan hingga 5 tangkapan</li>
+                <li>Ekspor dalam TXT, HTML, dan DOCX</li>
+                <li>1 antrean tambahan (Q1)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apa yang ditambahkan paket PRO? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a">
+              <ul>
+                <li>3 antrean tambahan (Q2, Q3, Q4) untuk pengorganisiran lanjutan</li>
+                <li>Proyek — ruang terpisah berdasarkan konteks</li>
+                <li>Ukuran Rantai tanpa batas</li>
+                <li>Injeksi Rantai ke percakapan AI</li>
+                <li>Dukungan prioritas</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah PRO berlangganan atau pembelian sekali bayar? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Paket PRO tersedia sebagai <strong>pembelian sekali bayar</strong> dengan akses seumur hidup. Tanpa langganan bulanan, tanpa perpanjangan otomatis, tanpa kejutan di tagihan Anda.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Bisakah saya menggunakan PRO di lebih dari satu komputer? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. Lisensi PRO terikat pada akun lisensi Anda, bukan perangkat. Anda dapat mengaktifkan PRO di komputer sebanyak yang Anda butuhkan dengan kunci lisensi yang sama.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah ada kebijakan pengembalian dana? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. Kami menawarkan pengembalian dana dalam <strong>7 hari</strong> setelah pembelian, tanpa pertanyaan apa pun. Hubungi kami melalui email dukungan dengan nomor pesanan Anda.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ 8. BERDASARKAN PLATFORM ══ -->
+        <section class="faq-category" id="plataformas">
+          <div class="faq-category-header">
+            <span class="faq-category-icon">🌐</span>
+            <h2 class="faq-category-title">Berdasarkan Platform</h2>
+            <span class="faq-category-count">6 pertanyaan</span>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS berfungsi dengan ChatGPT dalam bahasa selain Inggris? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. NODUS menangkap percakapan dalam bahasa apa pun — Indonesia, Inggris, Spanyol, atau lainnya. Bahasa percakapan tidak mempengaruhi cara kerja tombol tangkap.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah berfungsi dengan Claude Sonnet dan Claude Opus? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. NODUS berfungsi dengan semua versi Claude yang tersedia di claude.ai, termasuk Sonnet, Haiku, dan Opus. Model yang digunakan dalam percakapan tidak mempengaruhi tangkapan.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS berfungsi dengan Gemini Advanced? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. NODUS menangkap respons dari Gemini dalam semua versi yang tersedia di gemini.google.com, termasuk Gemini Advanced.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah berfungsi dengan Microsoft Copilot? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. NODUS mendukung Microsoft Copilot di copilot.microsoft.com. Tombol tangkap muncul di samping respons secara otomatis.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah ada rencana untuk menambah platform lain? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>Ya. NODUS sedang dalam pengembangan aktif dan platform baru ditambahkan berdasarkan permintaan. Platform yang sering diminta termasuk Poe, Pi, dan lainnya. Ikuti pembaruan di GitHub.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Apakah NODUS menangkap gambar yang dibuat oleh AI (DALL·E, Midjourney)? <span class="faq-chevron">▾</span></button>
+            <div class="faq-a"><p>NODUS menangkap gambar yang dibuat dalam platform yang didukung saat muncul dalam respons (misalnya gambar yang dibuat oleh ChatGPT melalui DALL·E). Platform gambar khusus seperti Midjourney belum didukung saat ini.</p></div>
+          </div>
+        </section>
+
+        <!-- ══ PANDUAN TERPERINCI ══ -->
+        <div class="cluster-section">
+          <h3>Panduan terperinci berdasarkan platform</h3>
+          <p>Petunjuk langkah demi langkah untuk setiap platform AI dan setiap kasus penggunaan.</p>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Cara menyimpan percakapan</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-salvar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-salvar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Cara mengekspor percakapan</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-conversas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-exportar-conversas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Cara menyimpan respons</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-guardar-respostas-chatgpt.html"><span class="cluster-link-dot" style="background:#10b981;"></span>ChatGPT</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-claude.html"><span class="cluster-link-dot" style="background:#8b5cf6;"></span>Claude</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-gemini.html"><span class="cluster-link-dot" style="background:#3b82f6;"></span>Gemini</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-perplexity.html"><span class="cluster-link-dot" style="background:#06b6d4;"></span>Perplexity</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-grok.html"><span class="cluster-link-dot" style="background:#ec4899;"></span>Grok</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-copilot.html"><span class="cluster-link-dot" style="background:#0284c7;"></span>Copilot</a>
+              <a class="cluster-link" href="../faq/como-guardar-respostas-deepseek.html"><span class="cluster-link-dot" style="background:#6366f1;"></span>DeepSeek</a>
+            </div>
+          </div>
+
+          <div class="cluster-group">
+            <div class="cluster-group-title">Panduan lengkap</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../salvar-conversas-ia.html" style="border-color:rgba(250,204,21,0.3);"><span class="cluster-link-dot" style="background:#facc15;"></span>Cara menyimpan percakapan AI — panduan utama</a>
+            </div>
+          </div>
+
+          <div class="cluster-group" style="margin-bottom:0;">
+            <div class="cluster-group-title">Panduan lainnya</div>
+            <div class="cluster-links">
+              <a class="cluster-link" href="../faq/como-exportar-historico-ia-word.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Ekspor ke Word</a>
+              <a class="cluster-link" href="../faq/como-baixar-historico-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Unduh riwayat AI</a>
+              <a class="cluster-link" href="../faq/como-organizar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Mengorganisir percakapan</a>
+              <a class="cluster-link" href="../faq/como-nao-perder-resposta-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Jangan pernah kehilangan respons lagi</a>
+              <a class="cluster-link" href="../faq/extensao-salvar-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Ekstensi untuk menyimpan percakapan</a>
+              <a class="cluster-link" href="../faq/como-pesquisar-historico-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Cari riwayat AI</a>
+              <a class="cluster-link" href="../faq/como-fazer-backup-conversas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Cadangkan percakapan</a>
+              <a class="cluster-link" href="../faq/recuperar-historico-chatgpt.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Riwayat ChatGPT menghilang</a>
+              <a class="cluster-link" href="../faq/como-anotar-respostas-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Anotasi respons AI</a>
+              <a class="cluster-link" href="../faq/como-usar-nodus.html"><span class="cluster-link-dot" style="background:#facc15;"></span>Cara menggunakan NODUS</a>
+              <a class="cluster-link" href="../faq/nodus-vs-historico-nativo-ia.html"><span class="cluster-link-dot" style="background:#facc15;"></span>NODUS vs riwayat native</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA fundo -->
+        <div class="faq-cta-block" style="margin-top:8px;">
+          <h3>Siap untuk memulai?</h3>
+          <p>Pasang gratis dan simpan percakapan AI berikutnya dalam waktu kurang dari 1 menit. Berfungsi dengan ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot, dan DeepSeek.</p>
+          <div class="cta-btns">
+            <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">
+              Pasang di Chrome — gratis
+            </a>
+            <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">
+              Firefox
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom:8px;">
+        <a href="../index.html">★ NODUS</a> &nbsp;·&nbsp;
+        <a href="../index.html#privacidade">Privasi</a> &nbsp;·&nbsp;
+        <a href="https://github.com/mmcarvalhodev/nodus-core" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <a href="../checkout.html">Paket PRO</a>
+      </p>
+      <p>© 2025 NODUS. Ekstensi browser. Data Anda tetap bersama Anda.</p>
+    </div>
+  </footer>
+
+  <!-- ACCORDION JS -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Highlight sidebar link no scroll
+    const sections = document.querySelectorAll('.faq-category');
+    const sideLinks = document.querySelectorAll('.sidebar-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          sideLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Apa itu NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS adalah ekstensi browser yang memungkinkan Anda menyimpan, mengorganisir, dan menggunakan kembali respons AI hanya dengan satu klik. Berfungsi dengan ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot, dan DeepSeek. Semua data tersimpan secara lokal di perangkat Anda." } },
+      { "@type": "Question", "name": "Bagaimana cara menyimpan percakapan ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "Dengan NODUS terpasang, buka ChatGPT. Tombol NODUS muncul di samping setiap respons. Klik Simpan untuk menangkap pertanyaan dan respons, atau klik Cepat untuk menyimpan dengan satu klik." } },
+      { "@type": "Question", "name": "Bagaimana cara menyimpan percakapan Claude?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS berfungsi secara native di Claude.ai. Tombol tangkap muncul di samping respons secara otomatis. Klik Simpan untuk menangkap pertanyaan dan respons ke dasbor lokal Anda." } },
+      { "@type": "Question", "name": "Apakah NODUS mengirim data saya ke server manapun?", "acceptedAnswer": { "@type": "Answer", "text": "Tidak. NODUS tidak memiliki server sendiri yang menerima tangkapan Anda. Semua disimpan di local storage browser Anda. Tidak ada tangkapan yang pernah meninggalkan perangkat Anda." } },
+      { "@type": "Question", "name": "Apakah NODUS gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Ya. Paket gratis mencakup penyimpanan, pengorganisiran, pencarian, dan pengeksporan tangkapan tanpa batas waktu. Gratis selamanya. Paket PRO membuka fitur lanjutan." } },
+      { "@type": "Question", "name": "Browser apa saja yang didukung?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS berfungsi di Chrome, Firefox, Edge, dan Brave. Browser berbasis Chromium apa pun kompatibel." } },
+      { "@type": "Question", "name": "Bagaimana cara mengekspor percakapan ChatGPT ke Word?", "acceptedAnswer": { "@type": "Answer", "text": "Buka dasbor NODUS, pilih tangkapan dan klik Ekspor → DOCX. File Word dibuat langsung di browser Anda dan disimpan ke komputer." } },
+      { "@type": "Question", "name": "Apa itu Rantai?", "acceptedAnswer": { "@type": "Answer", "text": "Rantai memungkinkan Anda menghubungkan tangkapan dari percakapan berbeda menjadi urutan yang logis, bahkan dari platform yang berbeda. Anda dapat menghubungkan tangkapan dari ChatGPT, Claude, dan Gemini dalam satu urutan dan mengekspor semuanya bersama." } },
+      { "@type": "Question", "name": "Apa yang terjadi pada data saya jika saya mencopot NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "Saat Anda mencabut ekstensi, local storage dihapus oleh browser. Cadangkan terlebih dahulu di Pengaturan → Ekspor data untuk mengunduh semua tangkapan Anda sebagai JSON." } },
+      { "@type": "Question", "name": "Platform AI apa saja yang didukung NODUS?", "acceptedAnswer": { "@type": "Answer", "text": "NODUS mendukung 7 platform: ChatGPT, Claude, Gemini, Perplexity, Grok, Microsoft Copilot, dan DeepSeek." } }
+    ]
+  }
+  </script>
+
+</body>
+</html>
