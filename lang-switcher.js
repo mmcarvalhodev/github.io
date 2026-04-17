@@ -43,11 +43,13 @@
 
   document.head.insertAdjacentHTML('beforeend', style);
 
+  // Build base hrefs (without hash) — hash is added dynamically on open
   var opts = allLangs.map(function(pair) {
     var code = pair[0], label = pair[1];
-    var href = code === 'en' ? root : root + code + '/';
+    var base = code === 'en' ? root : root + code + '/';
     var active = code === lang ? ' active' : '';
-    return '<a href="' + href + '" class="lang-opt' + active + '" data-lang="' + code + '">' + label + '</a>';
+    return '<a href="' + base + '" class="lang-opt' + active + '"' +
+           ' data-lang="' + code + '" data-base="' + base + '">' + label + '</a>';
   }).join('');
 
   var wrap = document.createElement('div');
@@ -61,9 +63,20 @@
     '</button>' +
     '<div class="lang-dropdown">' + opts + '</div>';
 
+  // Append current page hash to all language links
+  function syncHash() {
+    var hash = window.location.hash; // e.g. "#faq", "#pricing", or ""
+    wrap.querySelectorAll('.lang-opt').forEach(function(a) {
+      a.href = a.getAttribute('data-base') + hash;
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     var navInner = document.querySelector('.nav-inner');
     if (navInner) navInner.appendChild(wrap);
+
+    syncHash();
+    window.addEventListener('hashchange', syncHash);
 
     // Save lang preference on manual click
     wrap.querySelectorAll('.lang-opt').forEach(function(a) {
@@ -74,6 +87,7 @@
 
     document.getElementById('langTrigger').addEventListener('click', function(e) {
       e.stopPropagation();
+      syncHash(); // always up-to-date when dropdown opens
       document.getElementById('langSwitcher').classList.toggle('open');
     });
 
