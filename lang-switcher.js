@@ -2,7 +2,6 @@
   var lang = window._forcedLang || 'en';
   var subdirs = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
   var isSubdir = subdirs.includes(lang);
-  var root = isSubdir ? '../' : './';
 
   // Sync current page language to localStorage
   try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
@@ -14,7 +13,38 @@
     ['zh','ZH'], ['ru','RU'], ['hi','HI'], ['tr','TR']
   ];
 
-  // Inject CSS matching the old style
+  // Pages that have a translated version in every language subdir
+  var translatedPages = ['privacy.html'];
+
+  // Determine destination URL for a target language code
+  function getHref(code) {
+    var path = window.location.pathname; // e.g. "/faq.html", "/nl/", "/pt/privacy.html"
+    var hash = window.location.hash;     // e.g. "#faq" or ""
+
+    // Extract current page filename (last segment, or empty for index)
+    var segments = path.replace(/^\//, '').split('/');
+    var file = segments[segments.length - 1]; // e.g. "privacy.html", "faq.html", ""
+
+    // Is current page one with full language translations?
+    var hasTranslation = translatedPages.indexOf(file) !== -1;
+
+    if (hasTranslation) {
+      // Go to the equivalent translated page
+      return code === 'en' ? '/' + file : '/' + code + '/' + file;
+    }
+
+    // faq.html: only PT hub exists — send other langs to their #faq section
+    if (file === 'faq.html') {
+      if (code === 'pt') return '/faq.html';
+      if (code === 'en') return '/#faq';
+      return '/' + code + '/#faq';
+    }
+
+    // Index pages (root "/" or "/lang/"): go to target language homepage + current hash
+    return code === 'en' ? '/' + hash : '/' + code + '/' + hash;
+  }
+
+  // Inject CSS
   var style = '<style>' +
     '.lang-switcher{position:relative;margin-left:8px;}' +
     '.lang-trigger{display:flex;align-items:center;gap:5px;padding:5px 10px;' +
@@ -43,13 +73,11 @@
 
   document.head.insertAdjacentHTML('beforeend', style);
 
-  // Build base hrefs (without hash) — hash is added dynamically on open
+  // Build dropdown (hrefs are set dynamically)
   var opts = allLangs.map(function(pair) {
     var code = pair[0], label = pair[1];
-    var base = code === 'en' ? root : root + code + '/';
     var active = code === lang ? ' active' : '';
-    return '<a href="' + base + '" class="lang-opt' + active + '"' +
-           ' data-lang="' + code + '" data-base="' + base + '">' + label + '</a>';
+    return '<a href="#" class="lang-opt' + active + '" data-lang="' + code + '">' + label + '</a>';
   }).join('');
 
   var wrap = document.createElement('div');
@@ -63,11 +91,10 @@
     '</button>' +
     '<div class="lang-dropdown">' + opts + '</div>';
 
-  // Append current page hash to all language links
-  function syncHash() {
-    var hash = window.location.hash; // e.g. "#faq", "#pricing", or ""
+  // Recompute all hrefs (call on open and on hashchange)
+  function syncHrefs() {
     wrap.querySelectorAll('.lang-opt').forEach(function(a) {
-      a.href = a.getAttribute('data-base') + hash;
+      a.href = getHref(a.getAttribute('data-lang'));
     });
   }
 
@@ -75,10 +102,10 @@
     var navInner = document.querySelector('.nav-inner');
     if (navInner) navInner.appendChild(wrap);
 
-    syncHash();
-    window.addEventListener('hashchange', syncHash);
+    syncHrefs();
+    window.addEventListener('hashchange', syncHrefs);
 
-    // Save lang preference on manual click
+    // Save lang preference on click
     wrap.querySelectorAll('.lang-opt').forEach(function(a) {
       a.addEventListener('click', function() {
         try { localStorage.setItem('nodus_lang', a.getAttribute('data-lang')); } catch(e) {}
@@ -87,7 +114,7 @@
 
     document.getElementById('langTrigger').addEventListener('click', function(e) {
       e.stopPropagation();
-      syncHash(); // always up-to-date when dropdown opens
+      syncHrefs();
       document.getElementById('langSwitcher').classList.toggle('open');
     });
 
