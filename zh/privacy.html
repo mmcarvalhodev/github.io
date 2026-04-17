@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隐私政策 — NODUS</title>
+  <link rel="icon" type="image/png" href="../icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 18px;
+    }
+    .toc li {
+      margin-bottom: 6px;
+    }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT TABLE */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body {
+      padding: 14px 18px;
+    }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://mmcarvalhodev.github.io/github.io/">NODUS</a>
+    <a class="nav-back" href="https://mmcarvalhodev.github.io/github.io/">← 返回网站</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">法律信息</div>
+    <h1>隐私政策</h1>
+    <p>最后更新：2026年4月 &nbsp;·&nbsp; NODUS v4</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">目录</div>
+      <ol>
+        <li><a href="#overview">概述</a></li>
+        <li><a href="#local-data">存储在您设备上的本地数据</a></li>
+        <li><a href="#endpoints">外部接口说明</a></li>
+        <li><a href="#telemetry">可选匿名遥测</a></li>
+        <li><a href="#license">PRO 许可证验证</a></li>
+        <li><a href="#file-access">AI 平台上的文件访问</a></li>
+        <li><a href="#never">我们绝不做的事情</a></li>
+        <li><a href="#rights">您的权利（LGPD / GDPR）</a></li>
+        <li><a href="#contact">联系方式</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. 概述</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS 是一款以本地为核心的浏览器扩展程序。</strong>您捕获的所有内容——想法、笔记、高亮、标签、链条和项目——均专门存储在浏览器的本地存储（<code>chrome.storage.local</code>）中，永远不会上传至任何服务器。</p>
+      </div>
+
+      <p>NODUS 会建立两类外部连接，均在本文档中有清晰说明：</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">opt-in</span> 匿名遥测</div>
+        <p>默认禁用。如果您选择启用，仅发送汇总的使用统计数据——绝不包含您的内容。</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">PRO only</span> 许可证验证</div>
+        <p>仅适用于付费 PRO 订阅者。发送经过哈希处理的设备指纹和您的电子邮件地址以验证许可证。绝不包含任何对话内容。</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. 存储在您设备上的本地数据</h2>
+
+      <p>以下所有内容均存储在 <code>chrome.storage.local</code> 中——这意味着它仅保存在您的计算机上，除非您主动导出，否则不会发送至任何地方。</p>
+
+      <ul class="check">
+        <li>捕获的想法、笔记和高亮内容</li>
+        <li>标签和队列分配</li>
+        <li>链条及链条模板</li>
+        <li>项目及项目元数据</li>
+        <li>仪表盘布局偏好</li>
+        <li>语言和动画设置</li>
+        <li>遥测事件队列（如已选择加入）</li>
+        <li>匿名 ID——本地生成的带随机盐的 SHA-256 哈希值，永远不会与您的身份关联</li>
+      </ul>
+
+      <div class="highlight highlight-yellow">
+        <p>NODUS 没有用户账户系统。没有云同步、没有服务器端档案，我们也无法通过本地存储的数据识别您的身份。</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. 外部接口说明</h2>
+
+      <p>NODUS 在三种情况下连接外部 URL：遥测（需选择加入）、许可证验证（仅 PRO）以及读取您已上传至 AI 平台的文件。以下是所有使用的接口及其发送内容的详细说明。</p>
+
+      <h3>3a. NODUS 基础设施</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/telemetry/batch</span>
+          <span class="badge badge-green">opt-in only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>接收匿名汇总的使用统计数据。仅在您于设置中启用遥测后才会调用。详情请参见<a href="#telemetry" style="color:#60a5fa;">第 4 节</a>。</p>
+          <p class="data-sent"><strong>发送的数据：</strong>匿名 ID（SHA-256 哈希值）· 事件类型计数 · 平台计数 · 不含对话内容 · 不含 URL · 不含文本</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/auth/status</span>
+          <span class="badge badge-blue">PRO only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>在启动时验证您的 PRO 许可证。仅在您输入了许可证令牌后才会调用。详情请参见<a href="#license" style="color:#60a5fa;">第 5 节</a>。</p>
+          <p class="data-sent"><strong>发送的数据：</strong>电子邮件地址 · 哈希设备指纹 · 不含对话内容</p>
+        </div>
+      </div>
+
+      <h3>3b. AI 平台文件访问</h3>
+
+      <p>当您触发完整聊天捕获或文件附件功能时，这些接口将以<strong>只读</strong>方式被访问。NODUS 读取文件内容以在本地显示或保存。任何内容均不会上传至 NODUS 服务器。</p>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://files.oaiusercontent.com/* &nbsp;·&nbsp; https://*.oaiusercontent.com/* &nbsp;·&nbsp; https://cdn.openai.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>ChatGPT 对话中用户上传的文件和图片（图片、PDF、附件）。NODUS 在本地读取这些文件，以便将其包含在完整聊天捕获中。</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.anthropic.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Claude.ai 对话中用户上传的文件、构件和附件。在本地访问以支持完整聊天捕获。</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://storage.googleapis.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Gemini 对话中用户上传的文件。在本地访问以支持完整聊天捕获。</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.blob.core.windows.net/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Microsoft Copilot 对话中用户上传的文件。在本地访问以支持完整聊天捕获。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TELEMETRY -->
+    <div class="section">
+      <span class="section-anchor" id="telemetry"></span>
+      <h2><span class="icon">📊</span> 4. 可选匿名遥测</h2>
+
+      <div class="highlight highlight-yellow">
+        <p><strong>遥测默认禁用。</strong>您必须在设置 → 遥测中明确启用它。您可以随时禁用，所有本地排队的数据将立即清除。</p>
+      </div>
+
+      <h3>遥测收集的内容（启用时）</h3>
+      <ul class="check">
+        <li>事件类型计数（例如"3 次保存，1 次注入"）——不含内容，不含文本</li>
+        <li>平台计数（例如"在 ChatGPT 上使用了 2 次"）——不含 URL</li>
+        <li>匿名 ID——本地生成的 SHA-256 哈希值，不与您的身份关联</li>
+        <li>每日汇总会话计数（时间分箱）</li>
+      </ul>
+
+      <h3>遥测绝不收集的内容</h3>
+      <ul class="check cross">
+        <li>对话内容、提示词或 AI 回复</li>
+        <li>访问的 URL 或页面标题</li>
+        <li>您的姓名、电子邮件或任何身份识别信息</li>
+        <li>IP 地址（我们的 Worker 不存储）</li>
+        <li>设备规格或浏览器指纹</li>
+      </ul>
+
+      <h3>发送前的数据处理方式</h3>
+      <p>事件在传输前会在本地汇总。NODUS 不发送原始事件，而是发送汇总计数（例如发生了多少次保存、来自哪个平台），并对每个计数施加隐私保护噪声（±2 随机偏移）。原始事件永远不会离开您的设备。</p>
+
+      <h3>数据保留</h3>
+      <p>汇总的遥测数据在我们服务器上最多保留 12 个月，之后将被删除。本地事件日志在您的浏览器存储中保留 90 天，之后自动清理。</p>
+    </div>
+
+    <!-- 5. LICENSE -->
+    <div class="section">
+      <span class="section-anchor" id="license"></span>
+      <h2><span class="icon">🔑</span> 5. PRO 许可证验证</h2>
+
+      <p>如果您购买了 NODUS PRO，扩展程序将在启动时与我们的服务器验证您的许可证。这是验证付费订阅所必须的最低限度操作。</p>
+
+      <h3>许可证验证期间发送的内容</h3>
+      <ul class="check">
+        <li>您的电子邮件地址（激活时输入的地址）</li>
+        <li>经过哈希处理的设备指纹（浏览器生成的标识符，不是您的硬件序列号）</li>
+      </ul>
+
+      <h3>绝不发送的内容</h3>
+      <ul class="check cross">
+        <li>对话内容或您捕获的任何内容</li>
+        <li>您的 IP 地址（不存储，仅由 Cloudflare 用于路由）</li>
+        <li>任何遥测数据（这是独立的系统）</li>
+      </ul>
+
+      <p>许可证数据存储在 Cloudflare D1 数据库中（巴西/南美地区）。仅用于验证您的订阅是否有效，绝不出售或与第三方共享。</p>
+
+      <p>NODUS 的免费版本完全离线运行，永远不会联系我们的许可证服务器。</p>
+    </div>
+
+    <!-- 6. FILE ACCESS -->
+    <div class="section">
+      <span class="section-anchor" id="file-access"></span>
+      <h2><span class="icon">📎</span> 6. AI 平台上的文件访问</h2>
+
+      <p>当您使用完整聊天捕获或文件附件功能时，NODUS 可能会获取您已上传至 AI 平台（ChatGPT、Claude、Gemini、Copilot）的文件，以便将其包含在本地捕获中。</p>
+
+      <div class="highlight">
+        <p><strong>此访问为只读且在本地进行。</strong>NODUS 直接从 AI 平台的 CDN 将文件内容读取到您浏览器的内存中，并保存至您的本地存储（<code>chrome.storage.local</code>）。文件不会重新上传至任何 NODUS 服务器。</p>
+      </div>
+
+      <p>为此所需的浏览器权限（<code>*.oaiusercontent.com</code>、<code>*.anthropic.com</code>、<code>storage.googleapis.com</code>、<code>*.blob.core.windows.net</code>）允许 NODUS 读取这些文件，但不允许 NODUS 在这些平台上写入、修改或传输您的数据。</p>
+    </div>
+
+    <!-- 7. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 7. 我们绝不做的事情</h2>
+
+      <ul class="check cross">
+        <li>将您的数据出售给任何第三方</li>
+        <li>读取、存储或传输您的对话内容</li>
+        <li>追踪您在 AI 平台以外访问的网站</li>
+        <li>使用广告 SDK 或第三方分析服务</li>
+        <li>向 AI 平台注入广告或联盟链接</li>
+        <li>未经您的操作访问您的麦克风、摄像头或剪贴板</li>
+        <li>未经您明确导出，将您捕获的数据同步至任何云端</li>
+      </ul>
+    </div>
+
+    <!-- 8. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 8. 您的权利（LGPD / GDPR）</h2>
+
+      <p>NODUS 遵守巴西《通用数据保护法》（LGPD）和欧盟《通用数据保护条例》（GDPR），并兼容 CCPA。</p>
+
+      <h3>您拥有的权利</h3>
+      <ul class="check">
+        <li><strong>访问权</strong>——本地存储的所有数据随时可在 NODUS 仪表盘中查看和导出</li>
+        <li><strong>删除权</strong>——您可以在设置 → 清除所有数据中删除所有本地数据。卸载扩展程序也会删除所有本地数据</li>
+        <li><strong>可携带权</strong>——随时将所有想法导出为 JSON、Markdown 或 DOCX 格式</li>
+        <li><strong>退出权</strong>——随时在设置 → 遥测中禁用遥测</li>
+        <li><strong>许可证数据删除</strong>——联系我们以申请从许可证数据库中删除您的电子邮件</li>
+      </ul>
+
+      <h3>处理的法律依据</h3>
+      <p>遥测数据在<strong>同意</strong>（选择加入）的基础上处理。许可证验证在<strong>合同履行</strong>（验证付费订阅）的基础上处理。不存在其他处理。</p>
+    </div>
+
+    <!-- 9. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 9. 联系方式</h2>
+
+      <p>如有隐私相关问题、数据删除申请或任何疑虑：</p>
+
+      <div class="card">
+        <div class="card-title">📧 电子邮件</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 项目网站</div>
+        <p><a href="https://mmcarvalhodev.github.io/github.io/" style="color:#60a5fa;">nodus-ai.app</a></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🔍 源代码</div>
+        <p><a href="https://github.com/mmcarvalhodev/nodus-core" style="color:#60a5fa;">github.com/mmcarvalhodev/nodus-core</a> — 遥测和许可证模块均可在开源核心中完整审计。</p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">本政策可能在新功能添加时更新。重大变更将在扩展程序的发布说明中注明。在政策变更后继续使用 NODUS，即表示接受更新后的政策。</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="https://mmcarvalhodev.github.io/github.io/">首页</a> · <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a> · 隐私政策</p>
+  </footer>
+
+</body>
+</html>

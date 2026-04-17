@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chính Sách Quyền Riêng Tư — NODUS</title>
+  <link rel="icon" type="image/png" href="../icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 18px;
+    }
+    .toc li {
+      margin-bottom: 6px;
+    }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT TABLE */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body {
+      padding: 14px 18px;
+    }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://mmcarvalhodev.github.io/github.io/">NODUS</a>
+    <a class="nav-back" href="https://mmcarvalhodev.github.io/github.io/">← Quay lại trang</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Pháp lý</div>
+    <h1>Chính Sách Quyền Riêng Tư</h1>
+    <p>Cập nhật lần cuối: tháng 4 năm 2026 &nbsp;·&nbsp; NODUS v4</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Mục lục</div>
+      <ol>
+        <li><a href="#overview">Tổng quan</a></li>
+        <li><a href="#local-data">Dữ liệu lưu trữ cục bộ trên thiết bị của bạn</a></li>
+        <li><a href="#endpoints">Giải thích các điểm kết nối bên ngoài</a></li>
+        <li><a href="#telemetry">Đo lường ẩn danh tùy chọn</a></li>
+        <li><a href="#license">Xác thực giấy phép PRO</a></li>
+        <li><a href="#file-access">Truy cập tệp trên các nền tảng AI</a></li>
+        <li><a href="#never">Những điều chúng tôi không bao giờ làm</a></li>
+        <li><a href="#rights">Quyền của bạn (LGPD / GDPR)</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Tổng quan</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS là tiện ích mở rộng trình duyệt ưu tiên lưu trữ cục bộ.</strong> Mọi thứ bạn ghi lại — ý tưởng, ghi chú, nội dung đánh dấu, thẻ, chuỗi và dự án — đều được lưu trữ riêng trong bộ nhớ cục bộ của trình duyệt (<code>chrome.storage.local</code>) và không bao giờ được tải lên bất kỳ máy chủ nào.</p>
+      </div>
+
+      <p>NODUS thực hiện hai loại kết nối bên ngoài, cả hai đều được mô tả rõ ràng trong tài liệu này:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">opt-in</span> Đo lường ẩn danh</div>
+        <p>Bị tắt theo mặc định. Nếu bạn chọn bật tính năng này, chỉ có số liệu thống kê sử dụng tổng hợp được gửi đi — không bao giờ bao gồm nội dung của bạn.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">PRO only</span> Xác thực giấy phép</div>
+        <p>Chỉ dành cho người dùng trả phí PRO. Gửi dấu vân tay thiết bị đã được băm và email của bạn để xác minh giấy phép. Nội dung cuộc trò chuyện không bao giờ được đưa vào.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Dữ liệu lưu trữ cục bộ trên thiết bị của bạn</h2>
+
+      <p>Tất cả nội dung sau đây được lưu trữ trong <code>chrome.storage.local</code> — nghĩa là chúng chỉ tồn tại trên máy tính của bạn và không bao giờ được gửi đi trừ khi bạn tự xuất ra.</p>
+
+      <ul class="check">
+        <li>Ý tưởng, ghi chú và nội dung đánh dấu đã ghi lại</li>
+        <li>Thẻ và phân công hàng đợi</li>
+        <li>Chuỗi và mẫu chuỗi</li>
+        <li>Dự án và siêu dữ liệu dự án</li>
+        <li>Tùy chọn bố cục bảng điều khiển</li>
+        <li>Cài đặt ngôn ngữ và hoạt ảnh</li>
+        <li>Hàng đợi sự kiện đo lường (nếu đã bật)</li>
+        <li>ID ẩn danh — một hàm băm SHA-256 được tạo cục bộ với muối ngẫu nhiên, không bao giờ liên kết với danh tính của bạn</li>
+      </ul>
+
+      <div class="highlight highlight-yellow">
+        <p>NODUS không có hệ thống tài khoản người dùng. Không có đồng bộ đám mây, không có hồ sơ phía máy chủ và chúng tôi không có cách nào để nhận dạng bạn từ dữ liệu được lưu trữ cục bộ.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Giải thích các điểm kết nối bên ngoài</h2>
+
+      <p>NODUS kết nối với các URL bên ngoài trong ba trường hợp: đo lường (opt-in), xác thực giấy phép (chỉ PRO) và đọc các tệp bạn đã tải lên các nền tảng AI. Dưới đây là mọi điểm kết nối được sử dụng và chính xác những gì được gửi đi.</p>
+
+      <h3>3a. Cơ sở hạ tầng NODUS</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/telemetry/batch</span>
+          <span class="badge badge-green">opt-in only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Nhận số liệu thống kê sử dụng tổng hợp ẩn danh. Chỉ được gọi nếu bạn đã bật tính năng đo lường trong Cài đặt. Xem <a href="#telemetry" style="color:#60a5fa;">Mục 4</a> để biết chi tiết đầy đủ.</p>
+          <p class="data-sent"><strong>Dữ liệu gửi đi:</strong> ID ẩn danh (hàm băm SHA-256) · số lượng loại sự kiện · số lượng nền tảng · không có nội dung cuộc trò chuyện · không có URL · không có văn bản</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/auth/status</span>
+          <span class="badge badge-blue">PRO only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Xác thực giấy phép PRO của bạn khi khởi động. Chỉ được gọi nếu bạn đã nhập mã token giấy phép. Xem <a href="#license" style="color:#60a5fa;">Mục 5</a> để biết chi tiết đầy đủ.</p>
+          <p class="data-sent"><strong>Dữ liệu gửi đi:</strong> địa chỉ email · dấu vân tay thiết bị đã băm · không có nội dung cuộc trò chuyện</p>
+        </div>
+      </div>
+
+      <h3>3b. Truy cập tệp trên nền tảng AI</h3>
+
+      <p>Các điểm kết nối này được truy cập <strong>chỉ đọc</strong> khi bạn kích hoạt tính năng Chụp Toàn Bộ Cuộc Trò Chuyện hoặc tính năng đính kèm tệp. NODUS đọc nội dung tệp để hiển thị hoặc lưu cục bộ. Không có gì được tải lên máy chủ NODUS.</p>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://files.oaiusercontent.com/* &nbsp;·&nbsp; https://*.oaiusercontent.com/* &nbsp;·&nbsp; https://cdn.openai.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Các tệp và hình ảnh người dùng tải lên trong các cuộc trò chuyện ChatGPT (hình ảnh, PDF, tệp đính kèm). NODUS đọc các tệp này cục bộ để đưa vào tính năng Chụp Toàn Bộ Cuộc Trò Chuyện.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.anthropic.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Các tệp, tạo phẩm và tệp đính kèm người dùng tải lên trong các cuộc trò chuyện Claude.ai. Được truy cập cục bộ để hỗ trợ tính năng Chụp Toàn Bộ Cuộc Trò Chuyện.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://storage.googleapis.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Các tệp người dùng tải lên trong các cuộc trò chuyện Gemini. Được truy cập cục bộ để hỗ trợ tính năng Chụp Toàn Bộ Cuộc Trò Chuyện.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.blob.core.windows.net/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Các tệp người dùng tải lên trong các cuộc trò chuyện Microsoft Copilot. Được truy cập cục bộ để hỗ trợ tính năng Chụp Toàn Bộ Cuộc Trò Chuyện.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TELEMETRY -->
+    <div class="section">
+      <span class="section-anchor" id="telemetry"></span>
+      <h2><span class="icon">📊</span> 4. Đo lường ẩn danh tùy chọn</h2>
+
+      <div class="highlight highlight-yellow">
+        <p><strong>Tính năng đo lường bị tắt theo mặc định.</strong> Bạn phải bật rõ ràng trong Cài đặt → Đo lường để kích hoạt. Bạn có thể tắt bất kỳ lúc nào và tất cả dữ liệu đang chờ trong hàng đợi cục bộ sẽ bị xóa ngay lập tức.</p>
+      </div>
+
+      <h3>Đo lường thu thập những gì (khi được bật)</h3>
+      <ul class="check">
+        <li>Số lượng loại sự kiện (ví dụ: "3 lần lưu, 1 lần chèn") — không có nội dung, không có văn bản</li>
+        <li>Số lượng nền tảng (ví dụ: "đã sử dụng trên ChatGPT 2 lần") — không có URL</li>
+        <li>ID ẩn danh — một hàm băm SHA-256 được tạo cục bộ, không liên kết với danh tính của bạn</li>
+        <li>Số lượng phiên tổng hợp theo ngày (phân nhóm thời gian)</li>
+      </ul>
+
+      <h3>Đo lường không bao giờ thu thập</h3>
+      <ul class="check cross">
+        <li>Nội dung cuộc trò chuyện, câu lệnh hoặc phản hồi AI</li>
+        <li>URL đã truy cập hoặc tiêu đề trang</li>
+        <li>Tên, email hoặc bất kỳ thông tin nhận dạng nào của bạn</li>
+        <li>Địa chỉ IP (không được lưu trữ bởi worker của chúng tôi)</li>
+        <li>Thông số thiết bị hoặc dấu vân tay trình duyệt</li>
+      </ul>
+
+      <h3>Cách dữ liệu được xử lý trước khi gửi</h3>
+      <p>Các sự kiện được tổng hợp cục bộ trước khi truyền đi. Thay vì gửi các sự kiện thô, NODUS gửi các bộ đếm tổng hợp (ví dụ: bao nhiêu lần lưu đã xảy ra, bởi nền tảng nào) với nhiễu bảo vệ quyền riêng tư được áp dụng (±2 độ lệch ngẫu nhiên cho mỗi bộ đếm). Các sự kiện thô không bao giờ rời khỏi thiết bị của bạn.</p>
+
+      <h3>Thời gian lưu trữ dữ liệu</h3>
+      <p>Dữ liệu đo lường tổng hợp được lưu giữ trên máy chủ của chúng tôi tối đa 12 tháng, sau đó bị xóa. Nhật ký sự kiện cục bộ được lưu giữ trong 90 ngày trong bộ nhớ trình duyệt của bạn, sau đó tự động được dọn sạch.</p>
+    </div>
+
+    <!-- 5. LICENSE -->
+    <div class="section">
+      <span class="section-anchor" id="license"></span>
+      <h2><span class="icon">🔑</span> 5. Xác thực giấy phép PRO</h2>
+
+      <p>Nếu bạn mua NODUS PRO, tiện ích mở rộng sẽ xác thực giấy phép của bạn với máy chủ của chúng tôi khi khởi động. Đây là yêu cầu tối thiểu để xác minh đăng ký trả phí.</p>
+
+      <h3>Những gì được gửi trong quá trình xác thực giấy phép</h3>
+      <ul class="check">
+        <li>Địa chỉ email của bạn (như đã nhập khi kích hoạt)</li>
+        <li>Dấu vân tay thiết bị đã băm (mã nhận dạng do trình duyệt tạo ra, không phải số serial phần cứng của bạn)</li>
+      </ul>
+
+      <h3>Những gì không bao giờ được gửi</h3>
+      <ul class="check cross">
+        <li>Nội dung cuộc trò chuyện hoặc bất cứ điều gì bạn đã ghi lại</li>
+        <li>Địa chỉ IP của bạn (không được lưu trữ, chỉ được sử dụng để định tuyến bởi Cloudflare)</li>
+        <li>Bất kỳ dữ liệu đo lường nào (đây là các hệ thống riêng biệt)</li>
+      </ul>
+
+      <p>Dữ liệu giấy phép được lưu trữ trong cơ sở dữ liệu Cloudflare D1 (khu vực Brazil/Nam Mỹ). Nó chỉ được sử dụng để xác thực xem đăng ký của bạn có còn hiệu lực hay không. Nó không bao giờ được bán hoặc chia sẻ với bên thứ ba.</p>
+
+      <p>Phiên bản MIỄN PHÍ của NODUS hoạt động hoàn toàn ngoại tuyến và không bao giờ liên hệ với máy chủ giấy phép của chúng tôi.</p>
+    </div>
+
+    <!-- 6. FILE ACCESS -->
+    <div class="section">
+      <span class="section-anchor" id="file-access"></span>
+      <h2><span class="icon">📎</span> 6. Truy cập tệp trên các nền tảng AI</h2>
+
+      <p>Khi bạn sử dụng tính năng Chụp Toàn Bộ Cuộc Trò Chuyện hoặc các tính năng đính kèm tệp, NODUS có thể tải các tệp mà bạn đã tải lên nền tảng AI (ChatGPT, Claude, Gemini, Copilot) để đưa vào bản ghi lưu cục bộ của bạn.</p>
+
+      <div class="highlight">
+        <p><strong>Quyền truy cập này chỉ đọc và cục bộ.</strong> NODUS đọc nội dung tệp trực tiếp từ CDN của nền tảng AI vào bộ nhớ trình duyệt của bạn và lưu vào bộ nhớ cục bộ (<code>chrome.storage.local</code>). Tệp không bao giờ được tải lên lại lên bất kỳ máy chủ NODUS nào.</p>
+      </div>
+
+      <p>Các quyền trình duyệt cần thiết cho điều này (<code>*.oaiusercontent.com</code>, <code>*.anthropic.com</code>, <code>storage.googleapis.com</code>, <code>*.blob.core.windows.net</code>) cho phép NODUS đọc các tệp đó. Chúng không cho phép NODUS ghi, sửa đổi hoặc truyền dữ liệu của bạn trên các nền tảng đó.</p>
+    </div>
+
+    <!-- 7. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 7. Những điều chúng tôi không bao giờ làm</h2>
+
+      <ul class="check cross">
+        <li>Bán dữ liệu của bạn cho bất kỳ bên thứ ba nào</li>
+        <li>Đọc, lưu trữ hoặc truyền nội dung cuộc trò chuyện của bạn</li>
+        <li>Theo dõi những trang web bạn truy cập bên ngoài các nền tảng AI</li>
+        <li>Sử dụng SDK quảng cáo hoặc phân tích của bên thứ ba</li>
+        <li>Chèn quảng cáo hoặc liên kết liên kết vào các nền tảng AI</li>
+        <li>Truy cập micrô, camera hoặc bảng nhớ tạm của bạn mà không có hành động</li>
+        <li>Đồng bộ dữ liệu đã ghi lại của bạn lên bất kỳ đám mây nào mà không có lệnh xuất rõ ràng từ bạn</li>
+      </ul>
+    </div>
+
+    <!-- 8. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 8. Quyền của bạn (LGPD / GDPR)</h2>
+
+      <p>NODUS tuân thủ Luật Bảo vệ Dữ liệu Chung của Brazil (LGPD) và Quy định Bảo vệ Dữ liệu Chung của EU (GDPR), và tương thích với CCPA.</p>
+
+      <h3>Quyền bạn có</h3>
+      <ul class="check">
+        <li><strong>Truy cập</strong> — Tất cả dữ liệu được lưu trữ cục bộ đều có thể xem và xuất từ bảng điều khiển NODUS bất kỳ lúc nào</li>
+        <li><strong>Xóa</strong> — Bạn có thể xóa tất cả dữ liệu cục bộ từ Cài đặt → Xóa Tất Cả Dữ Liệu. Việc gỡ cài đặt tiện ích mở rộng cũng sẽ xóa toàn bộ dữ liệu cục bộ</li>
+        <li><strong>Tính di động</strong> — Xuất tất cả ý tưởng của bạn dưới dạng JSON, Markdown hoặc DOCX bất kỳ lúc nào</li>
+        <li><strong>Từ chối</strong> — Tắt tính năng đo lường bất kỳ lúc nào trong Cài đặt → Đo lường</li>
+        <li><strong>Xóa dữ liệu giấy phép</strong> — Liên hệ với chúng tôi để yêu cầu xóa email của bạn khỏi cơ sở dữ liệu giấy phép</li>
+      </ul>
+
+      <h3>Cơ sở pháp lý cho việc xử lý</h3>
+      <p>Đo lường được xử lý dựa trên <strong>sự đồng ý</strong> (opt-in). Xác thực giấy phép được xử lý dựa trên <strong>thực hiện hợp đồng</strong> (xác minh đăng ký trả phí). Không có xử lý nào khác xảy ra.</p>
+    </div>
+
+    <!-- 9. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 9. Liên hệ</h2>
+
+      <p>Đối với các câu hỏi liên quan đến quyền riêng tư, yêu cầu xóa dữ liệu hoặc bất kỳ mối lo ngại nào:</p>
+
+      <div class="card">
+        <div class="card-title">📧 Email</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Trang dự án</div>
+        <p><a href="https://mmcarvalhodev.github.io/github.io/" style="color:#60a5fa;">nodus-ai.app</a></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🔍 Mã nguồn</div>
+        <p><a href="https://github.com/mmcarvalhodev/nodus-core" style="color:#60a5fa;">github.com/mmcarvalhodev/nodus-core</a> — Các mô-đun đo lường và giấy phép có thể được kiểm tra đầy đủ trong mã nguồn mở.</p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Chính sách này có thể được cập nhật khi các tính năng mới được thêm vào. Những thay đổi quan trọng sẽ được ghi chú trong ghi chú phát hành của tiện ích mở rộng. Việc tiếp tục sử dụng NODUS sau khi thay đổi chính sách được coi là chấp nhận chính sách đã cập nhật.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="https://mmcarvalhodev.github.io/github.io/">Trang chủ</a> · <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a> · Chính Sách Quyền Riêng Tư</p>
+  </footer>
+
+</body>
+</html>

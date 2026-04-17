@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gizlilik Politikası — NODUS</title>
+  <link rel="icon" type="image/png" href="../icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 18px;
+    }
+    .toc li {
+      margin-bottom: 6px;
+    }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT TABLE */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body {
+      padding: 14px 18px;
+    }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://mmcarvalhodev.github.io/github.io/">NODUS</a>
+    <a class="nav-back" href="https://mmcarvalhodev.github.io/github.io/">← Siteye dön</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Hukuki</div>
+    <h1>Gizlilik Politikası</h1>
+    <p>Son güncelleme: Nisan 2026 &nbsp;·&nbsp; NODUS v4</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">İçindekiler</div>
+      <ol>
+        <li><a href="#overview">Genel Bakış</a></li>
+        <li><a href="#local-data">Cihazınızda yerel olarak depolanan veriler</a></li>
+        <li><a href="#endpoints">Harici uç noktalar açıklandı</a></li>
+        <li><a href="#telemetry">İsteğe bağlı anonim telemetri</a></li>
+        <li><a href="#license">PRO lisans doğrulaması</a></li>
+        <li><a href="#file-access">Yapay zeka platformlarında dosya erişimi</a></li>
+        <li><a href="#never">Hiçbir zaman yapmadıklarımız</a></li>
+        <li><a href="#rights">Haklarınız (LGPD / GDPR)</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Genel Bakış</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS, yerel öncelikli bir tarayıcı uzantısıdır.</strong> Yakaladığınız her şey — fikirler, notlar, vurgular, etiketler, zincirler ve projeler — yalnızca tarayıcınızın yerel depolama alanında (<code>chrome.storage.local</code>) saklanır ve hiçbir zaman herhangi bir sunucuya yüklenmez.</p>
+      </div>
+
+      <p>NODUS iki tür harici bağlantı kurar; her ikisi de bu belgede açıkça açıklanmıştır:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">opt-in</span> Anonim telemetri</div>
+        <p>Varsayılan olarak devre dışıdır. Etkinleştirmeyi tercih ederseniz, yalnızca toplu kullanım istatistikleri gönderilir — içeriğiniz asla gönderilmez.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">PRO only</span> Lisans doğrulaması</div>
+        <p>Yalnızca ücretli PRO aboneleri için geçerlidir. Lisansı doğrulamak amacıyla karma bir cihaz parmak izi ve e-posta adresiniz gönderilir. Konuşma içeriği hiçbir zaman dahil edilmez.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Cihazınızda yerel olarak depolanan veriler</h2>
+
+      <p>Aşağıdakilerin tamamı <code>chrome.storage.local</code> içinde saklanır; yani yalnızca bilgisayarınızda bulunur ve siz açıkça dışa aktarmadığınız sürece hiçbir yere gönderilmez.</p>
+
+      <ul class="check">
+        <li>Yakalanan fikirler, notlar ve vurgular</li>
+        <li>Etiketler ve kuyruk atamaları</li>
+        <li>Zincirler ve zincir şablonları</li>
+        <li>Projeler ve proje meta verileri</li>
+        <li>Kontrol paneli düzeni tercihleri</li>
+        <li>Dil ve animasyon ayarları</li>
+        <li>Telemetri olay kuyruğu (kabul edilmişse)</li>
+        <li>Anonim kimlik — rastgele bir tuzla yerel olarak oluşturulmuş bir SHA-256 karması; kimliğinizle hiçbir zaman ilişkilendirilmez</li>
+      </ul>
+
+      <div class="highlight highlight-yellow">
+        <p>NODUS'un bir kullanıcı hesabı sistemi yoktur. Bulut senkronizasyonu, sunucu taraflı profil ve yerel olarak depolanan verilerden sizi tanımamızın bir yolu yoktur.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Harici uç noktalar açıklandı</h2>
+
+      <p>NODUS üç senaryoda harici URL'lere bağlanır: telemetri (isteğe bağlı), lisans doğrulaması (yalnızca PRO) ve yapay zeka platformlarına önceden yüklediğiniz dosyaların okunması. Kullanılan her uç nokta ve tam olarak ne gönderildiği aşağıda listelenmiştir.</p>
+
+      <h3>3a. NODUS altyapısı</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/telemetry/batch</span>
+          <span class="badge badge-green">opt-in only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Anonim toplu kullanım istatistiklerini alır. Yalnızca Ayarlar'da telemetriyi etkinleştirdiyseniz çağrılır. Ayrıntılar için bkz. <a href="#telemetry" style="color:#60a5fa;">Bölüm 4</a>.</p>
+          <p class="data-sent"><strong>Gönderilen veriler:</strong> anonim kimlik (SHA-256 karması) · olay türü sayıları · platform sayıları · konuşma içeriği yok · URL yok · metin yok</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/auth/status</span>
+          <span class="badge badge-blue">PRO only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Başlangıçta PRO lisansınızı doğrular. Yalnızca bir lisans jetonu girdiyseniz çağrılır. Ayrıntılar için bkz. <a href="#license" style="color:#60a5fa;">Bölüm 5</a>.</p>
+          <p class="data-sent"><strong>Gönderilen veriler:</strong> e-posta adresi · karma cihaz parmak izi · konuşma içeriği yok</p>
+        </div>
+      </div>
+
+      <h3>3b. Yapay zeka platformu dosya erişimi</h3>
+
+      <p>Bu uç noktalara Tam Sohbet Yakalama veya dosya eki özelliklerini tetiklediğinizde <strong>read-only</strong> olarak erişilir. NODUS, dosya içeriğini yerel olarak görüntülemek veya kaydetmek için okur. Hiçbir şey NODUS sunucularına yüklenmez.</p>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://files.oaiusercontent.com/* &nbsp;·&nbsp; https://*.oaiusercontent.com/* &nbsp;·&nbsp; https://cdn.openai.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>ChatGPT konuşmalarındaki kullanıcı tarafından yüklenen dosyalar ve görseller (resimler, PDF'ler, ekler). NODUS bu dosyaları Tam Sohbet Yakalama'ya dahil etmek için yerel olarak okur.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.anthropic.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Claude.ai konuşmalarındaki kullanıcı tarafından yüklenen dosyalar, yapıtlar ve ekler. Tam Sohbet Yakalama'yı desteklemek için yerel olarak erişilir.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://storage.googleapis.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Gemini konuşmalarındaki kullanıcı tarafından yüklenen dosyalar. Tam Sohbet Yakalama'yı desteklemek için yerel olarak erişilir.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.blob.core.windows.net/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Microsoft Copilot konuşmalarındaki kullanıcı tarafından yüklenen dosyalar. Tam Sohbet Yakalama'yı desteklemek için yerel olarak erişilir.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TELEMETRY -->
+    <div class="section">
+      <span class="section-anchor" id="telemetry"></span>
+      <h2><span class="icon">📊</span> 4. İsteğe bağlı anonim telemetri</h2>
+
+      <div class="highlight highlight-yellow">
+        <p><strong>Telemetri varsayılan olarak devre dışıdır.</strong> Etkinleştirmek için Ayarlar → Telemetri bölümünden açıkça etkinleştirmeniz gerekir. İstediğiniz zaman devre dışı bırakabilirsiniz; yerel olarak kuyruğa alınan tüm veriler anında temizlenir.</p>
+      </div>
+
+      <h3>Telemetrinin topladıkları (etkinleştirildiğinde)</h3>
+      <ul class="check">
+        <li>Olay türü sayıları (örn. "3 kayıt, 1 enjeksiyon") — içerik yok, metin yok</li>
+        <li>Platform sayıları (örn. "ChatGPT'de 2 kez kullanıldı") — URL yok</li>
+        <li>Anonim kimlik — yerel olarak oluşturulmuş bir SHA-256 karması; kimliğinizle ilişkilendirilmez</li>
+        <li>Günlük toplu oturum sayıları (zamansal gruplama)</li>
+      </ul>
+
+      <h3>Telemetrinin hiçbir zaman toplamadıkları</h3>
+      <ul class="check cross">
+        <li>Konuşma içeriği, istemler veya yapay zeka yanıtları</li>
+        <li>Ziyaret edilen URL'ler veya sayfa başlıkları</li>
+        <li>Adınız, e-posta adresiniz veya herhangi bir tanımlayıcı bilgi</li>
+        <li>IP adresi (çalışanımız tarafından saklanmaz)</li>
+        <li>Cihaz özellikleri veya tarayıcı parmak izi</li>
+      </ul>
+
+      <h3>Gönderilmeden önce verilerin işlenme şekli</h3>
+      <p>Olaylar iletilmeden önce yerel olarak toplanır. Ham olaylar göndermek yerine NODUS, gizliliği koruyan gürültü uygulanmış toplu sayaçlar gönderir (sayaç başına ±2 rastgele ofset, örn. kaç kayıt gerçekleştiği ve hangi platform tarafından). Ham olaylar hiçbir zaman cihazınızı terk etmez.</p>
+
+      <h3>Veri saklama</h3>
+      <p>Toplu telemetri verileri sunucularımızda en fazla 12 ay saklanır; bu sürenin ardından silinir. Yerel olay günlükleri tarayıcı depolama alanınızda 90 gün boyunca saklanır, ardından otomatik olarak temizlenir.</p>
+    </div>
+
+    <!-- 5. LICENSE -->
+    <div class="section">
+      <span class="section-anchor" id="license"></span>
+      <h2><span class="icon">🔑</span> 5. PRO lisans doğrulaması</h2>
+
+      <p>NODUS PRO satın aldığınızda, uzantı başlangıçta lisansınızı sunucumuzla doğrular. Bu, ücretli bir aboneliği doğrulamak için gereken asgari işlemdir.</p>
+
+      <h3>Lisans doğrulaması sırasında gönderilen veriler</h3>
+      <ul class="check">
+        <li>E-posta adresiniz (etkinleştirme sırasında girildiği haliyle)</li>
+        <li>Karma bir cihaz parmak izi (tarayıcı tarafından oluşturulan tanımlayıcı; donanım seri numaranız değil)</li>
+      </ul>
+
+      <h3>Hiçbir zaman gönderilmeyenler</h3>
+      <ul class="check cross">
+        <li>Konuşma içeriği veya yakaladığınız herhangi bir şey</li>
+        <li>IP adresiniz (saklanmaz; yalnızca Cloudflare tarafından yönlendirme için kullanılır)</li>
+        <li>Herhangi bir telemetri verisi (bunlar ayrı sistemlerdir)</li>
+      </ul>
+
+      <p>Lisans verileri bir Cloudflare D1 veritabanında saklanır (Brezilya/Güney Amerika bölgesi). Yalnızca aboneliğinizin etkin olup olmadığını doğrulamak amacıyla kullanılır. Hiçbir zaman satılmaz veya üçüncü taraflarla paylaşılmaz.</p>
+
+      <p>NODUS'un ÜCRETSİZ sürümü tamamen çevrimdışı çalışır ve lisans sunucumuza hiçbir zaman bağlanmaz.</p>
+    </div>
+
+    <!-- 6. FILE ACCESS -->
+    <div class="section">
+      <span class="section-anchor" id="file-access"></span>
+      <h2><span class="icon">📎</span> 6. Yapay zeka platformlarında dosya erişimi</h2>
+
+      <p>Tam Sohbet Yakalama veya dosya eki özelliklerini kullandığınızda NODUS, yerel yakalamaya dahil etmek amacıyla bir yapay zeka platformuna (ChatGPT, Claude, Gemini, Copilot) önceden yüklediğiniz dosyaları getirebilir.</p>
+
+      <div class="highlight">
+        <p><strong>Bu erişim salt okunurdur ve yereldir.</strong> NODUS, dosya içeriğini doğrudan yapay zeka platformunun CDN'sinden tarayıcınızın belleğine okur ve yerel depolama alanınıza (<code>chrome.storage.local</code>) kaydeder. Dosya hiçbir zaman herhangi bir NODUS sunucusuna yeniden yüklenmez.</p>
+      </div>
+
+      <p>Bunun için gereken tarayıcı izinleri (<code>*.oaiusercontent.com</code>, <code>*.anthropic.com</code>, <code>storage.googleapis.com</code>, <code>*.blob.core.windows.net</code>), NODUS'un bu dosyaları okumasına olanak tanır. NODUS'un söz konusu platformlardaki verilerinizi yazmasına, değiştirmesine veya iletmesine izin vermez.</p>
+    </div>
+
+    <!-- 7. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 7. Hiçbir zaman yapmadıklarımız</h2>
+
+      <ul class="check cross">
+        <li>Verilerinizi herhangi bir üçüncü tarafa satmak</li>
+        <li>Konuşma içeriğinizi okumak, depolamak veya iletmek</li>
+        <li>Yapay zeka platformları dışında ziyaret ettiğiniz web sitelerini izlemek</li>
+        <li>Reklam SDK'ları veya üçüncü taraf analizleri kullanmak</li>
+        <li>Yapay zeka platformlarına reklam veya ortaklık bağlantıları eklemek</li>
+        <li>Bir eylem olmaksızın mikrofonunuza, kameranıza veya panonuza erişmek</li>
+        <li>Açık dışa aktarmanız olmadan yakalanan verilerinizi herhangi bir buluta senkronize etmek</li>
+      </ul>
+    </div>
+
+    <!-- 8. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 8. Haklarınız (LGPD / GDPR)</h2>
+
+      <p>NODUS, Brezilya Lei Geral de Proteção de Dados (LGPD) ve AB Genel Veri Koruma Yönetmeliği (GDPR) ile uyumludur ve CCPA ile de uyumludur.</p>
+
+      <h3>Sahip olduğunuz haklar</h3>
+      <ul class="check">
+        <li><strong>Erişim</strong> — Yerel olarak depolanan tüm veriler, NODUS kontrol panelinden her zaman görüntülenebilir ve dışa aktarılabilir</li>
+        <li><strong>Silme</strong> — Tüm yerel verileri Ayarlar → Tüm Verileri Temizle seçeneğinden silebilirsiniz. Uzantının kaldırılması da tüm yerel verileri siler</li>
+        <li><strong>Taşınabilirlik</strong> — Tüm fikirlerinizi her zaman JSON, Markdown veya DOCX olarak dışa aktarın</li>
+        <li><strong>Vazgeçme</strong> — Ayarlar → Telemetri bölümünden istediğiniz zaman telemetriyi devre dışı bırakın</li>
+        <li><strong>Lisans verilerinin silinmesi</strong> — E-posta adresinizin lisans veritabanımızdan silinmesini talep etmek için bizimle iletişime geçin</li>
+      </ul>
+
+      <h3>İşlemenin hukuki dayanağı</h3>
+      <p>Telemetri, <strong>rıza</strong> (isteğe bağlı katılım) temelinde işlenir. Lisans doğrulaması, <strong>sözleşme ifası</strong> (ücretli aboneliğin doğrulanması) temelinde işlenir. Başka herhangi bir işlem gerçekleşmez.</p>
+    </div>
+
+    <!-- 9. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 9. İletişim</h2>
+
+      <p>Gizlilikle ilgili sorular, veri silme talepleri veya herhangi bir endişe için:</p>
+
+      <div class="card">
+        <div class="card-title">📧 E-posta</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Proje sitesi</div>
+        <p><a href="https://mmcarvalhodev.github.io/github.io/" style="color:#60a5fa;">nodus-ai.app</a></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🔍 Kaynak kodu</div>
+        <p><a href="https://github.com/mmcarvalhodev/nodus-core" style="color:#60a5fa;">github.com/mmcarvalhodev/nodus-core</a> — Telemetri ve lisans modülleri açık kaynak çekirdekte tamamen denetlenebilir durumdadır.</p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Bu politika, yeni özellikler eklendiğinde güncellenebilir. Önemli değişiklikler uzantının sürüm notlarında belirtilecektir. Bir politika değişikliğinin ardından NODUS'u kullanmaya devam etmek, güncellenmiş politikanın kabul edildiği anlamına gelir.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="https://mmcarvalhodev.github.io/github.io/">Ana Sayfa</a> · <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a> · Gizlilik Politikası</p>
+  </footer>
+
+</body>
+</html>

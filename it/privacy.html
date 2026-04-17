@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informativa sulla Privacy — NODUS</title>
+  <link rel="icon" type="image/png" href="../icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 18px;
+    }
+    .toc li {
+      margin-bottom: 6px;
+    }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT TABLE */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body {
+      padding: 14px 18px;
+    }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://mmcarvalhodev.github.io/github.io/">NODUS</a>
+    <a class="nav-back" href="https://mmcarvalhodev.github.io/github.io/">← Torna al sito</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Legale</div>
+    <h1>Informativa sulla Privacy</h1>
+    <p>Ultimo aggiornamento: aprile 2026 &nbsp;·&nbsp; NODUS v4</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Indice</div>
+      <ol>
+        <li><a href="#overview">Panoramica</a></li>
+        <li><a href="#local-data">Dati memorizzati localmente sul tuo dispositivo</a></li>
+        <li><a href="#endpoints">Endpoint esterni spiegati</a></li>
+        <li><a href="#telemetry">Telemetria anonima opzionale</a></li>
+        <li><a href="#license">Validazione licenza PRO</a></li>
+        <li><a href="#file-access">Accesso ai file sulle piattaforme AI</a></li>
+        <li><a href="#never">Cosa non facciamo mai</a></li>
+        <li><a href="#rights">I tuoi diritti (LGPD / GDPR)</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Panoramica</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS è un'estensione browser con approccio local-first.</strong> Tutto ciò che acquisisci — idee, note, evidenziazioni, tag, catene e progetti — viene memorizzato esclusivamente nell'archiviazione locale del tuo browser (<code>chrome.storage.local</code>) e non viene mai caricato su alcun server.</p>
+      </div>
+
+      <p>NODUS effettua due tipi di connessioni esterne, entrambe chiaramente descritte in questo documento:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">opt-in</span> Telemetria anonima</div>
+        <p>Disabilitata per impostazione predefinita. Se scegli di attivarla, vengono inviate solo statistiche di utilizzo aggregate — mai i tuoi contenuti.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">PRO only</span> Validazione licenza</div>
+        <p>Solo per abbonati PRO a pagamento. Invia un'impronta digitale del dispositivo con hash e la tua email per verificare la licenza. Il contenuto delle conversazioni non viene mai incluso.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Dati memorizzati localmente sul tuo dispositivo</h2>
+
+      <p>Tutti i seguenti dati sono memorizzati in <code>chrome.storage.local</code> — il che significa che risiedono solo sul tuo computer e non vengono mai inviati da nessuna parte, a meno che tu non li esporti esplicitamente.</p>
+
+      <ul class="check">
+        <li>Idee, note ed evidenziazioni acquisite</li>
+        <li>Tag e assegnazioni alla coda</li>
+        <li>Catene e modelli di catene</li>
+        <li>Progetti e metadati dei progetti</li>
+        <li>Preferenze del layout del dashboard</li>
+        <li>Impostazioni di lingua e animazione</li>
+        <li>Coda eventi di telemetria (se attivata)</li>
+        <li>ID anonimo — un hash SHA-256 generato localmente con salt casuale, mai collegato alla tua identità</li>
+      </ul>
+
+      <div class="highlight highlight-yellow">
+        <p>NODUS non dispone di un sistema di account utente. Non esiste sincronizzazione cloud, nessun profilo lato server e nessun modo per noi di identificarti dai dati memorizzati localmente.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Endpoint esterni spiegati</h2>
+
+      <p>NODUS si connette a URL esterni in tre scenari: telemetria (opt-in), validazione della licenza (solo PRO) e lettura di file che hai già caricato su piattaforme AI. Di seguito sono riportati tutti gli endpoint utilizzati e cosa viene inviato esattamente.</p>
+
+      <h3>3a. Infrastruttura NODUS</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/telemetry/batch</span>
+          <span class="badge badge-green">opt-in only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Riceve statistiche di utilizzo aggregate anonime. Viene chiamato solo se hai abilitato la telemetria nelle Impostazioni. Vedi <a href="#telemetry" style="color:#60a5fa;">Sezione 4</a> per i dettagli completi.</p>
+          <p class="data-sent"><strong>Dati inviati:</strong> ID anonimo (hash SHA-256) · conteggi dei tipi di evento · conteggi delle piattaforme · nessun contenuto delle conversazioni · nessun URL · nessun testo</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/auth/status</span>
+          <span class="badge badge-blue">PRO only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Convalida la tua licenza PRO all'avvio. Viene chiamato solo se hai inserito un token di licenza. Vedi <a href="#license" style="color:#60a5fa;">Sezione 5</a> per i dettagli completi.</p>
+          <p class="data-sent"><strong>Dati inviati:</strong> indirizzo email · impronta digitale del dispositivo con hash · nessun contenuto delle conversazioni</p>
+        </div>
+      </div>
+
+      <h3>3b. Accesso ai file sulle piattaforme AI</h3>
+
+      <p>A questi endpoint si accede in modalità <strong>read-only</strong> quando attivi la funzione Acquisizione Chat Completa o gli allegati file. NODUS legge il contenuto del file per visualizzarlo o salvarlo localmente. Nulla viene caricato sui server NODUS.</p>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://files.oaiusercontent.com/* &nbsp;·&nbsp; https://*.oaiusercontent.com/* &nbsp;·&nbsp; https://cdn.openai.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File e immagini caricati dall'utente nelle conversazioni ChatGPT (immagini, PDF, allegati). NODUS legge questi file localmente per includerli nell'Acquisizione Chat Completa.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.anthropic.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File, artefatti e allegati caricati dall'utente nelle conversazioni Claude.ai. Accessibili localmente per supportare l'Acquisizione Chat Completa.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://storage.googleapis.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File caricati dall'utente nelle conversazioni Gemini. Accessibili localmente per supportare l'Acquisizione Chat Completa.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.blob.core.windows.net/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File caricati dall'utente nelle conversazioni Microsoft Copilot. Accessibili localmente per supportare l'Acquisizione Chat Completa.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TELEMETRY -->
+    <div class="section">
+      <span class="section-anchor" id="telemetry"></span>
+      <h2><span class="icon">📊</span> 4. Telemetria anonima opzionale</h2>
+
+      <div class="highlight highlight-yellow">
+        <p><strong>La telemetria è disabilitata per impostazione predefinita.</strong> Devi attivarla esplicitamente in Impostazioni → Telemetria. Puoi disabilitarla in qualsiasi momento e tutti i dati in coda localmente vengono eliminati immediatamente.</p>
+      </div>
+
+      <h3>Cosa raccoglie la telemetria (quando abilitata)</h3>
+      <ul class="check">
+        <li>Conteggi dei tipi di evento (ad es. "3 salvataggi, 1 iniezione") — nessun contenuto, nessun testo</li>
+        <li>Conteggi delle piattaforme (ad es. "usato su ChatGPT 2 volte") — nessun URL</li>
+        <li>ID anonimo — un hash SHA-256 generato localmente, non collegato alla tua identità</li>
+        <li>Conteggi aggregati delle sessioni al giorno (raggruppamento temporale)</li>
+      </ul>
+
+      <h3>Cosa non raccoglie mai la telemetria</h3>
+      <ul class="check cross">
+        <li>Contenuto delle conversazioni, prompt o risposte AI</li>
+        <li>URL visitati o titoli delle pagine</li>
+        <li>Il tuo nome, email o qualsiasi informazione identificativa</li>
+        <li>Indirizzo IP (non memorizzato dal nostro worker)</li>
+        <li>Specifiche del dispositivo o impronta digitale del browser</li>
+      </ul>
+
+      <h3>Come i dati vengono elaborati prima dell'invio</h3>
+      <p>Gli eventi vengono aggregati localmente prima della trasmissione. Invece di inviare eventi grezzi, NODUS invia contatori aggregati (ad es. quanti salvataggi sono avvenuti, da quale piattaforma) con rumore a protezione della privacy applicato (offset casuale ±2 per contatore). Gli eventi grezzi non lasciano mai il tuo dispositivo.</p>
+
+      <h3>Conservazione dei dati</h3>
+      <p>I dati di telemetria aggregati vengono conservati sui nostri server per un massimo di 12 mesi, dopodiché vengono eliminati. I log degli eventi locali vengono conservati per 90 giorni nell'archiviazione del browser, poi eliminati automaticamente.</p>
+    </div>
+
+    <!-- 5. LICENSE -->
+    <div class="section">
+      <span class="section-anchor" id="license"></span>
+      <h2><span class="icon">🔑</span> 5. Validazione licenza PRO</h2>
+
+      <p>Se acquisti NODUS PRO, l'estensione convalida la tua licenza con il nostro server all'avvio. Questo è il minimo necessario per verificare un abbonamento a pagamento.</p>
+
+      <h3>Cosa viene inviato durante la validazione della licenza</h3>
+      <ul class="check">
+        <li>Il tuo indirizzo email (come inserito durante l'attivazione)</li>
+        <li>Un'impronta digitale del dispositivo con hash (identificatore generato dal browser, non il numero seriale del tuo hardware)</li>
+      </ul>
+
+      <h3>Cosa non viene mai inviato</h3>
+      <ul class="check cross">
+        <li>Contenuto delle conversazioni o qualsiasi cosa tu abbia acquisito</li>
+        <li>Il tuo indirizzo IP (non memorizzato, utilizzato solo per il routing da Cloudflare)</li>
+        <li>Dati di telemetria (questi sono sistemi separati)</li>
+      </ul>
+
+      <p>I dati della licenza sono memorizzati in un database Cloudflare D1 (regione Brasile/Sud America). Vengono utilizzati esclusivamente per verificare se il tuo abbonamento è attivo. Non vengono mai venduti o condivisi con terze parti.</p>
+
+      <p>La versione GRATUITA di NODUS funziona completamente offline e non contatta mai il nostro server delle licenze.</p>
+    </div>
+
+    <!-- 6. FILE ACCESS -->
+    <div class="section">
+      <span class="section-anchor" id="file-access"></span>
+      <h2><span class="icon">📎</span> 6. Accesso ai file sulle piattaforme AI</h2>
+
+      <p>Quando utilizzi l'Acquisizione Chat Completa o le funzioni di allegato file, NODUS può recuperare file che hai già caricato su una piattaforma AI (ChatGPT, Claude, Gemini, Copilot) per includerli nell'acquisizione locale.</p>
+
+      <div class="highlight">
+        <p><strong>Questo accesso è read-only e locale.</strong> NODUS legge il contenuto del file direttamente dalla CDN della piattaforma AI nella memoria del tuo browser e lo salva nell'archiviazione locale (<code>chrome.storage.local</code>). Il file non viene mai ricaricato su alcun server NODUS.</p>
+      </div>
+
+      <p>I permessi del browser necessari per questo (<code>*.oaiusercontent.com</code>, <code>*.anthropic.com</code>, <code>storage.googleapis.com</code>, <code>*.blob.core.windows.net</code>) consentono a NODUS di leggere quei file. Non consentono a NODUS di scrivere, modificare o trasmettere i tuoi dati su quelle piattaforme.</p>
+    </div>
+
+    <!-- 7. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 7. Cosa non facciamo mai</h2>
+
+      <ul class="check cross">
+        <li>Vendere i tuoi dati a terze parti</li>
+        <li>Leggere, memorizzare o trasmettere il contenuto delle tue conversazioni</li>
+        <li>Tracciare i siti web che visiti al di fuori delle piattaforme AI</li>
+        <li>Utilizzare SDK pubblicitari o analisi di terze parti</li>
+        <li>Iniettare annunci o link di affiliazione nelle piattaforme AI</li>
+        <li>Accedere al microfono, alla fotocamera o agli appunti senza un'azione</li>
+        <li>Sincronizzare i dati acquisiti su qualsiasi cloud senza il tuo esplicito export</li>
+      </ul>
+    </div>
+
+    <!-- 8. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 8. I tuoi diritti (LGPD / GDPR)</h2>
+
+      <p>NODUS è conforme alla Lei Geral de Proteção de Dados brasiliana (LGPD) e al Regolamento Generale sulla Protezione dei Dati dell'UE (GDPR), ed è compatibile con il CCPA.</p>
+
+      <h3>I tuoi diritti</h3>
+      <ul class="check">
+        <li><strong>Accesso</strong> — Tutti i dati memorizzati localmente sono visibili ed esportabili dal dashboard NODUS in qualsiasi momento</li>
+        <li><strong>Cancellazione</strong> — Puoi eliminare tutti i dati locali da Impostazioni → Cancella tutti i dati. La disinstallazione dell'estensione rimuove anche tutti i dati locali</li>
+        <li><strong>Portabilità</strong> — Esporta tutte le tue idee come JSON, Markdown o DOCX in qualsiasi momento</li>
+        <li><strong>Opt-out</strong> — Disabilita la telemetria in qualsiasi momento in Impostazioni → Telemetria</li>
+        <li><strong>Cancellazione dati licenza</strong> — Contattaci per richiedere la cancellazione della tua email dal nostro database delle licenze</li>
+      </ul>
+
+      <h3>Base giuridica del trattamento</h3>
+      <p>La telemetria viene trattata sulla base del <strong>consenso</strong> (opt-in). La validazione della licenza viene trattata sulla base dell'<strong>esecuzione del contratto</strong> (verifica di un abbonamento a pagamento). Non avviene nessun altro trattamento.</p>
+    </div>
+
+    <!-- 9. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 9. Contatti</h2>
+
+      <p>Per domande relative alla privacy, richieste di cancellazione dei dati o qualsiasi altra preoccupazione:</p>
+
+      <div class="card">
+        <div class="card-title">📧 Email</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Sito del progetto</div>
+        <p><a href="https://mmcarvalhodev.github.io/github.io/" style="color:#60a5fa;">nodus-ai.app</a></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🔍 Codice sorgente</div>
+        <p><a href="https://github.com/mmcarvalhodev/nodus-core" style="color:#60a5fa;">github.com/mmcarvalhodev/nodus-core</a> — I moduli di telemetria e licenza sono completamente verificabili nel core open source.</p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Questa informativa può essere aggiornata quando vengono aggiunte nuove funzionalità. Le modifiche sostanziali saranno indicate nelle note di rilascio dell'estensione. Il continuo utilizzo di NODUS dopo una modifica dell'informativa costituisce accettazione dell'informativa aggiornata.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="https://mmcarvalhodev.github.io/github.io/">Home</a> · <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a> · Informativa sulla Privacy</p>
+  </footer>
+
+</body>
+</html>

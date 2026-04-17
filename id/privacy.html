@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kebijakan Privasi — NODUS</title>
+  <link rel="icon" type="image/png" href="../icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 18px;
+    }
+    .toc li {
+      margin-bottom: 6px;
+    }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 52px;
+    }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT TABLE */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body {
+      padding: 14px 18px;
+    }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://mmcarvalhodev.github.io/github.io/">NODUS</a>
+    <a class="nav-back" href="https://mmcarvalhodev.github.io/github.io/">← Kembali ke situs</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Hukum</div>
+    <h1>Kebijakan Privasi</h1>
+    <p>Terakhir diperbarui: April 2026 &nbsp;·&nbsp; NODUS v4</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Daftar Isi</div>
+      <ol>
+        <li><a href="#overview">Ikhtisar</a></li>
+        <li><a href="#local-data">Data yang tersimpan secara lokal di perangkat Anda</a></li>
+        <li><a href="#endpoints">Penjelasan endpoint eksternal</a></li>
+        <li><a href="#telemetry">Telemetri anonim opsional</a></li>
+        <li><a href="#license">Validasi lisensi PRO</a></li>
+        <li><a href="#file-access">Akses file di platform AI</a></li>
+        <li><a href="#never">Apa yang tidak pernah kami lakukan</a></li>
+        <li><a href="#rights">Hak Anda (LGPD / GDPR)</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Ikhtisar</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS adalah ekstensi browser yang mengutamakan penyimpanan lokal.</strong> Semua yang Anda rekam — ide, catatan, sorotan, tag, rantai, dan proyek — disimpan secara eksklusif di penyimpanan lokal browser Anda (<code>chrome.storage.local</code>) dan tidak pernah diunggah ke server mana pun.</p>
+      </div>
+
+      <p>NODUS membuat dua jenis koneksi eksternal, yang keduanya dijelaskan secara jelas dalam dokumen ini:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">opt-in only</span> Telemetri anonim</div>
+        <p>Dinonaktifkan secara default. Jika Anda memilih untuk mengaktifkannya, hanya statistik penggunaan agregat yang dikirim — bukan konten Anda.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">PRO only</span> Validasi lisensi</div>
+        <p>Hanya untuk pelanggan PRO berbayar. Mengirimkan sidik jari perangkat yang di-hash dan email Anda untuk memverifikasi lisensi. Konten percakapan tidak pernah disertakan.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Data yang tersimpan secara lokal di perangkat Anda</h2>
+
+      <p>Semua hal berikut disimpan di <code>chrome.storage.local</code> — artinya hanya ada di komputer Anda dan tidak pernah dikirim ke mana pun kecuali Anda mengekspornya secara eksplisit.</p>
+
+      <ul class="check">
+        <li>Ide, catatan, dan sorotan yang direkam</li>
+        <li>Tag dan penugasan antrean</li>
+        <li>Rantai dan templat rantai</li>
+        <li>Proyek dan metadata proyek</li>
+        <li>Preferensi tata letak dasbor</li>
+        <li>Pengaturan bahasa dan animasi</li>
+        <li>Antrean acara telemetri (jika diaktifkan)</li>
+        <li>ID anonim — hash SHA-256 yang dihasilkan secara lokal dengan garam acak, tidak pernah dikaitkan dengan identitas Anda</li>
+      </ul>
+
+      <div class="highlight highlight-yellow">
+        <p>NODUS tidak memiliki sistem akun pengguna. Tidak ada sinkronisasi cloud, tidak ada profil sisi server, dan tidak ada cara bagi kami untuk mengidentifikasi Anda dari data yang tersimpan secara lokal.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Penjelasan endpoint eksternal</h2>
+
+      <p>NODUS terhubung ke URL eksternal dalam tiga skenario: telemetri (opt-in), validasi lisensi (khusus PRO), dan membaca file yang telah Anda unggah ke platform AI. Berikut setiap endpoint yang digunakan beserta data yang dikirimkan.</p>
+
+      <h3>3a. Infrastruktur NODUS</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/telemetry/batch</span>
+          <span class="badge badge-green">opt-in only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Menerima statistik penggunaan agregat anonim. Hanya dipanggil jika Anda telah mengaktifkan telemetri di Pengaturan. Lihat <a href="#telemetry" style="color:#60a5fa;">Bagian 4</a> untuk detail lengkap.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> ID anonim (hash SHA-256) · jumlah jenis acara · jumlah platform · tanpa konten percakapan · tanpa URL · tanpa teks</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://nodus-worker.mmcarvalho-dev.workers.dev/auth/status</span>
+          <span class="badge badge-blue">PRO only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Memvalidasi lisensi PRO Anda saat startup. Hanya dipanggil jika Anda telah memasukkan token lisensi. Lihat <a href="#license" style="color:#60a5fa;">Bagian 5</a> untuk detail lengkap.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> alamat email · sidik jari perangkat yang di-hash · tanpa konten percakapan</p>
+        </div>
+      </div>
+
+      <h3>3b. Akses file platform AI</h3>
+
+      <p>Endpoint ini diakses secara <strong>read-only</strong> ketika Anda memicu Tangkap Chat Penuh atau fitur lampiran file. NODUS membaca konten file untuk ditampilkan atau disimpan secara lokal. Tidak ada yang diunggah ke server NODUS.</p>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://files.oaiusercontent.com/* &nbsp;·&nbsp; https://*.oaiusercontent.com/* &nbsp;·&nbsp; https://cdn.openai.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File dan gambar yang diunggah pengguna dalam percakapan ChatGPT (gambar, PDF, lampiran). NODUS membaca file-file ini secara lokal untuk menyertakannya dalam Tangkap Chat Penuh.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.anthropic.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File, artefak, dan lampiran yang diunggah pengguna dalam percakapan Claude.ai. Diakses secara lokal untuk mendukung Tangkap Chat Penuh.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://storage.googleapis.com/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File yang diunggah pengguna dalam percakapan Gemini. Diakses secara lokal untuk mendukung Tangkap Chat Penuh.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://*.blob.core.windows.net/*</span>
+          <span class="badge badge-gray">read-only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>File yang diunggah pengguna dalam percakapan Microsoft Copilot. Diakses secara lokal untuk mendukung Tangkap Chat Penuh.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TELEMETRY -->
+    <div class="section">
+      <span class="section-anchor" id="telemetry"></span>
+      <h2><span class="icon">📊</span> 4. Telemetri anonim opsional</h2>
+
+      <div class="highlight highlight-yellow">
+        <p><strong>Telemetri dinonaktifkan secara default.</strong> Anda harus mengaktifkannya secara eksplisit di Pengaturan → Telemetri untuk mengaktifkannya. Anda dapat menonaktifkannya kapan saja dan semua data yang diantrekan secara lokal langsung dihapus.</p>
+      </div>
+
+      <h3>Apa yang dikumpulkan telemetri (jika diaktifkan)</h3>
+      <ul class="check">
+        <li>Jumlah jenis acara (mis. "3 simpanan, 1 injeksi") — tanpa konten, tanpa teks</li>
+        <li>Jumlah platform (mis. "digunakan di ChatGPT 2 kali") — tanpa URL</li>
+        <li>ID anonim — hash SHA-256 yang dihasilkan secara lokal, tidak dikaitkan dengan identitas Anda</li>
+        <li>Jumlah sesi agregat per hari (pengelompokan temporal)</li>
+      </ul>
+
+      <h3>Apa yang tidak pernah dikumpulkan telemetri</h3>
+      <ul class="check cross">
+        <li>Konten percakapan, prompt, atau respons AI</li>
+        <li>URL yang dikunjungi atau judul halaman</li>
+        <li>Nama, email, atau informasi pengidentifikasi apa pun</li>
+        <li>Alamat IP (tidak disimpan oleh worker kami)</li>
+        <li>Spesifikasi perangkat atau sidik jari browser</li>
+      </ul>
+
+      <h3>Cara data diproses sebelum dikirim</h3>
+      <p>Acara diagregasi secara lokal sebelum transmisi. Alih-alih mengirim acara mentah, NODUS mengirim penghitung agregat (mis. berapa banyak simpanan yang terjadi, oleh platform mana) dengan noise yang menjaga privasi diterapkan (offset acak ±2 per penghitung). Acara mentah tidak pernah meninggalkan perangkat Anda.</p>
+
+      <h3>Retensi data</h3>
+      <p>Data telemetri agregat disimpan di server kami maksimal 12 bulan, setelah itu dihapus. Log acara lokal disimpan selama 90 hari di penyimpanan browser Anda, kemudian dibersihkan secara otomatis.</p>
+    </div>
+
+    <!-- 5. LICENSE -->
+    <div class="section">
+      <span class="section-anchor" id="license"></span>
+      <h2><span class="icon">🔑</span> 5. Validasi lisensi PRO</h2>
+
+      <p>Jika Anda membeli NODUS PRO, ekstensi akan memvalidasi lisensi Anda dengan server kami saat startup. Ini adalah minimum yang diperlukan untuk memverifikasi langganan berbayar.</p>
+
+      <h3>Apa yang dikirimkan selama validasi lisensi</h3>
+      <ul class="check">
+        <li>Alamat email Anda (sebagaimana dimasukkan saat aktivasi)</li>
+        <li>Sidik jari perangkat yang di-hash (pengidentifikasi yang dihasilkan browser, bukan nomor seri perangkat keras Anda)</li>
+      </ul>
+
+      <h3>Apa yang tidak pernah dikirimkan</h3>
+      <ul class="check cross">
+        <li>Konten percakapan atau apa pun yang telah Anda rekam</li>
+        <li>Alamat IP Anda (tidak disimpan, hanya digunakan untuk perutean oleh Cloudflare)</li>
+        <li>Data telemetri apa pun (ini adalah sistem yang terpisah)</li>
+      </ul>
+
+      <p>Data lisensi disimpan dalam database Cloudflare D1 (wilayah Brasil/Amerika Selatan). Data ini hanya digunakan untuk memvalidasi apakah langganan Anda aktif. Data ini tidak pernah dijual atau dibagikan kepada pihak ketiga.</p>
+
+      <p>Versi GRATIS NODUS bekerja sepenuhnya secara offline dan tidak pernah menghubungi server lisensi kami.</p>
+    </div>
+
+    <!-- 6. FILE ACCESS -->
+    <div class="section">
+      <span class="section-anchor" id="file-access"></span>
+      <h2><span class="icon">📎</span> 6. Akses file di platform AI</h2>
+
+      <p>Saat Anda menggunakan Tangkap Chat Penuh atau fitur lampiran file, NODUS dapat mengambil file yang telah Anda unggah ke platform AI (ChatGPT, Claude, Gemini, Copilot) untuk menyertakannya dalam rekaman lokal Anda.</p>
+
+      <div class="highlight">
+        <p><strong>Akses ini bersifat read-only dan lokal.</strong> NODUS membaca konten file langsung dari CDN platform AI ke memori browser Anda dan menyimpannya ke penyimpanan lokal Anda (<code>chrome.storage.local</code>). File tidak pernah diunggah ulang ke server NODUS mana pun.</p>
+      </div>
+
+      <p>Izin browser yang diperlukan untuk ini (<code>*.oaiusercontent.com</code>, <code>*.anthropic.com</code>, <code>storage.googleapis.com</code>, <code>*.blob.core.windows.net</code>) memungkinkan NODUS membaca file-file tersebut. Izin ini tidak mengizinkan NODUS untuk menulis, memodifikasi, atau mengirimkan data Anda di platform tersebut.</p>
+    </div>
+
+    <!-- 7. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 7. Apa yang tidak pernah kami lakukan</h2>
+
+      <ul class="check cross">
+        <li>Menjual data Anda kepada pihak ketiga mana pun</li>
+        <li>Membaca, menyimpan, atau mengirimkan konten percakapan Anda</li>
+        <li>Melacak situs web yang Anda kunjungi di luar platform AI</li>
+        <li>Menggunakan SDK iklan atau analitik pihak ketiga</li>
+        <li>Menyisipkan iklan atau tautan afiliasi ke platform AI</li>
+        <li>Mengakses mikrofon, kamera, atau clipboard Anda tanpa tindakan</li>
+        <li>Menyinkronkan data yang Anda rekam ke cloud mana pun tanpa ekspor eksplisit Anda</li>
+      </ul>
+    </div>
+
+    <!-- 8. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 8. Hak Anda (LGPD / GDPR)</h2>
+
+      <p>NODUS mematuhi Lei Geral de Proteção de Dados Brasil (LGPD) dan Peraturan Perlindungan Data Umum UE (GDPR), serta kompatibel dengan CCPA.</p>
+
+      <h3>Hak yang Anda miliki</h3>
+      <ul class="check">
+        <li><strong>Akses</strong> — Semua data yang tersimpan secara lokal dapat dilihat dan diekspor dari dasbor NODUS kapan saja</li>
+        <li><strong>Penghapusan</strong> — Anda dapat menghapus semua data lokal dari Pengaturan → Hapus Semua Data. Menghapus instalan ekstensi juga menghapus semua data lokal</li>
+        <li><strong>Portabilitas</strong> — Ekspor semua ide Anda sebagai JSON, Markdown, atau DOCX kapan saja</li>
+        <li><strong>Opt-out</strong> — Nonaktifkan telemetri kapan saja di Pengaturan → Telemetri</li>
+        <li><strong>Penghapusan data lisensi</strong> — Hubungi kami untuk meminta penghapusan email Anda dari database lisensi kami</li>
+      </ul>
+
+      <h3>Dasar hukum pemrosesan</h3>
+      <p>Telemetri diproses berdasarkan <strong>persetujuan</strong> (opt-in). Validasi lisensi diproses berdasarkan <strong>pelaksanaan kontrak</strong> (memverifikasi langganan berbayar). Tidak ada pemrosesan lain yang terjadi.</p>
+    </div>
+
+    <!-- 9. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 9. Kontak</h2>
+
+      <p>Untuk pertanyaan terkait privasi, permintaan penghapusan data, atau kekhawatiran apa pun:</p>
+
+      <div class="card">
+        <div class="card-title">📧 Email</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Situs proyek</div>
+        <p><a href="https://mmcarvalhodev.github.io/github.io/" style="color:#60a5fa;">nodus-ai.app</a></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🔍 Kode sumber</div>
+        <p><a href="https://github.com/mmcarvalhodev/nodus-core" style="color:#60a5fa;">github.com/mmcarvalhodev/nodus-core</a> — Modul telemetri dan lisensi sepenuhnya dapat diaudit di inti sumber terbuka.</p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Kebijakan ini dapat diperbarui ketika fitur baru ditambahkan. Perubahan material akan dicatat dalam catatan rilis ekstensi. Penggunaan NODUS yang berkelanjutan setelah perubahan kebijakan merupakan penerimaan terhadap kebijakan yang diperbarui.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="https://mmcarvalhodev.github.io/github.io/">Beranda</a> · <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub</a> · Kebijakan Privasi</p>
+  </footer>
+
+</body>
+</html>
