@@ -33,11 +33,9 @@
       return code === 'en' ? '/' + file : '/' + code + '/' + file;
     }
 
-    // faq.html: only PT hub exists — send other langs to their #faq section
+    // faq.html: stay on the page for all languages (content is PT but hub is shared)
     if (file === 'faq.html') {
-      if (code === 'pt') return '/faq.html';
-      if (code === 'en') return '/#faq';
-      return '/' + code + '/#faq';
+      return '/faq.html';
     }
 
     // Index pages (root "/" or "/lang/"): go to target language homepage + current hash
