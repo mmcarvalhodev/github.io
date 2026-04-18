@@ -4,7 +4,7 @@
   (function () {
     var T = {
       en: {
-        announcement: 'NODUS is launching Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Get PRO early access</a> &nbsp;·&nbsp; MIT licensed &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Star on GitHub ★</a>',
+        announcement: 'NODUS is launching Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Get PRO early access</a> &nbsp;·&nbsp; MIT licensed &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Star on GitHub ★</a>',
         navHow: 'How it works', navFeatures: 'Features', navPricing: 'Pricing',
         navPrivacy: 'Privacy', navScreenshots: 'Screenshots', navGetPro: 'Get PRO',
         ssLabel: 'In the wild', ssTitle: 'See it running',
@@ -164,7 +164,7 @@
         comingSoonFirefox: 'Coming soon on Firefox Add-ons'
       },
       pt: {
-        announcement: 'NODUS lança Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acesso antecipado PRO</a> &nbsp;·&nbsp; Licença MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Favoritar no GitHub ★</a>',
+        announcement: 'NODUS lança Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acesso antecipado PRO</a> &nbsp;·&nbsp; Licença MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Favoritar no GitHub ★</a>',
         navHow: 'Como funciona', navFeatures: 'Recursos', navPricing: 'Preços',
         navPrivacy: 'Privacidade', navScreenshots: 'Screenshots', navGetPro: 'Obter PRO',
         ssLabel: 'Em ação', ssTitle: 'Veja funcionando',
@@ -323,7 +323,7 @@
         comingSoonFirefox: 'Em breve nos Add-ons do Firefox'
       },
       es: {
-        announcement: 'NODUS lanza Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acceso anticipado PRO</a> &nbsp;·&nbsp; Licencia MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Estrella en GitHub ★</a>',
+        announcement: 'NODUS lanza Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Acceso anticipado PRO</a> &nbsp;·&nbsp; Licencia MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Estrella en GitHub ★</a>',
         navHow: 'Cómo funciona', navFeatures: 'Funcionalidades', navPricing: 'Precios',
         navPrivacy: 'Privacidad', navScreenshots: 'Capturas', navGetPro: 'Obtener PRO',
         ssLabel: 'En acción', ssTitle: 'Véalo funcionar',
@@ -482,7 +482,7 @@
         comingSoonFirefox: 'Próximamente en Firefox Add-ons'
       },
       fr: {
-        announcement: 'NODUS lance Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accès anticipé PRO</a> &nbsp;·&nbsp; Licence MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Étoile sur GitHub ★</a>',
+        announcement: 'NODUS lance Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accès anticipé PRO</a> &nbsp;·&nbsp; Licence MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Étoile sur GitHub ★</a>',
         navHow: 'Comment ça marche', navFeatures: 'Fonctionnalités', navPricing: 'Tarifs',
         navPrivacy: 'Confidentialité', navScreenshots: 'Captures', navGetPro: 'Obtenir PRO',
         ssLabel: 'En action', ssTitle: 'Voyez-le en marche',
@@ -639,7 +639,7 @@
         comingSoonFirefox: 'Bientôt sur Firefox Add-ons'
       },
       de: {
-        announcement: 'NODUS startet Q2 2026 — <a href="https://nodus-ai.app/checkout.html">PRO Früher Zugang</a> &nbsp;·&nbsp; MIT-Lizenz &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Stern auf GitHub ★</a>',
+        announcement: 'NODUS startet Q2 2026 — <a href="https://nodus-ai.app/checkout.html">PRO Früher Zugang</a> &nbsp;·&nbsp; MIT-Lizenz &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Stern auf GitHub ★</a>',
         navHow: 'So funktioniert\'s', navFeatures: 'Funktionen', navPricing: 'Preise',
         navPrivacy: 'Datenschutz', navScreenshots: 'Screenshots', navGetPro: 'PRO holen',
         ssLabel: 'In Aktion', ssTitle: 'Sieh es in Aktion',
@@ -796,7 +796,7 @@
         comingSoonFirefox: 'Demnächst bei Firefox Add-ons'
       },
       ja: {
-        announcement: 'NODUS 2026年Q2リリース — <a href="https://nodus-ai.app/checkout.html">PRO早期アクセス</a> &nbsp;·&nbsp; MITライセンス &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHubでスター ★</a>',
+        announcement: 'NODUS 2026年Q2リリース — <a href="https://nodus-ai.app/checkout.html">PRO早期アクセス</a> &nbsp;·&nbsp; MITライセンス &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">GitHubでスター ★</a>',
         navHow: '使い方', navFeatures: '機能', navPricing: '料金',
         navPrivacy: 'プライバシー', navScreenshots: 'スクリーンショット', navGetPro: 'PROを取得',
         ssLabel: '実際の動作', ssTitle: '動作を見る',
@@ -953,7 +953,7 @@
         comingSoonFirefox: 'まもなくFirefox Add-onsに公開'
       },
       it: {
-        announcement: 'NODUS Lancio Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accesso Anticipato PRO</a> &nbsp;·&nbsp; Licenza MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Star su GitHub ★</a>',
+        announcement: 'NODUS Lancio Q2 2026 — <a href="https://nodus-ai.app/checkout.html">Accesso Anticipato PRO</a> &nbsp;·&nbsp; Licenza MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Star su GitHub ★</a>',
         navHow: 'Come Funziona',
         navFeatures: 'Funzionalità',
         navPricing: 'Prezzi',
@@ -1169,7 +1169,7 @@
         comingSoonFirefox: 'Presto su Firefox Add-ons'
       },
       zh: {
-        announcement: 'NODUS 2026年Q2发布 — <a href="https://nodus-ai.app/checkout.html">PRO抢先体验</a> &nbsp;·&nbsp; MIT许可证 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub点星 ★</a>',
+        announcement: 'NODUS 2026年Q2发布 — <a href="https://nodus-ai.app/checkout.html">PRO抢先体验</a> &nbsp;·&nbsp; MIT许可证 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">GitHub点星 ★</a>',
         navHow: '如何使用',
         navFeatures: '功能',
         navPricing: '定价',
@@ -1384,7 +1384,7 @@
         comingSoonFirefox: '即将在Firefox附加组件上线'
       },
       ko: {
-        announcement: 'NODUS 2026년 Q2 출시 — <a href="https://nodus-ai.app/checkout.html">PRO 얼리 액세스</a> &nbsp;·&nbsp; MIT 라이선스 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub에서 스타 ★</a>',
+        announcement: 'NODUS 2026년 Q2 출시 — <a href="https://nodus-ai.app/checkout.html">PRO 얼리 액세스</a> &nbsp;·&nbsp; MIT 라이선스 &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">GitHub에서 스타 ★</a>',
         navHow: '사용 방법',
         navFeatures: '기능',
         navPricing: '요금',
@@ -1599,7 +1599,7 @@
         comingSoonFirefox: 'Firefox 부가 기능에 곧 출시 예정'
       },
       hi: {
-        announcement: 'NODUS Q2 2026 लॉन्च — <a href="https://nodus-ai.app/checkout.html">PRO अर्ली एक्सेस</a> &nbsp;·&nbsp; MIT लाइसेंस &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub पर स्टार ★</a>',
+        announcement: 'NODUS Q2 2026 लॉन्च — <a href="https://nodus-ai.app/checkout.html">PRO अर्ली एक्सेस</a> &nbsp;·&nbsp; MIT लाइसेंस &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">GitHub पर स्टार ★</a>',
         navHow: 'कैसे काम करता है',
         navFeatures: 'सुविधाएं',
         navPricing: 'मूल्य',
@@ -1814,7 +1814,7 @@
         comingSoonFirefox: 'Firefox Add-ons पर जल्द आ रहा है'
       },
       ru: {
-        announcement: 'NODUS теперь доступен в Firefox — <a href="https://nodus-ai.app/checkout.html">Ранний доступ PRO</a> &nbsp;·&nbsp; Лицензия MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Звезда на GitHub ★</a>',
+        announcement: 'NODUS теперь доступен в Firefox — <a href="https://nodus-ai.app/checkout.html">Ранний доступ PRO</a> &nbsp;·&nbsp; Лицензия MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Звезда на GitHub ★</a>',
         navHow: 'Как это работает', navFeatures: 'Функции', navPricing: 'Цены',
         navPrivacy: 'Конфиденциальность', navScreenshots: 'Скриншоты', navGetPro: 'Получить PRO',
         badge1: 'Теперь в Firefox', badge2: 'Бесплатно навсегда', badge3: 'Лицензия MIT',
@@ -1870,7 +1870,7 @@
         storeSoon: 'Скоро', storeAvail: 'Доступно'
       },
       tr: {
-        announcement: 'NODUS artık Firefox\'ta — <a href="https://nodus-ai.app/checkout.html">PRO erken erişim</a> &nbsp;·&nbsp; MIT lisansı &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">GitHub\'da yıldız ★</a>',
+        announcement: 'NODUS artık Firefox\'ta — <a href="https://nodus-ai.app/checkout.html">PRO erken erişim</a> &nbsp;·&nbsp; MIT lisansı &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">GitHub\'da yıldız ★</a>',
         navHow: 'Nasıl çalışır', navFeatures: 'Özellikler', navPricing: 'Fiyatlandırma',
         navPrivacy: 'Gizlilik', navScreenshots: 'Ekran görüntüleri', navGetPro: 'PRO al',
         badge1: 'Firefox\'ta mevcut', badge2: 'Sonsuza kadar ücretsiz', badge3: 'MIT Lisansı',
@@ -1926,7 +1926,7 @@
         storeSoon: 'Yakında', storeAvail: 'Mevcut'
       },
       pl: {
-        announcement: 'NODUS jest teraz dostępny w Firefox — <a href="https://nodus-ai.app/checkout.html">Wczesny dostęp PRO</a> &nbsp;·&nbsp; Licencja MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Gwiazdka na GitHub ★</a>',
+        announcement: 'NODUS jest teraz dostępny w Firefox — <a href="https://nodus-ai.app/checkout.html">Wczesny dostęp PRO</a> &nbsp;·&nbsp; Licencja MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Gwiazdka na GitHub ★</a>',
         navHow: 'Jak to działa', navFeatures: 'Funkcje', navPricing: 'Cennik',
         navPrivacy: 'Prywatność', navScreenshots: 'Zrzuty ekranu', navGetPro: 'Kup PRO',
         badge1: 'Teraz w Firefox', badge2: 'Zawsze darmowy', badge3: 'Licencja MIT',
@@ -1982,7 +1982,7 @@
         storeSoon: 'Wkrótce', storeAvail: 'Dostępne'
       },
       nl: {
-        announcement: 'NODUS is nu beschikbaar op Firefox — <a href="https://nodus-ai.app/checkout.html">PRO vroege toegang</a> &nbsp;·&nbsp; MIT-licentie &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Ster op GitHub ★</a>',
+        announcement: 'NODUS is nu beschikbaar op Firefox — <a href="https://nodus-ai.app/checkout.html">PRO vroege toegang</a> &nbsp;·&nbsp; MIT-licentie &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Ster op GitHub ★</a>',
         navHow: 'Hoe het werkt', navFeatures: 'Functies', navPricing: 'Prijzen',
         navPrivacy: 'Privacy', navScreenshots: 'Screenshots', navGetPro: 'PRO halen',
         badge1: 'Nu op Firefox', badge2: 'Voor altijd gratis', badge3: 'MIT-licentie',
@@ -2038,7 +2038,7 @@
         storeSoon: 'Binnenkort', storeAvail: 'Beschikbaar'
       },
       id: {
-        announcement: 'NODUS kini tersedia di Firefox — <a href="https://nodus-ai.app/checkout.html">Akses awal PRO</a> &nbsp;·&nbsp; Lisensi MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Bintang di GitHub ★</a>',
+        announcement: 'NODUS kini tersedia di Firefox — <a href="https://nodus-ai.app/checkout.html">Akses awal PRO</a> &nbsp;·&nbsp; Lisensi MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Bintang di GitHub ★</a>',
         navHow: 'Cara kerja', navFeatures: 'Fitur', navPricing: 'Harga',
         navPrivacy: 'Privasi', navScreenshots: 'Tangkapan layar', navGetPro: 'Dapatkan PRO',
         badge1: 'Kini di Firefox', badge2: 'Gratis selamanya', badge3: 'Lisensi MIT',
@@ -2094,7 +2094,7 @@
         storeSoon: 'Segera', storeAvail: 'Tersedia'
       },
       vi: {
-        announcement: 'NODUS đã có trên Firefox — <a href="https://nodus-ai.app/checkout.html">Truy cập sớm PRO</a> &nbsp;·&nbsp; Giấy phép MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus-core">Gắn sao GitHub ★</a>',
+        announcement: 'NODUS đã có trên Firefox — <a href="https://nodus-ai.app/checkout.html">Truy cập sớm PRO</a> &nbsp;·&nbsp; Giấy phép MIT &nbsp;·&nbsp; <a href="https://github.com/mmcarvalhodev/nodus">Gắn sao GitHub ★</a>',
         navHow: 'Cách hoạt động', navFeatures: 'Tính năng', navPricing: 'Giá cả',
         navPrivacy: 'Quyền riêng tư', navScreenshots: 'Ảnh chụp màn hình', navGetPro: 'Mua PRO',
         badge1: 'Có trên Firefox', badge2: 'Miễn phí mãi mãi', badge3: 'Giấy phép MIT',
