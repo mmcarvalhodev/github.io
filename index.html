@@ -76,21 +76,14 @@
   }
   </script>
 
-  <!-- Auto language detection — runs before render -->
+  <!-- Language preference storage only — no redirect (SEO safe) -->
   <script>
   (function(){
     try {
-      var pref = localStorage.getItem('nodus_lang');
-      if (pref && pref !== 'en') { window.location.replace('/'+pref+'/'); return; }
-      if (!pref) {
+      if (!localStorage.getItem('nodus_lang')) {
         var l = (navigator.language || navigator.userLanguage || 'en').toLowerCase().split(/[-_]/)[0];
         var ok = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
-        if (ok.indexOf(l) !== -1) {
-          localStorage.setItem('nodus_lang', l);
-          window.location.replace('/'+l+'/');
-        } else {
-          localStorage.setItem('nodus_lang', 'en');
-        }
+        localStorage.setItem('nodus_lang', ok.indexOf(l) !== -1 ? l : 'en');
       }
     } catch(e) {}
   })();
