@@ -2338,18 +2338,14 @@
         });
       }
 
-      // Lang option clicks
+      // Lang option clicks — navigation handled by lang-switcher.js hrefs; only apply locally
       document.querySelectorAll('.lang-opt').forEach(function(opt) {
         opt.addEventListener('click', function(e) {
           e.stopPropagation();
           var selectedLang = opt.getAttribute('data-lang');
           applyLang(selectedLang);
           try { localStorage.setItem('nodus_lang', selectedLang); } catch(e2) {}
-          try {
-            var url = new URL(window.location.href);
-            url.searchParams.set('lang', selectedLang);
-            history.replaceState(null, '', url.toString());
-          } catch(e3) {}
+          // No history.replaceState — avoids generating ?lang=XX URLs that confuse crawlers
         });
       });
     });
