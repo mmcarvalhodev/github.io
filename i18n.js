@@ -2314,20 +2314,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       var lang = detectLang();
       applyLang(lang);
-      // Dropdown toggle
-      var trigger = document.getElementById('langTrigger');
-      var switcher = document.getElementById('langSwitcher');
-      if (trigger && switcher) {
-        trigger.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var isOpen = switcher.classList.toggle('open');
-          trigger.setAttribute('aria-expanded', isOpen);
-        });
-        document.addEventListener('click', function() {
-          switcher.classList.remove('open');
-          trigger.setAttribute('aria-expanded', 'false');
-        });
-      }
+      // Dropdown toggle handled by lang-switcher.js — no duplicate listener here
       // Hamburger menu toggle
       var hamburger = document.getElementById('navHamburger');
       var navLinks = document.querySelector('.nav-links');

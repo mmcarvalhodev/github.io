@@ -110,15 +110,21 @@
       });
     });
 
-    document.getElementById('langTrigger').addEventListener('click', function(e) {
+    var trigger = document.getElementById('langTrigger');
+    var switcher = document.getElementById('langSwitcher');
+
+    trigger.addEventListener('click', function(e) {
       e.stopPropagation();
       syncHrefs();
-      document.getElementById('langSwitcher').classList.toggle('open');
+      var isOpen = switcher.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
     });
 
     document.addEventListener('click', function() {
-      var w = document.getElementById('langSwitcher');
-      if (w) w.classList.remove('open');
+      if (switcher) {
+        switcher.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
     });
   });
 })();
