@@ -13,7 +13,6 @@
       --panel: #131720;
       --border: #2d3748;
       --yellow: #facc15;
-      --yellow-dim: rgba(250,204,21,0.12);
       --text: #e2e8f0;
       --sub: #94a3b8;
       --muted: #475569;
@@ -29,7 +28,6 @@
       padding: 40px 20px 60px;
     }
 
-    /* NAV */
     nav {
       max-width: 900px;
       margin: 0 auto 48px;
@@ -41,11 +39,7 @@
     .nav-back { font-size: 13px; color: var(--sub); text-decoration: none; }
     .nav-back:hover { color: var(--text); }
 
-    /* HEADER */
-    .page-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
+    .page-header { text-align: center; margin-bottom: 48px; }
     .ph-badge {
       display: inline-flex;
       align-items: center;
@@ -61,16 +55,10 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
-    .page-title {
-      font-size: clamp(28px, 5vw, 44px);
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
+    .page-title { font-size: clamp(28px, 5vw, 44px); font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
     .page-title span { color: var(--yellow); }
     .page-sub { font-size: 16px; color: var(--sub); }
 
-    /* ERROR */
     .error-message {
       background: rgba(239,68,68,0.12);
       border: 1px solid rgba(239,68,68,0.3);
@@ -84,7 +72,6 @@
       font-size: 14px;
     }
 
-    /* LIFETIME HERO */
     .lifetime-card {
       max-width: 900px;
       margin: 0 auto 24px;
@@ -94,6 +81,7 @@
       padding: 40px;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
     .lifetime-card::before {
       content: '';
@@ -103,13 +91,7 @@
       background: radial-gradient(circle, rgba(250,204,21,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
-    .lifetime-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
+    .lifetime-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
     .lifetime-left { flex: 1; min-width: 260px; }
     .lifetime-badge {
       display: inline-flex;
@@ -125,29 +107,11 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .lifetime-name {
-      font-size: 28px;
-      font-weight: 900;
-      color: var(--yellow);
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
+    .lifetime-name { font-size: 28px; font-weight: 900; color: var(--yellow); margin-bottom: 8px; letter-spacing: -0.5px; }
     .lifetime-desc { font-size: 15px; color: var(--sub); line-height: 1.6; max-width: 420px; }
-
     .lifetime-right { text-align: right; flex-shrink: 0; }
-    .lifetime-price-old {
-      font-size: 14px;
-      color: var(--muted);
-      text-decoration: line-through;
-      margin-bottom: 4px;
-    }
-    .lifetime-price {
-      font-size: 56px;
-      font-weight: 900;
-      color: var(--yellow);
-      line-height: 1;
-      letter-spacing: -2px;
-    }
+    .lifetime-price-old { font-size: 14px; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
+    .lifetime-price { font-size: 56px; font-weight: 900; color: var(--yellow); line-height: 1; letter-spacing: -2px; }
     .lifetime-once { font-size: 14px; color: var(--sub); margin-top: 4px; }
     .lifetime-slots {
       display: inline-flex;
@@ -162,7 +126,7 @@
       padding: 6px 14px;
       border-radius: 8px;
     }
-    .slot-dot { width: 7px; height: 7px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
+    .slot-dot { width: 7px; height: 7px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; flex-shrink: 0; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
     .lifetime-features {
@@ -173,14 +137,8 @@
       padding-top: 28px;
       border-top: 1px solid rgba(250,204,21,0.2);
     }
-    .lf-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text);
-    }
-    .lf-item::before { content: "✓"; color: var(--yellow); font-weight: 800; }
+    .lf-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text); }
+    .lf-item::before { content: "✓"; color: var(--yellow); font-weight: 800; flex-shrink: 0; }
 
     .btn-lifetime {
       width: 100%;
@@ -199,7 +157,6 @@
     .btn-lifetime:disabled { opacity: 0.6; cursor: wait; }
     .btn-lifetime-sub { text-align: center; font-size: 12px; color: var(--muted); margin-top: 10px; }
 
-    /* DIVIDER */
     .or-divider {
       max-width: 900px;
       margin: 8px auto 20px;
@@ -209,21 +166,9 @@
       color: var(--muted);
       font-size: 13px;
     }
-    .or-divider::before, .or-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    /* SUBSCRIPTION PLANS */
-    .plans {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto 32px;
-    }
+    .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto 32px; }
     @media (max-width: 640px) { .plans { grid-template-columns: 1fr; } }
 
     .plan {
@@ -273,7 +218,7 @@
       gap: 8px;
       border-bottom: 1px solid rgba(255,255,255,0.04);
     }
-    .plan-features li::before { content: "✓"; color: var(--green); font-weight: 700; font-size: 14px; }
+    .plan-features li::before { content: "✓"; color: var(--green); font-weight: 700; font-size: 14px; flex-shrink: 0; }
 
     .btn-plan {
       width: 100%;
@@ -290,7 +235,6 @@
     .btn-plan:hover:not(:disabled) { background: var(--purple); color: white; }
     .btn-plan:disabled { opacity: 0.6; cursor: wait; }
 
-    /* TRIAL NOTICE */
     .trial-notice {
       max-width: 900px;
       margin: 0 auto 16px;
@@ -304,14 +248,7 @@
     }
     .trial-notice strong { color: var(--green); }
 
-    /* FOOTER */
-    .page-footer {
-      max-width: 900px;
-      margin: 24px auto 0;
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .page-footer { max-width: 900px; margin: 24px auto 0; text-align: center; font-size: 13px; color: var(--muted); }
     .page-footer a { color: var(--sub); text-decoration: none; }
     .page-footer a:hover { color: var(--text); }
 
@@ -327,29 +264,29 @@
 
   <nav>
     <a href="https://nodus-ai.app" class="nav-logo">NODUS</a>
-    <a href="https://nodus-ai.app" class="nav-back">← Back to home</a>
+    <a href="https://nodus-ai.app" class="nav-back" id="t-nav-back">← Back to home</a>
   </nav>
 
   <div class="page-header">
-    <div class="ph-badge">🚀 Product Hunt Launch</div>
+    <div class="ph-badge" id="t-ph-badge">🚀 Product Hunt Launch</div>
     <h1 class="page-title">Unlock <span>NODUS PRO</span></h1>
-    <p class="page-sub">Capture, organize and reuse your best AI conversations — forever.</p>
+    <p class="page-sub" id="t-page-sub">Capture, organize and reuse your best AI conversations — forever.</p>
   </div>
 
   <div class="error-message" id="error-message"></div>
 
-  <!-- LIFETIME HERO CARD -->
+  <!-- LIFETIME HERO -->
   <div class="lifetime-card" id="lifetime-plan">
     <div class="lifetime-top">
       <div class="lifetime-left">
-        <div class="lifetime-badge">⚡ Early Access — Limited Offer</div>
-        <div class="lifetime-name">Lifetime Access</div>
-        <div class="lifetime-desc">Pay once, use forever. All current and future PRO features — no subscriptions, no renewals. Only available during launch week.</div>
+        <div class="lifetime-badge" id="t-lt-badge">⚡ Early Access — Limited Offer</div>
+        <div class="lifetime-name" id="t-lt-name">Lifetime Access</div>
+        <div class="lifetime-desc" id="t-lt-desc">Pay once, use forever. All current and future PRO features — no subscriptions, no renewals. Only available during launch week.</div>
       </div>
       <div class="lifetime-right">
-        <div class="lifetime-price-old">$108/year value</div>
+        <div class="lifetime-price-old" id="t-lt-value">$108/year value</div>
         <div class="lifetime-price">$49</div>
-        <div class="lifetime-once">one-time payment</div>
+        <div class="lifetime-once" id="t-lt-once">one-time payment</div>
         <div class="lifetime-slots">
           <span class="slot-dot"></span>
           <span id="slots-label">Limited to 200 copies</span>
@@ -358,31 +295,30 @@
     </div>
 
     <div class="lifetime-features">
-      <div class="lf-item">6 Custom Queues</div>
-      <div class="lf-item">Full Chat Capture</div>
-      <div class="lf-item">Inject Chain Feature</div>
-      <div class="lf-item">HTML &amp; DOCX Export</div>
-      <div class="lf-item">Auto Capture</div>
-      <div class="lf-item">Unlimited Projects</div>
-      <div class="lf-item">Encrypted Backup</div>
-      <div class="lf-item">Priority Support</div>
-      <div class="lf-item">All Future Features</div>
+      <div class="lf-item" id="t-f1">6 Custom Queues</div>
+      <div class="lf-item" id="t-f2">Full Chat Capture</div>
+      <div class="lf-item" id="t-f3">Inject Chain Feature</div>
+      <div class="lf-item" id="t-f4">HTML &amp; DOCX Export</div>
+      <div class="lf-item" id="t-f5">Auto Capture</div>
+      <div class="lf-item" id="t-f6">Unlimited Projects</div>
+      <div class="lf-item" id="t-f7">Encrypted Backup</div>
+      <div class="lf-item" id="t-f8">Priority Support</div>
+      <div class="lf-item" id="t-f9">All Future Features</div>
     </div>
 
     <button class="btn-lifetime" id="btn-lifetime">⚡ Get Lifetime Access — $49</button>
-    <div class="btn-lifetime-sub">Secure payment via Paddle · Instant activation · 7-day refund guarantee</div>
+    <div class="btn-lifetime-sub" id="t-lt-sub">Secure payment via Paddle · Instant activation · 7-day refund guarantee</div>
   </div>
 
-  <div class="or-divider">or choose a subscription</div>
+  <div class="or-divider" id="t-or">or choose a subscription</div>
 
   <!-- SUBSCRIPTION PLANS -->
   <div class="plans">
-    <!-- Monthly -->
     <div class="plan" id="monthly-plan">
-      <div class="plan-name">Monthly</div>
+      <div class="plan-name" id="t-mo-name">Monthly</div>
       <div class="plan-price">$4.50</div>
-      <div class="plan-period">per month · cancel anytime</div>
-      <ul class="plan-features">
+      <div class="plan-period" id="t-mo-period">per month · cancel anytime</div>
+      <ul class="plan-features" id="t-mo-features">
         <li>6 Custom Queues</li>
         <li>Full Chat Capture</li>
         <li>Inject Chain Feature</li>
@@ -393,14 +329,13 @@
       <button class="btn-plan" id="btn-monthly">Choose Monthly</button>
     </div>
 
-    <!-- Annual -->
     <div class="plan recommended" id="annual-plan">
-      <span class="badge-rec">Save 44%</span>
-      <div class="plan-name">Annual</div>
+      <span class="badge-rec" id="t-save-badge">Save 44%</span>
+      <div class="plan-name" id="t-an-name">Annual</div>
       <div class="plan-price">$30</div>
-      <div class="plan-period">per year · billed annually</div>
-      <div class="savings-tag">💰 Save $24/year vs monthly</div>
-      <ul class="plan-features">
+      <div class="plan-period" id="t-an-period">per year · billed annually</div>
+      <div class="savings-tag" id="t-save-tag">💰 Save $24/year vs monthly</div>
+      <ul class="plan-features" id="t-an-features">
         <li>6 Custom Queues</li>
         <li>Full Chat Capture</li>
         <li>Inject Chain Feature</li>
@@ -412,21 +347,121 @@
     </div>
   </div>
 
-  <div class="trial-notice">
+  <div class="trial-notice" id="t-trial">
     <strong>🎉 14-Day Free Trial</strong> on monthly &amp; annual plans — try NODUS PRO risk-free. Cancel anytime during the trial.
   </div>
 
   <div class="page-footer">
-    Need help? <a href="mailto:support@nodus-ai.app">Contact Support</a> &nbsp;·&nbsp;
-    <a href="https://nodus-ai.app/refund">Refund Policy</a> &nbsp;·&nbsp;
-    <a href="https://nodus-ai.app/privacy">Privacy</a>
+    <span id="t-footer-support">Need help? <a href="mailto:support@nodus-ai.app">Contact Support</a></span>
+    &nbsp;·&nbsp; <a href="https://nodus-ai.app/refund" id="t-footer-refund">Refund Policy</a>
+    &nbsp;·&nbsp; <a href="https://nodus-ai.app/privacy" id="t-footer-privacy">Privacy</a>
   </div>
 
   <script>
-    const PADDLE_CONFIG = {
+    // ─── I18N ───────────────────────────────────────────────
+    var LANG = (function() {
+      try { return localStorage.getItem('nodus_lang') || 'en'; } catch(e) { return 'en'; }
+    })();
+
+    var T = {
+      'nav-back':       { en:'← Back to home', pt:'← Voltar ao início', es:'← Volver al inicio', fr:'← Retour', de:'← Zurück', it:'← Torna alla home', nl:'← Terug naar home', pl:'← Wróć do strony', id:'← Kembali', vi:'← Quay lại', ja:'← ホームへ', ko:'← 홈으로', zh:'← 返回首页', ru:'← На главную', hi:'← होम पर जाएं', tr:'← Ana sayfaya dön' },
+      'ph-badge':       { en:'🚀 Product Hunt Launch', pt:'🚀 Lançamento no Product Hunt', es:'🚀 Lanzamiento en Product Hunt', fr:'🚀 Lancement Product Hunt', de:'🚀 Product Hunt Launch', it:'🚀 Lancio su Product Hunt', nl:'🚀 Product Hunt Launch', pl:'🚀 Premiera na Product Hunt', id:'🚀 Peluncuran Product Hunt', vi:'🚀 Ra mắt Product Hunt', ja:'🚀 Product Hunt 公開', ko:'🚀 프로덕트 헌트 출시', zh:'🚀 Product Hunt 发布', ru:'🚀 Запуск на Product Hunt', hi:'🚀 Product Hunt लॉन्च', tr:'🚀 Product Hunt Lansmanı' },
+      'page-sub':       { en:'Capture, organize and reuse your best AI conversations — forever.', pt:'Capture, organize e reutilize suas melhores conversas de IA — para sempre.', es:'Captura, organiza y reutiliza tus mejores conversaciones de IA — para siempre.', fr:'Capturez, organisez et réutilisez vos meilleures conversations IA — pour toujours.', de:'Erfasse, organisiere und nutze deine besten KI-Gespräche — für immer.', it:'Cattura, organizza e riutilizza le tue migliori conversazioni IA — per sempre.', nl:'Leg vast, organiseer en hergebruik je beste AI-gesprekken — voor altijd.', pl:'Przechwytuj, organizuj i ponownie używaj najlepszych rozmów z AI — na zawsze.', id:'Tangkap, atur, dan gunakan kembali percakapan AI terbaik Anda — selamanya.', vi:'Ghi lại, tổ chức và tái sử dụng các cuộc trò chuyện AI hay nhất — mãi mãi.', ja:'最高のAI会話を保存・整理・再利用 — 永遠に。', ko:'최고의 AI 대화를 캡처하고 정리하고 재사용하세요 — 영원히.', zh:'永久捕获、整理和重用您最好的 AI 对话。', ru:'Сохраняйте, организуйте и повторно используйте лучшие AI-разговоры — навсегда.', hi:'अपनी सर्वश्रेष्ठ AI बातचीत को कैप्चर, व्यवस्थित और पुनः उपयोग करें — हमेशा के लिए।', tr:'En iyi AI sohbetlerinizi yakalayın, düzenleyin ve yeniden kullanın — sonsuza kadar.' },
+      'lt-badge':       { en:'⚡ Early Access — Limited Offer', pt:'⚡ Acesso Antecipado — Oferta Limitada', es:'⚡ Acceso Anticipado — Oferta Limitada', fr:'⚡ Accès Anticipé — Offre Limitée', de:'⚡ Früher Zugang — Limitiertes Angebot', it:'⚡ Accesso Anticipato — Offerta Limitata', nl:'⚡ Vroege Toegang — Beperkt Aanbod', pl:'⚡ Wczesny Dostęp — Ograniczona Oferta', id:'⚡ Akses Awal — Penawaran Terbatas', vi:'⚡ Truy cập sớm — Ưu đãi có hạn', ja:'⚡ 先行アクセス — 限定オファー', ko:'⚡ 얼리 액세스 — 한정 혜택', zh:'⚡ 早期访问 — 限量优惠', ru:'⚡ Ранний доступ — Ограниченное предложение', hi:'⚡ अर्ली एक्सेस — सीमित ऑफर', tr:'⚡ Erken Erişim — Sınırlı Teklif' },
+      'lt-name':        { en:'Lifetime Access', pt:'Acesso Vitalício', es:'Acceso de por Vida', fr:'Accès à Vie', de:'Lebenslanger Zugang', it:'Accesso a Vita', nl:'Levenslange Toegang', pl:'Dożywotni Dostęp', id:'Akses Seumur Hidup', vi:'Truy cập trọn đời', ja:'生涯アクセス', ko:'평생 이용권', zh:'终身访问', ru:'Пожизненный доступ', hi:'आजीवन एक्सेस', tr:'Ömür Boyu Erişim' },
+      'lt-desc':        { en:'Pay once, use forever. All current and future PRO features — no subscriptions, no renewals. Only available during launch week.', pt:'Pague uma vez, use para sempre. Todos os recursos PRO atuais e futuros — sem assinaturas, sem renovações. Disponível apenas durante a semana de lançamento.', es:'Paga una vez, usa para siempre. Todas las funciones PRO actuales y futuras — sin suscripciones ni renovaciones. Solo disponible durante la semana de lanzamiento.', fr:'Payez une fois, utilisez pour toujours. Toutes les fonctionnalités PRO actuelles et futures — sans abonnements ni renouvellements. Disponible uniquement pendant la semaine de lancement.', de:'Einmal zahlen, für immer nutzen. Alle aktuellen und zukünftigen PRO-Funktionen — keine Abonnements, keine Verlängerungen. Nur in der Startwoche verfügbar.', it:'Paga una volta, usa per sempre. Tutte le funzionalità PRO attuali e future — nessun abbonamento, nessun rinnovo. Disponibile solo durante la settimana di lancio.', nl:'Eenmalig betalen, voor altijd gebruiken. Alle huidige en toekomstige PRO-functies — geen abonnementen, geen verlengingen. Alleen beschikbaar tijdens de lanceringweek.', pl:'Zapłać raz, używaj na zawsze. Wszystkie obecne i przyszłe funkcje PRO — bez subskrypcji, bez odnowień. Dostępne tylko w tygodniu premiery.', id:'Bayar sekali, gunakan selamanya. Semua fitur PRO saat ini dan mendatang — tanpa langganan, tanpa perpanjangan. Hanya tersedia selama minggu peluncuran.', vi:'Trả một lần, dùng mãi mãi. Tất cả tính năng PRO hiện tại và tương lai — không đăng ký, không gia hạn. Chỉ có trong tuần ra mắt.', ja:'一度支払えば永遠に使用可能。現在および将来のすべてのPRO機能 — サブスクリプション不要、更新不要。ローンチ週のみ提供。', ko:'한 번 결제로 영원히 사용. 현재 및 미래의 모든 PRO 기능 — 구독 없음, 갱신 없음. 출시 주에만 제공.', zh:'一次付款，永久使用。所有当前和未来的 PRO 功能 — 无订阅，无续费。仅在发布周提供。', ru:'Платите один раз, пользуйтесь вечно. Все текущие и будущие PRO-функции — без подписок и продлений. Доступно только в неделю запуска.', hi:'एक बार भुगतान करें, हमेशा के लिए उपयोग करें। सभी वर्तमान और भविष्य की PRO सुविधाएं — कोई सब्सक्रिप्शन नहीं, कोई नवीनीकरण नहीं। केवल लॉन्च सप्ताह के दौरान उपलब्ध।', tr:'Bir kez öde, sonsuza kadar kullan. Tüm mevcut ve gelecekteki PRO özellikleri — abonelik yok, yenileme yok. Yalnızca lansman haftasında mevcut.' },
+      'lt-value':       { en:'$108/year value', pt:'Valor de $108/ano', es:'Valor de $108/año', fr:'Valeur de 108 $/an', de:'Wert: $108/Jahr', it:'Valore di $108/anno', nl:'Waarde $108/jaar', pl:'Wartość $108/rok', id:'Nilai $108/tahun', vi:'Giá trị $108/năm', ja:'年間$108相当', ko:'연간 $108 가치', zh:'价值 $108/年', ru:'Стоимость $108/год', hi:'$108/वर्ष का मूल्य', tr:'$108/yıl değerinde' },
+      'lt-once':        { en:'one-time payment', pt:'pagamento único', es:'pago único', fr:'paiement unique', de:'Einmalzahlung', it:'pagamento unico', nl:'eenmalige betaling', pl:'jednorazowa płatność', id:'pembayaran sekali', vi:'thanh toán một lần', ja:'一括払い', ko:'일회성 결제', zh:'一次性付款', ru:'единовременный платёж', hi:'एकमुश्त भुगतान', tr:'tek seferlik ödeme' },
+      'slots-limited':  { en:'Limited to 200 copies', pt:'Limitado a 200 cópias', es:'Limitado a 200 copias', fr:'Limité à 200 exemplaires', de:'Auf 200 Exemplare begrenzt', it:'Limitato a 200 copie', nl:'Beperkt tot 200 exemplaren', pl:'Ograniczone do 200 kopii', id:'Terbatas 200 salinan', vi:'Giới hạn 200 bản', ja:'200部限定', ko:'200개 한정', zh:'限量 200 份', ru:'Ограничено 200 копиями', hi:'200 प्रतियों तक सीमित', tr:'200 kopya ile sınırlı' },
+      'slots-remaining':{ en:' of 200 copies remaining', pt:' de 200 cópias restantes', es:' de 200 copias restantes', fr:' sur 200 exemplaires restants', de:' von 200 Exemplaren übrig', it:' di 200 copie rimanenti', nl:' van 200 exemplaren over', pl:' z 200 kopii pozostało', id:' dari 200 salinan tersisa', vi:' trong 200 bản còn lại', ja:' / 200部 残り', ko:' / 200개 남음', zh:' / 200 份剩余', ru:' из 200 осталось', hi:' / 200 प्रतियां शेष', tr:' / 200 kopya kaldı' },
+      'lt-btn':         { en:'⚡ Get Lifetime Access — $49', pt:'⚡ Obter Acesso Vitalício — $49', es:'⚡ Obtener Acceso de por Vida — $49', fr:'⚡ Obtenir l\'Accès à Vie — 49 $', de:'⚡ Lebenslangen Zugang erhalten — $49', it:'⚡ Ottieni Accesso a Vita — $49', nl:'⚡ Levenslange Toegang — $49', pl:'⚡ Kup Dożywotni Dostęp — $49', id:'⚡ Dapatkan Akses Seumur Hidup — $49', vi:'⚡ Mua truy cập trọn đời — $49', ja:'⚡ 生涯アクセスを取得 — $49', ko:'⚡ 평생 이용권 구매 — $49', zh:'⚡ 获取终身访问权限 — $49', ru:'⚡ Получить пожизненный доступ — $49', hi:'⚡ आजीवन एक्सेस प्राप्त करें — $49', tr:'⚡ Ömür Boyu Erişim Al — $49' },
+      'lt-sub':         { en:'Secure payment via Paddle · Instant activation · 7-day refund guarantee', pt:'Pagamento seguro via Paddle · Ativação imediata · 7 dias de garantia de reembolso', es:'Pago seguro via Paddle · Activación inmediata · Garantía de reembolso de 7 días', fr:'Paiement sécurisé via Paddle · Activation instantanée · Garantie de remboursement 7 jours', de:'Sichere Zahlung via Paddle · Sofortige Aktivierung · 7 Tage Geld-zurück-Garantie', it:'Pagamento sicuro via Paddle · Attivazione immediata · Garanzia di rimborso 7 giorni', nl:'Veilige betaling via Paddle · Directe activering · 7 dagen terugbetalingsgarantie', pl:'Bezpieczna płatność przez Paddle · Natychmiastowa aktywacja · 7-dniowa gwarancja zwrotu', id:'Pembayaran aman via Paddle · Aktivasi instan · Jaminan pengembalian 7 hari', vi:'Thanh toán bảo mật qua Paddle · Kích hoạt ngay · Hoàn tiền trong 7 ngày', ja:'Paddleによる安全な決済 · 即時アクティベーション · 7日間返金保証', ko:'Paddle 안전 결제 · 즉시 활성화 · 7일 환불 보장', zh:'通过 Paddle 安全付款 · 即时激活 · 7天退款保证', ru:'Безопасная оплата через Paddle · Мгновенная активация · 7-дневная гарантия возврата', hi:'Paddle के माध्यम से सुरक्षित भुगतान · तत्काल सक्रियण · 7-दिन की वापसी गारंटी', tr:'Paddle üzerinden güvenli ödeme · Anında aktivasyon · 7 günlük iade garantisi' },
+      'or':             { en:'or choose a subscription', pt:'ou escolha uma assinatura', es:'o elige una suscripción', fr:'ou choisissez un abonnement', de:'oder wähle ein Abonnement', it:'o scegli un abbonamento', nl:'of kies een abonnement', pl:'lub wybierz subskrypcję', id:'atau pilih langganan', vi:'hoặc chọn gói đăng ký', ja:'またはサブスクリプションを選択', ko:'또는 구독 선택', zh:'或选择订阅方案', ru:'или выберите подписку', hi:'या सदस्यता चुनें', tr:'veya bir abonelik seçin' },
+      'mo-name':        { en:'Monthly', pt:'Mensal', es:'Mensual', fr:'Mensuel', de:'Monatlich', it:'Mensile', nl:'Maandelijks', pl:'Miesięczny', id:'Bulanan', vi:'Hàng tháng', ja:'月払い', ko:'월간', zh:'月付', ru:'Ежемесячно', hi:'मासिक', tr:'Aylık' },
+      'mo-period':      { en:'per month · cancel anytime', pt:'por mês · cancele quando quiser', es:'por mes · cancela cuando quieras', fr:'par mois · annulez à tout moment', de:'pro Monat · jederzeit kündbar', it:'al mese · annulla in qualsiasi momento', nl:'per maand · op elk moment opzeggen', pl:'miesięcznie · anuluj w dowolnym momencie', id:'per bulan · batalkan kapan saja', vi:'mỗi tháng · hủy bất cứ lúc nào', ja:'月払い · いつでもキャンセル可', ko:'월 · 언제든지 취소 가능', zh:'每月 · 随时取消', ru:'в месяц · отмена в любое время', hi:'प्रति माह · कभी भी रद्द करें', tr:'aylık · istediğiniz zaman iptal edin' },
+      'an-name':        { en:'Annual', pt:'Anual', es:'Anual', fr:'Annuel', de:'Jährlich', it:'Annuale', nl:'Jaarlijks', pl:'Roczny', id:'Tahunan', vi:'Hàng năm', ja:'年払い', ko:'연간', zh:'年付', ru:'Ежегодно', hi:'वार्षिक', tr:'Yıllık' },
+      'an-period':      { en:'per year · billed annually', pt:'por ano · cobrado anualmente', es:'por año · facturado anualmente', fr:'par an · facturé annuellement', de:'pro Jahr · jährlich abgerechnet', it:'all\'anno · fatturato annualmente', nl:'per jaar · jaarlijks gefactureerd', pl:'rocznie · rozliczane rocznie', id:'per tahun · ditagih tahunan', vi:'mỗi năm · thanh toán hàng năm', ja:'年払い · 年間一括請求', ko:'연 · 연간 청구', zh:'每年 · 按年计费', ru:'в год · ежегодное списание', hi:'प्रति वर्ष · वार्षिक बिलिंग', tr:'yıllık · yıllık faturalandırılır' },
+      'save-badge':     { en:'Save 44%', pt:'Economize 44%', es:'Ahorra 44%', fr:'Économisez 44 %', de:'44 % sparen', it:'Risparmia 44%', nl:'Bespaar 44%', pl:'Oszczędź 44%', id:'Hemat 44%', vi:'Tiết kiệm 44%', ja:'44%お得', ko:'44% 절약', zh:'节省 44%', ru:'Экономия 44%', hi:'44% बचाएं', tr:'%44 tasarruf' },
+      'save-tag':       { en:'💰 Save $24/year vs monthly', pt:'💰 Economize $24/ano vs mensal', es:'💰 Ahorra $24/año vs mensual', fr:'💰 Économisez 24 $/an vs mensuel', de:'💰 $24/Jahr sparen vs. monatlich', it:'💰 Risparmia $24/anno vs mensile', nl:'💰 Bespaar $24/jaar vs maandelijks', pl:'💰 Zaoszczędź $24/rok vs miesięczny', id:'💰 Hemat $24/tahun vs bulanan', vi:'💰 Tiết kiệm $24/năm so với hàng tháng', ja:'💰 月払いより年間$24お得', ko:'💰 월간보다 연간 $24 절약', zh:'💰 比月付每年节省 $24', ru:'💰 Экономия $24/год по сравнению с ежемесячной', hi:'💰 मासिक की तुलना में $24/वर्ष बचाएं', tr:'💰 Aylığa göre yılda $24 tasarruf' },
+      'mo-btn':         { en:'Choose Monthly', pt:'Escolher Mensal', es:'Elegir Mensual', fr:'Choisir Mensuel', de:'Monatlich wählen', it:'Scegli Mensile', nl:'Kies Maandelijks', pl:'Wybierz Miesięczny', id:'Pilih Bulanan', vi:'Chọn hàng tháng', ja:'月払いを選択', ko:'월간 선택', zh:'选择月付', ru:'Выбрать ежемесячно', hi:'मासिक चुनें', tr:'Aylık Seç' },
+      'an-btn':         { en:'Choose Annual', pt:'Escolher Anual', es:'Elegir Anual', fr:'Choisir Annuel', de:'Jährlich wählen', it:'Scegli Annuale', nl:'Kies Jaarlijks', pl:'Wybierz Roczny', id:'Pilih Tahunan', vi:'Chọn hàng năm', ja:'年払いを選択', ko:'연간 선택', zh:'选择年付', ru:'Выбрать ежегодно', hi:'वार्षिक चुनें', tr:'Yıllık Seç' },
+      'trial':          { en:'<strong>🎉 14-Day Free Trial</strong> on monthly &amp; annual plans — try NODUS PRO risk-free. Cancel anytime during the trial.', pt:'<strong>🎉 14 Dias Grátis</strong> nos planos mensal e anual — experimente o NODUS PRO sem risco. Cancele a qualquer momento durante o período de teste.', es:'<strong>🎉 14 Días de Prueba Gratis</strong> en planes mensual y anual — prueba NODUS PRO sin riesgo. Cancela en cualquier momento durante el período de prueba.', fr:'<strong>🎉 14 Jours d\'Essai Gratuit</strong> sur les plans mensuel et annuel — essayez NODUS PRO sans risque. Annulez à tout moment pendant l\'essai.', de:'<strong>🎉 14-tägige kostenlose Testphase</strong> bei monatlichen und jährlichen Plänen — testen Sie NODUS PRO risikofrei. Jederzeit während der Testphase kündbar.', it:'<strong>🎉 14 Giorni di Prova Gratuita</strong> sui piani mensile e annuale — prova NODUS PRO senza rischi. Annulla in qualsiasi momento durante la prova.', nl:'<strong>🎉 14 Dagen Gratis Proefperiode</strong> op maandelijkse en jaarlijkse plannen — probeer NODUS PRO risicovrij. Annuleer op elk moment tijdens de proefperiode.', pl:'<strong>🎉 14-dniowy bezpłatny okres próbny</strong> w planach miesięcznym i rocznym — wypróbuj NODUS PRO bez ryzyka. Anuluj w dowolnym momencie podczas próby.', id:'<strong>🎉 14 Hari Uji Coba Gratis</strong> pada paket bulanan &amp; tahunan — coba NODUS PRO tanpa risiko. Batalkan kapan saja selama masa uji coba.', vi:'<strong>🎉 Dùng thử 14 ngày miễn phí</strong> trên các gói hàng tháng và hàng năm — thử NODUS PRO không rủi ro. Hủy bất cứ lúc nào trong thời gian dùng thử.', ja:'<strong>🎉 14日間無料トライアル</strong> 月払い・年払いプランで — リスクなしでNODUS PROをお試しください。試用期間中はいつでもキャンセル可能。', ko:'<strong>🎉 14일 무료 체험</strong> 월간 및 연간 플랜에서 — NODUS PRO를 무료로 체험하세요. 체험 기간 중 언제든지 취소 가능.', zh:'<strong>🎉 14天免费试用</strong> 月付和年付计划 — 无风险体验 NODUS PRO。试用期间随时取消。', ru:'<strong>🎉 14-дневный бесплатный пробный период</strong> для ежемесячных и годовых планов — попробуйте NODUS PRO без риска. Отменяйте в любое время в течение пробного периода.', hi:'<strong>🎉 14-दिन का मुफ्त ट्रायल</strong> मासिक और वार्षिक योजनाओं पर — जोखिम-मुक्त NODUS PRO आज़माएं। परीक्षण के दौरान कभी भी रद्द करें।', tr:'<strong>🎉 14 Günlük Ücretsiz Deneme</strong> aylık ve yıllık planlarda — NODUS PRO\'yu risksiz deneyin. Deneme süresi boyunca istediğiniz zaman iptal edin.' },
+      'footer-support': { en:'Need help? <a href="mailto:support@nodus-ai.app">Contact Support</a>', pt:'Precisa de ajuda? <a href="mailto:support@nodus-ai.app">Fale Conosco</a>', es:'¿Necesitas ayuda? <a href="mailto:support@nodus-ai.app">Contactar Soporte</a>', fr:'Besoin d\'aide ? <a href="mailto:support@nodus-ai.app">Contacter le support</a>', de:'Benötigen Sie Hilfe? <a href="mailto:support@nodus-ai.app">Support kontaktieren</a>', it:'Hai bisogno di aiuto? <a href="mailto:support@nodus-ai.app">Contatta il supporto</a>', nl:'Hulp nodig? <a href="mailto:support@nodus-ai.app">Contact opnemen</a>', pl:'Potrzebujesz pomocy? <a href="mailto:support@nodus-ai.app">Skontaktuj się</a>', id:'Butuh bantuan? <a href="mailto:support@nodus-ai.app">Hubungi Dukungan</a>', vi:'Cần giúp đỡ? <a href="mailto:support@nodus-ai.app">Liên hệ hỗ trợ</a>', ja:'お困りですか？<a href="mailto:support@nodus-ai.app">サポートに連絡</a>', ko:'도움이 필요하신가요? <a href="mailto:support@nodus-ai.app">지원팀 문의</a>', zh:'需要帮助？<a href="mailto:support@nodus-ai.app">联系支持</a>', ru:'Нужна помощь? <a href="mailto:support@nodus-ai.app">Связаться с поддержкой</a>', hi:'सहायता चाहिए? <a href="mailto:support@nodus-ai.app">सहायता से संपर्क करें</a>', tr:'Yardıma mı ihtiyacınız var? <a href="mailto:support@nodus-ai.app">Destek ile İletişim</a>' },
+      'footer-refund':  { en:'Refund Policy', pt:'Política de Reembolso', es:'Política de Reembolso', fr:'Politique de remboursement', de:'Rückgaberecht', it:'Politica di rimborso', nl:'Terugbetalingsbeleid', pl:'Polityka zwrotów', id:'Kebijakan Pengembalian', vi:'Chính sách hoàn tiền', ja:'返金ポリシー', ko:'환불 정책', zh:'退款政策', ru:'Политика возврата', hi:'वापसी नीति', tr:'İade Politikası' },
+      'footer-privacy': { en:'Privacy', pt:'Privacidade', es:'Privacidad', fr:'Confidentialité', de:'Datenschutz', it:'Privacy', nl:'Privacy', pl:'Prywatność', id:'Privasi', vi:'Quyền riêng tư', ja:'プライバシー', ko:'개인정보', zh:'隐私', ru:'Конфиденциальность', hi:'गोपनीयता', tr:'Gizlilik' }
+    };
+
+    function t(key) {
+      var map = T[key];
+      if (!map) return '';
+      return map[LANG] || map['en'] || '';
+    }
+
+    function applyTranslations() {
+      var ids = {
+        't-nav-back':      'nav-back',
+        't-ph-badge':      'ph-badge',
+        't-page-sub':      'page-sub',
+        't-lt-badge':      'lt-badge',
+        't-lt-name':       'lt-name',
+        't-lt-desc':       'lt-desc',
+        't-lt-value':      'lt-value',
+        't-lt-once':       'lt-once',
+        'slots-label':     'slots-limited',
+        't-or':            'or',
+        't-mo-name':       'mo-name',
+        't-mo-period':     'mo-period',
+        't-an-name':       'an-name',
+        't-an-period':     'an-period',
+        't-save-badge':    'save-badge',
+        't-save-tag':      'save-tag',
+        't-save-badge':    'save-badge',
+        't-trial':         'trial',
+        't-footer-refund': 'footer-refund',
+        't-footer-privacy':'footer-privacy'
+      };
+
+      for (var id in ids) {
+        var el = document.getElementById(id);
+        if (!el) continue;
+        var val = t(ids[id]);
+        if (!val) continue;
+        if (id === 't-trial' || id === 't-footer-support') {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+
+      // Botões
+      var btnLt = document.getElementById('btn-lifetime');
+      if (btnLt) btnLt.textContent = t('lt-btn');
+
+      var btnMo = document.getElementById('btn-monthly');
+      if (btnMo) btnMo.textContent = t('mo-btn');
+
+      var btnAn = document.getElementById('btn-annual');
+      if (btnAn) btnAn.textContent = t('an-btn');
+
+      var ltSub = document.getElementById('t-lt-sub');
+      if (ltSub) ltSub.textContent = t('lt-sub');
+
+      var footerSupport = document.getElementById('t-footer-support');
+      if (footerSupport) footerSupport.innerHTML = t('footer-support');
+
+      // html lang
+      document.documentElement.lang = LANG;
+    }
+
+    // ─── PADDLE ─────────────────────────────────────────────
+    var PADDLE_LOCALE_MAP = {
+      pt:'pt', es:'es', fr:'fr', de:'de', it:'it', nl:'nl',
+      pl:'pl', ja:'ja', ko:'ko', zh:'zh', ru:'ru'
+    };
+
+    var PADDLE_CONFIG = {
       token: 'live_d9e30b48721ea8b2a1ac2c3a895',
       environment: 'production',
-      seller: 278429,
       prices: {
         monthly:  'pri_01ked0qxgaszr7q9kgg8j91ha5',
         annual:   'pri_01ked0sqxfpz1g6k2acgx2qrxq',
@@ -434,36 +469,23 @@
       }
     };
 
-    // Try to fetch remaining slots from Worker
-    (async function loadSlots() {
-      try {
-        const res = await fetch('https://nodus-worker.mmcarvalho-dev.workers.dev/lifetime/slots');
-        if (!res.ok) return;
-        const data = await res.json();
-        if (typeof data.remaining === 'number') {
-          const el = document.getElementById('slots-label');
-          if (el) el.textContent = data.remaining + ' of 200 copies remaining';
-        }
-      } catch (e) { /* Worker endpoint not yet available — static label shown */ }
-    })();
-
-    let paddleInitialized = false;
+    var paddleInitialized = false;
 
     function showError(message) {
-      const el = document.getElementById('error-message');
+      var el = document.getElementById('error-message');
       el.textContent = message;
       el.style.display = 'block';
-      setTimeout(() => { el.style.display = 'none'; }, 6000);
+      setTimeout(function() { el.style.display = 'none'; }, 6000);
     }
 
     function setLoading(btn, loading, original) {
       btn.disabled = loading;
-      btn.textContent = loading ? 'Processing…' : original;
+      btn.textContent = loading ? '...' : original;
     }
 
     function initializePaddle() {
       if (paddleInitialized) return Promise.resolve();
-      return new Promise((resolve, reject) => {
+      return new Promise(function(resolve, reject) {
         try {
           Paddle.Environment.set(PADDLE_CONFIG.environment);
           Paddle.Initialize({
@@ -479,46 +501,57 @@
           });
           paddleInitialized = true;
           resolve();
-        } catch (e) {
-          reject(e);
-        }
+        } catch(e) { reject(e); }
       });
     }
 
-    async function buyPlan(plan) {
-      const btn = document.getElementById('btn-' + plan);
-      const original = btn.textContent;
+    function buyPlan(plan) {
+      var btn = document.getElementById('btn-' + plan);
+      var original = btn.textContent;
       setLoading(btn, true, original);
-      try {
-        await initializePaddle();
-        const priceId = PADDLE_CONFIG.prices[plan];
+      initializePaddle().then(function() {
+        var priceId = PADDLE_CONFIG.prices[plan];
         if (!priceId) throw new Error('Invalid plan');
+        var locale = PADDLE_LOCALE_MAP[LANG] || 'en';
         Paddle.Checkout.open({
           items: [{ priceId: priceId, quantity: 1 }],
           settings: {
             displayMode: 'overlay',
             theme: 'dark',
-            locale: 'en',
+            locale: locale,
             successUrl: 'https://nodus-ai.app?checkout=success',
             allowLogout: false
           }
         });
-        setTimeout(() => setLoading(btn, false, original), 1000);
-      } catch (e) {
+        setTimeout(function() { setLoading(btn, false, original); }, 1000);
+      }).catch(function(e) {
         console.error('[Checkout]', e);
-        showError('Failed to start checkout. Please try again or contact support.');
+        showError('Failed to start checkout. Please try again.');
         setLoading(btn, false, original);
-      }
+      });
     }
 
+    // ─── INIT ────────────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', function() {
-      initializePaddle().catch(() => {
-        showError('Failed to load payment system. Please refresh the page.');
+      applyTranslations();
+
+      // Slots ao vivo
+      fetch('https://nodus-worker.mmcarvalho-dev.workers.dev/lifetime/slots')
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(data) {
+          if (data && typeof data.remaining === 'number') {
+            var el = document.getElementById('slots-label');
+            if (el) el.textContent = data.remaining + t('slots-remaining');
+          }
+        }).catch(function() {});
+
+      initializePaddle().catch(function() {
+        showError('Failed to load payment system. Please refresh.');
       });
 
-      document.getElementById('btn-lifetime').addEventListener('click', () => buyPlan('lifetime'));
-      document.getElementById('btn-monthly').addEventListener('click',  () => buyPlan('monthly'));
-      document.getElementById('btn-annual').addEventListener('click',   () => buyPlan('annual'));
+      document.getElementById('btn-lifetime').addEventListener('click', function() { buyPlan('lifetime'); });
+      document.getElementById('btn-monthly').addEventListener('click',  function() { buyPlan('monthly'); });
+      document.getElementById('btn-annual').addEventListener('click',   function() { buyPlan('annual'); });
 
       document.getElementById('lifetime-plan').addEventListener('click', function(e) {
         if (!e.target.closest('.btn-lifetime')) document.getElementById('btn-lifetime').click();
@@ -530,11 +563,11 @@
         if (!e.target.closest('.btn-plan')) document.getElementById('btn-annual').click();
       });
 
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('checkout') === 'success') {
-        alert('🎉 Thank you! Check your email to activate your NODUS PRO license.');
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('checkout') === 'success') {
+        alert('🎉 ' + (LANG === 'pt' ? 'Obrigado pela compra! Verifique seu email para ativar o NODUS PRO.' : 'Thank you! Check your email to activate NODUS PRO.'));
       }
-      if (urlParams.get('error') === 'payment_failed') {
+      if (params.get('error') === 'payment_failed') {
         showError('Payment was not completed. Please try again.');
       }
     });
