@@ -269,7 +269,7 @@
 
   <div class="page-header">
     <div class="ph-badge" id="t-ph-badge">🚀 Product Hunt Launch</div>
-    <h1 class="page-title">Unlock <span>NODUS PRO</span></h1>
+    <h1 class="page-title" id="t-page-title">Unlock <span>NODUS PRO</span></h1>
     <p class="page-sub" id="t-page-sub">Capture, organize and reuse your best AI conversations — forever.</p>
   </div>
 
@@ -364,6 +364,7 @@
     })();
 
     var T = {
+      'page-title':     { en:'Unlock <span>NODUS PRO</span>', pt:'Desbloqueie o <span>NODUS PRO</span>', es:'Desbloquea <span>NODUS PRO</span>', fr:'Débloquez <span>NODUS PRO</span>', de:'<span>NODUS PRO</span> freischalten', it:'Sblocca <span>NODUS PRO</span>', nl:'Ontgrendel <span>NODUS PRO</span>', pl:'Odblokuj <span>NODUS PRO</span>', id:'Buka Kunci <span>NODUS PRO</span>', vi:'Mở khóa <span>NODUS PRO</span>', ja:'<span>NODUS PRO</span> を解除', ko:'<span>NODUS PRO</span> 잠금 해제', zh:'解锁 <span>NODUS PRO</span>', ru:'Разблокировать <span>NODUS PRO</span>', hi:'<span>NODUS PRO</span> अनलॉक करें', tr:'<span>NODUS PRO</span>\'yu Aç' },
       'nav-back':       { en:'← Back to home', pt:'← Voltar ao início', es:'← Volver al inicio', fr:'← Retour', de:'← Zurück', it:'← Torna alla home', nl:'← Terug naar home', pl:'← Wróć do strony', id:'← Kembali', vi:'← Quay lại', ja:'← ホームへ', ko:'← 홈으로', zh:'← 返回首页', ru:'← На главную', hi:'← होम पर जाएं', tr:'← Ana sayfaya dön' },
       'ph-badge':       { en:'🚀 Product Hunt Launch', pt:'🚀 Lançamento no Product Hunt', es:'🚀 Lanzamiento en Product Hunt', fr:'🚀 Lancement Product Hunt', de:'🚀 Product Hunt Launch', it:'🚀 Lancio su Product Hunt', nl:'🚀 Product Hunt Launch', pl:'🚀 Premiera na Product Hunt', id:'🚀 Peluncuran Product Hunt', vi:'🚀 Ra mắt Product Hunt', ja:'🚀 Product Hunt 公開', ko:'🚀 프로덕트 헌트 출시', zh:'🚀 Product Hunt 发布', ru:'🚀 Запуск на Product Hunt', hi:'🚀 Product Hunt लॉन्च', tr:'🚀 Product Hunt Lansmanı' },
       'page-sub':       { en:'Capture, organize and reuse your best AI conversations — forever.', pt:'Capture, organize e reutilize suas melhores conversas de IA — para sempre.', es:'Captura, organiza y reutiliza tus mejores conversaciones de IA — para siempre.', fr:'Capturez, organisez et réutilisez vos meilleures conversations IA — pour toujours.', de:'Erfasse, organisiere und nutze deine besten KI-Gespräche — für immer.', it:'Cattura, organizza e riutilizza le tue migliori conversazioni IA — per sempre.', nl:'Leg vast, organiseer en hergebruik je beste AI-gesprekken — voor altijd.', pl:'Przechwytuj, organizuj i ponownie używaj najlepszych rozmów z AI — na zawsze.', id:'Tangkap, atur, dan gunakan kembali percakapan AI terbaik Anda — selamanya.', vi:'Ghi lại, tổ chức và tái sử dụng các cuộc trò chuyện AI hay nhất — mãi mãi.', ja:'最高のAI会話を保存・整理・再利用 — 永遠に。', ko:'최고의 AI 대화를 캡처하고 정리하고 재사용하세요 — 영원히.', zh:'永久捕获、整理和重用您最好的 AI 对话。', ru:'Сохраняйте, организуйте и повторно используйте лучшие AI-разговоры — навсегда.', hi:'अपनी सर्वश्रेष्ठ AI बातचीत को कैप्चर, व्यवस्थित और पुनः उपयोग करें — हमेशा के लिए।', tr:'En iyi AI sohbetlerinizi yakalayın, düzenleyin ve yeniden kullanın — sonsuza kadar.' },
@@ -399,6 +400,7 @@
 
     function applyTranslations() {
       var ids = {
+        't-page-title':    'page-title',
         't-nav-back':      'nav-back',
         't-ph-badge':      'ph-badge',
         't-page-sub':      'page-sub',
@@ -426,7 +428,7 @@
         if (!el) continue;
         var val = t(ids[id]);
         if (!val) continue;
-        if (id === 't-trial' || id === 't-footer-support') {
+        if (id === 't-trial' || id === 't-footer-support' || id === 't-page-title') {
           el.innerHTML = val;
         } else {
           el.textContent = val;
