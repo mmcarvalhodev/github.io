@@ -59,8 +59,9 @@
 
     /* STATS */
     #stats-area { display: none; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
-    @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    @media (max-width: 700px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 400px) { .stats-grid { grid-template-columns: 1fr; } }
     .stat-card { background: #0e1117; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
     .stat-label { font-size: 11px; font-weight: 600; color: var(--sub); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
     .stat-value { font-size: 28px; font-weight: 900; }
@@ -174,11 +175,15 @@
             <div class="stat-value muted" id="stat-conversions">0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Pending Payment</div>
-            <div class="stat-value yellow" id="stat-pending">$0</div>
+            <div class="stat-label">⏳ Waiting (30-day hold)</div>
+            <div class="stat-value muted" id="stat-waiting">$0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Total Earned</div>
+            <div class="stat-label">✅ Ready to receive</div>
+            <div class="stat-value yellow" id="stat-ready">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">💰 Total paid out</div>
             <div class="stat-value green" id="stat-earned">$0</div>
           </div>
         </div>
@@ -235,8 +240,9 @@
           document.getElementById('login-form').style.display = 'none';
           document.getElementById('stats-area').style.display = 'block';
           document.getElementById('stat-conversions').textContent = data.stats.total_conversions;
-          document.getElementById('stat-pending').textContent = '$' + data.stats.pending.toFixed(2);
-          document.getElementById('stat-earned').textContent  = '$' + data.stats.total_earned.toFixed(2);
+          document.getElementById('stat-waiting').textContent  = '$' + (data.stats.waiting || 0).toFixed(2);
+          document.getElementById('stat-ready').textContent    = '$' + (data.stats.ready_to_pay || 0).toFixed(2);
+          document.getElementById('stat-earned').textContent   = '$' + (data.stats.paid || 0).toFixed(2);
           document.getElementById('aff-link').textContent = data.affiliate_link;
           renderConversions(data.conversions);
         })
@@ -251,9 +257,9 @@
       }
       tbody.innerHTML = list.map(function(c) {
         var date = new Date(c.created_at * 1000).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
-        var badge = c.paid
-          ? '<span class="paid-badge">Paid</span>'
-          : '<span class="pending-badge">Pending</span>';
+        var badge = c.status === 'paid'    ? '<span class="paid-badge">Paid</span>'
+                  : c.status === 'ready'   ? '<span class="pending-badge">Ready ✓</span>'
+                  : '<span style="background:rgba(148,163,184,0.1);color:#94a3b8;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;">Waiting 30d</span>';
         return '<tr>'
           + '<td>' + (c.plan.charAt(0).toUpperCase() + c.plan.slice(1)) + '</td>'
           + '<td>$' + (c.sale_amount || 0).toFixed(2) + '</td>'
