@@ -473,6 +473,15 @@
 
     var paddleInitialized = false;
 
+    // ─── AFFILIATE REF ───────────────────────────────────────
+    var AFFILIATE_REF = (function() {
+      try {
+        var urlRef = new URLSearchParams(window.location.search).get('ref');
+        if (urlRef) { localStorage.setItem('nodus_ref', urlRef.toUpperCase()); return urlRef.toUpperCase(); }
+        return localStorage.getItem('nodus_ref') || null;
+      } catch(e) { return null; }
+    })();
+
     function showError(message) {
       var el = document.getElementById('error-message');
       el.textContent = message;
@@ -515,7 +524,7 @@
         var priceId = PADDLE_CONFIG.prices[plan];
         if (!priceId) throw new Error('Invalid plan');
         var locale = PADDLE_LOCALE_MAP[LANG] || 'en';
-        Paddle.Checkout.open({
+        var checkoutOptions = {
           items: [{ priceId: priceId, quantity: 1 }],
           settings: {
             displayMode: 'overlay',
@@ -524,7 +533,9 @@
             successUrl: 'https://nodus-ai.app?checkout=success',
             allowLogout: false
           }
-        });
+        };
+        if (AFFILIATE_REF) checkoutOptions.customData = { ref: AFFILIATE_REF };
+        Paddle.Checkout.open(checkoutOptions);
         setTimeout(function() { setLoading(btn, false, original); }, 1000);
       }).catch(function(e) {
         console.error('[Checkout]', e);

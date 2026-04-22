@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS Affiliate Program</title>
+  <link rel="canonical" href="https://nodus-ai.app/affiliates" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0c12; --panel: #131720; --border: #2d3748;
+      --yellow: #facc15; --text: #e2e8f0; --sub: #94a3b8; --muted: #475569;
+      --green: #10b981;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 40px 20px 80px; }
+    nav { max-width: 860px; margin: 0 auto 48px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 18px; font-weight: 900; color: var(--yellow); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); text-decoration: none; }
+    .nav-back:hover { color: var(--text); }
+
+    .container { max-width: 860px; margin: 0 auto; }
+
+    /* HERO */
+    .hero { text-align: center; margin-bottom: 64px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(250,204,21,0.1); border: 1px solid rgba(250,204,21,0.25); color: var(--yellow); font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 99px; margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
+    .hero h1 span { color: var(--yellow); }
+    .hero p { font-size: 16px; color: var(--sub); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 64px; }
+    @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+    .step { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; }
+    .step-num { width: 40px; height: 40px; border-radius: 50%; background: rgba(250,204,21,0.12); border: 1px solid rgba(250,204,21,0.3); color: var(--yellow); font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+    .step h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--sub); line-height: 1.6; }
+
+    /* COMMISSION BOX */
+    .commission-box { background: linear-gradient(135deg, #1a1a0e, var(--panel)); border: 2px solid var(--yellow); border-radius: 16px; padding: 32px; text-align: center; margin-bottom: 64px; }
+    .commission-rate { font-size: 64px; font-weight: 900; color: var(--yellow); line-height: 1; margin-bottom: 8px; }
+    .commission-box h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .commission-box p { font-size: 14px; color: var(--sub); }
+    .commission-examples { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+    .comm-item { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; text-align: center; }
+    .comm-item .plan { font-size: 11px; color: var(--sub); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .comm-item .amount { font-size: 20px; font-weight: 800; color: var(--green); }
+    .comm-item .sale { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* DASHBOARD */
+    .dashboard-section { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 32px; }
+    .dashboard-section h2 { font-size: 18px; font-weight: 800; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--sub); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-group input { width: 100%; background: #0e1117; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 14px; outline: none; transition: border-color 0.15s; }
+    .form-group input:focus { border-color: var(--yellow); }
+    .btn-primary { background: var(--yellow); color: #0a0c12; font-weight: 800; font-size: 14px; padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; transition: background 0.15s; width: 100%; }
+    .btn-primary:hover { background: #fde047; }
+    .error-msg { color: #f87171; font-size: 13px; margin-top: 12px; display: none; }
+
+    /* STATS */
+    #stats-area { display: none; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stat-card { background: #0e1117; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+    .stat-label { font-size: 11px; font-weight: 600; color: var(--sub); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .stat-value { font-size: 28px; font-weight: 900; }
+    .stat-value.green { color: var(--green); }
+    .stat-value.yellow { color: var(--yellow); }
+    .stat-value.muted { color: var(--sub); }
+
+    .link-box { background: #0e1117; border: 1px solid rgba(250,204,21,0.3); border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .link-url { font-size: 13px; color: var(--yellow); font-family: monospace; word-break: break-all; }
+    .btn-copy { background: rgba(250,204,21,0.12); border: 1px solid rgba(250,204,21,0.3); color: var(--yellow); font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 6px; cursor: pointer; white-space: nowrap; }
+    .btn-copy:hover { background: rgba(250,204,21,0.2); }
+
+    .conversions-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .conversions-table th { text-align: left; padding: 8px 12px; font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
+    .conversions-table td { padding: 10px 12px; border-bottom: 1px solid rgba(45,55,72,0.4); color: var(--sub); }
+    .conversions-table td:first-child { color: var(--text); font-weight: 600; }
+    .paid-badge { background: rgba(16,185,129,0.12); color: var(--green); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+    .pending-badge { background: rgba(250,204,21,0.1); color: var(--yellow); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+    .empty-state { text-align: center; padding: 32px; color: var(--muted); font-size: 14px; }
+
+    /* CTA */
+    .cta-box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; }
+    .cta-box h2 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
+    .cta-box p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+    .btn-email { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: #0a0c12; font-weight: 800; font-size: 14px; padding: 12px 28px; border-radius: 10px; text-decoration: none; }
+    .btn-email:hover { background: #fde047; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://nodus-ai.app" class="nav-logo">NODUS</a>
+    <a href="https://nodus-ai.app" class="nav-back">← Back to home</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">🤝 Affiliate Program</div>
+      <h1>Earn with <span>NODUS</span></h1>
+      <p>Share your unique link. When someone buys NODUS PRO through it, you earn 30% of every sale — paid directly to you.</p>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Get your link</h3>
+        <p>Receive a unique referral link like <code style="color:var(--yellow);font-size:12px;">nodus-ai.app?ref=YOUR_CODE</code></p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Share it</h3>
+        <p>Post on YouTube, Twitter, your blog, newsletter — anywhere your audience is.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Earn 30%</h3>
+        <p>Each sale through your link earns you 30% commission. We pay manually via PayPal or bank transfer.</p>
+      </div>
+    </div>
+
+    <!-- COMMISSION BOX -->
+    <div class="commission-box">
+      <div class="commission-rate">30%</div>
+      <h2>Commission on every sale</h2>
+      <p>No limits, no tiers — every conversion earns the same rate.</p>
+      <div class="commission-examples">
+        <div class="comm-item">
+          <div class="plan">Monthly</div>
+          <div class="amount">$1.35</div>
+          <div class="sale">per $4.50 sale</div>
+        </div>
+        <div class="comm-item">
+          <div class="plan">Annual</div>
+          <div class="amount">$9.00</div>
+          <div class="sale">per $30 sale</div>
+        </div>
+        <div class="comm-item">
+          <div class="plan">Lifetime</div>
+          <div class="amount">$14.70</div>
+          <div class="sale">per $49 sale</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFFILIATE DASHBOARD -->
+    <div class="dashboard-section">
+      <h2>📊 Your Dashboard</h2>
+
+      <div id="login-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label>Your affiliate code</label>
+            <input type="text" id="aff-code" placeholder="e.g. JOAO2024" autocomplete="off" style="text-transform:uppercase">
+          </div>
+          <div class="form-group">
+            <label>Your secret token</label>
+            <input type="password" id="aff-token" placeholder="NODUS-XXXX-XXXX-XXXX">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="loadStats()">View my stats →</button>
+        <div class="error-msg" id="aff-error"></div>
+      </div>
+
+      <div id="stats-area">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Conversions</div>
+            <div class="stat-value muted" id="stat-conversions">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pending Payment</div>
+            <div class="stat-value yellow" id="stat-pending">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Earned</div>
+            <div class="stat-value green" id="stat-earned">$0</div>
+          </div>
+        </div>
+
+        <div class="link-box">
+          <span class="link-url" id="aff-link">https://nodus-ai.app?ref=</span>
+          <button class="btn-copy" onclick="copyLink()">Copy link</button>
+        </div>
+
+        <div id="conversions-wrap">
+          <table class="conversions-table">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Sale</th>
+                <th>Commission</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="conversions-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOIN CTA -->
+    <div class="cta-box">
+      <h2>Want to become an affiliate?</h2>
+      <p>Send us an email with your name, how you plan to promote NODUS, and your PayPal or bank info.</p>
+      <a href="mailto:support@nodus-ai.app?subject=Affiliate%20Program%20Application" class="btn-email">
+        ✉️ Apply to join
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    var WORKER = 'https://nodus-worker.mmcarvalho-dev.workers.dev';
+    var currentCode = '';
+
+    function loadStats() {
+      var code  = document.getElementById('aff-code').value.trim().toUpperCase();
+      var token = document.getElementById('aff-token').value.trim();
+      var err   = document.getElementById('aff-error');
+      err.style.display = 'none';
+      if (!code || !token) { showErr('Please enter your code and token.'); return; }
+
+      fetch(WORKER + '/affiliate/stats?code=' + encodeURIComponent(code) + '&token=' + encodeURIComponent(token))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.error) { showErr(data.error); return; }
+          currentCode = data.code;
+          document.getElementById('login-form').style.display = 'none';
+          document.getElementById('stats-area').style.display = 'block';
+          document.getElementById('stat-conversions').textContent = data.stats.total_conversions;
+          document.getElementById('stat-pending').textContent = '$' + data.stats.pending.toFixed(2);
+          document.getElementById('stat-earned').textContent  = '$' + data.stats.total_earned.toFixed(2);
+          document.getElementById('aff-link').textContent = data.affiliate_link;
+          renderConversions(data.conversions);
+        })
+        .catch(function() { showErr('Connection error. Please try again.'); });
+    }
+
+    function renderConversions(list) {
+      var tbody = document.getElementById('conversions-body');
+      if (!list.length) {
+        tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state">No conversions yet. Start sharing your link!</div></td></tr>';
+        return;
+      }
+      tbody.innerHTML = list.map(function(c) {
+        var date = new Date(c.created_at * 1000).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+        var badge = c.paid
+          ? '<span class="paid-badge">Paid</span>'
+          : '<span class="pending-badge">Pending</span>';
+        return '<tr>'
+          + '<td>' + (c.plan.charAt(0).toUpperCase() + c.plan.slice(1)) + '</td>'
+          + '<td>$' + (c.sale_amount || 0).toFixed(2) + '</td>'
+          + '<td style="color:var(--green);font-weight:700;">$' + (c.commission || 0).toFixed(2) + '</td>'
+          + '<td>' + date + '</td>'
+          + '<td>' + badge + '</td>'
+          + '</tr>';
+      }).join('');
+    }
+
+    function copyLink() {
+      var link = document.getElementById('aff-link').textContent;
+      navigator.clipboard.writeText(link).then(function() {
+        var btn = document.querySelector('.btn-copy');
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy link'; }, 2000);
+      });
+    }
+
+    function showErr(msg) {
+      var el = document.getElementById('aff-error');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    // Enter key on inputs
+    ['aff-code', 'aff-token'].forEach(function(id) {
+      document.getElementById(id).addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') loadStats();
+      });
+    });
+
+    // Auto-uppercase the code input
+    document.getElementById('aff-code').addEventListener('input', function() {
+      this.value = this.value.toUpperCase();
+    });
+  </script>
+
+</body>
+</html>
