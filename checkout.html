@@ -534,7 +534,11 @@
             allowLogout: false
           }
         };
-        if (AFFILIATE_REF) checkoutOptions.customData = { ref: AFFILIATE_REF };
+        if (AFFILIATE_REF) {
+          checkoutOptions.customData = { ref: AFFILIATE_REF };
+          // Desconto só no plano anual (o código do afiliado = discount code no Paddle)
+          if (plan === 'annual') checkoutOptions.discountCode = AFFILIATE_REF;
+        }
         Paddle.Checkout.open(checkoutOptions);
         setTimeout(function() { setLoading(btn, false, original); }, 1000);
       }).catch(function(e) {
