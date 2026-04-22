@@ -66,7 +66,7 @@
       'text-decoration:none;font-family:inherit;}' +
     '.lang-opt:hover{background:rgba(255,255,255,0.07);color:#e2e8f0;text-decoration:none;}' +
     '.lang-opt.active{color:#facc15;font-weight:700;}' +
-    '@media(max-width:768px){.lang-switcher{display:none;}}' +
+    '@media(max-width:640px){.lang-switcher{margin-left:auto;margin-right:4px;}.lang-trigger{padding:5px 8px;}}' +
     '</style>';
 
   document.head.insertAdjacentHTML('beforeend', style);
@@ -98,7 +98,14 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var navInner = document.querySelector('.nav-inner');
-    if (navInner) navInner.appendChild(wrap);
+    if (navInner) {
+      var hamburger = document.getElementById('navHamburger');
+      if (hamburger) {
+        navInner.insertBefore(wrap, hamburger);
+      } else {
+        navInner.appendChild(wrap);
+      }
+    }
 
     syncHrefs();
     window.addEventListener('hashchange', syncHrefs);
