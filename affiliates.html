@@ -80,6 +80,7 @@
     .conversions-table td:first-child { color: var(--text); font-weight: 600; }
     .paid-badge { background: rgba(16,185,129,0.12); color: var(--green); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
     .pending-badge { background: rgba(250,204,21,0.1); color: var(--yellow); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+    .waiting-badge { background: rgba(148,163,184,0.1); color: #94a3b8; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
     .empty-state { text-align: center; padding: 32px; color: var(--muted); font-size: 14px; }
 
     /* CTA */
@@ -94,114 +95,114 @@
 
   <nav>
     <a href="https://nodus-ai.app" class="nav-logo">NODUS</a>
-    <a href="https://nodus-ai.app" class="nav-back">← Back to home</a>
+    <a href="https://nodus-ai.app" class="nav-back" id="t-nav-back">← Back to home</a>
   </nav>
 
   <div class="container">
 
     <!-- HERO -->
     <div class="hero">
-      <div class="hero-badge">🤝 Affiliate Program</div>
-      <h1>Earn with <span>NODUS</span></h1>
-      <p>Share your unique link. When someone buys NODUS PRO through it, you earn up to 50% of every sale — paid directly to you.</p>
+      <div class="hero-badge" id="t-hero-badge">🤝 Affiliate Program</div>
+      <h1 id="t-hero-title">Earn with <span>NODUS</span></h1>
+      <p id="t-hero-desc">Share your unique link. When someone buys NODUS PRO through it, you earn up to 50% of every sale — paid directly to you.</p>
     </div>
 
     <!-- HOW IT WORKS -->
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>Get your link</h3>
-        <p>Receive a unique referral link like <code style="color:var(--yellow);font-size:12px;">nodus-ai.app?ref=YOUR_CODE</code></p>
+        <h3 id="t-step1-title">Get your link</h3>
+        <p id="t-step1-desc">Receive a unique referral link like <code style="color:var(--yellow);font-size:12px;">nodus-ai.app?ref=YOUR_CODE</code></p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>Share it</h3>
-        <p>Post on YouTube, Twitter, your blog, newsletter — anywhere your audience is.</p>
+        <h3 id="t-step2-title">Share it</h3>
+        <p id="t-step2-desc">Post on YouTube, Twitter, your blog, newsletter — anywhere your audience is.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Earn up to 50%</h3>
-        <p>Each sale through your link earns you up to 50% commission. We pay manually via PayPal or bank transfer.</p>
+        <h3 id="t-step3-title">Earn up to 50%</h3>
+        <p id="t-step3-desc">Each sale through your link earns you up to 50% commission. We pay manually via PayPal or bank transfer.</p>
       </div>
     </div>
 
     <!-- COMMISSION BOX -->
     <div class="commission-box">
       <div class="commission-rate">Up to 50%</div>
-      <h2>Commission on every sale — based on net revenue</h2>
-      <p>Calculated on the amount we actually receive (after Paddle fees). Paid after 30-day refund window.</p>
+      <h2 id="t-comm-title">Commission on every sale — based on net revenue</h2>
+      <p id="t-comm-desc">Calculated on the amount we actually receive (after Paddle fees). Paid after 30-day refund window.</p>
       <div class="commission-examples">
         <div class="comm-item">
-          <div class="plan">Monthly · 50%</div>
+          <div class="plan" id="t-plan-monthly">Monthly · 50%</div>
           <div class="amount">~$1.86</div>
-          <div class="sale">on ~$3.73 net</div>
+          <div class="sale" id="t-plan-monthly-net">on ~$3.73 net</div>
         </div>
         <div class="comm-item">
-          <div class="plan">Annual · 40%</div>
+          <div class="plan" id="t-plan-annual">Annual · 40%</div>
           <div class="amount">~$11.20</div>
-          <div class="sale">on ~$28.00 net</div>
+          <div class="sale" id="t-plan-annual-net">on ~$28.00 net</div>
         </div>
         <div class="comm-item">
-          <div class="plan">Lifetime · 50%</div>
+          <div class="plan" id="t-plan-lifetime">Lifetime · 50%</div>
           <div class="amount">~$22.78</div>
-          <div class="sale">on ~$45.55 net</div>
+          <div class="sale" id="t-plan-lifetime-net">on ~$45.55 net</div>
         </div>
       </div>
     </div>
 
     <!-- AFFILIATE DASHBOARD -->
     <div class="dashboard-section">
-      <h2>📊 Your Dashboard</h2>
+      <h2 id="t-dashboard-title">📊 Your Dashboard</h2>
 
       <div id="login-form">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
           <div class="form-group">
-            <label>Your affiliate code</label>
+            <label id="t-label-code">Your affiliate code</label>
             <input type="text" id="aff-code" placeholder="e.g. JOAO2024" autocomplete="off" style="text-transform:uppercase">
           </div>
           <div class="form-group">
-            <label>Your secret token</label>
+            <label id="t-label-token">Your secret token</label>
             <input type="password" id="aff-token" placeholder="NODUS-XXXX-XXXX-XXXX">
           </div>
         </div>
-        <button class="btn-primary" onclick="loadStats()">View my stats →</button>
+        <button class="btn-primary" id="t-btn-stats" onclick="loadStats()">View my stats →</button>
         <div class="error-msg" id="aff-error"></div>
       </div>
 
       <div id="stats-area">
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-label">Total Conversions</div>
+            <div class="stat-label" id="t-stat-conversions-label">Total Conversions</div>
             <div class="stat-value muted" id="stat-conversions">0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">⏳ Waiting (30-day hold)</div>
+            <div class="stat-label" id="t-stat-waiting-label">⏳ Waiting (30-day hold)</div>
             <div class="stat-value muted" id="stat-waiting">$0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">✅ Ready to receive</div>
+            <div class="stat-label" id="t-stat-ready-label">✅ Ready to receive</div>
             <div class="stat-value yellow" id="stat-ready">$0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">💰 Total paid out</div>
+            <div class="stat-label" id="t-stat-paid-label">💰 Total paid out</div>
             <div class="stat-value green" id="stat-earned">$0</div>
           </div>
         </div>
 
         <div class="link-box">
           <span class="link-url" id="aff-link">https://nodus-ai.app?ref=</span>
-          <button class="btn-copy" onclick="copyLink()">Copy link</button>
+          <button class="btn-copy" id="t-btn-copy" onclick="copyLink()">Copy link</button>
         </div>
 
         <div id="conversions-wrap">
           <table class="conversions-table">
             <thead>
               <tr>
-                <th>Plan</th>
-                <th>Sale</th>
-                <th>Commission</th>
-                <th>Date</th>
-                <th>Status</th>
+                <th id="t-th-plan">Plan</th>
+                <th id="t-th-sale">Sale</th>
+                <th id="t-th-commission">Commission</th>
+                <th id="t-th-date">Date</th>
+                <th id="t-th-status">Status</th>
               </tr>
             </thead>
             <tbody id="conversions-body"></tbody>
@@ -212,16 +213,127 @@
 
     <!-- JOIN CTA -->
     <div class="cta-box">
-      <h2>Want to become an affiliate?</h2>
-      <p>Send us an email with your name, how you plan to promote NODUS, and your PayPal or bank info.</p>
-      <a href="mailto:support@nodus-ai.app?subject=Affiliate%20Program%20Application" class="btn-email">
+      <h2 id="t-cta-title">Want to become an affiliate?</h2>
+      <p id="t-cta-desc">Send us an email with your name, how you plan to promote NODUS, and your PayPal or bank info.</p>
+      <a href="mailto:support@nodus-ai.app?subject=Affiliate%20Program%20Application" class="btn-email" id="t-cta-btn">
         ✉️ Apply to join
       </a>
     </div>
 
   </div>
 
+  <script src="lang-switcher.js"></script>
   <script>
+    // ─── I18N ────────────────────────────────────────────────────────────────
+    var LANG = (function() {
+      try { return localStorage.getItem('nodus_lang') || 'en'; } catch(e) { return 'en'; }
+    })();
+
+    var T = {
+      'nav-back':       { en:'← Back to home', pt:'← Voltar ao início', es:'← Volver al inicio', fr:'← Retour', de:'← Zurück', it:'← Torna alla home', nl:'← Terug naar home', pl:'← Wróć do strony', id:'← Kembali', vi:'← Quay lại', ja:'← ホームへ', ko:'← 홈으로', zh:'← 返回首页', ru:'← На главную', hi:'← होम पर जाएं', tr:'← Ana sayfaya dön' },
+      'hero-badge':     { en:'🤝 Affiliate Program', pt:'🤝 Programa de Afiliados', es:'🤝 Programa de Afiliados', fr:'🤝 Programme d\'Affiliation', de:'🤝 Partnerprogramm', it:'🤝 Programma Affiliati', nl:'🤝 Affiliateprogramma', pl:'🤝 Program Partnerski', id:'🤝 Program Afiliasi', vi:'🤝 Chương trình Tiếp thị', ja:'🤝 アフィリエイトプログラム', ko:'🤝 제휴 프로그램', zh:'🤝 联盟推广计划', ru:'🤝 Партнёрская программа', hi:'🤝 एफिलिएट प्रोग्राम', tr:'🤝 Ortaklık Programı' },
+      'hero-title':     { en:'Earn with <span>NODUS</span>', pt:'Ganhe com o <span>NODUS</span>', es:'Gana con <span>NODUS</span>', fr:'Gagnez avec <span>NODUS</span>', de:'Verdiene mit <span>NODUS</span>', it:'Guadagna con <span>NODUS</span>', nl:'Verdien met <span>NODUS</span>', pl:'Zarabiaj z <span>NODUS</span>', id:'Hasilkan dengan <span>NODUS</span>', vi:'Kiếm tiền với <span>NODUS</span>', ja:'<span>NODUS</span>で稼ごう', ko:'<span>NODUS</span>로 수익 창출', zh:'通过 <span>NODUS</span> 赚钱', ru:'Зарабатывайте с <span>NODUS</span>', hi:'<span>NODUS</span> के साथ कमाएं', tr:'<span>NODUS</span> ile Kazan' },
+      'hero-desc':      { en:'Share your unique link. When someone buys NODUS PRO through it, you earn up to 50% of every sale — paid directly to you.', pt:'Compartilhe seu link exclusivo. Quando alguém compra o NODUS PRO por ele, você ganha até 50% de cada venda — pago diretamente a você.', es:'Comparte tu enlace único. Cuando alguien compra NODUS PRO a través de él, ganas hasta un 50% de cada venta — pagado directamente a ti.', fr:'Partagez votre lien unique. Quand quelqu\'un achète NODUS PRO via ce lien, vous gagnez jusqu\'à 50 % de chaque vente — payé directement.', de:'Teile deinen einzigartigen Link. Wenn jemand NODUS PRO darüber kauft, verdienst du bis zu 50 % jedes Verkaufs — direkt ausgezahlt.', it:'Condividi il tuo link unico. Quando qualcuno acquista NODUS PRO tramite esso, guadagni fino al 50% di ogni vendita — pagato direttamente a te.', nl:'Deel je unieke link. Wanneer iemand NODUS PRO via jouw link koopt, verdien jij tot 50% van elke verkoop — direct uitbetaald.', pl:'Udostępnij swój unikalny link. Gdy ktoś kupi NODUS PRO przez niego, zarabiasz do 50% każdej sprzedaży — wypłacane bezpośrednio.', id:'Bagikan tautan unik Anda. Saat seseorang membeli NODUS PRO melaluinya, Anda mendapatkan hingga 50% dari setiap penjualan — dibayarkan langsung.', vi:'Chia sẻ liên kết độc đáo của bạn. Khi ai đó mua NODUS PRO qua liên kết đó, bạn nhận tới 50% mỗi giao dịch — được trả thẳng cho bạn.', ja:'あなた専用のリンクをシェアしてください。そのリンクからNODUS PROが購入されると、売上の最大50%があなたに支払われます。', ko:'고유 링크를 공유하세요. 누군가 해당 링크를 통해 NODUS PRO를 구매하면 판매액의 최대 50%를 받을 수 있습니다.', zh:'分享您的专属链接。当有人通过该链接购买 NODUS PRO 时，您可获得每笔销售额最多 50% 的佣金，直接支付给您。', ru:'Поделитесь своей уникальной ссылкой. Когда кто-то покупает NODUS PRO через неё, вы зарабатываете до 50% с каждой продажи — прямая выплата.', hi:'अपना विशेष लिंक साझा करें। जब कोई उसके माध्यम से NODUS PRO खरीदता है, तो आप प्रत्येक बिक्री का 50% तक कमाते हैं — सीधे आपको भुगतान।', tr:'Benzersiz bağlantınızı paylaşın. Birisi bu bağlantı üzerinden NODUS PRO satın aldığında, her satışın %50\'sine kadar kazanırsınız — doğrudan size ödenir.' },
+      'step1-title':    { en:'Get your link', pt:'Receba seu link', es:'Obtén tu enlace', fr:'Obtenez votre lien', de:'Hol deinen Link', it:'Ottieni il tuo link', nl:'Ontvang je link', pl:'Pobierz swój link', id:'Dapatkan tautan Anda', vi:'Nhận liên kết của bạn', ja:'リンクを取得する', ko:'링크 받기', zh:'获取您的链接', ru:'Получите ссылку', hi:'अपना लिंक प्राप्त करें', tr:'Bağlantınızı alın' },
+      'step1-desc':     { en:'Receive a unique referral link like nodus-ai.app?ref=YOUR_CODE', pt:'Receba um link de indicação exclusivo como nodus-ai.app?ref=SEU_CÓDIGO', es:'Recibe un enlace de referido único como nodus-ai.app?ref=TU_CÓDIGO', fr:'Recevez un lien de parrainage unique comme nodus-ai.app?ref=VOTRE_CODE', de:'Erhalte einen einzigartigen Empfehlungslink wie nodus-ai.app?ref=DEIN_CODE', it:'Ricevi un link di riferimento unico come nodus-ai.app?ref=TUO_CODICE', nl:'Ontvang een unieke referrallink zoals nodus-ai.app?ref=JOUW_CODE', pl:'Otrzymaj unikalny link polecający jak nodus-ai.app?ref=TWÓJ_KOD', id:'Dapatkan tautan referral unik seperti nodus-ai.app?ref=KODE_ANDA', vi:'Nhận liên kết giới thiệu như nodus-ai.app?ref=MÃ_CỦA_BẠN', ja:'nodus-ai.app?ref=あなたのコードのような独自のリンクを取得', ko:'nodus-ai.app?ref=YOUR_CODE 형식의 고유 링크 수령', zh:'获取专属推荐链接，如 nodus-ai.app?ref=您的代码', ru:'Получите уникальную реферальную ссылку вида nodus-ai.app?ref=ВАШ_КОД', hi:'nodus-ai.app?ref=आपका_कोड जैसा एक विशेष रेफरल लिंक प्राप्त करें', tr:'nodus-ai.app?ref=KODUNUZ gibi benzersiz bir referral bağlantısı alın' },
+      'step2-title':    { en:'Share it', pt:'Compartilhe', es:'Compártelo', fr:'Partagez-le', de:'Teile es', it:'Condividilo', nl:'Deel het', pl:'Udostępnij', id:'Bagikan', vi:'Chia sẻ', ja:'シェアする', ko:'공유하기', zh:'分享出去', ru:'Поделитесь', hi:'इसे साझा करें', tr:'Paylaşın' },
+      'step2-desc':     { en:'Post on YouTube, Twitter, your blog, newsletter — anywhere your audience is.', pt:'Publique no YouTube, Twitter, seu blog, newsletter — onde quer que seu público esteja.', es:'Publica en YouTube, Twitter, tu blog, newsletter — donde sea que esté tu audiencia.', fr:'Publiez sur YouTube, Twitter, votre blog, newsletter — partout où se trouve votre audience.', de:'Poste auf YouTube, Twitter, deinem Blog, Newsletter — überall wo dein Publikum ist.', it:'Pubblica su YouTube, Twitter, il tuo blog, newsletter — ovunque ci sia il tuo pubblico.', nl:'Post op YouTube, Twitter, je blog, nieuwsbrief — overal waar je publiek is.', pl:'Publikuj na YouTube, Twitterze, blogu, newsletterze — wszędzie tam, gdzie jest Twoja publiczność.', id:'Posting di YouTube, Twitter, blog, newsletter — di mana pun audiens Anda berada.', vi:'Đăng lên YouTube, Twitter, blog, bản tin — bất cứ nơi nào có khán giả của bạn.', ja:'YouTube、Twitter、ブログ、ニュースレターなど、視聴者がいる場所どこでも。', ko:'YouTube, Twitter, 블로그, 뉴스레터 등 당신의 청중이 있는 곳 어디든지.', zh:'在 YouTube、Twitter、博客、Newsletter 上发布 — 只要有您的受众的地方。', ru:'Публикуйте на YouTube, Twitter, в блоге, рассылке — там, где находится ваша аудитория.', hi:'YouTube, Twitter, अपने ब्लॉग, न्यूज़लेटर पर पोस्ट करें — जहाँ भी आपके दर्शक हों।', tr:'YouTube, Twitter, blog, bülten — kitlenizin nerede olduğu önemli değil.' },
+      'step3-title':    { en:'Earn up to 50%', pt:'Ganhe até 50%', es:'Gana hasta el 50%', fr:'Gagnez jusqu\'à 50 %', de:'Verdiene bis zu 50 %', it:'Guadagna fino al 50%', nl:'Verdien tot 50%', pl:'Zarabiaj do 50%', id:'Hasilkan hingga 50%', vi:'Kiếm tới 50%', ja:'最大50%を稼ぐ', ko:'최대 50% 수익', zh:'赚取最多 50%', ru:'Зарабатывайте до 50%', hi:'50% तक कमाएं', tr:'%50\'ye kadar kazanın' },
+      'step3-desc':     { en:'Each sale through your link earns you up to 50% commission. We pay manually via PayPal or bank transfer.', pt:'Cada venda pelo seu link rende até 50% de comissão. Pagamos manualmente via PayPal ou transferência bancária.', es:'Cada venta a través de tu enlace te genera hasta un 50% de comisión. Pagamos manualmente por PayPal o transferencia bancaria.', fr:'Chaque vente via votre lien vous rapporte jusqu\'à 50 % de commission. Nous payons manuellement via PayPal ou virement.', de:'Jeder Verkauf über deinen Link bringt dir bis zu 50 % Provision. Wir zahlen manuell per PayPal oder Banküberweisung.', it:'Ogni vendita tramite il tuo link ti frutta fino al 50% di commissione. Paghiamo manualmente tramite PayPal o bonifico.', nl:'Elke verkoop via jouw link levert jou tot 50% commissie op. We betalen handmatig via PayPal of bankoverschrijving.', pl:'Każda sprzedaż przez Twój link daje do 50% prowizji. Płacimy ręcznie przez PayPal lub przelew bankowy.', id:'Setiap penjualan melalui tautan Anda menghasilkan hingga 50% komisi. Kami membayar secara manual melalui PayPal atau transfer bank.', vi:'Mỗi giao dịch qua liên kết của bạn mang lại tới 50% hoa hồng. Chúng tôi thanh toán thủ công qua PayPal hoặc chuyển khoản.', ja:'あなたのリンクからの各売上で最大50%のコミッションが得られます。PaypalまたはBank振込で手動支払い。', ko:'당신의 링크를 통한 각 판매로 최대 50%의 수수료를 받습니다. PayPal 또는 계좌이체로 수동 지급합니다.', zh:'通过您链接产生的每笔销售可获得高达 50% 的佣金。我们通过 PayPal 或银行转账手动付款。', ru:'Каждая продажа по вашей ссылке приносит до 50% комиссии. Выплачиваем вручную через PayPal или банковский перевод.', hi:'आपके लिंक से प्रत्येक बिक्री पर 50% तक कमीशन मिलता है। हम PayPal या बैंक ट्रांसफर के माध्यम से मैन्युअल रूप से भुगतान करते हैं।', tr:'Bağlantınız üzerinden her satış için %50\'ye kadar komisyon kazanırsınız. PayPal veya banka havalesiyle manuel ödeme yapıyoruz.' },
+      'comm-title':     { en:'Commission on every sale — based on net revenue', pt:'Comissão em cada venda — baseada na receita líquida', es:'Comisión en cada venta — basada en ingresos netos', fr:'Commission sur chaque vente — basée sur le revenu net', de:'Provision bei jedem Verkauf — auf Nettoumsatz', it:'Commissione su ogni vendita — basata sul fatturato netto', nl:'Commissie op elke verkoop — op basis van netto omzet', pl:'Prowizja od każdej sprzedaży — oparta na przychodzie netto', id:'Komisi setiap penjualan — berdasarkan pendapatan bersih', vi:'Hoa hồng mỗi giao dịch — dựa trên doanh thu ròng', ja:'全販売のコミッション — 純収益ベース', ko:'모든 판매의 수수료 — 순수익 기준', zh:'每笔销售的佣金 — 基于净收入', ru:'Комиссия с каждой продажи — на основе чистого дохода', hi:'प्रत्येक बिक्री पर कमीशन — शुद्ध राजस्व के आधार पर', tr:'Her satışta komisyon — net gelire göre' },
+      'comm-desc':      { en:'Calculated on the amount we actually receive (after Paddle fees). Paid after 30-day refund window.', pt:'Calculada sobre o valor que realmente recebemos (após as taxas do Paddle). Pago após 30 dias de garantia.', es:'Calculada sobre el importe que realmente recibimos (después de las comisiones de Paddle). Pagado tras el período de 30 días.', fr:'Calculée sur le montant réellement reçu (après frais Paddle). Payée après la fenêtre de remboursement de 30 jours.', de:'Berechnet auf den tatsächlich erhaltenen Betrag (nach Paddle-Gebühren). Ausgezahlt nach 30-tägiger Rückgabefrist.', it:'Calcolata sull\'importo effettivamente ricevuto (al netto delle commissioni Paddle). Pagata dopo 30 giorni di rimborso.', nl:'Berekend op het bedrag dat we daadwerkelijk ontvangen (na Paddle-kosten). Betaald na het 30-dagen terugbetalingsvenster.', pl:'Obliczona od faktycznie otrzymanej kwoty (po opłatach Paddle). Wypłacana po 30-dniowym oknie zwrotów.', id:'Dihitung berdasarkan jumlah yang benar-benar kami terima (setelah biaya Paddle). Dibayar setelah jendela pengembalian 30 hari.', vi:'Tính trên số tiền thực tế nhận được (sau phí Paddle). Thanh toán sau cửa sổ hoàn tiền 30 ngày.', ja:'実際に受け取った金額（Paddle手数料後）で計算。30日間の返金期間後に支払い。', ko:'실제로 받은 금액(Paddle 수수료 후)을 기준으로 계산. 30일 환불 기간 후 지급.', zh:'根据我们实际收到的金额计算（扣除 Paddle 手续费后）。30天退款期后付款。', ru:'Рассчитывается от суммы, которую мы фактически получаем (после комиссий Paddle). Выплачивается после 30-дневного окна возврата.', hi:'हम जो वास्तव में प्राप्त करते हैं उस राशि पर गणना (Paddle शुल्क के बाद)। 30-दिन की वापसी विंडो के बाद भुगतान।', tr:'Gerçekte aldığımız tutara göre hesaplanır (Paddle ücretleri sonrası). 30 günlük iade penceresinden sonra ödenir.' },
+      'plan-monthly':   { en:'Monthly · 50%', pt:'Mensal · 50%', es:'Mensual · 50%', fr:'Mensuel · 50 %', de:'Monatlich · 50 %', it:'Mensile · 50%', nl:'Maandelijks · 50%', pl:'Miesięczny · 50%', id:'Bulanan · 50%', vi:'Hàng tháng · 50%', ja:'月払い · 50%', ko:'월간 · 50%', zh:'月付 · 50%', ru:'Ежемесячно · 50%', hi:'मासिक · 50%', tr:'Aylık · %50' },
+      'plan-monthly-net':{ en:'on ~$3.73 net', pt:'sobre ~$3,73 líquido', es:'sobre ~$3,73 neto', fr:'sur ~3,73 $ net', de:'auf ~$3,73 netto', it:'su ~$3,73 netto', nl:'op ~$3,73 netto', pl:'od ~$3,73 netto', id:'dari ~$3,73 bersih', vi:'trên ~$3,73 ròng', ja:'~$3.73純額から', ko:'~$3.73 순액 기준', zh:'基于约 $3.73 净额', ru:'с ~$3,73 нетто', hi:'~$3.73 शुद्ध पर', tr:'~$3,73 net üzerinden' },
+      'plan-annual':    { en:'Annual · 40%', pt:'Anual · 40%', es:'Anual · 40%', fr:'Annuel · 40 %', de:'Jährlich · 40 %', it:'Annuale · 40%', nl:'Jaarlijks · 40%', pl:'Roczny · 40%', id:'Tahunan · 40%', vi:'Hàng năm · 40%', ja:'年払い · 40%', ko:'연간 · 40%', zh:'年付 · 40%', ru:'Ежегодно · 40%', hi:'वार्षिक · 40%', tr:'Yıllık · %40' },
+      'plan-annual-net':{ en:'on ~$28.00 net', pt:'sobre ~$28,00 líquido', es:'sobre ~$28,00 neto', fr:'sur ~28,00 $ net', de:'auf ~$28,00 netto', it:'su ~$28,00 netto', nl:'op ~$28,00 netto', pl:'od ~$28,00 netto', id:'dari ~$28,00 bersih', vi:'trên ~$28,00 ròng', ja:'~$28.00純額から', ko:'~$28.00 순액 기준', zh:'基于约 $28.00 净额', ru:'с ~$28,00 нетто', hi:'~$28.00 शुद्ध पर', tr:'~$28,00 net üzerinden' },
+      'plan-lifetime':  { en:'Lifetime · 50%', pt:'Vitalício · 50%', es:'De por vida · 50%', fr:'À vie · 50 %', de:'Lebenslang · 50 %', it:'A vita · 50%', nl:'Levenslang · 50%', pl:'Dożywotni · 50%', id:'Seumur hidup · 50%', vi:'Trọn đời · 50%', ja:'生涯 · 50%', ko:'평생 · 50%', zh:'终身 · 50%', ru:'Пожизненно · 50%', hi:'आजीवन · 50%', tr:'Ömür Boyu · %50' },
+      'plan-lifetime-net':{ en:'on ~$45.55 net', pt:'sobre ~$45,55 líquido', es:'sobre ~$45,55 neto', fr:'sur ~45,55 $ net', de:'auf ~$45,55 netto', it:'su ~$45,55 netto', nl:'op ~$45,55 netto', pl:'od ~$45,55 netto', id:'dari ~$45,55 bersih', vi:'trên ~$45,55 ròng', ja:'~$45.55純額から', ko:'~$45.55 순액 기준', zh:'基于约 $45.55 净额', ru:'с ~$45,55 нетто', hi:'~$45.55 शुद्ध पर', tr:'~$45,55 net üzerinden' },
+      'dashboard-title':{ en:'📊 Your Dashboard', pt:'📊 Seu Painel', es:'📊 Tu Panel', fr:'📊 Votre tableau de bord', de:'📊 Dein Dashboard', it:'📊 La tua Dashboard', nl:'📊 Jouw Dashboard', pl:'📊 Twój Panel', id:'📊 Dasbor Anda', vi:'📊 Bảng điều khiển của bạn', ja:'📊 あなたのダッシュボード', ko:'📊 내 대시보드', zh:'📊 我的控制台', ru:'📊 Ваш кабинет', hi:'📊 आपका डैशबोर्ड', tr:'📊 Panonuz' },
+      'label-code':     { en:'Your affiliate code', pt:'Seu código de afiliado', es:'Tu código de afiliado', fr:'Votre code affilié', de:'Dein Affiliate-Code', it:'Il tuo codice affiliato', nl:'Jouw affiliate code', pl:'Twój kod partnerski', id:'Kode afiliasi Anda', vi:'Mã liên kết của bạn', ja:'あなたのアフィリエイトコード', ko:'제휴 코드', zh:'您的推广代码', ru:'Ваш партнёрский код', hi:'आपका एफिलिएट कोड', tr:'Ortaklık kodunuz' },
+      'label-token':    { en:'Your secret token', pt:'Seu token secreto', es:'Tu token secreto', fr:'Votre token secret', de:'Dein geheimer Token', it:'Il tuo token segreto', nl:'Jouw geheime token', pl:'Twój tajny token', id:'Token rahasia Anda', vi:'Mã bí mật của bạn', ja:'秘密トークン', ko:'비밀 토큰', zh:'您的密钥', ru:'Ваш секретный токен', hi:'आपका गुप्त टोकन', tr:'Gizli tokeniniz' },
+      'btn-stats':      { en:'View my stats →', pt:'Ver minhas estatísticas →', es:'Ver mis estadísticas →', fr:'Voir mes statistiques →', de:'Meine Statistiken →', it:'Vedi le mie statistiche →', nl:'Bekijk mijn stats →', pl:'Zobacz moje statystyki →', id:'Lihat statistik saya →', vi:'Xem thống kê của tôi →', ja:'統計を見る →', ko:'내 통계 보기 →', zh:'查看我的统计 →', ru:'Посмотреть статистику →', hi:'मेरी स्टैट्स देखें →', tr:'İstatistiklerimi gör →' },
+      'stat-conversions':{ en:'Total Conversions', pt:'Total de Conversões', es:'Conversiones Totales', fr:'Conversions totales', de:'Gesamtkonversionen', it:'Conversioni totali', nl:'Totale conversies', pl:'Łączne konwersje', id:'Total Konversi', vi:'Tổng chuyển đổi', ja:'総コンバージョン', ko:'총 전환', zh:'总转化数', ru:'Всего конверсий', hi:'कुल रूपांतरण', tr:'Toplam Dönüşüm' },
+      'stat-waiting':   { en:'⏳ Waiting (30-day hold)', pt:'⏳ Aguardando (30 dias)', es:'⏳ En espera (30 días)', fr:'⏳ En attente (30 jours)', de:'⏳ Wartend (30 Tage)', it:'⏳ In attesa (30 giorni)', nl:'⏳ Wachtend (30 dagen)', pl:'⏳ Oczekujące (30 dni)', id:'⏳ Menunggu (30 hari)', vi:'⏳ Chờ (30 ngày)', ja:'⏳ 待機中（30日）', ko:'⏳ 대기 중 (30일)', zh:'⏳ 等待中（30天）', ru:'⏳ Ожидание (30 дней)', hi:'⏳ प्रतीक्षारत (30 दिन)', tr:'⏳ Beklemede (30 gün)' },
+      'stat-ready':     { en:'✅ Ready to receive', pt:'✅ Pronto para receber', es:'✅ Listo para recibir', fr:'✅ Prêt à recevoir', de:'✅ Bereit zur Auszahlung', it:'✅ Pronto per ricevere', nl:'✅ Klaar om te ontvangen', pl:'✅ Gotowe do wypłaty', id:'✅ Siap diterima', vi:'✅ Sẵn sàng nhận', ja:'✅ 受取可能', ko:'✅ 수령 준비', zh:'✅ 可提取', ru:'✅ Готово к выплате', hi:'✅ प्राप्त करने के लिए तैयार', tr:'✅ Almaya hazır' },
+      'stat-paid':      { en:'💰 Total paid out', pt:'💰 Total pago', es:'💰 Total pagado', fr:'💰 Total versé', de:'💰 Gesamt ausgezahlt', it:'💰 Totale pagato', nl:'💰 Totaal uitbetaald', pl:'💰 Łącznie wypłacono', id:'💰 Total dibayarkan', vi:'💰 Tổng đã thanh toán', ja:'💰 総支払額', ko:'💰 총 지급액', zh:'💰 累计已付', ru:'💰 Всего выплачено', hi:'💰 कुल भुगतान', tr:'💰 Toplam ödenen' },
+      'btn-copy':       { en:'Copy link', pt:'Copiar link', es:'Copiar enlace', fr:'Copier le lien', de:'Link kopieren', it:'Copia link', nl:'Link kopiëren', pl:'Skopiuj link', id:'Salin tautan', vi:'Sao chép liên kết', ja:'リンクをコピー', ko:'링크 복사', zh:'复制链接', ru:'Скопировать ссылку', hi:'लिंक कॉपी करें', tr:'Bağlantıyı kopyala' },
+      'th-plan':        { en:'Plan', pt:'Plano', es:'Plan', fr:'Plan', de:'Plan', it:'Piano', nl:'Plan', pl:'Plan', id:'Paket', vi:'Gói', ja:'プラン', ko:'플랜', zh:'方案', ru:'Тариф', hi:'प्लान', tr:'Plan' },
+      'th-sale':        { en:'Sale', pt:'Venda', es:'Venta', fr:'Vente', de:'Verkauf', it:'Vendita', nl:'Verkoop', pl:'Sprzedaż', id:'Penjualan', vi:'Doanh số', ja:'売上', ko:'판매', zh:'销售额', ru:'Продажа', hi:'बिक्री', tr:'Satış' },
+      'th-commission':  { en:'Commission', pt:'Comissão', es:'Comisión', fr:'Commission', de:'Provision', it:'Commissione', nl:'Commissie', pl:'Prowizja', id:'Komisi', vi:'Hoa hồng', ja:'コミッション', ko:'수수료', zh:'佣金', ru:'Комиссия', hi:'कमीशन', tr:'Komisyon' },
+      'th-date':        { en:'Date', pt:'Data', es:'Fecha', fr:'Date', de:'Datum', it:'Data', nl:'Datum', pl:'Data', id:'Tanggal', vi:'Ngày', ja:'日付', ko:'날짜', zh:'日期', ru:'Дата', hi:'तारीख', tr:'Tarih' },
+      'th-status':      { en:'Status', pt:'Status', es:'Estado', fr:'Statut', de:'Status', it:'Stato', nl:'Status', pl:'Status', id:'Status', vi:'Trạng thái', ja:'ステータス', ko:'상태', zh:'状态', ru:'Статус', hi:'स्थिति', tr:'Durum' },
+      'empty-state':    { en:'No conversions yet. Start sharing your link!', pt:'Nenhuma conversão ainda. Comece a compartilhar seu link!', es:'Aún no hay conversiones. ¡Empieza a compartir tu enlace!', fr:'Aucune conversion pour l\'instant. Commencez à partager votre lien !', de:'Noch keine Conversions. Fang an, deinen Link zu teilen!', it:'Ancora nessuna conversione. Inizia a condividere il tuo link!', nl:'Nog geen conversies. Begin je link te delen!', pl:'Brak konwersji. Zacznij udostępniać swój link!', id:'Belum ada konversi. Mulai bagikan tautan Anda!', vi:'Chưa có chuyển đổi. Hãy bắt đầu chia sẻ liên kết!', ja:'まだコンバージョンがありません。リンクをシェアし始めましょう！', ko:'아직 전환이 없습니다. 링크를 공유해 보세요!', zh:'暂无转化。开始分享您的链接吧！', ru:'Пока нет конверсий. Начните делиться ссылкой!', hi:'अभी कोई रूपांतरण नहीं। अपना लिंक साझा करना शुरू करें!', tr:'Henüz dönüşüm yok. Bağlantınızı paylaşmaya başlayın!' },
+      'status-paid':    { en:'Paid', pt:'Pago', es:'Pagado', fr:'Payé', de:'Bezahlt', it:'Pagato', nl:'Betaald', pl:'Wypłacono', id:'Dibayar', vi:'Đã thanh toán', ja:'支払済', ko:'지급완료', zh:'已付款', ru:'Выплачено', hi:'भुगतान हो गया', tr:'Ödendi' },
+      'status-ready':   { en:'Ready ✓', pt:'Pronto ✓', es:'Listo ✓', fr:'Prêt ✓', de:'Bereit ✓', it:'Pronto ✓', nl:'Klaar ✓', pl:'Gotowe ✓', id:'Siap ✓', vi:'Sẵn sàng ✓', ja:'準備完了 ✓', ko:'준비됨 ✓', zh:'可提取 ✓', ru:'Готово ✓', hi:'तैयार ✓', tr:'Hazır ✓' },
+      'status-waiting': { en:'Waiting 30d', pt:'Aguardando 30d', es:'Esperando 30d', fr:'Attente 30j', de:'Warten 30T', it:'Attesa 30g', nl:'Wachten 30d', pl:'Czeka 30d', id:'Tunggu 30h', vi:'Chờ 30n', ja:'待機30日', ko:'대기 30일', zh:'等待30天', ru:'Ожидание 30д', hi:'प्रतीक्षा 30 दिन', tr:'Bekliyor 30g' },
+      'cta-title':      { en:'Want to become an affiliate?', pt:'Quer se tornar um afiliado?', es:'¿Quieres convertirte en afiliado?', fr:'Envie de devenir affilié ?', de:'Möchtest du Partner werden?', it:'Vuoi diventare un affiliato?', nl:'Wil je affiliate worden?', pl:'Chcesz zostać partnerem?', id:'Ingin menjadi afiliasi?', vi:'Muốn trở thành cộng tác viên?', ja:'アフィリエイトになりたいですか？', ko:'제휴사가 되고 싶으신가요?', zh:'想成为推广合作伙伴？', ru:'Хотите стать партнёром?', hi:'एफिलिएट बनना चाहते हैं?', tr:'Ortak olmak ister misiniz?' },
+      'cta-desc':       { en:'Send us an email with your name, how you plan to promote NODUS, and your PayPal or bank info.', pt:'Envie-nos um e-mail com seu nome, como planeja promover o NODUS e seus dados do PayPal ou bancários.', es:'Envíanos un correo con tu nombre, cómo planeas promocionar NODUS y tu info de PayPal o banco.', fr:'Envoyez-nous un e-mail avec votre nom, comment vous comptez promouvoir NODUS, et vos coordonnées PayPal ou bancaires.', de:'Sende uns eine E-Mail mit deinem Namen, wie du NODUS bewerben möchtest, und deinen PayPal- oder Bankdaten.', it:'Inviaci un\'email con il tuo nome, come intendi promuovere NODUS e i tuoi dati PayPal o bancari.', nl:'Stuur ons een e-mail met je naam, hoe je NODUS wilt promoten en je PayPal- of bankgegevens.', pl:'Napisz do nas e-mail z imieniem, jak planujesz promować NODUS oraz danymi PayPal lub bankowymi.', id:'Kirim email dengan nama Anda, bagaimana Anda berencana mempromosikan NODUS, dan info PayPal atau bank Anda.', vi:'Gửi email cho chúng tôi với tên, cách bạn dự định quảng bá NODUS và thông tin PayPal hoặc ngân hàng.', ja:'名前、NODUSのプロモーション方法、PayPalまたは銀行情報を記載してメールをお送りください。', ko:'이름, NODUS 홍보 방법, PayPal 또는 계좌 정보를 이메일로 보내주세요.', zh:'发送电子邮件，告诉我们您的姓名、推广计划以及 PayPal 或银行信息。', ru:'Напишите нам письмо с вашим именем, планом продвижения NODUS и реквизитами PayPal или банка.', hi:'हमें अपना नाम, NODUS को कैसे प्रमोट करेंगे, और PayPal या बैंक जानकारी के साथ ईमेल भेजें।', tr:'Adınız, NODUS\'u nasıl tanıtmayı planladığınız ve PayPal veya banka bilgilerinizle bize e-posta gönderin.' },
+      'cta-btn':        { en:'✉️ Apply to join', pt:'✉️ Candidatar-me', es:'✉️ Solicitar ingreso', fr:'✉️ Postuler', de:'✉️ Jetzt bewerben', it:'✉️ Candidati ora', nl:'✉️ Aanmelden', pl:'✉️ Aplikuj', id:'✉️ Daftar sekarang', vi:'✉️ Đăng ký tham gia', ja:'✉️ 参加を申し込む', ko:'✉️ 가입 신청', zh:'✉️ 申请加入', ru:'✉️ Подать заявку', hi:'✉️ जॉइन के लिए आवेदन', tr:'✉️ Katılmak için başvurun' }
+    };
+
+    function t(key) {
+      var map = T[key];
+      if (!map) return '';
+      return map[LANG] || map['en'] || '';
+    }
+
+    function applyTranslations() {
+      var map = {
+        't-nav-back':             { key: 'nav-back',          html: false },
+        't-hero-badge':           { key: 'hero-badge',        html: false },
+        't-hero-title':           { key: 'hero-title',        html: true  },
+        't-hero-desc':            { key: 'hero-desc',         html: false },
+        't-step1-title':          { key: 'step1-title',       html: false },
+        't-step1-desc':           { key: 'step1-desc',        html: false },
+        't-step2-title':          { key: 'step2-title',       html: false },
+        't-step2-desc':           { key: 'step2-desc',        html: false },
+        't-step3-title':          { key: 'step3-title',       html: false },
+        't-step3-desc':           { key: 'step3-desc',        html: false },
+        't-comm-title':           { key: 'comm-title',        html: false },
+        't-comm-desc':            { key: 'comm-desc',         html: false },
+        't-plan-monthly':         { key: 'plan-monthly',      html: false },
+        't-plan-monthly-net':     { key: 'plan-monthly-net',  html: false },
+        't-plan-annual':          { key: 'plan-annual',       html: false },
+        't-plan-annual-net':      { key: 'plan-annual-net',   html: false },
+        't-plan-lifetime':        { key: 'plan-lifetime',     html: false },
+        't-plan-lifetime-net':    { key: 'plan-lifetime-net', html: false },
+        't-dashboard-title':      { key: 'dashboard-title',   html: false },
+        't-label-code':           { key: 'label-code',        html: false },
+        't-label-token':          { key: 'label-token',       html: false },
+        't-btn-stats':            { key: 'btn-stats',         html: false },
+        't-stat-conversions-label':{ key: 'stat-conversions', html: false },
+        't-stat-waiting-label':   { key: 'stat-waiting',      html: false },
+        't-stat-ready-label':     { key: 'stat-ready',        html: false },
+        't-stat-paid-label':      { key: 'stat-paid',         html: false },
+        't-btn-copy':             { key: 'btn-copy',          html: false },
+        't-th-plan':              { key: 'th-plan',           html: false },
+        't-th-sale':              { key: 'th-sale',           html: false },
+        't-th-commission':        { key: 'th-commission',     html: false },
+        't-th-date':              { key: 'th-date',           html: false },
+        't-th-status':            { key: 'th-status',         html: false },
+        't-cta-title':            { key: 'cta-title',         html: false },
+        't-cta-desc':             { key: 'cta-desc',          html: false },
+        't-cta-btn':              { key: 'cta-btn',           html: false }
+      };
+      for (var id in map) {
+        var el = document.getElementById(id);
+        if (!el) continue;
+        var val = t(map[id].key);
+        if (!val) continue;
+        if (map[id].html) el.innerHTML = val;
+        else el.textContent = val;
+      }
+    }
+
+    applyTranslations();
+
+    // Re-apply when lang changes via lang-switcher
+    window.addEventListener('nodus-lang-change', function(e) {
+      LANG = e.detail || LANG;
+      applyTranslations();
+    });
+
+    // ─── WORKER / DASHBOARD ──────────────────────────────────────────────────
     var WORKER = 'https://nodus-worker.mmcarvalho-dev.workers.dev';
     var currentCode = '';
 
@@ -251,15 +363,17 @@
 
     function renderConversions(list) {
       var tbody = document.getElementById('conversions-body');
-      if (!list.length) {
-        tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state">No conversions yet. Start sharing your link!</div></td></tr>';
+      if (!list || !list.length) {
+        tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state">' + t('empty-state') + '</div></td></tr>';
         return;
       }
       tbody.innerHTML = list.map(function(c) {
-        var date = new Date(c.created_at * 1000).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
-        var badge = c.status === 'paid'    ? '<span class="paid-badge">Paid</span>'
-                  : c.status === 'ready'   ? '<span class="pending-badge">Ready ✓</span>'
-                  : '<span style="background:rgba(148,163,184,0.1);color:#94a3b8;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;">Waiting 30d</span>';
+        var date = new Date(c.created_at * 1000).toLocaleDateString(LANG === 'en' ? 'en-US' : LANG, { year:'numeric', month:'short', day:'numeric' });
+        var badge = c.status === 'paid'
+          ? '<span class="paid-badge">' + t('status-paid') + '</span>'
+          : c.status === 'ready'
+          ? '<span class="pending-badge">' + t('status-ready') + '</span>'
+          : '<span class="waiting-badge">' + t('status-waiting') + '</span>';
         return '<tr>'
           + '<td>' + (c.plan.charAt(0).toUpperCase() + c.plan.slice(1)) + '</td>'
           + '<td>$' + (c.sale_amount || 0).toFixed(2) + '</td>'
@@ -273,9 +387,9 @@
     function copyLink() {
       var link = document.getElementById('aff-link').textContent;
       navigator.clipboard.writeText(link).then(function() {
-        var btn = document.querySelector('.btn-copy');
-        btn.textContent = 'Copied!';
-        setTimeout(function() { btn.textContent = 'Copy link'; }, 2000);
+        var btn = document.getElementById('t-btn-copy');
+        btn.textContent = '✓ ' + t('btn-copy');
+        setTimeout(function() { btn.textContent = t('btn-copy'); }, 2000);
       });
     }
 
@@ -285,14 +399,12 @@
       el.style.display = 'block';
     }
 
-    // Enter key on inputs
     ['aff-code', 'aff-token'].forEach(function(id) {
       document.getElementById(id).addEventListener('keydown', function(e) {
         if (e.key === 'Enter') loadStats();
       });
     });
 
-    // Auto-uppercase the code input
     document.getElementById('aff-code').addEventListener('input', function() {
       this.value = this.value.toUpperCase();
     });
