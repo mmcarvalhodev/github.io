@@ -1,5 +1,5 @@
 (function () {
-  var lang = window._forcedLang || 'en';
+  var lang = window._forcedLang || localStorage.getItem('nodus_lang') || 'en';
   var subdirs = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
   var isSubdir = subdirs.includes(lang);
 
@@ -16,24 +16,35 @@
   // Pages that have a translated version in every language subdir
   var translatedPages = ['privacy.html', 'faq.html'];
 
+  // Pages with in-page JS i18n — don't navigate, just fire event
+  var inPageI18nPages = ['affiliates.html', 'checkout.html'];
+
+  // Current page filename
+  var currentPath = window.location.pathname;
+  var currentSegments = currentPath.replace(/^\//, '').split('/');
+  var currentFile = currentSegments[currentSegments.length - 1];
+  var isInPage = inPageI18nPages.indexOf(currentFile) !== -1;
+
   // Determine destination URL for a target language code
   function getHref(code) {
-    var path = window.location.pathname; // e.g. "/faq.html", "/nl/", "/pt/privacy.html"
-    var hash = window.location.hash;     // e.g. "#faq" or ""
+    var path = window.location.pathname;
+    var hash = window.location.hash;
 
-    // Extract current page filename (last segment, or empty for index)
     var segments = path.replace(/^\//, '').split('/');
-    var file = segments[segments.length - 1]; // e.g. "privacy.html", "faq.html", ""
+    var file = segments[segments.length - 1];
+
+    // In-page i18n pages: stay on the same page
+    if (inPageI18nPages.indexOf(file) !== -1) {
+      return window.location.pathname;
+    }
 
     // Is current page one with full language translations?
     var hasTranslation = translatedPages.indexOf(file) !== -1;
 
     if (hasTranslation) {
-      // Go to the equivalent translated page
       return code === 'en' ? '/' + file : '/' + code + '/' + file;
     }
 
-    // faq.html: stay on the page for all languages (content is PT but hub is shared)
     if (file === 'faq.html') {
       return '/faq.html';
     }
@@ -110,15 +121,31 @@
     syncHrefs();
     window.addEventListener('hashchange', syncHrefs);
 
-    // Save lang preference on click
-    wrap.querySelectorAll('.lang-opt').forEach(function(a) {
-      a.addEventListener('click', function() {
-        try { localStorage.setItem('nodus_lang', a.getAttribute('data-lang')); } catch(e) {}
-      });
-    });
-
     var trigger = document.getElementById('langTrigger');
     var switcher = document.getElementById('langSwitcher');
+
+    // Click handler
+    wrap.querySelectorAll('.lang-opt').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var targetLang = a.getAttribute('data-lang');
+        try { localStorage.setItem('nodus_lang', targetLang); } catch(e2) {}
+
+        if (isInPage) {
+          // In-page i18n: don't navigate, fire translation event instead
+          e.preventDefault();
+          // Update active state in dropdown
+          wrap.querySelectorAll('.lang-opt').forEach(function(o) {
+            o.classList.toggle('active', o.getAttribute('data-lang') === targetLang);
+          });
+          wrap.querySelector('.lang-current').textContent = targetLang.toUpperCase();
+          switcher.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+          // Fire event for the page's own i18n handler
+          window.dispatchEvent(new CustomEvent('nodus-lang-change', { detail: targetLang }));
+        }
+        // else: normal navigation via href
+      });
+    });
 
     trigger.addEventListener('click', function(e) {
       e.stopPropagation();
