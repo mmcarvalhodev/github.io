@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como exportar hist&#243;rico de conversas de IA para Word &#8212; NODUS</title>
-  <meta name="description" content="Exporte seu histórico de conversas com IA para Word (DOC) usando o NODUS. Funciona com ChatGPT, Claude, Gemini e mais 4 plataformas." />
+  <title>Como exportar conversas de IA para Word - NODUS</title>
+  <meta name="description" content="Aprenda como exportar conversas de IA para Word com o NODUS. Gere arquivos DOC a partir de capturas para editar, revisar e compartilhar." />
   <link rel="canonical" href="https://nodus-ai.app/faq/como-exportar-historico-ia-word" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg:#0e1117; --panel:#1a1f29; --border:#2d3748; --yellow:#facc15; --text:#e2e8f0; --sub:#94a3b8; --muted:#475569; --green:#10b981; }
+    :root { --bg:#0e1117; --panel:#1a1f29; --border:#2d3748; --yellow:#facc15; --text:#e2e8f0; --sub:#94a3b8; --muted:#475569; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
     a { color: var(--yellow); text-decoration: none; }
@@ -26,25 +26,20 @@
     .breadcrumb a { color: var(--muted); }
     .topic-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 16px; background: rgba(250,204,21,0.1); color: var(--yellow); border: 1px solid rgba(250,204,21,0.25); }
     h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
-    .hero-sub { font-size: 16px; color: var(--sub); line-height: 1.7; }
+    .hero-sub { font-size: 16px; color: var(--sub); line-height: 1.7; max-width: 620px; }
     .content { padding: 48px 0; }
     .content h2 { font-size: 20px; font-weight: 700; margin: 40px 0 16px; color: var(--text); }
     .content h2:first-child { margin-top: 0; }
     .content p { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 14px; }
     .content p strong { color: var(--text); }
-    .content ul, .content ol { margin: 0 0 16px 20px; }
+    .content ul { margin: 0 0 16px 20px; }
     .content li { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 6px; }
-    .content li strong { color: var(--text); }
     .steps { counter-reset: step; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
     .step { display: flex; gap: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
     .step-num { counter-increment: step; width: 32px; height: 32px; border-radius: 50%; background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .step-num::before { content: counter(step); }
     .step-body h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .step-body p { font-size: 13px; color: var(--sub); line-height: 1.6; margin: 0; }
-    .formats-grid { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
-    .format-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 160px; }
-    .format-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .format-card p { font-size: 12px; color: var(--muted); margin: 0; }
     .platforms-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
     .plat-pill { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); }
     .related { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 40px 0; }
@@ -59,7 +54,7 @@
     .btn-yellow { background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 800; padding: 10px 22px; border-radius: 8px; }
     .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
     .btn-ghost { background: transparent; color: var(--sub); font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 8px; border: 1px solid var(--border); }
-    .btn-ghost:hover { color: var(--text); text-decoration: none; }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text); text-decoration: none; }
     footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; }
     footer p { font-size: 12px; color: var(--muted); }
   </style>
@@ -71,38 +66,43 @@
         <a href="../index.html" class="nav-logo">&#9733; NODUS</a>
         <a href="../faq.html" class="nav-back">&#8592; Perguntas frequentes</a>
       </div>
-      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar gr&#225;tis</a>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar gratis</a>
     </div>
   </nav>
 
   <div class="hero">
     <div class="container">
-      <div class="breadcrumb"><a href="../index.html">NODUS</a> &#8250; <a href="../faq.html">FAQ</a> &#8250; Como exportar hist&#243;rico de conversas de IA para Word</div>
+      <div class="breadcrumb"><a href="../index.html">NODUS</a> &#8250; <a href="../faq.html">FAQ</a> &#8250; Como exportar conversas de IA para Word</div>
       <div class="topic-tag">Exportar &#183; Word &#183; DOC</div>
       <h1>Como exportar conversas de IA para Word</h1>
-      <p class="hero-sub">Exporte capturas do ChatGPT, Claude, Gemini e mais 4 plataformas de IA diretamente para DOC (Word) &#8212; com formata&#231;&#227;o preservada, tudo organizado no mesmo documento.</p>
+      <p class="hero-sub">Quando o destino final e edicao, revisao ou compartilhamento em documento, o formato certo costuma ser DOC. O NODUS permite levar capturas para Word sem depender do chat original.</p>
     </div>
   </div>
 
   <div class="content">
     <div class="container">
-      <h2>Resposta r&#225;pida</h2>
-      <p>O NODUS exporta capturas em formato <strong>DOC</strong>, compat&#237;vel com Microsoft Word, Google Docs e LibreOffice. Salve a conversa desejada no painel e clique em Exportar &#8594; DOC.</p>
+      <h2>Resposta rapida</h2>
+      <p>Abra a captura no painel NODUS, clique em <strong>Exportar</strong> e escolha <strong>DOC</strong>. O arquivo pode ser aberto no Word, no Google Docs ou em outro editor compativel.</p>
+
+      <h2>Quando usar esta pagina e nao outra</h2>
+      <p>Esta pagina responde a intencao "quero levar para Word". Ela nao e sobre backup total do acervo nem sobre exportar para outros formatos. O foco aqui e transformar uma captura em documento editavel.</p>
 
       <h2>Passo a passo</h2>
       <div class="steps">
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Instale o NODUS e salve as conversas desejadas</h3><p>Funciona com qualquer plataforma suportada: ChatGPT, Claude, Gemini, Perplexity, Grok, Copilot ou DeepSeek. Clique em <strong>Salvar</strong> ou <strong>R&#225;pido</strong> ao lado da resposta.</p></div></div>
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o painel NODUS com Dash</h3><p>O bot&#227;o <strong>Dash</strong> abre o painel centralizado com todas as suas capturas organizadas por plataforma, tags e filas.</p></div></div>
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o card e clique em Exportar &#8594; DOC</h3><p>Localize a captura no painel, abra o card e clique em <strong>Exportar</strong>. Selecione o formato <strong>DOC</strong> na lista de op&#231;&#245;es.</p></div></div>
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o arquivo no Word, Google Docs ou LibreOffice</h3><p>O arquivo &#233; gerado e baixado diretamente no seu computador. Abra com qualquer editor compat&#237;vel com o formato .doc &#8212; a estrutura e formata&#231;&#227;o s&#227;o preservadas.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Salve a resposta que interessa</h3><p>Capture a resposta com <strong>Salvar</strong> ou <strong>Rapido</strong> para que ela entre no painel NODUS.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o painel e localize a captura</h3><p>Use busca, fila ou tags para encontrar rapidamente a resposta que vai virar documento.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Exporte em DOC</h3><p>No card da captura, use <strong>Exportar</strong> e selecione o formato DOC.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Continue a edicao fora do chat</h3><p>Abra o arquivo no Word ou no Google Docs e siga a revisao, a adaptacao ou o compartilhamento no ambiente mais adequado.</p></div></div>
       </div>
 
-      <h2>Exportar v&#225;rias plataformas em um s&#243; documento</h2>
-      <p>Use <strong>Cadeias</strong> para conectar capturas do ChatGPT, Claude, Gemini e outras plataformas numa sequ&#234;ncia l&#243;gica. Depois exporte a cadeia inteira como um &#250;nico arquivo DOC &#8212; perfeito para relat&#243;rios que combinam pesquisas de m&#250;ltiplas IAs.</p>
-      <p>O documento resultante mant&#233;m a ordem das capturas, os t&#237;tulos de cada se&#231;&#227;o e toda a formata&#231;&#227;o original &#8212; listas, blocos de c&#243;digo, tabelas e t&#237;tulos.</p>
+      <h2>Quando DOC faz mais sentido</h2>
+      <ul>
+        <li>Quando a resposta vai virar texto editavel.</li>
+        <li>Quando o material precisa circular entre pessoas.</li>
+        <li>Quando voce quer revisar fora da interface da IA.</li>
+        <li>Quando o resultado vai entrar em proposta, relatorio ou documento interno.</li>
+      </ul>
 
-      <h2>Funciona com quais plataformas?</h2>
-      <p>Todas as capturas ficam no mesmo painel e podem ser exportadas no mesmo documento:</p>
       <div class="platforms-grid">
         <span class="plat-pill">ChatGPT</span>
         <span class="plat-pill">Claude</span>
@@ -114,18 +114,18 @@
       </div>
 
       <div class="related">
-        <h3>Veja tamb&#233;m</h3>
+        <h3>Veja tambem</h3>
         <div class="related-links">
           <a href="como-exportar-conversas-chatgpt.html">&#8594; Como exportar conversas do ChatGPT</a>
-          <a href="como-baixar-historico-conversas-ia.html">&#8594; Como baixar o hist&#243;rico de conversas de IA</a>
-          <a href="como-salvar-conversas-chatgpt.html">&#8594; Como salvar conversas do ChatGPT</a>
+          <a href="como-baixar-historico-conversas-ia.html">&#8594; Como baixar o historico de conversas de IA</a>
+          <a href="como-fazer-backup-conversas-ia.html">&#8594; Como fazer backup de conversas de IA</a>
           <a href="../faq.html">&#8594; Ver todas as perguntas frequentes</a>
         </div>
       </div>
 
       <div class="cta-block">
-        <h3>Exporte para Word agora</h3>
-        <p>Instale o NODUS gratuitamente e exporte conversas de IA diretamente para Word, Google Docs ou LibreOffice.</p>
+        <h3>Leve respostas de IA para um documento que continua util fora do chat</h3>
+        <p>Instale o NODUS e exporte capturas para Word quando o proximo passo exigir edicao, revisao ou compartilhamento.</p>
         <div class="cta-btns">
           <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="btn-yellow" target="_blank" rel="noopener">Instalar no Chrome</a>
           <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" class="btn-ghost" target="_blank" rel="noopener">Instalar no Firefox</a>
@@ -135,6 +135,6 @@
   </div>
 
   <footer><div class="container"><p>&#169; 2025 NODUS &#183; <a href="../faq.html">FAQ</a> &#183; <a href="../index.html">Site</a> &#183; <a href="https://github.com/mmcarvalhodev/nodus" target="_blank">GitHub</a></p></div></footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como exportar conversas de IA para Word?","acceptedAnswer":{"@type":"Answer","text":"O NODUS exporta capturas em formato DOC compativel com Word, Google Docs e LibreOffice. Salve a conversa no painel e clique em Exportar para DOC. Com Cadeias, exporte capturas de multiplas plataformas num unico documento."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como exportar conversas de IA para Word?","acceptedAnswer":{"@type":"Answer","text":"Abra a captura no painel NODUS, clique em Exportar e escolha DOC. O arquivo pode ser aberto no Word, no Google Docs ou em outro editor compativel."}}]}</script>
 </body>
 </html>
