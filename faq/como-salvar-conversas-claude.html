@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como salvar conversas do Claude — NODUS</title>
-  <meta name="description" content="Salve respostas do Claude (Anthropic) com um clique usando o NODUS. Sem copiar e colar — captura localmente, sem conta, sem servidor." />
+  <title>Como salvar conversas do Claude &#8212; NODUS</title>
+  <meta name="description" content="Aprenda como salvar conversas do Claude com o NODUS. Capture respostas de Claude Sonnet, Haiku e Opus e organize tudo localmente no seu painel." />
   <link rel="canonical" href="https://nodus-ai.app/faq/como-salvar-conversas-claude" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,7 +14,6 @@
     a { color: var(--yellow); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-
     nav { position: sticky; top: 0; z-index: 100; background: rgba(14,17,23,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 12px 0; }
     .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { font-size: 15px; font-weight: 900; color: var(--yellow); }
@@ -22,40 +21,34 @@
     .nav-back:hover { color: var(--text); text-decoration: none; }
     .nav-cta { background: var(--yellow); color: #0e1117; font-size: 13px; font-weight: 800; padding: 7px 18px; border-radius: 8px; }
     .nav-cta:hover { opacity: 0.88; text-decoration: none; }
-
     .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
     .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
     .breadcrumb a { color: var(--muted); }
     .breadcrumb a:hover { color: var(--sub); text-decoration: none; }
     .plat-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 16px; }
     h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
-    .hero-sub { font-size: 16px; color: var(--sub); line-height: 1.7; max-width: 600px; }
-
+    .hero-sub { font-size: 16px; color: var(--sub); line-height: 1.7; max-width: 620px; }
     .content { padding: 48px 0; }
     .content h2 { font-size: 20px; font-weight: 700; margin: 40px 0 16px; color: var(--text); }
     .content h2:first-child { margin-top: 0; }
     .content p { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 14px; }
     .content p strong { color: var(--text); }
-    .content ul, .content ol { margin: 0 0 16px 20px; }
+    .content ul { margin: 0 0 16px 20px; }
     .content li { font-size: 15px; color: var(--sub); line-height: 1.75; margin-bottom: 6px; }
     .content li strong { color: var(--text); }
-
     .steps { counter-reset: step; display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
     .step { display: flex; gap: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
     .step-num { counter-increment: step; width: 32px; height: 32px; border-radius: 50%; background: var(--yellow); color: #0e1117; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .step-num::before { content: counter(step); }
     .step-body h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .step-body p { font-size: 13px; color: var(--sub); line-height: 1.6; margin: 0; }
-
     .platforms-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
     .plat-pill { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); }
-
     .related { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 40px 0; }
     .related h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
     .related-links { display: flex; flex-direction: column; gap: 10px; }
     .related-links a { font-size: 14px; color: var(--sub); display: flex; align-items: center; gap: 8px; }
     .related-links a:hover { color: var(--yellow); text-decoration: none; }
-
     .cta-block { background: linear-gradient(135deg, rgba(250,204,21,0.06), rgba(16,185,129,0.04)); border: 1px solid rgba(250,204,21,0.2); border-radius: 16px; padding: 36px; text-align: center; margin: 40px 0; }
     .cta-block h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
     .cta-block p { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
@@ -64,7 +57,6 @@
     .btn-yellow:hover { opacity: 0.88; text-decoration: none; }
     .btn-ghost { background: transparent; color: var(--sub); font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 8px; border: 1px solid var(--border); }
     .btn-ghost:hover { color: var(--text); border-color: var(--text); text-decoration: none; }
-
     footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; }
     footer p { font-size: 12px; color: var(--muted); }
   </style>
@@ -73,44 +65,52 @@
   <nav>
     <div class="nav-inner">
       <div style="display:flex;align-items:center;gap:20px;">
-        <a href="../index.html" class="nav-logo">★ NODUS</a>
-        <a href="../faq.html" class="nav-back">← Perguntas frequentes</a>
+        <a href="../index.html" class="nav-logo">&#9733; NODUS</a>
+        <a href="../faq.html" class="nav-back">&#8592; Perguntas frequentes</a>
       </div>
-      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar grátis</a>
+      <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" class="nav-cta" target="_blank" rel="noopener">Instalar gr&aacute;tis</a>
     </div>
   </nav>
 
   <div class="hero">
     <div class="container">
-      <div class="breadcrumb"><a href="../index.html">NODUS</a> › <a href="../faq.html">FAQ</a> › Claude</div>
-      <div class="plat-tag" style="background:rgba(168,85,247,0.1); color:#d8b4fe; border:1px solid rgba(168,85,247,0.25);">Claude · Anthropic</div>
+      <div class="breadcrumb"><a href="../index.html">NODUS</a> &#8250; <a href="../faq.html">FAQ</a> &#8250; Claude</div>
+      <div class="plat-tag" style="background:rgba(168,85,247,0.1); color:#d8b4fe; border:1px solid rgba(168,85,247,0.25);">Claude &#183; Anthropic</div>
       <h1>Como salvar conversas do Claude</h1>
-      <p class="hero-sub">O NODUS funciona nativamente no Claude.ai — capture qualquer resposta do Claude Sonnet, Haiku ou Opus com um clique, direto para o seu painel local.</p>
+      <p class="hero-sub">Se voc&ecirc; usa o Claude para projetos longos, brainstorms ou refinamento de texto, o ideal &eacute; capturar as respostas boas no momento em que aparecem. O NODUS faz isso sem tirar voc&ecirc; do fluxo.</p>
     </div>
   </div>
 
   <div class="content">
     <div class="container">
+      <h2>Resposta r&aacute;pida</h2>
+      <p>Abra o Claude com o NODUS instalado e use <strong>Salvar</strong> ou <strong>R&aacute;pido</strong> ao lado das respostas. A captura entra no seu painel local com pergunta, resposta, tags e organiza&ccedil;&atilde;o por fila.</p>
 
-      <h2>Resposta rápida</h2>
-      <p>Com o NODUS instalado, acesse claude.ai normalmente. Botões de captura aparecem ao lado das respostas do Claude. Clique em <strong>Salvar</strong> para capturar pergunta + resposta, adicionar tags e escolher a fila de destino — ou <strong>Rápido</strong> para salvar imediatamente.</p>
-
-      <h2>Por que salvar conversas do Claude?</h2>
-      <p>O Claude tem projetos com contexto longo, mas não oferece como exportar ou pesquisar conversas específicas fora da plataforma. Com o NODUS, as melhores respostas ficam acessíveis no seu painel local — com tags, busca full-text e organização por projeto, sem depender da interface do Claude.ai.</p>
+      <h2>Por que o Claude merece um fluxo de captura pr&oacute;prio</h2>
+      <p>O Claude &eacute; especialmente forte em racioc&iacute;nio longo, reescrita, resumo, arquitetura textual e revis&atilde;o. Isso faz com que muitas respostas n&atilde;o sejam apenas descart&aacute;veis de conversa: elas viram material de trabalho, refer&ecirc;ncia ou base para uma vers&atilde;o futura.</p>
+      <p>Se voc&ecirc; deixar tudo apenas nos projetos ou conversas da interface do Claude, o conte&uacute;do continua preso ao contexto daquela sess&atilde;o. Com o NODUS, a resposta sai da l&oacute;gica do chat e entra na l&oacute;gica do acervo.</p>
 
       <h2>Passo a passo</h2>
       <div class="steps">
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Instale o NODUS</h3><p>Gratuito, sem criar conta. Disponível na Chrome Web Store e no Firefox Add-ons. A extensão fica ativa automaticamente em claude.ai após a instalação.</p></div></div>
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Acesse o Claude</h3><p>Acesse claude.ai e inicie uma conversa com o Claude. Os botões de captura do NODUS aparecem automaticamente ao lado de cada resposta gerada.</p></div></div>
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Capture a resposta</h3><p>Ao lado de cada resposta, clique em <strong>Salvar</strong> para abrir o painel de captura ou <strong>Rápido</strong> para captura instantânea sem abrir o painel de configuração.</p></div></div>
-        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Acesse o painel</h3><p>Clique em <strong>Dash</strong> para abrir seu painel — a resposta do Claude aparece organizada com as capturas das outras plataformas, filtrável por data, tag ou plataforma.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Instale o NODUS</h3><p>A extens&atilde;o funciona em Chrome, Edge, Brave e Firefox. N&atilde;o h&aacute; conta nem setup obrigat&oacute;rio.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Abra o Claude normalmente</h3><p>Entre em claude.ai, em uma conversa simples ou em um Projeto. Os bot&otilde;es de captura aparecem ao lado das respostas.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Escolha o tipo de captura</h3><p>Use <strong>Salvar</strong> quando quiser classificar a resposta com tags e fila. Use <strong>R&aacute;pido</strong> quando s&oacute; quiser garantir que o conte&uacute;do n&atilde;o se perca.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h3>Recupere no painel</h3><p>No painel NODUS, suas respostas do Claude ficam junto com as capturas das outras plataformas, prontas para busca, exporta&ccedil;&atilde;o e Cadeias.</p></div></div>
       </div>
 
-      <h2>Funciona com projetos do Claude?</h2>
-      <p>Sim. O NODUS captura respostas tanto em conversas normais quanto em Projetos do Claude. O modelo utilizado (Sonnet, Haiku, Opus) não afeta o funcionamento — a captura funciona com qualquer versão disponível em claude.ai.</p>
+      <h2>Funciona com Projetos do Claude?</h2>
+      <p>Sim. Esse &eacute; justamente um dos casos em que a captura faz mais sentido. Projetos tendem a acumular respostas relevantes em sequ&ecirc;ncia, e o NODUS ajuda a destacar o que vale virar refer&ecirc;ncia fora do projeto original.</p>
 
-      <h2>Funciona também com outras IAs?</h2>
-      <p>Sim. O NODUS salva conversas de 7 plataformas com o mesmo botão e no mesmo painel:</p>
+      <h2>Quando salvar no Claude &eacute; mais valioso</h2>
+      <ul>
+        <li>Quando o Claude estruturou um argumento ou texto muito bem.</li>
+        <li>Quando voc&ecirc; quer reaproveitar uma resposta em outro documento.</li>
+        <li>Quando uma explica&ccedil;&atilde;o ficou melhor do que as vers&otilde;es que obteve em outras IAs.</li>
+        <li>Quando a conversa faz parte de um projeto longo e voc&ecirc; quer preservar s&oacute; os trechos realmente bons.</li>
+      </ul>
+
+      <h2>Funciona tamb&eacute;m com outras IAs?</h2>
+      <p>Sim. O NODUS salva conversas de 7 plataformas no mesmo painel:</p>
       <div class="platforms-grid">
         <span class="plat-pill">ChatGPT</span>
         <span class="plat-pill">Claude</span>
@@ -120,34 +120,32 @@
         <span class="plat-pill">Copilot</span>
         <span class="plat-pill">DeepSeek</span>
       </div>
-      <p>Todas as capturas ficam no mesmo painel, organizadas por plataforma, tag ou fila — sem precisar alternar entre ferramentas.</p>
+      <p>Isso facilita comparar respostas e montar Cadeias entre plataformas diferentes sem fragmentar o arquivo.</p>
 
       <div class="related">
-        <h3>Páginas relacionadas</h3>
+        <h3>P&aacute;ginas relacionadas</h3>
         <div class="related-links">
-          <a href="como-salvar-conversas-chatgpt.html">→ Como salvar conversas do ChatGPT</a>
-          <a href="como-salvar-conversas-gemini.html">→ Como salvar conversas do Gemini</a>
-          <a href="como-exportar-conversas-claude.html">→ Como exportar conversas do Claude</a>
-          <a href="../faq.html">→ Ver todas as perguntas frequentes</a>
+          <a href="como-salvar-conversas-chatgpt.html">&#8594; Como salvar conversas do ChatGPT</a>
+          <a href="como-salvar-conversas-gemini.html">&#8594; Como salvar conversas do Gemini</a>
+          <a href="como-exportar-conversas-claude.html">&#8594; Como exportar conversas do Claude</a>
+          <a href="../faq.html">&#8594; Ver todas as perguntas frequentes</a>
         </div>
       </div>
 
       <div class="cta-block">
-        <h3>Instale o NODUS e nunca mais perca uma resposta</h3>
-        <p>Grátis, sem conta, funciona no Claude e mais 6 plataformas de IA.</p>
+        <h3>Transforme boas respostas do Claude em arquivo pessoal</h3>
+        <p>Instale o NODUS e preserve localmente as respostas do Claude que merecem continuar &uacute;teis depois da conversa.</p>
         <div class="cta-btns">
-          <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Instalar no Chrome — grátis</a>
+          <a class="btn-yellow" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Instalar no Chrome</a>
           <a class="btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">Firefox</a>
         </div>
       </div>
-
     </div>
   </div>
 
-  <footer><div class="container"><p>© 2025 NODUS · <a href="../faq.html">FAQ</a> · <a href="../index.html">Site</a> · <a href="https://github.com/mmcarvalhodev/nodus" target="_blank">GitHub</a></p></div></footer>
-
+  <footer><div class="container"><p>&#169; 2025 NODUS &#183; <a href="../faq.html">FAQ</a> &#183; <a href="../index.html">Site</a> &#183; <a href="https://github.com/mmcarvalhodev/nodus" target="_blank">GitHub</a></p></div></footer>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como salvar conversas do Claude?","acceptedAnswer":{"@type":"Answer","text":"Com o NODUS instalado, acesse claude.ai. Botões de captura aparecem ao lado das respostas. Clique em Salvar para capturar pergunta e resposta no painel local, ou Rápido para salvar imediatamente. Funciona com Claude Sonnet, Haiku e Opus."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como salvar conversas do Claude?","acceptedAnswer":{"@type":"Answer","text":"Abra o Claude com o NODUS instalado e use Salvar ou Rapido ao lado das respostas. A captura entra no seu painel local com pergunta, resposta, tags e fila."}}]}
   </script>
 </body>
 </html>

@@ -2271,9 +2271,6 @@
       if (twTitle) twTitle.setAttribute('content', seo.title);
       var twDesc = document.querySelector('meta[name="twitter:description"]');
       if (twDesc) twDesc.setAttribute('content', seo.description);
-      // canonical per language
-      var canonical = document.querySelector('link[rel="canonical"]');
-      if (canonical) canonical.setAttribute('href', 'https://nodus-ai.app/?lang=' + lang);
       // persist
       try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
     }
@@ -2307,12 +2304,24 @@
       return 'en';
     }
 
+    function normalizeLangParam(lang) {
+      try {
+        var url = new URL(window.location.href);
+        if (!url.searchParams.has('lang')) return;
+        url.searchParams.delete('lang');
+        var clean = url.pathname + (url.search ? url.search : '') + url.hash;
+        history.replaceState(null, '', clean);
+      } catch(e) {}
+      try { localStorage.setItem('nodus_lang', lang); } catch(e2) {}
+    }
+
     /* Expose T and detectLang globally so other scripts can use them */
     window.T = T;
     window.detectLang = detectLang;
 
     document.addEventListener('DOMContentLoaded', function() {
       var lang = detectLang();
+      normalizeLangParam(lang);
       applyLang(lang);
       // Dropdown toggle handled by lang-switcher.js — no duplicate listener here
       // Hamburger menu toggle
