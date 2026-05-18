@@ -588,17 +588,6 @@
       </div>
     </section>
 
-    <!-- ── DEBUG PADDLE (remover antes de publicar) ── -->
-    <section class="section" style="background:#1a1f29;border:2px dashed #f97316;border-radius:12px;padding:20px;margin:16px auto;max-width:860px;">
-      <div style="color:#f97316;font-weight:700;margin-bottom:12px;">🛠 DEBUG — Teste Paddle (remover antes de publicar)</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <button type="button" onclick="testPaddleCheckout('bronze')" style="padding:10px 20px;background:#92400e;color:#fbbf24;border:1px solid #f59e0b;border-radius:8px;cursor:pointer;font-weight:700;">Bronze $1</button>
-        <button type="button" onclick="testPaddleCheckout('silver')" style="padding:10px 20px;background:#374151;color:#9ca3af;border:1px solid #6b7280;border-radius:8px;cursor:pointer;font-weight:700;">Silver $3</button>
-        <button type="button" onclick="testPaddleCheckout('gold')"   style="padding:10px 20px;background:#78350f;color:#fcd34d;border:1px solid #f59e0b;border-radius:8px;cursor:pointer;font-weight:700;">Gold $7</button>
-      </div>
-      <div id="debug-msg" style="margin-top:12px;font-size:13px;color:#e2e8f0;word-break:break-all;"></div>
-    </section>
-
     <hr class="divider">
 
     <!-- ── DASHBOARD ── -->
@@ -738,23 +727,6 @@
       }
     }
 
-    // ── Debug Paddle checkout ─────────────────────────────────
-    async function testPaddleCheckout(tier) {
-      const dbg = document.getElementById("debug-msg");
-      dbg.textContent = "Chamando Paddle API (sem DB)…";
-      try {
-        const res  = await fetch(WORKER + "/debug/paddle?tier=" + tier);
-        const data = await res.json();
-        const txn = data.data?.data;
-        dbg.innerHTML = `<b>priceId:</b> ${data.priceId || '?'}<br><b>paddleStatus:</b> ${data.paddleStatus}<br><b>txn.id:</b> ${txn?.id || '?'}<br><b>txn.status:</b> ${txn?.status || '?'}<br><details><summary>JSON completo</summary><pre style="white-space:pre-wrap;font-size:11px">${JSON.stringify(data, null, 2)}</pre></details>`;
-        if (txn?.id) {
-          dbg.innerHTML += `<br><button onclick="openPaddleCheckout('${txn.id}')" style="margin-top:8px;padding:8px 16px;background:#f97316;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:700;">→ Abrir Paddle Checkout</button>`;
-        }
-      } catch (e) {
-        dbg.textContent = "Erro: " + e.message;
-      }
-    }
-
     // ── Submit promo ──────────────────────────────────────────
     async function submitPromo() {
       const email = document.getElementById("sub-email").value.trim();
@@ -799,9 +771,9 @@
           return;
         }
 
-        if (data.transactionId) {
-          showMsg(msg, "success", isPt ? "Abrindo pagamento…" : "Opening checkout…");
-          openPaddleCheckout(data.transactionId);
+        if (data.checkoutUrl) {
+          showMsg(msg, "success", isPt ? "Redirecionando para pagamento…" : "Redirecting to payment…");
+          window.location.href = data.checkoutUrl;
         } else {
           showTokenSuccess(msg, token, isPt);
           document.getElementById("sub-url").value = "";
