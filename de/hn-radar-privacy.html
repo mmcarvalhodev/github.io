@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung — NODUS HN Radar</title>
+  <link rel="canonical" href="https://nodus-ai.app/de/hn-radar-privacy" />
+  <link rel="stylesheet" href="../hn-radar-privacy.css">
+  <script>window._forcedLang = 'de';</script>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="https://nodus-ai.app/de/">NODUS</a>
+    <a class="nav-back" href="hn-radar.html">← Zurück zu HN Radar</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-label">Rechtliches · HN Radar</div>
+    <h1>Datenschutzerklärung</h1>
+    <p>NODUS HN Radar Browser-Erweiterung &nbsp;·&nbsp; Aktualisiert: Mai 2026 &nbsp;·&nbsp; v0.15</p>
+  </div>
+  <div class="page">
+    <div class="toc">
+      <div class="toc-title">Inhaltsverzeichnis</div>
+      <ol>
+        <li><a href="#overview">Überblick</a></li>
+        <li><a href="#local-data">Lokal gespeicherte Daten</a></li>
+        <li><a href="#endpoints">Externe Endpoints erklärt</a></li>
+        <li><a href="#translation">Übersetzung im Browser</a></li>
+        <li><a href="#never">Was wir niemals tun</a></li>
+        <li><a href="#rights">Ihre Rechte (LGPD / RGPD / CCPA)</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ol>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Überblick</h2>
+      <div class="highlight"><p><strong>NODUS HN Radar ist eine vollständig local-first Browser-Erweiterung.</strong> Sie verbessert das Leseerlebnis auf news.ycombinator.com und hebt aufsteigende Posts über die öffentliche API von Hacker News hervor. Keine Server, keine Konten, keine Logins, keine Cloud-Synchronisierung, keine Telemetrie.</p></div>
+      <p>Schwesterprodukt der Haupt-NODUS-Erweiterung (Erfassung von KI-Konversationen) und von NODUS YT Radar. Jedes hat seine eigene Richtlinie:</p>
+      <ul class="check">
+        <li>NODUS Haupterweiterung — <a href="privacy.html" style="color:#ff8c42;">privacy.html</a></li>
+        <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
+        <li>HN Radar — dieses Dokument</li>
+      </ul>
+      <p>HN Radar verbindet sich mit zwei Endpoints, die beide zu <strong>Hacker News selbst</strong> gehören:</p>
+      <div class="card"><div class="card-title"><span class="badge badge-green">erforderlich</span> news.ycombinator.com</div><p>Die Website, die Sie lesen. Das Content Script verbessert die Seiten, die Sie selbst laden — ohne proaktives Fetch.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">erforderlich</span> hacker-news.firebaseio.com</div><p>Öffentliche Firebase-API von Hacker News. Wird verwendet, um die aufsteigenden Listen (Top / Show / Ask / Best) und individuelle Item-Details für das Radar-Dashboard abzurufen.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-gray">keine</span> NODUS-Server</div><p>HN Radar kontaktiert keine NODUS-Infrastruktur. Im Gegensatz zu YT Radar (Community Spotlight Worker) oder der Haupt-NODUS-Erweiterung (PRO-Lizenz) hat diese Erweiterung keine NODUS-Backend-Abhängigkeit.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Lokal gespeicherte Daten</h2>
+      <p>Alles Folgende wird in <code>chrome.storage.local</code> gespeichert und niemals woandershin gesendet, außer wie in Abschnitt 3 beschrieben.</p>
+      <div class="storage-row"><div class="storage-key">settings</div><div class="storage-desc">Ihre Einstellungen: Theme, Schriftgröße, Lesebreite, Hervorhebungs-Toggles, Oberflächensprache, Übersetzungseinstellungen, Zebra-Farbe/Intensität usw.</div></div>
+      <div class="storage-row"><div class="storage-key">visited</div><div class="storage-desc">Liste der IDs von HN-Posts, die Sie von der Startseite angeklickt haben, mit Zeitstempeln. Dient zum Ausgrauen besuchter Posts. TTL 30 Tage mit automatischer Bereinigung.</div></div>
+      <div class="storage-row"><div class="storage-key">pinned</div><div class="storage-desc">Über 📌 explizit angeheftete Posts: ID, Titel, URL, Domain, Snapshot des Scores, Anzahl der Kommentare, Alter, Tags, Zeitstempel der Anheftung.</div></div>
+      <div class="storage-row"><div class="storage-key">collapsedCards</div><div class="storage-desc">IDs der angehefteten Karten, die Sie in der Seitenleiste eingeklappt haben.</div></div>
+      <div class="storage-row"><div class="storage-key">recentTags</div><div class="storage-desc">Liste der 40 zuletzt verwendeten Tag-Namen für die Autovervollständigung.</div></div>
+      <div class="storage-row"><div class="storage-key">mutedDomains</div><div class="storage-desc">Liste der Domains, die Sie stummgeschaltet haben. Posts dieser Domains werden im Radar ausgeblendet.</div></div>
+      <div class="storage-row"><div class="storage-key">radar</div><div class="storage-desc">Snapshots der HN-Post-Daten (Score, Kommentare) im Zeitverlauf, verwendet zur Berechnung der Geschwindigkeit.</div></div>
+      <div class="storage-row"><div class="storage-key">opActiveCache</div><div class="storage-desc">Cache der Erkennung „Autor hat geantwortet" pro ID. TTL 10 Minuten.</div></div>
+      <div class="storage-row"><div class="storage-key">comments_&lt;postId&gt;</div><div class="storage-desc">Cache der Kommentare in der Hover-Vorschau. TTL 10 Minuten.</div></div>
+      <div class="highlight" style="margin-top:24px;"><p>Die Deinstallation der Erweiterung löscht automatisch alles. Kein Benutzerkonto, keine E-Mail-Erfassung, keine Möglichkeit für NODUS, Sie zu identifizieren.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Externe Endpoints erklärt</h2>
+      <p>Die Erweiterung führt Fetches nur von zwei Domains durch, die in <code>host_permissions</code> deklariert und für Chrome vor der Installation sichtbar sind.</p>
+      <h3>3a. Hacker News Website</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">nur Content Script</span></div><div class="endpoint-body"><p>Das Content Script injiziert CSS und kleine DOM-Verbesserungen (Pin-Buttons, Typ-Badges, Übersetzungsbuttons) auf den Seiten, die Sie laden. Die Erweiterung führt im Hintergrund keine proaktiven Fetches von HN durch.</p><p class="data-sent"><strong>Von der Erweiterung gesendete Daten:</strong> keine über das hinaus, was Ihr Browser bereits sendet.</p></div></div>
+      <h3>3b. Öffentliche Firebase-API von Hacker News</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://hacker-news.firebaseio.com/v0/topstories.json</span><span class="badge badge-green">erforderlich</span></div><div class="endpoint-body"><p>Gibt das Array der aufsteigenden IDs zurück. Dieselbe Quelle wie die offizielle HN-Startseite.</p><p class="data-sent"><strong>Gesendete Daten:</strong> nichts Identifizierendes — nur die Anfrage.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">wenn Tab aktiv</span></div><div class="endpoint-body"><p>Dasselbe für die Tabs Best, Show HN und Ask HN.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">pro Post</span></div><div class="endpoint-body"><p>Ruft die öffentlichen Details jedes im Radar oder in der Vorschau angezeigten Posts oder Kommentars ab.</p><p class="data-sent"><strong>Gesendete Daten:</strong> die ID des Posts. Keine Identifikatoren von Ihnen.</p></div></div>
+      <p style="font-size:13px;color:#64748b;">Hacker News und Y Combinator können diese Anfragen gemäß ihren eigenen Richtlinien protokollieren. Die Erweiterung selbst fügt keine Header, Cookies oder Auth hinzu.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="translation"></span>
+      <h2><span class="icon">🌐</span> 4. Übersetzung im Browser</h2>
+      <div class="highlight"><p><strong>Übersetzungen erfolgen vollständig auf Ihrem Gerät.</strong> HN Radar verwendet die integrierte Translator-API von Chrome (Chrome 138+), die bei der ersten Verwendung lokal ein kleines Sprachmodell herunterlädt und Text übersetzt, ohne ihn an einen Server zu senden.</p></div>
+      <p>Das bedeutet:</p>
+      <ul class="check">
+        <li>Bei der Übersetzung verlässt kein Text Ihren Browser.</li>
+        <li>Kein API-Schlüssel, keine Kosten, keine Nutzungserfassung.</li>
+        <li>Die Übersetzung funktioniert offline, sobald das Modell heruntergeladen wurde.</li>
+        <li>Übersetzungs-Cache nur lokal und wird mit der Erweiterung gelöscht.</li>
+      </ul>
+      <p>Wenn Ihr Browser die Translator-API nicht unterstützt (Firefox oder älteres Chrome), tun die Übersetzungsfunktionen nichts — kein Fallback auf einen Cloud-Dienst.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Was wir niemals tun</h2>
+      <ul class="check cross">
+        <li>Ihre Daten an Dritte verkaufen</li>
+        <li>Irgendetwas an NODUS-Server senden (kein NODUS-Backend für diese Erweiterung)</li>
+        <li>Verfolgen, welche Posts Sie lesen, anklicken oder anheften</li>
+        <li>Besuchte Websites außerhalb von news.ycombinator.com verfolgen</li>
+        <li>Analytics oder Werbe-SDKs von Drittanbietern verwenden</li>
+        <li>Ihre Kommentare, Antworten oder HN-Kontodaten lesen oder speichern</li>
+        <li>Auf Mikrofon, Kamera, Zwischenablage oder Downloads zugreifen</li>
+        <li>Werbung oder Affiliate-Links injizieren</li>
+        <li>Ein Konto, Login oder eine E-Mail-Adresse verlangen</li>
+        <li>Ihre Tags, Pins oder Einstellungen in die Cloud synchronisieren</li>
+      </ul>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Ihre Rechte (LGPD / RGPD / CCPA)</h2>
+      <p>HN Radar entspricht der brasilianischen LGPD, der europäischen RGPD und ist mit dem CCPA kompatibel. Da alle Daten lokal sind und die Erweiterung weder Profiling noch standortübergreifendes Tracking betreibt, können die meisten Rechte direkt über Ihren Browser ausgeübt werden.</p>
+      <h3>Rechte, die Sie haben</h3>
+      <ul class="check">
+        <li><strong>Zugriff</strong> — alle lokalen Daten sind in <code>chrome://extensions</code> → HN Radar → Inspizieren → Application → Storage sichtbar</li>
+        <li><strong>Löschung</strong> — Deinstallation der Erweiterung löscht alles</li>
+        <li><strong>Portabilität</strong> — lokale Daten in JSON in <code>chrome.storage.local</code>, exportierbar über DevTools</li>
+        <li><strong>Opt-out</strong> — deaktivieren Sie den Lens-Hauptschalter jederzeit</li>
+      </ul>
+      <h3>Rechtsgrundlage der Verarbeitung</h3>
+      <p>Das Lesen der öffentlichen HN-Website und der öffentlichen HN-API fällt unter <strong>berechtigtes Interesse</strong> (die Bereitstellung der Leseschicht, die Sie durch die Installation der Erweiterung gewählt haben). Es werden keine personenbezogenen Daten verarbeitet.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. Kontakt</h2>
+      <p>Für Datenschutzfragen oder Funktionswünsche:</p>
+      <div class="card"><div class="card-title">📧 E-Mail</div><p>mmcarvalho.dev@gmail.com</p></div>
+      <div class="card"><div class="card-title">🌐 Projektwebsite</div><p><a href="hn-radar.html" style="color:#ff8c42;">nodus-ai.app/de/hn-radar</a></p></div>
+      <p style="margin-top:24px;font-size:13px;color:#475569;">Diese Richtlinie kann aktualisiert werden. Wesentliche Änderungen werden in den Versionshinweisen der Erweiterung angekündigt. Die fortgesetzte Nutzung nach einer Änderung gilt als Zustimmung.</p>
+    </div>
+  </div>
+  <footer><p>© 2026 NODUS · <a href="https://nodus-ai.app/de/">Startseite</a> · <a href="hn-radar.html">HN Radar</a> · <a href="privacy.html">NODUS Datenschutz</a> · HN Radar Datenschutz</p></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

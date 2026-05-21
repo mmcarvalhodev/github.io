@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS HN Radar — A signal layer for Hacker News</title>
+  <meta name="description" content="A reading layer for Hacker News. Dark mode, pinned threads with tags, rising posts dashboard, OP-active alerts, built-in translation. Local-first. No tracking.">
+  <link rel="canonical" href="https://nodus-ai.app/hn-radar" />
+  <link rel="stylesheet" href="hn-radar.css">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>HN Radar</span></a>
+      <div class="nav-links">
+        <a href="#how" class="nav-link">How it works</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#privacy" class="nav-link">Privacy</a>
+        <a href="https://chrome.google.com/webstore" class="nav-link highlight">⬇ Install free</a>
+      </div>
+      <a href="https://nodus-ai.app" class="nav-back">← Back to NODUS</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- ── HERO ── -->
+    <div class="hero">
+      <div class="hero-badge">📡 Chrome Extension · Free · No account</div>
+      <h1>A <span class="accent">signal layer</span> for Hacker News</h1>
+      <p class="hero-sub">Same Hacker News. Less eye pain. More signal. Read comfortably, pin threads with tags, see what's actually rising in real time.</p>
+      <p class="hero-tagline">Local-first. No tracking. No server. Your reading stays in your browser.</p>
+      <div class="hero-btns">
+        <a href="https://chrome.google.com/webstore" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          Install for Chrome
+        </a>
+        <a href="#features" class="btn-secondary">See features ↓</a>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="section" id="how">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Install once. Read better forever.</h2>
+      <p class="section-sub">No setup, no account, no configuration. Open Hacker News and the extension takes over the rough edges.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Install the extension</h3>
+          <p>Add NODUS HN Radar to Chrome (Firefox coming). 280KB. Local-only. Zero permissions beyond Hacker News itself.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Open Hacker News</h3>
+          <p>The Lens layer activates automatically. Dark mode, readable fonts, post-type badges, gray-out for visited links — silently.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Open the side panel</h3>
+          <p>Click the extension icon. Pin threads, tag them, watch the Radar surface rising posts with velocity scores in real time.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── FEATURES ── -->
+    <section class="section" id="features">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Designed by someone who reads HN every day.</h2>
+      <p class="section-sub">Not a "modern theme" — a reading and signal layer that respects the HN aesthetic while killing its rough spots.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌓</div>
+          <h4>Lens reading layer</h4>
+          <p>Dark, light or auto theme. Adjustable font size. Reading-width control. Gray-out for visited posts. Compact rows option.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏷️</div>
+          <h4>Type badges</h4>
+          <p>Inline SHOW / ASK / LAUNCH / TELL / POLL pills on titles. Color-coded row tints. Click to open the panel.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📌</div>
+          <h4>Pin & tag threads</h4>
+          <p>Pin any post. Add multi-colored tags (color hashed from tag name). Tags propagate to the HN page next to the title.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📡</div>
+          <h4>Radar dashboard</h4>
+          <p>Top / Show HN / Ask HN / Best — each with velocity score per post (points + comments per hour). Spot what's rising before it's hot.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>Velocity & delta</h4>
+          <p>Each post shows current velocity AND its change over the last interval. Know what's accelerating vs. losing steam.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👤</div>
+          <h4>OP active badge</h4>
+          <p>Golden badge appears when the post author has replied in the thread. The "founder is here" signal HN users love.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h4>Comment war alert</h4>
+          <p>Subtle chip when a thread crosses 150+ comments. Glowing red 🔥 heated when it crosses 400+. Threads worth visiting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h4>Inline preview</h4>
+          <p>Hover the "X comments" link on any pinned card — the top 5 comments expand inline. No tab-switching to scan a discussion.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h4>Built-in translation</h4>
+          <p>Uses Chrome's local Translator API (138+) for post titles and comment previews. No API keys, no cloud, no cost.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔕</div>
+          <h4>Domain muting</h4>
+          <p>Tired of medium.com posts? x.com? Add domains to your mute list and they vanish from the Radar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h4>Zebra striping</h4>
+          <p>Optional alternating row backgrounds with custom color + intensity. Excel-style scanning for the front page.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h4>17 languages</h4>
+          <p>Interface fully translated to English, Português, Español, Français, Deutsch, Italiano, 日本語, 한국어, 中文, Русский and more.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── PRIVACY BLOCK ── -->
+    <section class="section" id="privacy">
+      <div class="privacy-block">
+        <div>
+          <h2>Local-first by design <span>—</span> not as a feature.</h2>
+          <p>Everything you pin, tag, or hide stays in your browser. The extension makes exactly two kinds of network calls: to news.ycombinator.com (the public site) and to Hacker News's public Firebase API (to fetch trending lists). That's it.</p>
+          <p>No server. No account. No telemetry. No tracking. No advertising SDKs. Source code is reviewable in the .crx package.</p>
+          <p><a href="hn-radar-privacy.html">Full privacy policy →</a></p>
+        </div>
+        <ul class="privacy-list">
+          <li>Zero backend infrastructure</li>
+          <li>Zero credentials, zero API keys</li>
+          <li>Zero data leaves your browser</li>
+          <li>No login, no account creation</li>
+          <li>No third-party analytics</li>
+          <li>Uninstall = full data deletion</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── CTA STRIP ── -->
+  <div class="cta-strip">
+    <h3>Ready to read HN like it deserves?</h3>
+    <p>Free. Local. No account. Available on Chrome, Firefox coming soon.</p>
+    <a href="https://chrome.google.com/webstore" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      Install free
+    </a>
+  </div>
+
+  <footer>
+    <div>
+      <a href="https://nodus-ai.app">NODUS Home</a>
+      <a href="hn-radar-privacy.html">Privacy</a>
+      <a href="https://nodus-ai.app/terms">Terms</a>
+    </div>
+    <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

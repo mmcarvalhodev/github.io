@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS HN Radar — 为 Hacker News 打造的信号层</title>
+  <meta name="description" content="Hacker News 阅读层。深色模式、带标签的置顶帖、上升帖仪表板、活跃作者提示、内置翻译。本地优先。无跟踪。">
+  <link rel="canonical" href="https://nodus-ai.app/zh/hn-radar" />
+  <link rel="stylesheet" href="../hn-radar.css">
+  <script>window._forcedLang = 'zh';</script>
+</head>
+<body>
+  <nav><div class="nav-inner"><a href="https://nodus-ai.app/zh/" class="nav-logo">NODUS <span>HN Radar</span></a><div class="nav-links"><a href="#how" class="nav-link">工作原理</a><a href="#features" class="nav-link">功能</a><a href="#privacy" class="nav-link">隐私</a><a href="https://chrome.google.com/webstore" class="nav-link highlight">⬇ 免费安装</a></div><a href="https://nodus-ai.app/zh/" class="nav-back">← 返回 NODUS</a></div></nav>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">📡 Chrome 扩展 · 免费 · 无需账户</div>
+      <h1>为 Hacker News 打造的<span class="accent">信号层</span></h1>
+      <p class="hero-sub">同一个 Hacker News。更少的视觉疲劳。更多的信号。舒适阅读，用标签置顶帖子，实时看到真正在上升的内容。</p>
+      <p class="hero-tagline">本地优先。无跟踪。无服务器。您的阅读数据始终留在浏览器中。</p>
+      <div class="hero-btns"><a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>安装到 Chrome</a><a href="#features" class="btn-secondary">查看功能 ↓</a></div>
+    </div>
+    <hr class="divider">
+    <section class="section" id="how">
+      <div class="section-label">工作原理</div>
+      <h2 class="section-title">安装一次。永远阅读得更好。</h2>
+      <p class="section-sub">无需配置，无需账户。打开 Hacker News，扩展会自动柔化粗糙的边缘。</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>安装扩展</h3><p>将 NODUS HN Radar 添加到 Chrome（即将支持 Firefox）。280KB。仅本地运行。除 Hacker News 之外不要求任何权限。</p></div>
+        <div class="step"><div class="step-num">2</div><h3>打开 Hacker News</h3><p>Lens 层自动启用。深色模式、易读字体、按帖子类型显示徽章、已访问帖子变灰 — 静默生效。</p></div>
+        <div class="step"><div class="step-num">3</div><h3>打开侧边面板</h3><p>点击扩展图标。置顶帖子、添加标签，观察 Radar 实时呈现带速度评分的上升帖。</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="features">
+      <div class="section-label">功能</div>
+      <h2 class="section-title">由每天阅读 HN 的人打造。</h2>
+      <p class="section-sub">不是"现代主题" — 而是一个尊重 HN 美学同时消除其痛点的阅读与信号层。</p>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🌓</div><h4>Lens 阅读层</h4><p>深色、浅色或自动主题。可调字号。可控阅读宽度。已访问帖子变灰。紧凑模式。</p></div>
+        <div class="feature-card"><div class="feature-icon">🏷️</div><h4>类型徽章</h4><p>标题上的 SHOW / ASK / LAUNCH / TELL / POLL 内联标签。按类型着色的行。点击即可打开面板。</p></div>
+        <div class="feature-card"><div class="feature-icon">📌</div><h4>置顶与标签</h4><p>置顶任意帖子。添加多色标签（颜色由名称派生）。标签会在 HN 页面上传播显示在标题旁。</p></div>
+        <div class="feature-card"><div class="feature-icon">📡</div><h4>Radar 仪表板</h4><p>Top / Show HN / Ask HN / Best — 每个帖子都附有速度评分（每小时积分 + 评论数）。在内容爆发前发现上升趋势。</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h4>速度与变化量</h4><p>每个帖子显示当前速度以及上一个时间段的变化。了解什么在加速 vs. 失去动力。</p></div>
+        <div class="feature-card"><div class="feature-icon">👤</div><h4>活跃 OP 徽章</h4><p>当作者在帖子中回复时显示金色徽章。HN 用户喜爱的"创始人在场"信号。</p></div>
+        <div class="feature-card"><div class="feature-icon">🔥</div><h4>热门讨论提示</h4><p>评论超过 150+ 时显示微妙的标签。超过 400+ 时显示 🔥。值得一看的讨论。</p></div>
+        <div class="feature-card"><div class="feature-icon">💬</div><h4>内联预览</h4><p>悬停置顶卡片上的 "X comments" — 内联显示前 5 条最佳评论。无需切换标签页即可浏览讨论。</p></div>
+        <div class="feature-card"><div class="feature-icon">🌐</div><h4>内置翻译</h4><p>使用 Chrome (138+) 本地 Translator API 翻译标题和评论预览。无需 API 密钥，无云端，无成本。</p></div>
+        <div class="feature-card"><div class="feature-icon">🔕</div><h4>域名静音</h4><p>厌倦了 medium.com 帖子？x.com？将域名加入静音列表，它们就会从 Radar 中消失。</p></div>
+        <div class="feature-card"><div class="feature-icon">📐</div><h4>斑马纹行</h4><p>可选的交替背景，颜色和强度可自定义。首页的 Excel 风格扫描。</p></div>
+        <div class="feature-card"><div class="feature-icon">🌍</div><h4>17 种语言</h4><p>界面完整翻译为 English、Português、Español、Français、Deutsch、Italiano、日本語、한국어、中文、Русский 等。</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="privacy">
+      <div class="privacy-block">
+        <div>
+          <h2>从设计上本地优先 <span>—</span> 而非作为一项功能。</h2>
+          <p>您置顶、标记或隐藏的所有内容都留在您的浏览器中。扩展只发起两类网络请求：访问 news.ycombinator.com（公共网站）和 Hacker News 的公共 Firebase API（获取上升帖列表）。仅此而已。</p>
+          <p>无服务器。无账户。无遥测。无跟踪。无广告 SDK。代码可在 .crx 包中查阅。</p>
+          <p><a href="hn-radar-privacy.html">完整隐私政策 →</a></p>
+        </div>
+        <ul class="privacy-list">
+          <li>零后端基础设施</li>
+          <li>零凭据，零 API 密钥</li>
+          <li>零数据离开您的浏览器</li>
+          <li>无需登录，无需注册账户</li>
+          <li>无第三方分析</li>
+          <li>卸载 = 完全删除数据</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div class="cta-strip">
+    <h3>准备好以 HN 应有的方式阅读它了吗？</h3>
+    <p>免费。本地。无需账户。已支持 Chrome，Firefox 即将推出。</p>
+    <a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>免费安装</a>
+  </div>
+  <footer><div><a href="https://nodus-ai.app/zh/">NODUS 首页</a><a href="hn-radar-privacy.html">隐私</a><a href="https://nodus-ai.app/zh/terms">条款</a></div><div style="margin-top:10px;">© 2026 NODUS. 保留所有权利。</div></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

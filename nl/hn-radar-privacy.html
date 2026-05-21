@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacybeleid — NODUS HN Radar</title>
+  <link rel="canonical" href="https://nodus-ai.app/nl/hn-radar-privacy" />
+  <link rel="stylesheet" href="../hn-radar-privacy.css">
+  <script>window._forcedLang = 'nl';</script>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="https://nodus-ai.app/nl/">NODUS</a>
+    <a class="nav-back" href="hn-radar.html">← Terug naar HN Radar</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-label">Juridisch · HN Radar</div>
+    <h1>Privacybeleid</h1>
+    <p>NODUS HN Radar browserextensie &nbsp;·&nbsp; Bijgewerkt: mei 2026 &nbsp;·&nbsp; v0.15</p>
+  </div>
+  <div class="page">
+    <div class="toc">
+      <div class="toc-title">Inhoudsopgave</div>
+      <ol>
+        <li><a href="#overview">Overzicht</a></li>
+        <li><a href="#local-data">Lokaal opgeslagen gegevens</a></li>
+        <li><a href="#endpoints">Externe endpoints toegelicht</a></li>
+        <li><a href="#translation">Vertaling in de browser</a></li>
+        <li><a href="#never">Wat we nooit doen</a></li>
+        <li><a href="#rights">Jouw rechten (LGPD / RGPD / CCPA)</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Overzicht</h2>
+      <div class="highlight"><p><strong>NODUS HN Radar is een volledig local-first browserextensie.</strong> Het verbetert de leeservaring op news.ycombinator.com en haalt stijgende posts naar boven via de publieke API van Hacker News. Geen server, geen account, geen login, geen cloudsynchronisatie, geen telemetrie.</p></div>
+      <p>Zusterproduct van de hoofd-NODUS-extensie (vastleggen van AI-gesprekken) en van NODUS YT Radar. Elk heeft zijn eigen beleid:</p>
+      <ul class="check">
+        <li>NODUS hoofd — <a href="privacy.html" style="color:#ff8c42;">privacy.html</a></li>
+        <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
+        <li>HN Radar — dit document</li>
+      </ul>
+      <p>HN Radar verbindt met twee endpoints, beide eigendom van <strong>Hacker News zelf</strong>:</p>
+      <div class="card"><div class="card-title"><span class="badge badge-green">vereist</span> news.ycombinator.com</div><p>De site die je leest. Het content script verbetert de pagina's die je zelf laadt — zonder proactieve fetch.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">vereist</span> hacker-news.firebaseio.com</div><p>De publieke Firebase-API van Hacker News. Gebruikt om de stijgende lijsten op te halen (Top / Show / Ask / Best) en de individuele itemdetails voor het Radar-dashboard.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-gray">geen</span> NODUS-servers</div><p>HN Radar neemt geen contact op met NODUS-infrastructuur. In tegenstelling tot YT Radar (Community Spotlight worker) of de hoofd-NODUS (PRO-licentie) heeft deze extensie geen enkele NODUS-backendafhankelijkheid.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Lokaal opgeslagen gegevens</h2>
+      <p>Alles hieronder wordt opgeslagen in <code>chrome.storage.local</code> en wordt nooit elders verzonden, behalve zoals beschreven in Sectie 3.</p>
+      <div class="storage-row"><div class="storage-key">settings</div><div class="storage-desc">Jouw voorkeuren: thema, lettergrootte, leesbreedte, highlight-toggles, interfacetaal, vertaalinstellingen, kleur/intensiteit van de zebra, enz.</div></div>
+      <div class="storage-row"><div class="storage-key">visited</div><div class="storage-desc">Lijst met HN-post-ID's die je hebt aangeklikt vanaf de front page, met timestamps. Gebruikt om bezochte posts grijs te maken. TTL 30 dagen met automatische opschoning.</div></div>
+      <div class="storage-row"><div class="storage-key">pinned</div><div class="storage-desc">Expliciet gepinde posts via 📌: id, titel, url, domein, snapshot van score, aantal reacties, leeftijd, tags, pintimestamp.</div></div>
+      <div class="storage-row"><div class="storage-key">collapsedCards</div><div class="storage-desc">ID's van gepinde kaarten die je hebt ingeklapt in het zijpaneel.</div></div>
+      <div class="storage-row"><div class="storage-key">recentTags</div><div class="storage-desc">Lijst van de laatste 40 gebruikte tagnamen, voor autocomplete.</div></div>
+      <div class="storage-row"><div class="storage-key">mutedDomains</div><div class="storage-desc">Lijst van domeinen die je hebt gemuted. Posts van deze domeinen worden verborgen in de Radar.</div></div>
+      <div class="storage-row"><div class="storage-key">radar</div><div class="storage-desc">Snapshots van HN-postgegevens (score, reacties) in de tijd, gebruikt om velocity te berekenen.</div></div>
+      <div class="storage-row"><div class="storage-key">opActiveCache</div><div class="storage-desc">Cache van "auteur heeft gereageerd"-detectie per ID. TTL 10 minuten.</div></div>
+      <div class="storage-row"><div class="storage-key">comments_&lt;postId&gt;</div><div class="storage-desc">Cache van reacties in hover-preview. TTL 10 minuten.</div></div>
+      <div class="highlight" style="margin-top:24px;"><p>Het verwijderen van de extensie wist alles automatisch. Geen gebruikersaccounts, geen e-mailverzameling, geen manier voor NODUS om je te identificeren.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Externe endpoints toegelicht</h2>
+      <p>De extensie fetcht enkel van twee domeinen, gedeclareerd in <code>host_permissions</code> en zichtbaar voor Chrome vóór installatie.</p>
+      <h3>3a. Hacker News-site</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">alleen content script</span></div><div class="endpoint-body"><p>Het content script injecteert CSS en kleine DOM-verbeteringen (pin-knoppen, type-badges, vertaalknoppen) op de pagina's die je laadt. De extensie fetcht HN niet proactief op de achtergrond.</p><p class="data-sent"><strong>Door de extensie verzonden gegevens:</strong> geen, naast wat je browser al verzendt.</p></div></div>
+      <h3>3b. Publieke Firebase-API van Hacker News</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://hacker-news.firebaseio.com/v0/topstories.json</span><span class="badge badge-green">vereist</span></div><div class="endpoint-body"><p>Retourneert de array van stijgende ID's. Dezelfde bron als de officiële HN-front page.</p><p class="data-sent"><strong>Verzonden gegevens:</strong> niets identificeerbaars — alleen het verzoek.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">indien tab actief</span></div><div class="endpoint-body"><p>Hetzelfde voor de Best-, Show HN- en Ask HN-tabs.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">per post</span></div><div class="endpoint-body"><p>Haalt de publieke details op van elke post of reactie die in de Radar of preview wordt getoond.</p><p class="data-sent"><strong>Verzonden gegevens:</strong> de ID van de post. Geen identificator van jou.</p></div></div>
+      <p style="font-size:13px;color:#64748b;">Hacker News en Y Combinator kunnen deze verzoeken loggen volgens hun eigen beleid. De extensie zelf voegt geen headers, cookies of auth toe.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="translation"></span>
+      <h2><span class="icon">🌐</span> 4. Vertaling in de browser</h2>
+      <div class="highlight"><p><strong>Vertalingen gebeuren volledig op jouw apparaat.</strong> HN Radar gebruikt de ingebouwde Translator-API van Chrome (Chrome 138+), die bij het eerste gebruik een klein taalmodel lokaal downloadt en de tekst vertaalt zonder iets naar een server te sturen.</p></div>
+      <p>Dat betekent:</p>
+      <ul class="check">
+        <li>Geen tekst verlaat je browser tijdens het vertalen.</li>
+        <li>Geen API-sleutel, geen kosten, geen gebruikstracking.</li>
+        <li>Vertaling werkt offline zodra het model is gedownload.</li>
+        <li>Vertaalcache is uitsluitend lokaal en wordt gewist met de extensie.</li>
+      </ul>
+      <p>Als je browser de Translator-API niet ondersteunt (Firefox of oudere Chrome), doen de vertaalfuncties niets — geen fallback naar een clouddienst.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Wat we nooit doen</h2>
+      <ul class="check cross">
+        <li>Je gegevens verkopen aan derden</li>
+        <li>Iets verzenden naar NODUS-servers (geen NODUS-backend voor deze extensie)</li>
+        <li>Bijhouden welke posts je leest, klikt of pint</li>
+        <li>Bezochte sites buiten news.ycombinator.com tracken</li>
+        <li>Externe analytics of advertentie-SDK's gebruiken</li>
+        <li>Je HN-reacties, antwoorden of accountgegevens lezen of opslaan</li>
+        <li>Toegang nemen tot microfoon, camera, klembord of downloads</li>
+        <li>Advertenties of affiliate links injecteren</li>
+        <li>Een account, login of e-mail vereisen</li>
+        <li>Je tags, pins of voorkeuren synchroniseren in de cloud</li>
+      </ul>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Jouw rechten (LGPD / RGPD / CCPA)</h2>
+      <p>HN Radar voldoet aan de Braziliaanse LGPD, de Europese RGPD en is compatibel met de CCPA. Aangezien alle gegevens lokaal zijn en de extensie geen profiling of cross-site tracking doet, oefen je de meeste rechten direct uit via je browser.</p>
+      <h3>Rechten die je hebt</h3>
+      <ul class="check">
+        <li><strong>Toegang</strong> — alle lokale gegevens zijn zichtbaar in <code>chrome://extensions</code> → HN Radar → Inspecteren → Application → Storage</li>
+        <li><strong>Verwijdering</strong> — de extensie verwijderen wist alles</li>
+        <li><strong>Overdraagbaarheid</strong> — lokale gegevens in JSON in <code>chrome.storage.local</code>, exporteerbaar via DevTools</li>
+        <li><strong>Opt-out</strong> — schakel de Lens master-toggle uit op elk gewenst moment</li>
+      </ul>
+      <h3>Juridische basis voor verwerking</h3>
+      <p>Het lezen van de publieke HN-site en de publieke HN-API valt onder <strong>gerechtvaardigd belang</strong> (het leveren van de leeslaag die je hebt gekozen door de extensie te installeren). Er worden geen persoonlijk identificeerbare gegevens verwerkt.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. Contact</h2>
+      <p>Voor privacyvragen of functieverzoeken:</p>
+      <div class="card"><div class="card-title">📧 E-mail</div><p>mmcarvalho.dev@gmail.com</p></div>
+      <div class="card"><div class="card-title">🌐 Projectsite</div><p><a href="hn-radar.html" style="color:#ff8c42;">nodus-ai.app/nl/hn-radar</a></p></div>
+      <p style="margin-top:24px;font-size:13px;color:#475569;">Dit beleid kan worden bijgewerkt. Belangrijke wijzigingen worden gemeld in de release notes van de extensie. Voortgezet gebruik na wijziging geldt als acceptatie.</p>
+    </div>
+  </div>
+  <footer><p>© 2026 NODUS · <a href="https://nodus-ai.app/nl/">Home</a> · <a href="hn-radar.html">HN Radar</a> · <a href="privacy.html">NODUS-privacy</a> · HN Radar-privacy</p></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

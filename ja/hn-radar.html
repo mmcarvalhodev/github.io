@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS HN Radar — Hacker News のためのシグナルレイヤー</title>
+  <meta name="description" content="Hacker News 向け閲覧レイヤー。ダークモード、タグ付きピン留めスレッド、上昇中投稿のダッシュボード、投稿者アクティブ通知、翻訳機能を内蔵。ローカルファースト。トラッキングなし。">
+  <link rel="canonical" href="https://nodus-ai.app/ja/hn-radar" />
+  <link rel="stylesheet" href="../hn-radar.css">
+  <script>window._forcedLang = 'ja';</script>
+</head>
+<body>
+  <nav><div class="nav-inner"><a href="https://nodus-ai.app/ja/" class="nav-logo">NODUS <span>HN Radar</span></a><div class="nav-links"><a href="#how" class="nav-link">使い方</a><a href="#features" class="nav-link">機能</a><a href="#privacy" class="nav-link">プライバシー</a><a href="https://chrome.google.com/webstore" class="nav-link highlight">⬇ 無料インストール</a></div><a href="https://nodus-ai.app/ja/" class="nav-back">← NODUS に戻る</a></div></nav>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">📡 Chrome 拡張機能 · 無料 · アカウント不要</div>
+      <h1>Hacker News のための <span class="accent">シグナルレイヤー</span></h1>
+      <p class="hero-sub">同じ Hacker News。視覚疲労を軽減。シグナルを増幅。快適に読み、スレッドをタグ付きでピン留めし、本当に上昇している投稿をリアルタイムで把握できます。</p>
+      <p class="hero-tagline">ローカルファースト。トラッキングなし。サーバーなし。閲覧はあなたのブラウザの中に留まります。</p>
+      <div class="hero-btns"><a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Chrome にインストール</a><a href="#features" class="btn-secondary">機能を見る ↓</a></div>
+    </div>
+    <hr class="divider">
+    <section class="section" id="how">
+      <div class="section-label">使い方</div>
+      <h2 class="section-title">一度インストール。これからずっと快適に。</h2>
+      <p class="section-sub">設定不要、アカウント不要。Hacker News を開けば拡張機能が荒削りな部分を整えます。</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>拡張機能をインストール</h3><p>NODUS HN Radar を Chrome に追加(Firefox 対応予定)。280KB。ローカルのみで動作。Hacker News 以外への権限はゼロ。</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Hacker News を開く</h3><p>Lens レイヤーが自動で有効化。ダークモード、読みやすいフォント、投稿タイプ別バッジ、訪問済み投稿のグレーアウト — 静かに動作します。</p></div>
+        <div class="step"><div class="step-num">3</div><h3>サイドパネルを開く</h3><p>拡張機能アイコンをクリック。スレッドをピン留め、タグ付け、上昇中の投稿をリアルタイムの速度スコアと共に Radar で確認できます。</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="features">
+      <div class="section-label">機能</div>
+      <h2 class="section-title">毎日 HN を読む人が作りました。</h2>
+      <p class="section-sub">単なる「モダンなテーマ」ではなく — HN の美学を尊重しつつ、その弱点を解消する閲覧・シグナルレイヤーです。</p>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🌓</div><h4>Lens 閲覧レイヤー</h4><p>ダーク、ライト、または自動テーマ。フォントサイズ調整可能。読書幅の制御。訪問済み投稿のグレーアウト。コンパクトモード。</p></div>
+        <div class="feature-card"><div class="feature-icon">🏷️</div><h4>タイプ別バッジ</h4><p>タイトル上にインラインの SHOW / ASK / LAUNCH / TELL / POLL ピル。タイプ別の色付きライン。クリックでパネルを開きます。</p></div>
+        <div class="feature-card"><div class="feature-icon">📌</div><h4>ピン留めとタグ付け</h4><p>任意の投稿をピン留め。マルチカラータグを追加(色は名前から自動生成)。タグは HN ページ上のタイトル横に表示されます。</p></div>
+        <div class="feature-card"><div class="feature-icon">📡</div><h4>Radar ダッシュボード</h4><p>Top / Show HN / Ask HN / Best — それぞれ投稿ごとの速度スコア(1時間あたりのポイント+コメント数)。爆発する前に上昇を察知。</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h4>速度とデルタ</h4><p>各投稿に現在の速度と直近インターバルでの変化を表示。何が加速していて何が勢いを失っているかが分かります。</p></div>
+        <div class="feature-card"><div class="feature-icon">👤</div><h4>OP アクティブバッジ</h4><p>投稿者がスレッドに返信したときに金色のバッジが表示されます。HN ユーザーが大好きな「創業者がここにいる」シグナル。</p></div>
+        <div class="feature-card"><div class="feature-icon">🔥</div><h4>活発な議論アラート</h4><p>スレッドが 150 件以上のコメントを超えると控えめなチップが表示。400 件以上で 🔥 が燃え上がります。訪問する価値のあるスレッドが一目瞭然。</p></div>
+        <div class="feature-card"><div class="feature-icon">💬</div><h4>インラインプレビュー</h4><p>ピン留めカード上の「X comments」にホバーすると、トップ 5 のコメントがインライン表示。タブを切り替えずに議論をスキャンできます。</p></div>
+        <div class="feature-card"><div class="feature-icon">🌐</div><h4>翻訳機能内蔵</h4><p>Chrome のローカル Translator API (138+) をタイトルとコメントプレビューに使用。API キー不要、クラウド不要、コストもゼロ。</p></div>
+        <div class="feature-card"><div class="feature-icon">🔕</div><h4>ドメインミュート</h4><p>medium.com の投稿にうんざり?x.com は?ドメインをミュートリストに追加すれば Radar から消えます。</p></div>
+        <div class="feature-card"><div class="feature-icon">📐</div><h4>交互の行</h4><p>オプションの交互背景を色と濃度をカスタマイズ可能。トップページを Excel スタイルでスキャン。</p></div>
+        <div class="feature-card"><div class="feature-icon">🌍</div><h4>17 言語対応</h4><p>インターフェースは English、Português、Español、Français、Deutsch、Italiano、日本語、한국어、中文、Русский など完全翻訳済み。</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="privacy">
+      <div class="privacy-block">
+        <div>
+          <h2>設計上ローカルファースト <span>—</span> 機能としてではなく。</h2>
+          <p>ピン留め、タグ付け、非表示にしたものはすべてあなたのブラウザに残ります。拡張機能のネットワーク通信は厳密に2種類だけ:news.ycombinator.com(公開サイト)と Hacker News の公開 Firebase API(上昇中リストの取得用)。それだけです。</p>
+          <p>サーバーなし。アカウントなし。テレメトリーなし。トラッキングなし。広告 SDK なし。.crx パッケージ内のコードは確認可能です。</p>
+          <p><a href="hn-radar-privacy.html">プライバシーポリシー全文 →</a></p>
+        </div>
+        <ul class="privacy-list">
+          <li>バックエンドインフラ ゼロ</li>
+          <li>認証情報ゼロ、API キーゼロ</li>
+          <li>ブラウザからデータが出ることなし</li>
+          <li>ログイン不要、アカウント作成不要</li>
+          <li>サードパーティアナリティクスなし</li>
+          <li>アンインストール = データ完全消去</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div class="cta-strip">
+    <h3>HN を本来の姿で読む準備はできましたか?</h3>
+    <p>無料。ローカル。アカウント不要。Chrome で利用可能、Firefox 対応予定。</p>
+    <a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>無料インストール</a>
+  </div>
+  <footer><div><a href="https://nodus-ai.app/ja/">NODUS ホーム</a><a href="hn-radar-privacy.html">プライバシー</a><a href="https://nodus-ai.app/ja/terms">利用規約</a></div><div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

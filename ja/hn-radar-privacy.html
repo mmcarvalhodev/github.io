@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー — NODUS HN Radar</title>
+  <link rel="canonical" href="https://nodus-ai.app/ja/hn-radar-privacy" />
+  <link rel="stylesheet" href="../hn-radar-privacy.css">
+  <script>window._forcedLang = 'ja';</script>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="https://nodus-ai.app/ja/">NODUS</a>
+    <a class="nav-back" href="hn-radar.html">← HN Radar に戻る</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-label">法的事項 · HN Radar</div>
+    <h1>プライバシーポリシー</h1>
+    <p>NODUS HN Radar ブラウザ拡張機能 &nbsp;·&nbsp; 更新日:2026年5月 &nbsp;·&nbsp; v0.15</p>
+  </div>
+  <div class="page">
+    <div class="toc">
+      <div class="toc-title">目次</div>
+      <ol>
+        <li><a href="#overview">概要</a></li>
+        <li><a href="#local-data">ローカルに保存されるデータ</a></li>
+        <li><a href="#endpoints">外部エンドポイントの説明</a></li>
+        <li><a href="#translation">ブラウザ内翻訳</a></li>
+        <li><a href="#never">決して行わないこと</a></li>
+        <li><a href="#rights">あなたの権利 (LGPD / GDPR / CCPA)</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ol>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. 概要</h2>
+      <div class="highlight"><p><strong>NODUS HN Radar は完全にローカルファーストのブラウザ拡張機能です。</strong> news.ycombinator.com の閲覧体験を改善し、Hacker News の公開 API を介して上昇中の投稿を浮上させます。サーバーなし、アカウントなし、ログインなし、クラウド同期なし、テレメトリーなし。</p></div>
+      <p>NODUS メイン拡張機能(AI 会話キャプチャ)と NODUS YT Radar の姉妹プロダクトです。それぞれが独自のポリシーを持ちます:</p>
+      <ul class="check">
+        <li>NODUS メイン — <a href="privacy.html" style="color:#ff8c42;">privacy.html</a></li>
+        <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
+        <li>HN Radar — このドキュメント</li>
+      </ul>
+      <p>HN Radar は2つのエンドポイントに接続し、両方とも <strong>Hacker News 自身</strong> に属します:</p>
+      <div class="card"><div class="card-title"><span class="badge badge-green">必須</span> news.ycombinator.com</div><p>あなたが読んでいるサイトそのもの。content script はあなた自身が読み込んだページを改善します — プロアクティブな fetch はありません。</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">必須</span> hacker-news.firebaseio.com</div><p>Hacker News の公開 Firebase API。上昇中リスト(Top / Show / Ask / Best)と Radar ダッシュボード用の個別アイテム詳細を取得するために使用します。</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-gray">なし</span> NODUS サーバー</div><p>HN Radar は NODUS インフラに一切接続しません。YT Radar(Community Spotlight worker)や NODUS メイン(PRO ライセンス)とは異なり、この拡張機能には NODUS バックエンドへの依存はありません。</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. ローカルに保存されるデータ</h2>
+      <p>以下のすべてが <code>chrome.storage.local</code> に保存され、セクション 3 で説明される場合を除いて他のどこにも送信されません。</p>
+      <div class="storage-row"><div class="storage-key">settings</div><div class="storage-desc">あなたの設定:テーマ、フォントサイズ、読書幅、ハイライトのトグル、インターフェース言語、翻訳設定、ゼブラの色/濃度など。</div></div>
+      <div class="storage-row"><div class="storage-key">visited</div><div class="storage-desc">フロントページからクリックした HN 投稿の ID リスト、タイムスタンプ付き。訪問済み投稿のグレーアウトに使用。30日 TTL、自動プルーニング。</div></div>
+      <div class="storage-row"><div class="storage-key">pinned</div><div class="storage-desc">📌 で明示的にピン留めされた投稿:ID、タイトル、URL、ドメイン、スコアのスナップショット、コメント数、経過時間、タグ、ピン留めタイムスタンプ。</div></div>
+      <div class="storage-row"><div class="storage-key">collapsedCards</div><div class="storage-desc">サイドパネルで折りたたんだピン留めカードの ID。</div></div>
+      <div class="storage-row"><div class="storage-key">recentTags</div><div class="storage-desc">直近 40 件のタグ名リスト、オートコンプリート用。</div></div>
+      <div class="storage-row"><div class="storage-key">mutedDomains</div><div class="storage-desc">ミュートしたドメインのリスト。これらのドメインの投稿は Radar から非表示になります。</div></div>
+      <div class="storage-row"><div class="storage-key">radar</div><div class="storage-desc">時間経過に伴う HN 投稿データのスナップショット(スコア、コメント)、速度計算に使用。</div></div>
+      <div class="storage-row"><div class="storage-key">opActiveCache</div><div class="storage-desc">ID ごとの「投稿者が返信した」検出キャッシュ。10分 TTL。</div></div>
+      <div class="storage-row"><div class="storage-key">comments_&lt;postId&gt;</div><div class="storage-desc">ホバープレビューコメントのキャッシュ。10分 TTL。</div></div>
+      <div class="highlight" style="margin-top:24px;"><p>拡張機能をアンインストールするとすべてが自動的に消去されます。ユーザーアカウントなし、メール収集なし、NODUS があなたを特定する手段はありません。</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. 外部エンドポイントの説明</h2>
+      <p>拡張機能は <code>host_permissions</code> に宣言された2つのドメインからのみ fetch を行い、これはインストール前に Chrome で確認できます。</p>
+      <h3>3a. Hacker News サイト</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">content script のみ</span></div><div class="endpoint-body"><p>content script はあなたが読み込むページに CSS と小さな DOM 改善(ピンボタン、タイプバッジ、翻訳ボタン)を注入します。拡張機能はバックグラウンドで HN にプロアクティブな fetch を行いません。</p><p class="data-sent"><strong>拡張機能から送信されるデータ:</strong> ブラウザが既に送信しているもの以外はなし。</p></div></div>
+      <h3>3b. Hacker News の公開 Firebase API</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://hacker-news.firebaseio.com/v0/topstories.json</span><span class="badge badge-green">必須</span></div><div class="endpoint-body"><p>上昇中の ID 配列を返します。公式 HN フロントページと同じソース。</p><p class="data-sent"><strong>送信されるデータ:</strong> 識別情報はなし — リクエストのみ。</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">アクティブなタブの場合</span></div><div class="endpoint-body"><p>Best、Show HN、Ask HN タブにも同様。</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">投稿ごと</span></div><div class="endpoint-body"><p>Radar またはプレビューで表示される各投稿またはコメントの公開詳細を取得します。</p><p class="data-sent"><strong>送信されるデータ:</strong> 投稿の ID のみ。あなたを示す識別子はなし。</p></div></div>
+      <p style="font-size:13px;color:#64748b;">Hacker News と Y Combinator は独自のポリシーに従ってこれらのリクエストをログに記録する可能性があります。拡張機能自体はヘッダー、Cookie、認証情報を追加しません。</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="translation"></span>
+      <h2><span class="icon">🌐</span> 4. ブラウザ内翻訳</h2>
+      <div class="highlight"><p><strong>翻訳は完全にあなたのデバイス上で行われます。</strong> HN Radar は Chrome 内蔵の Translator API (Chrome 138+) を使用し、初回使用時に小さな言語モデルをローカルにダウンロードして、サーバーに送信せずにテキストを翻訳します。</p></div>
+      <p>これは以下を意味します:</p>
+      <ul class="check">
+        <li>翻訳時にテキストがブラウザから出ることはありません。</li>
+        <li>API キーなし、コストなし、使用状況追跡なし。</li>
+        <li>モデルがダウンロードされれば翻訳はオフラインで動作します。</li>
+        <li>翻訳キャッシュはローカルのみで、拡張機能と共に消去されます。</li>
+      </ul>
+      <p>ブラウザが Translator API をサポートしない場合(Firefox や古い Chrome)、翻訳機能は何も動作しません — クラウドサービスへのフォールバックはありません。</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. 決して行わないこと</h2>
+      <ul class="check cross">
+        <li>あなたのデータを第三者に販売すること</li>
+        <li>NODUS サーバーに何かを送信すること(この拡張機能には NODUS バックエンドはありません)</li>
+        <li>あなたが読んだ、クリックした、ピン留めした投稿を追跡すること</li>
+        <li>news.ycombinator.com 以外で訪問したサイトを追跡すること</li>
+        <li>サードパーティのアナリティクスや広告 SDK を使用すること</li>
+        <li>あなたのコメント、返信、HN アカウントデータを読み取りまたは保存すること</li>
+        <li>マイク、カメラ、クリップボード、ダウンロードへのアクセス</li>
+        <li>広告やアフィリエイトリンクの注入</li>
+        <li>アカウント、ログイン、メールの要求</li>
+        <li>タグ、ピン、設定のクラウド同期</li>
+      </ul>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. あなたの権利 (LGPD / GDPR / CCPA)</h2>
+      <p>HN Radar はブラジルの LGPD、欧州の GDPR に準拠し、CCPA と互換性があります。すべてのデータはローカルにあり、拡張機能はプロファイリングやサイト横断トラッキングを行わないため、ほとんどの権利はブラウザを通じて直接行使できます。</p>
+      <h3>あなたが持つ権利</h3>
+      <ul class="check">
+        <li><strong>アクセス</strong> — すべてのローカルデータは <code>chrome://extensions</code> → HN Radar → Inspect → Application → Storage で確認できます</li>
+        <li><strong>削除</strong> — 拡張機能をアンインストールするとすべてが消去されます</li>
+        <li><strong>ポータビリティ</strong> — ローカルデータは <code>chrome.storage.local</code> 内に JSON 形式で保存され、DevTools からエクスポート可能です</li>
+        <li><strong>オプトアウト</strong> — Lens マスタートグルをいつでも無効化できます</li>
+      </ul>
+      <h3>処理の法的根拠</h3>
+      <p>公開 HN サイトと公開 HN API の読み取りは <strong>正当な利益</strong> に該当します(拡張機能をインストールして選択した閲覧レイヤーを提供するため)。個人を特定できるデータは一切処理されません。</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. お問い合わせ</h2>
+      <p>プライバシーに関する質問や機能リクエストについて:</p>
+      <div class="card"><div class="card-title">📧 メール</div><p>mmcarvalho.dev@gmail.com</p></div>
+      <div class="card"><div class="card-title">🌐 プロジェクトサイト</div><p><a href="hn-radar.html" style="color:#ff8c42;">nodus-ai.app/ja/hn-radar</a></p></div>
+      <p style="margin-top:24px;font-size:13px;color:#475569;">このポリシーは更新される場合があります。重要な変更は拡張機能のリリースノートに記載されます。変更後の継続利用は承諾とみなされます。</p>
+    </div>
+  </div>
+  <footer><p>© 2026 NODUS · <a href="https://nodus-ai.app/ja/">ホーム</a> · <a href="hn-radar.html">HN Radar</a> · <a href="privacy.html">NODUS プライバシー</a> · HN Radar プライバシー</p></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

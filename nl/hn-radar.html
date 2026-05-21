@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS HN Radar — Een signaallaag voor Hacker News</title>
+  <meta name="description" content="Leeslaag voor Hacker News. Donkere modus, vastgepinde threads met tags, dashboard van stijgende posts, actieve-auteurmeldingen, ingebouwde vertaling. Local-first. Zonder tracking.">
+  <link rel="canonical" href="https://nodus-ai.app/nl/hn-radar" />
+  <link rel="stylesheet" href="../hn-radar.css">
+  <script>window._forcedLang = 'nl';</script>
+</head>
+<body>
+  <nav><div class="nav-inner"><a href="https://nodus-ai.app/nl/" class="nav-logo">NODUS <span>HN Radar</span></a><div class="nav-links"><a href="#how" class="nav-link">Hoe het werkt</a><a href="#features" class="nav-link">Functies</a><a href="#privacy" class="nav-link">Privacy</a><a href="https://chrome.google.com/webstore" class="nav-link highlight">⬇ Gratis installeren</a></div><a href="https://nodus-ai.app/nl/" class="nav-back">← Terug naar NODUS</a></div></nav>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">📡 Chrome-extensie · Gratis · Geen account</div>
+      <h1>Een <span class="accent">signaallaag</span> voor Hacker News</h1>
+      <p class="hero-sub">Hetzelfde Hacker News. Minder visuele vermoeidheid. Meer signaal. Lees comfortabel, pin threads met tags, zie wat er echt opkomt in realtime.</p>
+      <p class="hero-tagline">Local-first. Zonder tracking. Zonder server. Je leesgedrag blijft in je browser.</p>
+      <div class="hero-btns"><a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Installeren op Chrome</a><a href="#features" class="btn-secondary">Bekijk de functies ↓</a></div>
+    </div>
+    <hr class="divider">
+    <section class="section" id="how">
+      <div class="section-label">Hoe het werkt</div>
+      <h2 class="section-title">Eenmaal installeren. Voor altijd beter lezen.</h2>
+      <p class="section-sub">Geen configuratie, geen account. Open Hacker News en de extensie verzacht de scherpe randjes.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>Installeer de extensie</h3><p>Voeg NODUS HN Radar toe aan Chrome (Firefox volgt binnenkort). 280KB. Alleen lokaal. Nul permissies buiten Hacker News.</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Open Hacker News</h3><p>De Lens-laag activeert zich automatisch. Donkere modus, leesbare lettertypen, badges per posttype, bezochte posts in grijs — geruisloos.</p></div>
+        <div class="step"><div class="step-num">3</div><h3>Open het zijpaneel</h3><p>Klik op het extensie-icoon. Pin threads, tag ze, en kijk hoe Radar de stijgende posts naar boven brengt met hun velocity-scores in realtime.</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="features">
+      <div class="section-label">Functies</div>
+      <h2 class="section-title">Ontworpen door iemand die elke dag HN leest.</h2>
+      <p class="section-sub">Geen "modern thema" — een lees- en signaallaag die de esthetiek van HN respecteert en tegelijk de zwakke punten wegneemt.</p>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🌓</div><h4>Lens-leeslaag</h4><p>Donker, licht of auto-thema. Aanpasbare lettergrootte. Regeling van leesbreedte. Bezochte posts in grijs. Compacte modus.</p></div>
+        <div class="feature-card"><div class="feature-icon">🏷️</div><h4>Type-badges</h4><p>Inline pills SHOW / ASK / LAUNCH / TELL / POLL op titels. Gekleurde regels per type. Klik om het paneel te openen.</p></div>
+        <div class="feature-card"><div class="feature-icon">📌</div><h4>Pinnen en taggen</h4><p>Pin elke gewenste post. Voeg meerkleurige tags toe (kleur afgeleid van de naam). Tags verschijnen op de HN-pagina naast de titel.</p></div>
+        <div class="feature-card"><div class="feature-icon">📡</div><h4>Radar-dashboard</h4><p>Top / Show HN / Ask HN / Best — elk met velocity-score per post (punten + reacties per uur). Spot wat opkomt voordat het ontploft.</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h4>Velocity en delta</h4><p>Elke post toont zijn actuele velocity ÉN de verandering over het laatste interval. Weet wat versnelt versus wat momentum verliest.</p></div>
+        <div class="feature-card"><div class="feature-icon">👤</div><h4>Actieve OP-badge</h4><p>Een gouden badge verschijnt wanneer de auteur van de post in de thread heeft gereageerd. Het "de oprichter is hier"-signaal waar HN-gebruikers dol op zijn.</p></div>
+        <div class="feature-card"><div class="feature-icon">🔥</div><h4>Hot-discussie-melding</h4><p>Subtiele chip wanneer een thread meer dan 150 reacties heeft. 🔥 gloeiend bij meer dan 400. Threads die een bezoek waard zijn.</p></div>
+        <div class="feature-card"><div class="feature-icon">💬</div><h4>Inline preview</h4><p>Hover boven "X comments" op een gepinde kaart — de 5 beste reacties verschijnen inline. Geen tab wisselen om een discussie te scannen.</p></div>
+        <div class="feature-card"><div class="feature-icon">🌐</div><h4>Ingebouwde vertaling</h4><p>Gebruikt de lokale Translator-API van Chrome (138+) voor titels en reactie-previews. Geen API-sleutels, geen cloud, geen kosten.</p></div>
+        <div class="feature-card"><div class="feature-icon">🔕</div><h4>Domeinen muten</h4><p>Genoeg van medium.com-posts? x.com? Voeg domeinen toe aan je mute-lijst en ze verdwijnen uit de Radar.</p></div>
+        <div class="feature-card"><div class="feature-icon">📐</div><h4>Afwisselende regels</h4><p>Optionele afwisselende achtergronden met aanpasbare kleur en intensiteit. Excel-achtig scannen voor de homepage.</p></div>
+        <div class="feature-card"><div class="feature-icon">🌍</div><h4>17 talen</h4><p>Interface volledig vertaald in English, Português, Español, Français, Deutsch, Italiano, 日本語, 한국어, 中文, Русский en meer.</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="privacy">
+      <div class="privacy-block">
+        <div>
+          <h2>Local-first by design <span>—</span> niet als feature.</h2>
+          <p>Alles wat je pint, tagt of verbergt blijft in je browser. De extensie maakt precies twee soorten netwerkverzoeken: naar news.ycombinator.com (de publieke site) en naar de publieke Firebase-API van Hacker News (om de stijgende lijsten op te halen). Dat is alles.</p>
+          <p>Geen server. Geen account. Geen telemetrie. Geen tracking. Geen advertentie-SDK's. Code in te zien in het .crx-pakket.</p>
+          <p><a href="hn-radar-privacy.html">Volledig privacybeleid →</a></p>
+        </div>
+        <ul class="privacy-list">
+          <li>Geen backend-infrastructuur</li>
+          <li>Geen credentials, geen API-sleutels</li>
+          <li>Geen data verlaat je browser</li>
+          <li>Geen login, geen account aanmaken</li>
+          <li>Geen externe analytics</li>
+          <li>Verwijderen = volledige datawissing</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div class="cta-strip">
+    <h3>Klaar om HN te lezen zoals het verdient?</h3>
+    <p>Gratis. Lokaal. Geen account. Beschikbaar op Chrome, Firefox volgt binnenkort.</p>
+    <a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Gratis installeren</a>
+  </div>
+  <footer><div><a href="https://nodus-ai.app/nl/">NODUS-home</a><a href="hn-radar-privacy.html">Privacy</a><a href="https://nodus-ai.app/nl/terms">Voorwaarden</a></div><div style="margin-top:10px;">© 2026 NODUS. Alle rechten voorbehouden.</div></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chính sách quyền riêng tư — NODUS HN Radar</title>
+  <link rel="canonical" href="https://nodus-ai.app/vi/hn-radar-privacy" />
+  <link rel="stylesheet" href="../hn-radar-privacy.css">
+  <script>window._forcedLang = 'vi';</script>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="https://nodus-ai.app/vi/">NODUS</a>
+    <a class="nav-back" href="hn-radar.html">← Quay lại HN Radar</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-label">Pháp lý · HN Radar</div>
+    <h1>Chính sách quyền riêng tư</h1>
+    <p>Tiện ích trình duyệt NODUS HN Radar &nbsp;·&nbsp; Cập nhật: Tháng 5 năm 2026 &nbsp;·&nbsp; v0.15</p>
+  </div>
+  <div class="page">
+    <div class="toc">
+      <div class="toc-title">Mục lục</div>
+      <ol>
+        <li><a href="#overview">Tổng quan</a></li>
+        <li><a href="#local-data">Dữ liệu lưu cục bộ</a></li>
+        <li><a href="#endpoints">Giải thích các endpoint bên ngoài</a></li>
+        <li><a href="#translation">Dịch trong trình duyệt</a></li>
+        <li><a href="#never">Những điều chúng tôi không bao giờ làm</a></li>
+        <li><a href="#rights">Quyền của bạn (LGPD / GDPR / CCPA)</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ol>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Tổng quan</h2>
+      <div class="highlight"><p><strong>NODUS HN Radar là một tiện ích trình duyệt hoàn toàn local-first.</strong> Nó cải thiện trải nghiệm đọc trên news.ycombinator.com và làm nổi bật các bài đang lên thông qua API công khai của Hacker News. Không máy chủ, không tài khoản, không đăng nhập, không đồng bộ cloud, không telemetry.</p></div>
+      <p>Sản phẩm anh em của tiện ích NODUS chính (chụp lại các cuộc hội thoại AI) và NODUS YT Radar. Mỗi cái có chính sách riêng:</p>
+      <ul class="check">
+        <li>NODUS chính — <a href="privacy.html" style="color:#ff8c42;">privacy.html</a></li>
+        <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
+        <li>HN Radar — tài liệu này</li>
+      </ul>
+      <p>HN Radar kết nối với hai endpoint, cả hai đều thuộc về <strong>chính Hacker News</strong>:</p>
+      <div class="card"><div class="card-title"><span class="badge badge-green">bắt buộc</span> news.ycombinator.com</div><p>Trang web bạn đang đọc. Content script cải thiện các trang bạn tự tải — không có fetch chủ động.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">bắt buộc</span> hacker-news.firebaseio.com</div><p>API Firebase công khai của Hacker News. Được dùng để lấy danh sách bài đang lên (Top / Show / Ask / Best) và chi tiết từng item cho bảng điều khiển Radar.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-gray">không có</span> Máy chủ NODUS</div><p>HN Radar không liên hệ với bất kỳ hạ tầng NODUS nào. Khác với YT Radar (worker Community Spotlight) hoặc NODUS chính (giấy phép PRO), tiện ích này không có phụ thuộc backend NODUS nào.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Dữ liệu lưu cục bộ</h2>
+      <p>Tất cả những gì sau đây được lưu trong <code>chrome.storage.local</code> và không bao giờ được gửi đi nơi khác trừ trường hợp được mô tả ở Mục 3.</p>
+      <div class="storage-row"><div class="storage-key">settings</div><div class="storage-desc">Các tùy chọn của bạn: chủ đề, cỡ chữ, chiều rộng đọc, các toggle highlight, ngôn ngữ giao diện, tham số dịch, màu/cường độ zebra, v.v.</div></div>
+      <div class="storage-row"><div class="storage-key">visited</div><div class="storage-desc">Danh sách ID các bài HN bạn đã nhấp từ trang chính, kèm timestamp. Dùng để chuyển xám các bài đã xem. TTL 30 ngày với cắt tỉa tự động.</div></div>
+      <div class="storage-row"><div class="storage-key">pinned</div><div class="storage-desc">Các bài được ghim rõ ràng qua 📌: id, tiêu đề, url, tên miền, snapshot điểm số, số lượng bình luận, tuổi, tags, timestamp khi ghim.</div></div>
+      <div class="storage-row"><div class="storage-key">collapsedCards</div><div class="storage-desc">ID các thẻ đã ghim mà bạn đã thu gọn trong bảng bên.</div></div>
+      <div class="storage-row"><div class="storage-key">recentTags</div><div class="storage-desc">Danh sách 40 tên tag được dùng gần đây nhất, để tự động hoàn thành.</div></div>
+      <div class="storage-row"><div class="storage-key">mutedDomains</div><div class="storage-desc">Danh sách các tên miền bạn đã tắt tiếng. Các bài từ những tên miền này bị ẩn khỏi Radar.</div></div>
+      <div class="storage-row"><div class="storage-key">radar</div><div class="storage-desc">Snapshot dữ liệu các bài HN (điểm, bình luận) theo thời gian, dùng để tính vận tốc.</div></div>
+      <div class="storage-row"><div class="storage-key">opActiveCache</div><div class="storage-desc">Bộ nhớ đệm phát hiện "tác giả đã trả lời" theo ID. TTL 10 phút.</div></div>
+      <div class="storage-row"><div class="storage-key">comments_&lt;postId&gt;</div><div class="storage-desc">Bộ nhớ đệm bình luận trong bản xem trước khi di chuột. TTL 10 phút.</div></div>
+      <div class="highlight" style="margin-top:24px;"><p>Gỡ cài đặt tiện ích sẽ xóa mọi thứ một cách tự động. Không có tài khoản người dùng, không thu thập email, không có cách nào để NODUS nhận diện bạn.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Giải thích các endpoint bên ngoài</h2>
+      <p>Tiện ích chỉ fetch từ hai tên miền, được khai báo trong <code>host_permissions</code> và hiển thị cho Chrome trước khi cài đặt.</p>
+      <h3>3a. Trang web Hacker News</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">chỉ content script</span></div><div class="endpoint-body"><p>Content script chèn CSS và các cải tiến DOM nhỏ (nút pin, badge theo loại, nút dịch) vào các trang bạn tải. Tiện ích không fetch HN một cách chủ động ở background.</p><p class="data-sent"><strong>Dữ liệu tiện ích gửi đi:</strong> không có gì ngoài những gì trình duyệt của bạn đã gửi.</p></div></div>
+      <h3>3b. API Firebase công khai của Hacker News</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://hacker-news.firebaseio.com/v0/topstories.json</span><span class="badge badge-green">bắt buộc</span></div><div class="endpoint-body"><p>Trả về mảng ID các bài đang lên. Cùng nguồn với trang chính chính thức của HN.</p><p class="data-sent"><strong>Dữ liệu gửi đi:</strong> không có gì nhận dạng — chỉ là yêu cầu.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">nếu tab đang hoạt động</span></div><div class="endpoint-body"><p>Tương tự cho các tab Best, Show HN và Ask HN.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">theo từng bài</span></div><div class="endpoint-body"><p>Lấy chi tiết công khai của mỗi bài hoặc bình luận hiển thị trong Radar hoặc trong bản xem trước.</p><p class="data-sent"><strong>Dữ liệu gửi đi:</strong> ID của bài. Không có thông tin nhận dạng của bạn.</p></div></div>
+      <p style="font-size:13px;color:#64748b;">Hacker News và Y Combinator có thể ghi log những yêu cầu này theo chính sách của họ. Bản thân tiện ích không thêm header, cookie hay xác thực nào.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="translation"></span>
+      <h2><span class="icon">🌐</span> 4. Dịch trong trình duyệt</h2>
+      <div class="highlight"><p><strong>Các bản dịch được thực hiện hoàn toàn trên thiết bị của bạn.</strong> HN Radar sử dụng API Translator tích hợp của Chrome (Chrome 138+), nó tải một mô hình ngôn ngữ nhỏ về cục bộ ở lần dùng đầu tiên và dịch văn bản mà không gửi đến bất kỳ máy chủ nào.</p></div>
+      <p>Điều này có nghĩa là:</p>
+      <ul class="check">
+        <li>Không có văn bản nào rời khỏi trình duyệt của bạn khi dịch.</li>
+        <li>Không cần khóa API, không tốn phí, không theo dõi mức độ sử dụng.</li>
+        <li>Dịch hoạt động ngoại tuyến sau khi mô hình đã được tải về.</li>
+        <li>Bộ nhớ đệm dịch chỉ cục bộ và bị xóa cùng với tiện ích.</li>
+      </ul>
+      <p>Nếu trình duyệt của bạn không hỗ trợ API Translator (Firefox hoặc Chrome cũ hơn), các chức năng dịch sẽ không làm gì — không có dự phòng sang dịch vụ cloud.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Những điều chúng tôi không bao giờ làm</h2>
+      <ul class="check cross">
+        <li>Bán dữ liệu của bạn cho bên thứ ba</li>
+        <li>Gửi bất cứ gì tới máy chủ NODUS (không có backend NODUS cho tiện ích này)</li>
+        <li>Theo dõi bạn đọc, nhấp hoặc ghim bài nào</li>
+        <li>Theo dõi các trang web bạn ghé thăm ngoài news.ycombinator.com</li>
+        <li>Sử dụng analytics hoặc SDK quảng cáo của bên thứ ba</li>
+        <li>Đọc hoặc lưu trữ bình luận, phản hồi hoặc dữ liệu tài khoản HN của bạn</li>
+        <li>Truy cập micro, camera, clipboard hoặc tải xuống</li>
+        <li>Chèn quảng cáo hoặc liên kết affiliate</li>
+        <li>Yêu cầu tài khoản, đăng nhập hoặc email</li>
+        <li>Đồng bộ tags, pins hoặc tùy chọn của bạn lên cloud</li>
+      </ul>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Quyền của bạn (LGPD / GDPR / CCPA)</h2>
+      <p>HN Radar tuân thủ LGPD của Brazil, GDPR của châu Âu và tương thích với CCPA. Vì mọi dữ liệu đều cục bộ và tiện ích không lập hồ sơ hay theo dõi liên trang, hầu hết các quyền được thực thi trực tiếp qua trình duyệt của bạn.</p>
+      <h3>Các quyền bạn có</h3>
+      <ul class="check">
+        <li><strong>Truy cập</strong> — mọi dữ liệu cục bộ có thể xem trong <code>chrome://extensions</code> → HN Radar → Inspect → Application → Storage</li>
+        <li><strong>Xóa</strong> — gỡ tiện ích sẽ xóa mọi thứ</li>
+        <li><strong>Khả chuyển</strong> — dữ liệu cục bộ ở dạng JSON trong <code>chrome.storage.local</code>, có thể xuất từ DevTools</li>
+        <li><strong>Từ chối</strong> — tắt toggle chính của Lens bất cứ lúc nào</li>
+      </ul>
+      <h3>Cơ sở pháp lý cho việc xử lý</h3>
+      <p>Việc đọc trang HN công khai và API HN công khai thuộc về <strong>lợi ích hợp pháp</strong> (cung cấp lớp đọc mà bạn đã chọn khi cài đặt tiện ích). Không có dữ liệu nhận dạng cá nhân nào được xử lý.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. Liên hệ</h2>
+      <p>Đối với câu hỏi về quyền riêng tư hoặc yêu cầu tính năng:</p>
+      <div class="card"><div class="card-title">📧 Email</div><p>mmcarvalho.dev@gmail.com</p></div>
+      <div class="card"><div class="card-title">🌐 Trang dự án</div><p><a href="hn-radar.html" style="color:#ff8c42;">nodus-ai.app/vi/hn-radar</a></p></div>
+      <p style="margin-top:24px;font-size:13px;color:#475569;">Chính sách này có thể được cập nhật. Những thay đổi quan trọng sẽ được nêu trong ghi chú phát hành của tiện ích. Việc tiếp tục sử dụng sau khi sửa đổi đồng nghĩa với việc chấp nhận.</p>
+    </div>
+  </div>
+  <footer><p>© 2026 NODUS · <a href="https://nodus-ai.app/vi/">Trang chủ</a> · <a href="hn-radar.html">HN Radar</a> · <a href="privacy.html">Quyền riêng tư NODUS</a> · Quyền riêng tư HN Radar</p></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gizlilik Politikası — NODUS HN Radar</title>
+  <link rel="canonical" href="https://nodus-ai.app/tr/hn-radar-privacy" />
+  <link rel="stylesheet" href="../hn-radar-privacy.css">
+  <script>window._forcedLang = 'tr';</script>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="https://nodus-ai.app/tr/">NODUS</a>
+    <a class="nav-back" href="hn-radar.html">← HN Radar'a dön</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-label">Yasal · HN Radar</div>
+    <h1>Gizlilik Politikası</h1>
+    <p>NODUS HN Radar tarayıcı uzantısı &nbsp;·&nbsp; Güncellendi: Mayıs 2026 &nbsp;·&nbsp; v0.15</p>
+  </div>
+  <div class="page">
+    <div class="toc">
+      <div class="toc-title">İçindekiler</div>
+      <ol>
+        <li><a href="#overview">Genel bakış</a></li>
+        <li><a href="#local-data">Yerel olarak depolanan veriler</a></li>
+        <li><a href="#endpoints">Dış endpoint'ler açıklandı</a></li>
+        <li><a href="#translation">Tarayıcıda çeviri</a></li>
+        <li><a href="#never">Asla yapmadıklarımız</a></li>
+        <li><a href="#rights">Haklarınız (LGPD / GDPR / CCPA)</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ol>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Genel bakış</h2>
+      <div class="highlight"><p><strong>NODUS HN Radar tamamen local-first bir tarayıcı uzantısıdır.</strong> news.ycombinator.com'daki okuma deneyimini iyileştirir ve Hacker News'in genel API'si aracılığıyla yükselen gönderileri ortaya çıkarır. Sunucu yok, hesap yok, giriş yok, bulut senkronizasyonu yok, telemetri yok.</p></div>
+      <p>Ana NODUS uzantısının (AI sohbet yakalama) ve NODUS YT Radar'ın kardeş ürünü. Her birinin kendi politikası vardır:</p>
+      <ul class="check">
+        <li>NODUS ana — <a href="privacy.html" style="color:#ff8c42;">privacy.html</a></li>
+        <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
+        <li>HN Radar — bu belge</li>
+      </ul>
+      <p>HN Radar iki endpoint'e bağlanır, ikisi de <strong>Hacker News'in kendisine</strong> aittir:</p>
+      <div class="card"><div class="card-title"><span class="badge badge-green">gerekli</span> news.ycombinator.com</div><p>Okuduğunuz site. Content script kendiniz yüklediğiniz sayfaları iyileştirir — proaktif fetch yok.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">gerekli</span> hacker-news.firebaseio.com</div><p>Hacker News'in genel Firebase API'si. Yükselen listeleri (Top / Show / Ask / Best) ve Radar paneli için bireysel öğe ayrıntılarını almak için kullanılır.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-gray">hiçbiri</span> NODUS sunucuları</div><p>HN Radar herhangi bir NODUS altyapısıyla iletişim kurmaz. YT Radar (Community Spotlight worker) veya ana NODUS'un (PRO lisansı) aksine, bu uzantının NODUS backend bağımlılığı yoktur.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Yerel olarak depolanan veriler</h2>
+      <p>Aşağıdakilerin tümü <code>chrome.storage.local</code>'da depolanır ve Bölüm 3'te belirtilen durumlar dışında asla başka bir yere gönderilmez.</p>
+      <div class="storage-row"><div class="storage-key">settings</div><div class="storage-desc">Tercihleriniz: tema, yazı tipi boyutu, okuma genişliği, vurgulama anahtarları, arayüz dili, çeviri ayarları, zebra renk/yoğunluğu vb.</div></div>
+      <div class="storage-row"><div class="storage-key">visited</div><div class="storage-desc">Ana sayfadan tıkladığınız HN gönderi ID'lerinin zaman damgalarıyla listesi. Ziyaret edilen gönderileri grileştirmeye yarar. 30 gün TTL, otomatik budama.</div></div>
+      <div class="storage-row"><div class="storage-key">pinned</div><div class="storage-desc">📌 ile açıkça sabitlenmiş gönderiler: id, başlık, url, alan adı, puan anlık görüntüsü, yorum sayısı, yaş, etiketler, sabitleme zaman damgası.</div></div>
+      <div class="storage-row"><div class="storage-key">collapsedCards</div><div class="storage-desc">Yan panelde daralttığınız sabitlenmiş kartların ID'leri.</div></div>
+      <div class="storage-row"><div class="storage-key">recentTags</div><div class="storage-desc">Otomatik tamamlama için kullanılan son 40 etiket adı listesi.</div></div>
+      <div class="storage-row"><div class="storage-key">mutedDomains</div><div class="storage-desc">Sessize aldığınız alan adlarının listesi. Bu alan adlarından gelen gönderiler Radar'da gizlenir.</div></div>
+      <div class="storage-row"><div class="storage-key">radar</div><div class="storage-desc">Hız hesaplamak için zaman içindeki HN gönderi verileri (puan, yorumlar) anlık görüntüleri.</div></div>
+      <div class="storage-row"><div class="storage-key">opActiveCache</div><div class="storage-desc">ID'ye göre "yazar yanıtladı" tespit önbelleği. 10 dakika TTL.</div></div>
+      <div class="storage-row"><div class="storage-key">comments_&lt;postId&gt;</div><div class="storage-desc">Üzerine gelme önizlemesi için yorum önbelleği. 10 dakika TTL.</div></div>
+      <div class="highlight" style="margin-top:24px;"><p>Uzantıyı kaldırmak her şeyi otomatik olarak siler. Kullanıcı hesabı yok, e-posta toplama yok, NODUS'un sizi tanımlamasının hiçbir yolu yok.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Dış endpoint'ler açıklandı</h2>
+      <p>Uzantı yalnızca <code>host_permissions</code>'da bildirilen ve yüklemeden önce Chrome'a görünür olan iki alan adından fetch yapar.</p>
+      <h3>3a. Hacker News sitesi</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">yalnızca content script</span></div><div class="endpoint-body"><p>Content script, yüklediğiniz sayfalara CSS ve küçük DOM iyileştirmeleri (pin düğmeleri, tür rozetleri, çeviri düğmeleri) enjekte eder. Uzantı arka planda HN'yi proaktif olarak fetch etmez.</p><p class="data-sent"><strong>Uzantı tarafından gönderilen veriler:</strong> tarayıcınızın zaten gönderdiklerinin ötesinde hiçbir şey.</p></div></div>
+      <h3>3b. Hacker News genel Firebase API'si</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://hacker-news.firebaseio.com/v0/topstories.json</span><span class="badge badge-green">gerekli</span></div><div class="endpoint-body"><p>Yükselen ID'lerin dizisini döndürür. Resmi HN ana sayfasıyla aynı kaynak.</p><p class="data-sent"><strong>Gönderilen veriler:</strong> tanımlayıcı hiçbir şey — yalnızca istek.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">sekme aktifse</span></div><div class="endpoint-body"><p>Best, Show HN ve Ask HN sekmeleri için aynı.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">gönderi başına</span></div><div class="endpoint-body"><p>Radar'da veya önizlemede görüntülenen her gönderi veya yorumun genel ayrıntılarını alır.</p><p class="data-sent"><strong>Gönderilen veriler:</strong> gönderinin ID'si. Sizden hiçbir tanımlayıcı yok.</p></div></div>
+      <p style="font-size:13px;color:#64748b;">Hacker News ve Y Combinator, bu istekleri kendi politikalarına göre kaydedebilir. Uzantının kendisi header, çerez veya kimlik doğrulama eklemez.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="translation"></span>
+      <h2><span class="icon">🌐</span> 4. Tarayıcıda çeviri</h2>
+      <div class="highlight"><p><strong>Çeviriler tamamen cihazınızda yapılır.</strong> HN Radar, Chrome'un yerleşik Translator API'sini (Chrome 138+) kullanır; bu API ilk kullanımda yerel olarak küçük bir dil modeli indirir ve metni herhangi bir sunucuya göndermeden çevirir.</p></div>
+      <p>Bu şu anlama gelir:</p>
+      <ul class="check">
+        <li>Çeviri sırasında hiçbir metin tarayıcınızdan çıkmaz.</li>
+        <li>API anahtarı yok, maliyet yok, kullanım takibi yok.</li>
+        <li>Model indirildikten sonra çeviri çevrimdışı çalışır.</li>
+        <li>Çeviri önbelleği yalnızca yereldir ve uzantıyla birlikte silinir.</li>
+      </ul>
+      <p>Tarayıcınız Translator API'sini desteklemiyorsa (Firefox veya eski Chrome), çeviri işlevleri hiçbir şey yapmaz — bulut hizmetine geri dönüş yok.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Asla yapmadıklarımız</h2>
+      <ul class="check cross">
+        <li>Verilerinizi üçüncü taraflara satmak</li>
+        <li>NODUS sunucularına herhangi bir şey göndermek (bu uzantı için NODUS backend'i yok)</li>
+        <li>Hangi gönderileri okuduğunuzu, tıkladığınızı veya sabitlediğinizi takip etmek</li>
+        <li>news.ycombinator.com dışında ziyaret edilen siteleri takip etmek</li>
+        <li>Üçüncü taraf analitik veya reklam SDK'ları kullanmak</li>
+        <li>HN yorumlarınızı, yanıtlarınızı veya hesap verilerinizi okumak veya depolamak</li>
+        <li>Mikrofona, kameraya, panoya veya indirmelere erişmek</li>
+        <li>Reklam veya affiliate bağlantısı enjekte etmek</li>
+        <li>Hesap, giriş veya e-posta talep etmek</li>
+        <li>Etiketlerinizi, pinlerinizi veya tercihlerinizi bulutta senkronize etmek</li>
+      </ul>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Haklarınız (LGPD / GDPR / CCPA)</h2>
+      <p>HN Radar Brezilya LGPD, Avrupa GDPR ile uyumludur ve CCPA ile uyumludur. Tüm veriler yerel olduğundan ve uzantı profilleme veya siteler arası takip yapmadığından, hakların çoğu doğrudan tarayıcınız aracılığıyla kullanılır.</p>
+      <h3>Sahip olduğunuz haklar</h3>
+      <ul class="check">
+        <li><strong>Erişim</strong> — tüm yerel veriler <code>chrome://extensions</code> → HN Radar → Inspect → Application → Storage'da görünür</li>
+        <li><strong>Silme</strong> — uzantıyı kaldırmak her şeyi siler</li>
+        <li><strong>Taşınabilirlik</strong> — <code>chrome.storage.local</code>'da JSON olarak yerel veriler, DevTools'tan dışa aktarılabilir</li>
+        <li><strong>Vazgeçme</strong> — istediğiniz zaman ana Lens anahtarını kapatın</li>
+      </ul>
+      <h3>İşlemenin yasal dayanağı</h3>
+      <p>Genel HN sitesini ve genel HN API'sini okumak <strong>meşru menfaat</strong> kapsamına girer (uzantıyı yükleyerek seçtiğiniz okuma katmanını sağlamak). Kişisel olarak tanımlanabilir hiçbir veri işlenmez.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. İletişim</h2>
+      <p>Gizlilik soruları veya özellik istekleri için:</p>
+      <div class="card"><div class="card-title">📧 E-posta</div><p>mmcarvalho.dev@gmail.com</p></div>
+      <div class="card"><div class="card-title">🌐 Proje sitesi</div><p><a href="hn-radar.html" style="color:#ff8c42;">nodus-ai.app/tr/hn-radar</a></p></div>
+      <p style="margin-top:24px;font-size:13px;color:#475569;">Bu politika güncellenebilir. Önemli değişiklikler uzantının sürüm notlarında bildirilecektir. Değişiklik sonrası kullanıma devam etmek kabul anlamına gelir.</p>
+    </div>
+  </div>
+  <footer><p>© 2026 NODUS · <a href="https://nodus-ai.app/tr/">Ana Sayfa</a> · <a href="hn-radar.html">HN Radar</a> · <a href="privacy.html">NODUS Gizlilik</a> · HN Radar Gizlilik</p></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

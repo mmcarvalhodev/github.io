@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인정보 처리방침 — NODUS HN Radar</title>
+  <link rel="canonical" href="https://nodus-ai.app/ko/hn-radar-privacy" />
+  <link rel="stylesheet" href="../hn-radar-privacy.css">
+  <script>window._forcedLang = 'ko';</script>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="https://nodus-ai.app/ko/">NODUS</a>
+    <a class="nav-back" href="hn-radar.html">← HN Radar로 돌아가기</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-label">법적 고지 · HN Radar</div>
+    <h1>개인정보 처리방침</h1>
+    <p>NODUS HN Radar 브라우저 확장 프로그램 &nbsp;·&nbsp; 업데이트: 2026년 5월 &nbsp;·&nbsp; v0.15</p>
+  </div>
+  <div class="page">
+    <div class="toc">
+      <div class="toc-title">목차</div>
+      <ol>
+        <li><a href="#overview">개요</a></li>
+        <li><a href="#local-data">로컬에 저장되는 데이터</a></li>
+        <li><a href="#endpoints">외부 엔드포인트 설명</a></li>
+        <li><a href="#translation">브라우저 내 번역</a></li>
+        <li><a href="#never">절대 하지 않는 것</a></li>
+        <li><a href="#rights">귀하의 권리 (LGPD / GDPR / CCPA)</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ol>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. 개요</h2>
+      <div class="highlight"><p><strong>NODUS HN Radar는 완전히 로컬 우선 방식의 브라우저 확장 프로그램입니다.</strong> news.ycombinator.com에서의 읽기 경험을 향상시키고, Hacker News의 공개 API를 통해 떠오르는 게시물을 부각시킵니다. 서버 없음, 계정 없음, 로그인 없음, 클라우드 동기화 없음, 텔레메트리 없음.</p></div>
+      <p>메인 NODUS 확장 프로그램(AI 대화 캡처) 및 NODUS YT Radar의 자매 제품입니다. 각각 고유한 정책을 갖습니다:</p>
+      <ul class="check">
+        <li>NODUS 메인 — <a href="privacy.html" style="color:#ff8c42;">privacy.html</a></li>
+        <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
+        <li>HN Radar — 본 문서</li>
+      </ul>
+      <p>HN Radar는 두 개의 엔드포인트에 연결하며, 둘 다 <strong>Hacker News 자체</strong>에 속합니다:</p>
+      <div class="card"><div class="card-title"><span class="badge badge-green">필수</span> news.ycombinator.com</div><p>귀하가 읽고 있는 사이트. 콘텐츠 스크립트는 귀하가 직접 로드한 페이지를 향상시킵니다 — 능동적인 fetch는 없습니다.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">필수</span> hacker-news.firebaseio.com</div><p>Hacker News의 공개 Firebase API. 떠오르는 목록 (Top / Show / Ask / Best)과 Radar 대시보드를 위한 개별 항목 세부 정보를 가져오는 데 사용됩니다.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-gray">없음</span> NODUS 서버</div><p>HN Radar는 어떤 NODUS 인프라에도 연결하지 않습니다. YT Radar (Community Spotlight worker)나 NODUS 메인 (PRO 라이선스)과 달리, 이 확장 프로그램은 NODUS 백엔드 의존성이 전혀 없습니다.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. 로컬에 저장되는 데이터</h2>
+      <p>아래 항목은 모두 <code>chrome.storage.local</code>에 저장되며, 섹션 3에 설명된 경우를 제외하고는 다른 곳으로 전송되지 않습니다.</p>
+      <div class="storage-row"><div class="storage-key">settings</div><div class="storage-desc">귀하의 환경설정: 테마, 글꼴 크기, 읽기 너비, 강조 토글, 인터페이스 언어, 번역 설정, 줄무늬 색상/강도 등.</div></div>
+      <div class="storage-row"><div class="storage-key">visited</div><div class="storage-desc">프런트 페이지에서 클릭한 HN 게시물 ID 목록과 타임스탬프. 방문한 게시물을 회색으로 처리하는 데 사용. 30일 TTL과 자동 정리.</div></div>
+      <div class="storage-row"><div class="storage-key">pinned</div><div class="storage-desc">📌로 명시적으로 고정한 게시물: id, 제목, url, 도메인, 점수 스냅샷, 댓글 수, 경과 시간, 태그, 고정 타임스탬프.</div></div>
+      <div class="storage-row"><div class="storage-key">collapsedCards</div><div class="storage-desc">사이드 패널에서 접은 고정 카드의 ID.</div></div>
+      <div class="storage-row"><div class="storage-key">recentTags</div><div class="storage-desc">자동 완성을 위해 최근 사용한 태그 이름 40개 목록.</div></div>
+      <div class="storage-row"><div class="storage-key">mutedDomains</div><div class="storage-desc">음소거한 도메인 목록. 이러한 도메인의 게시물은 Radar에서 숨겨집니다.</div></div>
+      <div class="storage-row"><div class="storage-key">radar</div><div class="storage-desc">시간 경과에 따른 HN 게시물 데이터(점수, 댓글)의 스냅샷. 속도 계산에 사용.</div></div>
+      <div class="storage-row"><div class="storage-key">opActiveCache</div><div class="storage-desc">ID별 "작성자 답변" 감지 캐시. TTL 10분.</div></div>
+      <div class="storage-row"><div class="storage-key">comments_&lt;postId&gt;</div><div class="storage-desc">호버 미리보기 댓글 캐시. TTL 10분.</div></div>
+      <div class="highlight" style="margin-top:24px;"><p>확장 프로그램을 제거하면 모든 것이 자동으로 삭제됩니다. 사용자 계정 없음, 이메일 수집 없음, NODUS가 귀하를 식별할 수 있는 방법 없음.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. 외부 엔드포인트 설명</h2>
+      <p>확장 프로그램은 <code>host_permissions</code>에 선언되고 설치 전에 Chrome에 표시되는 두 도메인에서만 fetch합니다.</p>
+      <h3>3a. Hacker News 사이트</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">콘텐츠 스크립트 전용</span></div><div class="endpoint-body"><p>콘텐츠 스크립트는 귀하가 로드하는 페이지에 CSS와 작은 DOM 개선 사항(고정 버튼, 유형 배지, 번역 버튼)을 주입합니다. 확장 프로그램은 백그라운드에서 HN을 능동적으로 fetch하지 않습니다.</p><p class="data-sent"><strong>확장 프로그램이 전송하는 데이터:</strong> 브라우저가 이미 전송하는 것 외에는 아무것도 없음.</p></div></div>
+      <h3>3b. Hacker News 공개 Firebase API</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://hacker-news.firebaseio.com/v0/topstories.json</span><span class="badge badge-green">필수</span></div><div class="endpoint-body"><p>떠오르는 ID 배열을 반환합니다. 공식 HN 프런트 페이지와 동일한 소스.</p><p class="data-sent"><strong>전송되는 데이터:</strong> 식별 정보 없음 — 요청만 전송.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">활성 탭일 때</span></div><div class="endpoint-body"><p>Best, Show HN, Ask HN 탭에 대해서도 동일합니다.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">게시물당</span></div><div class="endpoint-body"><p>Radar 또는 미리보기에 표시되는 각 게시물 또는 댓글의 공개 세부 정보를 가져옵니다.</p><p class="data-sent"><strong>전송되는 데이터:</strong> 게시물 ID. 귀하의 식별자는 없음.</p></div></div>
+      <p style="font-size:13px;color:#64748b;">Hacker News와 Y Combinator는 자체 정책에 따라 이러한 요청을 기록할 수 있습니다. 확장 프로그램 자체는 헤더, 쿠키 또는 인증을 추가하지 않습니다.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="translation"></span>
+      <h2><span class="icon">🌐</span> 4. 브라우저 내 번역</h2>
+      <div class="highlight"><p><strong>번역은 전적으로 귀하의 기기에서 이루어집니다.</strong> HN Radar는 Chrome의 내장 Translator API (Chrome 138+)를 사용하며, 이는 처음 사용할 때 작은 언어 모델을 로컬에 다운로드하고 어떤 서버에도 텍스트를 전송하지 않고 번역합니다.</p></div>
+      <p>이는 다음을 의미합니다:</p>
+      <ul class="check">
+        <li>번역 시 어떤 텍스트도 브라우저를 떠나지 않습니다.</li>
+        <li>API 키 없음, 비용 없음, 사용량 추적 없음.</li>
+        <li>모델이 다운로드된 후에는 번역이 오프라인에서도 작동합니다.</li>
+        <li>번역 캐시는 로컬 전용이며 확장 프로그램과 함께 삭제됩니다.</li>
+      </ul>
+      <p>귀하의 브라우저가 Translator API를 지원하지 않는 경우(Firefox 또는 이전 Chrome), 번역 기능은 아무 작동도 하지 않습니다 — 클라우드 서비스로의 폴백 없음.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. 절대 하지 않는 것</h2>
+      <ul class="check cross">
+        <li>귀하의 데이터를 제3자에게 판매</li>
+        <li>NODUS 서버로 무엇이든 전송 (이 확장 프로그램에는 NODUS 백엔드 없음)</li>
+        <li>귀하가 읽거나, 클릭하거나, 고정한 게시물 추적</li>
+        <li>news.ycombinator.com 외에 방문한 사이트 추적</li>
+        <li>서드파티 분석 또는 광고 SDK 사용</li>
+        <li>귀하의 댓글, 답변 또는 HN 계정 데이터 읽기 또는 저장</li>
+        <li>마이크, 카메라, 클립보드 또는 다운로드에 액세스</li>
+        <li>광고 또는 제휴 링크 주입</li>
+        <li>계정, 로그인 또는 이메일 요구</li>
+        <li>귀하의 태그, 핀 또는 환경설정을 클라우드에 동기화</li>
+      </ul>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. 귀하의 권리 (LGPD / GDPR / CCPA)</h2>
+      <p>HN Radar는 브라질 LGPD, 유럽 GDPR을 준수하며 CCPA와 호환됩니다. 모든 데이터가 로컬에 있고 확장 프로그램이 프로파일링이나 사이트 간 추적을 하지 않으므로 대부분의 권리는 브라우저를 통해 직접 행사할 수 있습니다.</p>
+      <h3>귀하가 가진 권리</h3>
+      <ul class="check">
+        <li><strong>접근</strong> — 모든 로컬 데이터는 <code>chrome://extensions</code> → HN Radar → 검사 → Application → Storage에서 확인 가능</li>
+        <li><strong>삭제</strong> — 확장 프로그램 제거 시 모든 것 삭제</li>
+        <li><strong>이동성</strong> — 로컬 데이터는 <code>chrome.storage.local</code>에 JSON으로 저장되며 DevTools에서 내보내기 가능</li>
+        <li><strong>옵트아웃</strong> — 언제든 Lens 마스터 토글을 비활성화</li>
+      </ul>
+      <h3>처리의 법적 근거</h3>
+      <p>공개 HN 사이트와 공개 HN API를 읽는 것은 <strong>정당한 이익</strong>에 해당합니다 (귀하가 확장 프로그램을 설치함으로써 선택한 읽기 레이어를 제공). 개인 식별 가능 데이터는 처리되지 않습니다.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. 연락처</h2>
+      <p>개인정보 문의 또는 기능 요청:</p>
+      <div class="card"><div class="card-title">📧 이메일</div><p>mmcarvalho.dev@gmail.com</p></div>
+      <div class="card"><div class="card-title">🌐 프로젝트 사이트</div><p><a href="hn-radar.html" style="color:#ff8c42;">nodus-ai.app/ko/hn-radar</a></p></div>
+      <p style="margin-top:24px;font-size:13px;color:#475569;">본 방침은 업데이트될 수 있습니다. 중요한 변경 사항은 확장 프로그램 릴리스 노트에 표시됩니다. 변경 후에도 계속 사용하면 동의한 것으로 간주됩니다.</p>
+    </div>
+  </div>
+  <footer><p>© 2026 NODUS · <a href="https://nodus-ai.app/ko/">홈</a> · <a href="hn-radar.html">HN Radar</a> · <a href="privacy.html">NODUS 개인정보</a> · HN Radar 개인정보</p></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

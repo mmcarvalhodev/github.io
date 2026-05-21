@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS HN Radar — Une couche de signal pour Hacker News</title>
+  <meta name="description" content="Couche de lecture pour Hacker News. Mode sombre, fils épinglés avec tags, tableau de bord des posts en hausse, alertes auteur actif, traduction intégrée. Local-first. Sans tracking.">
+  <link rel="canonical" href="https://nodus-ai.app/fr/hn-radar" />
+  <link rel="stylesheet" href="../hn-radar.css">
+  <script>window._forcedLang = 'fr';</script>
+</head>
+<body>
+  <nav><div class="nav-inner"><a href="https://nodus-ai.app/fr/" class="nav-logo">NODUS <span>HN Radar</span></a><div class="nav-links"><a href="#how" class="nav-link">Comment ça marche</a><a href="#features" class="nav-link">Fonctionnalités</a><a href="#privacy" class="nav-link">Confidentialité</a><a href="https://chrome.google.com/webstore" class="nav-link highlight">⬇ Installer gratuit</a></div><a href="https://nodus-ai.app/fr/" class="nav-back">← Retour à NODUS</a></div></nav>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-badge">📡 Extension Chrome · Gratuit · Sans compte</div>
+      <h1>Une <span class="accent">couche de signal</span> pour Hacker News</h1>
+      <p class="hero-sub">Le même Hacker News. Moins de fatigue visuelle. Plus de signal. Lisez confortablement, épinglez des fils avec des tags, voyez ce qui monte vraiment en temps réel.</p>
+      <p class="hero-tagline">Local-first. Sans tracking. Sans serveur. Votre lecture reste dans votre navigateur.</p>
+      <div class="hero-btns"><a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Installer sur Chrome</a><a href="#features" class="btn-secondary">Voir les fonctionnalités ↓</a></div>
+    </div>
+    <hr class="divider">
+    <section class="section" id="how">
+      <div class="section-label">Comment ça marche</div>
+      <h2 class="section-title">Installez une fois. Lisez mieux pour toujours.</h2>
+      <p class="section-sub">Sans configuration, sans compte. Ouvrez Hacker News et l'extension adoucit les aspérités.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>Installez l'extension</h3><p>Ajoutez NODUS HN Radar à Chrome (Firefox bientôt). 280KB. Local uniquement. Zéro permission au-delà de Hacker News.</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Ouvrez Hacker News</h3><p>La couche Lens s'active automatiquement. Mode sombre, polices lisibles, badges par type de post, posts visités en gris — silencieusement.</p></div>
+        <div class="step"><div class="step-num">3</div><h3>Ouvrez le panneau latéral</h3><p>Cliquez sur l'icône de l'extension. Épinglez des fils, taguez-les, regardez le Radar faire émerger les posts en hausse avec leurs scores de vélocité en temps réel.</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="features">
+      <div class="section-label">Fonctionnalités</div>
+      <h2 class="section-title">Conçu par quelqu'un qui lit HN tous les jours.</h2>
+      <p class="section-sub">Pas un "thème moderne" — une couche de lecture et de signal qui respecte l'esthétique HN tout en supprimant ses points faibles.</p>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🌓</div><h4>Couche de lecture Lens</h4><p>Thème sombre, clair ou auto. Taille de police ajustable. Contrôle de largeur de lecture. Posts visités en gris. Mode compact.</p></div>
+        <div class="feature-card"><div class="feature-icon">🏷️</div><h4>Badges de type</h4><p>Pills inline SHOW / ASK / LAUNCH / TELL / POLL sur les titres. Lignes colorées par type. Cliquez pour ouvrir le panneau.</p></div>
+        <div class="feature-card"><div class="feature-icon">📌</div><h4>Épingler et taguer</h4><p>Épinglez n'importe quel post. Ajoutez des tags multicolores (couleur dérivée du nom). Les tags se propagent sur la page HN à côté du titre.</p></div>
+        <div class="feature-card"><div class="feature-icon">📡</div><h4>Tableau de bord Radar</h4><p>Top / Show HN / Ask HN / Best — chacun avec score de vélocité par post (points + commentaires par heure). Repérez ce qui monte avant que ça explose.</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h4>Vélocité et delta</h4><p>Chaque post affiche sa vélocité actuelle ET son changement sur le dernier intervalle. Sachez ce qui accélère vs. perd de l'élan.</p></div>
+        <div class="feature-card"><div class="feature-icon">👤</div><h4>Badge OP actif</h4><p>Badge dorée apparaît quand l'auteur du post a répondu dans le fil. Le signal "le fondateur est ici" que les utilisateurs HN adorent.</p></div>
+        <div class="feature-card"><div class="feature-icon">🔥</div><h4>Alerte de discussion animée</h4><p>Chip subtil quand un fil dépasse 150+ commentaires. 🔥 brûlant quand ça dépasse 400+. Fils qui valent la visite.</p></div>
+        <div class="feature-card"><div class="feature-icon">💬</div><h4>Aperçu inline</h4><p>Survolez "X comments" sur une card épinglée — les 5 meilleurs commentaires s'affichent inline. Sans changer d'onglet pour scanner une discussion.</p></div>
+        <div class="feature-card"><div class="feature-icon">🌐</div><h4>Traduction intégrée</h4><p>Utilise l'API Translator locale de Chrome (138+) pour les titres et aperçus de commentaires. Sans clés API, sans cloud, sans coût.</p></div>
+        <div class="feature-card"><div class="feature-icon">🔕</div><h4>Mute de domaines</h4><p>Marre des posts medium.com ? x.com ? Ajoutez des domaines à votre liste de mute et ils disparaissent du Radar.</p></div>
+        <div class="feature-card"><div class="feature-icon">📐</div><h4>Lignes alternées</h4><p>Arrière-plans alternés optionnels avec couleur et intensité personnalisables. Scan style Excel pour la page d'accueil.</p></div>
+        <div class="feature-card"><div class="feature-icon">🌍</div><h4>17 langues</h4><p>Interface entièrement traduite en English, Português, Español, Français, Deutsch, Italiano, 日本語, 한국어, 中文, Русский et plus.</p></div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section class="section" id="privacy">
+      <div class="privacy-block">
+        <div>
+          <h2>Local-first par conception <span>—</span> pas comme fonctionnalité.</h2>
+          <p>Tout ce que vous épinglez, taguez ou cachez reste dans votre navigateur. L'extension fait exactement deux types d'appels réseau : à news.ycombinator.com (le site public) et à l'API publique Firebase de Hacker News (pour récupérer les listes en hausse). C'est tout.</p>
+          <p>Sans serveur. Sans compte. Sans télémétrie. Sans tracking. Sans SDKs publicitaires. Code consultable dans le paquet .crx.</p>
+          <p><a href="hn-radar-privacy.html">Politique de confidentialité complète →</a></p>
+        </div>
+        <ul class="privacy-list">
+          <li>Zéro infrastructure backend</li>
+          <li>Zéro credentials, zéro clés API</li>
+          <li>Zéro donnée ne quitte votre navigateur</li>
+          <li>Sans login, sans création de compte</li>
+          <li>Sans analytics tiers</li>
+          <li>Désinstaller = suppression totale des données</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div class="cta-strip">
+    <h3>Prêt à lire HN comme il le mérite ?</h3>
+    <p>Gratuit. Local. Sans compte. Disponible sur Chrome, Firefox bientôt.</p>
+    <a href="https://chrome.google.com/webstore" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Installer gratuit</a>
+  </div>
+  <footer><div><a href="https://nodus-ai.app/fr/">Accueil NODUS</a><a href="hn-radar-privacy.html">Confidentialité</a><a href="https://nodus-ai.app/fr/terms">Conditions</a></div><div style="margin-top:10px;">© 2026 NODUS. Tous droits réservés.</div></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>

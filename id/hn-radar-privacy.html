@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kebijakan privasi — NODUS HN Radar</title>
+  <link rel="canonical" href="https://nodus-ai.app/id/hn-radar-privacy" />
+  <link rel="stylesheet" href="../hn-radar-privacy.css">
+  <script>window._forcedLang = 'id';</script>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="https://nodus-ai.app/id/">NODUS</a>
+    <a class="nav-back" href="hn-radar.html">← Kembali ke HN Radar</a>
+  </nav>
+  <div class="hero">
+    <div class="hero-label">Legal · HN Radar</div>
+    <h1>Kebijakan privasi</h1>
+    <p>Ekstensi browser NODUS HN Radar &nbsp;·&nbsp; Diperbarui: Mei 2026 &nbsp;·&nbsp; v0.15</p>
+  </div>
+  <div class="page">
+    <div class="toc">
+      <div class="toc-title">Daftar isi</div>
+      <ol>
+        <li><a href="#overview">Ikhtisar</a></li>
+        <li><a href="#local-data">Data yang disimpan secara lokal</a></li>
+        <li><a href="#endpoints">Endpoint eksternal yang dijelaskan</a></li>
+        <li><a href="#translation">Terjemahan di dalam browser</a></li>
+        <li><a href="#never">Yang tidak pernah kami lakukan</a></li>
+        <li><a href="#rights">Hak Anda (LGPD / GDPR / CCPA)</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ol>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Ikhtisar</h2>
+      <div class="highlight"><p><strong>NODUS HN Radar adalah ekstensi browser yang sepenuhnya local-first.</strong> Ekstensi ini meningkatkan pengalaman membaca di news.ycombinator.com dan menampilkan postingan yang sedang naik melalui API publik Hacker News. Tanpa server, tanpa akun, tanpa login, tanpa sinkronisasi cloud, tanpa telemetri.</p></div>
+      <p>Produk saudara dari ekstensi utama NODUS (penangkap percakapan AI) dan NODUS YT Radar. Masing-masing memiliki kebijakannya sendiri:</p>
+      <ul class="check">
+        <li>NODUS utama — <a href="privacy.html" style="color:#ff8c42;">privacy.html</a></li>
+        <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
+        <li>HN Radar — dokumen ini</li>
+      </ul>
+      <p>HN Radar terhubung ke dua endpoint, keduanya milik <strong>Hacker News itu sendiri</strong>:</p>
+      <div class="card"><div class="card-title"><span class="badge badge-green">wajib</span> news.ycombinator.com</div><p>Situs yang Anda baca. Content script meningkatkan halaman yang Anda muat sendiri — tanpa fetch proaktif.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">wajib</span> hacker-news.firebaseio.com</div><p>API publik Firebase milik Hacker News. Digunakan untuk mengambil daftar yang sedang naik (Top / Show / Ask / Best) dan detail item individual untuk dasbor Radar.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-gray">tidak ada</span> Server NODUS</div><p>HN Radar tidak menghubungi infrastruktur NODUS apa pun. Berbeda dengan YT Radar (worker Community Spotlight) atau NODUS utama (lisensi PRO), ekstensi ini tidak memiliki dependensi backend NODUS.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Data yang disimpan secara lokal</h2>
+      <p>Semua yang berikut ini disimpan dalam <code>chrome.storage.local</code> dan tidak pernah dikirim ke mana pun kecuali yang dijelaskan di Bagian 3.</p>
+      <div class="storage-row"><div class="storage-key">settings</div><div class="storage-desc">Preferensi Anda: tema, ukuran font, lebar bacaan, toggle penyorotan, bahasa antarmuka, pengaturan terjemahan, warna/intensitas zebra, dll.</div></div>
+      <div class="storage-row"><div class="storage-key">visited</div><div class="storage-desc">Daftar ID postingan HN yang Anda klik dari front page, dengan timestamp. Digunakan untuk membuat postingan yang sudah dikunjungi berwarna abu-abu. TTL 30 hari dengan pemangkasan otomatis.</div></div>
+      <div class="storage-row"><div class="storage-key">pinned</div><div class="storage-desc">Postingan yang secara eksplisit disematkan via 📌: id, judul, url, domain, snapshot skor, jumlah komentar, usia, tag, timestamp penyematan.</div></div>
+      <div class="storage-row"><div class="storage-key">collapsedCards</div><div class="storage-desc">ID kartu yang disematkan yang telah Anda ciutkan di panel samping.</div></div>
+      <div class="storage-row"><div class="storage-key">recentTags</div><div class="storage-desc">Daftar 40 nama tag yang terakhir digunakan, untuk autocomplete.</div></div>
+      <div class="storage-row"><div class="storage-key">mutedDomains</div><div class="storage-desc">Daftar domain yang Anda bungkam. Postingan dari domain tersebut disembunyikan di Radar.</div></div>
+      <div class="storage-row"><div class="storage-key">radar</div><div class="storage-desc">Snapshot data postingan HN (skor, komentar) dari waktu ke waktu, digunakan untuk menghitung kecepatan.</div></div>
+      <div class="storage-row"><div class="storage-key">opActiveCache</div><div class="storage-desc">Cache deteksi "author telah membalas" per ID. TTL 10 menit.</div></div>
+      <div class="storage-row"><div class="storage-key">comments_&lt;postId&gt;</div><div class="storage-desc">Cache komentar pratinjau saat kursor diarahkan. TTL 10 menit.</div></div>
+      <div class="highlight" style="margin-top:24px;"><p>Menghapus instalasi ekstensi menghapus semuanya secara otomatis. Tanpa akun pengguna, tanpa pengumpulan email, tanpa cara bagi NODUS untuk mengidentifikasi Anda.</p></div>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Endpoint eksternal yang dijelaskan</h2>
+      <p>Ekstensi hanya melakukan fetch dari dua domain, yang dideklarasikan dalam <code>host_permissions</code> dan terlihat oleh Chrome sebelum instalasi.</p>
+      <h3>3a. Situs Hacker News</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">hanya content script</span></div><div class="endpoint-body"><p>Content script menyuntikkan CSS dan peningkatan DOM kecil (tombol pin, badge jenis, tombol terjemahan) pada halaman yang Anda muat. Ekstensi tidak melakukan fetch HN secara proaktif di background.</p><p class="data-sent"><strong>Data yang dikirim oleh ekstensi:</strong> tidak ada di luar yang sudah dikirim oleh browser Anda.</p></div></div>
+      <h3>3b. API publik Firebase Hacker News</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://hacker-news.firebaseio.com/v0/topstories.json</span><span class="badge badge-green">wajib</span></div><div class="endpoint-body"><p>Mengembalikan array ID yang sedang naik. Sumber yang sama dengan front page resmi HN.</p><p class="data-sent"><strong>Data yang dikirim:</strong> tidak ada yang mengidentifikasi — hanya permintaan saja.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">jika tab aktif</span></div><div class="endpoint-body"><p>Sama untuk tab Best, Show HN dan Ask HN.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">per postingan</span></div><div class="endpoint-body"><p>Mengambil detail publik dari setiap postingan atau komentar yang ditampilkan di Radar atau di pratinjau.</p><p class="data-sent"><strong>Data yang dikirim:</strong> ID postingan. Tidak ada pengenal Anda.</p></div></div>
+      <p style="font-size:13px;color:#64748b;">Hacker News dan Y Combinator dapat mencatat permintaan ini sesuai kebijakan mereka sendiri. Ekstensi itu sendiri tidak menambahkan header, cookie, atau auth.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="translation"></span>
+      <h2><span class="icon">🌐</span> 4. Terjemahan di dalam browser</h2>
+      <div class="highlight"><p><strong>Terjemahan sepenuhnya dilakukan di perangkat Anda.</strong> HN Radar menggunakan API Translator bawaan Chrome (Chrome 138+), yang mengunduh model bahasa kecil secara lokal pada penggunaan pertama dan menerjemahkan teks tanpa mengirimkannya ke server mana pun.</p></div>
+      <p>Ini berarti:</p>
+      <ul class="check">
+        <li>Tidak ada teks yang meninggalkan browser Anda saat penerjemahan.</li>
+        <li>Tanpa kunci API, tanpa biaya, tanpa pelacakan penggunaan.</li>
+        <li>Terjemahan berfungsi offline setelah model diunduh.</li>
+        <li>Cache terjemahan hanya lokal dan terhapus bersama ekstensi.</li>
+      </ul>
+      <p>Jika browser Anda tidak mendukung API Translator (Firefox atau Chrome versi lama), fungsi terjemahan tidak melakukan apa-apa — tidak ada fallback ke layanan cloud.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Yang tidak pernah kami lakukan</h2>
+      <ul class="check cross">
+        <li>Menjual data Anda kepada pihak ketiga</li>
+        <li>Mengirim apa pun ke server NODUS (tidak ada backend NODUS untuk ekstensi ini)</li>
+        <li>Melacak postingan apa yang Anda baca, klik, atau sematkan</li>
+        <li>Melacak situs yang dikunjungi di luar news.ycombinator.com</li>
+        <li>Menggunakan analytics atau SDK iklan pihak ketiga</li>
+        <li>Membaca atau menyimpan komentar, balasan, atau data akun HN Anda</li>
+        <li>Mengakses mikrofon, kamera, clipboard, atau unduhan</li>
+        <li>Menyuntikkan iklan atau tautan afiliasi</li>
+        <li>Mewajibkan akun, login, atau email</li>
+        <li>Mensinkronkan tag, pin, atau preferensi Anda ke cloud</li>
+      </ul>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Hak Anda (LGPD / GDPR / CCPA)</h2>
+      <p>HN Radar mematuhi LGPD Brasil, GDPR Eropa dan kompatibel dengan CCPA. Karena semua data bersifat lokal dan ekstensi tidak melakukan profiling atau tracking lintas situs, sebagian besar hak dapat dilaksanakan langsung melalui browser Anda.</p>
+      <h3>Hak yang Anda miliki</h3>
+      <ul class="check">
+        <li><strong>Akses</strong> — semua data lokal terlihat di <code>chrome://extensions</code> → HN Radar → Inspect → Application → Storage</li>
+        <li><strong>Penghapusan</strong> — menghapus instalasi ekstensi menghapus semuanya</li>
+        <li><strong>Portabilitas</strong> — data lokal dalam format JSON di <code>chrome.storage.local</code>, dapat diekspor dari DevTools</li>
+        <li><strong>Opt-out</strong> — nonaktifkan toggle utama Lens kapan saja</li>
+      </ul>
+      <h3>Dasar hukum pemrosesan</h3>
+      <p>Membaca situs publik HN dan API publik HN termasuk dalam <strong>kepentingan sah</strong> (menyediakan lapisan baca yang Anda pilih dengan menginstal ekstensi). Tidak ada data yang dapat mengidentifikasi pribadi yang diproses.</p>
+    </div>
+
+    <div class="section"><span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. Kontak</h2>
+      <p>Untuk pertanyaan privasi atau permintaan fitur:</p>
+      <div class="card"><div class="card-title">📧 Email</div><p>mmcarvalho.dev@gmail.com</p></div>
+      <div class="card"><div class="card-title">🌐 Situs proyek</div><p><a href="hn-radar.html" style="color:#ff8c42;">nodus-ai.app/id/hn-radar</a></p></div>
+      <p style="margin-top:24px;font-size:13px;color:#475569;">Kebijakan ini dapat diperbarui. Perubahan penting akan diumumkan di catatan rilis ekstensi. Penggunaan berkelanjutan setelah perubahan berarti penerimaan.</p>
+    </div>
+  </div>
+  <footer><p>© 2026 NODUS · <a href="https://nodus-ai.app/id/">Beranda</a> · <a href="hn-radar.html">HN Radar</a> · <a href="privacy.html">Privasi NODUS</a> · Privasi HN Radar</p></footer>
+  <script src="../lang-switcher.js"></script>
+</body>
+</html>
