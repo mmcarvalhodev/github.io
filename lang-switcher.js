@@ -33,20 +33,22 @@
     var segments = path.replace(/^\//, '').split('/');
     var file = segments[segments.length - 1];
 
+    // Normalize: site uses canonical URLs without .html (e.g. /hn-radar)
+    // but the lookup lists carry .html. Add .html for matching when missing.
+    var fileMatch = (file && file.indexOf('.') === -1) ? file + '.html' : file;
+
     // In-page i18n pages: stay on the same page
-    if (inPageI18nPages.indexOf(file) !== -1) {
+    if (inPageI18nPages.indexOf(fileMatch) !== -1) {
       return window.location.pathname;
     }
 
     // Is current page one with full language translations?
-    var hasTranslation = translatedPages.indexOf(file) !== -1;
+    var hasTranslation = translatedPages.indexOf(fileMatch) !== -1;
 
     if (hasTranslation) {
-      return code === 'en' ? '/' + file : '/' + code + '/' + file;
-    }
-
-    if (file === 'faq.html') {
-      return '/faq.html';
+      // Output canonical URL (no .html), matching the rest of the site
+      var canonical = fileMatch.replace(/\.html$/, '');
+      return code === 'en' ? '/' + canonical : '/' + code + '/' + canonical;
     }
 
     // Index pages (root "/" or "/lang/"): go to target language homepage + current hash
