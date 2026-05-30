@@ -92,6 +92,70 @@
     <a href="https://chromewebstore.google.com/detail/nodus-hn-radar/khodlkgkgdkhkljapdllfjnfedamhkmn" class="btn-primary" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0;vertical-align:middle"> 무료 설치</a>
   </div>
   <footer><div><a href="https://nodus-ai.app/ko/">NODUS 홈</a><a href="hn-radar-privacy.html">개인정보</a><a href="https://nodus-ai.app/ko/terms">이용약관</a></div><div style="margin-top:10px;">© 2026 NODUS. 모든 권리 보유.</div></footer>
-  <script src="../lang-switcher.js"></script>
+  <script src="../lang-switcher.js"></script>  <!-- ── NODUS-AI ROTATING TICKER (sticky bottom) ── -->
+  <style>
+    body{padding-bottom:60px}
+    #nodus-ticker{
+      position:fixed;left:0;right:0;bottom:0;z-index:9999;
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      min-height:44px;padding:8px 16px;
+      background:linear-gradient(90deg,#0f172a 0%,#1e293b 50%,#0f172a 100%);
+      border-top:1px solid rgba(148,163,184,0.18);
+      color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;
+      box-shadow:0 -4px 20px rgba(0,0,0,0.35);
+      transition:opacity 0.4s ease;
+    }
+    #nodus-ticker:hover{background:linear-gradient(90deg,#1e293b 0%,#334155 50%,#1e293b 100%);}
+    #nodus-ticker .nt-slot{display:inline-flex;align-items:center;gap:8px;opacity:1;transition:opacity 0.4s ease;}
+    #nodus-ticker .nt-slot.fade{opacity:0;}
+    #nodus-ticker .nt-brand{color:#fbbf24;font-weight:700;letter-spacing:0.5px;}
+    #nodus-ticker .nt-cta{color:#94a3b8;font-size:12px;margin-left:4px;}
+    #nodus-ticker .nt-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#fbbf24;box-shadow:0 0 8px #fbbf24;}
+    @media (max-width:640px){body{padding-bottom:60px}
+    #nodus-ticker{font-size:12px;padding:6px 12px;}}
+  </style>
+  <a id="nodus-ticker" href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener" aria-label="NODUS AI extension">
+    <span class="nt-slot" id="nt-slot"><span id="nt-text">AI 답변을 잃고 있나요?</span></span>
+  </a>
+  <script>
+    (function(){
+      var PITCHES = ["AI 답변을 잃고 있나요?", "최고의 AI 답변을 정리하세요", "AI 채팅 간 복사-붙여넣기를 멈추세요", "AI는 답변, NODUS는 기억.", "그 AI 답변을 다시 찾을 수 없나요?", "AI 답변을 재사용 가능한 지식으로 만드세요", "맥락을 잃지 않고 AI 아이디어 재사용", "당신의 최고의 AI 답변은 그 후 어떻게 됐나요?", "최고의 AI 답변이 채팅에 갇혀 있으면 안 됩니다", "캡처. 정리. AI 답변 재사용.", "가치 있는 AI 답변을 찾았나요? 저장하세요.", "AI 대화를 위한 기억"];
+      var BRAND = "NODUS AI";
+      var CTA = "무료 체험 →";
+      var slot = document.getElementById('nt-slot');
+      var text = document.getElementById('nt-text');
+      if(!slot||!text) return;
+      var dayIdx = Math.floor(Date.now()/86400000);
+      var trio = [PITCHES[dayIdx%12], PITCHES[(dayIdx+1)%12], PITCHES[(dayIdx+2)%12]];
+      // Sequence: pitch, brand, pitch, brand, pitch, brand → 30s cycle
+      var seq = [];
+      for(var i=0;i<3;i++){
+        seq.push({kind:'pitch',value:trio[i]});
+        seq.push({kind:'brand'});
+      }
+      var idx=0;
+      function render(){
+        var item=seq[idx];
+        if(item.kind==='brand'){
+          slot.innerHTML='<span class="nt-dot"></span><span class="nt-brand">'+BRAND+'</span><span class="nt-cta">'+CTA+'</span>';
+        } else {
+          slot.textContent=item.value;
+        }
+      }
+      // initial: show first item without fade
+      render();
+      idx=1;
+      setInterval(function(){
+        slot.classList.add('fade');
+        setTimeout(function(){
+          render();
+          idx=(idx+1)%seq.length;
+          slot.classList.remove('fade');
+        },400);
+      },5000);
+    })();
+  </script>
+
+
 </body>
 </html>
