@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Block legacy ?lang= URLs left behind by an old i18n bug (fixed in
+# commit 19dbb5a). The site now uses /[lang]/ path segments only.
+Disallow: /*?lang=
+
 Sitemap: https://nodus-ai.app/sitemap.xml
