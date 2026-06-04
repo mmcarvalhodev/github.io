@@ -511,10 +511,10 @@
         <div class="tier-card gold">
           <div class="tier-badge-wrap"><span class="tier-badge gold" id="t-tier-gold-badge">★ Gold</span></div>
           <div class="tier-price gold" id="t-tier-gold-price">$7</div>
-          <div class="tier-period" id="t-tier-gold-period">2 products · 2 days</div>
+          <div class="tier-period" id="t-tier-gold-period">2 products · 3 days</div>
           <ul class="tier-features">
             <li class="highlight" id="t-tf4-1">2 product slots</li>
-            <li class="highlight" id="t-tf4-2">2 days active each</li>
+            <li class="highlight" id="t-tf4-2">3 days active each</li>
             <li class="highlight" id="t-tf4-3">12× more frequency</li>
             <li class="highlight" id="t-tf4-4">Instant approval</li>
             <li class="highlight" id="t-tf4-5">Calendar GOLD badge</li>
@@ -614,7 +614,7 @@
             <div class="tier-opt" data-tier="gold" onclick="setTier('gold')">
               <div class="to-name">Gold</div>
               <div class="to-price">$7</div>
-              <div class="to-spec">2 prods · 2 days</div>
+              <div class="to-spec">2 prods · 3 days</div>
             </div>
           </div>
         </div>
@@ -684,7 +684,7 @@
       free:   { maxProducts: 1, durationDays: 1, weight: 1  },
       bronze: { maxProducts: 1, durationDays: 1, weight: 3  },
       silver: { maxProducts: 1, durationDays: 2, weight: 6  },
-      gold:   { maxProducts: 2, durationDays: 2, weight: 12 }
+      gold:   { maxProducts: 2, durationDays: 3, weight: 12 }
     };
 
     function toggleRegion(el) {
@@ -763,8 +763,8 @@
                      : "<strong>Bronze $1:</strong> 1 product × 1 day · 3× more frequency. No queue. Up to 5 regions.",
         silver: isPt ? "<strong>Silver $3:</strong> 1 produto × 2 dias · 6× mais frequência. Sem fila. Até 10 regiões."
                      : "<strong>Silver $3:</strong> 1 product × 2 days · 6× more frequency. No queue. Up to 10 regions.",
-        gold:   isPt ? "<strong>Gold $7:</strong> 2 produtos × 2 dias · 12× mais frequência. Aprovação <strong>instantânea</strong>. <strong>14 dias pra ativar o 2º slot</strong>. Todas as regiões."
-                     : "<strong>Gold $7:</strong> 2 products × 2 days · 12× more frequency. <strong>Instant approval</strong>. <strong>14 days to activate the 2nd slot</strong>. All regions."
+        gold:   isPt ? "<strong>Gold $7:</strong> 2 produtos × 3 dias · 12× mais frequência. Aprovação <strong>instantânea</strong>. <strong>14 dias pra ativar o 2º slot</strong>. Todas as regiões."
+                     : "<strong>Gold $7:</strong> 2 products × 3 days · 12× more frequency. <strong>Instant approval</strong>. <strong>14 days to activate the 2nd slot</strong>. All regions."
       };
       infoBox.innerHTML = infoMap[tier] || "";
 
