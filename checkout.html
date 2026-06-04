@@ -548,9 +548,56 @@
       });
     }
 
+    // ─── EXTERNAL TXN MODE ──────────────────────────────────
+    // Se a URL tem ?_ptxn=txn_... é uma transação criada por outro produto NODUS
+    // (PH Radar Spotlight, YT Radar Spotlight, etc). Abre o overlay direto com
+    // aquele transactionId e esconde os planos do NODUS PRO.
+    function openExternalTxn(txnId) {
+      // Esconde a UI do NODUS PRO
+      var hideSelectors = ['.lifetime-card','.plans','.or-divider','.trial-notice'];
+      hideSelectors.forEach(function(sel) {
+        document.querySelectorAll(sel).forEach(function(el) { el.style.display = 'none'; });
+      });
+      // Mensagem de loading
+      var holder = document.querySelector('.page-header') || document.body;
+      var msg = document.createElement('div');
+      msg.style.cssText = 'text-align:center;padding:32px;color:#94a3b8;font-size:14px;max-width:500px;margin:24px auto;';
+      msg.innerHTML = '<div style="font-size:38px;margin-bottom:12px;">💳</div>'
+                    + '<div style="color:#facc15;font-weight:700;margin-bottom:6px;">'
+                    + (LANG === 'pt' ? 'Abrindo checkout seguro…' : 'Opening secure checkout…')
+                    + '</div>'
+                    + '<div style="font-size:12px;color:#64748b;">'
+                    + (LANG === 'pt' ? 'Aguarde alguns segundos.' : 'Please wait a few seconds.')
+                    + '</div>';
+      holder.appendChild(msg);
+
+      initializePaddle().then(function() {
+        var locale = PADDLE_LOCALE_MAP[LANG] || 'en';
+        Paddle.Checkout.open({
+          transactionId: txnId,
+          settings: {
+            displayMode: 'overlay',
+            theme: 'dark',
+            locale: locale,
+            allowLogout: false
+          }
+        });
+      }).catch(function(e) {
+        console.error('[Checkout external]', e);
+        showError('Failed to open checkout: ' + (e.message || 'unknown error'));
+      });
+    }
+
     // ─── INIT ────────────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', function() {
       applyTranslations();
+
+      // Detecta ?_ptxn= e abre overlay direto (modo external)
+      var urlPtxn = new URLSearchParams(window.location.search).get('_ptxn');
+      if (urlPtxn) {
+        openExternalTxn(urlPtxn);
+        return; // Não inicializa flow NODUS PRO
+      }
 
       // Slots ao vivo
       fetch('https://nodus-worker.mmcarvalho-dev.workers.dev/lifetime/slots')
