@@ -17,7 +17,7 @@
   var translatedPages = ['privacy.html', 'faq.html', 'hn-radar.html', 'hn-radar-privacy.html'];
 
   // Pages with in-page JS i18n — don't navigate, just fire event
-  var inPageI18nPages = ['affiliates.html', 'checkout.html'];
+  var inPageI18nPages = ['affiliates.html', 'checkout.html', 'yt-radar.html', 'ph-radar.html'];
 
   // Current page filename
   var currentPath = window.location.pathname;

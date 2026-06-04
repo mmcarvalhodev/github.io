@@ -1566,6 +1566,8 @@
     }
 
     document.addEventListener("DOMContentLoaded", applyI18n);
+    // lang-switcher.js fires this on the window for in-page i18n pages
+    window.addEventListener("nodus-lang-change", applyI18n);
     document.addEventListener("langChanged", applyI18n);
   </script>
 </body>
