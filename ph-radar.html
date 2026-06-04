@@ -459,7 +459,7 @@
     <section class="section" id="spotlight">
       <div class="section-label" id="t-spot-label">Community Spotlight</div>
       <h2 class="section-title" id="t-spot-title">Put your launch in front of every PH Radar user</h2>
-      <p class="section-sub" id="t-spot-desc">Each time someone opens the side panel, a curated product is shown in the Spotlight slot — before the race even loads. Tiers grant <strong>multiple product slots</strong>, perfect for Launch Week pipelines.</p>
+      <p class="section-sub" id="t-spot-desc">Each time someone opens the side panel, a curated product is shown in the Spotlight slot — before the race even loads. Higher tiers run <strong>longer and more often</strong>; Gold even gives a <strong>second product slot</strong> for Launch Week.</p>
 
       <div class="tiers">
         <!-- FREE -->
@@ -470,9 +470,9 @@
           <ul class="tier-features">
             <li id="t-tf1-1">1 product slot</li>
             <li id="t-tf1-2">1 day active</li>
-            <li id="t-tf1-3">Base frequency (1×)</li>
-            <li id="t-tf1-4">Manual review 24–48h</li>
-            <li id="t-tf1-5">Calendar visible</li>
+            <li id="t-tf1-3">1 submission / 30 days</li>
+            <li id="t-tf1-4">Base frequency (1×)</li>
+            <li id="t-tf1-5">Manual review 24–48h</li>
           </ul>
           <button class="btn-tier free" onclick="selectTier('free')" id="t-btn-free">Submit free</button>
         </div>
@@ -481,12 +481,12 @@
         <div class="tier-card">
           <div class="tier-badge-wrap"><span class="tier-badge bronze" id="t-tier-bronze-badge">▲ Bronze</span></div>
           <div class="tier-price bronze" id="t-tier-bronze-price">$1</div>
-          <div class="tier-period" id="t-tier-bronze-period">2 products · 1 day</div>
+          <div class="tier-period" id="t-tier-bronze-period">1 product · 1 day</div>
           <ul class="tier-features">
-            <li class="highlight" id="t-tf2-1">2 product slots</li>
+            <li class="highlight" id="t-tf2-1">1 product slot</li>
             <li class="highlight" id="t-tf2-2">3× more frequency</li>
-            <li id="t-tf2-3">14 days to activate slots</li>
-            <li id="t-tf2-4">Priority review</li>
+            <li id="t-tf2-3">Priority review · no wait</li>
+            <li id="t-tf2-4">Up to 5 regions</li>
             <li id="t-tf2-5">Calendar visible</li>
           </ul>
           <button class="btn-tier bronze" onclick="selectTier('bronze')" id="t-btn-bronze">Get Bronze</button>
@@ -496,12 +496,12 @@
         <div class="tier-card">
           <div class="tier-badge-wrap"><span class="tier-badge silver" id="t-tier-silver-badge">✦ Silver</span></div>
           <div class="tier-price silver" id="t-tier-silver-price">$3</div>
-          <div class="tier-period" id="t-tier-silver-period">2 products · 2 days</div>
+          <div class="tier-period" id="t-tier-silver-period">1 product · 2 days</div>
           <ul class="tier-features">
-            <li class="highlight" id="t-tf3-1">2 product slots</li>
-            <li class="highlight" id="t-tf3-2">2 days active each</li>
+            <li class="highlight" id="t-tf3-1">1 product slot</li>
+            <li class="highlight" id="t-tf3-2">2 days active</li>
             <li class="highlight" id="t-tf3-3">6× more frequency</li>
-            <li id="t-tf3-4">14 days to activate slots</li>
+            <li id="t-tf3-4">Up to 10 regions</li>
             <li id="t-tf3-5">Calendar highlighted</li>
           </ul>
           <button class="btn-tier silver" onclick="selectTier('silver')" id="t-btn-silver">Get Silver</button>
@@ -511,10 +511,10 @@
         <div class="tier-card gold">
           <div class="tier-badge-wrap"><span class="tier-badge gold" id="t-tier-gold-badge">★ Gold</span></div>
           <div class="tier-price gold" id="t-tier-gold-price">$7</div>
-          <div class="tier-period" id="t-tier-gold-period">3 products · 3 days</div>
+          <div class="tier-period" id="t-tier-gold-period">2 products · 2 days</div>
           <ul class="tier-features">
-            <li class="highlight" id="t-tf4-1">3 product slots</li>
-            <li class="highlight" id="t-tf4-2">3 days active each</li>
+            <li class="highlight" id="t-tf4-1">2 product slots</li>
+            <li class="highlight" id="t-tf4-2">2 days active each</li>
             <li class="highlight" id="t-tf4-3">12× more frequency</li>
             <li class="highlight" id="t-tf4-4">Instant approval</li>
             <li class="highlight" id="t-tf4-5">Calendar GOLD badge</li>
@@ -526,7 +526,7 @@
       <!-- SUBMIT FORM -->
       <div class="submit-section" id="submit-form-wrap">
         <h3 id="t-form-title">📤 Submit your product</h3>
-        <p class="sub" id="t-form-sub">No account needed. Free tier goes to review queue; paid tiers redirect to checkout. After payment you can add more products to your plan slots within 14 days.</p>
+        <p class="sub" id="t-form-sub">No account needed. Free tier goes to review queue (one submission every 30 days); paid tiers redirect to checkout. Gold plans let you add a 2nd product to your slot within 14 days.</p>
 
         <div class="form-group">
           <label id="t-label-email">Your email</label>
@@ -604,23 +604,23 @@
             <div class="tier-opt" data-tier="bronze" onclick="setTier('bronze')">
               <div class="to-name">Bronze</div>
               <div class="to-price">$1</div>
-              <div class="to-spec">2 prods · 1 day</div>
+              <div class="to-spec">1 prod · 1 day</div>
             </div>
             <div class="tier-opt" data-tier="silver" onclick="setTier('silver')">
               <div class="to-name">Silver</div>
               <div class="to-price">$3</div>
-              <div class="to-spec">2 prods · 2 days</div>
+              <div class="to-spec">1 prod · 2 days</div>
             </div>
             <div class="tier-opt" data-tier="gold" onclick="setTier('gold')">
               <div class="to-name">Gold</div>
               <div class="to-price">$7</div>
-              <div class="to-spec">3 prods · 3 days</div>
+              <div class="to-spec">2 prods · 2 days</div>
             </div>
           </div>
         </div>
 
         <div class="info-box" id="t-info-box">
-          <strong>Free tier:</strong> Goes to review queue. Usually approved within 24–48h and runs for 1 day at base frequency. Paid tiers get more product slots and higher frequency — Gold reaches <strong>12× more impressions</strong> than Free per product.
+          <strong>Free tier:</strong> Goes to review queue. Usually approved within 24–48h and runs for 1 day at base frequency. <strong>Limited to one submission every 30 days.</strong> Paid tiers skip the queue and run at higher frequency — Gold reaches <strong>12× more impressions</strong> than Free per product.
         </div>
 
         <button type="button" class="btn-submit" id="btn-submit" onclick="submitPromo()">
@@ -682,9 +682,9 @@
     // Spec dos tiers (deve bater com PROMO_TIERS no Worker)
     const TIER_SPEC = {
       free:   { maxProducts: 1, durationDays: 1, weight: 1  },
-      bronze: { maxProducts: 2, durationDays: 1, weight: 3  },
-      silver: { maxProducts: 2, durationDays: 2, weight: 6  },
-      gold:   { maxProducts: 3, durationDays: 3, weight: 12 }
+      bronze: { maxProducts: 1, durationDays: 1, weight: 3  },
+      silver: { maxProducts: 1, durationDays: 2, weight: 6  },
+      gold:   { maxProducts: 2, durationDays: 2, weight: 12 }
     };
 
     function toggleRegion(el) {
@@ -757,14 +757,14 @@
       const spec = TIER_SPEC[tier];
       const infoBox = document.getElementById("t-info-box");
       const infoMap = {
-        free:   isPt ? "<strong>Free:</strong> Fila de revisão 24–48h. 1 produto, 1 dia. Até <strong>3 regiões</strong>."
-                     : "<strong>Free:</strong> Review queue 24–48h. 1 product, 1 day. Up to <strong>3 regions</strong>.",
-        bronze: isPt ? "<strong>Bronze $1:</strong> 2 produtos × 1 dia · 3× mais frequência. <strong>14 dias pra ativar slots</strong>. Até 5 regiões."
-                     : "<strong>Bronze $1:</strong> 2 products × 1 day · 3× more frequency. <strong>14 days to activate slots</strong>. Up to 5 regions.",
-        silver: isPt ? "<strong>Silver $3:</strong> 2 produtos × 2 dias · 6× mais frequência. 14 dias pra ativar. Até 10 regiões."
-                     : "<strong>Silver $3:</strong> 2 products × 2 days · 6× more frequency. 14 days to activate. Up to 10 regions.",
-        gold:   isPt ? "<strong>Gold $7:</strong> 3 produtos × 3 dias · 12× mais frequência. Aprovação <strong>instantânea</strong>. Todas as regiões."
-                     : "<strong>Gold $7:</strong> 3 products × 3 days · 12× more frequency. <strong>Instant approval</strong>. All regions."
+        free:   isPt ? "<strong>Free:</strong> Fila de revisão 24–48h. 1 produto, 1 dia. <strong>1 envio a cada 30 dias</strong>. Até 3 regiões."
+                     : "<strong>Free:</strong> Review queue 24–48h. 1 product, 1 day. <strong>1 submission every 30 days</strong>. Up to 3 regions.",
+        bronze: isPt ? "<strong>Bronze $1:</strong> 1 produto × 1 dia · 3× mais frequência. Sem fila. Até 5 regiões."
+                     : "<strong>Bronze $1:</strong> 1 product × 1 day · 3× more frequency. No queue. Up to 5 regions.",
+        silver: isPt ? "<strong>Silver $3:</strong> 1 produto × 2 dias · 6× mais frequência. Sem fila. Até 10 regiões."
+                     : "<strong>Silver $3:</strong> 1 product × 2 days · 6× more frequency. No queue. Up to 10 regions.",
+        gold:   isPt ? "<strong>Gold $7:</strong> 2 produtos × 2 dias · 12× mais frequência. Aprovação <strong>instantânea</strong>. <strong>14 dias pra ativar o 2º slot</strong>. Todas as regiões."
+                     : "<strong>Gold $7:</strong> 2 products × 2 days · 12× more frequency. <strong>Instant approval</strong>. <strong>14 days to activate the 2nd slot</strong>. All regions."
       };
       infoBox.innerHTML = infoMap[tier] || "";
 
@@ -869,7 +869,7 @@
 
     function translateError(rawErr) {
       const errPt = {
-        "Free tier: one submission per 24 hours":           "Free: apenas 1 envio por 24 horas.",
+        "Free tier is limited to one submission every 30 days": "Free: apenas 1 envio a cada 30 dias. Faça upgrade pra um plano pago e entre na hora.",
         "You already have an active promotion for this product": "Você já tem uma promoção ativa para este produto.",
         "Invalid email":                                    "Email inválido.",
         "Invalid Product Hunt URL":                         "URL do Product Hunt inválida.",
@@ -1088,9 +1088,9 @@
         "t-f6-desc":             "Native interface in 16 languages. Auto-translate taglines and comments via Chrome's offline translator. No data leaves your machine.",
         "t-spot-label":          "Community Spotlight",
         "t-spot-title":          "Put your launch in front of every PH Radar user",
-        "t-spot-desc":           "Each time someone opens the side panel, a curated product is shown in the Spotlight slot. Tiers grant <strong>multiple product slots</strong>, perfect for Launch Week pipelines.",
+        "t-spot-desc":           "Each time someone opens the side panel, a curated product is shown in the Spotlight slot. Higher tiers run <strong>longer and more often</strong>; Gold even gives a <strong>second product slot</strong> for Launch Week.",
         "t-form-title":          "📤 Submit your product",
-        "t-form-sub":            "No account needed. Free goes to review; paid tiers redirect to checkout. After payment you can add more products to your plan slots within 14 days.",
+        "t-form-sub":            "No account needed. Free goes to review (one submission every 30 days); paid tiers redirect to checkout. Gold plans let you add a 2nd product within 14 days.",
         "t-label-email":         "Your email",
         "t-label-url":           "Product Hunt URL",
         "t-label-product-name":  "Product name",
@@ -1153,9 +1153,9 @@
         "t-f6-desc":             "Interface nativa em 16 idiomas. Traduz taglines e comentários via tradutor offline do Chrome. Nenhum dado sai da sua máquina.",
         "t-spot-label":          "Community Spotlight",
         "t-spot-title":          "Coloque seu lançamento na frente de todos os usuários do PH Radar",
-        "t-spot-desc":           "Toda vez que alguém abre a sidepanel, um produto curado aparece no slot Spotlight. Tiers dão <strong>múltiplos slots</strong>, perfeito pra Launch Week.",
+        "t-spot-desc":           "Toda vez que alguém abre a sidepanel, um produto curado aparece no slot Spotlight. Tiers maiores rodam <strong>por mais tempo e com mais frequência</strong>; o Gold ainda dá um <strong>segundo slot</strong> pra Launch Week.",
         "t-form-title":          "📤 Enviar seu produto",
-        "t-form-sub":            "Sem conta. Free vai pra fila de revisão; tiers pagos vão pro checkout. Após pagar você adiciona mais produtos aos slots em até 14 dias.",
+        "t-form-sub":            "Sem conta. Free vai pra fila de revisão (1 envio a cada 30 dias); tiers pagos vão pro checkout. Planos Gold deixam você adicionar um 2º produto ao slot em até 14 dias.",
         "t-label-email":         "Seu email",
         "t-label-url":           "URL no Product Hunt",
         "t-label-product-name":  "Nome do produto",
@@ -1201,6 +1201,8 @@
       applyI18n();
       setTier("free");
     });
+    // lang-switcher.js fires this on the window for in-page i18n pages
+    window.addEventListener("nodus-lang-change", applyI18n);
     document.addEventListener("langChanged", applyI18n);
   </script>
 </body>
