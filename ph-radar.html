@@ -653,20 +653,6 @@
           <strong>Free tier:</strong> Goes to review queue. Usually approved within 24–48h and runs for 1 day at base frequency. <strong>Limited to one submission every 30 days.</strong> Paid tiers skip the queue and run at higher frequency — Gold reaches <strong>12× more impressions</strong> than Free per product.
         </div>
 
-        <!-- ── MODO PROTÓTIPO (dev) — pula o pagamento Paddle ──
-             Oculto no site público. Revela só com ?proto=1 (ou #proto) na URL.
-             Mesmo revelado, o worker só aceita o bypass com o DEV_BYPASS_TOKEN. -->
-        <div id="proto-box" style="display:none;margin:18px 0;padding:14px 16px;border:1px dashed #5a5a5a;border-radius:10px;background:rgba(255,255,255,0.02);">
-          <label style="display:flex;align-items:center;gap:9px;cursor:pointer;font-size:14px;font-weight:700;margin:0;">
-            <input type="checkbox" id="proto-toggle" onchange="onProtoToggle()" style="width:16px;height:16px;cursor:pointer;accent-color:#ff6600;">
-            <span id="t-proto-title">🧪 Prototype mode — skip payment</span>
-          </label>
-          <div id="proto-fields" style="display:none;margin-top:12px;">
-            <input type="password" id="proto-token" placeholder="DEV_BYPASS_TOKEN" spellcheck="false" autocomplete="off" oninput="saveProtoToken()" style="width:100%;">
-            <div class="t-label-hint" id="t-proto-hint" style="margin-top:7px;display:block;">Paste the dev bypass token. Creates the promo <strong>active</strong> without paying — to verify it reaches the extension (footer if live today, Calendar if scheduled).</div>
-          </div>
-        </div>
-
         <button type="button" class="btn-submit" id="btn-submit" onclick="submitPromo()">
           <span id="t-btn-submit">Submit →</span>
         </button>
@@ -837,49 +823,10 @@
       if (btn) btn.textContent = submitButtonLabel(isPt);
     }
 
-    // Label do botão de submit (considera tier + modo protótipo)
+    // Label do botão de submit (considera tier)
     function submitButtonLabel(isPt) {
       if (selectedTier === "free") return isPt ? "Submeter →" : "Submit →";
-      if (isProtoEnabled()) return isPt ? "Cadastrar (teste) →" : "Create (test) →";
       return isPt ? "Ir para pagamento →" : "Continue to payment →";
-    }
-
-    // ── Modo protótipo (dev) ──────────────────────────────────
-    function isProtoEnabled() {
-      // Box escondido (sem ?proto=1) = proto SEMPRE off, mesmo com localStorage antigo.
-      const box = document.getElementById("proto-box");
-      if (!box || box.style.display === "none") return false;
-      const t = document.getElementById("proto-toggle");
-      const tok = document.getElementById("proto-token");
-      return !!(t && t.checked && tok && tok.value.trim());
-    }
-    function onProtoToggle() {
-      const on = document.getElementById("proto-toggle").checked;
-      document.getElementById("proto-fields").style.display = on ? "block" : "none";
-      localStorage.setItem("nodus_proto_on", on ? "1" : "0");
-      setTier(selectedTier); // atualiza label do botão
-    }
-    function saveProtoToken() {
-      localStorage.setItem("nodus_proto_token", document.getElementById("proto-token").value.trim());
-      setTier(selectedTier);
-    }
-    function restoreProtoState() {
-      const on = localStorage.getItem("nodus_proto_on") === "1";
-      const tok = localStorage.getItem("nodus_proto_token") || "";
-      const toggle = document.getElementById("proto-toggle");
-      const input  = document.getElementById("proto-token");
-      if (toggle) toggle.checked = on;
-      if (input)  input.value = tok;
-      const fields = document.getElementById("proto-fields");
-      if (fields) fields.style.display = on ? "block" : "none";
-      // i18n do painel protótipo
-      const isPt = isPortuguese();
-      const title = document.getElementById("t-proto-title");
-      const hint  = document.getElementById("t-proto-hint");
-      if (title) title.textContent = isPt ? "🧪 Modo protótipo — pular pagamento" : "🧪 Prototype mode — skip payment";
-      if (hint)  hint.innerHTML = isPt
-        ? "Cole o token de bypass (DEV_BYPASS_TOKEN). Cria a promo <strong>ativa</strong> sem pagar — pra verificar se chega na extensão (ao vivo hoje → rodapé + Calendário; agendada → Calendário)."
-        : "Paste the dev bypass token. Creates the promo <strong>active</strong> without paying — to verify it reaches the extension (live today → footer + Calendar; scheduled → Calendar).";
     }
 
     // ── Submit promo ──────────────────────────────────────────
@@ -902,7 +849,6 @@
       hideMsg(msg);
 
       const token = crypto.randomUUID();
-      const bypassToken = isProtoEnabled() ? document.getElementById("proto-token").value.trim() : "";
 
       try {
         const res = await fetch(WORKER + "/promotions/submit", {
@@ -917,8 +863,7 @@
             launchesAt: launchesAt || null,
             topics: [...selectedTopics],
             regions: [...selectedRegions],
-            token,
-            ...(bypassToken ? { bypassToken } : {})
+            token
           })
         });
 
@@ -955,23 +900,13 @@
       el.className = "msg success";
       el.style.display = "block";
 
-      // Banner do modo protótipo (criou ativo sem pagar)
-      // "Agendada" = launches_at significativamente no futuro; senão = ao vivo hoje.
-      // (blank agora grava launches_at = agora, então não dá pra checar só a existência)
-      const nowSec = Math.floor(Date.now() / 1000);
-      const isScheduled = !!(data.launchesAt && data.launchesAt > nowSec + 3600);
-      const testBanner = data.testMode
-        ? (isPt
-            ? `<div style="margin:-2px 0 10px;padding:8px 10px;border:1px dashed #ff6600;border-radius:8px;font-size:12.5px;">🧪 <strong>Modo protótipo</strong> — promo criada <strong>ativa</strong> sem pagamento. ${isScheduled ? "Agendada → veja no <strong>Calendário</strong> da extensão." : "Ao vivo hoje → veja no <strong>rodapé</strong> + <strong>Calendário</strong> da extensão (recarregue o painel)."}</div>`
-            : `<div style="margin:-2px 0 10px;padding:8px 10px;border:1px dashed #ff6600;border-radius:8px;font-size:12.5px;">🧪 <strong>Prototype mode</strong> — promo created <strong>active</strong>, no payment. ${isScheduled ? "Scheduled → see it in the extension <strong>Calendar</strong>." : "Live today → see it in the extension <strong>footer</strong> + <strong>Calendar</strong> (reload the panel)."}</div>`)
-        : "";
       const planNote = data.planId && TIER_SPEC[selectedTier].maxProducts > 1
         ? (isPt
             ? `<div style="margin-top:10px;font-size:13px;">📦 Você tem mais <strong>${TIER_SPEC[selectedTier].maxProducts - 1} slot(s)</strong> no plano <strong>${selectedTier}</strong>. Adicione outros produtos no Dashboard a qualquer momento dentro de 14 dias.</div>`
             : `<div style="margin-top:10px;font-size:13px;">📦 You have <strong>${TIER_SPEC[selectedTier].maxProducts - 1} more slot(s)</strong> on your <strong>${selectedTier}</strong> plan. Add products via Dashboard within 14 days.</div>`)
         : "";
 
-      el.innerHTML = testBanner + (isPt
+      el.innerHTML = (isPt
         ? "✅ Produto enviado! Salve seu token de acesso — você vai precisar dele pra ver status e adicionar mais produtos:"
         : "✅ Product submitted! Save your access token — you'll need it for status and to add more products:")
         + `<div style="display:flex;align-items:center;gap:8px;margin-top:10px;">
@@ -1316,22 +1251,10 @@
         else el.textContent = val;
       });
       // Re-renderiza info box do tier ativo no idioma
-      restoreProtoState();
       setTier(selectedTier);
     }
 
-    // Revela o proto-box só com ?proto=1 (ou #proto) — invisível pro público.
-    function maybeRevealProto() {
-      const params = new URLSearchParams(location.search);
-      const on = params.get("proto") === "1" || location.hash === "#proto";
-      if (!on) return;
-      const box = document.getElementById("proto-box");
-      if (box) box.style.display = "block";
-    }
-
     document.addEventListener("DOMContentLoaded", () => {
-      maybeRevealProto();
-      restoreProtoState();
       applyI18n();
       setTier("free");
     });
