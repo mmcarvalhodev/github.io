@@ -104,6 +104,23 @@
     }
     .btn-secondary:hover { border-color: var(--sub); text-decoration: none; }
 
+    /* ── HERO SCREENSHOT ── */
+    .hero-shot { max-width: 920px; margin: 8px auto 0; padding: 0 4px; }
+    .hero-shot img, .hero-shot .shot-ph {
+      display: block; width: 100%; height: auto; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+    .hero-shot .shot-ph {
+      aspect-ratio: 1813 / 937; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      background: linear-gradient(135deg, #1a1208, #0d0a06);
+      text-align: center; padding: 24px;
+    }
+    .hero-shot .shot-ph-icon { font-size: 40px; opacity: 0.5; }
+    .hero-shot .shot-ph-text { font-size: 14px; color: var(--sub); max-width: 380px; line-height: 1.6; }
+    .hero-shot .shot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 14px; }
+
     /* ── SECTION ── */
     .section { padding: 72px 0; }
     .section-label {
@@ -375,14 +392,27 @@
     <!-- ── HERO ── -->
     <div class="hero" id="install">
       <div class="hero-badge" id="t-hero-badge">📡 Browser Extension</div>
-      <h1 id="t-hero-title">Track Product Hunt <span>with historical depth</span></h1>
-      <p id="t-hero-desc">A side panel that watches every launch in real time. Daily race, velocity, watch rules, hunter tracking, and a Calendar of upcoming launches. Plus Community Spotlight for makers who want extra visibility on launch day.</p>
+      <h1 id="t-hero-title">The Product Hunt race, <span>captured all day</span></h1>
+      <p id="t-hero-desc">PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.</p>
       <div class="hero-btns">
         <a href="#" target="_blank" rel="noopener" class="btn-primary" id="t-hero-install-chrome">
           <span id="t-hero-install-chrome-text">⬇ Install for Chrome (soon)</span>
         </a>
         <a href="#spotlight" class="btn-secondary" id="t-hero-spotlight">⭐ Community Spotlight</a>
       </div>
+    </div>
+
+    <!-- ── HERO SCREENSHOT ── -->
+    <div class="hero-shot">
+      <img src="/ph-radar-screenshot.png"
+           alt="PH Radar Chrome side panel showing today's Product Hunt race ranked live with vote velocity and breakout alerts"
+           width="1813" height="937" loading="eager"
+           onerror="this.style.display='none';var p=document.getElementById('ph-shot-ph');if(p)p.style.display='flex';">
+      <div class="shot-ph" id="ph-shot-ph" style="display:none;">
+        <div class="shot-ph-icon">📊</div>
+        <div class="shot-ph-text" id="t-hero-shot-ph">A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.</div>
+      </div>
+      <div class="shot-cap" id="t-hero-shot-cap">The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.</div>
     </div>
 
     <hr class="divider">
@@ -623,6 +653,20 @@
           <strong>Free tier:</strong> Goes to review queue. Usually approved within 24–48h and runs for 1 day at base frequency. <strong>Limited to one submission every 30 days.</strong> Paid tiers skip the queue and run at higher frequency — Gold reaches <strong>12× more impressions</strong> than Free per product.
         </div>
 
+        <!-- ── MODO PROTÓTIPO (dev) — pula o pagamento Paddle ──
+             Oculto no site público. Revela só com ?proto=1 (ou #proto) na URL.
+             Mesmo revelado, o worker só aceita o bypass com o DEV_BYPASS_TOKEN. -->
+        <div id="proto-box" style="display:none;margin:18px 0;padding:14px 16px;border:1px dashed #5a5a5a;border-radius:10px;background:rgba(255,255,255,0.02);">
+          <label style="display:flex;align-items:center;gap:9px;cursor:pointer;font-size:14px;font-weight:700;margin:0;">
+            <input type="checkbox" id="proto-toggle" onchange="onProtoToggle()" style="width:16px;height:16px;cursor:pointer;accent-color:#ff6600;">
+            <span id="t-proto-title">🧪 Prototype mode — skip payment</span>
+          </label>
+          <div id="proto-fields" style="display:none;margin-top:12px;">
+            <input type="password" id="proto-token" placeholder="DEV_BYPASS_TOKEN" spellcheck="false" autocomplete="off" oninput="saveProtoToken()" style="width:100%;">
+            <div class="t-label-hint" id="t-proto-hint" style="margin-top:7px;display:block;">Paste the dev bypass token. Creates the promo <strong>active</strong> without paying — to verify it reaches the extension (footer if live today, Calendar if scheduled).</div>
+          </div>
+        </div>
+
         <button type="button" class="btn-submit" id="btn-submit" onclick="submitPromo()">
           <span id="t-btn-submit">Submit →</span>
         </button>
@@ -768,10 +812,74 @@
       };
       infoBox.innerHTML = infoMap[tier] || "";
 
+      // ── Label da data muda de semântica por tier ──
+      //   free  → entra só no Calendário (nunca no rodapé)
+      //   pagos → é o DIA em que o produto entra no rodapé ao vivo
+      //           (vazio = ao vivo hoje · janela = durationDays do tier)
+      const dateLabel = document.getElementById("t-label-launches-at");
+      if (dateLabel) {
+        if (tier === "free") {
+          dateLabel.innerHTML = isPt
+            ? '🗓️ Data de lançamento <span class="t-label-hint">(opcional — entra só no Calendário, nunca no rodapé ao vivo)</span>'
+            : '🗓️ Launch date <span class="t-label-hint">(optional — Calendar only, never in the live footer)</span>';
+        } else {
+          const days = (spec && spec.durationDays) || 1;
+          const dayWord = isPt
+            ? (days > 1 ? days + " dias consecutivos" : "1 dia")
+            : (days > 1 ? days + " consecutive days" : "1 day");
+          dateLabel.innerHTML = isPt
+            ? `📍 Dia no rodapé ao vivo <span class="t-label-hint">(opcional — vazio = ao vivo hoje · ${dayWord} no rodapé + sempre no Calendário)</span>`
+            : `📍 Live footer day <span class="t-label-hint">(optional — empty = live today · ${dayWord} in the footer + always in the Calendar)</span>`;
+        }
+      }
+
       const btn = document.getElementById("t-btn-submit");
-      if (btn) btn.textContent = tier === "free"
-        ? (isPt ? "Submeter →" : "Submit →")
-        : (isPt ? "Ir para pagamento →" : "Continue to payment →");
+      if (btn) btn.textContent = submitButtonLabel(isPt);
+    }
+
+    // Label do botão de submit (considera tier + modo protótipo)
+    function submitButtonLabel(isPt) {
+      if (selectedTier === "free") return isPt ? "Submeter →" : "Submit →";
+      if (isProtoEnabled()) return isPt ? "Cadastrar (teste) →" : "Create (test) →";
+      return isPt ? "Ir para pagamento →" : "Continue to payment →";
+    }
+
+    // ── Modo protótipo (dev) ──────────────────────────────────
+    function isProtoEnabled() {
+      // Box escondido (sem ?proto=1) = proto SEMPRE off, mesmo com localStorage antigo.
+      const box = document.getElementById("proto-box");
+      if (!box || box.style.display === "none") return false;
+      const t = document.getElementById("proto-toggle");
+      const tok = document.getElementById("proto-token");
+      return !!(t && t.checked && tok && tok.value.trim());
+    }
+    function onProtoToggle() {
+      const on = document.getElementById("proto-toggle").checked;
+      document.getElementById("proto-fields").style.display = on ? "block" : "none";
+      localStorage.setItem("nodus_proto_on", on ? "1" : "0");
+      setTier(selectedTier); // atualiza label do botão
+    }
+    function saveProtoToken() {
+      localStorage.setItem("nodus_proto_token", document.getElementById("proto-token").value.trim());
+      setTier(selectedTier);
+    }
+    function restoreProtoState() {
+      const on = localStorage.getItem("nodus_proto_on") === "1";
+      const tok = localStorage.getItem("nodus_proto_token") || "";
+      const toggle = document.getElementById("proto-toggle");
+      const input  = document.getElementById("proto-token");
+      if (toggle) toggle.checked = on;
+      if (input)  input.value = tok;
+      const fields = document.getElementById("proto-fields");
+      if (fields) fields.style.display = on ? "block" : "none";
+      // i18n do painel protótipo
+      const isPt = isPortuguese();
+      const title = document.getElementById("t-proto-title");
+      const hint  = document.getElementById("t-proto-hint");
+      if (title) title.textContent = isPt ? "🧪 Modo protótipo — pular pagamento" : "🧪 Prototype mode — skip payment";
+      if (hint)  hint.innerHTML = isPt
+        ? "Cole o token de bypass (DEV_BYPASS_TOKEN). Cria a promo <strong>ativa</strong> sem pagar — pra verificar se chega na extensão (ao vivo hoje → rodapé + Calendário; agendada → Calendário)."
+        : "Paste the dev bypass token. Creates the promo <strong>active</strong> without paying — to verify it reaches the extension (live today → footer + Calendar; scheduled → Calendar).";
     }
 
     // ── Submit promo ──────────────────────────────────────────
@@ -794,6 +902,7 @@
       hideMsg(msg);
 
       const token = crypto.randomUUID();
+      const bypassToken = isProtoEnabled() ? document.getElementById("proto-token").value.trim() : "";
 
       try {
         const res = await fetch(WORKER + "/promotions/submit", {
@@ -808,7 +917,8 @@
             launchesAt: launchesAt || null,
             topics: [...selectedTopics],
             regions: [...selectedRegions],
-            token
+            token,
+            ...(bypassToken ? { bypassToken } : {})
           })
         });
 
@@ -837,23 +947,31 @@
           : "Network error. Backend may not be live yet — try again shortly.");
       } finally {
         btn.disabled = false;
-        const label = selectedTier === "free"
-          ? (isPt ? "Submeter →" : "Submit →")
-          : (isPt ? "Ir para pagamento →" : "Continue to payment →");
-        btn.innerHTML = '<span id="t-btn-submit">' + label + '</span>';
+        btn.innerHTML = '<span id="t-btn-submit">' + submitButtonLabel(isPt) + '</span>';
       }
     }
 
     function showTokenSuccess(el, token, data, isPt) {
       el.className = "msg success";
       el.style.display = "block";
+
+      // Banner do modo protótipo (criou ativo sem pagar)
+      // "Agendada" = launches_at significativamente no futuro; senão = ao vivo hoje.
+      // (blank agora grava launches_at = agora, então não dá pra checar só a existência)
+      const nowSec = Math.floor(Date.now() / 1000);
+      const isScheduled = !!(data.launchesAt && data.launchesAt > nowSec + 3600);
+      const testBanner = data.testMode
+        ? (isPt
+            ? `<div style="margin:-2px 0 10px;padding:8px 10px;border:1px dashed #ff6600;border-radius:8px;font-size:12.5px;">🧪 <strong>Modo protótipo</strong> — promo criada <strong>ativa</strong> sem pagamento. ${isScheduled ? "Agendada → veja no <strong>Calendário</strong> da extensão." : "Ao vivo hoje → veja no <strong>rodapé</strong> + <strong>Calendário</strong> da extensão (recarregue o painel)."}</div>`
+            : `<div style="margin:-2px 0 10px;padding:8px 10px;border:1px dashed #ff6600;border-radius:8px;font-size:12.5px;">🧪 <strong>Prototype mode</strong> — promo created <strong>active</strong>, no payment. ${isScheduled ? "Scheduled → see it in the extension <strong>Calendar</strong>." : "Live today → see it in the extension <strong>footer</strong> + <strong>Calendar</strong> (reload the panel)."}</div>`)
+        : "";
       const planNote = data.planId && TIER_SPEC[selectedTier].maxProducts > 1
         ? (isPt
             ? `<div style="margin-top:10px;font-size:13px;">📦 Você tem mais <strong>${TIER_SPEC[selectedTier].maxProducts - 1} slot(s)</strong> no plano <strong>${selectedTier}</strong>. Adicione outros produtos no Dashboard a qualquer momento dentro de 14 dias.</div>`
             : `<div style="margin-top:10px;font-size:13px;">📦 You have <strong>${TIER_SPEC[selectedTier].maxProducts - 1} more slot(s)</strong> on your <strong>${selectedTier}</strong> plan. Add products via Dashboard within 14 days.</div>`)
         : "";
 
-      el.innerHTML = (isPt
+      el.innerHTML = testBanner + (isPt
         ? "✅ Produto enviado! Salve seu token de acesso — você vai precisar dele pra ver status e adicionar mais produtos:"
         : "✅ Product submitted! Save your access token — you'll need it for status and to add more products:")
         + `<div style="display:flex;align-items:center;gap:8px;margin-top:10px;">
@@ -1059,8 +1177,10 @@
         "t-nav-submit":          "🚀 Promote launch",
         "t-nav-dashboard":       "📊 Dashboard",
         "t-hero-badge":          "📡 Browser Extension",
-        "t-hero-title":          'Track Product Hunt <span>with historical depth</span>',
-        "t-hero-desc":           "A side panel that watches every launch in real time. Daily race, velocity, watch rules, hunter tracking, and a Calendar of upcoming launches. Plus Community Spotlight for makers who want extra visibility on launch day.",
+        "t-hero-title":          'The Product Hunt race, <span>captured all day</span>',
+        "t-hero-desc":           "PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.",
+        "t-hero-shot-ph":        "A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.",
+        "t-hero-shot-cap":       "The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.",
         "t-hero-install-chrome-text":   "⬇ Install for Chrome (soon)",
         "t-hero-spotlight":      "⭐ Community Spotlight",
         "t-how-label":           "How it works",
@@ -1124,8 +1244,10 @@
         "t-nav-submit":          "🚀 Promover lançamento",
         "t-nav-dashboard":       "📊 Dashboard",
         "t-hero-badge":          "📡 Extensão para Navegador",
-        "t-hero-title":          'Acompanhe o Product Hunt <span>com profundidade histórica</span>',
-        "t-hero-desc":           "Uma sidepanel que observa cada lançamento em tempo real. Corrida do dia, velocidade, watch rules, hunters favoritos e um Calendário de lançamentos futuros. Mais Community Spotlight pra makers que querem visibilidade extra no dia D.",
+        "t-hero-title":          'A corrida do Product Hunt, <span>capturada o dia todo</span>',
+        "t-hero-desc":           "O PH Radar é uma sidepanel do Chrome que tira snapshots do ranking de hoje em segundo plano — pra você ver quem está ganhando votos, quem empacou e quais lançamentos estão bombando. Fixe hunters, crie watch rules e acompanhe o calendário de lançamentos. Grátis — mais um Community Spotlight pra makers que querem visibilidade extra no dia do lançamento.",
+        "t-hero-shot-ph":        "Uma prévia ao vivo da sidepanel do PH Radar — a corrida de hoje ranqueada em tempo real, velocidade de votos e alertas de breakout.",
+        "t-hero-shot-cap":       "A sidepanel fica ao lado de qualquer aba. Os snapshots atualizam em segundo plano — sem trocar de aba, sem refresh manual.",
         "t-hero-install-chrome-text":   "⬇ Instalar no Chrome (em breve)",
         "t-hero-spotlight":      "⭐ Community Spotlight",
         "t-how-label":           "Como funciona",
@@ -1194,10 +1316,22 @@
         else el.textContent = val;
       });
       // Re-renderiza info box do tier ativo no idioma
+      restoreProtoState();
       setTier(selectedTier);
     }
 
+    // Revela o proto-box só com ?proto=1 (ou #proto) — invisível pro público.
+    function maybeRevealProto() {
+      const params = new URLSearchParams(location.search);
+      const on = params.get("proto") === "1" || location.hash === "#proto";
+      if (!on) return;
+      const box = document.getElementById("proto-box");
+      if (box) box.style.display = "block";
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
+      maybeRevealProto();
+      restoreProtoState();
       applyI18n();
       setTier("free");
     });
