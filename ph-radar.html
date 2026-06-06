@@ -103,6 +103,39 @@
       transition: all 0.2s;
     }
     .btn-secondary:hover { border-color: var(--sub); text-decoration: none; }
+    .btn-primary img { width: 18px; height: 18px; flex-shrink: 0; display: block; }
+    .btn-firefox {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 10px;
+      background: rgba(255,102,17,0.08); color: #ff8844;
+      font-size: 15px; font-weight: 700;
+      border: 1px solid rgba(255,102,17,0.3);
+      cursor: pointer; transition: all 0.2s; text-decoration: none;
+    }
+    .btn-firefox:hover { background: rgba(255,102,17,0.16); transform: translateY(-2px); text-decoration: none; }
+    .btn-firefox img { width: 18px; height: 18px; flex-shrink: 0; display: block; }
+
+    /* ── COMING SOON MODAL ── */
+    .soon-overlay {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(3px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .soon-overlay.open { display: flex; }
+    .soon-box {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 16px; padding: 34px 28px; max-width: 380px; width: 100%;
+      text-align: center; box-shadow: 0 24px 70px rgba(0,0,0,0.5);
+    }
+    .soon-box .soon-icon { font-size: 46px; margin-bottom: 12px; }
+    .soon-box h3 { font-size: 22px; font-weight: 800; margin: 0 0 10px; color: var(--text); }
+    .soon-box p { font-size: 14.5px; color: var(--sub); line-height: 1.65; margin: 0 0 24px; }
+    .soon-box .soon-close {
+      display: inline-block; padding: 12px 28px; border-radius: 10px;
+      background: var(--orange); color: #fff; font-size: 14px; font-weight: 700;
+      border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .soon-box .soon-close:hover { background: #e55c00; transform: translateY(-1px); }
 
     /* ── HERO SCREENSHOT ── */
     .hero-shot { max-width: 920px; margin: 8px auto 0; padding: 0 4px; }
@@ -112,7 +145,7 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.45);
     }
     .hero-shot .shot-ph {
-      aspect-ratio: 1813 / 937; display: flex; flex-direction: column;
+      aspect-ratio: 1765 / 933; display: flex; flex-direction: column;
       align-items: center; justify-content: center; gap: 12px;
       background: linear-gradient(135deg, #1a1208, #0d0a06);
       text-align: center; padding: 24px;
@@ -120,6 +153,17 @@
     .hero-shot .shot-ph-icon { font-size: 40px; opacity: 0.5; }
     .hero-shot .shot-ph-text { font-size: 14px; color: var(--sub); max-width: 380px; line-height: 1.6; }
     .hero-shot .shot-cap { font-size: 13px; color: var(--muted); text-align: center; margin-top: 14px; }
+
+    /* ── SCREENSHOT GALLERY ── */
+    .shots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 12px; }
+    .shot-card { margin: 0; }
+    .shot-card img {
+      display: block; width: 100%; height: auto; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+    .shot-card figcaption { font-size: 13.5px; color: var(--sub); line-height: 1.55; margin-top: 12px; text-align: center; }
+    @media (max-width: 720px) { .shots-grid { grid-template-columns: 1fr; } }
 
     /* ── SECTION ── */
     .section { padding: 72px 0; }
@@ -395,8 +439,13 @@
       <h1 id="t-hero-title">The Product Hunt race, <span>captured all day</span></h1>
       <p id="t-hero-desc">PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.</p>
       <div class="hero-btns">
-        <a href="#" target="_blank" rel="noopener" class="btn-primary" id="t-hero-install-chrome">
-          <span id="t-hero-install-chrome-text">⬇ Install for Chrome (soon)</span>
+        <a href="#" onclick="comingSoon(event)" class="btn-primary" id="t-hero-install-chrome">
+          <img src="chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
+          <span id="t-hero-install-chrome-text">Install for Chrome</span>
+        </a>
+        <a href="#" onclick="comingSoon(event)" class="btn-firefox" id="t-hero-install-firefox">
+          <img src="firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
+          <span id="t-hero-install-firefox-text">Install for Firefox</span>
         </a>
         <a href="#spotlight" class="btn-secondary" id="t-hero-spotlight">⭐ Community Spotlight</a>
       </div>
@@ -406,7 +455,7 @@
     <div class="hero-shot">
       <img src="/ph-radar-screenshot.png"
            alt="PH Radar Chrome side panel showing today's Product Hunt race ranked live with vote velocity and breakout alerts"
-           width="1813" height="937" loading="eager"
+           width="1765" height="933" loading="eager"
            onerror="this.style.display='none';var p=document.getElementById('ph-shot-ph');if(p)p.style.display='flex';">
       <div class="shot-ph" id="ph-shot-ph" style="display:none;">
         <div class="shot-ph-icon">📊</div>
@@ -480,6 +529,33 @@
           <h4 id="t-f6-title">16 Languages</h4>
           <p id="t-f6-desc">Native interface in 16 languages. Auto-translate taglines and comments via Chrome's offline translator. No data leaves your machine.</p>
         </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── SEE IT IN ACTION ── -->
+    <section class="section" id="screenshots">
+      <div class="section-label" id="t-shots-label">See it in action</div>
+      <h2 class="section-title" id="t-shots-title">Everything in one side panel</h2>
+      <p class="section-sub" id="t-shots-sub">PH Radar lives right next to Product Hunt — the daily race, the calendar, hunters, and your watch rules, all without leaving the page.</p>
+      <div class="shots-grid">
+        <figure class="shot-card">
+          <img src="/ph-radar-race.png" alt="PH Radar live leaderboard of today's Product Hunt launches ranked in real time" width="1719" height="933" loading="lazy">
+          <figcaption id="t-shot-race">Live leaderboard — every launch ranked in real time as votes come in.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="/ph-radar-calendar.png" alt="PH Radar Launch Calendar showing upcoming Product Hunt launches and featured Spotlight slots" width="1721" height="933" loading="lazy">
+          <figcaption id="t-shot-calendar">Launch Calendar — what's launching today and in the days ahead, with featured Spotlight slots.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="/ph-radar-hunters.png" alt="PH Radar Hunters tab tracking the makers and hunters behind Product Hunt launches" width="1723" height="933" loading="lazy">
+          <figcaption id="t-shot-hunters">Hunters — pin the people behind the launches and see everything they hunt.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="/ph-radar-watch.png" alt="PH Radar watch rules highlighting products that crossed custom vote and velocity thresholds" width="1723" height="933" loading="lazy">
+          <figcaption id="t-shot-watch">Watch rules — products light up the moment they cross the thresholds you set.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -697,6 +773,16 @@
     </div>
     <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. All rights reserved.</div>
   </footer>
+
+  <!-- ── COMING SOON MODAL ── -->
+  <div class="soon-overlay" id="soon-modal" onclick="if(event.target===this)closeSoon()">
+    <div class="soon-box" role="dialog" aria-modal="true" aria-labelledby="t-soon-title">
+      <div class="soon-icon">🚀</div>
+      <h3 id="t-soon-title">Coming soon</h3>
+      <p id="t-soon-desc">PH Radar is under review on the Chrome Web Store and Firefox Add-ons. The extension will be available to install very soon — thanks for your patience!</p>
+      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">Got it</button>
+    </div>
+  </div>
 
   <script src="lang-switcher.js"></script>
   <script>
@@ -1116,7 +1202,11 @@
         "t-hero-desc":           "PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.",
         "t-hero-shot-ph":        "A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.",
         "t-hero-shot-cap":       "The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.",
-        "t-hero-install-chrome-text":   "⬇ Install for Chrome (soon)",
+        "t-hero-install-chrome-text":   "Install for Chrome",
+        "t-hero-install-firefox-text":  "Install for Firefox",
+        "t-soon-title":          "Coming soon",
+        "t-soon-desc":           "PH Radar is under review on the Chrome Web Store and Firefox Add-ons. The extension will be available to install very soon — thanks for your patience!",
+        "t-soon-close":          "Got it",
         "t-hero-spotlight":      "⭐ Community Spotlight",
         "t-how-label":           "How it works",
         "t-how-title":           "Open the side panel. See everything.",
@@ -1141,6 +1231,13 @@
         "t-f5-desc":             "Upcoming launches submitted by makers via Spotlight. See who's launching tomorrow, next week. Curated by the NODUS community.",
         "t-f6-title":            "16 Languages",
         "t-f6-desc":             "Native interface in 16 languages. Auto-translate taglines and comments via Chrome's offline translator. No data leaves your machine.",
+        "t-shots-label":         "See it in action",
+        "t-shots-title":         "Everything in one side panel",
+        "t-shots-sub":           "PH Radar lives right next to Product Hunt — the daily race, the calendar, hunters, and your watch rules, all without leaving the page.",
+        "t-shot-race":           "Live leaderboard — every launch ranked in real time as votes come in.",
+        "t-shot-calendar":       "Launch Calendar — what's launching today and in the days ahead, with featured Spotlight slots.",
+        "t-shot-hunters":        "Hunters — pin the people behind the launches and see everything they hunt.",
+        "t-shot-watch":          "Watch rules — products light up the moment they cross the thresholds you set.",
         "t-spot-label":          "Community Spotlight",
         "t-spot-title":          "Put your launch in front of every PH Radar user",
         "t-spot-desc":           "Each time someone opens the side panel, a curated product is shown in the Spotlight slot. Higher tiers run <strong>longer and more often</strong>; Gold even gives a <strong>second product slot</strong> for Launch Week.",
@@ -1183,7 +1280,11 @@
         "t-hero-desc":           "O PH Radar é uma sidepanel do Chrome que tira snapshots do ranking de hoje em segundo plano — pra você ver quem está ganhando votos, quem empacou e quais lançamentos estão bombando. Fixe hunters, crie watch rules e acompanhe o calendário de lançamentos. Grátis — mais um Community Spotlight pra makers que querem visibilidade extra no dia do lançamento.",
         "t-hero-shot-ph":        "Uma prévia ao vivo da sidepanel do PH Radar — a corrida de hoje ranqueada em tempo real, velocidade de votos e alertas de breakout.",
         "t-hero-shot-cap":       "A sidepanel fica ao lado de qualquer aba. Os snapshots atualizam em segundo plano — sem trocar de aba, sem refresh manual.",
-        "t-hero-install-chrome-text":   "⬇ Instalar no Chrome (em breve)",
+        "t-hero-install-chrome-text":   "Instalar no Chrome",
+        "t-hero-install-firefox-text":  "Instalar no Firefox",
+        "t-soon-title":          "Em breve",
+        "t-soon-desc":           "O PH Radar está em análise na Chrome Web Store e na Firefox Add-ons. A extensão estará disponível pra instalar muito em breve — obrigado pela paciência!",
+        "t-soon-close":          "Entendi",
         "t-hero-spotlight":      "⭐ Community Spotlight",
         "t-how-label":           "Como funciona",
         "t-how-title":           "Abra a sidepanel. Veja tudo.",
@@ -1208,6 +1309,13 @@
         "t-f5-desc":             "Lançamentos futuros submetidos por makers via Spotlight. Veja quem lança amanhã, semana que vem. Curado pela comunidade NODUS.",
         "t-f6-title":            "16 Idiomas",
         "t-f6-desc":             "Interface nativa em 16 idiomas. Traduz taglines e comentários via tradutor offline do Chrome. Nenhum dado sai da sua máquina.",
+        "t-shots-label":         "Veja na prática",
+        "t-shots-title":         "Tudo numa sidepanel só",
+        "t-shots-sub":           "O PH Radar fica do lado do Product Hunt — a corrida do dia, o calendário, os hunters e suas watch rules, sem sair da página.",
+        "t-shot-race":           "Ranking ao vivo — cada lançamento ranqueado em tempo real conforme os votos chegam.",
+        "t-shot-calendar":       "Calendário de lançamentos — o que sai hoje e nos próximos dias, com slots de destaque do Spotlight.",
+        "t-shot-hunters":        "Hunters — fixe as pessoas por trás dos lançamentos e veja tudo que elas lançam.",
+        "t-shot-watch":          "Watch rules — os produtos acendem no instante em que cruzam os limites que você definiu.",
         "t-spot-label":          "Community Spotlight",
         "t-spot-title":          "Coloque seu lançamento na frente de todos os usuários do PH Radar",
         "t-spot-desc":           "Toda vez que alguém abre a sidepanel, um produto curado aparece no slot Spotlight. Tiers maiores rodam <strong>por mais tempo e com mais frequência</strong>; o Gold ainda dá um <strong>segundo slot</strong> pra Launch Week.",
@@ -1253,6 +1361,18 @@
       // Re-renderiza info box do tier ativo no idioma
       setTier(selectedTier);
     }
+
+    // ── Coming soon modal (install buttons) ──
+    function comingSoon(e) {
+      if (e) e.preventDefault();
+      const m = document.getElementById("soon-modal");
+      if (m) m.classList.add("open");
+    }
+    function closeSoon() {
+      const m = document.getElementById("soon-modal");
+      if (m) m.classList.remove("open");
+    }
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSoon(); });
 
     document.addEventListener("DOMContentLoaded", () => {
       applyI18n();
