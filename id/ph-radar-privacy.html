@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kebijakan Privasi — NODUS PH Radar</title>
+  <link rel="icon" type="image/png" href="/icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f97316;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 52px; }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon { font-size: 18px; flex-shrink: 0; }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+    code {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green  { background: rgba(16,185,129,0.15);  color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue   { background: rgba(59,130,246,0.15);  color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-orange { background: rgba(249,115,22,0.15);  color: #f97316; border: 1px solid rgba(249,115,22,0.2); }
+    .badge-yellow { background: rgba(250,204,21,0.12);  color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray   { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT BLOCK */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body { padding: 14px 18px; }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* STORAGE KEY TABLE */
+    .storage-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+    .storage-row:last-child { border-bottom: none; }
+    .storage-key {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      color: #f97316;
+      word-break: break-all;
+    }
+    .storage-desc {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      .storage-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+    .highlight-orange {
+      background: rgba(249,115,22,0.06);
+      border-left-color: #f97316;
+    }
+
+    /* SUB-PROCESSORS TABLE */
+    .sub-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-bottom: 14px;
+    }
+    .sub-table th {
+      text-align: left;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0 12px 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .sub-table td {
+      padding: 10px 12px 10px 0;
+      color: #94a3b8;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+    }
+    .sub-table tr:last-child td { border-bottom: none; }
+    .sub-table td:first-child { color: #e2e8f0; font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/id/ph-radar-privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/id/">NODUS</a>
+    <a class="nav-back" href="/id/ph-radar">← Kembali ke PH Radar</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Legal · PH Radar</div>
+    <h1>Kebijakan Privasi</h1>
+    <p>Ekstensi browser NODUS PH Radar &nbsp;·&nbsp; Terakhir diperbarui: Juni 2026 &nbsp;·&nbsp; v0.16</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Daftar Isi</div>
+      <ol>
+        <li><a href="#overview">Ringkasan</a></li>
+        <li><a href="#local-data">Data yang disimpan secara lokal di perangkat Anda</a></li>
+        <li><a href="#endpoints">Penjelasan endpoint eksternal</a></li>
+        <li><a href="#spotlight">Promosi Community Spotlight</a></li>
+        <li><a href="#subprocessors">Subprosesor</a></li>
+        <li><a href="#never">Yang tidak pernah kami lakukan</a></li>
+        <li><a href="#rights">Hak Anda (LGPD / GDPR)</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Ringkasan</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS PH Radar adalah ekstensi browser yang mengutamakan penyimpanan lokal</strong> (Chrome). Ekstensi ini memberi Anda kedalaman historis di Product Hunt — pelacakan perlombaan harian, analitik kecepatan, aturan pemantauan, tab hunter, dan kalender peluncuran — semuanya dalam satu panel samping. Pengaturan, cache, item yang dipin, catatan, dan aturan pemantauan tetap berada di browser Anda. Tidak ada akun pengguna, tidak ada login, tidak ada sinkronisasi cloud untuk fitur inti.</p>
+      </div>
+
+      <p>Ini adalah produk terpisah dari ekstensi utama NODUS (penangkapan percakapan AI) dan dari NODUS YT Radar. Jika Anda mencari salah satu kebijakan tersebut, lihat <a href="/id/privacy" style="color:#60a5fa;">Privasi NODUS</a> atau <a href="/id/yt-radar-privacy" style="color:#60a5fa;">Privasi YT Radar</a>.</p>
+
+      <p>PH Radar membuat koneksi eksternal hanya untuk tiga tujuan, masing-masing dijelaskan di bawah ini:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">wajib</span> Product Hunt API v2 (publik)</div>
+        <p>Digunakan untuk mengambil data produk publik (perlombaan harian, jumlah suara, info hunter) untuk produk yang Anda lacak. Hanya baca, hanya data publik — kami tidak pernah mengakses kredensial akun PH Anda.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-green">wajib</span> Community Spotlight</div>
+        <p>Mengambil promosi produk yang dikurasi dan sesuai wilayah dari worker kami. Hanya mengirim kode negara Anda — tanpa identitas, tanpa riwayat penjelajahan, tanpa informasi akun Product Hunt.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">saat diklik</span> Jumlah klik promosi</div>
+        <p>Jika Anda mengklik produk Spotlight, sebuah peristiwa klik anonim dicatat agar maker mengetahui performa listing mereka. Hanya ID promosi yang dikirim.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Data yang disimpan secara lokal di perangkat Anda</h2>
+
+      <p>Semua hal berikut disimpan di <code>chrome.storage.local</code> atau <strong>IndexedDB</strong> lokal — semuanya hanya berada di komputer Anda dan tidak pernah dikirim ke server NODUS mana pun kecuali yang dijelaskan secara eksplisit di Bagian 3.</p>
+
+      <div class="storage-row">
+        <div class="storage-key">settings</div>
+        <div class="storage-desc">Preferensi Anda: bahasa antarmuka, wilayah yang dipilih, mode overlay, interval pembaruan, dan pilihan tata letak bilah samping.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_token</div>
+        <div class="storage-desc">Token API Pribadi Product Hunt Anda (opsional). Digunakan hanya untuk mengambil data papan peringkat publik — tidak pernah dikirim ke server NODUS, hanya ke API milik Product Hunt sendiri. Anda dapat menghapusnya kapan saja dari pengaturan ekstensi.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_snapshots_&lt;date&gt; (IndexedDB)</div>
+        <div class="storage-desc">Snapshot harian metrik produk publik (jumlah suara, hunter, tagline) untuk produk yang muncul dalam perlombaan hari itu. Digunakan untuk membangun grafik kecepatan dan linimasa harian. Disimpan di IndexedDB lokal; dihapus otomatis setelah 30 hari.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_pins</div>
+        <div class="storage-desc">Produk yang telah Anda pin untuk dipantau. Disimpan secara lokal; tidak pernah dikirim ke server kami.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_notes_&lt;productId&gt;</div>
+        <div class="storage-desc">Catatan yang telah Anda tulis untuk produk yang dilacak. Disimpan secara lokal; tidak pernah dikirim ke server kami.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_watch_rules</div>
+        <div class="storage-desc">Aturan peringatan yang telah Anda tetapkan (mis. "beri tahu saat suara &gt; 200"). Disimpan secara lokal; pemicu dievaluasi di dalam browser.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">spotlight_token</div>
+        <div class="storage-desc">Token akses Spotlight Anda (UUID yang dibuat di dalam browser saat pengajuan). Digunakan hanya untuk mengambil promosi Anda sendiri dari dasbor. Disimpan secara lokal; di server kami hanya menyimpan hash SHA-256 dari token ini — teks aslinya tidak pernah ditransmisikan setelah pengajuan awal.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">_cacheVersion</div>
+        <div class="storage-desc">Penanda internal yang digunakan untuk membatalkan cache usang setelah pembaruan ekstensi.</div>
+      </div>
+
+      <div class="highlight highlight-yellow" style="margin-top:24px;">
+        <p>PH Radar tidak memiliki sistem akun pengguna. Token PH, item yang dipin, catatan, aturan pemantauan, dan snapshot Anda semuanya dihapus otomatis saat Anda menghapus ekstensi atau membersihkan data ekstensi di pengaturan browser Anda.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Penjelasan endpoint eksternal</h2>
+
+      <p>Ekstensi membuat jenis permintaan jaringan berikut. Setiap domain dideklarasikan dalam bidang manifes <code>host_permissions</code> ekstensi dan terlihat oleh browser Anda sebelum instalasi.</p>
+
+      <h3>3a. Product Hunt GraphQL API v2 (publik)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://api.producthunt.com/v2/api/graphql</span>
+          <span class="badge badge-blue">wajib</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Mengambil papan peringkat perlombaan harian publik, detail produk (judul, tagline, thumbnail, suara, hunter), dan statistik profil hunter. Ini adalah data publik yang sama yang terlihat di producthunt.com.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> kueri GraphQL untuk data produk/hunter publik · Token Pribadi PH Anda (hanya ke server milik Product Hunt sendiri — bukan ke server kami) · tidak ada data pribadi yang dikumpulkan oleh NODUS</p>
+        </div>
+      </div>
+
+      <h3>3b. Worker NODUS PH Radar (Community Spotlight)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/spotlight?region=...</span>
+          <span class="badge badge-green">wajib</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Meminta promosi produk Spotlight yang aktif untuk wilayah Anda agar strip panel samping dapat diisi.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> kode negara · tanpa identitas, tanpa info akun PH, tanpa IP yang disimpan di luar log permintaan standar Cloudflare</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/spotlight/click</span>
+          <span class="badge badge-yellow">hanya saat diklik</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Dikirim hanya saat Anda mengklik produk Spotlight di panel samping. Menambah penghitung klik agregat untuk dasbor pelaporan maker.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> ID promosi · tidak ada yang lain</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/spotlight/impression</span>
+          <span class="badge badge-gray">saat dilihat</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Dikirim saat kartu Spotlight menjadi terlihat di strip (dihitung paling banyak sekali per sesi per promosi). Digunakan untuk pelaporan impresi agregat.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> ID promosi · tidak ada yang lain</p>
+        </div>
+      </div>
+
+      <h3>3c. Pengajuan promosi (hanya maker, opsional)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/promotions/submit</span>
+          <span class="badge badge-orange">hanya maker · saat dikirim</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Hanya dipanggil saat maker mengisi formulir pengajuan Community Spotlight di <a href="/id/ph-radar" style="color:#60a5fa;">nodus-ai.app/ph-radar</a>. Tidak dipicu oleh penggunaan ekstensi yang normal.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> URL produk Product Hunt · alamat email · tagline, tanggal peluncuran, topik, wilayah opsional · tier · token akses (UUID, dibuat di sisi klien)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SPOTLIGHT -->
+    <div class="section">
+      <span class="section-anchor" id="spotlight"></span>
+      <h2><span class="icon">⭐</span> 4. Promosi Community Spotlight</h2>
+
+      <p>Community Spotlight adalah strip di bagian bawah panel samping PH Radar yang menampilkan produk Product Hunt terkurasi yang dikirim oleh maker (tier gratis atau berbayar). Ini ada agar maker indie bisa mendapatkan eksposur penemuan tanpa jaringan iklan.</p>
+
+      <h3>Apa yang disimpan worker tentang sebuah promosi</h3>
+      <p>Saat maker mengirim produk di <a href="/id/ph-radar" style="color:#60a5fa;">nodus-ai.app/ph-radar</a>, basis data Cloudflare D1 kami menyimpan: URL dan slug produk Product Hunt, judul, tagline, URL thumbnail, nama pengguna hunter, tier (gratis / bronze / silver / gold), wilayah dan topik target, tanggal peluncuran opsional, email pengirim (hanya untuk notifikasi transaksional), dan penghitung impresi/klik agregat. Informasi ini diberikan <strong>secara sukarela oleh maker</strong>, bukan dikumpulkan dari pengguna ekstensi.</p>
+
+      <h3>Token akses</h3>
+      <p>Pada saat pengajuan, browser Anda menghasilkan token akses UUID menggunakan <code>crypto.randomUUID()</code>. Token ini ditampilkan satu kali di layar — Anda menyalin dan menyimpannya. Di server kami, kami hanya menyimpan <strong>hash SHA-256</strong> dari token ini. Kami dapat memverifikasinya tetapi tidak dapat membaliknya untuk mengambil token teks asli Anda. Token tersebut memungkinkan Anda melihat dan mengelola promosi Anda sendiri melalui dasbor.</p>
+
+      <h3>Tier berbayar — pemrosesan pembayaran Paddle</h3>
+      <p>Untuk tier berbayar (Bronze $1, Silver $3, Gold $7), pembayaran diproses oleh <strong>Paddle</strong> (lihat Bagian 5 untuk detail subprosesor). Alamat email dan informasi pembayaran Anda dikumpulkan oleh Paddle, bukan oleh NODUS. Kami hanya menerima peristiwa konfirmasi pembayaran dari webhook Paddle, yang mencakup email Anda dan ID transaksi agar kami dapat mengaktifkan paket Anda.</p>
+
+      <h3>Bagaimana dengan pengguna ekstensi?</h3>
+      <p>Dari sisi ekstensi, kami tidak menyimpan apa pun yang mengidentifikasi Anda. Worker hanya menerima: kode wilayah untuk pencocokan Spotlight, dan — jika Anda mengklik atau melihat — ID promosi. Kami tidak mencatat produk apa yang Anda lacak, IP Anda di luar penanganan permintaan standar Cloudflare, sidik jari browser Anda, atau pengenal akun apa pun.</p>
+
+      <h3>Hosting</h3>
+      <p>Worker berjalan di Cloudflare Workers dengan basis data Cloudflare D1. Cloudflare dapat memproses alamat IP dan metadata permintaan untuk sementara sebagai bagian dari operasi jaringan standar (perlindungan DDoS, perutean). Kami tidak menulis alamat IP ke basis data kami sendiri.</p>
+    </div>
+
+    <!-- 5. SUB-PROCESSORS -->
+    <div class="section">
+      <span class="section-anchor" id="subprocessors"></span>
+      <h2><span class="icon">🔗</span> 5. Subprosesor</h2>
+
+      <p>Kami menggunakan layanan pihak ketiga berikut yang mungkin memproses data pribadi atas nama kami. Kami telah membuat perjanjian pemrosesan data dengan masing-masing jika berlaku.</p>
+
+      <table class="sub-table">
+        <thead>
+          <tr>
+            <th>Layanan</th>
+            <th>Tujuan</th>
+            <th>Data yang diproses</th>
+            <th>Kebijakan privasi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cloudflare Workers + D1</td>
+            <td>Runtime serverless dan basis data untuk penyimpanan dan penyajian promosi Spotlight</td>
+            <td>Metadata promosi, email (token yang di-hash), statistik agregat. Alamat IP diproses secara sementara oleh jaringan Cloudflare — tidak ditulis ke D1.</td>
+            <td><a href="https://www.cloudflare.com/privacypolicy/" style="color:#60a5fa;" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></td>
+          </tr>
+          <tr>
+            <td>Paddle</td>
+            <td>Pemrosesan pembayaran untuk tier Spotlight berbayar (Bronze, Silver, Gold)</td>
+            <td>Alamat email, nama penagihan, detail kartu pembayaran (ditangani sepenuhnya oleh Paddle — NODUS tidak pernah melihat nomor kartu). Paddle adalah merchant of record.</td>
+            <td><a href="https://www.paddle.com/legal/privacy" style="color:#60a5fa;" target="_blank" rel="noopener">paddle.com/legal/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Resend</td>
+            <td>Email transaksional: konfirmasi pengajuan dan notifikasi tinjauan admin</td>
+            <td>Alamat email maker yang mengirim dan konten email (detail pengajuan). Email dipicu hanya oleh peristiwa pengajuan.</td>
+            <td><a href="https://resend.com/legal/privacy-policy" style="color:#60a5fa;" target="_blank" rel="noopener">resend.com/legal/privacy-policy</a></td>
+          </tr>
+          <tr>
+            <td>Product Hunt API v2</td>
+            <td>Pengambilan data produk dan hunter publik</td>
+            <td>Metadata produk publik (suara, judul, tagline, hunter). Token Pribadi PH Anda dikirim langsung ke Product Hunt — bukan ke NODUS.</td>
+            <td><a href="https://www.producthunt.com/legal/privacy" style="color:#60a5fa;" target="_blank" rel="noopener">producthunt.com/legal/privacy</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight highlight-orange">
+        <p><strong>Tanpa analitik pihak ketiga, tanpa cookie pelacakan.</strong> PH Radar tidak menggunakan Google Analytics, Mixpanel, Segment, Facebook Pixel, atau SDK pelacakan perilaku atau periklanan lainnya — baik di ekstensi maupun di halaman situs nodus-ai.app yang terkait dengan PH Radar.</p>
+      </div>
+    </div>
+
+    <!-- 6. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 6. Yang tidak pernah kami lakukan</h2>
+
+      <ul class="check cross">
+        <li>Menjual data Anda ke pihak ketiga mana pun</li>
+        <li>Membaca kredensial akun Product Hunt Anda, DM, proyek pribadi, atau riwayat pembelian</li>
+        <li>Mentransmisikan Token Pribadi PH Anda ke server NODUS — token itu hanya menuju ke API milik Product Hunt sendiri</li>
+        <li>Melacak produk apa yang Anda jelajahi di producthunt.com di luar panel samping ekstensi</li>
+        <li>Melacak situs web apa yang Anda kunjungi di luar Product Hunt</li>
+        <li>Menggunakan SDK periklanan, analitik pihak ketiga, atau cookie pelacakan perilaku</li>
+        <li>Mengakses mikrofon, kamera, clipboard, atau unduhan Anda</li>
+        <li>Menyinkronkan item yang dipin, catatan, aturan pemantauan, atau snapshot suara ke server kami — semua data itu tetap berada di perangkat Anda</li>
+        <li>Mewajibkan akun, login, atau email untuk menggunakan fitur inti ekstensi</li>
+        <li>Membagikan data pengajuan maker (email, URL produk) dengan pihak ketiga selain subprosesor yang tercantum di Bagian 5</li>
+      </ul>
+    </div>
+
+    <!-- 7. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 7. Hak Anda (LGPD / GDPR)</h2>
+
+      <p>PH Radar mematuhi Lei Geral de Proteção de Dados Brasil (LGPD) dan General Data Protection Regulation UE (GDPR), serta kompatibel dengan CCPA.</p>
+
+      <h3>Hak yang Anda miliki sebagai pengguna ekstensi</h3>
+      <ul class="check">
+        <li><strong>Akses</strong> — Semua data lokal terlihat melalui <code>chrome://extensions</code> → PH Radar → Inspect views → Application → Storage / IndexedDB</li>
+        <li><strong>Penghapusan</strong> — Menghapus ekstensi otomatis membersihkan semua data <code>chrome.storage.local</code> dan IndexedDB. Anda juga dapat menghapusnya secara manual di pengaturan browser Anda</li>
+        <li><strong>Token PH</strong> — Anda dapat menghapus token Product Hunt Anda kapan saja dari halaman pengaturan ekstensi. Token itu tidak pernah dikirim ke server NODUS</li>
+        <li><strong>Memilih keluar</strong> — Anda dapat menonaktifkan strip Spotlight di pengaturan ekstensi. Menutup panel samping menghentikan semua aktivitas jaringan ekstensi</li>
+      </ul>
+
+      <h3>Hak yang Anda miliki sebagai maker (pengirim Spotlight)</h3>
+      <ul class="check">
+        <li><strong>Akses &amp; penghapusan</strong> — Gunakan token akses yang ditampilkan saat pengajuan untuk melihat atau menghapus promosi Anda melalui dasbor di <a href="/id/ph-radar#dashboard" style="color:#60a5fa;">nodus-ai.app/ph-radar#dashboard</a></li>
+        <li><strong>Token hilang</strong> — Hubungi kami dengan email yang digunakan saat pengajuan dan kami akan menghapus data Anda setelah verifikasi identitas</li>
+        <li><strong>Data pembayaran</strong> — Untuk data penagihan (riwayat pembayaran, faktur), hubungi Paddle langsung di <a href="https://www.paddle.com/legal/privacy" style="color:#60a5fa;" target="_blank" rel="noopener">paddle.com/legal/privacy</a> atau melalui tautan portal pembeli di email pembelian Anda</li>
+      </ul>
+
+      <h3>Dasar hukum untuk pemrosesan</h3>
+      <p>Pengambilan API Product Hunt diproses berdasarkan <strong>kepentingan yang sah</strong> (menyediakan fitur yang menjadi alasan Anda membuka ekstensi). Pengajuan promosi Spotlight dan pembayaran diproses berdasarkan <strong>pelaksanaan kontrak</strong> dengan maker pengirim. Email transaksional dikirim berdasarkan <strong>pelaksanaan kontrak</strong>. Tidak ada pemrosesan lain yang terjadi.</p>
+
+      <h3>Penyimpanan data</h3>
+      <p>Promosi aktif disimpan selama durasi paket ditambah 90 hari untuk tujuan pelaporan. Promosi yang kedaluwarsa dan statistik agregat terkait dapat dihapus atas permintaan maker. Alamat email disimpan hanya selama paket terkait aktif atau tertunda, kecuali Anda meminta penghapusan lebih awal.</p>
+    </div>
+
+    <!-- 8. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 8. Kontak</h2>
+
+      <p>Untuk pertanyaan privasi, permintaan penghapusan data, atau pengelolaan promosi:</p>
+
+      <div class="card">
+        <div class="card-title">📧 Email</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Situs proyek</div>
+        <p><a href="/id/ph-radar" style="color:#60a5fa;">nodus-ai.app/ph-radar</a></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🐦 Product Hunt</div>
+        <p><a href="https://www.producthunt.com/@m_m_carvalho" style="color:#60a5fa;" target="_blank" rel="noopener">@m_m_carvalho</a></p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Kebijakan ini dapat diperbarui saat fitur baru ditambahkan. Perubahan material akan dicatat dalam catatan rilis ekstensi pada listing Chrome Web Store. Penggunaan berkelanjutan PH Radar setelah perubahan kebijakan merupakan penerimaan atas kebijakan yang diperbarui.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="/id/">Beranda</a> · <a href="/id/ph-radar">PH Radar</a> · <a href="/id/privacy">Privasi NODUS</a> · Privasi PH Radar</p>
+  </footer>
+
+  <script>window._forcedLang = 'id';</script>
+  <script src="/lang-switcher.js"></script>
+</body>
+</html>

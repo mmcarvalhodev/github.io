@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informativa sulla privacy — NODUS PH Radar</title>
+  <link rel="icon" type="image/png" href="/icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f97316;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 52px; }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon { font-size: 18px; flex-shrink: 0; }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+    code {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green  { background: rgba(16,185,129,0.15);  color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue   { background: rgba(59,130,246,0.15);  color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-orange { background: rgba(249,115,22,0.15);  color: #f97316; border: 1px solid rgba(249,115,22,0.2); }
+    .badge-yellow { background: rgba(250,204,21,0.12);  color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray   { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT BLOCK */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body { padding: 14px 18px; }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* STORAGE KEY TABLE */
+    .storage-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+    .storage-row:last-child { border-bottom: none; }
+    .storage-key {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      color: #f97316;
+      word-break: break-all;
+    }
+    .storage-desc {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      .storage-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+    .highlight-orange {
+      background: rgba(249,115,22,0.06);
+      border-left-color: #f97316;
+    }
+
+    /* SUB-PROCESSORS TABLE */
+    .sub-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-bottom: 14px;
+    }
+    .sub-table th {
+      text-align: left;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0 12px 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .sub-table td {
+      padding: 10px 12px 10px 0;
+      color: #94a3b8;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+    }
+    .sub-table tr:last-child td { border-bottom: none; }
+    .sub-table td:first-child { color: #e2e8f0; font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/it/ph-radar-privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/it/">NODUS</a>
+    <a class="nav-back" href="/it/ph-radar">← Torna a PH Radar</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Note legali · PH Radar</div>
+    <h1>Informativa sulla privacy</h1>
+    <p>Estensione per browser NODUS PH Radar &nbsp;·&nbsp; Ultimo aggiornamento: giugno 2026 &nbsp;·&nbsp; v0.16</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Contenuti</div>
+      <ol>
+        <li><a href="#overview">Panoramica</a></li>
+        <li><a href="#local-data">Dati archiviati localmente sul tuo dispositivo</a></li>
+        <li><a href="#endpoints">Endpoint esterni spiegati</a></li>
+        <li><a href="#spotlight">Promozioni di Community Spotlight</a></li>
+        <li><a href="#subprocessors">Sub-responsabili del trattamento</a></li>
+        <li><a href="#never">Ciò che non facciamo mai</a></li>
+        <li><a href="#rights">I tuoi diritti (LGPD / GDPR)</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Panoramica</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS PH Radar è un'estensione per browser local-first</strong> (Chrome). Ti offre profondità storica su Product Hunt — monitoraggio della corsa giornaliera, analisi della velocity, regole di osservazione, schede degli hunter e un calendario dei lanci — tutto in un pannello laterale. Impostazioni, cache, elementi fissati, note e regole di osservazione restano nel tuo browser. Non esiste alcun account utente, nessun accesso, nessuna sincronizzazione cloud per le funzioni principali.</p>
+      </div>
+
+      <p>Questo è un prodotto separato dall'estensione principale NODUS (acquisizione di conversazioni IA) e da NODUS YT Radar. Se stai cercando una di quelle informative, consulta <a href="/it/privacy" style="color:#60a5fa;">Privacy di NODUS</a> o <a href="/it/yt-radar-privacy" style="color:#60a5fa;">Privacy di YT Radar</a>.</p>
+
+      <p>PH Radar effettua connessioni esterne solo per tre scopi, ciascuno documentato di seguito:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">obbligatorio</span> Product Hunt API v2 (pubblica)</div>
+        <p>Usata per recuperare dati pubblici dei prodotti (corsa giornaliera, conteggio dei voti, informazioni sull'hunter) per i prodotti che segui. Sola lettura, solo dati pubblici — non accediamo mai alle credenziali del tuo account PH.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-green">obbligatorio</span> Community Spotlight</div>
+        <p>Recupera una promozione di prodotto curata e basata sulla regione dal nostro worker. Invia solo il tuo codice paese — nessuna identità, nessuna cronologia di navigazione, nessuna informazione sul tuo account Product Hunt.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">al clic</span> Conteggio dei clic sulle promozioni</div>
+        <p>Se fai clic su un prodotto di Spotlight, viene registrato un evento di clic anonimo affinché il maker sappia come è andato il suo annuncio. Viene inviato solo l'ID della promozione.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Dati archiviati localmente sul tuo dispositivo</h2>
+
+      <p>Tutto quanto segue è archiviato in <code>chrome.storage.local</code> o nell'<strong>IndexedDB</strong> locale — risiede solo sul tuo computer e non viene mai inviato ad alcun server NODUS, salvo quanto descritto esplicitamente nella Sezione 3.</p>
+
+      <div class="storage-row">
+        <div class="storage-key">settings</div>
+        <div class="storage-desc">Le tue preferenze: lingua dell'interfaccia, regioni preferite, modalità overlay, intervallo di aggiornamento e scelte di layout della barra laterale.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_token</div>
+        <div class="storage-desc">Il tuo Token Personale dell'API di Product Hunt (facoltativo). Usato solo per recuperare dati pubblici della classifica — mai inviato ai server NODUS, solo alla stessa API di Product Hunt. Puoi cancellarlo in qualsiasi momento dalle impostazioni dell'estensione.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_snapshots_&lt;date&gt; (IndexedDB)</div>
+        <div class="storage-desc">Istantanee giornaliere delle metriche pubbliche dei prodotti (conteggio dei voti, hunter, tagline) per i prodotti apparsi nella corsa del giorno. Usate per costruire il grafico della velocity e la timeline giornaliera. Archiviate nell'IndexedDB locale; eliminate automaticamente dopo 30 giorni.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_pins</div>
+        <div class="storage-desc">Prodotti che hai fissato per osservarli. Archiviati localmente; mai inviati ai nostri server.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_notes_&lt;productId&gt;</div>
+        <div class="storage-desc">Note che hai scritto per un prodotto monitorato. Archiviate localmente; mai inviate ai nostri server.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ph_watch_rules</div>
+        <div class="storage-desc">Regole di avviso che hai definito (ad es. "avvisa quando i voti &gt; 200"). Archiviate localmente; gli attivatori vengono valutati nel browser.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">spotlight_token</div>
+        <div class="storage-desc">Il tuo token di accesso di Spotlight (UUID generato nel browser al momento dell'invio). Usato solo per recuperare le tue promozioni dalla dashboard. Archiviato localmente; sul nostro server conserviamo solo un hash SHA-256 di questo token — il testo in chiaro non viene mai trasmesso dopo l'invio iniziale.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">_cacheVersion</div>
+        <div class="storage-desc">Flag interno usato per invalidare la cache obsoleta dopo un aggiornamento dell'estensione.</div>
+      </div>
+
+      <div class="highlight highlight-yellow" style="margin-top:24px;">
+        <p>PH Radar non dispone di un sistema di account utente. Il tuo token PH, gli elementi fissati, le note, le regole di osservazione e le istantanee vengono tutti rimossi automaticamente quando disinstalli l'estensione o cancelli i dati dell'estensione nelle impostazioni del tuo browser.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Endpoint esterni spiegati</h2>
+
+      <p>L'estensione effettua i seguenti tipi di richieste di rete. Ogni dominio è dichiarato nel campo del manifest <code>host_permissions</code> dell'estensione ed è visibile al tuo browser prima dell'installazione.</p>
+
+      <h3>3a. API GraphQL v2 di Product Hunt (pubblica)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://api.producthunt.com/v2/api/graphql</span>
+          <span class="badge badge-blue">obbligatorio</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Recupera la classifica pubblica della corsa giornaliera, i dettagli dei prodotti (titolo, tagline, miniatura, voti, hunter) e le statistiche del profilo dell'hunter. Sono gli stessi dati pubblici visibili su producthunt.com.</p>
+          <p class="data-sent"><strong>Dati inviati:</strong> query GraphQL per dati pubblici di prodotti/hunter · il tuo Token Personale PH (solo ai server propri di Product Hunt — non ai nostri) · nessun dato personale raccolto da NODUS</p>
+        </div>
+      </div>
+
+      <h3>3b. Worker di NODUS PH Radar (Community Spotlight)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/spotlight?region=...</span>
+          <span class="badge badge-green">obbligatorio</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Richiede le promozioni di prodotto Spotlight attive per la tua regione, così da poter popolare la striscia del pannello laterale.</p>
+          <p class="data-sent"><strong>Dati inviati:</strong> codice paese · nessuna identità, nessuna informazione sull'account PH, nessun IP archiviato oltre il registro standard delle richieste di Cloudflare</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/spotlight/click</span>
+          <span class="badge badge-yellow">solo al clic</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Inviato solo quando fai clic su un prodotto di Spotlight nel pannello laterale. Incrementa un contatore aggregato di clic per la dashboard di rendicontazione del maker.</p>
+          <p class="data-sent"><strong>Dati inviati:</strong> ID della promozione · nient'altro</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/spotlight/impression</span>
+          <span class="badge badge-gray">alla visualizzazione</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Inviato quando una scheda di Spotlight diventa visibile nella striscia (conteggiata al massimo una volta per sessione per promozione). Usato per la rendicontazione aggregata delle impression.</p>
+          <p class="data-sent"><strong>Dati inviati:</strong> ID della promozione · nient'altro</p>
+        </div>
+      </div>
+
+      <h3>3c. Invio di promozioni (solo maker, facoltativo)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-ph-radar.mmcarvalho-dev.workers.dev/promotions/submit</span>
+          <span class="badge badge-orange">solo maker · all'invio</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Chiamato solo quando un maker compila il modulo di invio di Community Spotlight su <a href="/it/ph-radar" style="color:#60a5fa;">nodus-ai.app/ph-radar</a>. Non viene attivato dall'uso normale dell'estensione.</p>
+          <p class="data-sent"><strong>Dati inviati:</strong> URL del prodotto su Product Hunt · indirizzo email · tagline, data di lancio, argomenti, regioni facoltativi · tier · token di accesso (UUID, generato lato client)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SPOTLIGHT -->
+    <div class="section">
+      <span class="section-anchor" id="spotlight"></span>
+      <h2><span class="icon">⭐</span> 4. Promozioni di Community Spotlight</h2>
+
+      <p>Community Spotlight è la striscia nella parte inferiore del pannello laterale di PH Radar che mostra prodotti di Product Hunt curati e inviati dai maker (tier gratuiti o a pagamento). Esiste affinché i maker indipendenti possano ottenere visibilità senza reti pubblicitarie.</p>
+
+      <h3>Cosa archivia il worker su una promozione</h3>
+      <p>Quando un maker invia un prodotto su <a href="/it/ph-radar" style="color:#60a5fa;">nodus-ai.app/ph-radar</a>, il nostro database Cloudflare D1 archivia: l'URL e lo slug del prodotto su Product Hunt, titolo, tagline, URL della miniatura, nome utente dell'hunter, tier (free / bronze / silver / gold), regioni e argomenti di destinazione, data di lancio facoltativa, l'email del mittente (solo per notifiche transazionali) e contatori aggregati di impression/clic. Queste informazioni sono fornite <strong>volontariamente dal maker</strong>, non raccolte dagli utenti dell'estensione.</p>
+
+      <h3>Token di accesso</h3>
+      <p>Al momento dell'invio, il tuo browser genera un token di accesso UUID usando <code>crypto.randomUUID()</code>. Questo token viene mostrato una sola volta sullo schermo — lo copi e lo conservi. Sul nostro server archiviamo solo l'<strong>hash SHA-256</strong> di questo token. Possiamo verificarlo ma non invertirlo per recuperare il tuo token in chiaro. Il token ti consente di visualizzare e gestire le tue promozioni tramite la dashboard.</p>
+
+      <h3>Tier a pagamento — elaborazione dei pagamenti con Paddle</h3>
+      <p>Per i tier a pagamento (Bronze 1 $, Silver 3 $, Gold 7 $), i pagamenti sono elaborati da <strong>Paddle</strong> (consulta la Sezione 5 per i dettagli sul sub-responsabile). Il tuo indirizzo email e le informazioni di pagamento sono raccolti da Paddle, non da NODUS. Riceviamo solo un evento di conferma del pagamento dal webhook di Paddle, che include la tua email e un ID transazione affinché possiamo attivare il tuo piano.</p>
+
+      <h3>E gli utenti dell'estensione?</h3>
+      <p>Dal lato dell'estensione, non archiviamo nulla che ti identifichi. Il worker riceve solo: il codice regione per l'abbinamento di Spotlight e — se fai clic o visualizzi — l'ID della promozione. Non registriamo quali prodotti stai seguendo, né il tuo IP oltre la gestione standard delle richieste di Cloudflare, né l'impronta del tuo browser, né alcun identificatore di account.</p>
+
+      <h3>Hosting</h3>
+      <p>Il worker viene eseguito su Cloudflare Workers con un database Cloudflare D1. Cloudflare può elaborare temporaneamente indirizzi IP e metadati delle richieste come parte del normale funzionamento della rete (protezione DDoS, instradamento). Non scriviamo indirizzi IP nel nostro database.</p>
+    </div>
+
+    <!-- 5. SUB-PROCESSORS -->
+    <div class="section">
+      <span class="section-anchor" id="subprocessors"></span>
+      <h2><span class="icon">🔗</span> 5. Sub-responsabili del trattamento</h2>
+
+      <p>Utilizziamo i seguenti servizi di terze parti che possono trattare dati personali per nostro conto. Abbiamo stipulato accordi sul trattamento dei dati con ciascuno, ove applicabile.</p>
+
+      <table class="sub-table">
+        <thead>
+          <tr>
+            <th>Servizio</th>
+            <th>Finalità</th>
+            <th>Dati trattati</th>
+            <th>Informativa sulla privacy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cloudflare Workers + D1</td>
+            <td>Runtime serverless e database per l'archiviazione e l'erogazione delle promozioni di Spotlight</td>
+            <td>Metadati delle promozioni, email (token con hash), statistiche aggregate. Gli indirizzi IP sono trattati in modo transitorio dalla rete di Cloudflare — non scritti in D1.</td>
+            <td><a href="https://www.cloudflare.com/privacypolicy/" style="color:#60a5fa;" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></td>
+          </tr>
+          <tr>
+            <td>Paddle</td>
+            <td>Elaborazione dei pagamenti per i tier a pagamento di Spotlight (Bronze, Silver, Gold)</td>
+            <td>Indirizzo email, nome di fatturazione, dati della carta di pagamento (gestiti interamente da Paddle — NODUS non vede mai i numeri di carta). Paddle è il merchant of record.</td>
+            <td><a href="https://www.paddle.com/legal/privacy" style="color:#60a5fa;" target="_blank" rel="noopener">paddle.com/legal/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Resend</td>
+            <td>Email transazionale: conferma dell'invio e notifiche di revisione per l'amministratore</td>
+            <td>Indirizzo email del maker che effettua l'invio e contenuto dell'email (dettagli dell'invio). Le email vengono attivate solo da eventi di invio.</td>
+            <td><a href="https://resend.com/legal/privacy-policy" style="color:#60a5fa;" target="_blank" rel="noopener">resend.com/legal/privacy-policy</a></td>
+          </tr>
+          <tr>
+            <td>Product Hunt API v2</td>
+            <td>Recupero di dati pubblici di prodotti e hunter</td>
+            <td>Metadati pubblici dei prodotti (voti, titolo, tagline, hunter). Il tuo Token Personale PH viene inviato direttamente a Product Hunt — non a NODUS.</td>
+            <td><a href="https://www.producthunt.com/legal/privacy" style="color:#60a5fa;" target="_blank" rel="noopener">producthunt.com/legal/privacy</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight highlight-orange">
+        <p><strong>Nessuna analitica di terze parti, nessun cookie di tracciamento.</strong> PH Radar non usa Google Analytics, Mixpanel, Segment, Facebook Pixel né alcun altro SDK di tracciamento comportamentale o pubblicitario — né nell'estensione né nelle pagine del sito nodus-ai.app relative a PH Radar.</p>
+      </div>
+    </div>
+
+    <!-- 6. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 6. Ciò che non facciamo mai</h2>
+
+      <ul class="check cross">
+        <li>Vendere i tuoi dati a terzi</li>
+        <li>Leggere le credenziali del tuo account Product Hunt, i tuoi DM, i progetti privati o la cronologia degli acquisti</li>
+        <li>Trasmettere il tuo Token Personale PH ai server NODUS — va esclusivamente alla stessa API di Product Hunt</li>
+        <li>Tracciare quali prodotti sfogli su producthunt.com al di fuori del pannello laterale dell'estensione</li>
+        <li>Tracciare quali siti web visiti al di fuori di Product Hunt</li>
+        <li>Usare SDK pubblicitari, analitiche di terze parti o cookie di tracciamento comportamentale</li>
+        <li>Accedere al tuo microfono, fotocamera, appunti o download</li>
+        <li>Sincronizzare elementi fissati, note, regole di osservazione o istantanee dei voti sui nostri server — tutti questi dati restano sul tuo dispositivo</li>
+        <li>Richiedere un account, un accesso o un'email per usare le funzioni principali dell'estensione</li>
+        <li>Condividere i dati di invio dei maker (email, URL del prodotto) con terzi diversi dai sub-responsabili elencati nella Sezione 5</li>
+      </ul>
+    </div>
+
+    <!-- 7. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 7. I tuoi diritti (LGPD / GDPR)</h2>
+
+      <p>PH Radar è conforme alla Lei Geral de Proteção de Dados brasiliana (LGPD) e al Regolamento generale sulla protezione dei dati dell'UE (GDPR), ed è compatibile con la CCPA.</p>
+
+      <h3>Diritti che hai come utente dell'estensione</h3>
+      <ul class="check">
+        <li><strong>Accesso</strong> — Tutti i dati locali sono visibili tramite <code>chrome://extensions</code> → PH Radar → Ispeziona visualizzazioni → Applicazione → Archiviazione / IndexedDB</li>
+        <li><strong>Eliminazione</strong> — La rimozione dell'estensione cancella automaticamente tutti i dati di <code>chrome.storage.local</code> e IndexedDB. Puoi anche cancellarli manualmente nelle impostazioni del tuo browser</li>
+        <li><strong>Token PH</strong> — Puoi cancellare il tuo token di Product Hunt in qualsiasi momento dalla pagina delle impostazioni dell'estensione. Non viene mai inviato ai server NODUS</li>
+        <li><strong>Opt-out</strong> — Puoi disattivare la striscia di Spotlight nelle impostazioni dell'estensione. La chiusura del pannello laterale interrompe tutta l'attività di rete dell'estensione</li>
+      </ul>
+
+      <h3>Diritti che hai come maker (mittente di Spotlight)</h3>
+      <ul class="check">
+        <li><strong>Accesso ed eliminazione</strong> — Usa il token di accesso mostrato al momento dell'invio per visualizzare o eliminare le tue promozioni tramite la dashboard su <a href="/it/ph-radar#dashboard" style="color:#60a5fa;">nodus-ai.app/ph-radar#dashboard</a></li>
+        <li><strong>Token smarrito</strong> — Contattaci con l'email usata al momento dell'invio e cancelleremo i tuoi dati dopo la verifica dell'identità</li>
+        <li><strong>Dati di pagamento</strong> — Per i dati di fatturazione (cronologia dei pagamenti, fatture), contatta direttamente Paddle su <a href="https://www.paddle.com/legal/privacy" style="color:#60a5fa;" target="_blank" rel="noopener">paddle.com/legal/privacy</a> o tramite il link al portale acquirente nella tua email di acquisto</li>
+      </ul>
+
+      <h3>Base giuridica del trattamento</h3>
+      <p>I recuperi dall'API di Product Hunt sono trattati sulla base del <strong>legittimo interesse</strong> (fornire la funzione per cui hai aperto l'estensione). Gli invii di promozioni di Spotlight e i pagamenti sono trattati sulla base dell'<strong>esecuzione del contratto</strong> con il maker mittente. Le email transazionali vengono inviate sulla base dell'<strong>esecuzione del contratto</strong>. Non avviene alcun altro trattamento.</p>
+
+      <h3>Conservazione dei dati</h3>
+      <p>Le promozioni attive sono conservate per la durata del piano più 90 giorni a fini di rendicontazione. Le promozioni scadute e le relative statistiche aggregate possono essere eliminate su richiesta del maker. Gli indirizzi email sono conservati solo finché il piano associato è attivo o in sospeso, salvo che tu richieda un'eliminazione anticipata.</p>
+    </div>
+
+    <!-- 8. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 8. Contatti</h2>
+
+      <p>Per domande sulla privacy, richieste di eliminazione dei dati o gestione delle promozioni:</p>
+
+      <div class="card">
+        <div class="card-title">📧 Email</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Sito del progetto</div>
+        <p><a href="/it/ph-radar" style="color:#60a5fa;">nodus-ai.app/ph-radar</a></p>
+      </div>
+      <div class="card">
+        <div class="card-title">🐦 Product Hunt</div>
+        <p><a href="https://www.producthunt.com/@m_m_carvalho" style="color:#60a5fa;" target="_blank" rel="noopener">@m_m_carvalho</a></p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Questa informativa può essere aggiornata quando vengono aggiunte nuove funzioni. Le modifiche sostanziali saranno indicate nelle note di rilascio dell'estensione nella scheda del Chrome Web Store. L'uso continuato di PH Radar dopo una modifica dell'informativa costituisce accettazione dell'informativa aggiornata.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="/it/">Home</a> · <a href="/it/ph-radar">PH Radar</a> · <a href="/it/privacy">Privacy di NODUS</a> · Privacy di PH Radar</p>
+  </footer>
+
+  <script>window._forcedLang = 'it';</script>
+  <script src="/lang-switcher.js"></script>
+</body>
+</html>

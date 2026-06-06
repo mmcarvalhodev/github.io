@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS PH Radar — Product Hunt Historical Intelligence</title>
-  <meta name="description" content="Track Product Hunt launches with historical depth. Daily race, velocity, watch rules, and Community Spotlight for makers.">
-  <link rel="canonical" href="https://nodus-ai.app/ph-radar">
+  <title>NODUS PH Radar — Trí tuệ lịch sử cho Product Hunt</title>
+  <meta name="description" content="Theo dõi các lượt ra mắt trên Product Hunt với chiều sâu lịch sử. Cuộc đua trong ngày, velocity, watch rules và Community Spotlight cho các maker.">
+  <link rel="canonical" href="https://nodus-ai.app/vi/ph-radar">
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>window._forcedLang = 'vi';</script>
   <style>
     html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -420,14 +421,14 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>PH Radar</span></a>
+      <a href="https://nodus-ai.app/vi/" class="nav-logo">NODUS <span>PH Radar</span></a>
       <div class="nav-links">
-        <a href="#install" class="nav-link" id="t-nav-install">⬇ Install</a>
-        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ Plans</a>
-        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 Promote launch</a>
-        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 Dashboard</a>
+        <a href="#install" class="nav-link" id="t-nav-install">⬇ Cài đặt</a>
+        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ Gói</a>
+        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 Quảng bá ra mắt</a>
+        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 Bảng điều khiển</a>
       </div>
-      <a href="https://nodus-ai.app" class="nav-back" id="t-nav-back">← Back to NODUS</a>
+      <a href="https://nodus-ai.app/vi/" class="nav-back" id="t-nav-back">← Quay lại NODUS</a>
     </div>
   </nav>
 
@@ -435,17 +436,17 @@
 
     <!-- ── HERO ── -->
     <div class="hero" id="install">
-      <div class="hero-badge" id="t-hero-badge">📡 Browser Extension</div>
-      <h1 id="t-hero-title">The Product Hunt race, <span>captured all day</span></h1>
-      <p id="t-hero-desc">PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.</p>
+      <div class="hero-badge" id="t-hero-badge">📡 Tiện ích trình duyệt</div>
+      <h1 id="t-hero-title">Cuộc đua Product Hunt, <span>ghi lại suốt cả ngày</span></h1>
+      <p id="t-hero-desc">PH Radar là bảng bên của Chrome chụp nhanh bảng xếp hạng hôm nay ở chế độ nền — để bạn thấy ai đang lên phiếu, ai chững lại và lượt ra mắt nào đang bứt phá. Ghim hunter, đặt watch rules và theo dõi lịch ra mắt. Miễn phí — cùng một Community Spotlight cho các maker muốn được chú ý hơn trong ngày ra mắt.</p>
       <div class="hero-btns">
         <a href="#" onclick="comingSoon(event)" class="btn-primary" id="t-hero-install-chrome">
-          <img src="chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
-          <span id="t-hero-install-chrome-text">Install for Chrome</span>
+          <img src="/chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
+          <span id="t-hero-install-chrome-text">Cài cho Chrome</span>
         </a>
         <a href="#" onclick="comingSoon(event)" class="btn-firefox" id="t-hero-install-firefox">
-          <img src="firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
-          <span id="t-hero-install-firefox-text">Install for Firefox</span>
+          <img src="/firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
+          <span id="t-hero-install-firefox-text">Cài cho Firefox</span>
         </a>
         <a href="#spotlight" class="btn-secondary" id="t-hero-spotlight">⭐ Community Spotlight</a>
       </div>
@@ -459,34 +460,34 @@
            onerror="this.style.display='none';var p=document.getElementById('ph-shot-ph');if(p)p.style.display='flex';">
       <div class="shot-ph" id="ph-shot-ph" style="display:none;">
         <div class="shot-ph-icon">📊</div>
-        <div class="shot-ph-text" id="t-hero-shot-ph">A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.</div>
+        <div class="shot-ph-text" id="t-hero-shot-ph">Một cái nhìn trực tiếp vào bảng bên PH Radar — cuộc đua hôm nay được xếp hạng theo thời gian thực, velocity phiếu bầu và cảnh báo bứt phá.</div>
       </div>
-      <div class="shot-cap" id="t-hero-shot-cap">The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.</div>
+      <div class="shot-cap" id="t-hero-shot-cap">Bảng bên nằm cạnh mọi tab. Ảnh chụp nhanh làm mới ở chế độ nền — không chuyển tab, không làm mới thủ công.</div>
     </div>
 
     <hr class="divider">
 
     <!-- ── HOW IT WORKS ── -->
     <section class="section">
-      <div class="section-label" id="t-how-label">How it works</div>
-      <h2 class="section-title" id="t-how-title">Open the side panel. See everything.</h2>
-      <p class="section-sub" id="t-how-sub">PH Radar runs silently. Snapshots the daily race in the background, tracks the hunters you pin, and alerts you when products cross watch rules you set.</p>
+      <div class="section-label" id="t-how-label">Cách hoạt động</div>
+      <h2 class="section-title" id="t-how-title">Mở bảng bên. Thấy tất cả.</h2>
+      <p class="section-sub" id="t-how-sub">PH Radar chạy lặng lẽ. Chụp nhanh cuộc đua hằng ngày ở chế độ nền, theo dõi các hunter bạn ghim, và cảnh báo khi sản phẩm vượt qua watch rules bạn đặt.</p>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3 id="t-step1-title">Install the extension</h3>
-          <p id="t-step1-desc">Add NODUS PH Radar to Chrome. Free, no account. Just paste a Product Hunt Developer Token once.</p>
+          <h3 id="t-step1-title">Cài tiện ích</h3>
+          <p id="t-step1-desc">Thêm NODUS PH Radar vào Chrome. Miễn phí, không cần tài khoản. Dán Developer Token của Product Hunt một lần.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3 id="t-step2-title">Open the side panel</h3>
-          <p id="t-step2-desc">See today's race ranked live. Pin products. Pin hunters. Set watch rules with custom thresholds.</p>
+          <h3 id="t-step2-title">Mở bảng bên</h3>
+          <p id="t-step2-desc">Xem cuộc đua hôm nay xếp hạng trực tiếp. Ghim sản phẩm. Ghim hunter. Đặt watch rules với ngưỡng tùy chỉnh.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3 id="t-step3-title">Get alerts that matter</h3>
-          <p id="t-step3-desc">When a product crosses your rule (votes, velocity, rank), the bell lights up. Built for makers who want to know when something is breaking out.</p>
+          <h3 id="t-step3-title">Nhận cảnh báo quan trọng</h3>
+          <p id="t-step3-desc">Khi một sản phẩm vượt quy tắc của bạn (phiếu, velocity, thứ hạng), chuông sáng lên. Dành cho các maker theo dõi sự bứt phá.</p>
         </div>
       </div>
     </section>
@@ -495,39 +496,39 @@
 
     <!-- ── FEATURES ── -->
     <section class="section">
-      <div class="section-label" id="t-feat-label">Features</div>
-      <h2 class="section-title" id="t-feat-title">Everything you need to read the Product Hunt daily race</h2>
+      <div class="section-label" id="t-feat-label">Tính năng</div>
+      <h2 class="section-title" id="t-feat-title">Mọi thứ bạn cần để đọc cuộc đua Product Hunt hằng ngày</h2>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🏁</div>
-          <h4 id="t-f1-title">Daily Race</h4>
-          <p id="t-f1-desc">Live ranking of today's launches. Snapshot loop with 3 cadence profiles (eco/standard/hi-fi) to balance freshness vs API quota.</p>
+          <h4 id="t-f1-title">Cuộc đua trong ngày</h4>
+          <p id="t-f1-desc">Xếp hạng trực tiếp các lượt ra mắt hôm nay. Vòng lặp snapshot với 3 hồ sơ nhịp (eco/standard/hi-fi) để cân bằng độ mới và hạn ngạch API.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
           <h4 id="t-f2-title">Velocity</h4>
-          <p id="t-f2-desc">Votes per hour computed between snapshots. Catches products accelerating before they hit the top.</p>
+          <p id="t-f2-desc">Số phiếu mỗi giờ được tính giữa các snapshot. Bắt được sản phẩm đang tăng tốc trước khi lên đỉnh.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔔</div>
           <h4 id="t-f3-title">Watch Rules</h4>
-          <p id="t-f3-desc">Define conditions (votes, comments, velocity, rank). When a product matches all, the bell fires. Each rule is independent.</p>
+          <p id="t-f3-desc">Đặt điều kiện (phiếu, bình luận, velocity, thứ hạng). Khi sản phẩm khớp tất cả, chuông reo.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎯</div>
-          <h4 id="t-f4-title">Hunters Tab</h4>
-          <p id="t-f4-desc">Track publishers you care about. Pin favorite hunters, get notes per hunter, see all launches grouped by who hunted them.</p>
+          <h4 id="t-f4-title">Tab Hunters</h4>
+          <p id="t-f4-desc">Theo dõi các publisher bạn quan tâm. Ghim hunter yêu thích, ghi chú theo hunter, xem mọi lượt ra mắt nhóm theo người đăng.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🗓️</div>
-          <h4 id="t-f5-title">Launch Calendar</h4>
-          <p id="t-f5-desc">Upcoming launches submitted by makers via Spotlight. See who's launching tomorrow, next week. Curated by the NODUS community.</p>
+          <h4 id="t-f5-title">Lịch ra mắt</h4>
+          <p id="t-f5-desc">Các lượt ra mắt sắp tới do maker gửi qua Spotlight. Xem ai ra mắt ngày mai, tuần tới. Được tuyển chọn bởi cộng đồng NODUS.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌐</div>
-          <h4 id="t-f6-title">16 Languages</h4>
-          <p id="t-f6-desc">Native interface in 16 languages. Auto-translate taglines and comments via Chrome's offline translator. No data leaves your machine.</p>
+          <h4 id="t-f6-title">16 ngôn ngữ</h4>
+          <p id="t-f6-desc">Giao diện gốc bằng 16 ngôn ngữ. Tự động dịch tagline và bình luận qua trình dịch offline của Chrome. Không dữ liệu nào rời khỏi máy bạn.</p>
         </div>
       </div>
     </section>
@@ -536,25 +537,25 @@
 
     <!-- ── SEE IT IN ACTION ── -->
     <section class="section" id="screenshots">
-      <div class="section-label" id="t-shots-label">See it in action</div>
-      <h2 class="section-title" id="t-shots-title">Everything in one side panel</h2>
-      <p class="section-sub" id="t-shots-sub">PH Radar lives right next to Product Hunt — the daily race, the calendar, hunters, and your watch rules, all without leaving the page.</p>
+      <div class="section-label" id="t-shots-label">Trong thực tế</div>
+      <h2 class="section-title" id="t-shots-title">Tất cả trong một bảng bên</h2>
+      <p class="section-sub" id="t-shots-sub">PH Radar nằm ngay cạnh Product Hunt — cuộc đua trong ngày, lịch, hunter và watch rules của bạn, mà không rời khỏi trang.</p>
       <div class="shots-grid">
         <figure class="shot-card">
           <img src="/ph-radar-race.png" alt="PH Radar live leaderboard of today's Product Hunt launches ranked in real time" width="1719" height="933" loading="lazy">
-          <figcaption id="t-shot-race">Live leaderboard — every launch ranked in real time as votes come in.</figcaption>
+          <figcaption id="t-shot-race">Bảng xếp hạng trực tiếp — mọi lượt ra mắt được xếp hạng theo thời gian thực khi phiếu đổ về.</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-calendar.png" alt="PH Radar Launch Calendar showing upcoming Product Hunt launches and featured Spotlight slots" width="1721" height="933" loading="lazy">
-          <figcaption id="t-shot-calendar">Launch Calendar — what's launching today and in the days ahead, with featured Spotlight slots.</figcaption>
+          <figcaption id="t-shot-calendar">Lịch ra mắt — những gì ra mắt hôm nay và các ngày tới, với các slot Spotlight nổi bật.</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-hunters.png" alt="PH Radar Hunters tab tracking the makers and hunters behind Product Hunt launches" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-hunters">Hunters — pin the people behind the launches and see everything they hunt.</figcaption>
+          <figcaption id="t-shot-hunters">Hunters — ghim những người đứng sau các lượt ra mắt và xem mọi thứ họ đăng.</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-watch.png" alt="PH Radar watch rules highlighting products that crossed custom vote and velocity thresholds" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-watch">Watch rules — products light up the moment they cross the thresholds you set.</figcaption>
+          <figcaption id="t-shot-watch">Watch rules — sản phẩm sáng lên ngay khi vượt qua ngưỡng bạn đặt.</figcaption>
         </figure>
       </div>
     </section>
@@ -564,8 +565,8 @@
     <!-- ── COMMUNITY SPOTLIGHT ── -->
     <section class="section" id="spotlight">
       <div class="section-label" id="t-spot-label">Community Spotlight</div>
-      <h2 class="section-title" id="t-spot-title">Put your launch in front of every PH Radar user</h2>
-      <p class="section-sub" id="t-spot-desc">Each time someone opens the side panel, a curated product is shown in the Spotlight slot — before the race even loads. Higher tiers run <strong>longer and more often</strong>; Gold even gives a <strong>second product slot</strong> for Launch Week.</p>
+      <h2 class="section-title" id="t-spot-title">Đưa lượt ra mắt của bạn đến mọi người dùng PH Radar</h2>
+      <p class="section-sub" id="t-spot-desc">Mỗi lần ai đó mở bảng bên, một sản phẩm được tuyển chọn hiển thị ở slot Spotlight. Gói cao hơn chạy <strong>lâu hơn và thường xuyên hơn</strong>; Gold còn cho <strong>slot sản phẩm thứ hai</strong> cho Launch Week.</p>
 
       <div class="tiers">
         <!-- FREE -->
@@ -631,36 +632,36 @@
 
       <!-- SUBMIT FORM -->
       <div class="submit-section" id="submit-form-wrap">
-        <h3 id="t-form-title">📤 Submit your product</h3>
-        <p class="sub" id="t-form-sub">No account needed. Free tier goes to review queue (one submission every 30 days); paid tiers redirect to checkout. Gold plans let you add a 2nd product to your slot within 14 days.</p>
+        <h3 id="t-form-title">📤 Gửi sản phẩm của bạn</h3>
+        <p class="sub" id="t-form-sub">Không cần tài khoản. Free vào hàng đợi duyệt (một lượt gửi mỗi 30 ngày); gói trả phí chuyển tới checkout. Gói Gold cho phép thêm sản phẩm thứ 2 trong 14 ngày.</p>
 
         <div class="form-group">
-          <label id="t-label-email">Your email</label>
+          <label id="t-label-email">Email của bạn</label>
           <input type="email" id="sub-email" placeholder="you@email.com" autocomplete="email">
         </div>
 
         <div class="form-group">
-          <label id="t-label-url">Product Hunt URL</label>
+          <label id="t-label-url">URL Product Hunt</label>
           <input type="url" id="sub-url" placeholder="https://www.producthunt.com/products/your-product">
         </div>
 
         <div class="form-group">
-          <label id="t-label-product-name">Product name <span class="t-label-hint" id="t-label-product-name-hint">(optional — fallback if product not on PH yet)</span></label>
+          <label id="t-label-product-name">Tên sản phẩm <span class="t-label-hint">(tùy chọn — dự phòng nếu sản phẩm chưa có trên PH)</span></label>
           <input type="text" id="sub-product-name" placeholder="e.g. Lovable, Cursor, FutureApp v2" maxlength="100">
         </div>
 
         <div class="form-group">
-          <label id="t-label-tagline">Tagline override <span class="t-label-hint" id="t-label-tagline-hint">(optional — defaults to PH tagline)</span></label>
+          <label id="t-label-tagline">Tagline tùy chỉnh <span class="t-label-hint">(tùy chọn — mặc định lấy tagline PH)</span></label>
           <input type="text" id="sub-tagline" placeholder="Short pitch (max 80 chars)" maxlength="80">
         </div>
 
         <div class="form-group">
-          <label id="t-label-launches-at">🗓️ Launch date <span class="t-label-hint" id="t-label-launches-at-hint">(optional — fill only if launching in the future; enters the Calendar)</span></label>
+          <label id="t-label-launches-at">🗓️ Ngày ra mắt <span class="t-label-hint">(tùy chọn — chỉ điền nếu ra mắt trong tương lai; vào Lịch)</span></label>
           <input type="date" id="sub-launches-at" style="max-width: 320px; cursor: pointer;" onclick="try{this.showPicker()}catch(e){}">
         </div>
 
         <div class="form-group">
-          <label id="t-label-topics">Topics <span class="t-label-hint" id="t-label-topics-hint">(optional — pick up to 3)</span></label>
+          <label id="t-label-topics">Chủ đề <span class="t-label-hint">(tùy chọn — chọn tối đa 3)</span></label>
           <div class="topic-chips" id="sub-topics">
             <div class="rc-chip" data-topic="AI" onclick="toggleTopic(this)">🤖 AI</div>
             <div class="rc-chip" data-topic="Productivity" onclick="toggleTopic(this)">⚡ Productivity</div>
@@ -680,7 +681,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-regions">Target regions <span class="t-label-hint" id="t-label-regions-hint">(optional — empty = global)</span></label>
+          <label id="t-label-regions">Khu vực mục tiêu <span class="t-label-hint">(tùy chọn — trống = toàn cầu)</span></label>
           <div class="region-chips" id="sub-regions">
             <div class="rc-chip" data-code="BR" onclick="toggleRegion(this)">🇧🇷 Brasil</div>
             <div class="rc-chip" data-code="US" onclick="toggleRegion(this)">🇺🇸 USA</div>
@@ -700,7 +701,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-tier">Select tier</label>
+          <label id="t-label-tier">Chọn gói</label>
           <div class="tier-selector">
             <div class="tier-opt selected" data-tier="free" onclick="setTier('free')">
               <div class="to-name">Free</div>
@@ -730,7 +731,7 @@
         </div>
 
         <button type="button" class="btn-submit" id="btn-submit" onclick="submitPromo()">
-          <span id="t-btn-submit">Submit →</span>
+          <span id="t-btn-submit">Gửi →</span>
         </button>
         <div class="msg" id="submit-msg"></div>
       </div>
@@ -740,20 +741,18 @@
 
     <!-- ── DASHBOARD ── -->
     <section class="section dashboard-section" id="dashboard">
-      <div class="section-label" id="t-dash-label">My Promotions</div>
-      <h2 class="section-title" id="t-dash-title">Track your Spotlight performance</h2>
-      <p class="section-sub" id="t-dash-sub">Enter the access token you received when submitting your product. See impressions, clicks, and <strong>lift in votes</strong> attributed to your Spotlight window.</p>
+      <div class="section-label" id="t-dash-label">Quảng bá của tôi</div>
+      <h2 class="section-title" id="t-dash-title">Theo dõi hiệu suất Spotlight của bạn</h2>
+      <p class="section-sub" id="t-dash-sub">Nhập access token bạn đã nhận. Xem lượt hiển thị, lượt nhấp và <strong>mức tăng phiếu</strong> được quy cho cửa sổ Spotlight của bạn.</p>
 
       <div class="dash-login" style="margin-top: 36px;">
-        <h3 id="t-dash-login-title">📊 Your Dashboard</h3>
-        <p class="sub" id="t-dash-login-sub">Paste your token below. We never store it — only the SHA-256 hash on the server.</p>
+        <h3 id="t-dash-login-title">📊 Bảng điều khiển của bạn</h3>
+        <p class="sub" id="t-dash-login-sub">Dán token của bạn bên dưới. Chúng tôi không bao giờ lưu nó — chỉ lưu hash SHA-256 trên máy chủ.</p>
         <div class="form-group" style="max-width:480px;">
           <label id="t-dash-label-token">Access token</label>
           <input type="text" id="dash-token" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" spellcheck="false" autocomplete="off">
         </div>
-        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">
-          <span>View my promotions →</span>
-        </button>
+        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">Xem quảng bá của tôi →</button>
         <div class="msg" id="dash-msg"></div>
 
         <div id="promos-area" style="display:none">
@@ -767,24 +766,24 @@
 
   <footer>
     <div>
-      <a href="https://nodus-ai.app" id="t-footer-home">NODUS Home</a>
-      <a href="ph-radar-privacy.html" id="t-footer-privacy">Privacy</a>
-      <a href="https://nodus-ai.app/terms" id="t-footer-terms">Terms</a>
+      <a href="https://nodus-ai.app/vi/" id="t-footer-home">Trang chủ NODUS</a>
+      <a href="/vi/ph-radar-privacy" id="t-footer-privacy">Quyền riêng tư</a>
+      <a href="https://nodus-ai.app/terms" id="t-footer-terms">Điều khoản</a>
     </div>
-    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. All rights reserved.</div>
+    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. Bảo lưu mọi quyền.</div>
   </footer>
 
   <!-- ── COMING SOON MODAL ── -->
   <div class="soon-overlay" id="soon-modal" onclick="if(event.target===this)closeSoon()">
     <div class="soon-box" role="dialog" aria-modal="true" aria-labelledby="t-soon-title">
       <div class="soon-icon">🚀</div>
-      <h3 id="t-soon-title">Coming soon</h3>
-      <p id="t-soon-desc">PH Radar is under review on the Chrome Web Store and Firefox Add-ons. The extension will be available to install very soon — thanks for your patience!</p>
-      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">Got it</button>
+      <h3 id="t-soon-title">Sắp ra mắt</h3>
+      <p id="t-soon-desc">PH Radar đang được xét duyệt trên Chrome Web Store và Firefox Add-ons. Tiện ích sẽ sớm có để cài đặt — cảm ơn bạn đã kiên nhẫn!</p>
+      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">Đã hiểu</button>
     </div>
   </div>
 
-  <script src="lang-switcher.js"></script>
+  <script src="/lang-switcher.js"></script>
   <script>
     const WORKER = "https://worker-ph-radar.mmcarvalho-dev.workers.dev";
     let selectedTier = "free";

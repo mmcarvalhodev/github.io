@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS PH Radar — Product Hunt Historical Intelligence</title>
-  <meta name="description" content="Track Product Hunt launches with historical depth. Daily race, velocity, watch rules, and Community Spotlight for makers.">
-  <link rel="canonical" href="https://nodus-ai.app/ph-radar">
+  <title>NODUS PH Radar — Product Hunt 历史情报</title>
+  <meta name="description" content="以历史深度追踪 Product Hunt 发布。每日竞赛、velocity、watch rules，以及面向创客的 Community Spotlight。">
+  <link rel="canonical" href="https://nodus-ai.app/zh/ph-radar">
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>window._forcedLang = 'zh';</script>
   <style>
     html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -420,14 +421,14 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>PH Radar</span></a>
+      <a href="https://nodus-ai.app/zh/" class="nav-logo">NODUS <span>PH Radar</span></a>
       <div class="nav-links">
-        <a href="#install" class="nav-link" id="t-nav-install">⬇ Install</a>
-        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ Plans</a>
-        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 Promote launch</a>
-        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 Dashboard</a>
+        <a href="#install" class="nav-link" id="t-nav-install">⬇ 安装</a>
+        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ 套餐</a>
+        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 推广发布</a>
+        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 仪表盘</a>
       </div>
-      <a href="https://nodus-ai.app" class="nav-back" id="t-nav-back">← Back to NODUS</a>
+      <a href="https://nodus-ai.app/zh/" class="nav-back" id="t-nav-back">← 返回 NODUS</a>
     </div>
   </nav>
 
@@ -435,17 +436,17 @@
 
     <!-- ── HERO ── -->
     <div class="hero" id="install">
-      <div class="hero-badge" id="t-hero-badge">📡 Browser Extension</div>
-      <h1 id="t-hero-title">The Product Hunt race, <span>captured all day</span></h1>
-      <p id="t-hero-desc">PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.</p>
+      <div class="hero-badge" id="t-hero-badge">📡 浏览器扩展</div>
+      <h1 id="t-hero-title">Product Hunt 竞赛，<span>全天捕捉</span></h1>
+      <p id="t-hero-desc">PH Radar 是一个 Chrome 侧边栏，在后台对今天的榜单进行快照——让你看清谁在涨票、谁停滞、哪些发布正在爆发。固定 hunter、设置 watch rules，并跟进发布日历。免费使用——还有面向希望在发布日获得更多关注的创客的 Community Spotlight。</p>
       <div class="hero-btns">
         <a href="#" onclick="comingSoon(event)" class="btn-primary" id="t-hero-install-chrome">
-          <img src="chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
-          <span id="t-hero-install-chrome-text">Install for Chrome</span>
+          <img src="/chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
+          <span id="t-hero-install-chrome-text">安装到 Chrome</span>
         </a>
         <a href="#" onclick="comingSoon(event)" class="btn-firefox" id="t-hero-install-firefox">
-          <img src="firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
-          <span id="t-hero-install-firefox-text">Install for Firefox</span>
+          <img src="/firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
+          <span id="t-hero-install-firefox-text">安装到 Firefox</span>
         </a>
         <a href="#spotlight" class="btn-secondary" id="t-hero-spotlight">⭐ Community Spotlight</a>
       </div>
@@ -459,34 +460,34 @@
            onerror="this.style.display='none';var p=document.getElementById('ph-shot-ph');if(p)p.style.display='flex';">
       <div class="shot-ph" id="ph-shot-ph" style="display:none;">
         <div class="shot-ph-icon">📊</div>
-        <div class="shot-ph-text" id="t-hero-shot-ph">A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.</div>
+        <div class="shot-ph-text" id="t-hero-shot-ph">PH Radar 侧边栏的实时一览——今天的竞赛实时排名、票数 velocity 和爆发提醒。</div>
       </div>
-      <div class="shot-cap" id="t-hero-shot-cap">The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.</div>
+      <div class="shot-cap" id="t-hero-shot-cap">侧边栏停留在任意标签页旁。快照在后台刷新——无需切换标签、无需手动刷新。</div>
     </div>
 
     <hr class="divider">
 
     <!-- ── HOW IT WORKS ── -->
     <section class="section">
-      <div class="section-label" id="t-how-label">How it works</div>
-      <h2 class="section-title" id="t-how-title">Open the side panel. See everything.</h2>
-      <p class="section-sub" id="t-how-sub">PH Radar runs silently. Snapshots the daily race in the background, tracks the hunters you pin, and alerts you when products cross watch rules you set.</p>
+      <div class="section-label" id="t-how-label">工作原理</div>
+      <h2 class="section-title" id="t-how-title">打开侧边栏。看清一切。</h2>
+      <p class="section-sub" id="t-how-sub">PH Radar 静默运行。在后台对每日竞赛快照，跟踪你固定的 hunter，并在产品越过你设置的 watch rules 时提醒你。</p>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3 id="t-step1-title">Install the extension</h3>
-          <p id="t-step1-desc">Add NODUS PH Radar to Chrome. Free, no account. Just paste a Product Hunt Developer Token once.</p>
+          <h3 id="t-step1-title">安装扩展</h3>
+          <p id="t-step1-desc">将 NODUS PH Radar 添加到 Chrome。免费，无需账户。把 Product Hunt 的 Developer Token 粘贴一次即可。</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3 id="t-step2-title">Open the side panel</h3>
-          <p id="t-step2-desc">See today's race ranked live. Pin products. Pin hunters. Set watch rules with custom thresholds.</p>
+          <h3 id="t-step2-title">打开侧边栏</h3>
+          <p id="t-step2-desc">实时查看今天的竞赛排名。固定产品。固定 hunter。用自定义阈值设置 watch rules。</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3 id="t-step3-title">Get alerts that matter</h3>
-          <p id="t-step3-desc">When a product crosses your rule (votes, velocity, rank), the bell lights up. Built for makers who want to know when something is breaking out.</p>
+          <h3 id="t-step3-title">获取重要提醒</h3>
+          <p id="t-step3-desc">当产品越过你的规则（票数、velocity、排名）时，铃铛会亮起。专为追踪爆发的创客打造。</p>
         </div>
       </div>
     </section>
@@ -495,39 +496,39 @@
 
     <!-- ── FEATURES ── -->
     <section class="section">
-      <div class="section-label" id="t-feat-label">Features</div>
-      <h2 class="section-title" id="t-feat-title">Everything you need to read the Product Hunt daily race</h2>
+      <div class="section-label" id="t-feat-label">功能</div>
+      <h2 class="section-title" id="t-feat-title">读懂 Product Hunt 每日竞赛所需的一切</h2>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🏁</div>
-          <h4 id="t-f1-title">Daily Race</h4>
-          <p id="t-f1-desc">Live ranking of today's launches. Snapshot loop with 3 cadence profiles (eco/standard/hi-fi) to balance freshness vs API quota.</p>
+          <h4 id="t-f1-title">每日竞赛</h4>
+          <p id="t-f1-desc">今天发布的实时排名。快照循环提供 3 种节奏档（eco/standard/hi-fi），在新鲜度与 API 配额之间取得平衡。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
           <h4 id="t-f2-title">Velocity</h4>
-          <p id="t-f2-desc">Votes per hour computed between snapshots. Catches products accelerating before they hit the top.</p>
+          <p id="t-f2-desc">在快照之间计算每小时票数。在产品登顶之前就捕捉到正在加速的产品。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔔</div>
           <h4 id="t-f3-title">Watch Rules</h4>
-          <p id="t-f3-desc">Define conditions (votes, comments, velocity, rank). When a product matches all, the bell fires. Each rule is independent.</p>
+          <p id="t-f3-desc">定义条件（票数、评论、velocity、排名）。当产品全部满足时，铃铛响起。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎯</div>
-          <h4 id="t-f4-title">Hunters Tab</h4>
-          <p id="t-f4-desc">Track publishers you care about. Pin favorite hunters, get notes per hunter, see all launches grouped by who hunted them.</p>
+          <h4 id="t-f4-title">Hunters 标签</h4>
+          <p id="t-f4-desc">跟踪你关心的发布者。固定喜爱的 hunter，为每位 hunter 添加备注，按谁发布来分组查看所有发布。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🗓️</div>
-          <h4 id="t-f5-title">Launch Calendar</h4>
-          <p id="t-f5-desc">Upcoming launches submitted by makers via Spotlight. See who's launching tomorrow, next week. Curated by the NODUS community.</p>
+          <h4 id="t-f5-title">发布日历</h4>
+          <p id="t-f5-desc">创客通过 Spotlight 提交的即将发布。看看谁明天、下周发布。由 NODUS 社区精选。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌐</div>
-          <h4 id="t-f6-title">16 Languages</h4>
-          <p id="t-f6-desc">Native interface in 16 languages. Auto-translate taglines and comments via Chrome's offline translator. No data leaves your machine.</p>
+          <h4 id="t-f6-title">16 种语言</h4>
+          <p id="t-f6-desc">16 种语言的原生界面。通过 Chrome 的离线翻译自动翻译 tagline 和评论。没有任何数据离开你的设备。</p>
         </div>
       </div>
     </section>
@@ -536,25 +537,25 @@
 
     <!-- ── SEE IT IN ACTION ── -->
     <section class="section" id="screenshots">
-      <div class="section-label" id="t-shots-label">See it in action</div>
-      <h2 class="section-title" id="t-shots-title">Everything in one side panel</h2>
-      <p class="section-sub" id="t-shots-sub">PH Radar lives right next to Product Hunt — the daily race, the calendar, hunters, and your watch rules, all without leaving the page.</p>
+      <div class="section-label" id="t-shots-label">实际效果</div>
+      <h2 class="section-title" id="t-shots-title">一切尽在一个侧边栏</h2>
+      <p class="section-sub" id="t-shots-sub">PH Radar 就在 Product Hunt 旁边——每日竞赛、日历、hunter 和你的 watch rules，无需离开页面。</p>
       <div class="shots-grid">
         <figure class="shot-card">
           <img src="/ph-radar-race.png" alt="PH Radar live leaderboard of today's Product Hunt launches ranked in real time" width="1719" height="933" loading="lazy">
-          <figcaption id="t-shot-race">Live leaderboard — every launch ranked in real time as votes come in.</figcaption>
+          <figcaption id="t-shot-race">实时榜单——票数进来时，每个发布都实时排名。</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-calendar.png" alt="PH Radar Launch Calendar showing upcoming Product Hunt launches and featured Spotlight slots" width="1721" height="933" loading="lazy">
-          <figcaption id="t-shot-calendar">Launch Calendar — what's launching today and in the days ahead, with featured Spotlight slots.</figcaption>
+          <figcaption id="t-shot-calendar">发布日历——今天及未来几天发布的内容，含精选 Spotlight 位。</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-hunters.png" alt="PH Radar Hunters tab tracking the makers and hunters behind Product Hunt launches" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-hunters">Hunters — pin the people behind the launches and see everything they hunt.</figcaption>
+          <figcaption id="t-shot-hunters">Hunters——固定发布背后的人，查看他们发布的一切。</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-watch.png" alt="PH Radar watch rules highlighting products that crossed custom vote and velocity thresholds" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-watch">Watch rules — products light up the moment they cross the thresholds you set.</figcaption>
+          <figcaption id="t-shot-watch">Watch rules——产品一旦越过你设置的阈值便会亮起。</figcaption>
         </figure>
       </div>
     </section>
@@ -564,8 +565,8 @@
     <!-- ── COMMUNITY SPOTLIGHT ── -->
     <section class="section" id="spotlight">
       <div class="section-label" id="t-spot-label">Community Spotlight</div>
-      <h2 class="section-title" id="t-spot-title">Put your launch in front of every PH Radar user</h2>
-      <p class="section-sub" id="t-spot-desc">Each time someone opens the side panel, a curated product is shown in the Spotlight slot — before the race even loads. Higher tiers run <strong>longer and more often</strong>; Gold even gives a <strong>second product slot</strong> for Launch Week.</p>
+      <h2 class="section-title" id="t-spot-title">把你的发布推到每位 PH Radar 用户面前</h2>
+      <p class="section-sub" id="t-spot-desc">每当有人打开侧边栏，就会在 Spotlight 位展示一个精选产品。更高的套餐展示 <strong>更久、更频繁</strong>；Gold 甚至为 Launch Week 提供 <strong>第二个产品位</strong>。</p>
 
       <div class="tiers">
         <!-- FREE -->
@@ -631,36 +632,36 @@
 
       <!-- SUBMIT FORM -->
       <div class="submit-section" id="submit-form-wrap">
-        <h3 id="t-form-title">📤 Submit your product</h3>
-        <p class="sub" id="t-form-sub">No account needed. Free tier goes to review queue (one submission every 30 days); paid tiers redirect to checkout. Gold plans let you add a 2nd product to your slot within 14 days.</p>
+        <h3 id="t-form-title">📤 提交你的产品</h3>
+        <p class="sub" id="t-form-sub">无需账户。Free 进入审核（每 30 天一次提交）；付费套餐跳转到结账。Gold 套餐可在 14 天内追加第 2 个产品。</p>
 
         <div class="form-group">
-          <label id="t-label-email">Your email</label>
+          <label id="t-label-email">你的邮箱</label>
           <input type="email" id="sub-email" placeholder="you@email.com" autocomplete="email">
         </div>
 
         <div class="form-group">
-          <label id="t-label-url">Product Hunt URL</label>
+          <label id="t-label-url">Product Hunt 链接</label>
           <input type="url" id="sub-url" placeholder="https://www.producthunt.com/products/your-product">
         </div>
 
         <div class="form-group">
-          <label id="t-label-product-name">Product name <span class="t-label-hint" id="t-label-product-name-hint">(optional — fallback if product not on PH yet)</span></label>
+          <label id="t-label-product-name">产品名称 <span class="t-label-hint">（可选——若产品尚未在 PH 上则作为后备）</span></label>
           <input type="text" id="sub-product-name" placeholder="e.g. Lovable, Cursor, FutureApp v2" maxlength="100">
         </div>
 
         <div class="form-group">
-          <label id="t-label-tagline">Tagline override <span class="t-label-hint" id="t-label-tagline-hint">(optional — defaults to PH tagline)</span></label>
+          <label id="t-label-tagline">自定义 tagline <span class="t-label-hint">（可选——默认使用 PH 的 tagline）</span></label>
           <input type="text" id="sub-tagline" placeholder="Short pitch (max 80 chars)" maxlength="80">
         </div>
 
         <div class="form-group">
-          <label id="t-label-launches-at">🗓️ Launch date <span class="t-label-hint" id="t-label-launches-at-hint">(optional — fill only if launching in the future; enters the Calendar)</span></label>
+          <label id="t-label-launches-at">🗓️ 发布日期 <span class="t-label-hint">（可选——仅在未来发布时填写；进入日历）</span></label>
           <input type="date" id="sub-launches-at" style="max-width: 320px; cursor: pointer;" onclick="try{this.showPicker()}catch(e){}">
         </div>
 
         <div class="form-group">
-          <label id="t-label-topics">Topics <span class="t-label-hint" id="t-label-topics-hint">(optional — pick up to 3)</span></label>
+          <label id="t-label-topics">主题 <span class="t-label-hint">（可选——最多选 3 个）</span></label>
           <div class="topic-chips" id="sub-topics">
             <div class="rc-chip" data-topic="AI" onclick="toggleTopic(this)">🤖 AI</div>
             <div class="rc-chip" data-topic="Productivity" onclick="toggleTopic(this)">⚡ Productivity</div>
@@ -680,7 +681,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-regions">Target regions <span class="t-label-hint" id="t-label-regions-hint">(optional — empty = global)</span></label>
+          <label id="t-label-regions">目标地区 <span class="t-label-hint">（可选——留空 = 全球）</span></label>
           <div class="region-chips" id="sub-regions">
             <div class="rc-chip" data-code="BR" onclick="toggleRegion(this)">🇧🇷 Brasil</div>
             <div class="rc-chip" data-code="US" onclick="toggleRegion(this)">🇺🇸 USA</div>
@@ -700,7 +701,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-tier">Select tier</label>
+          <label id="t-label-tier">选择套餐</label>
           <div class="tier-selector">
             <div class="tier-opt selected" data-tier="free" onclick="setTier('free')">
               <div class="to-name">Free</div>
@@ -730,7 +731,7 @@
         </div>
 
         <button type="button" class="btn-submit" id="btn-submit" onclick="submitPromo()">
-          <span id="t-btn-submit">Submit →</span>
+          <span id="t-btn-submit">提交 →</span>
         </button>
         <div class="msg" id="submit-msg"></div>
       </div>
@@ -740,20 +741,18 @@
 
     <!-- ── DASHBOARD ── -->
     <section class="section dashboard-section" id="dashboard">
-      <div class="section-label" id="t-dash-label">My Promotions</div>
-      <h2 class="section-title" id="t-dash-title">Track your Spotlight performance</h2>
-      <p class="section-sub" id="t-dash-sub">Enter the access token you received when submitting your product. See impressions, clicks, and <strong>lift in votes</strong> attributed to your Spotlight window.</p>
+      <div class="section-label" id="t-dash-label">我的推广</div>
+      <h2 class="section-title" id="t-dash-title">跟踪你的 Spotlight 表现</h2>
+      <p class="section-sub" id="t-dash-sub">输入你收到的访问令牌。查看展示量、点击量，以及归因于你 Spotlight 时段的 <strong>票数提升</strong>。</p>
 
       <div class="dash-login" style="margin-top: 36px;">
-        <h3 id="t-dash-login-title">📊 Your Dashboard</h3>
-        <p class="sub" id="t-dash-login-sub">Paste your token below. We never store it — only the SHA-256 hash on the server.</p>
+        <h3 id="t-dash-login-title">📊 你的仪表盘</h3>
+        <p class="sub" id="t-dash-login-sub">在下方粘贴你的令牌。我们从不存储它——服务器上只保留 SHA-256 哈希。</p>
         <div class="form-group" style="max-width:480px;">
-          <label id="t-dash-label-token">Access token</label>
+          <label id="t-dash-label-token">访问令牌</label>
           <input type="text" id="dash-token" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" spellcheck="false" autocomplete="off">
         </div>
-        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">
-          <span>View my promotions →</span>
-        </button>
+        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">查看我的推广 →</button>
         <div class="msg" id="dash-msg"></div>
 
         <div id="promos-area" style="display:none">
@@ -767,24 +766,24 @@
 
   <footer>
     <div>
-      <a href="https://nodus-ai.app" id="t-footer-home">NODUS Home</a>
-      <a href="ph-radar-privacy.html" id="t-footer-privacy">Privacy</a>
-      <a href="https://nodus-ai.app/terms" id="t-footer-terms">Terms</a>
+      <a href="https://nodus-ai.app/zh/" id="t-footer-home">NODUS 主页</a>
+      <a href="/zh/ph-radar-privacy" id="t-footer-privacy">隐私</a>
+      <a href="https://nodus-ai.app/terms" id="t-footer-terms">条款</a>
     </div>
-    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. All rights reserved.</div>
+    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. 保留所有权利。</div>
   </footer>
 
   <!-- ── COMING SOON MODAL ── -->
   <div class="soon-overlay" id="soon-modal" onclick="if(event.target===this)closeSoon()">
     <div class="soon-box" role="dialog" aria-modal="true" aria-labelledby="t-soon-title">
       <div class="soon-icon">🚀</div>
-      <h3 id="t-soon-title">Coming soon</h3>
-      <p id="t-soon-desc">PH Radar is under review on the Chrome Web Store and Firefox Add-ons. The extension will be available to install very soon — thanks for your patience!</p>
-      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">Got it</button>
+      <h3 id="t-soon-title">即将推出</h3>
+      <p id="t-soon-desc">PH Radar 正在 Chrome 应用商店和 Firefox 附加组件中审核。扩展很快即可安装——感谢你的耐心！</p>
+      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">知道了</button>
     </div>
   </div>
 
-  <script src="lang-switcher.js"></script>
+  <script src="/lang-switcher.js"></script>
   <script>
     const WORKER = "https://worker-ph-radar.mmcarvalho-dev.workers.dev";
     let selectedTier = "free";

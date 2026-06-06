@@ -14,10 +14,10 @@
   ];
 
   // Pages that have a translated version in every language subdir
-  var translatedPages = ['privacy.html', 'faq.html', 'hn-radar.html', 'hn-radar-privacy.html'];
+  var translatedPages = ['privacy.html', 'faq.html', 'hn-radar.html', 'hn-radar-privacy.html', 'ph-radar.html', 'ph-radar-privacy.html'];
 
   // Pages with in-page JS i18n — don't navigate, just fire event
-  var inPageI18nPages = ['affiliates.html', 'checkout.html', 'yt-radar.html', 'ph-radar.html'];
+  var inPageI18nPages = ['affiliates.html', 'checkout.html', 'yt-radar.html'];
 
   // Current page filename
   var currentPath = window.location.pathname;

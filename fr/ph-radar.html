@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS PH Radar — Product Hunt Historical Intelligence</title>
-  <meta name="description" content="Track Product Hunt launches with historical depth. Daily race, velocity, watch rules, and Community Spotlight for makers.">
-  <link rel="canonical" href="https://nodus-ai.app/ph-radar">
+  <title>NODUS PH Radar — L'intelligence historique de Product Hunt</title>
+  <meta name="description" content="Suivez les lancements Product Hunt avec une profondeur historique. Course du jour, vélocité, règles de surveillance et Community Spotlight pour les makers.">
+  <link rel="canonical" href="https://nodus-ai.app/fr/ph-radar">
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>window._forcedLang = 'fr';</script>
   <style>
     html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -420,14 +421,14 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>PH Radar</span></a>
+      <a href="https://nodus-ai.app/fr/" class="nav-logo">NODUS <span>PH Radar</span></a>
       <div class="nav-links">
-        <a href="#install" class="nav-link" id="t-nav-install">⬇ Install</a>
-        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ Plans</a>
-        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 Promote launch</a>
-        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 Dashboard</a>
+        <a href="#install" class="nav-link" id="t-nav-install">⬇ Installer</a>
+        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ Offres</a>
+        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 Promouvoir un lancement</a>
+        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 Tableau de bord</a>
       </div>
-      <a href="https://nodus-ai.app" class="nav-back" id="t-nav-back">← Back to NODUS</a>
+      <a href="https://nodus-ai.app/fr/" class="nav-back" id="t-nav-back">← Retour à NODUS</a>
     </div>
   </nav>
 
@@ -435,17 +436,17 @@
 
     <!-- ── HERO ── -->
     <div class="hero" id="install">
-      <div class="hero-badge" id="t-hero-badge">📡 Browser Extension</div>
-      <h1 id="t-hero-title">The Product Hunt race, <span>captured all day</span></h1>
-      <p id="t-hero-desc">PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.</p>
+      <div class="hero-badge" id="t-hero-badge">📡 Extension de navigateur</div>
+      <h1 id="t-hero-title">La course Product Hunt, <span>capturée toute la journée</span></h1>
+      <p id="t-hero-desc">PH Radar est un panneau latéral Chrome qui capture le classement du jour en arrière-plan — pour voir qui gagne des votes, qui stagne et quels lancements décollent. Épinglez des hunters, définissez des règles de surveillance et suivez le calendrier des lancements. Gratuit — avec un Community Spotlight pour les makers qui veulent plus de visibilité le jour J.</p>
       <div class="hero-btns">
         <a href="#" onclick="comingSoon(event)" class="btn-primary" id="t-hero-install-chrome">
-          <img src="chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
-          <span id="t-hero-install-chrome-text">Install for Chrome</span>
+          <img src="/chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
+          <span id="t-hero-install-chrome-text">Installer sur Chrome</span>
         </a>
         <a href="#" onclick="comingSoon(event)" class="btn-firefox" id="t-hero-install-firefox">
-          <img src="firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
-          <span id="t-hero-install-firefox-text">Install for Firefox</span>
+          <img src="/firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
+          <span id="t-hero-install-firefox-text">Installer sur Firefox</span>
         </a>
         <a href="#spotlight" class="btn-secondary" id="t-hero-spotlight">⭐ Community Spotlight</a>
       </div>
@@ -459,34 +460,34 @@
            onerror="this.style.display='none';var p=document.getElementById('ph-shot-ph');if(p)p.style.display='flex';">
       <div class="shot-ph" id="ph-shot-ph" style="display:none;">
         <div class="shot-ph-icon">📊</div>
-        <div class="shot-ph-text" id="t-hero-shot-ph">A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.</div>
+        <div class="shot-ph-text" id="t-hero-shot-ph">Un aperçu en direct du panneau latéral PH Radar — la course du jour classée en temps réel, la vélocité des votes et les alertes de décollage.</div>
       </div>
-      <div class="shot-cap" id="t-hero-shot-cap">The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.</div>
+      <div class="shot-cap" id="t-hero-shot-cap">Le panneau latéral reste à côté de n'importe quel onglet. Les captures se rafraîchissent en arrière-plan — sans changer d'onglet, sans actualiser à la main.</div>
     </div>
 
     <hr class="divider">
 
     <!-- ── HOW IT WORKS ── -->
     <section class="section">
-      <div class="section-label" id="t-how-label">How it works</div>
-      <h2 class="section-title" id="t-how-title">Open the side panel. See everything.</h2>
-      <p class="section-sub" id="t-how-sub">PH Radar runs silently. Snapshots the daily race in the background, tracks the hunters you pin, and alerts you when products cross watch rules you set.</p>
+      <div class="section-label" id="t-how-label">Comment ça marche</div>
+      <h2 class="section-title" id="t-how-title">Ouvrez le panneau latéral. Voyez tout.</h2>
+      <p class="section-sub" id="t-how-sub">PH Radar tourne en silence. Il capture la course du jour en arrière-plan, suit les hunters que vous épinglez et vous alerte quand un produit franchit les règles que vous définissez.</p>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3 id="t-step1-title">Install the extension</h3>
-          <p id="t-step1-desc">Add NODUS PH Radar to Chrome. Free, no account. Just paste a Product Hunt Developer Token once.</p>
+          <h3 id="t-step1-title">Installez l'extension</h3>
+          <p id="t-step1-desc">Ajoutez NODUS PH Radar à Chrome. Gratuit, sans compte. Collez une fois votre Developer Token Product Hunt.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3 id="t-step2-title">Open the side panel</h3>
-          <p id="t-step2-desc">See today's race ranked live. Pin products. Pin hunters. Set watch rules with custom thresholds.</p>
+          <h3 id="t-step2-title">Ouvrez le panneau latéral</h3>
+          <p id="t-step2-desc">Voyez la course du jour classée en direct. Épinglez des produits. Épinglez des hunters. Définissez des règles avec vos propres seuils.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3 id="t-step3-title">Get alerts that matter</h3>
-          <p id="t-step3-desc">When a product crosses your rule (votes, velocity, rank), the bell lights up. Built for makers who want to know when something is breaking out.</p>
+          <h3 id="t-step3-title">Recevez les alertes qui comptent</h3>
+          <p id="t-step3-desc">Quand un produit franchit votre règle (votes, vélocité, rang), la cloche s'allume. Conçu pour les makers qui traquent les décollages.</p>
         </div>
       </div>
     </section>
@@ -495,39 +496,39 @@
 
     <!-- ── FEATURES ── -->
     <section class="section">
-      <div class="section-label" id="t-feat-label">Features</div>
-      <h2 class="section-title" id="t-feat-title">Everything you need to read the Product Hunt daily race</h2>
+      <div class="section-label" id="t-feat-label">Fonctionnalités</div>
+      <h2 class="section-title" id="t-feat-title">Tout pour lire la course quotidienne de Product Hunt</h2>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🏁</div>
-          <h4 id="t-f1-title">Daily Race</h4>
-          <p id="t-f1-desc">Live ranking of today's launches. Snapshot loop with 3 cadence profiles (eco/standard/hi-fi) to balance freshness vs API quota.</p>
+          <h4 id="t-f1-title">Course du jour</h4>
+          <p id="t-f1-desc">Classement en direct des lancements du jour. Boucle de captures avec 3 profils (eco/standard/hi-fi) pour équilibrer fraîcheur et quota d'API.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h4 id="t-f2-title">Velocity</h4>
-          <p id="t-f2-desc">Votes per hour computed between snapshots. Catches products accelerating before they hit the top.</p>
+          <h4 id="t-f2-title">Vélocité</h4>
+          <p id="t-f2-desc">Votes par heure calculés entre les captures. Repère les produits qui accélèrent avant d'atteindre le sommet.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔔</div>
-          <h4 id="t-f3-title">Watch Rules</h4>
-          <p id="t-f3-desc">Define conditions (votes, comments, velocity, rank). When a product matches all, the bell fires. Each rule is independent.</p>
+          <h4 id="t-f3-title">Règles de surveillance</h4>
+          <p id="t-f3-desc">Définissez des conditions (votes, commentaires, vélocité, rang). Quand un produit les remplit toutes, la cloche sonne.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎯</div>
-          <h4 id="t-f4-title">Hunters Tab</h4>
-          <p id="t-f4-desc">Track publishers you care about. Pin favorite hunters, get notes per hunter, see all launches grouped by who hunted them.</p>
+          <h4 id="t-f4-title">Onglet Hunters</h4>
+          <p id="t-f4-desc">Suivez les publishers qui comptent pour vous. Épinglez vos hunters favoris, ajoutez des notes par hunter et voyez tous les lancements regroupés par hunter.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🗓️</div>
-          <h4 id="t-f5-title">Launch Calendar</h4>
-          <p id="t-f5-desc">Upcoming launches submitted by makers via Spotlight. See who's launching tomorrow, next week. Curated by the NODUS community.</p>
+          <h4 id="t-f5-title">Calendrier des lancements</h4>
+          <p id="t-f5-desc">Lancements à venir soumis par les makers via Spotlight. Voyez qui lance demain, la semaine prochaine. Curé par la communauté NODUS.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌐</div>
-          <h4 id="t-f6-title">16 Languages</h4>
-          <p id="t-f6-desc">Native interface in 16 languages. Auto-translate taglines and comments via Chrome's offline translator. No data leaves your machine.</p>
+          <h4 id="t-f6-title">16 langues</h4>
+          <p id="t-f6-desc">Interface native en 16 langues. Traduction automatique des taglines et commentaires via le traducteur hors ligne de Chrome. Aucune donnée ne quitte votre machine.</p>
         </div>
       </div>
     </section>
@@ -536,25 +537,25 @@
 
     <!-- ── SEE IT IN ACTION ── -->
     <section class="section" id="screenshots">
-      <div class="section-label" id="t-shots-label">See it in action</div>
-      <h2 class="section-title" id="t-shots-title">Everything in one side panel</h2>
-      <p class="section-sub" id="t-shots-sub">PH Radar lives right next to Product Hunt — the daily race, the calendar, hunters, and your watch rules, all without leaving the page.</p>
+      <div class="section-label" id="t-shots-label">En action</div>
+      <h2 class="section-title" id="t-shots-title">Tout dans un seul panneau latéral</h2>
+      <p class="section-sub" id="t-shots-sub">PH Radar vit juste à côté de Product Hunt — la course du jour, le calendrier, les hunters et vos règles de surveillance, sans quitter la page.</p>
       <div class="shots-grid">
         <figure class="shot-card">
           <img src="/ph-radar-race.png" alt="PH Radar live leaderboard of today's Product Hunt launches ranked in real time" width="1719" height="933" loading="lazy">
-          <figcaption id="t-shot-race">Live leaderboard — every launch ranked in real time as votes come in.</figcaption>
+          <figcaption id="t-shot-race">Classement en direct — chaque lancement classé en temps réel à mesure que les votes arrivent.</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-calendar.png" alt="PH Radar Launch Calendar showing upcoming Product Hunt launches and featured Spotlight slots" width="1721" height="933" loading="lazy">
-          <figcaption id="t-shot-calendar">Launch Calendar — what's launching today and in the days ahead, with featured Spotlight slots.</figcaption>
+          <figcaption id="t-shot-calendar">Calendrier des lancements — ce qui sort aujourd'hui et les jours suivants, avec les emplacements Spotlight mis en avant.</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-hunters.png" alt="PH Radar Hunters tab tracking the makers and hunters behind Product Hunt launches" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-hunters">Hunters — pin the people behind the launches and see everything they hunt.</figcaption>
+          <figcaption id="t-shot-hunters">Hunters — épinglez les personnes derrière les lancements et voyez tout ce qu'elles publient.</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-watch.png" alt="PH Radar watch rules highlighting products that crossed custom vote and velocity thresholds" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-watch">Watch rules — products light up the moment they cross the thresholds you set.</figcaption>
+          <figcaption id="t-shot-watch">Règles de surveillance — les produits s'illuminent dès qu'ils franchissent les seuils que vous définissez.</figcaption>
         </figure>
       </div>
     </section>
@@ -564,8 +565,8 @@
     <!-- ── COMMUNITY SPOTLIGHT ── -->
     <section class="section" id="spotlight">
       <div class="section-label" id="t-spot-label">Community Spotlight</div>
-      <h2 class="section-title" id="t-spot-title">Put your launch in front of every PH Radar user</h2>
-      <p class="section-sub" id="t-spot-desc">Each time someone opens the side panel, a curated product is shown in the Spotlight slot — before the race even loads. Higher tiers run <strong>longer and more often</strong>; Gold even gives a <strong>second product slot</strong> for Launch Week.</p>
+      <h2 class="section-title" id="t-spot-title">Mettez votre lancement devant tous les utilisateurs de PH Radar</h2>
+      <p class="section-sub" id="t-spot-desc">Chaque fois que quelqu'un ouvre le panneau latéral, un produit curé apparaît dans l'emplacement Spotlight. Les offres supérieures passent <strong>plus longtemps et plus souvent</strong> ; Gold offre même un <strong>deuxième emplacement produit</strong> pour la Launch Week.</p>
 
       <div class="tiers">
         <!-- FREE -->
@@ -631,36 +632,36 @@
 
       <!-- SUBMIT FORM -->
       <div class="submit-section" id="submit-form-wrap">
-        <h3 id="t-form-title">📤 Submit your product</h3>
-        <p class="sub" id="t-form-sub">No account needed. Free tier goes to review queue (one submission every 30 days); paid tiers redirect to checkout. Gold plans let you add a 2nd product to your slot within 14 days.</p>
+        <h3 id="t-form-title">📤 Soumettez votre produit</h3>
+        <p class="sub" id="t-form-sub">Sans compte. L'offre gratuite passe en revue (une soumission tous les 30 jours) ; les offres payantes redirigent vers le checkout. Les offres Gold permettent d'ajouter un 2e produit sous 14 jours.</p>
 
         <div class="form-group">
-          <label id="t-label-email">Your email</label>
+          <label id="t-label-email">Votre email</label>
           <input type="email" id="sub-email" placeholder="you@email.com" autocomplete="email">
         </div>
 
         <div class="form-group">
-          <label id="t-label-url">Product Hunt URL</label>
+          <label id="t-label-url">URL Product Hunt</label>
           <input type="url" id="sub-url" placeholder="https://www.producthunt.com/products/your-product">
         </div>
 
         <div class="form-group">
-          <label id="t-label-product-name">Product name <span class="t-label-hint" id="t-label-product-name-hint">(optional — fallback if product not on PH yet)</span></label>
+          <label id="t-label-product-name">Nom du produit <span class="t-label-hint">(facultatif — solution de repli si le produit n'est pas encore sur PH)</span></label>
           <input type="text" id="sub-product-name" placeholder="e.g. Lovable, Cursor, FutureApp v2" maxlength="100">
         </div>
 
         <div class="form-group">
-          <label id="t-label-tagline">Tagline override <span class="t-label-hint" id="t-label-tagline-hint">(optional — defaults to PH tagline)</span></label>
+          <label id="t-label-tagline">Tagline personnalisée <span class="t-label-hint">(facultatif — par défaut, la tagline PH)</span></label>
           <input type="text" id="sub-tagline" placeholder="Short pitch (max 80 chars)" maxlength="80">
         </div>
 
         <div class="form-group">
-          <label id="t-label-launches-at">🗓️ Launch date <span class="t-label-hint" id="t-label-launches-at-hint">(optional — fill only if launching in the future; enters the Calendar)</span></label>
+          <label id="t-label-launches-at">🗓️ Date de lancement <span class="t-label-hint">(facultatif — à remplir seulement si le lancement est à venir ; entre dans le Calendrier)</span></label>
           <input type="date" id="sub-launches-at" style="max-width: 320px; cursor: pointer;" onclick="try{this.showPicker()}catch(e){}">
         </div>
 
         <div class="form-group">
-          <label id="t-label-topics">Topics <span class="t-label-hint" id="t-label-topics-hint">(optional — pick up to 3)</span></label>
+          <label id="t-label-topics">Thèmes <span class="t-label-hint">(facultatif — jusqu'à 3)</span></label>
           <div class="topic-chips" id="sub-topics">
             <div class="rc-chip" data-topic="AI" onclick="toggleTopic(this)">🤖 AI</div>
             <div class="rc-chip" data-topic="Productivity" onclick="toggleTopic(this)">⚡ Productivity</div>
@@ -680,7 +681,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-regions">Target regions <span class="t-label-hint" id="t-label-regions-hint">(optional — empty = global)</span></label>
+          <label id="t-label-regions">Régions cibles <span class="t-label-hint">(facultatif — vide = global)</span></label>
           <div class="region-chips" id="sub-regions">
             <div class="rc-chip" data-code="BR" onclick="toggleRegion(this)">🇧🇷 Brasil</div>
             <div class="rc-chip" data-code="US" onclick="toggleRegion(this)">🇺🇸 USA</div>
@@ -700,7 +701,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-tier">Select tier</label>
+          <label id="t-label-tier">Choisissez l'offre</label>
           <div class="tier-selector">
             <div class="tier-opt selected" data-tier="free" onclick="setTier('free')">
               <div class="to-name">Free</div>
@@ -730,7 +731,7 @@
         </div>
 
         <button type="button" class="btn-submit" id="btn-submit" onclick="submitPromo()">
-          <span id="t-btn-submit">Submit →</span>
+          <span id="t-btn-submit">Envoyer →</span>
         </button>
         <div class="msg" id="submit-msg"></div>
       </div>
@@ -740,20 +741,18 @@
 
     <!-- ── DASHBOARD ── -->
     <section class="section dashboard-section" id="dashboard">
-      <div class="section-label" id="t-dash-label">My Promotions</div>
-      <h2 class="section-title" id="t-dash-title">Track your Spotlight performance</h2>
-      <p class="section-sub" id="t-dash-sub">Enter the access token you received when submitting your product. See impressions, clicks, and <strong>lift in votes</strong> attributed to your Spotlight window.</p>
+      <div class="section-label" id="t-dash-label">Mes promotions</div>
+      <h2 class="section-title" id="t-dash-title">Suivez la performance de votre Spotlight</h2>
+      <p class="section-sub" id="t-dash-sub">Saisissez le token d'accès reçu. Voyez les impressions, les clics et le <strong>gain de votes</strong> attribué à votre fenêtre Spotlight.</p>
 
       <div class="dash-login" style="margin-top: 36px;">
-        <h3 id="t-dash-login-title">📊 Your Dashboard</h3>
-        <p class="sub" id="t-dash-login-sub">Paste your token below. We never store it — only the SHA-256 hash on the server.</p>
+        <h3 id="t-dash-login-title">📊 Votre tableau de bord</h3>
+        <p class="sub" id="t-dash-login-sub">Collez votre token ci-dessous. Nous ne le stockons jamais — uniquement le hash SHA-256 sur le serveur.</p>
         <div class="form-group" style="max-width:480px;">
-          <label id="t-dash-label-token">Access token</label>
+          <label id="t-dash-label-token">Token d'accès</label>
           <input type="text" id="dash-token" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" spellcheck="false" autocomplete="off">
         </div>
-        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">
-          <span>View my promotions →</span>
-        </button>
+        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">Voir mes promotions →</button>
         <div class="msg" id="dash-msg"></div>
 
         <div id="promos-area" style="display:none">
@@ -767,24 +766,24 @@
 
   <footer>
     <div>
-      <a href="https://nodus-ai.app" id="t-footer-home">NODUS Home</a>
-      <a href="ph-radar-privacy.html" id="t-footer-privacy">Privacy</a>
-      <a href="https://nodus-ai.app/terms" id="t-footer-terms">Terms</a>
+      <a href="https://nodus-ai.app/fr/" id="t-footer-home">Accueil NODUS</a>
+      <a href="/fr/ph-radar-privacy" id="t-footer-privacy">Confidentialité</a>
+      <a href="https://nodus-ai.app/terms" id="t-footer-terms">Conditions</a>
     </div>
-    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. All rights reserved.</div>
+    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. Tous droits réservés.</div>
   </footer>
 
   <!-- ── COMING SOON MODAL ── -->
   <div class="soon-overlay" id="soon-modal" onclick="if(event.target===this)closeSoon()">
     <div class="soon-box" role="dialog" aria-modal="true" aria-labelledby="t-soon-title">
       <div class="soon-icon">🚀</div>
-      <h3 id="t-soon-title">Coming soon</h3>
-      <p id="t-soon-desc">PH Radar is under review on the Chrome Web Store and Firefox Add-ons. The extension will be available to install very soon — thanks for your patience!</p>
-      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">Got it</button>
+      <h3 id="t-soon-title">Bientôt disponible</h3>
+      <p id="t-soon-desc">PH Radar est en cours d'examen sur le Chrome Web Store et Firefox Add-ons. L'extension sera disponible à l'installation très bientôt — merci de votre patience !</p>
+      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">Compris</button>
     </div>
   </div>
 
-  <script src="lang-switcher.js"></script>
+  <script src="/lang-switcher.js"></script>
   <script>
     const WORKER = "https://worker-ph-radar.mmcarvalho-dev.workers.dev";
     let selectedTier = "free";

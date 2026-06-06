@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS PH Radar — Product Hunt Historical Intelligence</title>
-  <meta name="description" content="Track Product Hunt launches with historical depth. Daily race, velocity, watch rules, and Community Spotlight for makers.">
-  <link rel="canonical" href="https://nodus-ai.app/ph-radar">
+  <title>NODUS PH Radar — Product Hunt のヒストリカル・インテリジェンス</title>
+  <meta name="description" content="Product Hunt のローンチを履歴の深さとともに追跡。デイリーレース、velocity、watch rules、そしてメーカー向けの Community Spotlight。">
+  <link rel="canonical" href="https://nodus-ai.app/ja/ph-radar">
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>window._forcedLang = 'ja';</script>
   <style>
     html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -420,14 +421,14 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>PH Radar</span></a>
+      <a href="https://nodus-ai.app/ja/" class="nav-logo">NODUS <span>PH Radar</span></a>
       <div class="nav-links">
-        <a href="#install" class="nav-link" id="t-nav-install">⬇ Install</a>
-        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ Plans</a>
-        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 Promote launch</a>
-        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 Dashboard</a>
+        <a href="#install" class="nav-link" id="t-nav-install">⬇ インストール</a>
+        <a href="#spotlight" class="nav-link" id="t-nav-pricing">⭐ プラン</a>
+        <a href="#submit-form-wrap" class="nav-link highlight" id="t-nav-submit">🚀 ローンチを宣伝</a>
+        <a href="#dashboard" class="nav-link" id="t-nav-dashboard">📊 ダッシュボード</a>
       </div>
-      <a href="https://nodus-ai.app" class="nav-back" id="t-nav-back">← Back to NODUS</a>
+      <a href="https://nodus-ai.app/ja/" class="nav-back" id="t-nav-back">← NODUS に戻る</a>
     </div>
   </nav>
 
@@ -435,17 +436,17 @@
 
     <!-- ── HERO ── -->
     <div class="hero" id="install">
-      <div class="hero-badge" id="t-hero-badge">📡 Browser Extension</div>
-      <h1 id="t-hero-title">The Product Hunt race, <span>captured all day</span></h1>
-      <p id="t-hero-desc">PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.</p>
+      <div class="hero-badge" id="t-hero-badge">📡 ブラウザ拡張機能</div>
+      <h1 id="t-hero-title">Product Hunt のレースを、<span>一日中キャプチャ</span></h1>
+      <p id="t-hero-desc">PH Radar は、今日のリーダーボードをバックグラウンドでスナップショットする Chrome のサイドパネルです — 誰が票を伸ばし、誰が失速し、どのローンチが急上昇しているかが分かります。ハンターをピン留めし、watch rules を設定し、ローンチカレンダーを追えます。無料 — さらに、ローンチ当日に注目を集めたいメーカー向けの Community Spotlight も。</p>
       <div class="hero-btns">
         <a href="#" onclick="comingSoon(event)" class="btn-primary" id="t-hero-install-chrome">
-          <img src="chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
-          <span id="t-hero-install-chrome-text">Install for Chrome</span>
+          <img src="/chrome-icon.svg" width="18" height="18" alt="Chrome" style="flex-shrink:0">
+          <span id="t-hero-install-chrome-text">Chrome にインストール</span>
         </a>
         <a href="#" onclick="comingSoon(event)" class="btn-firefox" id="t-hero-install-firefox">
-          <img src="firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
-          <span id="t-hero-install-firefox-text">Install for Firefox</span>
+          <img src="/firefox-icon.svg" width="18" height="18" alt="Firefox" style="flex-shrink:0">
+          <span id="t-hero-install-firefox-text">Firefox にインストール</span>
         </a>
         <a href="#spotlight" class="btn-secondary" id="t-hero-spotlight">⭐ Community Spotlight</a>
       </div>
@@ -459,34 +460,34 @@
            onerror="this.style.display='none';var p=document.getElementById('ph-shot-ph');if(p)p.style.display='flex';">
       <div class="shot-ph" id="ph-shot-ph" style="display:none;">
         <div class="shot-ph-icon">📊</div>
-        <div class="shot-ph-text" id="t-hero-shot-ph">A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.</div>
+        <div class="shot-ph-text" id="t-hero-shot-ph">PH Radar サイドパネルのライブビュー — 今日のレースをリアルタイムでランキング、票の velocity、急上昇アラート。</div>
       </div>
-      <div class="shot-cap" id="t-hero-shot-cap">The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.</div>
+      <div class="shot-cap" id="t-hero-shot-cap">サイドパネルはどのタブの横にも常駐。スナップショットはバックグラウンドで更新 — タブ切り替えも手動更新も不要。</div>
     </div>
 
     <hr class="divider">
 
     <!-- ── HOW IT WORKS ── -->
     <section class="section">
-      <div class="section-label" id="t-how-label">How it works</div>
-      <h2 class="section-title" id="t-how-title">Open the side panel. See everything.</h2>
-      <p class="section-sub" id="t-how-sub">PH Radar runs silently. Snapshots the daily race in the background, tracks the hunters you pin, and alerts you when products cross watch rules you set.</p>
+      <div class="section-label" id="t-how-label">仕組み</div>
+      <h2 class="section-title" id="t-how-title">サイドパネルを開く。すべてが見える。</h2>
+      <p class="section-sub" id="t-how-sub">PH Radar は静かに動作します。デイリーレースをバックグラウンドでスナップショットし、ピン留めしたハンターを追跡し、製品があなたの設定した watch rules を超えると通知します。</p>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3 id="t-step1-title">Install the extension</h3>
-          <p id="t-step1-desc">Add NODUS PH Radar to Chrome. Free, no account. Just paste a Product Hunt Developer Token once.</p>
+          <h3 id="t-step1-title">拡張機能をインストール</h3>
+          <p id="t-step1-desc">NODUS PH Radar を Chrome に追加。無料、アカウント不要。Product Hunt の Developer Token を一度だけ貼り付けます。</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3 id="t-step2-title">Open the side panel</h3>
-          <p id="t-step2-desc">See today's race ranked live. Pin products. Pin hunters. Set watch rules with custom thresholds.</p>
+          <h3 id="t-step2-title">サイドパネルを開く</h3>
+          <p id="t-step2-desc">今日のレースをライブでランキング表示。製品をピン留め。ハンターをピン留め。独自のしきい値で watch rules を設定。</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3 id="t-step3-title">Get alerts that matter</h3>
-          <p id="t-step3-desc">When a product crosses your rule (votes, velocity, rank), the bell lights up. Built for makers who want to know when something is breaking out.</p>
+          <h3 id="t-step3-title">重要なアラートを受け取る</h3>
+          <p id="t-step3-desc">製品があなたのルール（票・velocity・順位）を超えると、ベルが点灯します。急上昇を追うメーカーのために作られています。</p>
         </div>
       </div>
     </section>
@@ -495,39 +496,39 @@
 
     <!-- ── FEATURES ── -->
     <section class="section">
-      <div class="section-label" id="t-feat-label">Features</div>
-      <h2 class="section-title" id="t-feat-title">Everything you need to read the Product Hunt daily race</h2>
+      <div class="section-label" id="t-feat-label">機能</div>
+      <h2 class="section-title" id="t-feat-title">Product Hunt のデイリーレースを読むのに必要なすべて</h2>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🏁</div>
-          <h4 id="t-f1-title">Daily Race</h4>
-          <p id="t-f1-desc">Live ranking of today's launches. Snapshot loop with 3 cadence profiles (eco/standard/hi-fi) to balance freshness vs API quota.</p>
+          <h4 id="t-f1-title">デイリーレース</h4>
+          <p id="t-f1-desc">今日のローンチをライブでランキング。3つのケイデンスプロファイル（eco/standard/hi-fi）のスナップショットループで、鮮度と API クォータのバランスを取ります。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
           <h4 id="t-f2-title">Velocity</h4>
-          <p id="t-f2-desc">Votes per hour computed between snapshots. Catches products accelerating before they hit the top.</p>
+          <p id="t-f2-desc">スナップショット間で算出する1時間あたりの票数。トップに到達する前に加速している製品を捉えます。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔔</div>
           <h4 id="t-f3-title">Watch Rules</h4>
-          <p id="t-f3-desc">Define conditions (votes, comments, velocity, rank). When a product matches all, the bell fires. Each rule is independent.</p>
+          <p id="t-f3-desc">条件（票・コメント・velocity・順位）を定義。製品がすべてを満たすと、ベルが鳴ります。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎯</div>
-          <h4 id="t-f4-title">Hunters Tab</h4>
-          <p id="t-f4-desc">Track publishers you care about. Pin favorite hunters, get notes per hunter, see all launches grouped by who hunted them.</p>
+          <h4 id="t-f4-title">Hunters タブ</h4>
+          <p id="t-f4-desc">気になるパブリッシャーを追跡。お気に入りのハンターをピン留めし、ハンターごとにメモを残し、誰がハントしたかでグループ化されたローンチを表示。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🗓️</div>
-          <h4 id="t-f5-title">Launch Calendar</h4>
-          <p id="t-f5-desc">Upcoming launches submitted by makers via Spotlight. See who's launching tomorrow, next week. Curated by the NODUS community.</p>
+          <h4 id="t-f5-title">ローンチカレンダー</h4>
+          <p id="t-f5-desc">メーカーが Spotlight 経由で投稿した今後のローンチ。明日や来週に誰がローンチするかが分かります。NODUS コミュニティがキュレーション。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌐</div>
-          <h4 id="t-f6-title">16 Languages</h4>
-          <p id="t-f6-desc">Native interface in 16 languages. Auto-translate taglines and comments via Chrome's offline translator. No data leaves your machine.</p>
+          <h4 id="t-f6-title">16言語</h4>
+          <p id="t-f6-desc">16言語のネイティブインターフェース。Chrome のオフライン翻訳機能で、タグラインやコメントを自動翻訳。データはあなたの端末から出ません。</p>
         </div>
       </div>
     </section>
@@ -536,25 +537,25 @@
 
     <!-- ── SEE IT IN ACTION ── -->
     <section class="section" id="screenshots">
-      <div class="section-label" id="t-shots-label">See it in action</div>
-      <h2 class="section-title" id="t-shots-title">Everything in one side panel</h2>
-      <p class="section-sub" id="t-shots-sub">PH Radar lives right next to Product Hunt — the daily race, the calendar, hunters, and your watch rules, all without leaving the page.</p>
+      <div class="section-label" id="t-shots-label">実際の動き</div>
+      <h2 class="section-title" id="t-shots-title">すべてが1つのサイドパネルに</h2>
+      <p class="section-sub" id="t-shots-sub">PH Radar は Product Hunt のすぐ隣に存在します — デイリーレース、カレンダー、ハンター、watch rules を、ページを離れずに。</p>
       <div class="shots-grid">
         <figure class="shot-card">
           <img src="/ph-radar-race.png" alt="PH Radar live leaderboard of today's Product Hunt launches ranked in real time" width="1719" height="933" loading="lazy">
-          <figcaption id="t-shot-race">Live leaderboard — every launch ranked in real time as votes come in.</figcaption>
+          <figcaption id="t-shot-race">ライブのリーダーボード — 票が入るたびに、各ローンチをリアルタイムでランキング。</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-calendar.png" alt="PH Radar Launch Calendar showing upcoming Product Hunt launches and featured Spotlight slots" width="1721" height="933" loading="lazy">
-          <figcaption id="t-shot-calendar">Launch Calendar — what's launching today and in the days ahead, with featured Spotlight slots.</figcaption>
+          <figcaption id="t-shot-calendar">ローンチカレンダー — 今日と今後数日にローンチされるもの、注目の Spotlight スロット付き。</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-hunters.png" alt="PH Radar Hunters tab tracking the makers and hunters behind Product Hunt launches" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-hunters">Hunters — pin the people behind the launches and see everything they hunt.</figcaption>
+          <figcaption id="t-shot-hunters">Hunters — ローンチの背後にいる人々をピン留めし、彼らがハントするすべてを表示。</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="/ph-radar-watch.png" alt="PH Radar watch rules highlighting products that crossed custom vote and velocity thresholds" width="1723" height="933" loading="lazy">
-          <figcaption id="t-shot-watch">Watch rules — products light up the moment they cross the thresholds you set.</figcaption>
+          <figcaption id="t-shot-watch">Watch rules — 設定したしきい値を超えた瞬間に製品が点灯。</figcaption>
         </figure>
       </div>
     </section>
@@ -564,8 +565,8 @@
     <!-- ── COMMUNITY SPOTLIGHT ── -->
     <section class="section" id="spotlight">
       <div class="section-label" id="t-spot-label">Community Spotlight</div>
-      <h2 class="section-title" id="t-spot-title">Put your launch in front of every PH Radar user</h2>
-      <p class="section-sub" id="t-spot-desc">Each time someone opens the side panel, a curated product is shown in the Spotlight slot — before the race even loads. Higher tiers run <strong>longer and more often</strong>; Gold even gives a <strong>second product slot</strong> for Launch Week.</p>
+      <h2 class="section-title" id="t-spot-title">あなたのローンチを、すべての PH Radar ユーザーの前へ</h2>
+      <p class="section-sub" id="t-spot-desc">誰かがサイドパネルを開くたびに、キュレーションされた製品が Spotlight スロットに表示されます。上位ティアほど <strong>より長く、より頻繁に</strong> 表示。Gold なら Launch Week 用の <strong>2つ目の製品スロット</strong> まで付きます。</p>
 
       <div class="tiers">
         <!-- FREE -->
@@ -631,36 +632,36 @@
 
       <!-- SUBMIT FORM -->
       <div class="submit-section" id="submit-form-wrap">
-        <h3 id="t-form-title">📤 Submit your product</h3>
-        <p class="sub" id="t-form-sub">No account needed. Free tier goes to review queue (one submission every 30 days); paid tiers redirect to checkout. Gold plans let you add a 2nd product to your slot within 14 days.</p>
+        <h3 id="t-form-title">📤 製品を投稿</h3>
+        <p class="sub" id="t-form-sub">アカウント不要。Free はレビューに回ります（30日ごとに1回投稿）。有料ティアはチェックアウトへ。Gold プランなら14日以内に2つ目の製品を追加できます。</p>
 
         <div class="form-group">
-          <label id="t-label-email">Your email</label>
+          <label id="t-label-email">あなたのメール</label>
           <input type="email" id="sub-email" placeholder="you@email.com" autocomplete="email">
         </div>
 
         <div class="form-group">
-          <label id="t-label-url">Product Hunt URL</label>
+          <label id="t-label-url">Product Hunt の URL</label>
           <input type="url" id="sub-url" placeholder="https://www.producthunt.com/products/your-product">
         </div>
 
         <div class="form-group">
-          <label id="t-label-product-name">Product name <span class="t-label-hint" id="t-label-product-name-hint">(optional — fallback if product not on PH yet)</span></label>
+          <label id="t-label-product-name">製品名 <span class="t-label-hint">（任意 — PH に未掲載の場合のフォールバック）</span></label>
           <input type="text" id="sub-product-name" placeholder="e.g. Lovable, Cursor, FutureApp v2" maxlength="100">
         </div>
 
         <div class="form-group">
-          <label id="t-label-tagline">Tagline override <span class="t-label-hint" id="t-label-tagline-hint">(optional — defaults to PH tagline)</span></label>
+          <label id="t-label-tagline">タグラインの上書き <span class="t-label-hint">（任意 — 既定は PH のタグライン）</span></label>
           <input type="text" id="sub-tagline" placeholder="Short pitch (max 80 chars)" maxlength="80">
         </div>
 
         <div class="form-group">
-          <label id="t-label-launches-at">🗓️ Launch date <span class="t-label-hint" id="t-label-launches-at-hint">(optional — fill only if launching in the future; enters the Calendar)</span></label>
+          <label id="t-label-launches-at">🗓️ ローンチ日 <span class="t-label-hint">（任意 — 将来ローンチする場合のみ入力。カレンダーに登録）</span></label>
           <input type="date" id="sub-launches-at" style="max-width: 320px; cursor: pointer;" onclick="try{this.showPicker()}catch(e){}">
         </div>
 
         <div class="form-group">
-          <label id="t-label-topics">Topics <span class="t-label-hint" id="t-label-topics-hint">(optional — pick up to 3)</span></label>
+          <label id="t-label-topics">トピック <span class="t-label-hint">（任意 — 最大3つ）</span></label>
           <div class="topic-chips" id="sub-topics">
             <div class="rc-chip" data-topic="AI" onclick="toggleTopic(this)">🤖 AI</div>
             <div class="rc-chip" data-topic="Productivity" onclick="toggleTopic(this)">⚡ Productivity</div>
@@ -680,7 +681,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-regions">Target regions <span class="t-label-hint" id="t-label-regions-hint">(optional — empty = global)</span></label>
+          <label id="t-label-regions">対象地域 <span class="t-label-hint">（任意 — 空欄=グローバル）</span></label>
           <div class="region-chips" id="sub-regions">
             <div class="rc-chip" data-code="BR" onclick="toggleRegion(this)">🇧🇷 Brasil</div>
             <div class="rc-chip" data-code="US" onclick="toggleRegion(this)">🇺🇸 USA</div>
@@ -700,7 +701,7 @@
         </div>
 
         <div class="form-group">
-          <label id="t-label-tier">Select tier</label>
+          <label id="t-label-tier">ティアを選択</label>
           <div class="tier-selector">
             <div class="tier-opt selected" data-tier="free" onclick="setTier('free')">
               <div class="to-name">Free</div>
@@ -730,7 +731,7 @@
         </div>
 
         <button type="button" class="btn-submit" id="btn-submit" onclick="submitPromo()">
-          <span id="t-btn-submit">Submit →</span>
+          <span id="t-btn-submit">送信 →</span>
         </button>
         <div class="msg" id="submit-msg"></div>
       </div>
@@ -740,20 +741,18 @@
 
     <!-- ── DASHBOARD ── -->
     <section class="section dashboard-section" id="dashboard">
-      <div class="section-label" id="t-dash-label">My Promotions</div>
-      <h2 class="section-title" id="t-dash-title">Track your Spotlight performance</h2>
-      <p class="section-sub" id="t-dash-sub">Enter the access token you received when submitting your product. See impressions, clicks, and <strong>lift in votes</strong> attributed to your Spotlight window.</p>
+      <div class="section-label" id="t-dash-label">マイ・プロモーション</div>
+      <h2 class="section-title" id="t-dash-title">Spotlight のパフォーマンスを追跡</h2>
+      <p class="section-sub" id="t-dash-sub">受け取ったアクセストークンを入力。インプレッション、クリック、そして Spotlight 期間に起因する <strong>票の伸び</strong> を確認。</p>
 
       <div class="dash-login" style="margin-top: 36px;">
-        <h3 id="t-dash-login-title">📊 Your Dashboard</h3>
-        <p class="sub" id="t-dash-login-sub">Paste your token below. We never store it — only the SHA-256 hash on the server.</p>
+        <h3 id="t-dash-login-title">📊 あなたのダッシュボード</h3>
+        <p class="sub" id="t-dash-login-sub">下にトークンを貼り付けてください。保存は一切しません — サーバー上の SHA-256 ハッシュのみ。</p>
         <div class="form-group" style="max-width:480px;">
-          <label id="t-dash-label-token">Access token</label>
+          <label id="t-dash-label-token">アクセストークン</label>
           <input type="text" id="dash-token" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" spellcheck="false" autocomplete="off">
         </div>
-        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">
-          <span>View my promotions →</span>
-        </button>
+        <button class="btn-primary" style="font-size:14px;padding:12px 24px;" onclick="loadDashboard()" id="t-btn-load-dash">マイ・プロモーションを見る →</button>
         <div class="msg" id="dash-msg"></div>
 
         <div id="promos-area" style="display:none">
@@ -767,24 +766,24 @@
 
   <footer>
     <div>
-      <a href="https://nodus-ai.app" id="t-footer-home">NODUS Home</a>
-      <a href="ph-radar-privacy.html" id="t-footer-privacy">Privacy</a>
-      <a href="https://nodus-ai.app/terms" id="t-footer-terms">Terms</a>
+      <a href="https://nodus-ai.app/ja/" id="t-footer-home">NODUS ホーム</a>
+      <a href="/ja/ph-radar-privacy" id="t-footer-privacy">プライバシー</a>
+      <a href="https://nodus-ai.app/terms" id="t-footer-terms">利用規約</a>
     </div>
-    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. All rights reserved.</div>
+    <div style="margin-top:10px;" id="t-footer-copy">© 2026 NODUS. 無断複製・転載を禁じます。</div>
   </footer>
 
   <!-- ── COMING SOON MODAL ── -->
   <div class="soon-overlay" id="soon-modal" onclick="if(event.target===this)closeSoon()">
     <div class="soon-box" role="dialog" aria-modal="true" aria-labelledby="t-soon-title">
       <div class="soon-icon">🚀</div>
-      <h3 id="t-soon-title">Coming soon</h3>
-      <p id="t-soon-desc">PH Radar is under review on the Chrome Web Store and Firefox Add-ons. The extension will be available to install very soon — thanks for your patience!</p>
-      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">Got it</button>
+      <h3 id="t-soon-title">近日公開</h3>
+      <p id="t-soon-desc">PH Radar は Chrome ウェブストアと Firefox アドオンで審査中です。拡張機能はまもなくインストール可能になります — お待ちいただきありがとうございます！</p>
+      <button type="button" class="soon-close" onclick="closeSoon()" id="t-soon-close">了解</button>
     </div>
   </div>
 
-  <script src="lang-switcher.js"></script>
+  <script src="/lang-switcher.js"></script>
   <script>
     const WORKER = "https://worker-ph-radar.mmcarvalho-dev.workers.dev";
     let selectedTier = "free";
