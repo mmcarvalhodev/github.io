@@ -25,7 +25,9 @@ function bake(html, id, value){
 // ---- 1. Rewrite the root T dict so runtime has all 16 languages ----
 let root = fs.readFileSync(ROOT, 'utf8');
 const dictLiteral = 'const T = ' + JSON.stringify(T, null, 2) + ';';
-const dictRe = /const T = \{[\s\S]*?\n    \};/;
+// Matches both the original hand-written dict (`\n    };`) and the
+// JSON.stringify-rewritten dict (`\n};`), so re-runs stay idempotent.
+const dictRe = /const T = \{[\s\S]*?\n {0,4}\};/;
 if (!dictRe.test(root)) { console.error('!! could not locate T dict in root'); process.exit(1); }
 root = root.replace(dictRe, dictLiteral);
 fs.writeFileSync(ROOT, root, 'utf8');
