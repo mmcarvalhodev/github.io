@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacybeleid — NODUS YT Radar</title>
+  <link rel="icon" type="image/png" href="/icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 52px; }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon { font-size: 18px; flex-shrink: 0; }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+    code {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT BLOCK */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body { padding: 14px 18px; }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* STORAGE KEY TABLE */
+    .storage-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+    .storage-row:last-child { border-bottom: none; }
+    .storage-key {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      color: #facc15;
+      word-break: break-all;
+    }
+    .storage-desc {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      .storage-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/nl/yt-radar-privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/nl/">NODUS</a>
+    <a class="nav-back" href="/nl/yt-radar">← Terug naar YT Radar</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Juridisch · YT Radar</div>
+    <h1>Privacybeleid</h1>
+    <p>NODUS YT Radar-browserextensie &nbsp;·&nbsp; Laatst bijgewerkt: mei 2026 &nbsp;·&nbsp; v0.1.2</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Inhoud</div>
+      <ol>
+        <li><a href="#overview">Overzicht</a></li>
+        <li><a href="#local-data">Gegevens die lokaal op je apparaat worden opgeslagen</a></li>
+        <li><a href="#endpoints">Externe eindpunten toegelicht</a></li>
+        <li><a href="#spotlight">Community Spotlight-promoties</a></li>
+        <li><a href="#never">Wat we nooit doen</a></li>
+        <li><a href="#rights">Jouw rechten (LGPD / GDPR)</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Overzicht</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS YT Radar is een local-first browserextensie</strong> (Chrome en Firefox). De extensie laat je in realtime zien hoe de YouTube-video die je bekijkt zich verhoudt tot de Top 50 trending video's van een willekeurig land, met een virale score en momentumanalyses. Alle instellingen, caches en geschiedenismomentopnamen blijven in je browser — er is geen gebruikersaccount, geen login, geen cloudsynchronisatie.</p>
+      </div>
+
+      <p>Dit is een afzonderlijk product van de hoofdextensie NODUS (AI-gespreksopname). Als je dat beleid zoekt, zie <a href="/nl/privacy" style="color:#60a5fa;">privacy.html</a>.</p>
+
+      <p>YT Radar maakt uitsluitend voor drie doeleinden externe verbindingen, die hieronder elk worden beschreven:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">vereist</span> YouTube Data API v3</div>
+        <p>Wordt gebruikt om de openbare Top 50 trending-lijst voor het geselecteerde land op te halen, en details voor de video die je bekijkt. Alleen-lezen openbare gegevens.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-green">vereist</span> Community Spotlight</div>
+        <p>Haalt een samengestelde, regiobewuste videopromotie op van onze worker. Stuurt alleen de landcode en een categorienummer — geen identiteit, geen video die je bekijkt.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">bij klik</span> Aantal promotieklikken</div>
+        <p>Als je op een spotlight-item klikt, wordt een anonieme klikgebeurtenis vastgelegd zodat de gepromote maker weet hoe zijn vermelding heeft gepresteerd. Alleen de promotie-ID wordt verzonden.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Gegevens die lokaal op je apparaat worden opgeslagen</h2>
+
+      <p>Al het volgende wordt opgeslagen in <code>chrome.storage.local</code> — wat betekent dat het alleen op je computer staat en nooit naar een NODUS-server wordt verzonden, tenzij dit uitdrukkelijk in sectie 3 wordt beschreven.</p>
+
+      <div class="storage-row">
+        <div class="storage-key">settings</div>
+        <div class="storage-desc">Jouw voorkeuren: landcode, overlay-modus (badge / uitgebreid / ticker / uit), interval voor cacheverversing (15/30/60 min), categoriefilter, UI-taal.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ranking_&lt;region&gt;_&lt;category&gt;</div>
+        <div class="storage-desc">De Top 50-lijst die door de YouTube Data API wordt geretourneerd, in de cache opgeslagen zodat we deze niet bij elke pop-up opnieuw hoeven op te halen. Verloopt volgens jouw ververinstelling.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">video_&lt;videoId&gt;</div>
+        <div class="storage-desc">Openbare metadata van een video die je in de pop-up hebt geopend (titel, kanaal, aantal weergaven, aantal likes, publicatiedatum). Verloopt na 10 minuten.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">hist_&lt;videoId&gt;</div>
+        <div class="storage-desc">Tijdreeksmomentopnamen van openbare tellers (weergaven, likes, reacties) voor video's die je hebt geanalyseerd, gebruikt om de groei-sparkline te tekenen en uitschieters te detecteren. Momentopnamen worden hooguit eens per 5 minuten gemaakt en na 48 uur opgeschoond. Bevat geen identificerende informatie — alleen cijfers.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">_cacheVersion</div>
+        <div class="storage-desc">Interne markering die wordt gebruikt om verouderde cache ongeldig te maken na een extensie-update.</div>
+      </div>
+
+      <div class="highlight highlight-yellow" style="margin-top:24px;">
+        <p>YT Radar heeft geen gebruikersaccountsysteem, geen login, geen e-mailverzameling binnen de extensie en geen telemetrie. Alle bovenstaande sleutels worden automatisch verwijderd wanneer je de extensie verwijdert of op "Alle gegevens verwijderen" klikt in de extensie-instellingen van je browser.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Externe eindpunten toegelicht</h2>
+
+      <p>De extensie maakt vier soorten netwerkverzoeken. Elke URL waarmee verbinding wordt gemaakt, is gedeclareerd in het manifestveld <code>host_permissions</code> van de extensie en zichtbaar voor je browser vóór installatie.</p>
+
+      <h3>3a. YouTube Data API v3 (openbare Google-API)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&amp;regionCode=...</span>
+          <span class="badge badge-blue">vereist</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Haalt de openbare Top 50 trending-lijst op voor het land dat je selecteert. Dit is hetzelfde openbare eindpunt dat het tabblad Trending van YouTube aandrijft.</p>
+          <p class="data-sent"><strong>Verzonden gegevens:</strong> landcode (bijv. <code>BR</code>) · optionele categorie-ID · onze API-sleutel · geen persoonsgegevens, geen video die je bekijkt</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?id=&lt;videoId&gt;</span>
+          <span class="badge badge-blue">vereist (indien nodig)</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Haalt openbare details op van de video die je bekijkt, maar <strong>alleen wanneer</strong> deze nog niet in de Top 50-lijst staat. Hiermee kunnen we de virale score en groeistatistieken berekenen.</p>
+          <p class="data-sent"><strong>Verzonden gegevens:</strong> YouTube-video-ID · onze API-sleutel · geen persoonsgegevens</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px; color:#64748b;">Google kan deze verzoeken loggen volgens zijn eigen <a href="https://policies.google.com/privacy" style="color:#60a5fa;">privacybeleid</a>. We sturen er geen aanvullende persoonsgegevens mee mee.</p>
+
+      <h3>3b. NODUS YT Radar-worker (Community Spotlight)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions?region=...&amp;category=...</span>
+          <span class="badge badge-green">vereist</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Vraagt onze worker om de actieve gepromote video voor jouw land/categorie-combinatie, zodat we de Community Spotlight-kaart kunnen weergeven.</p>
+          <p class="data-sent"><strong>Verzonden gegevens:</strong> landcode · categorie-ID · geen identiteit, geen video die je bekijkt, geen IP opgeslagen buiten het standaard verzoeklog van Cloudflare</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions/click</span>
+          <span class="badge badge-yellow">alleen bij klik</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Wordt alleen verzonden wanneer je op de knop "Bekijken" op een Community Spotlight-kaart klikt. Verhoogt een geaggregeerde klikteller zodat de gepromote maker kan zien hoe zijn vermelding heeft gepresteerd.</p>
+          <p class="data-sent"><strong>Verzonden gegevens:</strong> promotie-ID · verder niets</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/player?v=&lt;videoId&gt;</span>
+          <span class="badge badge-gray">iframe</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Geladen als een iframe in de Community Spotlight-carrousel om de promovoorvertoning af te spelen. De worker retourneert een kleine HTML-pagina die de YouTube-speler insluit.</p>
+          <p class="data-sent"><strong>Verzonden gegevens:</strong> gepromote YouTube-video-ID · kanaal en titel (alleen gebruikt als iframe-labels)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SPOTLIGHT -->
+    <div class="section">
+      <span class="section-anchor" id="spotlight"></span>
+      <h2><span class="icon">⭐</span> 4. Community Spotlight-promoties</h2>
+
+      <p>Community Spotlight is het gedeelte binnen de pop-up dat samengestelde YouTube-video's weergeeft die door makers zijn ingediend (gratis of betaalde niveaus). Het bestaat zodat onafhankelijke makers zichtbaarheid kunnen krijgen zonder advertentienetwerken.</p>
+
+      <h3>Wat de worker over een promotie opslaat</h3>
+      <p>Wanneer een maker een video indient op <a href="/nl/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a>, slaat onze Cloudflare D1-database het volgende op: de YouTube-video-ID, titel, kanaal, thumbnail-URL, niveau (gratis/bronze/silver/gold), doelregio's en -categorieën, het e-mailadres van de indiener (alleen voor contact) en geaggregeerde klik-/weergavetellers. Deze informatie wordt <strong>door de maker</strong> verstrekt en niet verzameld bij extensiegebruikers.</p>
+
+      <h3>Hoe zit het met extensiegebruikers?</h3>
+      <p>Aan de kant van de extensie slaan we niets op dat je identificeert. De worker ziet alleen: het land en de categorie die je hebt geselecteerd (zodat een passende promo kan worden gekoppeld), en — als je klikt — de promotie-ID. We loggen niet welke video je bekeek, je IP buiten de standaard verzoekverwerking van Cloudflare, je browservingerafdruk of een accountidentificator.</p>
+
+      <h3>Hosting</h3>
+      <p>De worker draait op Cloudflare Workers. Cloudflare kan tijdelijk IP-adressen en verzoekmetadata verwerken als onderdeel van de standaard netwerkwerking (DDoS-bescherming, routering). We schrijven geen IP-adressen naar onze eigen database.</p>
+    </div>
+
+    <!-- 5. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Wat we nooit doen</h2>
+
+      <ul class="check cross">
+        <li>Je gegevens verkopen aan derden</li>
+        <li>Bijhouden welke YouTube-video's je bekijkt — alleen de actieve video-ID wordt gelezen, en alleen om de ranking ervan te berekenen</li>
+        <li>Bijhouden welke websites je buiten YouTube bezoekt</li>
+        <li>Je YouTube-reacties, zoekgeschiedenis, kijkgeschiedenis of accountinformatie lezen of verzenden</li>
+        <li>Advertentie-SDK's, analyses van derden of gedragstracking gebruiken</li>
+        <li>Toegang krijgen tot je microfoon, camera, klembord of downloads</li>
+        <li>Advertenties in de YouTube-pagina zelf injecteren — de overlay toont alleen een kleine ranking-badge die je kunt uitschakelen</li>
+        <li>Wat van je gegevens dan ook synchroniseren met onze servers</li>
+        <li>Een account, login of e-mail vereisen om de kernfuncties van de extensie te gebruiken</li>
+      </ul>
+    </div>
+
+    <!-- 6. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Jouw rechten (LGPD / GDPR)</h2>
+
+      <p>YT Radar voldoet aan de Braziliaanse Lei Geral de Proteção de Dados (LGPD) en de EU Algemene Verordening Gegevensbescherming (GDPR), en is compatibel met CCPA.</p>
+
+      <h3>Rechten die je hebt</h3>
+      <ul class="check">
+        <li><strong>Toegang</strong> — Alle lokale gegevens zijn zichtbaar via <code>chrome://extensions</code> → YT Radar → Weergaven inspecteren → Application → Storage</li>
+        <li><strong>Verwijdering</strong> — Door de extensie te verwijderen worden alle <code>chrome.storage.local</code>-gegevens automatisch gewist. Je kunt ze ook handmatig wissen in je browserinstellingen</li>
+        <li><strong>Promotiegegevens</strong> — Als je een Community Spotlight-item hebt ingediend, kun je het beheren of verwijderen met het toegangstoken dat wordt weergegeven op het bevestigingsscherm van het indieningsformulier. Token kwijt? Neem contact met ons op via het bij indiening gebruikte e-mailadres</li>
+        <li><strong>Afmelden</strong> — Zet Overlay op "Uit" in Instellingen om de overlay op de pagina uit te schakelen. Het sluiten van de pop-up stopt alle netwerkactiviteit van de extensie</li>
+      </ul>
+
+      <h3>Rechtsgrondslag voor verwerking</h3>
+      <p>Top 50-ophalingen en het opzoeken van videodetails worden verwerkt op grond van <strong>gerechtvaardigd belang</strong> (het leveren van de functie waarvoor je de extensie hebt geopend). Inzendingen voor Spotlight-promoties worden verwerkt op grond van <strong>uitvoering van een overeenkomst</strong> met de indienende maker. Er vindt geen andere verwerking plaats.</p>
+    </div>
+
+    <!-- 7. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. Contact</h2>
+
+      <p>Voor privacyvragen, verzoeken om gegevensverwijdering of promotiebeheer:</p>
+
+      <div class="card">
+        <div class="card-title">📧 E-mail</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Projectsite</div>
+        <p><a href="/nl/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a></p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Dit beleid kan worden bijgewerkt wanneer nieuwe functies worden toegevoegd. Materiële wijzigingen worden vermeld in de release-opmerkingen van de extensie op de Chrome Web Store-vermelding. Voortgezet gebruik van YT Radar na een beleidswijziging vormt aanvaarding van het bijgewerkte beleid.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="/nl/">Home</a> · <a href="/nl/yt-radar">YT Radar</a> · <a href="/nl/privacy">NODUS Privacy</a> · YT Radar Privacy</p>
+  </footer>
+
+  <script src="/products-menu.js" defer></script>
+  <script>window._forcedLang = 'nl';</script>
+  <script src="/lang-switcher.js"></script>
+</body>
+</html>

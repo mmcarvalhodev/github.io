@@ -43,7 +43,7 @@
 
   var PRODUCTS = [
     { key:'nodus', name:'NODUS AI', ico:'N',  bg:'#facc15', fg:'#0e1117', i18n:true  },
-    { key:'yt',    name:'YT Radar', ico:'YT', bg:'#ef4444', fg:'#ffffff', i18n:false }, // no per-lang page yet
+    { key:'yt',    name:'YT Radar', ico:'YT', bg:'#ef4444', fg:'#ffffff', i18n:true  },
     { key:'hn',    name:'HN Radar', ico:'HN', bg:'#ff6600', fg:'#ffffff', i18n:true  },
     { key:'ph',    name:'PH Radar', ico:'PH', bg:'#da552f', fg:'#ffffff', i18n:true  }
   ];
@@ -62,7 +62,7 @@
     var base = (lang === 'en' || !i18n) ? '' : '/' + lang;
     switch (key) {
       case 'nodus': return base ? base + '/' : '/';
-      case 'yt':    return '/yt-radar';
+      case 'yt':    return base + '/yt-radar';
       case 'hn':    return base + '/hn-radar';
       case 'ph':    return base + '/ph-radar';
       default:      return '/';

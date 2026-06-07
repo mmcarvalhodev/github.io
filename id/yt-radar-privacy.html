@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kebijakan Privasi — NODUS YT Radar</title>
+  <link rel="icon" type="image/png" href="/icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 52px; }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon { font-size: 18px; flex-shrink: 0; }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+    code {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT BLOCK */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body { padding: 14px 18px; }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* STORAGE KEY TABLE */
+    .storage-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+    .storage-row:last-child { border-bottom: none; }
+    .storage-key {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      color: #facc15;
+      word-break: break-all;
+    }
+    .storage-desc {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      .storage-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/id/yt-radar-privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/id/">NODUS</a>
+    <a class="nav-back" href="/id/yt-radar">← Kembali ke YT Radar</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Legal · YT Radar</div>
+    <h1>Kebijakan Privasi</h1>
+    <p>Ekstensi peramban NODUS YT Radar &nbsp;·&nbsp; Terakhir diperbarui: Mei 2026 &nbsp;·&nbsp; v0.1.2</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Daftar Isi</div>
+      <ol>
+        <li><a href="#overview">Ringkasan</a></li>
+        <li><a href="#local-data">Data yang disimpan secara lokal di perangkat Anda</a></li>
+        <li><a href="#endpoints">Penjelasan endpoint eksternal</a></li>
+        <li><a href="#spotlight">Promosi Community Spotlight</a></li>
+        <li><a href="#never">Yang tidak pernah kami lakukan</a></li>
+        <li><a href="#rights">Hak Anda (LGPD / GDPR)</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Ringkasan</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS YT Radar adalah ekstensi peramban yang mengutamakan penyimpanan lokal</strong> (Chrome dan Firefox). Secara waktu nyata, ekstensi ini menunjukkan kepada Anda di mana posisi video YouTube yang sedang Anda tonton dibandingkan dengan Top 50 video yang sedang tren di negara mana pun, lengkap dengan skor viral dan analitik momentum. Semua pengaturan, cache, dan snapshot riwayat tetap berada di peramban Anda — tidak ada akun pengguna, tidak ada login, tidak ada sinkronisasi cloud.</p>
+      </div>
+
+      <p>Ini adalah produk yang terpisah dari ekstensi NODUS utama (penangkapan percakapan AI). Jika Anda mencari kebijakan tersebut, lihat <a href="/id/privacy" style="color:#60a5fa;">privacy.html</a>.</p>
+
+      <p>YT Radar membuat koneksi eksternal hanya untuk tiga tujuan, masing-masing didokumentasikan di bawah ini:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">wajib</span> YouTube Data API v3</div>
+        <p>Digunakan untuk mengambil daftar Top 50 tren publik untuk negara yang dipilih, dan detail video yang sedang Anda tonton. Data publik hanya-baca.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-green">wajib</span> Community Spotlight</div>
+        <p>Mengambil promosi video yang dikurasi dan peka-wilayah dari worker kami. Hanya mengirim kode negara dan nomor kategori — tanpa identitas, tanpa video yang sedang ditonton.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">saat diklik</span> Jumlah klik promosi</div>
+        <p>Jika Anda mengeklik item spotlight, sebuah peristiwa klik anonim dicatat agar kreator yang dipromosikan tahu performa daftar mereka. Hanya ID promosi yang dikirim.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Data yang disimpan secara lokal di perangkat Anda</h2>
+
+      <p>Semua hal berikut disimpan di <code>chrome.storage.local</code> — artinya hanya berada di komputer Anda dan tidak pernah dikirim ke server NODUS mana pun kecuali secara eksplisit dijelaskan di Bagian 3.</p>
+
+      <div class="storage-row">
+        <div class="storage-key">settings</div>
+        <div class="storage-desc">Preferensi Anda: kode negara, mode overlay (badge / diperluas / ticker / mati), interval penyegaran cache (15/30/60 mnt), filter kategori, bahasa UI.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ranking_&lt;region&gt;_&lt;category&gt;</div>
+        <div class="storage-desc">Daftar Top 50 yang dikembalikan oleh YouTube Data API, di-cache agar kami tidak mengambilnya ulang setiap kali popup dibuka. Kedaluwarsa sesuai pengaturan interval penyegaran Anda.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">video_&lt;videoId&gt;</div>
+        <div class="storage-desc">Metadata publik dari video yang telah Anda buka di popup (judul, channel, jumlah penayangan, jumlah suka, tanggal terbit). Kedaluwarsa setelah 10 menit.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">hist_&lt;videoId&gt;</div>
+        <div class="storage-desc">Snapshot deret-waktu dari penghitung publik (penayangan, suka, komentar) untuk video yang telah Anda analisis, digunakan untuk menggambar sparkline pertumbuhan dan mendeteksi lonjakan. Snapshot diambil paling banyak sekali setiap 5 menit dan dipangkas setelah 48 jam. Tidak berisi informasi yang mengidentifikasi — hanya angka.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">_cacheVersion</div>
+        <div class="storage-desc">Penanda internal yang digunakan untuk membatalkan cache usang setelah pembaruan ekstensi.</div>
+      </div>
+
+      <div class="highlight highlight-yellow" style="margin-top:24px;">
+        <p>YT Radar tidak memiliki sistem akun pengguna, tidak ada login, tidak ada pengumpulan email di dalam ekstensi, dan tidak ada telemetri. Semua kunci di atas dihapus secara otomatis ketika Anda menghapus ekstensi atau mengeklik "Hapus semua data" di pengaturan ekstensi peramban Anda.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Penjelasan endpoint eksternal</h2>
+
+      <p>Ekstensi ini membuat empat jenis permintaan jaringan. Setiap URL yang terhubung dengannya dideklarasikan di bidang manifes <code>host_permissions</code> ekstensi dan terlihat oleh peramban Anda sebelum pemasangan.</p>
+
+      <h3>3a. YouTube Data API v3 (API Google publik)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&amp;regionCode=...</span>
+          <span class="badge badge-blue">wajib</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Mengambil daftar Top 50 tren publik untuk negara yang Anda pilih. Ini adalah endpoint publik yang sama dengan yang menggerakkan tab Trending YouTube.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> kode negara (mis. <code>BR</code>) · ID kategori opsional · kunci API kami · tidak ada data pribadi, tidak ada video yang sedang ditonton</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?id=&lt;videoId&gt;</span>
+          <span class="badge badge-blue">wajib (saat diperlukan)</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Mengambil detail publik dari video yang sedang Anda tonton, tetapi <strong>hanya ketika</strong> video itu belum ada di daftar Top 50. Inilah yang memungkinkan kami menghitung skor viral dan metrik pertumbuhannya.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> ID video YouTube · kunci API kami · tidak ada data pribadi</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px; color:#64748b;">Google dapat mencatat permintaan ini sesuai dengan <a href="https://policies.google.com/privacy" style="color:#60a5fa;">kebijakan privasi</a>-nya sendiri. Kami tidak mengirimkan data pribadi tambahan apa pun bersamanya.</p>
+
+      <h3>3b. Worker NODUS YT Radar (Community Spotlight)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions?region=...&amp;category=...</span>
+          <span class="badge badge-green">wajib</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Meminta worker kami untuk video yang dipromosikan aktif sesuai kombinasi negara/kategori Anda, sehingga kami dapat menampilkan kartu Community Spotlight.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> kode negara · ID kategori · tanpa identitas, tanpa video yang sedang ditonton, tidak ada IP yang disimpan melampaui log permintaan standar Cloudflare</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions/click</span>
+          <span class="badge badge-yellow">hanya saat diklik</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Dikirim hanya ketika Anda mengeklik tombol "Tonton" pada kartu Community Spotlight. Menaikkan penghitung klik agregat agar kreator yang dipromosikan dapat melihat performa daftar mereka.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> ID promosi · tidak ada yang lain</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/player?v=&lt;videoId&gt;</span>
+          <span class="badge badge-gray">iframe</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Dimuat sebagai iframe di dalam korsel Community Spotlight untuk memutar pratinjau promo. Worker mengembalikan halaman HTML kecil yang menyematkan pemutar YouTube.</p>
+          <p class="data-sent"><strong>Data yang dikirim:</strong> ID video YouTube yang dipromosikan · channel dan judul (digunakan hanya sebagai label iframe)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SPOTLIGHT -->
+    <div class="section">
+      <span class="section-anchor" id="spotlight"></span>
+      <h2><span class="icon">⭐</span> 4. Promosi Community Spotlight</h2>
+
+      <p>Community Spotlight adalah bagian di dalam popup yang menampilkan video YouTube yang dikurasi dan dikirimkan oleh kreator (tingkat gratis atau berbayar). Bagian ini ada agar kreator independen bisa mendapatkan visibilitas tanpa jaringan iklan.</p>
+
+      <h3>Apa yang disimpan worker tentang sebuah promosi</h3>
+      <p>Ketika seorang kreator mengirimkan video di <a href="/id/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a>, basis data Cloudflare D1 kami menyimpan: ID video YouTube, judul, channel, URL thumbnail, tingkat (gratis/bronze/silver/gold), wilayah dan kategori sasaran, email pengirim (hanya untuk kontak), dan penghitung klik/penayangan agregat. Informasi ini disediakan <strong>oleh kreator</strong>, bukan dikumpulkan dari pengguna ekstensi.</p>
+
+      <h3>Bagaimana dengan pengguna ekstensi?</h3>
+      <p>Dari sisi ekstensi, kami tidak menyimpan apa pun yang mengidentifikasi Anda. Worker hanya melihat: negara dan kategori yang telah Anda pilih (agar dapat mencocokkan promo yang sesuai), dan — jika Anda mengeklik — ID promosi. Kami tidak mencatat video mana yang sedang Anda tonton, IP Anda melampaui penanganan permintaan standar Cloudflare, sidik jari peramban Anda, atau pengenal akun apa pun.</p>
+
+      <h3>Hosting</h3>
+      <p>Worker berjalan di Cloudflare Workers. Cloudflare dapat memproses alamat IP dan metadata permintaan untuk sementara sebagai bagian dari operasi jaringan standar (perlindungan DDoS, perutean). Kami tidak menulis alamat IP ke basis data kami sendiri.</p>
+    </div>
+
+    <!-- 5. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Yang tidak pernah kami lakukan</h2>
+
+      <ul class="check cross">
+        <li>Menjual data Anda kepada pihak ketiga mana pun</li>
+        <li>Melacak video YouTube mana yang Anda tonton — hanya ID video aktif yang dibaca, dan hanya untuk menghitung peringkatnya</li>
+        <li>Melacak situs web mana yang Anda kunjungi di luar YouTube</li>
+        <li>Membaca atau mengirimkan komentar YouTube, riwayat pencarian, riwayat tontonan, atau informasi akun Anda</li>
+        <li>Menggunakan SDK periklanan, analitik pihak ketiga, atau pelacakan perilaku</li>
+        <li>Mengakses mikrofon, kamera, papan klip, atau unduhan Anda</li>
+        <li>Menyisipkan iklan ke halaman YouTube itu sendiri — overlay hanya menampilkan badge peringkat kecil yang dapat Anda nonaktifkan</li>
+        <li>Menyinkronkan data Anda apa pun ke server kami</li>
+        <li>Mewajibkan akun, login, atau email untuk menggunakan fitur inti ekstensi</li>
+      </ul>
+    </div>
+
+    <!-- 6. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Hak Anda (LGPD / GDPR)</h2>
+
+      <p>YT Radar mematuhi Lei Geral de Proteção de Dados Brasil (LGPD) dan Peraturan Perlindungan Data Umum Uni Eropa (GDPR), serta kompatibel dengan CCPA.</p>
+
+      <h3>Hak yang Anda miliki</h3>
+      <ul class="check">
+        <li><strong>Akses</strong> — Semua data lokal terlihat melalui <code>chrome://extensions</code> → YT Radar → Inspect views → Application → Storage</li>
+        <li><strong>Penghapusan</strong> — Menghapus ekstensi secara otomatis menghapus semua data <code>chrome.storage.local</code>. Anda juga dapat menghapusnya secara manual di pengaturan peramban Anda</li>
+        <li><strong>Data promosi</strong> — Jika Anda mengirimkan item Community Spotlight, Anda dapat mengelola atau menghapusnya menggunakan token akses yang ditampilkan di layar sukses formulir pengiriman. Kehilangan token? Hubungi kami dengan email yang digunakan saat pengiriman</li>
+        <li><strong>Memilih keluar</strong> — Atur Overlay ke "Mati" di Pengaturan untuk menonaktifkan overlay dalam halaman. Menutup popup menghentikan semua aktivitas jaringan ekstensi</li>
+      </ul>
+
+      <h3>Dasar hukum untuk pemrosesan</h3>
+      <p>Pengambilan Top 50 dan pencarian detail video diproses berdasarkan <strong>kepentingan yang sah</strong> (menyediakan fitur yang karenanya Anda membuka ekstensi). Pengiriman promosi Spotlight diproses berdasarkan <strong>pelaksanaan kontrak</strong> dengan kreator pengirim. Tidak ada pemrosesan lain yang terjadi.</p>
+    </div>
+
+    <!-- 7. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. Kontak</h2>
+
+      <p>Untuk pertanyaan privasi, permintaan penghapusan data, atau pengelolaan promosi:</p>
+
+      <div class="card">
+        <div class="card-title">📧 Email</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Situs proyek</div>
+        <p><a href="/id/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a></p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Kebijakan ini dapat diperbarui ketika fitur baru ditambahkan. Perubahan material akan dicatat di catatan rilis ekstensi pada daftar Chrome Web Store. Penggunaan YT Radar yang berkelanjutan setelah perubahan kebijakan merupakan penerimaan atas kebijakan yang diperbarui.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="/id/">Beranda</a> · <a href="/id/yt-radar">YT Radar</a> · <a href="/id/privacy">NODUS Privacy</a> · YT Radar Privacy</p>
+  </footer>
+
+  <script src="/products-menu.js" defer></script>
+  <script>window._forcedLang = 'id';</script>
+  <script src="/lang-switcher.js"></script>
+</body>
+</html>

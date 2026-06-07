@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인정보 처리방침 — NODUS YT Radar</title>
+  <link rel="icon" type="image/png" href="/icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 52px; }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon { font-size: 18px; flex-shrink: 0; }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+    code {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT BLOCK */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body { padding: 14px 18px; }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* STORAGE KEY TABLE */
+    .storage-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+    .storage-row:last-child { border-bottom: none; }
+    .storage-key {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      color: #facc15;
+      word-break: break-all;
+    }
+    .storage-desc {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      .storage-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/ko/yt-radar-privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/ko/">NODUS</a>
+    <a class="nav-back" href="/ko/yt-radar">← YT Radar로 돌아가기</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">법률 · YT Radar</div>
+    <h1>개인정보 처리방침</h1>
+    <p>NODUS YT Radar 브라우저 확장 프로그램 &nbsp;·&nbsp; 최종 업데이트: 2026년 5월 &nbsp;·&nbsp; v0.1.2</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">목차</div>
+      <ol>
+        <li><a href="#overview">개요</a></li>
+        <li><a href="#local-data">기기에 로컬로 저장되는 데이터</a></li>
+        <li><a href="#endpoints">외부 엔드포인트 설명</a></li>
+        <li><a href="#spotlight">Community Spotlight 프로모션</a></li>
+        <li><a href="#never">우리가 절대 하지 않는 것</a></li>
+        <li><a href="#rights">귀하의 권리 (LGPD / GDPR)</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. 개요</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS YT Radar는 로컬 우선 브라우저 확장 프로그램입니다</strong> (Chrome 및 Firefox). 시청 중인 YouTube 동영상이 모든 국가의 Top 50 인기 급상승 동영상 대비 어디에 순위하는지를 바이럴 점수 및 모멘텀 분석과 함께 실시간으로 보여줍니다. 모든 설정, 캐시, 기록 스냅샷은 브라우저 안에 머무릅니다 — 사용자 계정도, 로그인도, 클라우드 동기화도 없습니다.</p>
+      </div>
+
+      <p>이는 기본 NODUS 확장 프로그램(AI 대화 캡처)과는 별개의 제품입니다. 해당 방침을 찾고 계신다면 <a href="/ko/privacy" style="color:#60a5fa;">privacy.html</a>을 참조하세요.</p>
+
+      <p>YT Radar는 오직 세 가지 목적으로만 외부 연결을 수행하며, 각각은 아래에 문서화되어 있습니다:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">필수</span> YouTube Data API v3</div>
+        <p>선택한 국가의 공개 Top 50 인기 급상승 목록과 시청 중인 동영상의 세부 정보를 가져오는 데 사용됩니다. 읽기 전용 공개 데이터입니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-green">필수</span> Community Spotlight</div>
+        <p>우리 워커로부터 큐레이션된 지역 인식 동영상 프로모션을 가져옵니다. 국가 코드와 카테고리 번호만 전송하며 — 신원 정보도, 시청 중인 동영상 정보도 보내지 않습니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">클릭 시</span> 프로모션 클릭 수</div>
+        <p>Spotlight 항목을 클릭하면 익명 클릭 이벤트가 기록되어 프로모션 제작자가 자신의 목록 성과를 알 수 있습니다. 프로모션 ID만 전송됩니다.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. 기기에 로컬로 저장되는 데이터</h2>
+
+      <p>아래의 모든 항목은 <code>chrome.storage.local</code>에 저장됩니다 — 즉, 귀하의 컴퓨터에만 존재하며 섹션 3에 명시적으로 설명된 경우를 제외하고는 어떠한 NODUS 서버로도 전송되지 않습니다.</p>
+
+      <div class="storage-row">
+        <div class="storage-key">settings</div>
+        <div class="storage-desc">귀하의 환경설정: 국가 코드, 오버레이 모드(배지 / 확장 / 티커 / 끔), 캐시 새로 고침 간격(15/30/60분), 카테고리 필터, UI 언어.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ranking_&lt;region&gt;_&lt;category&gt;</div>
+        <div class="storage-desc">YouTube Data API가 반환한 Top 50 목록으로, 팝업을 열 때마다 다시 가져오지 않도록 캐시됩니다. 귀하의 새로 고침 간격 설정에 따라 만료됩니다.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">video_&lt;videoId&gt;</div>
+        <div class="storage-desc">팝업에서 연 동영상의 공개 메타데이터(제목, 채널, 조회수, 좋아요 수, 게시일). 10분 후 만료됩니다.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">hist_&lt;videoId&gt;</div>
+        <div class="storage-desc">귀하가 분석한 동영상의 공개 카운터(조회수, 좋아요, 댓글)에 대한 시계열 스냅샷으로, 성장 스파크라인을 그리고 급상승을 감지하는 데 사용됩니다. 스냅샷은 최대 5분에 한 번 촬영되며 48시간 후 정리됩니다. 식별 정보는 포함하지 않으며 — 오직 숫자뿐입니다.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">_cacheVersion</div>
+        <div class="storage-desc">확장 프로그램 업데이트 후 오래된 캐시를 무효화하는 데 사용되는 내부 플래그.</div>
+      </div>
+
+      <div class="highlight highlight-yellow" style="margin-top:24px;">
+        <p>YT Radar에는 사용자 계정 시스템이 없으며, 로그인도, 확장 프로그램 내부 이메일 수집도, 텔레메트리도 없습니다. 위의 모든 키는 확장 프로그램을 제거하거나 브라우저의 확장 프로그램 설정에서 "모든 데이터 삭제"를 클릭하면 자동으로 삭제됩니다.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. 외부 엔드포인트 설명</h2>
+
+      <p>확장 프로그램은 네 종류의 네트워크 요청을 수행합니다. 연결하는 모든 URL은 확장 프로그램의 <code>host_permissions</code> 매니페스트 필드에 선언되어 있으며 설치 전에 귀하의 브라우저에서 확인할 수 있습니다.</p>
+
+      <h3>3a. YouTube Data API v3 (공개 Google API)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&amp;regionCode=...</span>
+          <span class="badge badge-blue">필수</span>
+        </div>
+        <div class="endpoint-body">
+          <p>선택한 국가의 공개 Top 50 인기 급상승 목록을 가져옵니다. 이는 YouTube의 인기 급상승 탭을 구동하는 것과 동일한 공개 엔드포인트입니다.</p>
+          <p class="data-sent"><strong>전송되는 데이터:</strong> 국가 코드(예: <code>BR</code>) · 선택적 카테고리 ID · 우리의 API 키 · 개인 데이터 없음, 시청 중인 동영상 정보 없음</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?id=&lt;videoId&gt;</span>
+          <span class="badge badge-blue">필수 (필요 시)</span>
+        </div>
+        <div class="endpoint-body">
+          <p>시청 중인 동영상의 공개 세부 정보를 가져오지만, <strong>해당 동영상이 Top 50 목록에 아직 없는 경우에만</strong> 가져옵니다. 이것이 바로 바이럴 점수와 성장 지표를 계산할 수 있게 해주는 것입니다.</p>
+          <p class="data-sent"><strong>전송되는 데이터:</strong> YouTube 동영상 ID · 우리의 API 키 · 개인 데이터 없음</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px; color:#64748b;">Google은 자체 <a href="https://policies.google.com/privacy" style="color:#60a5fa;">개인정보 처리방침</a>에 따라 이러한 요청을 기록할 수 있습니다. 우리는 이와 함께 어떠한 추가 개인 데이터도 전송하지 않습니다.</p>
+
+      <h3>3b. NODUS YT Radar 워커 (Community Spotlight)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions?region=...&amp;category=...</span>
+          <span class="badge badge-green">필수</span>
+        </div>
+        <div class="endpoint-body">
+          <p>귀하의 국가/카테고리 조합에 대해 활성화된 프로모션 동영상을 우리 워커에 요청하여 Community Spotlight 카드를 표시할 수 있도록 합니다.</p>
+          <p class="data-sent"><strong>전송되는 데이터:</strong> 국가 코드 · 카테고리 ID · 신원 정보 없음, 시청 중인 동영상 정보 없음, Cloudflare의 표준 요청 로그를 넘어서는 IP 저장 없음</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions/click</span>
+          <span class="badge badge-yellow">클릭 시에만</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Community Spotlight 카드의 "시청" 버튼을 클릭할 때만 전송됩니다. 집계 클릭 카운터를 증가시켜 프로모션 제작자가 자신의 목록 성과를 볼 수 있도록 합니다.</p>
+          <p class="data-sent"><strong>전송되는 데이터:</strong> 프로모션 ID · 그 외에는 없음</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/player?v=&lt;videoId&gt;</span>
+          <span class="badge badge-gray">iframe</span>
+        </div>
+        <div class="endpoint-body">
+          <p>프로모션 미리보기를 재생하기 위해 Community Spotlight 캐러셀 안에 iframe으로 로드됩니다. 워커는 YouTube 플레이어를 임베드하는 작은 HTML 페이지를 반환합니다.</p>
+          <p class="data-sent"><strong>전송되는 데이터:</strong> 프로모션 대상 YouTube 동영상 ID · 채널 및 제목(iframe 레이블로만 사용)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SPOTLIGHT -->
+    <div class="section">
+      <span class="section-anchor" id="spotlight"></span>
+      <h2><span class="icon">⭐</span> 4. Community Spotlight 프로모션</h2>
+
+      <p>Community Spotlight는 제작자가 제출한 큐레이션된 YouTube 동영상(무료 또는 유료 등급)을 표시하는 팝업 내부 섹션입니다. 독립 제작자가 광고 네트워크 없이 노출을 얻을 수 있도록 존재합니다.</p>
+
+      <h3>워커가 프로모션에 대해 저장하는 것</h3>
+      <p>제작자가 <a href="/ko/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a>에서 동영상을 제출하면, 우리의 Cloudflare D1 데이터베이스에 다음이 저장됩니다: YouTube 동영상 ID, 제목, 채널, 썸네일 URL, 등급(무료/브론즈/실버/골드), 대상 지역 및 카테고리, 제출자의 이메일(연락 목적으로만), 그리고 집계 클릭/조회 카운터. 이 정보는 확장 프로그램 사용자로부터 수집되는 것이 아니라 <strong>제작자에 의해</strong> 제공됩니다.</p>
+
+      <h3>확장 프로그램 사용자는 어떤가요?</h3>
+      <p>확장 프로그램 측에서는 귀하를 식별하는 어떠한 것도 저장하지 않습니다. 워커는 오직 다음만 봅니다: 귀하가 선택한 국가와 카테고리(적절한 프로모션을 매칭할 수 있도록), 그리고 — 클릭하는 경우 — 프로모션 ID. 우리는 귀하가 어떤 동영상을 시청하고 있었는지, Cloudflare의 표준 요청 처리를 넘어서는 귀하의 IP, 귀하의 브라우저 핑거프린트, 또는 어떠한 계정 식별자도 기록하지 않습니다.</p>
+
+      <h3>호스팅</h3>
+      <p>워커는 Cloudflare Workers에서 실행됩니다. Cloudflare는 표준 네트워크 운영(DDoS 보호, 라우팅)의 일환으로 IP 주소와 요청 메타데이터를 일시적으로 처리할 수 있습니다. 우리는 IP 주소를 우리 자체 데이터베이스에 기록하지 않습니다.</p>
+    </div>
+
+    <!-- 5. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. 우리가 절대 하지 않는 것</h2>
+
+      <ul class="check cross">
+        <li>귀하의 데이터를 제3자에게 판매하는 것</li>
+        <li>귀하가 어떤 YouTube 동영상을 시청하는지 추적하는 것 — 오직 활성 동영상 ID만 읽으며, 그것도 순위를 계산하기 위해서만</li>
+        <li>귀하가 YouTube 외부에서 방문하는 웹사이트를 추적하는 것</li>
+        <li>귀하의 YouTube 댓글, 검색 기록, 시청 기록 또는 계정 정보를 읽거나 전송하는 것</li>
+        <li>광고 SDK, 제3자 분석 또는 행동 추적을 사용하는 것</li>
+        <li>귀하의 마이크, 카메라, 클립보드 또는 다운로드에 접근하는 것</li>
+        <li>YouTube 페이지 자체에 광고를 삽입하는 것 — 오버레이는 귀하가 비활성화할 수 있는 작은 순위 배지만 표시합니다</li>
+        <li>귀하의 데이터를 우리 서버로 동기화하는 것</li>
+        <li>확장 프로그램의 핵심 기능을 사용하기 위해 계정, 로그인 또는 이메일을 요구하는 것</li>
+      </ul>
+    </div>
+
+    <!-- 6. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. 귀하의 권리 (LGPD / GDPR)</h2>
+
+      <p>YT Radar는 브라질 일반 개인정보 보호법(LGPD) 및 EU 일반 개인정보 보호 규정(GDPR)을 준수하며 CCPA와 호환됩니다.</p>
+
+      <h3>귀하가 가진 권리</h3>
+      <ul class="check">
+        <li><strong>접근</strong> — 모든 로컬 데이터는 <code>chrome://extensions</code> → YT Radar → 뷰 검사 → Application → Storage를 통해 확인할 수 있습니다</li>
+        <li><strong>삭제</strong> — 확장 프로그램을 제거하면 모든 <code>chrome.storage.local</code> 데이터가 자동으로 지워집니다. 브라우저 설정에서 수동으로 지울 수도 있습니다</li>
+        <li><strong>프로모션 데이터</strong> — Community Spotlight 항목을 제출했다면, 제출 양식의 성공 화면에 표시된 접근 토큰을 사용하여 관리하거나 삭제할 수 있습니다. 토큰을 잃어버리셨나요? 제출 시 사용한 이메일로 문의해 주세요</li>
+        <li><strong>옵트아웃</strong> — 설정에서 오버레이를 "끔"으로 설정하면 페이지 내 오버레이가 비활성화됩니다. 팝업을 닫으면 모든 확장 프로그램 네트워크 활동이 중지됩니다</li>
+      </ul>
+
+      <h3>처리의 법적 근거</h3>
+      <p>Top 50 가져오기 및 동영상 세부 정보 조회는 <strong>정당한 이익</strong>(귀하가 확장 프로그램을 연 목적인 기능 제공)에 따라 처리됩니다. Spotlight 프로모션 제출은 제출 제작자와의 <strong>계약 이행</strong>에 따라 처리됩니다. 그 외의 처리는 발생하지 않습니다.</p>
+    </div>
+
+    <!-- 7. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. 연락처</h2>
+
+      <p>개인정보 관련 질문, 데이터 삭제 요청 또는 프로모션 관리를 위해:</p>
+
+      <div class="card">
+        <div class="card-title">📧 이메일</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 프로젝트 사이트</div>
+        <p><a href="/ko/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a></p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">이 방침은 새로운 기능이 추가될 때 업데이트될 수 있습니다. 중요한 변경 사항은 Chrome Web Store 목록의 확장 프로그램 출시 노트에 기재됩니다. 방침 변경 후 YT Radar를 계속 사용하는 것은 업데이트된 방침에 대한 동의를 의미합니다.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="/ko/">홈</a> · <a href="/ko/yt-radar">YT Radar</a> · <a href="/ko/privacy">NODUS 개인정보</a> · YT Radar 개인정보</p>
+  </footer>
+
+  <script src="/products-menu.js" defer></script>
+  <script>window._forcedLang = 'ko';</script>
+  <script src="/lang-switcher.js"></script>
+</body>
+</html>

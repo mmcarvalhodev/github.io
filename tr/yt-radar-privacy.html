@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gizlilik Politikası — NODUS YT Radar</title>
+  <link rel="icon" type="image/png" href="/icons/nodus-48.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #94a3b8; }
+
+    /* HERO */
+    .hero {
+      padding: 72px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* TOC */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: #93c5fd; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 52px; }
+    .section-anchor {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .icon { font-size: 18px; flex-shrink: 0; }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 24px 0 10px;
+    }
+    p {
+      margin-bottom: 14px;
+      color: #94a3b8;
+    }
+    p:last-child { margin-bottom: 0; }
+    code {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      background: rgba(255,255,255,0.05);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    /* CARDS */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .badge-green { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-yellow{ background: rgba(250,204,21,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.2); }
+    .badge-gray  { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2); }
+
+    /* ENDPOINT BLOCK */
+    .endpoint-block {
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .endpoint-header {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .endpoint-url {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12px;
+      color: #60a5fa;
+      flex: 1;
+      word-break: break-all;
+    }
+    .endpoint-body { padding: 14px 18px; }
+    .endpoint-body p {
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    .endpoint-body p:last-child { margin-bottom: 0; }
+    .data-sent {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .data-sent strong { color: #64748b; }
+
+    /* STORAGE KEY TABLE */
+    .storage-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+    .storage-row:last-child { border-bottom: none; }
+    .storage-key {
+      font-family: 'SFMono-Regular', 'Consolas', monospace;
+      font-size: 12.5px;
+      color: #facc15;
+      word-break: break-all;
+    }
+    .storage-desc {
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    @media (max-width: 600px) {
+      .storage-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* LIST */
+    ul.check {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+    ul.check li {
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    ul.check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+    ul.cross li::before {
+      content: '✕';
+      color: #ef4444;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: rgba(59,130,246,0.07);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+    .highlight p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .highlight p strong { color: #e2e8f0; }
+
+    .highlight-yellow {
+      background: rgba(250,204,21,0.06);
+      border-left-color: #facc15;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 32px 24px;
+      text-align: center;
+      color: #334155;
+      font-size: 13px;
+    }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #64748b; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 48px 16px 32px; }
+      .page { padding: 40px 16px 64px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+  <link rel="canonical" href="https://nodus-ai.app/tr/yt-radar-privacy" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/tr/">NODUS</a>
+    <a class="nav-back" href="/tr/yt-radar">← YT Radar'a dön</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Yasal · YT Radar</div>
+    <h1>Gizlilik Politikası</h1>
+    <p>NODUS YT Radar tarayıcı uzantısı &nbsp;·&nbsp; Son güncelleme: Mayıs 2026 &nbsp;·&nbsp; v0.1.2</p>
+  </div>
+
+  <div class="page">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">İçindekiler</div>
+      <ol>
+        <li><a href="#overview">Genel bakış</a></li>
+        <li><a href="#local-data">Cihazınızda yerel olarak saklanan veriler</a></li>
+        <li><a href="#endpoints">Harici uç noktalar açıklaması</a></li>
+        <li><a href="#spotlight">Community Spotlight tanıtımları</a></li>
+        <li><a href="#never">Asla yapmadıklarımız</a></li>
+        <li><a href="#rights">Haklarınız (LGPD / GDPR)</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+      <span class="section-anchor" id="overview"></span>
+      <h2><span class="icon">🔍</span> 1. Genel bakış</h2>
+
+      <div class="highlight">
+        <p><strong>NODUS YT Radar, yerel öncelikli bir tarayıcı uzantısıdır</strong> (Chrome ve Firefox). İzlediğiniz YouTube videosunun, herhangi bir ülkenin Top 50 trend videosuna kıyasla nerede sıralandığını, viral skor ve ivme analizleriyle birlikte gerçek zamanlı olarak gösterir. Tüm ayarlar, önbellekler ve geçmiş anlık görüntüleri tarayıcınızda kalır — kullanıcı hesabı yok, oturum açma yok, bulut senkronizasyonu yok.</p>
+      </div>
+
+      <p>Bu, ana NODUS uzantısından (yapay zeka konuşma yakalama) ayrı bir üründür. O politikayı arıyorsanız <a href="/tr/privacy" style="color:#60a5fa;">privacy.html</a> sayfasına bakın.</p>
+
+      <p>YT Radar yalnızca üç amaçla harici bağlantı kurar; her biri aşağıda belgelenmiştir:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="badge badge-blue">gerekli</span> YouTube Data API v3</div>
+        <p>Seçilen ülke için herkese açık Top 50 trend listesini ve izlediğiniz videonun ayrıntılarını getirmek için kullanılır. Salt okunur herkese açık veri.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-green">gerekli</span> Community Spotlight</div>
+        <p>Worker'ımızdan derlenmiş, bölgeye duyarlı bir video tanıtımı getirir. Yalnızca ülke kodunu ve bir kategori numarasını gönderir — kimlik yok, izlenen video yok.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="badge badge-yellow">tıklamada</span> Tanıtım tıklama sayısı</div>
+        <p>Bir spotlight öğesine tıklarsanız, tanıtılan içerik üreticisinin listelemesinin nasıl performans gösterdiğini bilmesi için anonim bir tıklama olayı kaydedilir. Yalnızca tanıtım ID'si gönderilir.</p>
+      </div>
+    </div>
+
+    <!-- 2. LOCAL DATA -->
+    <div class="section">
+      <span class="section-anchor" id="local-data"></span>
+      <h2><span class="icon">💾</span> 2. Cihazınızda yerel olarak saklanan veriler</h2>
+
+      <p>Aşağıdakilerin tümü <code>chrome.storage.local</code> içinde saklanır — yani yalnızca bilgisayarınızda bulunur ve Bölüm 3'te açıkça belirtilmediği sürece hiçbir NODUS sunucusuna gönderilmez.</p>
+
+      <div class="storage-row">
+        <div class="storage-key">settings</div>
+        <div class="storage-desc">Tercihleriniz: ülke kodu, kaplama modu (rozet / genişletilmiş / kayan yazı / kapalı), önbellek yenileme aralığı (15/30/60 dk), kategori filtresi, UI dili.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">ranking_&lt;region&gt;_&lt;category&gt;</div>
+        <div class="storage-desc">YouTube Data API tarafından döndürülen Top 50 listesi; her açılışta yeniden getirmememiz için önbelleğe alınır. Yenileme aralığı ayarınıza göre süresi dolar.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">video_&lt;videoId&gt;</div>
+        <div class="storage-desc">Açılır pencerede açtığınız bir videonun herkese açık meta verileri (başlık, kanal, görüntülenme sayısı, beğeni sayısı, yayın tarihi). 10 dakika sonra süresi dolar.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">hist_&lt;videoId&gt;</div>
+        <div class="storage-desc">Analiz ettiğiniz videolara ait herkese açık sayaçların (görüntülenmeler, beğeniler, yorumlar) zaman serisi anlık görüntüleri; büyüme kıvılcım grafiğini çizmek ve ani yükselişleri tespit etmek için kullanılır. Anlık görüntüler en fazla 5 dakikada bir alınır ve 48 saat sonra temizlenir. Hiçbir tanımlayıcı bilgi içermez — yalnızca sayılar.</div>
+      </div>
+      <div class="storage-row">
+        <div class="storage-key">_cacheVersion</div>
+        <div class="storage-desc">Uzantı güncellemesinden sonra eskimiş önbelleği geçersiz kılmak için kullanılan dahili bayrak.</div>
+      </div>
+
+      <div class="highlight highlight-yellow" style="margin-top:24px;">
+        <p>YT Radar'ın kullanıcı hesabı sistemi, oturum açması, uzantı içinde e-posta toplaması ve telemetrisi yoktur. Yukarıdaki tüm anahtarlar, uzantıyı kaldırdığınızda veya tarayıcınızın uzantı ayarlarında "Tüm verileri kaldır"a tıkladığınızda otomatik olarak silinir.</p>
+      </div>
+    </div>
+
+    <!-- 3. ENDPOINTS -->
+    <div class="section">
+      <span class="section-anchor" id="endpoints"></span>
+      <h2><span class="icon">🌐</span> 3. Harici uç noktalar açıklaması</h2>
+
+      <p>Uzantı dört tür ağ isteği yapar. Bağlandığı her URL, uzantının <code>host_permissions</code> manifest alanında bildirilir ve kurulumdan önce tarayıcınızda görünür.</p>
+
+      <h3>3a. YouTube Data API v3 (herkese açık Google API)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&amp;regionCode=...</span>
+          <span class="badge badge-blue">gerekli</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Seçtiğiniz ülke için herkese açık Top 50 trend listesini getirir. Bu, YouTube'un Trending sekmesini çalıştıran aynı herkese açık uç noktadır.</p>
+          <p class="data-sent"><strong>Gönderilen veri:</strong> ülke kodu (örn. <code>BR</code>) · isteğe bağlı kategori ID · API anahtarımız · kişisel veri yok, izlenen video yok</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://www.googleapis.com/youtube/v3/videos?id=&lt;videoId&gt;</span>
+          <span class="badge badge-blue">gerekli (gerektiğinde)</span>
+        </div>
+        <div class="endpoint-body">
+          <p>İzlediğiniz videonun herkese açık ayrıntılarını getirir, ancak <strong>yalnızca</strong> video zaten Top 50 listesinde mevcut değilse. Viral skorunu ve büyüme ölçümlerini hesaplamamızı sağlayan budur.</p>
+          <p class="data-sent"><strong>Gönderilen veri:</strong> YouTube video ID · API anahtarımız · kişisel veri yok</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px; color:#64748b;">Google bu istekleri kendi <a href="https://policies.google.com/privacy" style="color:#60a5fa;">gizlilik politikasına</a> göre kaydedebilir. Bunlarla birlikte hiçbir ek kişisel veri göndermiyoruz.</p>
+
+      <h3>3b. NODUS YT Radar worker (Community Spotlight)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions?region=...&amp;category=...</span>
+          <span class="badge badge-green">gerekli</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Community Spotlight kartını gösterebilmemiz için worker'ımızdan ülke/kategori kombinasyonunuza ait etkin tanıtılan videoyu ister.</p>
+          <p class="data-sent"><strong>Gönderilen veri:</strong> ülke kodu · kategori ID · kimlik yok, izlenen video yok, Cloudflare'in standart istek günlüğünün ötesinde saklanan IP yok</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/promotions/click</span>
+          <span class="badge badge-yellow">yalnızca tıklamada</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Yalnızca bir Community Spotlight kartındaki "İzle" düğmesine tıkladığınızda gönderilir. Tanıtılan içerik üreticisinin listelemesinin nasıl performans gösterdiğini görebilmesi için toplu bir tıklama sayacını artırır.</p>
+          <p class="data-sent"><strong>Gönderilen veri:</strong> tanıtım ID · başka hiçbir şey</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">https://worker-yt-radar.mmcarvalho-dev.workers.dev/player?v=&lt;videoId&gt;</span>
+          <span class="badge badge-gray">iframe</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Tanıtım önizlemesini oynatmak için Community Spotlight karuselinin içine bir iframe olarak yüklenir. Worker, YouTube oynatıcısını gömen küçük bir HTML sayfası döndürür.</p>
+          <p class="data-sent"><strong>Gönderilen veri:</strong> tanıtılan YouTube video ID · kanal ve başlık (yalnızca iframe etiketleri olarak kullanılır)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SPOTLIGHT -->
+    <div class="section">
+      <span class="section-anchor" id="spotlight"></span>
+      <h2><span class="icon">⭐</span> 4. Community Spotlight tanıtımları</h2>
+
+      <p>Community Spotlight, içerik üreticileri tarafından gönderilen (ücretsiz veya ücretli kademeler) derlenmiş YouTube videolarını gösteren açılır pencere içindeki bölümdür. Bağımsız içerik üreticilerinin reklam ağları olmadan görünürlük kazanabilmesi için vardır.</p>
+
+      <h3>Worker'ın bir tanıtım hakkında sakladıkları</h3>
+      <p>Bir içerik üreticisi <a href="/tr/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a> adresinde bir video gönderdiğinde, Cloudflare D1 veritabanımız şunları saklar: YouTube video ID, başlık, kanal, küçük resim URL'si, kademe (ücretsiz/bronz/gümüş/altın), hedef bölgeler ve kategoriler, gönderenin e-postası (yalnızca iletişim için) ve toplu tıklama/görüntülenme sayaçları. Bu bilgiler uzantı kullanıcılarından toplanmaz, <strong>içerik üreticisi tarafından</strong> sağlanır.</p>
+
+      <h3>Peki ya uzantı kullanıcıları?</h3>
+      <p>Uzantı tarafında, sizi tanımlayan hiçbir şey saklamıyoruz. Worker yalnızca şunları görür: seçtiğiniz ülke ve kategori (uygun bir tanıtımı eşleştirebilmesi için) ve — tıklarsanız — tanıtım ID'si. Hangi videoyu izlediğinizi, Cloudflare'in standart istek işlemesinin ötesindeki IP'nizi, tarayıcı parmak izinizi veya herhangi bir hesap tanımlayıcısını kaydetmiyoruz.</p>
+
+      <h3>Barındırma</h3>
+      <p>Worker, Cloudflare Workers üzerinde çalışır. Cloudflare, standart ağ işleyişinin bir parçası olarak (DDoS koruması, yönlendirme) IP adreslerini ve istek meta verilerini geçici olarak işleyebilir. IP adreslerini kendi veritabanımıza yazmıyoruz.</p>
+    </div>
+
+    <!-- 5. NEVER -->
+    <div class="section">
+      <span class="section-anchor" id="never"></span>
+      <h2><span class="icon">🚫</span> 5. Asla yapmadıklarımız</h2>
+
+      <ul class="check cross">
+        <li>Verilerinizi herhangi bir üçüncü tarafa satmak</li>
+        <li>Hangi YouTube videolarını izlediğinizi takip etmek — yalnızca etkin video ID'si okunur ve yalnızca sıralamasını hesaplamak için</li>
+        <li>YouTube dışında hangi web sitelerini ziyaret ettiğinizi takip etmek</li>
+        <li>YouTube yorumlarınızı, arama geçmişinizi, izleme geçmişinizi veya hesap bilgilerinizi okumak ya da iletmek</li>
+        <li>Reklam SDK'ları, üçüncü taraf analizler veya davranışsal takip kullanmak</li>
+        <li>Mikrofonunuza, kameranıza, panonuza veya indirmelerinize erişmek</li>
+        <li>YouTube sayfasının kendisine reklam yerleştirmek — kaplama yalnızca devre dışı bırakabileceğiniz küçük bir sıralama rozeti gösterir</li>
+        <li>Verilerinizin herhangi birini sunucularımıza senkronize etmek</li>
+        <li>Uzantının temel özelliklerini kullanmak için hesap, oturum açma veya e-posta zorunlu kılmak</li>
+      </ul>
+    </div>
+
+    <!-- 6. RIGHTS -->
+    <div class="section">
+      <span class="section-anchor" id="rights"></span>
+      <h2><span class="icon">⚖️</span> 6. Haklarınız (LGPD / GDPR)</h2>
+
+      <p>YT Radar, Brezilya Lei Geral de Proteção de Dados (LGPD) ve AB Genel Veri Koruma Yönetmeliği (GDPR) ile uyumludur ve CCPA ile uyumludur.</p>
+
+      <h3>Sahip olduğunuz haklar</h3>
+      <ul class="check">
+        <li><strong>Erişim</strong> — Tüm yerel veriler şu yolla görülebilir: <code>chrome://extensions</code> → YT Radar → Görünümleri incele → Uygulama → Depolama</li>
+        <li><strong>Silme</strong> — Uzantıyı kaldırmak tüm <code>chrome.storage.local</code> verilerini otomatik olarak temizler. Ayrıca tarayıcı ayarlarınızda manuel olarak da temizleyebilirsiniz</li>
+        <li><strong>Tanıtım verileri</strong> — Bir Community Spotlight öğesi gönderdiyseniz, gönderim formunun başarı ekranında görüntülenen erişim belirtecini kullanarak bunu yönetebilir veya silebilirsiniz. Belirteci mi kaybettiniz? Gönderim sırasında kullandığınız e-posta ile bizimle iletişime geçin</li>
+        <li><strong>Vazgeçme</strong> — Sayfa içi kaplamayı devre dışı bırakmak için Ayarlar'da Kaplama'yı "Kapalı" olarak ayarlayın. Açılır pencereyi kapatmak tüm uzantı ağ etkinliğini durdurur</li>
+      </ul>
+
+      <h3>İşleme için yasal dayanak</h3>
+      <p>Top 50 getirmeleri ve video ayrıntısı sorgulamaları <strong>meşru menfaat</strong> kapsamında işlenir (uzantıyı açtığınız özelliği sunmak). Spotlight tanıtım gönderimleri, gönderen içerik üreticisiyle <strong>sözleşmenin ifası</strong> kapsamında işlenir. Başka hiçbir işleme gerçekleşmez.</p>
+    </div>
+
+    <!-- 7. CONTACT -->
+    <div class="section">
+      <span class="section-anchor" id="contact"></span>
+      <h2><span class="icon">✉️</span> 7. İletişim</h2>
+
+      <p>Gizlilik soruları, veri silme talepleri veya tanıtım yönetimi için:</p>
+
+      <div class="card">
+        <div class="card-title">📧 E-posta</div>
+        <p>mmcarvalho.dev@gmail.com</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🌐 Proje sitesi</div>
+        <p><a href="/tr/yt-radar" style="color:#60a5fa;">nodus-ai.app/yt-radar</a></p>
+      </div>
+
+      <p style="margin-top:24px; font-size:13px; color:#475569;">Bu politika, yeni özellikler eklendiğinde güncellenebilir. Önemli değişiklikler, Chrome Web Store listelemesindeki uzantının sürüm notlarında belirtilecektir. Bir politika değişikliğinden sonra YT Radar'ı kullanmaya devam etmek, güncellenmiş politikanın kabul edildiği anlamına gelir.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NODUS · <a href="/tr/">Ana sayfa</a> · <a href="/tr/yt-radar">YT Radar</a> · <a href="/tr/privacy">NODUS Gizlilik</a> · YT Radar Gizlilik</p>
+  </footer>
+
+  <script src="/products-menu.js" defer></script>
+  <script>window._forcedLang = 'tr';</script>
+  <script src="/lang-switcher.js"></script>
+</body>
+</html>
