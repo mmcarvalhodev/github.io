@@ -97,7 +97,29 @@
     + '.npm-name{color:#e2e8f0;font-size:14px;font-weight:600;line-height:1.3;}'
     + '.npm-desc{color:#94a3b8;font-size:12px;line-height:1.45;}'
     + '@media (max-width:880px){.npm-wrap{width:100%;}.npm-menu{position:static;width:100%;max-width:none;box-shadow:none;margin-top:6px;}}'
-    + '@media (prefers-reduced-motion:reduce){.npm-track{transition:none;}}';
+    + '@media (prefers-reduced-motion:reduce){.npm-track{transition:none;}}'
+    // ----- compact top-bar trigger (mobile): icon-only, lives in .nav-inner -----
+    + '.npm-compact{display:none;width:auto;}'
+    + '.npm-cbtn{display:inline-flex;align-items:center;gap:5px;background:transparent;'
+      + 'border:1px solid #facc15;color:#facc15;line-height:1;padding:6px 9px;border-radius:8px;'
+      + 'cursor:pointer;font-family:inherit;transition:background .2s,border-color .2s;}'
+    + '.npm-cbtn:hover{background:rgba(250,204,21,.08);}'
+    + '.npm-wrap.npm-compact.open .npm-cbtn{background:rgba(250,204,21,.12);}'
+    + '.npm-cico{width:16px;height:16px;display:block;}'
+    + '.npm-compact .npm-caret{color:#facc15;}'
+    // dropdown pinned just under the sticky nav, aligned to the viewport edge so
+    // it can never overflow regardless of where the trigger sits in the bar
+    + '.npm-compact .npm-menu{position:fixed;top:64px;right:12px;left:auto;'
+      + 'width:min(300px,calc(100vw - 24px));max-width:none;margin-top:0;}'
+    // below 640px the full nav-links collapses -> show the compact trigger instead
+    + '@media (max-width:640px){'
+      + '.npm-wrap:not(.npm-compact){display:none !important;}'
+      + '.npm-compact{display:inline-flex !important;}'
+      + '.nav-inner{gap:10px !important;}'
+      // the "back to NODUS" link is redundant on product pages (the logo links
+      // home too, and the Products menu carries the same destinations)
+      + '.nav-back{display:none !important;}'
+    + '}';
     var s = document.createElement('style');
     s.id = 'npm-style';
     s.textContent = css;
@@ -107,6 +129,82 @@
   /* ---------- build the widget ---------- */
   var ITEM_H = 20;
   var SEQ = [label, 'YT Radar', label, 'HN Radar', label, 'PH Radar'];
+
+  // shared dropdown panel (used by both the full and compact triggers)
+  function buildMenu() {
+    var menu = document.createElement('div');
+    menu.className = 'npm-menu';
+    menu.setAttribute('role', 'menu');
+    var ml = document.createElement('div');
+    ml.className = 'npm-mlabel';
+    ml.textContent = label;
+    menu.appendChild(ml);
+
+    PRODUCTS.forEach(function (p) {
+      var a = document.createElement('a');
+      a.className = 'npm-link';
+      a.setAttribute('role', 'menuitem');
+      a.href = hrefFor(p.key, lang, p.i18n);
+      var ico = document.createElement('span');
+      ico.className = 'npm-ico';
+      ico.style.background = p.bg;
+      ico.style.color = p.fg;
+      ico.textContent = p.ico;
+      var txt = document.createElement('span');
+      txt.className = 'npm-txt';
+      var nm = document.createElement('span');
+      nm.className = 'npm-name';
+      nm.textContent = p.name;
+      var ds = document.createElement('span');
+      ds.className = 'npm-desc';
+      ds.textContent = tags[p.key] || '';
+      txt.appendChild(nm); txt.appendChild(ds);
+      a.appendChild(ico); a.appendChild(txt);
+      menu.appendChild(a);
+    });
+    return menu;
+  }
+
+  // compact, icon-only trigger for the mobile top bar
+  function buildCompact() {
+    var wrap = document.createElement('div');
+    wrap.className = 'npm-wrap npm-compact';
+
+    var btn = document.createElement('button');
+    btn.className = 'npm-cbtn';
+    btn.type = 'button';
+    btn.setAttribute('aria-haspopup', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', label);
+
+    var ico = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    ico.setAttribute('class', 'npm-cico');
+    ico.setAttribute('viewBox', '0 0 24 24');
+    ico.setAttribute('fill', 'currentColor');
+    ico.innerHTML = '<rect x="3" y="3" width="7.5" height="7.5" rx="1.6"></rect>'
+      + '<rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"></rect>'
+      + '<rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"></rect>'
+      + '<rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"></rect>';
+
+    var caret = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    caret.setAttribute('class', 'npm-caret');
+    caret.setAttribute('viewBox', '0 0 24 24');
+    caret.setAttribute('fill', 'none');
+    caret.setAttribute('stroke', 'currentColor');
+    caret.setAttribute('stroke-width', '2.5');
+    caret.setAttribute('stroke-linecap', 'round');
+    caret.setAttribute('stroke-linejoin', 'round');
+    caret.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>';
+
+    btn.appendChild(ico);
+    btn.appendChild(caret);
+
+    var menu = buildMenu();
+    wrap.appendChild(btn);
+    wrap.appendChild(menu);
+
+    return { wrap: wrap, inner: wrap, btn: btn };
+  }
 
   function buildWidget(asLI) {
     var wrap = document.createElement(asLI ? 'li' : 'div');
@@ -150,36 +248,7 @@
     btn.appendChild(caret);
 
     // dropdown
-    var menu = document.createElement('div');
-    menu.className = 'npm-menu';
-    menu.setAttribute('role', 'menu');
-    var ml = document.createElement('div');
-    ml.className = 'npm-mlabel';
-    ml.textContent = label;
-    menu.appendChild(ml);
-
-    PRODUCTS.forEach(function (p) {
-      var a = document.createElement('a');
-      a.className = 'npm-link';
-      a.setAttribute('role', 'menuitem');
-      a.href = hrefFor(p.key, lang, p.i18n);
-      var ico = document.createElement('span');
-      ico.className = 'npm-ico';
-      ico.style.background = p.bg;
-      ico.style.color = p.fg;
-      ico.textContent = p.ico;
-      var txt = document.createElement('span');
-      txt.className = 'npm-txt';
-      var nm = document.createElement('span');
-      nm.className = 'npm-name';
-      nm.textContent = p.name;
-      var ds = document.createElement('span');
-      ds.className = 'npm-desc';
-      ds.textContent = tags[p.key] || '';
-      txt.appendChild(nm); txt.appendChild(ds);
-      a.appendChild(ico); a.appendChild(txt);
-      menu.appendChild(a);
-    });
+    var menu = buildMenu();
 
     inner.appendChild(btn);
     inner.appendChild(menu);
@@ -285,6 +354,28 @@
 
     wire(w.inner, w.btn);
     startRoll(w.track, w.inner);
+
+    // Compact top-bar trigger: lives in .nav-inner (sibling of the collapsible
+    // .nav-links), so it stays reachable on mobile. CSS shows it <=640px and
+    // hides the full widget. Mirrors how the language switcher mounts.
+    var navInner = document.querySelector('.nav-inner');
+    if (navInner && !navInner.querySelector('.npm-compact')) {
+      var c = buildCompact();
+      // Anchor only on direct children of .nav-inner that always sit on the far
+      // right (the language switcher, or the hamburger). This keeps the order
+      // deterministic regardless of whether lang-switcher.js has mounted yet:
+      // [...] [compact] [lang] [hamburger?]. Falling back to append lands the
+      // compact trigger right where the language switcher will attach.
+      var anchor =
+        navInner.querySelector('.lang-switcher') ||
+        navInner.querySelector('.nav-hamburger');
+      if (anchor && anchor.parentNode === navInner) {
+        navInner.insertBefore(c.wrap, anchor);
+      } else {
+        navInner.appendChild(c.wrap);
+      }
+      wire(c.inner, c.btn);
+    }
   }
 
   if (document.readyState === 'loading') {
