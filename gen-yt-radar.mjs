@@ -4,6 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 import { T } from './yt-i18n.mjs';
+import { injectResearch } from './inject-research-footer.mjs';
 
 const ROOT = 'yt-radar.html';
 const LANGS = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
@@ -47,6 +48,7 @@ root = root.replace(dictRe, dictLiteral);
   if (missing.length) console.warn('   [en root] not found in body:', missing.join(', '));
   root = head + rest;
 }
+root = injectResearch(root, 'en', 'radar').html;
 fs.writeFileSync(ROOT, root, 'utf8');
 console.log('root T dict rewritten with', Object.keys(T).length, 'languages + EN body normalized');
 
@@ -87,7 +89,7 @@ for (const lang of LANGS){
   headBody = headBody.replace('href="yt-radar-privacy.html"', 'href="/' + lang + '/yt-radar-privacy"');
   tail = tail.replace('src="lang-switcher.js"', 'src="/lang-switcher.js"');
 
-  const doc = headBody + tail;
+  const doc = injectResearch(headBody + tail, lang, 'radar').html;
   const dir = lang;
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'yt-radar.html'), doc, 'utf8');
