@@ -17,7 +17,7 @@ import { fileURLToPath } from 'url';
 const LANGS = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
 
 const RESEARCH = {
-  url: 'https://mmcarvalhodev.github.io/intent-ai-concept/',
+  url: '/intent-ai',
   name: 'Intent AI',
   label: {
     en:'Research', pt:'Pesquisa', es:'Investigación', fr:'Recherche', de:'Forschung',
@@ -55,15 +55,15 @@ function strings(lang){
 // shape 'radar' -> compact line under the copyright in the simple radar footer
 function researchBlock(lang, shape){
   const { L, D } = strings(lang);
-  const link = '<a href="' + RESEARCH.url + '" target="_blank" rel="noopener"';
+  const link = '<a href="' + RESEARCH.url + '"';
   if (shape === 'home'){
     return [
       '      <!-- research:start -->',
       '      <div style="padding:18px 0;border-bottom:1px solid #1e2736;font-size:12px;line-height:1.6;">',
-      '        <span style="text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#334155;">' + L + '</span>',
+      '        <span style="text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#fb923c;">' + L + '</span>',
       '        &nbsp;·&nbsp;',
-      '        ' + link + ' style="color:#94a3b8;text-decoration:none;">' + RESEARCH.name + '</a>',
-      '        <span style="color:#475569;"> — ' + D + '</span>',
+      '        ' + link + ' style="color:#fb923c;text-decoration:none;">' + RESEARCH.name + '</a>',
+      '        <span style="color:#fb923c;opacity:.75;"> — ' + D + '</span>',
       '      </div>',
       '      <!-- research:end -->',
     ].join('\n');
@@ -71,11 +71,11 @@ function researchBlock(lang, shape){
   return [
     '    <!-- research:start -->',
     '    <div style="margin-top:16px;font-size:12px;line-height:1.6;">',
-    '      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;opacity:.65;">' + L + '</span>',
+    '      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">' + L + '</span>',
     '      &nbsp;·&nbsp;',
-    '      ' + link + '>' + RESEARCH.name + '</a>',
+    '      ' + link + ' style="color:#fb923c;text-decoration:none;">' + RESEARCH.name + '</a>',
     '      &nbsp;—&nbsp;',
-    '      <span style="opacity:.65;">' + D + '</span>',
+    '      <span style="color:#fb923c;opacity:.75;">' + D + '</span>',
     '    </div>',
     '    <!-- research:end -->',
   ].join('\n');

@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intent AI — uma arquitetura que processa intenção</title>
+<meta name="description" content="Intent AI — uma arquitetura cognitiva que processa intenção, não linguagem. Projeto de pesquisa do NODUS.">
+<link rel="canonical" href="https://nodus-ai.app/intent-ai">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intent AI — uma arquitetura que processa intenção">
+<meta property="og:description" content="Uma máquina que processa intenção, não linguagem. Projeto de pesquisa do NODUS.">
+<meta property="og:url" content="https://nodus-ai.app/intent-ai">
+<meta property="og:image" content="https://nodus-ai.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#0a0a0f;
+    --bg-soft:#11111a;
+    --ink:#ece9e2;
+    --ink-dim:#9a978f;
+    --ink-faint:#5d5b56;
+    --fire:#e6b566;       /* luz / calor — o arquétipo do fogo */
+    --cool:#83b4c6;       /* pensamento */
+    --line:#22222e;
+    --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(120% 80% at 50% -10%, rgba(230,181,102,.06), transparent 60%),
+               radial-gradient(100% 60% at 50% 110%, rgba(131,180,198,.05), transparent 60%);
+  }
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 28px}
+  section{padding:14vh 0;border-bottom:1px solid transparent}
+
+  /* ── language toggle ── */
+  .lang-toggle{position:fixed;top:16px;right:16px;z-index:50;display:flex;gap:2px;
+    background:rgba(10,10,15,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:30px;padding:3px}
+  .lang-toggle button{font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;font-weight:600;
+    color:var(--ink-faint);background:transparent;border:none;border-radius:30px;
+    padding:6px 13px;cursor:pointer;transition:color .2s,background .2s}
+  .lang-toggle button.active{color:#15140f;background:var(--fire)}
+  .lang-toggle button:not(.active):hover{color:var(--ink)}
+
+  /* ── reveal ── */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 1.1s ease,transform 1.1s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ── type scale ── */
+  .kicker{font-family:var(--sans);font-size:.74rem;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--fire);margin-bottom:1.4rem}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,7vw,4.6rem);
+    line-height:1.04;letter-spacing:-.01em}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,4.4vw,2.9rem);
+    line-height:1.12;letter-spacing:-.01em;margin-bottom:1.6rem}
+  .lede{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.7rem);
+    color:var(--ink-dim);line-height:1.5}
+  p{font-size:1.06rem;color:var(--ink-dim);margin-bottom:1.1rem}
+  p strong{color:var(--ink);font-weight:600}
+  .em{color:var(--fire)}
+  .em-cool{color:var(--cool)}
+
+  /* ── hero ── */
+  .hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;
+    padding-top:8vh;padding-bottom:8vh}
+  .hero .mark{font-family:var(--sans);font-size:.8rem;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--ink-faint);margin-bottom:auto;padding-top:4vh}
+  .hero h1 .line2{color:var(--fire)}
+  .hero .sub{margin-top:2.4rem;max-width:34ch}
+  .scrollcue{margin-top:5rem;font-size:.78rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-faint)}
+  .scrollcue::after{content:"";display:block;width:1px;height:46px;margin-top:14px;
+    background:linear-gradient(var(--ink-faint),transparent)}
+
+  /* ── the contrast statement ── */
+  .statement{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.3rem);
+    line-height:1.32;color:var(--ink)}
+  .statement .a{color:var(--ink-faint)}
+  .statement .b{color:var(--fire)}
+
+  /* ── layer stack ── */
+  .stack{margin:2.4rem 0 1rem;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    background:linear-gradient(var(--bg-soft),#0c0c14)}
+  .layer{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:18px;
+    padding:17px 20px;border-bottom:1px solid var(--line);position:relative}
+  .layer:last-child{border-bottom:none}
+  .layer .tag{font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;
+    color:var(--ink-faint);font-weight:600}
+  .layer .name{font-family:var(--serif);font-size:1.18rem;color:var(--ink)}
+  .layer .role{font-size:.92rem;color:var(--ink-dim);margin-top:1px}
+  .layer .count{text-align:right;line-height:1}
+  .layer .count .num{font-family:var(--serif);font-size:1.5rem;color:var(--ink)}
+  .layer .count .unit{display:block;font-size:.62rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-faint);margin-top:3px}
+  .layer.heart{background:linear-gradient(90deg,rgba(230,181,102,.09),transparent)}
+  .layer.heart .name,.layer.heart .tag,.layer.heart .count .num{color:var(--fire)}
+  .layer.pending{opacity:.5}
+  .layer.pending .count .num{font-family:var(--sans);font-size:.78rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+  .stack-cap{display:flex;justify-content:flex-end;font-size:.66rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);margin-bottom:.7rem;padding-right:4px}
+  .planes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  @media(max-width:560px){.planes{grid-template-columns:1fr}}
+  .plane{border:1px solid var(--line);border-radius:10px;padding:20px 20px 22px;
+    background:linear-gradient(var(--bg-soft),#0c0c14)}
+  .plane .tag{font-family:var(--sans);font-size:.7rem;letter-spacing:.2em;
+    text-transform:uppercase;margin-bottom:.7rem}
+  .plane.lt .tag{color:var(--cool)}
+  .plane.tm .tag{color:var(--fire)}
+  .plane .name{font-family:var(--serif);font-size:1.3rem;color:var(--ink);margin-bottom:.5rem}
+  .plane p{font-size:.95rem;margin-bottom:0}
+  .plane-count{margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--line);
+    display:flex;align-items:baseline;gap:7px}
+  .plane-count .num{font-family:var(--serif);font-size:1.4rem;color:var(--ink)}
+  .plane.lt .plane-count .num{color:var(--cool)}
+  .plane.tm .plane-count .num{color:var(--fire)}
+  .plane-count .unit{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint)}
+  .stack-note{font-size:.86rem;color:var(--ink-faint);margin-top:1.2rem;font-style:italic}
+
+  /* ── principles ── */
+  .principle{padding:2.2rem 0;border-top:1px solid var(--line)}
+  .principle:first-of-type{border-top:none}
+  .principle .n{font-family:var(--serif);font-size:.95rem;color:var(--fire);
+    letter-spacing:.05em;margin-bottom:.5rem}
+  .principle h3{font-family:var(--serif);font-weight:500;font-size:1.5rem;
+    color:var(--ink);margin-bottom:.5rem;line-height:1.25}
+  .principle p{margin-bottom:0;font-size:1rem}
+
+  /* ── pull quote ── */
+  .pull{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.3;
+    color:var(--ink);text-align:center;max-width:18ch;margin:0 auto}
+  .pull .em{display:block}
+
+  /* ── composition ── */
+  .compose-eq{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;
+    margin:2.6rem 0 1.6rem}
+  .tok{font-family:var(--sans);font-size:.95rem;padding:9px 16px;border:1px solid var(--line);
+    border-radius:30px;color:var(--ink-dim);background:var(--bg-soft);white-space:nowrap}
+  .op{color:var(--ink-faint);font-size:1.05rem}
+  .arrow{color:var(--fire);font-size:1.3rem;margin:0 5px}
+  .result{font-family:var(--serif);font-size:1.4rem;color:var(--fire);padding:9px 22px;
+    border:1px solid rgba(230,181,102,.35);border-radius:30px;
+    background:linear-gradient(rgba(230,181,102,.1),transparent)}
+  .metrics{display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;margin-top:2.8rem;
+    padding-top:2rem;border-top:1px solid var(--line)}
+  .metric{text-align:center}
+  .metric .m-num{font-family:var(--serif);font-size:2rem;color:var(--ink);display:block;line-height:1}
+  .metric .m-lab{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin-top:7px;display:block}
+
+  /* ── convergence ── */
+  .converge{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:2.2rem 0 0}
+  @media(max-width:560px){.converge{grid-template-columns:1fr}}
+  .qcard{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--bg-soft)}
+  .qcard .flag,.acard .flag{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:.55rem}
+  .qcard .q{font-family:var(--serif);font-size:1.02rem;color:var(--ink);line-height:1.35}
+  .meet{text-align:center;margin:20px 0;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--fire)}
+  .meet span{display:block;font-family:var(--serif);font-size:1.2rem;letter-spacing:normal;
+    text-transform:none;color:var(--ink);margin-top:7px}
+  .acard{border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+    background:linear-gradient(var(--bg-soft),#0c0c14)}
+  .acard .flag{color:var(--cool)}
+  .acard .a{font-size:.92rem;color:var(--ink-dim);line-height:1.45}
+  .acard .a b{color:var(--ink);font-weight:600}
+
+  /* ── honesty ── */
+  .honesty{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:2.2rem}
+  @media(max-width:560px){.honesty{grid-template-columns:1fr}}
+  .hcard{border:1px solid var(--line);border-radius:10px;padding:22px}
+  .hcard .lab{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.85rem}
+  .hcard.bad{opacity:.6}
+  .hcard.bad .lab{color:var(--ink-faint)}
+  .hcard.good{border-color:rgba(230,181,102,.3);
+    background:linear-gradient(rgba(230,181,102,.06),transparent)}
+  .hcard.good .lab{color:var(--fire)}
+  .hcard .txt{font-family:var(--serif);font-size:1.06rem;line-height:1.4;color:var(--ink-dim)}
+  .hcard.good .txt{color:var(--ink)}
+
+  /* ── inner structure (semantic tree) ── */
+  .ast-wrap{margin:2.2rem 0 0;border:1px solid var(--line);border-radius:12px;
+    background:radial-gradient(120% 80% at 50% -5%, rgba(230,181,102,.05), transparent 55%),
+               linear-gradient(var(--bg-soft),#0b0b12);
+    padding:28px 18px 18px;overflow:hidden;position:relative}
+  .ast-sentence{text-align:center;font-family:var(--serif);font-size:1rem;color:var(--ink-dim);
+    margin:0 auto 18px;max-width:46ch;font-style:italic;line-height:1.4}
+  .ast svg{width:100%;height:auto;display:block;max-width:580px;margin:0 auto}
+  .ast .edge{stroke:var(--line);stroke-width:1.5;fill:none;stroke-dasharray:260;stroke-dashoffset:260}
+  .ast .node{opacity:0;transform-box:fill-box;transform-origin:center}
+  .ast .node rect{fill:url(#nodefill);stroke:var(--line);stroke-width:1.2}
+  .ast .node text{font-family:var(--sans);font-size:13px;fill:var(--ink);
+    text-anchor:middle;dominant-baseline:middle}
+  .ast .rel text{fill:var(--cool);font-style:italic}
+  .ast .ent text{font-family:var(--serif);font-size:14px}
+  .ast .root rect{stroke:rgba(230,181,102,.55)}
+  .ast .root text{fill:var(--fire);font-family:var(--serif);font-size:14px}
+
+  .ast-glow{position:absolute;inset:0;pointer-events:none;opacity:0;z-index:0;border-radius:12px}
+  .glow-cool{background:radial-gradient(58% 58% at 50% 42%, rgba(131,180,198,.17), transparent 72%)}
+  .glow-warm{background:radial-gradient(64% 64% at 50% 46%, rgba(230,181,102,.20), transparent 72%)}
+  .ast-sentence,.ast,.ast-state,.ast-note,.ast-actions,.ast-answer{position:relative;z-index:1}
+
+  .ast-wrap.playing .glow-cool{animation:glowCool 8s ease .6s forwards}
+  .ast-wrap.playing .glow-warm{animation:glowWarm 2.2s ease 7s forwards, warmBreath 4.2s ease-in-out 9.4s infinite}
+  .ast-wrap.playing .node{animation:nodeIn .7s cubic-bezier(.2,.85,.25,1) var(--d,0s) both}
+  .ast-wrap.playing .edge{animation:edgeIn .8s ease var(--d,0s) forwards}
+  .ast-wrap.playing .node:not(.root) rect{animation:examine 3s ease var(--d,0s) both}
+  .ast-wrap.playing .root rect{animation:rootWait 1.5s ease .5s 4,
+    examineRoot 1.8s ease 6.6s both, rootBreath 4.2s ease-in-out 8.6s infinite}
+
+  @keyframes nodeIn{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}
+  @keyframes edgeIn{to{stroke-dashoffset:0}}
+  @keyframes glowCool{0%{opacity:0}14%{opacity:1}72%{opacity:.8}100%{opacity:0}}
+  @keyframes glowWarm{from{opacity:0}to{opacity:.9}}
+  @keyframes warmBreath{0%,100%{opacity:.65}50%{opacity:1}}
+  @keyframes examine{
+    0%{stroke:rgba(131,180,198,.65);filter:drop-shadow(0 0 0 rgba(131,180,198,0))}
+    30%{filter:drop-shadow(0 0 10px rgba(131,180,198,.55))}
+    60%{stroke:rgba(131,180,198,.55);filter:drop-shadow(0 0 4px rgba(131,180,198,.3))}
+    100%{stroke:var(--line);filter:none}}
+  @keyframes rootWait{0%,100%{filter:drop-shadow(0 0 1px rgba(131,180,198,.18))}
+    50%{filter:drop-shadow(0 0 10px rgba(131,180,198,.5))}}
+  @keyframes examineRoot{0%{stroke:rgba(131,180,198,.65)}100%{stroke:rgba(230,181,102,.6)}}
+  @keyframes rootBreath{0%,100%{filter:drop-shadow(0 0 3px rgba(230,181,102,.2))}
+    50%{filter:drop-shadow(0 0 14px rgba(230,181,102,.48))}}
+
+  .ast-state{position:relative;height:26px;margin-top:22px;text-align:center}
+  .ast-state span{position:absolute;left:0;right:0;opacity:0;font-size:.82rem;font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--cool);text-shadow:0 0 16px currentColor}
+  .ast-state .s-warm{color:#cdb892}
+  .ast-state .s-final{color:var(--fire)}
+  .ast-wrap.playing .ast-state span:not(.s-final){animation:stateShow 2s ease var(--d,0s) forwards}
+  .ast-wrap.playing .ast-state .s-final{animation:stateHold 1.2s ease var(--d,0s) forwards}
+  @keyframes stateShow{0%{opacity:0}18%{opacity:1}80%{opacity:1}100%{opacity:0}}
+  @keyframes stateHold{to{opacity:1}}
+
+  .ast-note{text-align:center;font-size:.72rem;letter-spacing:.04em;color:var(--ink-faint);
+    margin-top:16px;font-style:italic}
+  .ast-actions{text-align:center;margin-top:16px}
+  .ast-restart{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
+    background:transparent;border:1px solid var(--line);border-radius:30px;padding:9px 18px;
+    cursor:pointer;transition:color .25s,border-color .25s}
+  .ast-restart:hover{color:var(--fire);border-color:rgba(230,181,102,.4)}
+  .ast-restart .ico{font-size:1rem;line-height:1}
+
+  .ast-answer{opacity:0;margin-top:22px;padding:20px 22px;border:1px solid var(--line);
+    border-left:2px solid rgba(230,181,102,.55);border-radius:10px;
+    background:linear-gradient(rgba(230,181,102,.05),transparent)}
+  .aa-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fire);
+    margin-bottom:.8rem}
+  .aa-verdict{font-family:var(--serif);font-size:1.1rem;color:var(--ink);line-height:1.4;
+    margin-bottom:.9rem}
+  .aa-line{font-size:.9rem;color:var(--ink-dim);line-height:1.46;margin-bottom:.55rem}
+  .aa-line:last-child{margin-bottom:0}
+  .aa-line b{color:var(--ink);font-weight:600}
+  .ast-wrap.playing .ast-answer{animation:answerIn 1.3s ease 9.4s both}
+  @keyframes answerIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  @media (prefers-reduced-motion: reduce){
+    .ast .node{opacity:1!important}
+    .ast-wrap *{animation:none!important}
+    .ast .edge{stroke-dashoffset:0!important}
+    .ast .root rect{stroke:rgba(230,181,102,.6)!important}
+    .glow-warm{opacity:.85!important}
+    .ast-state .s-final{opacity:1!important}
+    .ast-answer{opacity:1!important}
+    .ast-restart{display:none}
+  }
+
+  /* ── papers ── */
+  .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.4rem}
+  @media(max-width:640px){.papers{grid-template-columns:1fr}}
+  .paper{position:relative;border:1px solid var(--line);border-radius:10px;padding:24px 20px 20px;
+    background:linear-gradient(var(--bg-soft),#0c0c14);overflow:hidden}
+  .paper::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--fire),transparent)}
+  .paper .ptag{display:flex;justify-content:space-between;font-size:.62rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);margin-bottom:1rem}
+  .paper .ptag .wl{color:var(--fire)}
+  .paper .pttl{font-family:var(--serif);font-size:1.24rem;color:var(--ink);margin-bottom:.55rem;line-height:1.18}
+  .paper .pquote{font-family:var(--serif);font-style:italic;font-size:.98rem;color:var(--cool);
+    margin-bottom:.75rem;line-height:1.35}
+  .paper .pdesc{font-size:.87rem;color:var(--ink-dim);margin-bottom:1.1rem;line-height:1.45}
+  .paper .pmeta{font-size:.64rem;letter-spacing:.12em;color:var(--ink-faint);
+    padding-top:.85rem;border-top:1px solid var(--line)}
+
+  /* ── current-focus status ── */
+  .status{margin-top:2.2rem;border:1px solid var(--line);border-radius:12px;padding:24px 26px;
+    background:linear-gradient(rgba(131,180,198,.055),transparent);border-left:2px solid var(--cool)}
+  .status .slabel{display:flex;align-items:center;gap:10px;font-size:.66rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--cool);margin-bottom:.85rem}
+  .status .dot{width:8px;height:8px;border-radius:50%;background:var(--cool);flex:none;
+    animation:livePulse 2.2s ease-in-out infinite}
+  @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(131,180,198,.5)}
+    70%{box-shadow:0 0 0 9px rgba(131,180,198,0)}100%{box-shadow:0 0 0 0 rgba(131,180,198,0)}}
+  .status p{font-size:1.02rem;color:var(--ink-dim);margin:0;line-height:1.5}
+  .status p b{color:var(--ink);font-weight:600}
+
+  /* ── why it matters ── */
+  .why{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:2.4rem}
+  @media(max-width:600px){.why{grid-template-columns:1fr}}
+  .why-card{border:1px solid var(--line);border-radius:10px;padding:20px 22px;
+    background:linear-gradient(var(--bg-soft),#0c0c14)}
+  .why-card .wp{font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:.5rem;line-height:1.25}
+  .why-card .wa{font-size:.92rem;color:var(--ink-dim);line-height:1.45}
+
+  /* ── simple structure convergence ── */
+  .conv2{margin-top:2.2rem;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    background:linear-gradient(var(--bg-soft),#0b0b12)}
+  .conv2 .sents{display:grid;grid-template-columns:1fr 1fr}
+  @media(max-width:520px){.conv2 .sents{grid-template-columns:1fr}}
+  .conv2 .sent{padding:20px 22px;text-align:center;border-bottom:1px solid var(--line)}
+  .conv2 .sent:first-child{border-right:1px solid var(--line)}
+  @media(max-width:520px){.conv2 .sent:first-child{border-right:none}}
+  .conv2 .sflag{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.5rem}
+  .conv2 .sent .s{font-family:var(--serif);font-size:1.08rem;color:var(--ink)}
+  .conv2 .down{text-align:center;color:var(--fire);font-size:1.4rem;padding:8px 0 2px}
+  .struct{padding:4px 22px 24px}
+  .struct .stitle{text-align:center;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cool);margin:6px 0 16px}
+  .srow{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;
+    max-width:330px;margin:0 auto;padding:8px 0;border-bottom:1px solid var(--line)}
+  .srow:last-child{border-bottom:none}
+  .srow .role{font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);text-align:right}
+  .srow .val{font-family:var(--serif);font-size:1.08rem;color:var(--fire)}
+  .conv2-note{text-align:center;font-size:.84rem;color:var(--ink-faint);margin-top:1.2rem;font-style:italic}
+
+  /* ── project status checklist ── */
+  .slist{margin-top:1.6rem;display:flex;flex-direction:column}
+  .sitem{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;padding:10px 2px;
+    border-bottom:1px solid var(--line)}
+  .sitem:last-child{border-bottom:none}
+  .sitem .mk{font-size:.95rem;line-height:1.5;text-align:center}
+  .sitem .tx{font-size:.96rem;color:var(--ink-dim);line-height:1.45}
+  .sitem.done .mk{color:var(--fire)}
+  .sitem.done .tx{color:var(--ink)}
+  .sitem.wip .mk{color:var(--cool)}
+  .sitem.todo{opacity:.65}
+  .sitem.todo .mk{color:var(--ink-faint)}
+
+  /* ── compartmentalized knowledge ── */
+  .domains{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:2.4rem}
+  @media(max-width:680px){.domains{grid-template-columns:1fr 1fr}}
+  .dom{border:1px solid var(--line);border-radius:10px;padding:16px 14px;text-align:center;
+    background:linear-gradient(var(--bg-soft),#0c0c14)}
+  .dom.active{border-color:rgba(230,181,102,.4);background:linear-gradient(rgba(230,181,102,.06),transparent)}
+  .dom svg{width:100%;height:70px;display:block;margin:0 auto 12px}
+  .dom .gn{fill:var(--ink-dim)}
+  .dom .ge{stroke:var(--line);stroke-width:1.2;fill:none}
+  .dom.active .gn{fill:var(--fire)}
+  .dom.active .ge{stroke:rgba(230,181,102,.45)}
+  .dom .dname{font-family:var(--serif);font-size:1rem;color:var(--ink)}
+  .dom.active .dname{color:var(--fire)}
+  .dom .dmeta{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin-top:4px}
+  .dom.plug{border-style:dashed;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;min-height:138px}
+  .dom.plug .pl{font-size:1.9rem;color:var(--ink-faint);line-height:1;margin-bottom:8px}
+  .dom.plug .dname{color:var(--ink-dim)}
+  .domains-note{text-align:center;font-size:.86rem;color:var(--ink-faint);
+    margin-top:1.4rem;font-style:italic}
+
+  /* ── close ── */
+  .close{text-align:center;padding:22vh 0 26vh}
+  .close .mark{font-family:var(--sans);letter-spacing:.3em;text-transform:uppercase;
+    font-size:.78rem;color:var(--ink-faint);margin-top:2.4rem}
+  footer{padding:40px 0 60px;text-align:center;border-top:1px solid var(--line)}
+  footer p{font-size:.8rem;color:var(--ink-faint);margin:0}
+
+  /* ── back to NODUS (mirrors the language toggle, top-left) ── */
+  .nodus-back{position:fixed;top:16px;left:16px;z-index:50;font-family:var(--sans);
+    font-size:.7rem;letter-spacing:.1em;font-weight:600;color:var(--ink-faint);
+    background:rgba(10,10,15,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:30px;padding:6px 13px;text-decoration:none;
+    transition:color .2s}
+  .nodus-back:hover{color:var(--fire)}
+</style>
+</head>
+<body>
+
+<a class="nodus-back" href="https://nodus-ai.app/">← NODUS</a>
+
+<div class="lang-toggle" role="group" aria-label="language">
+  <button type="button" data-lang="pt">PT</button>
+  <button type="button" data-lang="en">EN</button>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────────── -->
+<header class="hero">
+  <div class="wrap" style="width:100%">
+    <div class="mark reveal in">Intent&nbsp;AI</div>
+    <h1 class="reveal in" data-i18n="hero.h1">
+      Uma máquina que processa<br>
+      <span class="line2">intenção</span>, não linguagem.
+    </h1>
+    <p class="lede sub reveal in" data-i18n="hero.lede">
+      A linguagem é apenas a porta de entrada.
+      O pensamento acontece por baixo dela.
+    </p>
+    <div class="scrollcue reveal in" data-i18n="hero.cue">role para descer</div>
+  </div>
+</header>
+
+<!-- ── THE CONTRAST ───────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <p class="statement reveal" data-i18n="contrast.s">
+      <span class="a">Os modelos de linguagem respondem
+      o que você&nbsp;disse.</span><br>
+      <span class="b">Intent&nbsp;AI responde o que você
+      quis&nbsp;dizer.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── WHY IT MATTERS ─────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="why.k">Por que isso importa</span>
+    <h2 class="reveal" data-i18n="why.h">Problemas reais que o Intent AI ataca.</h2>
+    <p class="reveal" data-i18n="why.p">
+      Cada camada da arquitetura nasce de uma dor concreta dos sistemas
+      de IA atuais.
+    </p>
+    <div class="why reveal">
+      <div class="why-card"><div class="wp" data-i18n="why.p1">Perde o fio em conversas longas</div><div class="wa" data-i18n="why.a1">A conversa é preservada e navegável — não comprimida e esquecida.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="why.p2">Depende demais da linguagem</div><div class="wa" data-i18n="why.a2">O raciocínio acontece em significado, não em palavras.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="why.p3">Não tem memória persistente</div><div class="wa" data-i18n="why.a3">O histórico acumula valor em vez de evaporar a cada sessão.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="why.p4">Alucina por associação estatística</div><div class="wa" data-i18n="why.a4">Sem base, o sistema declara a lacuna em vez de inventar.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="why.p5">Não consegue justificar o que decide</div><div class="wa" data-i18n="why.a5">Cada conclusão vem com sua sustentação — o porquê é explícito.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="why.p6">Quebra ao trocar de idioma</div><div class="wa" data-i18n="why.a6">A mesma estrutura responde em qualquer língua; a tradução fica só na borda.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE PREMISE ────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="prem.k">A premissa</span>
+    <h2 class="reveal" data-i18n="prem.h">Palavras são etiquetas.<br>Conceitos são outra coisa.</h2>
+    <p class="reveal" data-i18n="prem.p1">
+      Quando dois idiomas dão nomes diferentes à mesma ideia, a ideia
+      não muda — só a etiqueta. Por baixo de cada frase existe uma
+      estrutura de significado que <strong>não pertence a nenhuma
+      língua</strong>.
+    </p>
+    <p class="reveal" data-i18n="prem.p2">
+      A maioria dos sistemas de IA vive na superfície das palavras.
+      Intent AI desce até essa estrutura — e é lá, no terreno comum a
+      todas as línguas, que <span class="em">raciocina</span>.
+    </p>
+  </div>
+</section>
+
+<!-- ── SAME STRUCTURE (PT/EN → structure) ─────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="cv2.k">A prova mais simples</span>
+    <h2 class="reveal" data-i18n="cv2.h">A mesma intenção, em qualquer língua.</h2>
+    <p class="reveal" data-i18n="cv2.p">
+      Duas frases, duas línguas — e por baixo, uma única estrutura.
+      É sobre ela que o sistema pensa.
+    </p>
+    <div class="conv2 reveal">
+      <div class="sents">
+        <div class="sent"><div class="sflag">Português</div><div class="s">"João deu um livro para Maria"</div></div>
+        <div class="sent"><div class="sflag">English</div><div class="s">"John gave a book to Mary"</div></div>
+      </div>
+      <div class="down">↓</div>
+      <div class="struct">
+        <div class="stitle" data-i18n="cv2.st">estrutura de significado</div>
+        <div class="srow"><div class="role" data-i18n="cv2.r1">agente</div><div class="val" data-i18n="cv2.v1">João</div></div>
+        <div class="srow"><div class="role" data-i18n="cv2.r2">ação</div><div class="val" data-i18n="cv2.v2">entregar</div></div>
+        <div class="srow"><div class="role" data-i18n="cv2.r3">objeto</div><div class="val" data-i18n="cv2.v3">livro</div></div>
+        <div class="srow"><div class="role" data-i18n="cv2.r4">destino</div><div class="val" data-i18n="cv2.v4">Maria</div></div>
+      </div>
+    </div>
+    <p class="conv2-note reveal" data-i18n="cv2.note">A frase muda de idioma. A estrutura, não.</p>
+  </div>
+</section>
+
+<!-- ── COMPOSITION ────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="comp.k">Como nasce um conceito</span>
+    <h2 class="reveal" data-i18n="comp.h">Um conceito não se guarda.<br>Constrói-se.</h2>
+    <p class="reveal" data-i18n="comp.p">
+      A partir de um pequeno alfabeto de elementos universais de
+      significado, o sistema <strong>compõe</strong> ideias — como
+      átomos formam moléculas. O sentido de "fogo" não está numa
+      gaveta à espera: <span class="em">emerge</span> da combinação
+      das suas partes.
+    </p>
+    <div class="compose-eq reveal">
+      <span class="tok" data-i18n="comp.t1">algo etéreo</span>
+      <span class="op">+</span>
+      <span class="tok" data-i18n="comp.t2">luz</span>
+      <span class="op">+</span>
+      <span class="tok" data-i18n="comp.t3">temperatura</span>
+      <span class="arrow">→</span>
+      <span class="result" data-i18n="comp.res">fogo</span>
+    </div>
+    <p class="reveal" style="text-align:center;font-size:.96rem" data-i18n="comp.note">
+      A mesma gramática de composição constrói desde o concreto até o
+      abstrato — em níveis de profundidade crescente.
+    </p>
+    <div class="metrics reveal">
+      <div class="metric"><span class="m-num">88</span><span class="m-lab" data-i18n="comp.m1">elementos universais</span></div>
+      <div class="metric"><span class="m-num">5</span><span class="m-lab" data-i18n="comp.m2">níveis de composição</span></div>
+      <div class="metric"><span class="m-num" data-i18n="comp.m3n">milhares</span><span class="m-lab" data-i18n="comp.m3">de conceitos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INNER STRUCTURE ────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="ast.k">Por baixo da frase</span>
+    <h2 class="reveal" data-i18n="ast.h">Não uma sequência de palavras.<br>Uma estrutura de significado.</h2>
+    <p class="reveal" data-i18n="ast.p">
+      Antes de responder, o sistema desmonta a pergunta na sua
+      arquitetura de intenção — quem, sobre quem, em que sentido, com
+      que medida. É sobre <strong>esta estrutura</strong>, e não sobre
+      as palavras, que ele <span class="em">raciocina</span>.
+    </p>
+    <div class="ast-wrap reveal">
+      <div class="ast-glow glow-cool"></div>
+      <div class="ast-glow glow-warm"></div>
+      <div class="ast-sentence" data-i18n="ast.sentence">"Até que ponto Sócrates foi produto da propaganda de Platão, em detrimento dos sofistas?"</div>
+      <div class="ast">
+        <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="semantic structure">
+          <defs>
+            <linearGradient id="nodefill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#16161f"/><stop offset="1" stop-color="#0e0e16"/>
+            </linearGradient>
+          </defs>
+          <path class="edge" style="--d:1.4s" d="M320,90 L95,106"/>
+          <path class="edge" style="--d:2.2s" d="M320,90 L320,106"/>
+          <path class="edge" style="--d:3s"   d="M320,90 L545,106"/>
+          <path class="edge" style="--d:4.2s" d="M320,150 L320,212"/>
+          <path class="edge" style="--d:5s"   d="M545,150 L545,212"/>
+          <g class="node root" style="--d:.5s"><rect x="212" y="46" width="216" height="44" rx="22"/><text x="320" y="68" data-i18n="ast.n_root">avaliar — em que grau</text></g>
+          <g class="node ent" style="--d:1.6s"><rect x="38" y="106" width="114" height="44" rx="22"/><text x="95" y="128" data-i18n="ast.n_soc">Sócrates</text></g>
+          <g class="node rel" style="--d:2.4s"><rect x="258" y="106" width="124" height="44" rx="22"/><text x="320" y="128" data-i18n="ast.n_prod">produto de</text></g>
+          <g class="node rel" style="--d:3.2s"><rect x="493" y="106" width="104" height="44" rx="22"/><text x="545" y="128" data-i18n="ast.n_contra">contra</text></g>
+          <g class="node ent" style="--d:4.4s"><rect x="222" y="212" width="196" height="44" rx="22"/><text x="320" y="234" data-i18n="ast.n_plato">Platão · propaganda</text></g>
+          <g class="node ent" style="--d:5.2s"><rect x="478" y="212" width="134" height="44" rx="22"/><text x="545" y="234" data-i18n="ast.n_soph">os sofistas</text></g>
+        </svg>
+      </div>
+      <div class="ast-state">
+        <span style="--d:.6s" data-i18n="ast.s1">a reconhecer a intenção…</span>
+        <span style="--d:2.4s" data-i18n="ast.s2">dúvida — conceito parcial…</span>
+        <span style="--d:4.4s" data-i18n="ast.s3">a buscar as entidades…</span>
+        <span class="s-warm" style="--d:6.6s" data-i18n="ast.s4">certeza</span>
+        <span class="s-final" style="--d:8.6s" data-i18n="ast.s5">conclusão</span>
+      </div>
+      <div class="ast-answer">
+        <div class="aa-label" data-i18n="ast.alabel">a resposta gerada</div>
+        <p class="aa-verdict" data-i18n="ast.averdict">"Em parte: há mediação massiva de Platão, mas fontes independentes atestam um núcleo próprio de Sócrates."</p>
+        <p class="aa-line" data-i18n="ast.aline1"><b>Sustentação registrada:</b> Sofistas contrastam com Sócrates; Platão foi discípulo de Sócrates; Sócrates precede Platão.</p>
+        <p class="aa-line" data-i18n="ast.aline2"><b>Porquê esta leitura:</b> cobre 5 nós de evidência e reconhece contra-evidência de Protágoras de Abdera; 2 leituras alternativas preteridas.</p>
+        <p class="aa-line" data-i18n="ast.aline3"><b>O que a estrutura não decide:</b> o grau exato dessa construção e a intenção de Platão — as fontes disponíveis não são independentes entre si.</p>
+      </div>
+      <div class="ast-note" data-i18n="ast.note">representação simplificada — os rótulos substituem a estrutura interna real</div>
+      <div class="ast-actions">
+        <button class="ast-restart" type="button" data-i18n="ast.restart"><span class="ico">↻</span> reiniciar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PULL ───────────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <p class="pull reveal" data-i18n="pull1">
+      O pensamento vem primeiro.
+      <span class="em">A linguagem é a borda.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── THE ARCHITECTURE ───────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="arch.k">A arquitetura</span>
+    <h2 class="reveal" data-i18n="arch.h">Um sistema cognitivo em camadas.</h2>
+    <p class="reveal" data-i18n="arch.p">
+      Inspirada na forma como as redes se organizam em níveis, a
+      arquitetura empilha camadas cognitivas. <strong>Cada uma
+      responde a uma pergunta diferente</strong> — e nenhuma
+      substitui&nbsp;outra.
+    </p>
+
+    <div class="stack-cap reveal" data-i18n="arch.cap">módulos construídos e testados</div>
+    <div class="stack reveal">
+      <div class="layer pending">
+        <div class="tag">L7</div>
+        <div><div class="name" data-i18n="L7.name">Personalidade</div>
+          <div class="role" data-i18n="L7.role">a voz — aplicada depois do raciocínio, nunca antes</div></div>
+        <div class="count"><span class="num" data-i18n="L7.count">por vir</span></div>
+      </div>
+      <div class="layer heart">
+        <div class="tag">L6</div>
+        <div><div class="name" data-i18n="L6.name">Camada de Sentido</div>
+          <div class="role" data-i18n="L6.role">onde os conceitos vivem, independentes de idioma — o coração</div></div>
+        <div class="count"><span class="num">34</span><span class="unit" data-i18n="u.mod">módulos</span></div>
+      </div>
+      <div class="layer">
+        <div class="tag">L5</div>
+        <div><div class="name" data-i18n="L5.name">Foco</div>
+          <div class="role" data-i18n="L5.role">o que importa agora, e o que pode descansar</div></div>
+        <div class="count"><span class="num">10</span><span class="unit" data-i18n="u.mod">módulos</span></div>
+      </div>
+      <div class="layer">
+        <div class="tag">L4</div>
+        <div><div class="name" data-i18n="L4.name">Conversa contínua</div>
+          <div class="role" data-i18n="L4.role">a memória que acumula em vez de esquecer</div></div>
+        <div class="count"><span class="num">8</span><span class="unit" data-i18n="u.mod">módulos</span></div>
+      </div>
+      <div class="layer">
+        <div class="tag">L3</div>
+        <div><div class="name" data-i18n="L3.name">Conhecimento</div>
+          <div class="role" data-i18n="L3.role">o que o sistema sabe, e como navega o que sabe</div></div>
+        <div class="count"><span class="num">27</span><span class="unit" data-i18n="u.mod">módulos</span></div>
+      </div>
+      <div class="layer">
+        <div class="tag">L1·L2</div>
+        <div><div class="name" data-i18n="L12.name">Estrutura e similaridade</div>
+          <div class="role" data-i18n="L12.role">o substrato perceptual sobre o qual tudo assenta</div></div>
+        <div class="count"><span class="num">9</span><span class="unit" data-i18n="u.mod">módulos</span></div>
+      </div>
+    </div>
+
+    <p class="stack-note reveal" data-i18n="arch.note">
+      Duas dimensões atravessam a pilha inteira — não são camadas,
+      são planos.
+    </p>
+
+    <div class="planes reveal">
+      <div class="plane lt">
+        <div class="tag" data-i18n="lt.tag">o plano da linguagem</div>
+        <div class="name" data-i18n="lt.name">A borda</div>
+        <p data-i18n="lt.p">Cada idioma entra e sai por aqui. Por dentro, o sistema
+          nunca pensa em palavras. Adicionar uma língua é adicionar
+          uma tradução — não reconstruir o pensamento.</p>
+        <div class="plane-count"><span class="num">24</span><span class="unit" data-i18n="u.mod">módulos</span></div>
+      </div>
+      <div class="plane tm">
+        <div class="tag" data-i18n="tm.tag">o plano espacial</div>
+        <div class="name" data-i18n="tm.name">A tela mental</div>
+        <p data-i18n="tm.p">Um espaço onde ideias coexistem ao mesmo tempo, testam-se
+          e disputam. Uma imagem condensa o que o texto sequencial não
+          alcança. É instrumento de raciocínio — não de desenho.</p>
+        <div class="plane-count"><span class="num">11</span><span class="unit" data-i18n="u.mod">módulos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARTMENTALIZED KNOWLEDGE ────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="dom.k">Conhecimento compartimentado</span>
+    <h2 class="reveal" data-i18n="dom.h">O saber vive em compartimentos.</h2>
+    <p class="reveal" data-i18n="dom.p">
+      O conhecimento do sistema não é um bloco único. Cada domínio — a
+      filosofia, o cotidiano, um campo técnico — é um grafo próprio de
+      conceitos conectados. <strong>Adicionar uma área de saber é
+      encaixar um novo compartimento</strong>; o raciocínio que o
+      percorre é sempre o mesmo.
+    </p>
+    <div class="domains reveal">
+      <div class="dom active">
+        <svg viewBox="0 0 120 80" aria-hidden="true">
+          <line class="ge" x1="24" y1="24" x2="60" y2="16"/><line class="ge" x1="60" y1="16" x2="96" y2="30"/>
+          <line class="ge" x1="24" y1="24" x2="38" y2="56"/><line class="ge" x1="38" y1="56" x2="80" y2="58"/>
+          <line class="ge" x1="96" y1="30" x2="80" y2="58"/><line class="ge" x1="60" y1="16" x2="38" y2="56"/>
+          <circle class="gn" cx="24" cy="24" r="4"/><circle class="gn" cx="60" cy="16" r="4"/>
+          <circle class="gn" cx="96" cy="30" r="4"/><circle class="gn" cx="38" cy="56" r="4"/><circle class="gn" cx="80" cy="58" r="4"/>
+        </svg>
+        <div class="dname" data-i18n="dom.d1">Filosofia Grega</div>
+        <div class="dmeta" data-i18n="dom.m1">em demonstração</div>
+      </div>
+      <div class="dom">
+        <svg viewBox="0 0 120 80" aria-hidden="true">
+          <line class="ge" x1="22" y1="40" x2="52" y2="20"/><line class="ge" x1="22" y1="40" x2="52" y2="60"/>
+          <line class="ge" x1="52" y1="20" x2="86" y2="28"/><line class="ge" x1="52" y1="60" x2="94" y2="56"/>
+          <line class="ge" x1="86" y1="28" x2="94" y2="56"/>
+          <circle class="gn" cx="22" cy="40" r="4"/><circle class="gn" cx="52" cy="20" r="4"/>
+          <circle class="gn" cx="52" cy="60" r="4"/><circle class="gn" cx="86" cy="28" r="4"/><circle class="gn" cx="94" cy="56" r="4"/>
+        </svg>
+        <div class="dname" data-i18n="dom.d2">Cotidiano</div>
+      </div>
+      <div class="dom">
+        <svg viewBox="0 0 120 80" aria-hidden="true">
+          <line class="ge" x1="30" y1="22" x2="68" y2="28"/><line class="ge" x1="30" y1="22" x2="24" y2="56"/>
+          <line class="ge" x1="68" y1="28" x2="58" y2="58"/><line class="ge" x1="58" y1="58" x2="24" y2="56"/>
+          <line class="ge" x1="68" y1="28" x2="92" y2="44"/>
+          <circle class="gn" cx="30" cy="22" r="4"/><circle class="gn" cx="68" cy="28" r="4"/>
+          <circle class="gn" cx="24" cy="56" r="4"/><circle class="gn" cx="58" cy="58" r="4"/><circle class="gn" cx="92" cy="44" r="4"/>
+        </svg>
+        <div class="dname" data-i18n="dom.d3">Construção</div>
+      </div>
+      <div class="dom plug">
+        <div class="pl">+</div>
+        <div class="dname" data-i18n="dom.d4">novo domínio</div>
+      </div>
+    </div>
+    <p class="domains-note reveal" data-i18n="dom.note">
+      O mesmo motor percorre qualquer compartimento. Trocar de domínio
+      não reescreve a mente — só troca o mapa.
+    </p>
+  </div>
+</section>
+
+<!-- ── PAPERS ─────────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="pap.k">Fundamentos escritos</span>
+    <h2 class="reveal" data-i18n="pap.h">Não é vapor.<br>É pesquisa documentada.</h2>
+    <p class="reveal" data-i18n="pap.p">
+      Antes de cada camada existir em código, existiu em pensamento.
+      Três delas têm já o seu <strong>fundamento formal</strong> —
+      escrito, datado, argumentado.
+    </p>
+    <div class="papers reveal">
+      <div class="paper">
+        <div class="ptag"><span data-i18n="pap1.tag">camada L4</span><span class="wl">whitepaper</span></div>
+        <div class="pttl" data-i18n="pap1.ttl">Conversa Contínua</div>
+        <div class="pquote" data-i18n="pap1.q">"Conversa é dado. Dado tem valor."</div>
+        <div class="pdesc" data-i18n="pap1.d">A memória que acumula em vez de descartar — compressão sem destruição.</div>
+        <div class="pmeta">M. M. Carvalho · v2.0 · 2026</div>
+      </div>
+      <div class="paper">
+        <div class="ptag"><span data-i18n="pap2.tag">camada L5</span><span class="wl">whitepaper</span></div>
+        <div class="pttl" data-i18n="pap2.ttl">Árvore Focal Dinâmica</div>
+        <div class="pquote" data-i18n="pap2.q">"Atenção difusa é atenção inútil."</div>
+        <div class="pdesc" data-i18n="pap2.d">Foco e relevância: o que importa agora fica ativo, o resto acessível em fundo.</div>
+        <div class="pmeta">M. M. Carvalho · v2.0 · 2026</div>
+      </div>
+      <div class="paper">
+        <div class="ptag"><span data-i18n="pap3.tag">camada L6</span><span class="wl" data-i18n="pap3.wl">fundamento</span></div>
+        <div class="pttl" data-i18n="pap3.ttl">Camada de Sentido</div>
+        <div class="pquote" data-i18n="pap3.q">"A linguagem não é o substrato do pensamento."</div>
+        <div class="pdesc" data-i18n="pap3.d">O fundamento filosófico — porque os arquétipos precedem as palavras.</div>
+        <div class="pmeta">M. M. Carvalho · v1.0 · 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONVERGENCE (cards stay bilingual on purpose) ───── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="conv.k">Linguagem nas bordas</span>
+    <h2 class="reveal" data-i18n="conv.h">Uma pergunta. Duas línguas.<br>O mesmo pensamento.</h2>
+    <p class="reveal" data-i18n="conv.p">
+      A frase entra numa língua e sai noutra. Entre as duas, o sistema
+      raciocina num terreno que <strong>não é português nem inglês</strong>
+      — é o significado em si.
+    </p>
+    <div class="converge reveal">
+      <div class="qcard"><div class="flag" data-i18n="conv.qf1">pergunta · PT</div>
+        <div class="q">"Até que ponto Sócrates foi produto da propaganda de Platão?"</div></div>
+      <div class="qcard"><div class="flag" data-i18n="conv.qf2">pergunta · EN</div>
+        <div class="q">"To what extent was Socrates a product of Plato's propaganda?"</div></div>
+    </div>
+    <div class="meet reveal" data-i18n="conv.meet">convergem em<span>uma única estrutura de significado</span></div>
+    <div class="converge reveal">
+      <div class="acard"><div class="flag" data-i18n="conv.af1">resposta · PT</div>
+        <div class="a"><b>Sustentação registrada:</b> Platão foi discípulo de Sócrates…</div></div>
+      <div class="acard"><div class="flag" data-i18n="conv.af2">resposta · EN</div>
+        <div class="a"><b>Registered support:</b> Plato was a student of Socrates…</div></div>
+    </div>
+    <p class="stack-note reveal" data-i18n="conv.note">O raciocínio é o mesmo. Só a superfície muda de língua.</p>
+  </div>
+</section>
+
+<!-- ── PROJECT STATUS ─────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="st.k">Onde estamos</span>
+    <h2 class="reveal" data-i18n="st.h">Status do projeto.</h2>
+    <div class="slist reveal">
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i1">Arquitetura cognitiva em camadas — definida</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i2">Camada de Sentido — implementada e funcional</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i3">Conhecimento, Foco, Conversa Contínua, Neural e Bit Hierárquico — implementados e testados</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i4">Pipeline de raciocínio ponta a ponta</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i5">Três papers fundadores documentados</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i6">Raciocínio bilíngue (PT + EN) a partir da mesma estrutura</div></div>
+      <div class="sitem wip"><div class="mk">⟳</div><div class="tx" data-i18n="st.i7">Prova mecânica de equivalência entre idiomas — em desenvolvimento</div></div>
+      <div class="sitem wip"><div class="mk">⟳</div><div class="tx" data-i18n="st.i8">Demonstração pública interativa — futura</div></div>
+      <div class="sitem todo"><div class="mk">○</div><div class="tx" data-i18n="st.i9">Camada de Personalidade — especificada, ainda não implementada</div></div>
+    </div>
+    <div class="status reveal">
+      <div class="slabel"><span class="dot"></span><span data-i18n="status.label">Foco atual · em desenvolvimento ativo</span></div>
+      <p data-i18n="status.text">Agora mesmo, provando que <b>o mesmo raciocínio acontece em português e em inglês</b> — com a linguagem só nas bordas. A coluna cognitiva já responde nos dois idiomas a partir da mesma estrutura; falta a prova mecânica de que o estado interno é idêntico, ponto a ponto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── HONESTY ────────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="hon.k">A diferença que importa</span>
+    <h2 class="reveal" data-i18n="hon.h">Quando não sabe, não inventa.</h2>
+    <p class="reveal" data-i18n="hon.p">
+      A maioria dos sistemas fecha a lacuna com texto plausível.
+      Este <strong>declara-a</strong> — é a fronteira entre uma
+      ferramenta em que se confia e uma que se vigia.
+    </p>
+    <div class="honesty reveal">
+      <div class="hcard bad"><div class="lab" data-i18n="hon.bl">o hábito da IA</div>
+        <div class="txt" data-i18n="hon.bt">Inventa uma resposta confiante para preencher o que não sabe.</div></div>
+      <div class="hcard good"><div class="lab">Intent AI</div>
+        <div class="txt" data-i18n="hon.gt">"Não tenho evidência estrutural sobre essa afirmação — não a confirmo nem a nego."</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRINCIPLES ─────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="prin.k">O que não se dobra</span>
+    <h2 class="reveal" data-i18n="prin.h">Quatro princípios inegociáveis.</h2>
+
+    <div class="principle reveal">
+      <div class="n">i.</div>
+      <h3 data-i18n="prin.h1">Os conceitos vêm antes das palavras.</h3>
+      <p data-i18n="prin.p1">O sistema raciocina sobre estruturas de significado universais.
+        A linguagem só toca as bordas — para entrar, e para sair.</p>
+    </div>
+
+    <div class="principle reveal">
+      <div class="n">ii.</div>
+      <h3 data-i18n="prin.h2">Quando não sabe, declara a lacuna.</h3>
+      <p data-i18n="prin.p2">Em vez de fabricar uma resposta para fechar o buraco, nomeia
+        o que não consegue sustentar. Compreensão parcial é uma
+        resposta legítima — e honesta.</p>
+    </div>
+
+    <div class="principle reveal">
+      <div class="n">iii.</div>
+      <h3 data-i18n="prin.h3">A conversa é dado, não descarte.</h3>
+      <p data-i18n="prin.p3">Nada do que foi dito se perde. O histórico acumula valor em
+        vez de evaporar — o sistema lembra, em vez de recomeçar.</p>
+    </div>
+
+    <div class="principle reveal">
+      <div class="n">iv.</div>
+      <h3 data-i18n="prin.h4">Reconhece, examina, busca.</h3>
+      <p data-i18n="prin.p4">O que é conhecido, processa direto. O que é parcial, examina
+        com mais cuidado. O que é novo, vai buscar. O mesmo padrão em
+        todas as camadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSE ──────────────────────────────────────────── -->
+<section class="close">
+  <div class="wrap">
+    <p class="pull reveal" data-i18n="close.pull">
+      Não é um modelo melhor.
+      <span class="em">É uma arquitetura diferente.</span>
+    </p>
+    <div class="mark reveal">Intent&nbsp;AI</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p data-i18n="foot">Arquitetura cognitiva modular · trabalho em curso</p>
+    <p style="margin-top:14px;"><a href="https://nodus-ai.app/" style="color:var(--ink-dim);text-decoration:none;">NODUS</a> · <span style="color:var(--ink-faint);">nodus-ai.app</span></p>
+  </div>
+</footer>
+
+<script>
+  // ── reveal on scroll ──
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.18});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+  // ── semantic-tree choreography ──
+  const astWrap = document.querySelector('.ast-wrap');
+  if (astWrap){
+    const playAst = ()=>{ astWrap.classList.remove('playing'); void astWrap.offsetWidth; astWrap.classList.add('playing'); };
+    const astIO = new IntersectionObserver((es)=>{
+      es.forEach(e=>{ if(e.isIntersecting){ playAst(); astIO.unobserve(e.target);} });
+    },{threshold:.35});
+    astIO.observe(astWrap);
+    const btn = astWrap.querySelector('.ast-restart');
+    if (btn) btn.addEventListener('click', playAst);
+  }
+
+  // ── bilingual toggle (PT default in DOM, EN from dictionary) ──
+  const EN = {
+    "hero.h1": `A machine that processes<br><span class="line2">intent</span>, not language.`,
+    "hero.lede": `Language is only the doorway. Thought happens beneath it.`,
+    "hero.cue": `scroll to begin`,
+    "contrast.s": `<span class="a">Language models answer what you&nbsp;said.</span><br><span class="b">Intent&nbsp;AI answers what you&nbsp;meant.</span>`,
+    "prem.k": `The premise`,
+    "prem.h": `Words are labels.<br>Concepts are something else.`,
+    "prem.p1": `When two languages give different names to the same idea, the idea doesn't change — only the label. Beneath every sentence lies a structure of meaning that <strong>belongs to no language</strong>.`,
+    "prem.p2": `Most AI systems live on the surface of words. Intent AI descends to that structure — and it is there, on the ground common to every language, that it <span class="em">reasons</span>.`,
+    "comp.k": `How a concept is born`,
+    "comp.h": `A concept isn't stored.<br>It's built.`,
+    "comp.p": `From a small alphabet of universal elements of meaning, the system <strong>composes</strong> ideas — as atoms form molecules. The meaning of "fire" isn't waiting in a drawer: it <span class="em">emerges</span> from the combination of its parts.`,
+    "comp.t1": `something ethereal`,
+    "comp.t2": `light`,
+    "comp.t3": `temperature`,
+    "comp.res": `fire`,
+    "comp.note": `The same grammar of composition builds from the concrete to the abstract — across rising levels of depth.`,
+    "comp.m1": `universal elements`,
+    "comp.m2": `levels of composition`,
+    "comp.m3n": `thousands`,
+    "comp.m3": `of concepts`,
+    "ast.k": `Beneath the sentence`,
+    "ast.h": `Not a sequence of words.<br>A structure of meaning.`,
+    "ast.p": `Before answering, the system takes the question apart into its architecture of intent — who, about whom, in what sense, to what degree. It is upon <strong>this structure</strong>, and not the words, that it <span class="em">reasons</span>.`,
+    "ast.sentence": `"To what extent was Socrates a product of Plato's propaganda, at the expense of the sophists?"`,
+    "ast.n_root": `evaluate — to what degree`,
+    "ast.n_soc": `Socrates`,
+    "ast.n_prod": `product of`,
+    "ast.n_contra": `against`,
+    "ast.n_plato": `Plato · propaganda`,
+    "ast.n_soph": `the sophists`,
+    "ast.s1": `recognizing the intent…`,
+    "ast.s2": `doubt — partial concept…`,
+    "ast.s3": `searching the entities…`,
+    "ast.s4": `certainty`,
+    "ast.s5": `conclusion`,
+    "ast.alabel": `the generated answer`,
+    "ast.averdict": `"In part: there is massive mediation by Plato, but independent sources attest a core of Socrates' own."`,
+    "ast.aline1": `<b>Registered support:</b> the sophists contrast with Socrates; Plato was a student of Socrates; Socrates precedes Plato.`,
+    "ast.aline2": `<b>Why this reading:</b> it covers 5 evidence nodes and acknowledges counter-evidence from Protagoras of Abdera; 2 alternative readings set aside.`,
+    "ast.aline3": `<b>What the structure does not decide:</b> the exact degree of that construction and Plato's intention — the available sources are not independent of one another.`,
+    "ast.note": `simplified representation — the labels stand in for the real internal structure`,
+    "ast.restart": `<span class="ico">↻</span> restart`,
+    "pull1": `Thought comes first. <span class="em">Language is the edge.</span>`,
+    "arch.k": `The architecture`,
+    "arch.h": `A cognitive system in layers.`,
+    "arch.p": `Inspired by the way networks organize into levels, the architecture stacks cognitive layers. <strong>Each answers a different question</strong> — and none replaces another.`,
+    "arch.cap": `modules built and tested`,
+    "L7.name": `Personality`,
+    "L7.role": `the voice — applied after reasoning, never before`,
+    "L7.count": `upcoming`,
+    "L6.name": `Sense Layer`,
+    "L6.role": `where concepts live, independent of language — the heart`,
+    "L5.name": `Focus`,
+    "L5.role": `what matters now, and what can rest`,
+    "L4.name": `Continuous Chat`,
+    "L4.role": `the memory that accumulates instead of forgetting`,
+    "L3.name": `Knowledge`,
+    "L3.role": `what the system knows, and how it navigates what it knows`,
+    "L12.name": `Structure and similarity`,
+    "L12.role": `the perceptual substrate on which everything rests`,
+    "u.mod": `modules`,
+    "arch.note": `Two dimensions cross the whole stack — they are not layers, but planes.`,
+    "lt.tag": `the language plane`,
+    "lt.name": `The edge`,
+    "lt.p": `Every language enters and exits here. Inside, the system never thinks in words. Adding a language is adding a translation — not rebuilding the thought.`,
+    "tm.tag": `the spatial plane`,
+    "tm.name": `The mental canvas`,
+    "tm.p": `A space where ideas coexist at once, test themselves and compete. An image condenses what sequential text cannot reach. It is an instrument of reasoning — not of drawing.`,
+    "pap.k": `Written foundations`,
+    "pap.h": `Not vaporware.<br>Documented research.`,
+    "pap.p": `Before each layer existed in code, it existed in thought. Three of them already have their <strong>formal foundation</strong> — written, dated, argued.`,
+    "pap1.tag": `layer L4`,
+    "pap1.ttl": `Continuous Chat`,
+    "pap1.q": `"Conversation is data. Data has value."`,
+    "pap1.d": `The memory that accumulates instead of discarding — compression without destruction.`,
+    "pap2.tag": `layer L5`,
+    "pap2.ttl": `Dynamic Focal Tree`,
+    "pap2.q": `"Diffuse attention is useless attention."`,
+    "pap2.d": `Focus and relevance: what matters now stays active, the rest accessible in the background.`,
+    "pap3.tag": `layer L6`,
+    "pap3.wl": `foundation`,
+    "pap3.ttl": `Sense Layer`,
+    "pap3.q": `"Language is not the substrate of thought."`,
+    "pap3.d": `The philosophical foundation — why archetypes precede words.`,
+    "conv.k": `Language at the edges`,
+    "conv.h": `One question. Two languages.<br>The same thought.`,
+    "conv.p": `The sentence enters in one language and exits in another. Between the two, the system reasons on ground that is <strong>neither Portuguese nor English</strong> — it is meaning itself.`,
+    "conv.qf1": `question · PT`,
+    "conv.qf2": `question · EN`,
+    "conv.meet": `converge into<span>a single structure of meaning</span>`,
+    "conv.af1": `answer · PT`,
+    "conv.af2": `answer · EN`,
+    "conv.note": `The reasoning is the same. Only the surface changes language.`,
+    "status.label": `Current focus · in active development`,
+    "status.text": `Right now, proving that <b>the same reasoning happens in Portuguese and in English</b> — with language only at the edges. The cognitive column already answers in both languages from the same structure; what remains is the mechanical proof that the internal state is identical, point by point.`,
+    "why.k": `Why it matters`,
+    "why.h": `Real problems Intent AI tackles.`,
+    "why.p": `Each layer of the architecture is born from a concrete pain of today's AI systems.`,
+    "why.p1": `Loses the thread in long conversations`,
+    "why.a1": `The conversation is preserved and navigable — not compressed and forgotten.`,
+    "why.p2": `Over-relies on language`,
+    "why.a2": `Reasoning happens in meaning, not in words.`,
+    "why.p3": `Has no persistent memory`,
+    "why.a3": `History accumulates value instead of evaporating each session.`,
+    "why.p4": `Hallucinates by statistical association`,
+    "why.a4": `With no basis, the system declares the gap instead of inventing.`,
+    "why.p5": `Can't justify what it decides`,
+    "why.a5": `Every conclusion comes with its support — the why is explicit.`,
+    "why.p6": `Breaks when switching languages`,
+    "why.a6": `The same structure answers in any language; translation stays at the edge.`,
+    "cv2.k": `The simplest proof`,
+    "cv2.h": `The same intent, in any language.`,
+    "cv2.p": `Two sentences, two languages — and beneath them, a single structure. That is what the system thinks about.`,
+    "cv2.st": `structure of meaning`,
+    "cv2.r1": `agent`,
+    "cv2.v1": `John`,
+    "cv2.r2": `action`,
+    "cv2.v2": `to give`,
+    "cv2.r3": `object`,
+    "cv2.v3": `book`,
+    "cv2.r4": `destination`,
+    "cv2.v4": `Mary`,
+    "cv2.note": `The sentence changes language. The structure does not.`,
+    "st.k": `Where we are`,
+    "st.h": `Project status.`,
+    "st.i1": `Layered cognitive architecture — defined`,
+    "st.i2": `Sense Layer — implemented and working`,
+    "st.i3": `Knowledge, Focus, Continuous Chat, Neural and Hierarchical Bits — implemented and tested`,
+    "st.i4": `End-to-end reasoning pipeline`,
+    "st.i5": `Three founding papers documented`,
+    "st.i6": `Bilingual reasoning (PT + EN) from the same structure`,
+    "st.i7": `Mechanical proof of cross-language equivalence — in development`,
+    "st.i8": `Interactive public demo — upcoming`,
+    "st.i9": `Personality Layer — specified, not yet implemented`,
+    "dom.k": `Compartmentalized knowledge`,
+    "dom.h": `Knowledge lives in compartments.`,
+    "dom.p": `The system's knowledge is not one monolithic block. Each domain — philosophy, the everyday, a technical field — is its own graph of connected concepts. <strong>Adding an area of knowledge means plugging in a new compartment</strong>; the reasoning that traverses it is always the same.`,
+    "dom.d1": `Greek Philosophy`,
+    "dom.m1": `in this demo`,
+    "dom.d2": `Everyday`,
+    "dom.d3": `Construction`,
+    "dom.d4": `new domain`,
+    "dom.note": `The same engine traverses any compartment. Switching domains doesn't rewrite the mind — it only swaps the map.`,
+    "hon.k": `The difference that matters`,
+    "hon.h": `When it doesn't know, it doesn't invent.`,
+    "hon.p": `Most systems close the gap with plausible text. This one <strong>declares it</strong> — the line between a tool you trust and one you watch.`,
+    "hon.bl": `the habit of AI`,
+    "hon.bt": `Invents a confident answer to fill what it doesn't know.`,
+    "hon.gt": `"I have no structural evidence about that claim — I neither confirm nor deny it."`,
+    "prin.k": `What does not bend`,
+    "prin.h": `Four non-negotiable principles.`,
+    "prin.h1": `Concepts come before words.`,
+    "prin.p1": `The system reasons over universal structures of meaning. Language only touches the edges — to enter, and to leave.`,
+    "prin.h2": `When it doesn't know, it declares the gap.`,
+    "prin.p2": `Instead of fabricating an answer to close the hole, it names what it cannot sustain. Partial understanding is a legitimate answer — and an honest one.`,
+    "prin.h3": `Conversation is data, not disposable.`,
+    "prin.p3": `Nothing said is lost. History accumulates value instead of evaporating — the system remembers, instead of starting over.`,
+    "prin.h4": `Recognize, examine, search.`,
+    "prin.p4": `What is known, it processes directly. What is partial, it examines more closely. What is new, it goes to fetch. The same pattern across every layer.`,
+    "close.pull": `Not a better model. <span class="em">A different architecture.</span>`,
+    "foot": `Modular cognitive architecture · work in progress`
+  };
+
+  const i18nNodes = document.querySelectorAll('[data-i18n]');
+  const isSvg = el => el.namespaceURI === 'http://www.w3.org/2000/svg';
+  const PT = {};
+  i18nNodes.forEach(el=>{ PT[el.dataset.i18n] = isSvg(el) ? el.textContent : el.innerHTML; });
+
+  function setLang(lang){
+    const dict = (lang === 'en') ? EN : PT;
+    i18nNodes.forEach(el=>{
+      const v = dict[el.dataset.i18n];
+      if (v == null) return;
+      if (isSvg(el)) el.textContent = v; else el.innerHTML = v;
+    });
+    document.documentElement.lang = (lang === 'en') ? 'en' : 'pt';
+    document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('intent_lang', lang); } catch(e){}
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(b=>b.addEventListener('click', ()=>setLang(b.dataset.lang)));
+
+  let initLang = 'pt';
+  try {
+    const saved = localStorage.getItem('intent_lang');
+    if (saved === 'pt' || saved === 'en') initLang = saved;
+    else if ((navigator.language || '').slice(0,2).toLowerCase() === 'en') initLang = 'en';
+  } catch(e){}
+  setLang(initLang);
+</script>
+</body>
+</html>
