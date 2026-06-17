@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS PRO — Product Hunt Launch Price</title>
+  <title>NODUS PRO — one subscription, every NODUS app</title>
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -255,6 +255,19 @@
       .lifetime-right { text-align: left; }
       .lifetime-price { font-size: 44px; }
     }
+
+    /* ── PRO bundle (what one subscription unlocks) ── */
+    .pro-bundle{max-width:760px;margin:0 auto 22px;padding:20px 22px;
+      background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:14px}
+    .pb-title{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+      color:#94a3b8;text-align:center;margin-bottom:16px}
+    .pb-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .pb-app-name{font-size:15px;font-weight:800;color:#facc15;margin-bottom:5px}
+    .pb-soon{font-size:9px;font-weight:700;color:#a78bfa;border:1px solid rgba(167,139,250,.4);
+      background:rgba(167,139,250,.12);padding:1px 7px;border-radius:99px;vertical-align:middle;
+      margin-left:5px;text-transform:uppercase;letter-spacing:.5px}
+    .pb-app-desc{font-size:12.5px;color:#94a3b8;line-height:1.5}
+    @media(max-width:640px){.pb-apps{grid-template-columns:1fr;gap:14px}}
   </style>
   <link rel="canonical" href="https://nodus-ai.app/checkout" />
 </head>
@@ -268,42 +281,43 @@
   </nav>
 
   <div class="page-header">
-    <div class="ph-badge" id="t-ph-badge">🚀 Product Hunt Launch</div>
     <h1 class="page-title" id="t-page-title">Unlock <span>NODUS PRO</span></h1>
-    <p class="page-sub" id="t-page-sub">Capture, organize and reuse your best AI conversations — forever.</p>
+    <p class="page-sub" id="t-page-sub">One subscription. Every NODUS app — one price.</p>
   </div>
 
   <div class="error-message" id="error-message"></div>
+
+  <!-- WHAT PRO UNLOCKS (one subscription, every app) -->
+  <div class="pro-bundle">
+    <div class="pb-title" id="t-pb-title">Everything NODUS PRO unlocks</div>
+    <div class="pb-apps">
+      <div class="pb-app">
+        <div class="pb-app-name">NODUS AI</div>
+        <div class="pb-app-desc" id="t-pb-ai">Capture &amp; organize AI chats — queues, chains, export, encrypted backup.</div>
+      </div>
+      <div class="pb-app">
+        <div class="pb-app-name">PH Radar BI</div>
+        <div class="pb-app-desc" id="t-pb-ph">Product Hunt analytics — saved dashboards, period comparison, alerts, CSV/PDF export.</div>
+      </div>
+      <div class="pb-app">
+        <div class="pb-app-name">Workspace <span class="pb-soon" id="t-pb-soon">soon</span></div>
+        <div class="pb-app-desc" id="t-pb-ws">Notes, docs, sheets, PDFs, files &amp; web clippings.</div>
+      </div>
+    </div>
+  </div>
 
   <!-- LIFETIME HERO -->
   <div class="lifetime-card" id="lifetime-plan">
     <div class="lifetime-top">
       <div class="lifetime-left">
-        <div class="lifetime-badge" id="t-lt-badge">⚡ Early Access — Limited Offer</div>
         <div class="lifetime-name" id="t-lt-name">Lifetime Access</div>
-        <div class="lifetime-desc" id="t-lt-desc">Pay once, use forever. All current and future PRO features — no subscriptions, no renewals. Only available during launch week.</div>
+        <div class="lifetime-desc" id="t-lt-desc">Pay once, use forever. All current and future PRO features — no subscriptions, no renewals.</div>
       </div>
       <div class="lifetime-right">
         <div class="lifetime-price-old" id="t-lt-value">$108/year value</div>
         <div class="lifetime-price">$79</div>
         <div class="lifetime-once" id="t-lt-once">one-time payment</div>
-        <div class="lifetime-slots">
-          <span class="slot-dot"></span>
-          <span id="slots-label">Limited to 200 copies</span>
-        </div>
       </div>
-    </div>
-
-    <div class="lifetime-features">
-      <div class="lf-item" id="t-f1">6 Custom Queues</div>
-      <div class="lf-item" id="t-f2">Full Chat Capture</div>
-      <div class="lf-item" id="t-f3">Inject Chain Feature</div>
-      <div class="lf-item" id="t-f4">HTML &amp; DOCX Export</div>
-      <div class="lf-item" id="t-f5">Auto Capture</div>
-      <div class="lf-item" id="t-f6">Unlimited Projects</div>
-      <div class="lf-item" id="t-f7">Encrypted Backup</div>
-      <div class="lf-item" id="t-f8">Priority Support</div>
-      <div class="lf-item" id="t-f9">All Future Features</div>
     </div>
 
     <button class="btn-lifetime" id="btn-lifetime">⚡ Get Lifetime Access — $79</button>
@@ -318,14 +332,6 @@
       <div class="plan-name" id="t-mo-name">Monthly</div>
       <div class="plan-price">$4.50</div>
       <div class="plan-period" id="t-mo-period">per month · cancel anytime</div>
-      <ul class="plan-features" id="t-mo-features">
-        <li>6 Custom Queues</li>
-        <li>Full Chat Capture</li>
-        <li>Inject Chain Feature</li>
-        <li>HTML &amp; DOCX Export</li>
-        <li>Auto Capture</li>
-        <li>Priority Support</li>
-      </ul>
       <button class="btn-plan" id="btn-monthly">Choose Monthly</button>
     </div>
 
@@ -335,14 +341,6 @@
       <div class="plan-price">$30</div>
       <div class="plan-period" id="t-an-period">per year · billed annually</div>
       <div class="savings-tag" id="t-save-tag">💰 Save $24/year vs monthly</div>
-      <ul class="plan-features" id="t-an-features">
-        <li>6 Custom Queues</li>
-        <li>Full Chat Capture</li>
-        <li>Inject Chain Feature</li>
-        <li>HTML &amp; DOCX Export</li>
-        <li>Auto Capture</li>
-        <li>Priority Support</li>
-      </ul>
       <button class="btn-plan" id="btn-annual">Choose Annual</button>
     </div>
   </div>
@@ -367,10 +365,10 @@
       'page-title':     { en:'Unlock <span>NODUS PRO</span>', pt:'Desbloqueie o <span>NODUS PRO</span>', es:'Desbloquea <span>NODUS PRO</span>', fr:'Débloquez <span>NODUS PRO</span>', de:'<span>NODUS PRO</span> freischalten', it:'Sblocca <span>NODUS PRO</span>', nl:'Ontgrendel <span>NODUS PRO</span>', pl:'Odblokuj <span>NODUS PRO</span>', id:'Buka Kunci <span>NODUS PRO</span>', vi:'Mở khóa <span>NODUS PRO</span>', ja:'<span>NODUS PRO</span> を解除', ko:'<span>NODUS PRO</span> 잠금 해제', zh:'解锁 <span>NODUS PRO</span>', ru:'Разблокировать <span>NODUS PRO</span>', hi:'<span>NODUS PRO</span> अनलॉक करें', tr:'<span>NODUS PRO</span>\'yu Aç' },
       'nav-back':       { en:'← Back to home', pt:'← Voltar ao início', es:'← Volver al inicio', fr:'← Retour', de:'← Zurück', it:'← Torna alla home', nl:'← Terug naar home', pl:'← Wróć do strony', id:'← Kembali', vi:'← Quay lại', ja:'← ホームへ', ko:'← 홈으로', zh:'← 返回首页', ru:'← На главную', hi:'← होम पर जाएं', tr:'← Ana sayfaya dön' },
       'ph-badge':       { en:'🚀 Product Hunt Launch', pt:'🚀 Lançamento no Product Hunt', es:'🚀 Lanzamiento en Product Hunt', fr:'🚀 Lancement Product Hunt', de:'🚀 Product Hunt Launch', it:'🚀 Lancio su Product Hunt', nl:'🚀 Product Hunt Launch', pl:'🚀 Premiera na Product Hunt', id:'🚀 Peluncuran Product Hunt', vi:'🚀 Ra mắt Product Hunt', ja:'🚀 Product Hunt 公開', ko:'🚀 프로덕트 헌트 출시', zh:'🚀 Product Hunt 发布', ru:'🚀 Запуск на Product Hunt', hi:'🚀 Product Hunt लॉन्च', tr:'🚀 Product Hunt Lansmanı' },
-      'page-sub':       { en:'Capture, organize and reuse your best AI conversations — forever.', pt:'Capture, organize e reutilize suas melhores conversas de IA — para sempre.', es:'Captura, organiza y reutiliza tus mejores conversaciones de IA — para siempre.', fr:'Capturez, organisez et réutilisez vos meilleures conversations IA — pour toujours.', de:'Erfasse, organisiere und nutze deine besten KI-Gespräche — für immer.', it:'Cattura, organizza e riutilizza le tue migliori conversazioni IA — per sempre.', nl:'Leg vast, organiseer en hergebruik je beste AI-gesprekken — voor altijd.', pl:'Przechwytuj, organizuj i ponownie używaj najlepszych rozmów z AI — na zawsze.', id:'Tangkap, atur, dan gunakan kembali percakapan AI terbaik Anda — selamanya.', vi:'Ghi lại, tổ chức và tái sử dụng các cuộc trò chuyện AI hay nhất — mãi mãi.', ja:'最高のAI会話を保存・整理・再利用 — 永遠に。', ko:'최고의 AI 대화를 캡처하고 정리하고 재사용하세요 — 영원히.', zh:'永久捕获、整理和重用您最好的 AI 对话。', ru:'Сохраняйте, организуйте и повторно используйте лучшие AI-разговоры — навсегда.', hi:'अपनी सर्वश्रेष्ठ AI बातचीत को कैप्चर, व्यवस्थित और पुनः उपयोग करें — हमेशा के लिए।', tr:'En iyi AI sohbetlerinizi yakalayın, düzenleyin ve yeniden kullanın — sonsuza kadar.' },
+      'page-sub':       { en:'One subscription. Every NODUS app — one price.', pt:'Uma assinatura. Todos os apps NODUS — um preço.', es:'Captura, organiza y reutiliza tus mejores conversaciones de IA — para siempre.', fr:'Capturez, organisez et réutilisez vos meilleures conversations IA — pour toujours.', de:'Erfasse, organisiere und nutze deine besten KI-Gespräche — für immer.', it:'Cattura, organizza e riutilizza le tue migliori conversazioni IA — per sempre.', nl:'Leg vast, organiseer en hergebruik je beste AI-gesprekken — voor altijd.', pl:'Przechwytuj, organizuj i ponownie używaj najlepszych rozmów z AI — na zawsze.', id:'Tangkap, atur, dan gunakan kembali percakapan AI terbaik Anda — selamanya.', vi:'Ghi lại, tổ chức và tái sử dụng các cuộc trò chuyện AI hay nhất — mãi mãi.', ja:'最高のAI会話を保存・整理・再利用 — 永遠に。', ko:'최고의 AI 대화를 캡처하고 정리하고 재사용하세요 — 영원히.', zh:'永久捕获、整理和重用您最好的 AI 对话。', ru:'Сохраняйте, организуйте и повторно используйте лучшие AI-разговоры — навсегда.', hi:'अपनी सर्वश्रेष्ठ AI बातचीत को कैप्चर, व्यवस्थित और पुनः उपयोग करें — हमेशा के लिए।', tr:'En iyi AI sohbetlerinizi yakalayın, düzenleyin ve yeniden kullanın — sonsuza kadar.' },
       'lt-badge':       { en:'⚡ Early Access — Limited Offer', pt:'⚡ Acesso Antecipado — Oferta Limitada', es:'⚡ Acceso Anticipado — Oferta Limitada', fr:'⚡ Accès Anticipé — Offre Limitée', de:'⚡ Früher Zugang — Limitiertes Angebot', it:'⚡ Accesso Anticipato — Offerta Limitata', nl:'⚡ Vroege Toegang — Beperkt Aanbod', pl:'⚡ Wczesny Dostęp — Ograniczona Oferta', id:'⚡ Akses Awal — Penawaran Terbatas', vi:'⚡ Truy cập sớm — Ưu đãi có hạn', ja:'⚡ 先行アクセス — 限定オファー', ko:'⚡ 얼리 액세스 — 한정 혜택', zh:'⚡ 早期访问 — 限量优惠', ru:'⚡ Ранний доступ — Ограниченное предложение', hi:'⚡ अर्ली एक्सेस — सीमित ऑफर', tr:'⚡ Erken Erişim — Sınırlı Teklif' },
       'lt-name':        { en:'Lifetime Access', pt:'Acesso Vitalício', es:'Acceso de por Vida', fr:'Accès à Vie', de:'Lebenslanger Zugang', it:'Accesso a Vita', nl:'Levenslange Toegang', pl:'Dożywotni Dostęp', id:'Akses Seumur Hidup', vi:'Truy cập trọn đời', ja:'生涯アクセス', ko:'평생 이용권', zh:'终身访问', ru:'Пожизненный доступ', hi:'आजीवन एक्सेस', tr:'Ömür Boyu Erişim' },
-      'lt-desc':        { en:'Pay once, use forever. All current and future PRO features — no subscriptions, no renewals. Only available during launch week.', pt:'Pague uma vez, use para sempre. Todos os recursos PRO atuais e futuros — sem assinaturas, sem renovações. Disponível apenas durante a semana de lançamento.', es:'Paga una vez, usa para siempre. Todas las funciones PRO actuales y futuras — sin suscripciones ni renovaciones. Solo disponible durante la semana de lanzamiento.', fr:'Payez une fois, utilisez pour toujours. Toutes les fonctionnalités PRO actuelles et futures — sans abonnements ni renouvellements. Disponible uniquement pendant la semaine de lancement.', de:'Einmal zahlen, für immer nutzen. Alle aktuellen und zukünftigen PRO-Funktionen — keine Abonnements, keine Verlängerungen. Nur in der Startwoche verfügbar.', it:'Paga una volta, usa per sempre. Tutte le funzionalità PRO attuali e future — nessun abbonamento, nessun rinnovo. Disponibile solo durante la settimana di lancio.', nl:'Eenmalig betalen, voor altijd gebruiken. Alle huidige en toekomstige PRO-functies — geen abonnementen, geen verlengingen. Alleen beschikbaar tijdens de lanceringweek.', pl:'Zapłać raz, używaj na zawsze. Wszystkie obecne i przyszłe funkcje PRO — bez subskrypcji, bez odnowień. Dostępne tylko w tygodniu premiery.', id:'Bayar sekali, gunakan selamanya. Semua fitur PRO saat ini dan mendatang — tanpa langganan, tanpa perpanjangan. Hanya tersedia selama minggu peluncuran.', vi:'Trả một lần, dùng mãi mãi. Tất cả tính năng PRO hiện tại và tương lai — không đăng ký, không gia hạn. Chỉ có trong tuần ra mắt.', ja:'一度支払えば永遠に使用可能。現在および将来のすべてのPRO機能 — サブスクリプション不要、更新不要。ローンチ週のみ提供。', ko:'한 번 결제로 영원히 사용. 현재 및 미래의 모든 PRO 기능 — 구독 없음, 갱신 없음. 출시 주에만 제공.', zh:'一次付款，永久使用。所有当前和未来的 PRO 功能 — 无订阅，无续费。仅在发布周提供。', ru:'Платите один раз, пользуйтесь вечно. Все текущие и будущие PRO-функции — без подписок и продлений. Доступно только в неделю запуска.', hi:'एक बार भुगतान करें, हमेशा के लिए उपयोग करें। सभी वर्तमान और भविष्य की PRO सुविधाएं — कोई सब्सक्रिप्शन नहीं, कोई नवीनीकरण नहीं। केवल लॉन्च सप्ताह के दौरान उपलब्ध।', tr:'Bir kez öde, sonsuza kadar kullan. Tüm mevcut ve gelecekteki PRO özellikleri — abonelik yok, yenileme yok. Yalnızca lansman haftasında mevcut.' },
+      'lt-desc':        { en:'Pay once, use forever. All current and future PRO features — no subscriptions, no renewals.', pt:'Pague uma vez, use para sempre. Todos os recursos PRO atuais e futuros — sem assinaturas, sem renovações.', es:'Paga una vez, usa para siempre. Todas las funciones PRO actuales y futuras — sin suscripciones ni renovaciones. Solo disponible durante la semana de lanzamiento.', fr:'Payez une fois, utilisez pour toujours. Toutes les fonctionnalités PRO actuelles et futures — sans abonnements ni renouvellements. Disponible uniquement pendant la semaine de lancement.', de:'Einmal zahlen, für immer nutzen. Alle aktuellen und zukünftigen PRO-Funktionen — keine Abonnements, keine Verlängerungen. Nur in der Startwoche verfügbar.', it:'Paga una volta, usa per sempre. Tutte le funzionalità PRO attuali e future — nessun abbonamento, nessun rinnovo. Disponibile solo durante la settimana di lancio.', nl:'Eenmalig betalen, voor altijd gebruiken. Alle huidige en toekomstige PRO-functies — geen abonnementen, geen verlengingen. Alleen beschikbaar tijdens de lanceringweek.', pl:'Zapłać raz, używaj na zawsze. Wszystkie obecne i przyszłe funkcje PRO — bez subskrypcji, bez odnowień. Dostępne tylko w tygodniu premiery.', id:'Bayar sekali, gunakan selamanya. Semua fitur PRO saat ini dan mendatang — tanpa langganan, tanpa perpanjangan. Hanya tersedia selama minggu peluncuran.', vi:'Trả một lần, dùng mãi mãi. Tất cả tính năng PRO hiện tại và tương lai — không đăng ký, không gia hạn. Chỉ có trong tuần ra mắt.', ja:'一度支払えば永遠に使用可能。現在および将来のすべてのPRO機能 — サブスクリプション不要、更新不要。ローンチ週のみ提供。', ko:'한 번 결제로 영원히 사용. 현재 및 미래의 모든 PRO 기능 — 구독 없음, 갱신 없음. 출시 주에만 제공.', zh:'一次付款，永久使用。所有当前和未来的 PRO 功能 — 无订阅，无续费。仅在发布周提供。', ru:'Платите один раз, пользуйтесь вечно. Все текущие и будущие PRO-функции — без подписок и продлений. Доступно только в неделю запуска.', hi:'एक बार भुगतान करें, हमेशा के लिए उपयोग करें। सभी वर्तमान और भविष्य की PRO सुविधाएं — कोई सब्सक्रिप्शन नहीं, कोई नवीनीकरण नहीं। केवल लॉन्च सप्ताह के दौरान उपलब्ध।', tr:'Bir kez öde, sonsuza kadar kullan. Tüm mevcut ve gelecekteki PRO özellikleri — abonelik yok, yenileme yok. Yalnızca lansman haftasında mevcut.' },
       'lt-value':       { en:'$108/year value', pt:'Valor de $108/ano', es:'Valor de $108/año', fr:'Valeur de 108 $/an', de:'Wert: $108/Jahr', it:'Valore di $108/anno', nl:'Waarde $108/jaar', pl:'Wartość $108/rok', id:'Nilai $108/tahun', vi:'Giá trị $108/năm', ja:'年間$108相当', ko:'연간 $108 가치', zh:'价值 $108/年', ru:'Стоимость $108/год', hi:'$108/वर्ष का मूल्य', tr:'$108/yıl değerinde' },
       'lt-once':        { en:'one-time payment', pt:'pagamento único', es:'pago único', fr:'paiement unique', de:'Einmalzahlung', it:'pagamento unico', nl:'eenmalige betaling', pl:'jednorazowa płatność', id:'pembayaran sekali', vi:'thanh toán một lần', ja:'一括払い', ko:'일회성 결제', zh:'一次性付款', ru:'единовременный платёж', hi:'एकमुश्त भुगतान', tr:'tek seferlik ödeme' },
       'slots-limited':  { en:'Limited to 200 copies', pt:'Limitado a 200 cópias', es:'Limitado a 200 copias', fr:'Limité à 200 exemplaires', de:'Auf 200 Exemplare begrenzt', it:'Limitato a 200 copie', nl:'Beperkt tot 200 exemplaren', pl:'Ograniczone do 200 kopii', id:'Terbatas 200 salinan', vi:'Giới hạn 200 bản', ja:'200部限定', ko:'200개 한정', zh:'限量 200 份', ru:'Ограничено 200 копиями', hi:'200 प्रतियों तक सीमित', tr:'200 kopya ile sınırlı' },
@@ -389,7 +387,12 @@
       'trial':          { en:'<strong>🎉 14-Day Free Trial</strong> on monthly &amp; annual plans — try NODUS PRO risk-free. Cancel anytime during the trial.', pt:'<strong>🎉 14 Dias Grátis</strong> nos planos mensal e anual — experimente o NODUS PRO sem risco. Cancele a qualquer momento durante o período de teste.', es:'<strong>🎉 14 Días de Prueba Gratis</strong> en planes mensual y anual — prueba NODUS PRO sin riesgo. Cancela en cualquier momento durante el período de prueba.', fr:'<strong>🎉 14 Jours d\'Essai Gratuit</strong> sur les plans mensuel et annuel — essayez NODUS PRO sans risque. Annulez à tout moment pendant l\'essai.', de:'<strong>🎉 14-tägige kostenlose Testphase</strong> bei monatlichen und jährlichen Plänen — testen Sie NODUS PRO risikofrei. Jederzeit während der Testphase kündbar.', it:'<strong>🎉 14 Giorni di Prova Gratuita</strong> sui piani mensile e annuale — prova NODUS PRO senza rischi. Annulla in qualsiasi momento durante la prova.', nl:'<strong>🎉 14 Dagen Gratis Proefperiode</strong> op maandelijkse en jaarlijkse plannen — probeer NODUS PRO risicovrij. Annuleer op elk moment tijdens de proefperiode.', pl:'<strong>🎉 14-dniowy bezpłatny okres próbny</strong> w planach miesięcznym i rocznym — wypróbuj NODUS PRO bez ryzyka. Anuluj w dowolnym momencie podczas próby.', id:'<strong>🎉 14 Hari Uji Coba Gratis</strong> pada paket bulanan &amp; tahunan — coba NODUS PRO tanpa risiko. Batalkan kapan saja selama masa uji coba.', vi:'<strong>🎉 Dùng thử 14 ngày miễn phí</strong> trên các gói hàng tháng và hàng năm — thử NODUS PRO không rủi ro. Hủy bất cứ lúc nào trong thời gian dùng thử.', ja:'<strong>🎉 14日間無料トライアル</strong> 月払い・年払いプランで — リスクなしでNODUS PROをお試しください。試用期間中はいつでもキャンセル可能。', ko:'<strong>🎉 14일 무료 체험</strong> 월간 및 연간 플랜에서 — NODUS PRO를 무료로 체험하세요. 체험 기간 중 언제든지 취소 가능.', zh:'<strong>🎉 14天免费试用</strong> 月付和年付计划 — 无风险体验 NODUS PRO。试用期间随时取消。', ru:'<strong>🎉 14-дневный бесплатный пробный период</strong> для ежемесячных и годовых планов — попробуйте NODUS PRO без риска. Отменяйте в любое время в течение пробного периода.', hi:'<strong>🎉 14-दिन का मुफ्त ट्रायल</strong> मासिक और वार्षिक योजनाओं पर — जोखिम-मुक्त NODUS PRO आज़माएं। परीक्षण के दौरान कभी भी रद्द करें।', tr:'<strong>🎉 14 Günlük Ücretsiz Deneme</strong> aylık ve yıllık planlarda — NODUS PRO\'yu risksiz deneyin. Deneme süresi boyunca istediğiniz zaman iptal edin.' },
       'footer-support': { en:'Need help? <a href="mailto:support@nodus-ai.app">Contact Support</a>', pt:'Precisa de ajuda? <a href="mailto:support@nodus-ai.app">Fale Conosco</a>', es:'¿Necesitas ayuda? <a href="mailto:support@nodus-ai.app">Contactar Soporte</a>', fr:'Besoin d\'aide ? <a href="mailto:support@nodus-ai.app">Contacter le support</a>', de:'Benötigen Sie Hilfe? <a href="mailto:support@nodus-ai.app">Support kontaktieren</a>', it:'Hai bisogno di aiuto? <a href="mailto:support@nodus-ai.app">Contatta il supporto</a>', nl:'Hulp nodig? <a href="mailto:support@nodus-ai.app">Contact opnemen</a>', pl:'Potrzebujesz pomocy? <a href="mailto:support@nodus-ai.app">Skontaktuj się</a>', id:'Butuh bantuan? <a href="mailto:support@nodus-ai.app">Hubungi Dukungan</a>', vi:'Cần giúp đỡ? <a href="mailto:support@nodus-ai.app">Liên hệ hỗ trợ</a>', ja:'お困りですか？<a href="mailto:support@nodus-ai.app">サポートに連絡</a>', ko:'도움이 필요하신가요? <a href="mailto:support@nodus-ai.app">지원팀 문의</a>', zh:'需要帮助？<a href="mailto:support@nodus-ai.app">联系支持</a>', ru:'Нужна помощь? <a href="mailto:support@nodus-ai.app">Связаться с поддержкой</a>', hi:'सहायता चाहिए? <a href="mailto:support@nodus-ai.app">सहायता से संपर्क करें</a>', tr:'Yardıma mı ihtiyacınız var? <a href="mailto:support@nodus-ai.app">Destek ile İletişim</a>' },
       'footer-refund':  { en:'Refund Policy', pt:'Política de Reembolso', es:'Política de Reembolso', fr:'Politique de remboursement', de:'Rückgaberecht', it:'Politica di rimborso', nl:'Terugbetalingsbeleid', pl:'Polityka zwrotów', id:'Kebijakan Pengembalian', vi:'Chính sách hoàn tiền', ja:'返金ポリシー', ko:'환불 정책', zh:'退款政策', ru:'Политика возврата', hi:'वापसी नीति', tr:'İade Politikası' },
-      'footer-privacy': { en:'Privacy', pt:'Privacidade', es:'Privacidad', fr:'Confidentialité', de:'Datenschutz', it:'Privacy', nl:'Privacy', pl:'Prywatność', id:'Privasi', vi:'Quyền riêng tư', ja:'プライバシー', ko:'개인정보', zh:'隐私', ru:'Конфиденциальность', hi:'गोपनीयता', tr:'Gizlilik' }
+      'footer-privacy': { en:'Privacy', pt:'Privacidade', es:'Privacidad', fr:'Confidentialité', de:'Datenschutz', it:'Privacy', nl:'Privacy', pl:'Prywatność', id:'Privasi', vi:'Quyền riêng tư', ja:'プライバシー', ko:'개인정보', zh:'隐私', ru:'Конфиденциальность', hi:'गोपनीयता', tr:'Gizlilik' },
+      'pb-title': { en:'Everything NODUS PRO unlocks', pt:'Tudo o que o NODUS PRO desbloqueia' },
+      'pb-ai':    { en:'Capture & organize AI chats — queues, chains, export, encrypted backup.', pt:'Capture e organize conversas de IA — filas, chains, export, backup criptografado.' },
+      'pb-ph':    { en:'Product Hunt analytics — saved dashboards, period comparison, alerts, CSV/PDF export.', pt:'Analytics do Product Hunt — dashboards salvos, comparação de períodos, alertas, export CSV/PDF.' },
+      'pb-ws':    { en:'Notes, docs, sheets, PDFs, files & web clippings.', pt:'Notas, documentos, planilhas, PDFs, arquivos e recortes da web.' },
+      'pb-soon':  { en:'soon', pt:'em breve' }
     };
 
     function t(key) {
@@ -404,6 +407,11 @@
         't-nav-back':      'nav-back',
         't-ph-badge':      'ph-badge',
         't-page-sub':      'page-sub',
+        't-pb-title':      'pb-title',
+        't-pb-ai':         'pb-ai',
+        't-pb-ph':         'pb-ph',
+        't-pb-ws':         'pb-ws',
+        't-pb-soon':       'pb-soon',
         't-lt-badge':      'lt-badge',
         't-lt-name':       'lt-name',
         't-lt-desc':       'lt-desc',
