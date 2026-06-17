@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS Workspace — Your browser workspace for notes, docs, files & clippings</title>
+  <meta name="description" content="Capture, organize and create without leaving your browser. Notes, documents, sheets, PDFs, files, screenshots and web clippings in one workspace. Coming soon — included in NODUS PRO.">
+  <link rel="canonical" href="https://nodus-ai.app/workspace" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NODUS Workspace — coming soon">
+  <meta property="og:description" content="Capture, organize and create without leaving your browser. Included in NODUS PRO.">
+  <meta property="og:url" content="https://nodus-ai.app/workspace">
+  <meta property="og:image" content="https://nodus-ai.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root{
+      --bg:#0b0e14; --bg-soft:#11151d; --card:#131720;
+      --text:#e2e8f0; --sub:#94a3b8; --muted:#64748b; --faint:#475569;
+      --line:#1e2736; --line2:#2d3748;
+      --accent:#facc15; --violet:#a78bfa;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.6;
+      -webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+    /* ── nav ── */
+    nav{position:sticky;top:0;z-index:100;background:rgba(11,14,20,.82);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:16px}
+    .nav-logo{font-weight:800;font-size:16px;text-decoration:none;color:var(--text);letter-spacing:-.3px}
+    .nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;align-items:center;gap:22px;margin-left:auto}
+    .nav-link{font-size:13px;color:var(--sub);text-decoration:none;transition:color .15s}
+    .nav-link:hover{color:var(--text)}
+    .nav-link.highlight{color:#0e1117;background:var(--accent);padding:7px 14px;border-radius:8px;font-weight:700}
+    .nav-back{font-size:13px;color:var(--muted);text-decoration:none}
+    .nav-back:hover{color:var(--text)}
+    @media(max-width:600px){.nav-links{display:none}}
+
+    /* ── hero ── */
+    .hero{text-align:center;padding:78px 0 54px}
+    .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+    .badge{font-size:12px;font-weight:600;padding:6px 13px;border-radius:99px;border:1px solid var(--line2)}
+    .badge.soon{color:var(--violet);border-color:rgba(167,139,250,.4);background:rgba(167,139,250,.08)}
+    .badge.pro{color:var(--accent);border-color:rgba(250,204,21,.4);background:rgba(250,204,21,.08)}
+    .hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;letter-spacing:-1.5px;line-height:1.05}
+    .hero h1 .accent{color:var(--accent)}
+    .hero .tagline{font-size:clamp(1.1rem,2.4vw,1.45rem);color:var(--text);max-width:680px;margin:22px auto 0;font-weight:500}
+    .hero .descriptor{font-size:15px;color:var(--sub);max-width:600px;margin:14px auto 0}
+    .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;
+      padding:12px 22px;border-radius:10px;text-decoration:none;transition:transform .15s,background .2s,border-color .2s}
+    .btn-primary{background:var(--accent);color:#0e1117}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-ghost{border:1px solid var(--line2);color:var(--sub)}
+    .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+
+    /* ── chips ── */
+    .chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:740px;margin:38px auto 0}
+    .chip{font-size:12.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line);
+      padding:6px 13px;border-radius:8px}
+
+    /* ── blocks ── */
+    .section{padding:46px 0}
+    .section-label{text-align:center;font-size:12px;font-weight:700;letter-spacing:2px;
+      text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+    .section-title{text-align:center;font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:800;
+      letter-spacing:-.5px;margin-bottom:38px}
+    .blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:760px){.blocks{grid-template-columns:1fr}}
+    .block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+    .block .ico{font-size:26px;line-height:1;margin-bottom:14px}
+    .block h3{font-size:18px;font-weight:800;margin-bottom:6px}
+    .block .what{font-size:13px;color:var(--muted);margin-bottom:14px}
+    .block ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .block li{font-size:14px;color:var(--sub);display:flex;align-items:center;gap:9px}
+    .block li::before{content:"";width:5px;height:5px;border-radius:99px;background:var(--accent);flex-shrink:0}
+
+    /* ── pro band ── */
+    .proband{background:linear-gradient(180deg,#11151d,#0d1017);border:1px solid var(--line);
+      border-radius:16px;padding:38px 28px;text-align:center;margin:14px 0 0}
+    .proband h2{font-size:clamp(1.5rem,3.2vw,2rem);font-weight:800;letter-spacing:-.5px}
+    .proband p{color:var(--sub);max-width:620px;margin:12px auto 0;font-size:15px}
+    .apps{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px 0 26px}
+    .app{font-size:13px;font-weight:600;padding:8px 14px;border-radius:10px;border:1px solid var(--line2);
+      background:var(--bg);display:flex;align-items:center;gap:8px}
+    .app .dot{width:8px;height:8px;border-radius:99px;background:#22c55e}
+    .app.soon{color:var(--sub)}
+    .app.soon .dot{background:var(--violet)}
+
+    /* ── footer ── */
+    footer{border-top:1px solid var(--line);padding:34px 24px;text-align:center;
+      font-size:13px;color:var(--muted);margin-top:64px}
+    footer a{color:var(--sub);margin:0 8px;text-decoration:none}
+    footer a:hover{color:var(--text)}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>Workspace</span></a>
+      <div class="nav-links">
+        <a href="#capture" class="nav-link">Capture</a>
+        <a href="#organize" class="nav-link">Organize</a>
+        <a href="#create" class="nav-link">Create</a>
+        <a href="checkout.html" class="nav-link highlight">Get PRO</a>
+      </div>
+      <a href="https://nodus-ai.app" class="nav-back">← Back to NODUS</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- ── HERO ── -->
+    <div class="hero">
+      <div class="badges">
+        <span class="badge soon">● Coming soon</span>
+        <span class="badge pro">Included in NODUS PRO</span>
+      </div>
+      <h1>Your <span class="accent">browser workspace</span></h1>
+      <p class="tagline">Capture, organize and create — without leaving your browser.</p>
+      <p class="descriptor">Notes, documents, sheets, PDFs, files, screenshots and web clippings, all in one place.</p>
+      <div class="hero-btns">
+        <a href="checkout.html" class="btn btn-primary">Get NODUS PRO</a>
+        <a href="https://nodus-ai.app" class="btn btn-ghost">← Explore NODUS</a>
+      </div>
+      <div class="chips">
+        <span class="chip">📝 Notes</span>
+        <span class="chip">📄 Docs</span>
+        <span class="chip">📊 Sheets</span>
+        <span class="chip">📕 PDFs</span>
+        <span class="chip">✏️ Drawings</span>
+        <span class="chip">🗂️ Files</span>
+        <span class="chip">📸 Screenshots</span>
+        <span class="chip">🔤 Text clippings</span>
+        <span class="chip">🖼️ Image clippings</span>
+      </div>
+    </div>
+
+    <!-- ── THE THREE MOVES ── -->
+    <section class="section">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Capture. Organize. Create.</h2>
+      <div class="blocks">
+        <div class="block" id="capture">
+          <div class="ico">📸</div>
+          <h3>Capture</h3>
+          <p class="what">Grab anything off the web, instantly.</p>
+          <ul>
+            <li>Screenshots</li>
+            <li>Text clippings</li>
+            <li>Image clippings</li>
+          </ul>
+        </div>
+        <div class="block" id="organize">
+          <div class="ico">🗂️</div>
+          <h3>Organize</h3>
+          <p class="what">Keep everything together, where you work.</p>
+          <ul>
+            <li>Files</li>
+            <li>Notes</li>
+            <li>PDFs</li>
+            <li>Images</li>
+          </ul>
+        </div>
+        <div class="block" id="create">
+          <div class="ico">✏️</div>
+          <h3>Create</h3>
+          <p class="what">Turn what you collect into something.</p>
+          <ul>
+            <li>Docs</li>
+            <li>Sheets</li>
+            <li>Drawings</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRO BUNDLE BAND ── -->
+    <section class="section">
+      <div class="proband">
+        <h2>One subscription. Every NODUS app.</h2>
+        <p>NODUS PRO unlocks the whole toolkit with a single subscription — no per-app fees.</p>
+        <div class="apps">
+          <span class="app"><span class="dot"></span>NODUS AI</span>
+          <span class="app"><span class="dot"></span>PH Radar BI</span>
+          <span class="app soon"><span class="dot"></span>Workspace · soon</span>
+        </div>
+        <a href="checkout.html" class="btn btn-primary">See NODUS PRO</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div>
+      <a href="https://nodus-ai.app">NODUS Home</a>
+      <a href="https://nodus-ai.app/privacy">Privacy</a>
+      <a href="https://nodus-ai.app/terms">Terms</a>
+    </div>
+    <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
+    <!-- research:start -->
+    <div style="margin-top:16px;font-size:12px;line-height:1.6;">
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
+      &nbsp;·&nbsp;
+      <a href="/intent-ai" style="color:#fb923c;text-decoration:none;">Intent AI</a>
+      &nbsp;—&nbsp;
+      <span style="color:#fb923c;opacity:.75;">A machine that processes intention, not language</span>
+    </div>
+    <!-- research:end -->
+  </footer>
+
+  <script src="/lang-switcher.js"></script>
+  <script src="/products-menu.js" defer></script>
+</body>
+</html>
