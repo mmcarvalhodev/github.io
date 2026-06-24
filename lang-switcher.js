@@ -1,10 +1,32 @@
 (function () {
-  var lang = window._forcedLang || localStorage.getItem('nodus_lang') || 'en';
   var subdirs = ['pt','es','fr','de','it','nl','pl','id','vi','ja','ko','zh','ru','hi','tr'];
-  var isSubdir = subdirs.includes(lang);
+  var inPageI18nPages = ['affiliates.html', 'checkout.html'];
 
-  // Sync current page language to localStorage
-  try { localStorage.setItem('nodus_lang', lang); } catch(e) {}
+  // Current page path / filename (clean-URL aware: /checkout matches checkout.html)
+  var currentPath = window.location.pathname;
+  var currentSegments = currentPath.replace(/^\//, '').split('/');
+  var currentFile = currentSegments[currentSegments.length - 1];
+  var currentFileH = (currentFile && currentFile.indexOf('.') === -1) ? currentFile + '.html' : currentFile;
+  var isInPage = inPageI18nPages.indexOf(currentFileH) !== -1;
+
+  // Language of the CURRENT page (what the page actually shows), NOT a stored preference:
+  //  - forced lang on /[lang]/ pages; else
+  //  - in-page-i18n pages (checkout/affiliates) translate in place -> follow the stored pref; else
+  //  - derive from the URL path (/pt/... = pt, root = en).
+  // (Reading localStorage here made the switcher claim PT on the English homepage.)
+  function pathLang() {
+    var m = currentPath.match(/^\/([a-z]{2})(?:\/|$)/);
+    return (m && subdirs.indexOf(m[1]) !== -1) ? m[1] : 'en';
+  }
+  var lang = window._forcedLang
+    || (isInPage ? (localStorage.getItem('nodus_lang') || 'en') : pathLang());
+  var isSubdir = subdirs.indexOf(lang) !== -1;
+
+  // Persist the preference only on a real choice (localized or in-page-i18n page),
+  // so visiting the static EN root doesn't wipe a PT user's stored preference.
+  if (window._forcedLang || isInPage) {
+    try { localStorage.setItem('nodus_lang', lang); } catch (e) {}
+  }
 
   var allLangs = [
     ['en','EN'], ['pt','PT'], ['es','ES'], ['fr','FR'],
@@ -16,14 +38,6 @@
   // Pages that have a translated version in every language subdir
   var translatedPages = ['privacy.html', 'faq.html', 'hn-radar.html', 'hn-radar-privacy.html', 'ph-radar.html', 'ph-radar-privacy.html', 'yt-radar.html', 'yt-radar-privacy.html'];
 
-  // Pages with in-page JS i18n — don't navigate, just fire event
-  var inPageI18nPages = ['affiliates.html', 'checkout.html'];
-
-  // Current page filename
-  var currentPath = window.location.pathname;
-  var currentSegments = currentPath.replace(/^\//, '').split('/');
-  var currentFile = currentSegments[currentSegments.length - 1];
-  var isInPage = inPageI18nPages.indexOf(currentFile) !== -1;
 
   // Determine destination URL for a target language code
   function getHref(code) {

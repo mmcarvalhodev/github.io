@@ -2276,31 +2276,17 @@
     }
 
     function detectLang() {
+      // The page's language comes from the URL, NOT a stored preference:
+      //  - forced lang on pre-rendered /[lang]/ pages, else
+      //  - the path segment (/pt/... = pt), else the English root.
+      // Reading localStorage/navigator here made the English homepage apply PT
+      // metadata (html lang, <title>) and mark the PT switcher option active
+      // while the visible content stayed in English.
       if (window._forcedLang && T[window._forcedLang]) return window._forcedLang;
       try {
-        var urlParam = new URLSearchParams(window.location.search).get('lang');
-        if (urlParam && T[urlParam]) return urlParam;
+        var m = window.location.pathname.match(/^\/([a-z]{2})(?:\/|$)/);
+        if (m && T[m[1]]) return m[1];
       } catch(e) {}
-      try {
-        var saved = localStorage.getItem('nodus_lang');
-        if (saved && T[saved]) return saved;
-      } catch(e) {}
-      var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-      if (nav.startsWith('pt')) return 'pt';
-      if (nav.startsWith('es')) return 'es';
-      if (nav.startsWith('fr')) return 'fr';
-      if (nav.startsWith('de')) return 'de';
-      if (nav.startsWith('ja')) return 'ja';
-      if (nav.startsWith('it')) return 'it';
-      if (nav.startsWith('zh')) return 'zh';
-      if (nav.startsWith('ko')) return 'ko';
-      if (nav.startsWith('hi')) return 'hi';
-      if (nav.startsWith('ru')) return 'ru';
-      if (nav.startsWith('tr')) return 'tr';
-      if (nav.startsWith('pl')) return 'pl';
-      if (nav.startsWith('nl')) return 'nl';
-      if (nav.startsWith('id')) return 'id';
-      if (nav.startsWith('vi')) return 'vi';
       return 'en';
     }
 
