@@ -452,18 +452,152 @@
       </div>
     </div>
 
-    <!-- ── HERO SCREENSHOT ── -->
+    <!-- ── HERO SCREENSHOT (BI) ── -->
     <div class="hero-shot">
-      <img src="/ph-radar-screenshot.png"
-           alt="PH Radar Chrome side panel showing today's Product Hunt race ranked live with vote velocity and breakout alerts"
+      <img src="/bi-showcase.png"
+           alt="PH Radar BI dashboard — a board of custom visuals built from live Product Hunt data: bar, pie, combo and momentum charts"
            width="1765" height="933" loading="eager"
            onerror="this.style.display='none';var p=document.getElementById('ph-shot-ph');if(p)p.style.display='flex';">
-      <div class="shot-ph" id="ph-shot-ph" style="display:none;">
-        <div class="shot-ph-icon">📊</div>
-        <div class="shot-ph-text" id="t-hero-shot-ph">Uma prévia ao vivo da sidepanel do PH Radar — a corrida de hoje ranqueada em tempo real, velocidade de votos e alertas de breakout.</div>
+      <div class="shot-ph" id="ph-shot-ph" style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+        <div class="shot-ph-icon" style="font-size:30px;">📊</div>
+        <div class="shot-ph-text" id="t-hero-shot-ph" style="font-family:ui-monospace,monospace;font-size:13px;">Uma prévia ao vivo da sidepanel do PH Radar — a corrida de hoje ranqueada em tempo real, velocidade de votos e alertas de breakout.</div>
       </div>
       <div class="shot-cap" id="t-hero-shot-cap">A sidepanel fica ao lado de qualquer aba. Os snapshots atualizam em segundo plano — sem trocar de aba, sem refresh manual.</div>
     </div>
+
+    <hr class="divider">
+
+    <!-- ════════════ BI DASHBOARD ════════════ -->
+
+    <!-- A · beyond the leaderboard -->
+    <section class="section" id="bi">
+      <div class="section-label" id="t-bi-label">BI Dashboard</div>
+      <h2 class="section-title" id="t-bi-title">Beyond today's leaderboard.</h2>
+      <p class="section-sub" id="t-bi-sub">The side panel watches the race live. The BI dashboard — a full-screen tab — turns every launch into something you can actually analyze: KPIs, an Opportunity Radar, top categories, and views you build yourself. Free to explore; PRO unlocks the signals that convert.</p>
+      <div class="hero-shot" style="margin-top:40px;">
+        <img src="/bi-home.png" alt="PH Radar BI dashboard home with Launches, Votes, Categories and Days KPIs, an Opportunity Radar and Top Categories" width="1765" height="933" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+          <div style="font-size:30px;">📊</div><div style="font-size:13px;font-family:ui-monospace,monospace;">bi-home.png</div>
+        </div>
+        <div class="shot-cap" id="t-bi-home-cap">The home view: launches, votes, categories and active days at a glance — with the Opportunity Radar surfacing where the gaps are.</div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- B · build your own -->
+    <section class="section">
+      <div class="section-label" id="t-bi-build-label">Your data, your way</div>
+      <h2 class="section-title" id="t-bi-build-title">Build the view you need.</h2>
+      <p class="section-sub" id="t-bi-build-sub">Add a visual, switch it from bar to pie to combo, swap the source, dimension, measure and aggregation — all live, no query language. Free explores every chart type; PRO saves dashboards and turns a card into a reusable template.</p>
+      <div class="hero-shot" style="margin-top:40px;">
+        <img src="/bi-build.gif" alt="Building a visual in the PH Radar BI dashboard — switching chart type and changing dimension and measure live" width="1765" height="933" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+          <div style="font-size:30px;">🧱</div><div style="font-size:13px;font-family:ui-monospace,monospace;">bi-build.gif</div>
+        </div>
+        <div class="shot-cap" id="t-bi-build-cap">The builder, live: + Visual → Bar, Pie or Combo → pick a dimension and a measure.</div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- C · the signals that convert (PRO) -->
+    <section class="section">
+      <div class="section-label" id="t-bi-sig-label">PRO intelligence</div>
+      <h2 class="section-title" id="t-bi-sig-title">The signals that convert.</h2>
+      <p class="section-sub" id="t-bi-sig-sub">Free shows you the data. PRO reads it for you — the three views makers actually act on.</p>
+
+      <div class="hero-shot" style="margin-top:40px;">
+        <img src="/momentum.png" alt="PH Radar Momentum view ranking a launch against its two nearest neighbors above and below, plus the day's number one" width="1719" height="933" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+          <div style="font-size:30px;">📈</div><div style="font-size:13px;font-family:ui-monospace,monospace;">momentum.png</div>
+        </div>
+        <div class="shot-cap" id="t-bi-momentum-cap"><b>Momentum</b> — your launch against its closest neighbors (±2) and the day's #1. You see exactly who you need to pass, not just an abstract rank.</div>
+      </div>
+
+      <div class="shots-grid" style="margin-top:24px;">
+        <figure class="shot-card">
+          <img src="/maker-resp.png" alt="PH Radar Maker responsiveness card with an engaged or lazy signal, reply rate, questions and answer substance" width="1719" height="933" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:12px;color:var(--muted);gap:8px;">
+            <div style="font-size:26px;">⚡</div><div style="font-size:12.5px;font-family:ui-monospace,monospace;">maker-resp.png</div>
+          </div>
+          <figcaption id="t-bi-maker"><b>Maker responsiveness</b> — engaged or coasting? Reply rate, questions answered, and how substantial the replies are.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="/long-tail.png" alt="PH Radar Long Tail badge on a favorite, with a sparkline and a sustained post-launch growth percentage" width="1719" height="933" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:12px;color:var(--muted);gap:8px;">
+            <div style="font-size:26px;">🌱</div><div style="font-size:12.5px;font-family:ui-monospace,monospace;">long-tail.png</div>
+          </div>
+          <figcaption id="t-bi-longtail"><b>Long Tail</b> — favorites that keep growing after launch day. A sparkline plus the growth the leaderboard never shows.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- D · the race in your timezone -->
+    <section class="section">
+      <div class="section-label" id="t-bi-race-label">No more 4am math</div>
+      <h2 class="section-title" id="t-bi-race-title">The race, in your timezone.</h2>
+      <p class="section-sub" id="t-bi-race-sub">Product Hunt resets on its own clock. PH Radar shows the whole window in your local time: when the day starts, when votes get revealed, and exactly how long is left.</p>
+      <div class="hero-shot" style="margin-top:40px;max-width:780px;">
+        <img src="/race-window.png" alt="PH Radar daily race window with start and close times in local time, the votes-revealed moment, and a live countdown" width="1719" height="540" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:21/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+          <div style="font-size:28px;">🕒</div><div style="font-size:13px;font-family:ui-monospace,monospace;">race-window.png</div>
+        </div>
+        <div class="shot-cap" id="t-bi-race-cap">Starts, closes, votes-revealed and a live countdown — all translated to your local time.</div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- E · free vs PRO -->
+    <section class="section" id="bi-pro">
+      <div class="section-label" id="t-bi-pro-label">Free vs PRO</div>
+      <h2 class="section-title" id="t-bi-pro-title">Explore free. Convert with PRO.</h2>
+      <p class="section-sub" id="t-bi-pro-sub">Bringing data in and exploring it is always free. PRO unlocks composition, the converting signals, styling, layout and export — and it's part of one NODUS PRO subscription, alongside NODUS AI and Workspace.</p>
+
+      <div class="features-grid" style="margin-top:40px;">
+        <div class="feature-card">
+          <div class="feature-icon">🧩</div>
+          <h4 id="t-bi-c1h">Composition</h4>
+          <p id="t-bi-c1p"><b>Free:</b> 1 page, up to 4 widgets, default palette, zoom.<br><b>PRO:</b> multiple pages, more widgets, saved dashboards and custom presets.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h4 id="t-bi-c2h">Intelligence</h4>
+          <p id="t-bi-c2p"><b>PRO:</b> period comparison (Δ% over 2/3/7/14/30 days), automatic insights, a watchlist with per-metric alerts and a digest when you open the panel.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h4 id="t-bi-c3h">Style &amp; layout</h4>
+          <p id="t-bi-c3p"><b>PRO:</b> chart and block palettes, score gradients, font and line colors, grid columns and per-card width.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📤</div>
+          <h4 id="t-bi-c4h">Export &amp; clean</h4>
+          <p id="t-bi-c4p"><b>PRO:</b> export to CSV and PDF, save a PDF page as PNG, and hide the ad banner.</p>
+        </div>
+      </div>
+
+      <div class="hero-shot" style="margin-top:40px;max-width:780px;">
+        <img src="/pro-section.png" alt="PH Radar PRO account section showing the NODUS PRO plan that unlocks the BI dashboard" width="1719" height="760" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:21/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+          <div style="font-size:28px;">⭐</div><div style="font-size:13px;font-family:ui-monospace,monospace;">pro-section.png</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:36px;">
+        <a href="checkout.html" class="btn-primary" id="t-bi-pro-cta">Get NODUS PRO</a>
+      </div>
+    </section>
 
     <hr class="divider">
 
@@ -1211,10 +1345,10 @@
     "t-nav-submit": "🚀 Promote launch",
     "t-nav-dashboard": "📊 Dashboard",
     "t-hero-badge": "📡 Browser Extension",
-    "t-hero-title": "The Product Hunt race, <span>captured all day</span>",
-    "t-hero-desc": "PH Radar is a Chrome side panel that snapshots today's leaderboard in the background — so you can see who's gaining votes, who's stalling, and which launches are breaking out. Pin hunters, set watch rules, and follow the launch calendar. Free to use — plus a Community Spotlight for makers who want extra eyes on launch day.",
+    "t-hero-title": "Product Hunt, <span>read like a dashboard</span>",
+    "t-hero-desc": "PH Radar turns Product Hunt into a full BI dashboard — KPIs, an Opportunity Radar, momentum against your neighbors, maker responsiveness and more — backed by a live Chrome side panel that snapshots today's race in the background. Free to explore; PRO unlocks the signals that convert.",
     "t-hero-shot-ph": "A live look at the PH Radar side panel — today's race ranked in real time, vote velocity, and breakout alerts.",
-    "t-hero-shot-cap": "The side panel sits next to any tab. Snapshots refresh in the background — no tab switching, no manual refresh.",
+    "t-hero-shot-cap": "The full BI dashboard opens in its own tab — build any view from live Product Hunt data. The side panel rides along next to any page.",
     "t-hero-install-chrome-text": "Install for Chrome",
     "t-hero-install-firefox-text": "Install for Firefox",
     "t-hero-spotlight": "⭐ Community Spotlight",
