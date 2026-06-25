@@ -534,10 +534,10 @@
       <h2 class="section-title" id="t-bi-build-title">Build the view you need.</h2>
       <p class="section-sub" id="t-bi-build-sub">Add a visual, switch it from bar to pie to combo, swap the source, dimension, measure and aggregation — all live, no query language. Free explores every chart type; PRO saves dashboards and turns a card into a reusable template.</p>
       <div class="hero-shot" style="margin-top:40px;">
-        <img src="/bi-build.gif" alt="Building a visual in the PH Radar BI dashboard — switching chart type and changing dimension and measure live" width="1765" height="933" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <video src="/bi-build.mp4" autoplay loop muted playsinline preload="metadata" width="1280" height="782" style="display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 60px rgba(0,0,0,0.45);"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></video>
         <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
-          <div style="font-size:30px;">🧱</div><div style="font-size:13px;font-family:ui-monospace,monospace;">bi-build.gif</div>
+          <div style="font-size:30px;">🎬</div><div style="font-size:13px;font-family:ui-monospace,monospace;">bi-build.mp4</div>
         </div>
         <div class="shot-cap" id="t-bi-build-cap">The builder, live: + Visual → Bar, Pie or Combo → pick a dimension and a measure.</div>
       </div>
@@ -560,19 +560,19 @@
         <div class="shot-cap" id="t-bi-momentum-cap"><b>Momentum</b> — your launch against its closest neighbors (±2) and the day's #1. You see exactly who you need to pass, not just an abstract rank.</div>
       </div>
 
-      <div class="shots-grid" style="margin-top:24px;">
+      <div class="shots-grid" style="margin-top:24px;align-items:start;">
         <figure class="shot-card">
-          <img src="/maker-resp.png" alt="PH Radar Maker responsiveness card with an engaged or lazy signal, reply rate, questions and answer substance" width="1719" height="933" loading="lazy"
+          <img src="/maker-resp.png" alt="PH Radar Maker responsiveness card with an engaged or lazy signal, reply rate, questions and answer substance" width="407" height="933" loading="lazy" style="max-width:392px;margin:0 auto;"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:12px;color:var(--muted);gap:8px;">
+          <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:9/20;max-width:392px;width:100%;margin:0 auto;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:8px;">
             <div style="font-size:26px;">⚡</div><div style="font-size:12.5px;font-family:ui-monospace,monospace;">maker-resp.png</div>
           </div>
-          <figcaption id="t-bi-maker"><b>Maker responsiveness</b> — engaged or coasting? Reply rate, questions answered, and how substantial the replies are.</figcaption>
+          <figcaption id="t-bi-maker"><b>Maker responsiveness</b> — engaged or coasting? Reply rate, questions answered, and how substantial the replies are — right in the side panel.</figcaption>
         </figure>
         <figure class="shot-card">
-          <img src="/long-tail.png" alt="PH Radar Long Tail badge on a favorite, with a sparkline and a sustained post-launch growth percentage" width="1719" height="933" loading="lazy"
+          <img src="/long-tail.png" alt="PH Radar Long Tail badge on a favorite, with a sparkline and a sustained post-launch growth percentage" width="407" height="394" loading="lazy" style="max-width:392px;margin:0 auto;"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:12px;color:var(--muted);gap:8px;">
+          <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:407/394;max-width:392px;width:100%;margin:0 auto;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:8px;">
             <div style="font-size:26px;">🌱</div><div style="font-size:12.5px;font-family:ui-monospace,monospace;">long-tail.png</div>
           </div>
           <figcaption id="t-bi-longtail"><b>Long Tail</b> — favorites that keep growing after launch day. A sparkline plus the growth the leaderboard never shows.</figcaption>
@@ -586,14 +586,27 @@
     <section class="section">
       <div class="section-label" id="t-bi-race-label">No more 4am math</div>
       <h2 class="section-title" id="t-bi-race-title">The race, in your timezone.</h2>
-      <p class="section-sub" id="t-bi-race-sub">Product Hunt resets on its own clock. PH Radar shows the whole window in your local time: when the day starts, when votes get revealed, and exactly how long is left.</p>
-      <div class="hero-shot" style="margin-top:40px;max-width:780px;">
-        <img src="/race-window.png" alt="PH Radar daily race window with start and close times in local time, the votes-revealed moment, and a live countdown" width="1719" height="540" loading="lazy"
+      <p class="section-sub" id="t-bi-race-sub">Product Hunt resets on its own clock. PH Radar shows the whole window in your local time — when the day starts, when votes get revealed, and exactly how long is left — and lets you replay any past day.</p>
+      <figure style="max-width:380px;margin:40px auto 0;">
+        <img src="/daily-race.png" alt="PH Radar daily race window in local time — start and close, votes revealed, warm window and a live countdown" width="407" height="941" loading="lazy" style="display:block;width:100%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px rgba(0,0,0,0.35);"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:21/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
-          <div style="font-size:28px;">🕒</div><div style="font-size:13px;font-family:ui-monospace,monospace;">race-window.png</div>
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:407/941;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+          <div style="font-size:28px;">🕒</div><div style="font-size:13px;font-family:ui-monospace,monospace;">daily-race.png</div>
         </div>
-        <div class="shot-cap" id="t-bi-race-cap">Starts, closes, votes-revealed and a live countdown — all translated to your local time.</div>
+        <figcaption class="shot-cap" id="t-bi-race-cap">Starts, closes, votes-revealed and a live countdown — all in your local time.</figcaption>
+      </figure>
+
+      <div style="text-align:center;margin-top:52px;">
+        <div class="section-label" id="t-bi-replay-label">Replay any day</div>
+        <p class="section-sub" id="t-bi-replay-sub" style="margin-left:auto;margin-right:auto;">Scrub back to any past day and watch the top ranks shuffle from morning to midnight.</p>
+      </div>
+      <div class="hero-shot" style="margin-top:28px;">
+        <img src="/race-window.png" alt="PH Radar daily race replay — bump charts of how the top ranks changed hour by hour over the day" width="1505" height="943" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+          <div style="font-size:28px;">🎞️</div><div style="font-size:13px;font-family:ui-monospace,monospace;">race-window.png</div>
+        </div>
+        <div class="shot-cap" id="t-bi-replay-cap">Rank-over-the-day replay — see who climbed, who faded, and when the lead changed hands.</div>
       </div>
     </section>
 
@@ -628,13 +641,13 @@
         </div>
       </div>
 
-      <div class="hero-shot" style="margin-top:40px;max-width:780px;">
-        <img src="/pro-section.png" alt="PH Radar PRO account section showing the NODUS PRO plan that unlocks the BI dashboard" width="1719" height="760" loading="lazy"
+      <figure style="max-width:380px;margin:40px auto 0;">
+        <img src="/pro-section.png" alt="PH Radar NODUS PRO account section — sign in with your subscription email to unlock PRO across the ecosystem" width="407" height="900" loading="lazy" style="display:block;width:100%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px rgba(0,0,0,0.35);"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:21/9;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:407/900;background:var(--panel);border:1.5px dashed var(--border);border-radius:14px;color:var(--muted);gap:10px;">
           <div style="font-size:28px;">⭐</div><div style="font-size:13px;font-family:ui-monospace,monospace;">pro-section.png</div>
         </div>
-      </div>
+      </figure>
 
       <div style="text-align:center;margin-top:36px;">
         <a href="checkout.html" class="btn-primary" id="t-bi-pro-cta">Get NODUS PRO</a>
