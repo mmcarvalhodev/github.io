@@ -59,11 +59,19 @@
     .badge .dot{width:7px;height:7px;border-radius:99px;background:var(--accent)}
 
     /* ── hero ── */
-    .hero{text-align:center;padding:74px 0 50px}
-    .hero h1{font-size:clamp(2.3rem,5.6vw,3.8rem);font-weight:900;letter-spacing:-1.4px;line-height:1.06;margin:24px auto 0;max-width:840px}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,500px);align-items:center;gap:48px;padding:56px 0 50px;text-align:left}
+    .hero-copy{max-width:560px}
+    .hero h1{font-size:clamp(2rem,3.6vw,3.1rem);font-weight:900;letter-spacing:-1.2px;line-height:1.07;margin:16px 0 0}
     .hero h1 .accent{color:var(--accent)}
-    .hero .sub{font-size:clamp(1.05rem,2.3vw,1.35rem);color:var(--sub);max-width:660px;margin:20px auto 0}
-    .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+    .hero .sub{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--sub);max-width:520px;margin:18px 0 0}
+    .hero-btns{display:flex;gap:12px;justify-content:flex-start;flex-wrap:wrap;margin-top:28px}
+    @media(max-width:860px){
+      .hero{grid-template-columns:1fr;text-align:center;gap:30px;padding-top:46px}
+      .hero-copy{max-width:620px;margin:0 auto}
+      .hero h1,.hero .sub{margin-left:auto;margin-right:auto}
+      .hero-btns{justify-content:center}
+      .hero-media{max-width:560px;margin:0 auto}
+    }
 
     /* ── gif placeholder (replace each with <img src="…gif">) ── */
     .gifholder{position:relative;aspect-ratio:16/9;width:100%;border:1.5px dashed var(--line2);
@@ -73,7 +81,7 @@
       display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--accent)}
     .gifholder .lbl{font-size:13px;font-weight:700;color:var(--sub);font-family:ui-monospace,Menlo,Consolas,monospace}
     .gifholder .note{font-size:11px;text-transform:uppercase;letter-spacing:1.5px}
-    .hero-media{max-width:600px;margin:42px auto 0}
+    .hero-media{margin:0}
 
     /* ── sections ── */
     .section{padding:54px 0}
@@ -212,12 +220,14 @@
 
     <!-- ── 1. HERO ── -->
     <header class="hero">
-      <span class="badge"><span class="dot"></span> Coming soon</span>
-      <h1>Your office — <span class="accent">local and private</span> — right in your browser.</h1>
-      <p class="sub">Documents, spreadsheets, PDFs, web clips and notes, in your browser's side panel. Everything on your device — no cloud, no account.</p>
-      <div class="hero-btns">
-        <a href="#" class="btn btn-primary" data-ph-cta>Get notified at launch</a>
-        <a href="#features" class="btn btn-ghost">See what's inside ↓</a>
+      <div class="hero-copy">
+        <span class="badge"><span class="dot"></span> Coming soon</span>
+        <h1>Your office — <span class="accent">local and private</span> — right in your browser.</h1>
+        <p class="sub">Documents, spreadsheets, PDFs, web clips and notes, in your browser's side panel. Everything on your device — no cloud, no account.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn btn-primary" data-ph-cta>Get notified at launch</a>
+          <a href="#features" class="btn btn-ghost">See what's inside ↓</a>
+        </div>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -422,12 +432,19 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Questions, answered.</h2>
       <div class="faq">
-        <details><summary>Do my files go to the cloud?</summary><p>No. Everything you create or bring in stays on your device — there's no server and nothing syncs anywhere.</p></details>
-        <details><summary>Do I need an account?</summary><p>No account and no sign-up. Install the extension and start using it.</p></details>
-        <details><summary>Does it work offline?</summary><p>Yes. Workspace runs entirely in your browser, so it keeps working with no connection.</p></details>
-        <details><summary>How do I move to a new computer?</summary><p>Export an encrypted, password-protected backup and restore it on the new machine — your files come with you.</p></details>
-        <details><summary>Can I edit .docx and .xlsx files?</summary><p>You can import them — a DOCX comes in as text and an XLSX as values, so you can read and reuse the content. Exporting back to DOCX/XLSX is a PRO feature.</p></details>
-        <details><summary>What languages does it support?</summary><p>The interface is available in 16 languages.</p></details>
+        <details><summary>Are my files stored in the cloud?</summary><p>No. Everything you create or import — documents, spreadsheets, PDFs, clips, notes and drawings — is stored locally on your device, in your browser. Nothing is uploaded to us or anyone else.</p></details>
+        <details><summary>Do I need an account to use it?</summary><p>No. Workspace works with no sign-up and no login. You only enter an email if you choose to activate NODUS PRO.</p></details>
+        <details><summary>Does it work offline?</summary><p>Yes. Because it's local-first, you can create, edit and read your files with no internet connection.</p></details>
+        <details><summary>What happens if I switch computers or reinstall the browser?</summary><p>Your data lives only on that device, so moving it is up to you: use the encrypted Backup &amp; Restore (a PRO feature) to export everything to a file and bring it back on another machine. Without a backup, local data stays on that browser only.</p></details>
+        <details><summary>Which files can I bring in?</summary><p>Drag and drop PDF, DOCX, XLSX, TXT, images and Markdown straight into the panel. The rule is simple: bringing content in is always free.</p></details>
+        <details><summary>Can I edit Word and Excel files?</summary><p>You can open them — DOCX comes in as plain text and XLSX as values (formatting and formulas are simplified). Better to open without formatting than not at all. Exporting back to DOCX/XLSX (and images) is a PRO feature.</p></details>
+        <details><summary>What's free and what's PRO?</summary><p>Free: creating and editing documents and spreadsheets, reading/searching/printing PDFs, web clips, notes, reminders, file import, and 16 languages. PRO adds export (DOCX, XLSX, PNG), PDF-to-image, encrypted backup, active alarms with notifications, and batch actions.</p></details>
+        <details><summary>How much does PRO cost?</summary><p>$4.50/month, $30/year (≈ $2.50/mo) or $79 one-time (lifetime). Checkout is handled securely by Paddle, with a 7-day free trial on the annual plan and a 14-day money-back guarantee.</p></details>
+        <details><summary>One subscription for everything?</summary><p>Yes — a single NODUS PRO subscription unlocks PRO across the whole NODUS ecosystem: NODUS AI, PH Radar and Workspace.</p></details>
+        <details><summary>Can I print or save my work as a PDF?</summary><p>Yes. Documents and spreadsheets can be printed or turned into a PDF — both free — and the PDF opens right in the built-in viewer.</p></details>
+        <details><summary>Is it secure? What does "no remote code" mean?</summary><p>All of the extension's code ships inside the package — nothing is downloaded and run from a server. Your backups are encrypted with AES-256, and we never read, transmit or analyze the content of your files.</p></details>
+        <details><summary>Which browsers does it support?</summary><p>Chrome and Chromium-based browsers (Edge, Brave and others). It lives in the browser's side panel, alongside whatever you're working on.</p></details>
+        <details><summary>When does it launch?</summary><p>Coming soon. Hit "Get notified at launch" and you'll be the first to know.</p></details>
       </div>
     </section>
 
