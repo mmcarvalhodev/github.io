@@ -73,7 +73,7 @@
       display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--accent)}
     .gifholder .lbl{font-size:13px;font-weight:700;color:var(--sub);font-family:ui-monospace,Menlo,Consolas,monospace}
     .gifholder .note{font-size:11px;text-transform:uppercase;letter-spacing:1.5px}
-    .hero-media{max-width:860px;margin:42px auto 0}
+    .hero-media{max-width:600px;margin:42px auto 0}
 
     /* ── sections ── */
     .section{padding:54px 0}
@@ -96,6 +96,17 @@
     .feature h3{font-size:18px;font-weight:800;margin-bottom:5px}
     .feature p{font-size:14px;color:var(--muted);margin-bottom:18px}
     .feature .gifholder{aspect-ratio:16/10}
+    /* ── feature demos (videos) ── */
+    .demo{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0b0e14;margin-top:14px;line-height:0}
+    .demo video{display:block;width:100%;height:auto}
+    .hero-media .demo{margin-top:0;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+    .pillar{margin-top:46px}
+    .pillar-head{display:flex;align-items:center;justify-content:center;gap:12px;font-size:12px;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+    .pillar-head .ln{flex:1;height:1px;background:var(--line);max-width:90px}
+    .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .feat-grid.one{max-width:560px;margin:0 auto;grid-template-columns:1fr}
+    @media(max-width:760px){.feat-grid{grid-template-columns:1fr}}
 
     /* ── privacy ── */
     .privacy{background:linear-gradient(180deg,#120e1d,#0b0e14);border:1px solid rgba(139,92,246,.2);
@@ -159,12 +170,9 @@
         <a href="#" class="btn btn-primary" data-ph-cta>Get notified at launch</a>
         <a href="#features" class="btn btn-ghost">See what's inside ↓</a>
       </div>
-      <!-- HERO GIF — replace with <img src="/workspace/gif-1-drag-drop.gif" ...> -->
       <div class="hero-media">
-        <div class="gifholder" data-gif="gif-1-drag-drop">
-          <span class="play">▶</span>
-          <span class="lbl">gif-1-drag-drop</span>
-          <span class="note">demo coming</span>
+        <div class="demo">
+          <video data-src="/ws-home.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="NODUS Workspace — every content type in one browser side panel"></video>
         </div>
       </div>
     </header>
@@ -183,30 +191,59 @@
       <div class="section-label">What's inside</div>
       <h2 class="section-title">A real workspace, not just storage.</h2>
 
-      <div class="features">
-        <div class="feature">
-          <h3>Drag any file in</h3>
-          <p>PDF, DOCX, XLSX, images and Markdown open instantly — all local.</p>
-          <!-- replace with <img src="/workspace/gif-1-drag-drop.gif"> -->
-          <div class="gifholder" data-gif="gif-1-drag-drop"><span class="play">▶</span><span class="lbl">gif-1-drag-drop</span><span class="note">demo coming</span></div>
+      <!-- Capture -->
+      <div class="pillar">
+        <div class="pillar-head"><span class="ln"></span> Capture <span class="ln"></span></div>
+        <div class="feat-grid one">
+          <div class="feature">
+            <h3>Clip the web — text or image</h3>
+            <p>Grab a snippet from any page; it lands in your Clips tagged with its source, ready to reuse.</p>
+            <div class="demo"><video data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Clipping text and images from a page into Workspace"></video></div>
+          </div>
         </div>
-        <div class="feature">
-          <h3>Real documents and spreadsheets</h3>
-          <p>A full editor, right inside the panel.</p>
-          <!-- replace with <img src="/workspace/gif-3-spreadsheet.gif"> -->
-          <div class="gifholder" data-gif="gif-3-spreadsheet"><span class="play">▶</span><span class="lbl">gif-3-spreadsheet</span><span class="note">demo coming</span></div>
+      </div>
+
+      <!-- Organize -->
+      <div class="pillar">
+        <div class="pillar-head"><span class="ln"></span> Organize <span class="ln"></span></div>
+        <div class="feat-grid">
+          <div class="feature">
+            <h3>Notes that tie it together</h3>
+            <p>Notes and checklists right beside what you're reading — the desk the whole workspace orbits.</p>
+            <div class="demo"><video data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Taking notes with a checklist in the Workspace side panel"></video></div>
+          </div>
+          <div class="feature">
+            <h3>Drag any file in</h3>
+            <p>PDF, DOCX, XLSX, images and Markdown — organized in folders, all on your device.</p>
+            <div class="demo"><video data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Organizing files and folders in Workspace"></video></div>
+          </div>
+          <div class="feature">
+            <h3>Read PDFs in the panel</h3>
+            <p>Open and page through PDFs without leaving your tab.</p>
+            <div class="demo"><video data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Reading a PDF inside the Workspace side panel"></video></div>
+          </div>
         </div>
-        <div class="feature">
-          <h3>Clip the web and reuse</h3>
-          <p>Grab a snippet and drop it straight into a document.</p>
-          <!-- replace with <img src="/workspace/gif-2-clip-reuse.gif"> -->
-          <div class="gifholder" data-gif="gif-2-clip-reuse"><span class="play">▶</span><span class="lbl">gif-2-clip-reuse</span><span class="note">demo coming</span></div>
-        </div>
-        <div class="feature">
-          <h3>Encrypted backup</h3>
-          <p>Export everything with a password, restore anytime.</p>
-          <!-- replace with <img src="/workspace/gif-4-backup.gif"> -->
-          <div class="gifholder" data-gif="gif-4-backup"><span class="play">▶</span><span class="lbl">gif-4-backup</span><span class="note">demo coming</span></div>
+      </div>
+
+      <!-- Create -->
+      <div class="pillar">
+        <div class="pillar-head"><span class="ln"></span> Create <span class="ln"></span></div>
+        <div class="feat-grid">
+          <div class="feature">
+            <h3>Real documents</h3>
+            <p>A full editor — headings, lists, formatting — right inside the panel.</p>
+            <div class="demo"><video data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Editing a document in Workspace"></video></div>
+          </div>
+          <div class="feature">
+            <h3>Spreadsheets</h3>
+            <p>Cells, formulas and totals, right where you work.</p>
+            <div class="demo"><video data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Editing a spreadsheet in Workspace"></video></div>
+          </div>
+          <div class="feature">
+            <h3>Drawings</h3>
+            <p>Sketch diagrams and quick marks on a canvas.</p>
+            <div class="demo"><video data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Drawing on a canvas in Workspace"></video></div>
+          </div>
         </div>
       </div>
     </section>
@@ -298,6 +335,28 @@
         a.setAttribute('rel', 'noopener');
       });
     }
+
+    // ── Lazy-load + play-on-visible for the demo videos ──
+    (function () {
+      var vids = document.querySelectorAll('video[data-src]');
+      if (!vids.length) return;
+      if (!('IntersectionObserver' in window)) {
+        vids.forEach(function (v) { v.src = v.dataset.src; });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (!v.src) v.src = v.dataset.src;
+            var p = v.play(); if (p && p.catch) p.catch(function () {});
+          } else if (!v.paused) {
+            v.pause();
+          }
+        });
+      }, { rootMargin: '250px 0px' });
+      vids.forEach(function (v) { io.observe(v); });
+    })();
   </script>
   <script src="/lang-switcher.js"></script>
   <script src="/products-menu.js" defer></script>
