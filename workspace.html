@@ -136,6 +136,11 @@
     .price-note{font-size:12px;color:var(--ok);font-weight:600;margin:7px 0 20px}
     .price-cta{width:100%;justify-content:center}
     .price-trust{text-align:center;font-size:12px;color:var(--faint);margin-top:18px}
+    /* ── capability chips on feature cards ── */
+    .caps{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+    .cap{font-size:11px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:3px 9px}
+    .cap.pro{color:var(--accent);border-color:rgba(139,92,246,.4);font-weight:600}
+    .feat-note{font-size:12px;color:var(--muted);margin-top:12px;font-style:italic;line-height:1.5}
 
     /* ── privacy ── */
     .privacy{background:linear-gradient(180deg,#120e1d,#0b0e14);border:1px solid rgba(139,92,246,.2);
@@ -226,7 +231,8 @@
         <div class="feat-grid one">
           <div class="feature">
             <h3>Clip the web — text or image</h3>
-            <p>Grab a snippet from any page; it lands in your Clips tagged with its source, ready to reuse.</p>
+            <p>Select text or an image on any page and send it to Workspace. Each clip keeps the link back to its source, so it's ready to drop into a document or a note later.</p>
+            <div class="caps"><span class="cap">Text clips</span><span class="cap">Image clips</span><span class="cap">Source link kept</span><span class="cap">Reuse in docs &amp; notes</span></div>
             <div class="demo"><video data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Clipping text and images from a page into Workspace"></video></div>
           </div>
         </div>
@@ -238,17 +244,21 @@
         <div class="feat-grid">
           <div class="feature">
             <h3>Notes that tie it together</h3>
-            <p>Notes and checklists right beside what you're reading — the desk the whole workspace orbits.</p>
+            <p>Quick notes with checklists, right beside what you're reading. Pin a note to any item — a doc, sheet, PDF or clip — and grab the current page's link with a right-click.</p>
+            <div class="caps"><span class="cap">Checklists</span><span class="cap">Pin to any item</span><span class="cap">Right-click page link</span><span class="cap">Reminders (bell)</span><span class="cap pro">PRO · Alarms (instant)</span></div>
             <div class="demo"><video data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Taking notes with a checklist in the Workspace side panel"></video></div>
           </div>
           <div class="feature">
-            <h3>Drag any file in</h3>
-            <p>PDF, DOCX, XLSX, images and Markdown — organized in folders, all on your device.</p>
+            <h3>All your files, one place</h3>
+            <p>Drag PDF, DOCX, XLSX, TXT, Markdown and images straight in — from any screen, not just the home view. Sort into folders, filter by type, and select many at once.</p>
+            <div class="caps"><span class="cap">Drag-in from anywhere</span><span class="cap">Folders</span><span class="cap">Filter by type</span><span class="cap pro">PRO · Batch select/delete/download</span></div>
             <div class="demo"><video data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Organizing files and folders in Workspace"></video></div>
+            <p class="feat-note">Honest import: DOCX comes in as text and XLSX as values — better to open it without formatting than not at all.</p>
           </div>
           <div class="feature">
             <h3>Read PDFs in the panel</h3>
-            <p>Open and page through PDFs without leaving your tab.</p>
+            <p>Open and page through PDFs without leaving your tab, and find anything with Ctrl+F.</p>
+            <div class="caps"><span class="cap">Read in panel</span><span class="cap">Ctrl+F search</span><span class="cap">Print / download</span><span class="cap pro">PRO · Export page as PNG</span></div>
             <div class="demo"><video data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Reading a PDF inside the Workspace side panel"></video></div>
           </div>
         </div>
@@ -260,17 +270,20 @@
         <div class="feat-grid">
           <div class="feature">
             <h3>Real documents</h3>
-            <p>A full editor — headings, lists, formatting — right inside the panel.</p>
+            <p>A full editor inside the panel — headings, <b>bold</b>, <i>italic</i>, underline, lists, colors, tables and images. It autosaves as you type, you can rename inline, and print or Save as PDF.</p>
+            <div class="caps"><span class="cap">Headings</span><span class="cap">B / I / U</span><span class="cap">Lists</span><span class="cap">Tables</span><span class="cap">Images</span><span class="cap">Autosave</span><span class="cap">Print / Save as PDF</span><span class="cap pro">PRO · Export DOCX</span></div>
             <div class="demo"><video data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Editing a document in Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Spreadsheets</h3>
-            <p>Cells, formulas and totals, right where you work.</p>
+            <p>Cells, formulas and totals with autosave — right where you work. Export to XLSX when you need it elsewhere.</p>
+            <div class="caps"><span class="cap">Formulas</span><span class="cap">Totals</span><span class="cap">Autosave</span><span class="cap pro">PRO · Export XLSX</span></div>
             <div class="demo"><video data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Editing a spreadsheet in Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Drawings</h3>
-            <p>Sketch diagrams and quick marks on a canvas.</p>
+            <h3>Draw &amp; annotate</h3>
+            <p>Pen, highlighter, arrows, rectangles and text on a canvas, with a selection tool to move or erase objects. Crop, rotate, mirror, and undo/redo — then export or turn it into a PDF.</p>
+            <div class="caps"><span class="cap">Pen &amp; highlighter</span><span class="cap">Arrows &amp; shapes</span><span class="cap">Text</span><span class="cap">Select / move / erase</span><span class="cap">Crop / rotate / mirror</span><span class="cap">Undo / redo</span><span class="cap pro">PRO · Export PNG/JPG</span><span class="cap">Create PDF</span></div>
             <div class="demo"><video data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Drawing on a canvas in Workspace"></video></div>
           </div>
         </div>
@@ -325,14 +338,14 @@
         <div class="price-card">
           <div class="price-name">PRO Monthly</div>
           <div class="price-amt">$4.50<span>/mo</span></div>
-          <div class="price-note">14-day free trial</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Start free trial</a>
+          <div class="price-note">Cancel anytime</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Get PRO Monthly</a>
         </div>
         <div class="price-card feat">
           <div class="price-badge">SAVE 44%</div>
           <div class="price-name">PRO Annual</div>
           <div class="price-amt">$30<span>/yr</span></div>
-          <div class="price-note">&#8776; $2.50/mo, billed yearly</div>
+          <div class="price-note">7-day free trial &#183; &#8776; $2.50/mo</div>
           <a href="checkout.html" class="btn btn-primary price-cta">Get PRO Annual</a>
         </div>
         <div class="price-card">
@@ -342,7 +355,7 @@
           <a href="checkout.html" class="btn btn-ghost price-cta">Get Lifetime</a>
         </div>
       </div>
-      <p class="price-trust">Secure checkout via Paddle &#183; 14-day free trial on monthly &amp; annual &#183; cancel anytime.</p>
+      <p class="price-trust">Secure checkout via Paddle &#183; 7-day free trial on the annual plan &#183; cancel anytime.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
