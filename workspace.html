@@ -60,7 +60,8 @@
 
     /* ── hero ── */
     .hero{text-align:center;padding:56px 0 44px}
-    .hero-copy{max-width:760px;margin:0 auto}
+    .hero-top{max-width:820px;margin:0 auto}
+    .hero-bottom{max-width:640px;margin:20px auto 0}
     .hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:900;letter-spacing:-1.3px;line-height:1.07;margin:18px auto 0;max-width:800px}
     .hero h1 .accent{color:var(--accent)}
     .hero .sub{font-size:clamp(1.05rem,2.1vw,1.3rem);color:var(--sub);max-width:620px;margin:18px auto 0}
@@ -74,7 +75,7 @@
       display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--accent)}
     .gifholder .lbl{font-size:13px;font-weight:700;color:var(--sub);font-family:ui-monospace,Menlo,Consolas,monospace}
     .gifholder .note{font-size:11px;text-transform:uppercase;letter-spacing:1.5px}
-    .hero-media{max-width:1000px;margin:38px auto 0}
+    .hero-media{max-width:1000px;margin:30px auto 0}
 
     /* ── sections ── */
     .section{padding:54px 0}
@@ -213,18 +214,20 @@
 
     <!-- ── 1. HERO ── -->
     <header class="hero">
-      <div class="hero-copy">
+      <div class="hero-top">
         <span class="badge"><span class="dot"></span> Coming soon</span>
         <h1>Your office — <span class="accent">local and private</span> — right in your browser.</h1>
-        <p class="sub">Documents, spreadsheets, PDFs, web clips and notes, in your browser's side panel. Everything on your device — no cloud, no account.</p>
-        <div class="hero-btns">
-          <a href="#" class="btn btn-primary" data-ph-cta>Get notified at launch</a>
-          <a href="#features" class="btn btn-ghost">See what's inside ↓</a>
-        </div>
       </div>
       <div class="hero-media">
         <div class="demo">
           <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="A document popped out of the side panel into a full-screen tab, beside the live panel"></video>
+        </div>
+      </div>
+      <div class="hero-bottom">
+        <p class="sub">Documents, spreadsheets, PDFs, web clips and notes, in your browser's side panel. Everything on your device — no cloud, no account.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn btn-primary" data-ph-cta>Get notified at launch</a>
+          <a href="#features" class="btn btn-ghost">See what's inside ↓</a>
         </div>
       </div>
     </header>
