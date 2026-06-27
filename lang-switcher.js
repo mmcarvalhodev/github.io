@@ -36,7 +36,7 @@
   ];
 
   // Pages that have a translated version in every language subdir
-  var translatedPages = ['privacy.html', 'faq.html', 'hn-radar.html', 'hn-radar-privacy.html', 'ph-radar.html', 'ph-radar-privacy.html', 'yt-radar.html', 'yt-radar-privacy.html'];
+  var translatedPages = ['privacy.html', 'faq.html', 'hn-radar.html', 'hn-radar-privacy.html', 'ph-radar.html', 'ph-radar-privacy.html', 'yt-radar.html', 'yt-radar-privacy.html', 'workspace.html'];
 
 
   // Determine destination URL for a target language code
