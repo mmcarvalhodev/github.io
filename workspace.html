@@ -108,7 +108,8 @@
     .pillar-head .ln{flex:1;height:1px;background:var(--line);max-width:90px}
     .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
     .feat-grid.one{max-width:860px;margin:0 auto;grid-template-columns:1fr}
-    @media(max-width:760px){.feat-grid{grid-template-columns:1fr}}
+    .feat-grid:not(.one) > .feature:last-child:nth-child(odd){grid-column:1 / -1;max-width:calc((100% - 22px) / 2);margin-inline:auto}
+    @media(max-width:760px){.feat-grid{grid-template-columns:1fr}.feat-grid:not(.one) > .feature:last-child:nth-child(odd){max-width:none}}
     /* ── panel vs full-screen modes ── */
     .modes{display:flex;align-items:stretch;justify-content:center;gap:16px;margin-top:34px;flex-wrap:wrap}
     .mode{flex:1;min-width:240px;max-width:340px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;text-align:center}
