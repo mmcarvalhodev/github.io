@@ -51,6 +51,14 @@
     .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn-ghost{border:1px solid var(--line2);color:var(--sub)}
     .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+    .btn-soon{position:relative;background:var(--accent-soft);border:1px solid rgba(139,92,246,.45);color:var(--text);cursor:default}
+    .btn-soon img{display:block}
+    .btn-soon::after{content:attr(data-soon);position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
+      background:#0e1117;color:var(--text);border:1px solid var(--line2);font-size:11.5px;font-weight:700;letter-spacing:.3px;
+      padding:5px 10px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .16s}
+    .btn-soon::before{content:'';position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);
+      border:5px solid transparent;border-top-color:var(--line2);opacity:0;transition:opacity .16s}
+    .btn-soon:hover::after,.btn-soon:hover::before{opacity:1}
 
     /* ── badges ── */
     .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
@@ -228,8 +236,9 @@
       <div class="hero-bottom">
         <p class="sub">Documents, tableurs, PDF, extraits web et notes, dans le panneau latéral de votre navigateur. Tout sur votre appareil — sans cloud, sans compte.</p>
         <div class="hero-btns">
-          <a href="#" class="btn btn-primary" data-ph-cta>Être notifié au lancement</a>
-          <a href="#features" class="btn btn-ghost">Découvrir ce qui est inclus ↓</a>
+          <a class="btn btn-soon" data-soon="Bientôt disponible" aria-disabled="true"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Installer sur Chrome</a>
+          <a class="btn btn-soon" data-soon="Bientôt disponible" aria-disabled="true"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Obtenir sur Firefox</a>
+          <a href="#features" class="btn btn-ghost">Voir ce qui est inclus ↓</a>
         </div>
       </div>
     </header>
@@ -237,7 +246,7 @@
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace transforme le <b>panneau latéral</b> de votre navigateur en un petit bureau privé, installé juste à côté de ce que vous lisez. Ce n'est pas simplement du stockage : vous disposez d'un vrai <b>éditeur de documents</b> (titres, mise en forme, tableaux, images), d'un <b>tableur</b> avec formules et totaux, et d'un <b>lecteur de PDF</b> intégré — pour écrire, calculer et lire <b>sans quitter l'onglet en cours</b>. Autour de tout cela, un seul endroit pour vos <b>extraits web</b>, vos <b>notes</b> et listes de tâches, et tous vos <b>fichiers</b> organisés en dossiers. Tout est créé et enregistré <b>sur votre appareil</b> : sans cloud, sans compte, et ça fonctionne hors ligne.
+        NODUS Workspace transforme le <b>panneau latéral</b> de votre navigateur en un petit bureau privé, installé juste à côté de ce que vous lisez. Ce n'est pas simplement du stockage : vous disposez d'un vrai <b>éditeur de documents</b> (titres, mise en forme, tableaux, images), d'un <b>tableur</b> avec formules et totaux, et d'un <b>lecteur PDF</b> intégré — pour écrire, calculer et lire <b>sans quitter l'onglet en cours</b>. Autour de tout cela, un seul endroit pour vos <b>extraits web</b>, vos <b>notes</b> et listes de tâches, et tous vos <b>fichiers</b> organisés en dossiers. Tout est créé et enregistré <b>sur votre appareil</b> : sans cloud, sans compte, et ça fonctionne hors ligne.
       </div>
     </section>
 
@@ -250,7 +259,7 @@
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Capturer <span class="ln"></span></div>
-        <p class="pillar-sub">Récupérez tout ce qui vous intéresse sur le web et conservez-le, avec un lien vers sa source.</p>
+        <p class="pillar-sub">Récupérez tout ce qui vous intéresse sur le web et conservez-le, avec un lien vers sa source d'origine.</p>
         <div class="feat-grid one">
           <div class="feature">
             <h3>Extraire du web — texte ou image</h3>
@@ -307,8 +316,8 @@
           </div>
           <div class="feature">
             <h3>Dessiner &amp; annoter</h3>
-            <p>Stylo, surligneur, flèches, rectangles et texte sur un canevas, avec un outil de sélection pour déplacer ou effacer des objets. Rogner, pivoter, miroir, annuler/rétablir — puis exporter ou convertir en PDF.</p>
-            <div class="caps"><span class="cap">Stylo &amp; surligneur</span><span class="cap">Flèches &amp; formes</span><span class="cap">Texte</span><span class="cap">Sélectionner / déplacer / effacer</span><span class="cap">Rogner / pivoter / miroir</span><span class="cap">Annuler / rétablir</span><span class="cap pro">PRO · Exporter PNG/JPG</span><span class="cap">Créer un PDF</span></div>
+            <p>Stylo, surligneur, flèches, rectangles et texte sur un canevas, avec un outil de sélection pour déplacer ou effacer des objets. Rogner, pivoter, retourner, annuler/rétablir — puis exporter ou convertir en PDF.</p>
+            <div class="caps"><span class="cap">Stylo &amp; surligneur</span><span class="cap">Flèches &amp; formes</span><span class="cap">Texte</span><span class="cap">Sélectionner / déplacer / effacer</span><span class="cap">Rogner / pivoter / retourner</span><span class="cap">Annuler / rétablir</span><span class="cap pro">PRO · Exporter PNG/JPG</span><span class="cap">Créer PDF</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Dessin sur un canevas dans Workspace"></video></div>
           </div>
         </div>
@@ -323,7 +332,7 @@
       <div class="modes">
         <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Panneau latéral</div><div class="mode-d">À côté de votre navigation — capturez et éditez sans quitter la page.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Onglet plein écran</div><div class="mode-d">Un clic pour de l'espace et de la concentration — puis retour au panneau.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Onglet plein écran</div><div class="mode-d">Un clic pour travailler à l'aise — puis retour au panneau.</div></div>
       </div>
     </section>
 
@@ -344,7 +353,7 @@
       <h2 class="section-title">Un bureau privé pour un travail concentré.</h2>
       <div class="who">
         <div class="who-card"><div class="ico">🚀</div><h3>Fondateurs solo &amp; micro-entreprises</h3><p>Gardez notes, docs et fichiers pour chaque client en un seul endroit privé — plutôt que de jongler entre cinq applications différentes.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>Étudiants</h3><p>Capturez vos lectures, rédigez vos travaux, et consultez PDF et notes côte à côte avec ce que vous étudiez.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>Étudiants</h3><p>Capturez vos lectures, rédigez vos travaux et consultez PDF et notes côte à côte avec ce que vous étudiez.</p></div>
         <div class="who-card"><div class="ico">🔬</div><h3>Chercheurs</h3><p>Capturez vos sources avec leurs liens, annotez des PDF, et organisez tout — entièrement hors ligne.</p></div>
         <div class="who-card"><div class="ico">🔒</div><h3>Personnes soucieuses de leur vie privée</h3><p>Un bureau complet qui ne touche jamais le cloud : sans compte, sans traçage, rien ne quitte votre appareil.</p></div>
       </div>
@@ -368,7 +377,7 @@
     <!-- ── 5. ECOSYSTEM + PRO ── -->
     <section class="section" id="pro">
       <div class="section-label">Un seul abonnement</div>
-      <p class="pro-line">Un seul abonnement <b>NODUS PRO</b>, tout l'écosystème — NODUS AI + PH Radar + Workspace.</p>
+      <p class="pro-line">Un abonnement <b>NODUS PRO</b>, tout l'écosystème — NODUS AI + PH Radar + Workspace.</p>
 
       <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO est disponible dès aujourd'hui — il donne déjà accès à <b style="color:var(--text)">NODUS AI</b> et <b style="color:var(--text)">PH Radar BI</b>, et Workspace les rejoindra dès son lancement.</p>
 
@@ -401,7 +410,7 @@
           <div class="cmp-cell pro"><span class="pro">NODUS PRO</span></div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Créer/modifier documents et tableurs</div>
+          <div class="cmp-cell">Créer/modifier des documents et tableurs</div>
           <div class="cmp-cell pro">Exporter DOCX, XLSX et images</div>
         </div>
         <div class="cmp-row">
@@ -434,19 +443,20 @@
       <h2 class="section-title">Questions, réponses.</h2>
       <div class="faq">
         <details><summary>Mes fichiers sont-ils stockés dans le cloud ?</summary><p>Non. Tout ce que vous créez ou importez — documents, tableurs, PDF, extraits, notes et dessins — est stocké localement sur votre appareil, dans votre navigateur. Rien n'est envoyé à nous ou à qui que ce soit d'autre.</p></details>
+        <details><summary>Où exactement mes données sont-elles conservées ?</summary><p>Dans le stockage local de votre navigateur, sur votre appareil — au même endroit que les données de site de votre navigateur. Rien n'est envoyé à un serveur NODUS, ce qui fait de Workspace une alternative locale aux outils bureautiques en cloud : vos fichiers sont toujours avec vous et fonctionnent hors ligne.</p></details>
         <details><summary>Ai-je besoin d'un compte pour l'utiliser ?</summary><p>Non. Workspace fonctionne sans inscription et sans connexion. Vous ne saisissez un e-mail que si vous choisissez d'activer NODUS PRO.</p></details>
-        <details><summary>Est-ce que ça fonctionne hors ligne ?</summary><p>Oui. Comme tout est local, vous pouvez créer, modifier et lire vos fichiers sans connexion internet.</p></details>
-        <details><summary>Que se passe-t-il si je change d'ordinateur ou réinstalle le navigateur ?</summary><p>Vos données ne vivent que sur cet appareil, donc les déplacer vous incombe : utilisez la sauvegarde chiffrée (une fonctionnalité PRO) pour tout exporter dans un fichier et le récupérer sur une autre machine. Sans sauvegarde, les données locales restent sur ce navigateur uniquement.</p></details>
+        <details><summary>Est-ce que ça fonctionne hors ligne ?</summary><p>Oui. Comme tout est local par conception, vous pouvez créer, modifier et lire vos fichiers sans connexion internet.</p></details>
+        <details><summary>Que se passe-t-il si je change d'ordinateur ou réinstalle le navigateur ?</summary><p>Vos données ne vivent que sur cet appareil, donc les déplacer vous incombe : utilisez la Sauvegarde &amp; Restauration chiffrée (une fonctionnalité PRO) pour tout exporter dans un fichier et le récupérer sur une autre machine. Sans sauvegarde, les données locales restent sur ce navigateur uniquement.</p></details>
         <details><summary>Quels fichiers puis-je importer ?</summary><p>Glissez-déposez PDF, DOCX, XLSX, TXT, images et Markdown directement dans le panneau. La règle est simple : importer du contenu est toujours gratuit.</p></details>
         <details><summary>Puis-je modifier des fichiers Word et Excel ?</summary><p>Vous pouvez les ouvrir — les DOCX arrivent en texte brut et les XLSX en valeurs (la mise en forme et les formules sont simplifiées). Mieux vaut ouvrir sans mise en forme que ne pas pouvoir ouvrir du tout. L'export vers DOCX/XLSX (et images) est une fonctionnalité PRO.</p></details>
-        <details><summary>Qu'est-ce qui est gratuit et qu'est-ce qui est PRO ?</summary><p>Gratuit : créer et modifier documents et tableurs, lire/rechercher/imprimer des PDF, extraits web, notes, rappels, import de fichiers, et 16 languages. PRO ajoute l'export (DOCX, XLSX, PNG), PDF en image, sauvegarde chiffrée, alarmes actives avec notifications, et actions en lot.</p></details>
+        <details><summary>Qu'est-ce qui est gratuit et qu'est-ce qui est PRO ?</summary><p>Gratuit : créer et modifier des documents et tableurs, lire/rechercher/imprimer des PDF, extraits web, notes, rappels, import de fichiers, et 16 languages. PRO ajoute l'export (DOCX, XLSX, PNG), PDF en image, sauvegarde chiffrée, alarmes actives avec notifications, et actions en lot.</p></details>
         <details><summary>Combien coûte PRO ?</summary><p>$4.50/mois, $30/an (≈ $2.50/mo) ou $79 en une fois (à vie). Le paiement est géré de façon sécurisée par Paddle, avec un essai gratuit de 7-day sur le plan annuel et une garantie de remboursement de 14-day.</p></details>
         <details><summary>Un seul abonnement pour tout ?</summary><p>Oui — un seul abonnement NODUS PRO déverrouille le PRO sur tout l'écosystème NODUS : NODUS AI, PH Radar et Workspace.</p></details>
         <details><summary>Puis-je imprimer ou enregistrer mon travail en PDF ?</summary><p>Oui. Documents et tableurs peuvent être imprimés ou convertis en PDF — tous deux gratuits — et le PDF s'ouvre directement dans le lecteur intégré.</p></details>
-        <details><summary>Est-ce sécurisé ? Que signifie « aucun code distant » ?</summary><p>Tout le code de l'extension est livré dans le paquet — rien n'est téléchargé et exécuté depuis un serveur. Vos sauvegardes sont chiffrées avec AES-256, et nous ne lisons, ne transmettons ni n'analysons jamais le contenu de vos fichiers.</p></details>
-        <details><summary>Quels navigateurs sont pris en charge ?</summary><p>Chrome et les navigateurs basés sur Chromium (Edge, Brave et autres). Il s'installe dans le panneau latéral du navigateur, à côté de ce sur quoi vous travaillez.</p></details>
-        <details><summary>Comment obtenir de l'aide ou signaler un problème ?</summary><p>Écrivez-nous à <a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a> — nous lisons chaque message.</p></details>
-        <details><summary>Quand est-ce que ça sort ?</summary><p>Bientôt disponible. Cliquez sur « Être notifié au lancement » et vous serez le premier à le savoir.</p></details>
+        <details><summary>Est-ce sécurisé ? Que signifie « aucun code distant » ?</summary><p>Tout le code de l'extension est livré dans le paquet — rien n'est téléchargé ni exécuté depuis un serveur. Vos sauvegardes sont chiffrées avec AES-256, et nous ne lisons, ne transmettons ni n'analysons jamais le contenu de vos fichiers.</p></details>
+        <details><summary>Quels navigateurs sont pris en charge ?</summary><p>Chrome, Firefox et les navigateurs basés sur Chromium (Edge, Brave et autres). Il s'installe dans le panneau latéral du navigateur, à côté de ce sur quoi vous travaillez.</p></details>
+        <details><summary>Comment obtenir de l'aide ou signaler un problème ?</summary><p>Écrivez-nous à <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — nous lisons chaque message.</p></details>
+        <details><summary>Quand est-ce que ça sort ?</summary><p>Bientôt disponible. Cliquez sur « Être notifié au lancement » et vous serez parmi les premiers à le savoir.</p></details>
       </div>
     </section>
 
@@ -464,7 +474,7 @@
       <a href="https://nodus-ai.app">Accueil NODUS</a>
       <a href="/fr/workspace-privacy">Confidentialité</a>
       <a href="https://nodus-ai.app/terms">Conditions</a>
-      <a href="mailto:mmcarvalho.dev@gmail.com">Support</a>
+      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Support</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. Tous droits réservés.</div>
     <!-- research:start -->

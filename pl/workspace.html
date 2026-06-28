@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NODUS Workspace — Twoje lokalne biuro, w przeglądarce</title>
-  <meta name="description" content="Dokumenty, arkusze, PDF-y, wycinki z sieci i notatki — wszystko lokalnie, bez chmury, bez konta. Część ekosystemu NODUS. Wkrótce.">
+  <meta name="description" content="Dokumenty, arkusze, pliki PDF, wycinki ze stron i notatki — wszystko lokalnie, bez chmury, bez konta. Część ekosystemu NODUS. Już wkrótce.">
   <link rel="canonical" href="https://nodus-ai.app/pl/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
   <meta property="og:title" content="NODUS Workspace — Twoje lokalne biuro, w przeglądarce">
-  <meta property="og:description" content="Dokumenty, arkusze, PDF-y, wycinki z sieci i notatki — wszystko lokalnie, bez chmury, bez konta. Wkrótce.">
+  <meta property="og:description" content="Dokumenty, arkusze, pliki PDF, wycinki ze stron i notatki — wszystko lokalnie, bez chmury, bez konta. Już wkrótce.">
   <meta property="og:url" content="https://nodus-ai.app/pl/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -51,6 +51,14 @@
     .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn-ghost{border:1px solid var(--line2);color:var(--sub)}
     .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+    .btn-soon{position:relative;background:var(--accent-soft);border:1px solid rgba(139,92,246,.45);color:var(--text);cursor:default}
+    .btn-soon img{display:block}
+    .btn-soon::after{content:attr(data-soon);position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
+      background:#0e1117;color:var(--text);border:1px solid var(--line2);font-size:11.5px;font-weight:700;letter-spacing:.3px;
+      padding:5px 10px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .16s}
+    .btn-soon::before{content:'';position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);
+      border:5px solid transparent;border-top-color:var(--line2);opacity:0;transition:opacity .16s}
+    .btn-soon:hover::after,.btn-soon:hover::before{opacity:1}
 
     /* ── badges ── */
     .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
@@ -206,9 +214,9 @@
         <a href="#features" class="nav-link">Funkcje</a>
         <a href="#privacy" class="nav-link">Prywatność</a>
         <a href="#pro" class="nav-link">PRO</a>
-        <a href="#" class="nav-link highlight" data-ph-cta>Otrzymaj powiadomienie</a>
+        <a href="#" class="nav-link highlight" data-ph-cta>Powiadom mnie</a>
       </div>
-      <a href="https://nodus-ai.app" class="nav-back">← Powrót do NODUS</a>
+      <a href="https://nodus-ai.app" class="nav-back">← Wróć do NODUS</a>
     </div>
   </nav>
 
@@ -217,18 +225,19 @@
     <!-- ── 1. HERO ── -->
     <header class="hero">
       <div class="hero-top">
-        <span class="badge"><span class="dot"></span> Wkrótce</span>
-        <h1>Twoje biuro, <span class="accent">lokalne i prywatne</span>, w samej przeglądarce.</h1>
+        <span class="badge"><span class="dot"></span> Już wkrótce</span>
+        <h1>Twoje biuro, <span class="accent">lokalne i prywatne</span>, prosto w przeglądarce.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Dokument wyprojektowany z panelu bocznego do pełnoekranowej karty, obok aktywnego panelu"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Dokument wysunięty z panelu bocznego do pełnoekranowej karty, obok aktywnego panelu"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">Dokumenty, arkusze, PDF-y, wycinki z sieci i notatki — w panelu bocznym przeglądarki. Wszystko na Twoim urządzeniu — bez chmury, bez konta.</p>
+        <p class="sub">Dokumenty, arkusze, pliki PDF, wycinki ze stron i notatki — w panelu bocznym przeglądarki. Wszystko na Twoim urządzeniu — bez chmury, bez konta.</p>
         <div class="hero-btns">
-          <a href="#" class="btn btn-primary" data-ph-cta>Otrzymaj powiadomienie o premierze</a>
+          <a class="btn btn-soon" data-soon="Już wkrótce" aria-disabled="true"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Zainstaluj w Chrome</a>
+          <a class="btn btn-soon" data-soon="Już wkrótce" aria-disabled="true"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Pobierz dla Firefox</a>
           <a href="#features" class="btn btn-ghost">Zobacz, co w środku ↓</a>
         </div>
       </div>
@@ -237,25 +246,25 @@
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace zamienia <b>panel boczny</b> przeglądarki w małe, prywatne biuro — zawsze obok strony, którą przeglądasz. To nie tylko schowek: masz do dyspozycji prawdziwy <b>edytor dokumentów</b> (nagłówki, formatowanie, tabele, obrazy), <b>arkusz kalkulacyjny</b> z formułami i sumami oraz wbudowany <b>czytnik PDF</b>, dzięki czemu możesz pisać, obliczać i czytać <b>bez opuszczania aktywnej karty</b>. Obok nich — jedno miejsce na <b>wycinki z sieci</b>, <b>notatki</b> z listami kontrolnymi i wszystkie <b>pliki</b> w folderach. Wszystko jest tworzone i zapisywane <b>na Twoim urządzeniu</b>: bez chmury, bez konta, działa offline.
+        NODUS Workspace zamienia <b>panel boczny</b> przeglądarki w małe, prywatne biuro, które towarzyszy Ci przy każdej stronie. To nie tylko magazyn plików: masz do dyspozycji prawdziwy <b>edytor dokumentów</b> (nagłówki, formatowanie, tabele, obrazy), <b>arkusz kalkulacyjny</b> z formułami i sumami oraz wbudowany <b>czytnik PDF</b> — możesz pisać, liczyć i czytać <b>bez opuszczania bieżącej karty</b>. Do tego jedno miejsce na <b>wycinki ze stron</b>, <b>notatki</b> i listy kontrolne oraz wszystkie <b>pliki</b> w folderach. Wszystko powstaje i jest zapisywane <b>na Twoim urządzeniu</b>: bez chmury, bez konta — działa też offline.
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
       <div class="section-label">Co w środku</div>
-      <h2 class="section-title">Prawdziwe środowisko pracy, nie tylko schowek.</h2>
-      <p class="section-sub">Pisz dokumenty, twórz arkusze i czytaj PDF-y w panelu, wycinaj fragmenty z dowolnej strony i trzymaj notatki oraz pliki w porządku — nie opuszczając aktywnej karty.</p>
+      <h2 class="section-title">Prawdziwe miejsce pracy, nie tylko magazyn.</h2>
+      <p class="section-sub">Pisz dokumenty, twórz arkusze i czytaj pliki PDF w panelu, wycinaj fragmenty dowolnych stron oraz porządkuj notatki i pliki — wszystko bez opuszczania bieżącej karty.</p>
 
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Przechwytuj <span class="ln"></span></div>
-        <p class="pillar-sub">Zbieraj cokolwiek z sieci i zachowuj to wraz z linkiem do źródła.</p>
+        <p class="pillar-sub">Zapisuj wszystko, co znajdziesz w sieci, z linkiem do źródła.</p>
         <div class="feat-grid one">
           <div class="feature">
             <h3>Wycinaj ze stron — tekst lub obraz</h3>
-            <p>Zaznacz tekst lub obraz na dowolnej stronie i wyślij go do Workspace. Każdy wycinek zachowuje link do źródła, dzięki czemu możesz wstawić go później do dokumentu lub notatki.</p>
-            <div class="caps"><span class="cap">Wycinki tekstowe</span><span class="cap">Wycinki graficzne</span><span class="cap">Link do źródła</span><span class="cap">Ponowne użycie w doc. i notatkach</span></div>
+            <p>Zaznacz tekst lub obraz na dowolnej stronie i wyślij go do Workspace. Każdy wycinek zachowuje link do źródła, dzięki czemu możesz go wstawić do dokumentu lub notatki kiedy tylko chcesz.</p>
+            <div class="caps"><span class="cap">Wycinki tekstowe</span><span class="cap">Wycinki obrazów</span><span class="cap">Zachowany link źródłowy</span><span class="cap">Ponowne użycie w dok. i notatkach</span></div>
             <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Wycinanie tekstu i obrazów ze strony do Workspace"></video></div>
           </div>
         </div>
@@ -264,26 +273,26 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Organizuj <span class="ln"></span></div>
-        <p class="pillar-sub">Jedno prywatne miejsce na notatki, pliki i PDF-y — posortowane tak, jak chcesz.</p>
+        <p class="pillar-sub">Jedno prywatne miejsce na notatki, pliki i pliki PDF — posortowane tak, jak chcesz.</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>Notatki, które wszystko spajają</h3>
-            <p>Szybkie notatki z listami kontrolnymi — tuż obok tego, co czytasz. Przypnij notatkę do dowolnego elementu — dokumentu, arkusza, PDF-a lub wycinka — i dodaj link do bieżącej strony jednym kliknięciem prawym przyciskiem.</p>
-            <div class="caps"><span class="cap">Listy kontrolne</span><span class="cap">Przypnij do elementu</span><span class="cap">Link strony prawym przyciskiem</span><span class="cap">Przypomnienia (dzwonek)</span><span class="cap pro">PRO · Alarmy (natychmiastowe)</span></div>
+            <h3>Notatki, które wszystko łączą</h3>
+            <p>Szybkie notatki z listami kontrolnymi, tuż obok tego, co czytasz. Przypnij notatkę do dowolnego elementu — dokumentu, arkusza, pliku PDF lub wycinka — i dodaj link do bieżącej strony jednym kliknięciem prawym przyciskiem.</p>
+            <div class="caps"><span class="cap">Listy kontrolne</span><span class="cap">Przypinanie do elementów</span><span class="cap">Link strony prawym przyciskiem</span><span class="cap">Przypomnienia (dzwonek)</span><span class="cap pro">PRO · Alarmy (natychmiastowe)</span></div>
             <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Tworzenie notatek z listą kontrolną w panelu bocznym Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Wszystkie Twoje pliki w jednym miejscu</h3>
-            <p>Przeciągnij PDF, DOCX, XLSX, TXT, Markdown i obrazy bezpośrednio do panelu — z dowolnego ekranu, nie tylko z widoku głównego. Sortuj do folderów, filtruj według typu i zaznaczaj wiele plików naraz.</p>
-            <div class="caps"><span class="cap">Przeciągnij skądinąd</span><span class="cap">Foldery</span><span class="cap">Filtruj według typu</span><span class="cap pro">PRO · Zaznaczanie/usuwanie/pobieranie zbiorcze</span></div>
-            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Organizowanie plików i folderów w Workspace"></video></div>
-            <p class="feat-note">Uczciwy import: DOCX wczytuje się jako tekst, a XLSX jako wartości — lepiej otworzyć bez formatowania niż wcale.</p>
+            <h3>Wszystkie pliki w jednym miejscu</h3>
+            <p>Przeciągnij PDF, DOCX, XLSX, TXT, Markdown i obrazy bezpośrednio do panelu — z dowolnego widoku, nie tylko z ekranu głównego. Sortuj w foldery, filtruj według typu i zaznaczaj wiele plików naraz.</p>
+            <div class="caps"><span class="cap">Przeciąganie skądkolwiek</span><span class="cap">Foldery</span><span class="cap">Filtrowanie według typu</span><span class="cap pro">PRO · Zaznaczanie/usuwanie/pobieranie zbiorcze</span></div>
+            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Porządkowanie plików i folderów w Workspace"></video></div>
+            <p class="feat-note">Szczery import: DOCX wczytuje się jako tekst, a XLSX jako wartości — lepiej otworzyć bez formatowania niż wcale.</p>
           </div>
           <div class="feature">
-            <h3>Czytaj PDF-y w panelu</h3>
-            <p>Otwieraj i przeglądaj PDF-y bez opuszczania karty, a Ctrl+F pozwoli Ci znaleźć wszystko.</p>
-            <div class="caps"><span class="cap">Czytanie w panelu</span><span class="cap">Wyszukiwanie Ctrl+F</span><span class="cap">Drukowanie / pobieranie</span><span class="cap pro">PRO · Eksport strony jako PNG</span></div>
-            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Czytanie PDF-a w panelu bocznym Workspace"></video></div>
+            <h3>Czytaj pliki PDF w panelu</h3>
+            <p>Otwieraj i przewijaj pliki PDF bez opuszczania karty — szukaj czegokolwiek za pomocą Ctrl+F.</p>
+            <div class="caps"><span class="cap">Odczyt w panelu</span><span class="cap">Wyszukiwanie Ctrl+F</span><span class="cap">Drukuj / pobierz</span><span class="cap pro">PRO · Eksport strony jako PNG</span></div>
+            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Czytanie pliku PDF w panelu bocznym Workspace"></video></div>
           </div>
         </div>
       </div>
@@ -295,20 +304,20 @@
         <div class="feat-grid">
           <div class="feature">
             <h3>Prawdziwe dokumenty</h3>
-            <p>Pełny edytor w panelu — nagłówki, <b>pogrubienie</b>, <i>kursywa</i>, podkreślenie, listy, kolory, tabele i obrazy. Autozapis podczas pisania, możliwość zmiany nazwy w miejscu, drukowanie lub zapis jako PDF.</p>
-            <div class="caps"><span class="cap">Nagłówki</span><span class="cap">B / I / U</span><span class="cap">Listy</span><span class="cap">Tabele</span><span class="cap">Obrazy</span><span class="cap">Autozapis</span><span class="cap">Drukowanie / zapis jako PDF</span><span class="cap pro">PRO · Export DOCX</span></div>
+            <p>Pełny edytor w panelu — nagłówki, <b>pogrubienie</b>, <i>kursywa</i>, podkreślenie, listy, kolory, tabele i obrazy. Automatyczny zapis podczas pisania, zmiana nazwy w miejscu oraz drukowanie lub zapis jako PDF.</p>
+            <div class="caps"><span class="cap">Nagłówki</span><span class="cap">B / I / U</span><span class="cap">Listy</span><span class="cap">Tabele</span><span class="cap">Obrazy</span><span class="cap">Automatyczny zapis</span><span class="cap">Drukuj / zapisz jako PDF</span><span class="cap pro">PRO · Eksport DOCX</span></div>
             <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Edytowanie dokumentu w Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Arkusze kalkulacyjne</h3>
-            <p>Komórki, formuły i sumy z autozapisem — tam, gdzie pracujesz. Eksportuj do XLSX, gdy potrzebujesz pliku gdzie indziej.</p>
-            <div class="caps"><span class="cap">Formuły</span><span class="cap">Sumy</span><span class="cap">Autozapis</span><span class="cap pro">PRO · Export XLSX</span></div>
+            <p>Komórki, formuły i sumy z automatycznym zapisem — tam, gdzie pracujesz. Eksportuj do XLSX, gdy potrzebujesz pliku w innym miejscu.</p>
+            <div class="caps"><span class="cap">Formuły</span><span class="cap">Sumy</span><span class="cap">Automatyczny zapis</span><span class="cap pro">PRO · Eksport XLSX</span></div>
             <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Edytowanie arkusza kalkulacyjnego w Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Rysuj i adnotuj</h3>
-            <p>Długopis, zakreślacz, strzałki, prostokąty i tekst na płótnie — z narzędziem zaznaczania do przesuwania lub usuwania obiektów. Przycinaj, obracaj, odbijaj, cofaj/ponawiaj — a następnie eksportuj lub przekształć w PDF.</p>
-            <div class="caps"><span class="cap">Długopis i zakreślacz</span><span class="cap">Strzałki i kształty</span><span class="cap">Tekst</span><span class="cap">Zaznaczanie / przesuwanie / usuwanie</span><span class="cap">Przycinanie / obracanie / odbijanie</span><span class="cap">Cofnij / ponów</span><span class="cap pro">PRO · Export PNG/JPG</span><span class="cap">Utwórz PDF</span></div>
+            <h3>Rysuj &amp; adnotuj</h3>
+            <p>Pióro, zakreślacz, strzałki, prostokąty i tekst na płótnie — z narzędziem zaznaczania do przesuwania lub usuwania obiektów. Przycinaj, obracaj, odbijaj i cofaj/ponawiaj — a następnie eksportuj lub zamień w PDF.</p>
+            <div class="caps"><span class="cap">Pióro &amp; zakreślacz</span><span class="cap">Strzałki &amp; kształty</span><span class="cap">Tekst</span><span class="cap">Zaznacz / przesuń / usuń</span><span class="cap">Przytnij / obróć / odbij</span><span class="cap">Cofnij / ponów</span><span class="cap pro">PRO · Eksport PNG/JPG</span><span class="cap">Utwórz PDF</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Rysowanie na płótnie w Workspace"></video></div>
           </div>
         </div>
@@ -317,13 +326,13 @@
 
     <!-- ── panel vs full-screen ── -->
     <section class="section" id="anywhere">
-      <div class="section-label">Filozofia NODUS</div>
+      <div class="section-label">Sposób NODUS</div>
       <h2 class="section-title">W panelu podczas pracy. Pełny ekran, gdy potrzebujesz miejsca.</h2>
-      <p class="section-sub">Workspace działa w panelu bocznym przeglądarki, tuż obok tego, co przeglądasz. Potrzebujesz przestrzeni? Otwórz dowolny dokument, arkusz, PDF lub rysunek w pełnym ekranie na osobnej karcie — a potem wróć do panelu. Te same pliki, dwa widoki — Ty decydujesz.</p>
+      <p class="section-sub">Workspace działa w panelu bocznym przeglądarki, tuż obok tego, co przeglądasz. Potrzebujesz więcej przestrzeni? Otwórz dowolny dokument, arkusz, plik PDF lub rysunek na pełnym ekranie we własnej karcie — a potem wróć do panelu. Te same pliki, dwa widoki — Ty decydujesz.</p>
       <div class="modes">
         <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Panel boczny</div><div class="mode-d">Obok przeglądania — przechwytuj i edytuj bez opuszczania strony.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Pełnoekranowa karta</div><div class="mode-d">Jedno kliknięcie dla przestrzeni do skupienia — a potem z powrotem do panelu.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Karta pełnoekranowa</div><div class="mode-d">Jedno kliknięcie dla przestrzeni i skupienia — potem z powrotem do panelu.</div></div>
       </div>
     </section>
 
@@ -332,9 +341,9 @@
       <div class="section-label">Jak to działa</div>
       <h2 class="section-title">Trzy kroki. Zero konfiguracji.</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>Zainstaluj i przypnij panel</h3><p>Dodaj rozszerzenie i przypnij Workspace do panelu bocznego przeglądarki.</p></div>
-        <div class="step"><div class="step-n">2</div><h3>Utwórz lub wgraj pliki</h3><p>Zacznij dokument, arkusz lub notatkę — albo przeciągnij PDF-y, DOCX, XLSX i obrazy wprost do panelu.</p></div>
-        <div class="step"><div class="step-n">3</div><h3>Zostaje na Twoim urządzeniu</h3><p>Wszystko zapisuje się lokalnie. Bez konta, bez chmury, działa offline.</p></div>
+        <div class="step"><div class="step-n">1</div><h3>Zainstaluj &amp; przypnij panel</h3><p>Dodaj rozszerzenie i przypnij Workspace do panelu bocznego przeglądarki.</p></div>
+        <div class="step"><div class="step-n">2</div><h3>Utwórz lub dodaj pliki</h3><p>Zacznij dokument, arkusz lub notatkę — albo przeciągnij pliki PDF, DOCX, XLSX i obrazy bezpośrednio do panelu.</p></div>
+        <div class="step"><div class="step-n">3</div><h3>Wszystko zostaje na Twoim urządzeniu</h3><p>Pliki zapisywane są lokalnie. Bez konta, bez chmury — działa offline.</p></div>
       </div>
     </section>
 
@@ -343,25 +352,25 @@
       <div class="section-label">Dla kogo</div>
       <h2 class="section-title">Prywatne biurko do skupionej pracy.</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>Soloprzedsiębiorcy i mikrofirmy</h3><p>Trzymaj notatki, dokumenty i pliki każdego klienta w jednym prywatnym miejscu — zamiast żonglować pięcioma różnymi aplikacjami.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>Studenci</h3><p>Wycinaj materiały do nauki, pisz prace i trzymaj PDF-y oraz notatki obok tego, co właśnie studiujesz.</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>Badacze</h3><p>Przechwytuj źródła wraz z linkami, adnotuj PDF-y i organizuj wszystko — całkowicie offline.</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>Osoby dbające o prywatność</h3><p>Kompletne biuro, które nigdy nie dotyka chmury: bez konta, bez śledzenia, nic nie opuszcza Twojego urządzenia.</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>Soloprzedsiębiorcy &amp; mikrofirmy</h3><p>Przechowuj notatki, dokumenty i pliki dla każdego klienta w jednym prywatnym miejscu — zamiast żonglować pięcioma różnymi aplikacjami.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>Studenci</h3><p>Wycinaj materiały do lektury, twórz zadania i trzymaj pliki PDF oraz notatki obok tego, co właśnie studiujesz.</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>Badacze</h3><p>Zbieraj źródła wraz z linkami, adnotuj pliki PDF i porządkuj wszystko — w pełni offline.</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>Osoby dbające o prywatność</h3><p>Kompletne biuro, które nigdy nie trafia do chmury: bez konta, bez śledzenia — nic nie opuszcza Twojego urządzenia.</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>Twoje pliki zostają przy Tobie.</h2>
-        <p class="lead">Lokalnie z założenia. Workspace działa w całości na Twoim urządzeniu — nie ma serwera, któremu musisz ufać.</p>
+        <h2>Twoje pliki zostają z Tobą.</h2>
+        <p class="lead">Lokalność jako zasada projektowa. Workspace działa w całości na Twoim urządzeniu — żaden serwer nie jest potrzebny.</p>
         <div class="priv-grid">
           <div class="priv-item"><div class="ico">🔒</div><div class="t">100% lokalnie — nic nie trafia do chmury</div></div>
           <div class="priv-item"><div class="ico">🙅</div><div class="t">Bez konta</div></div>
-          <div class="priv-item"><div class="ico">🔑</div><div class="t">Zaszyfrowana kopia zapasowa (AES-256)</div></div>
+          <div class="priv-item"><div class="ico">🔑</div><div class="t">Szyfrowana kopia zapasowa (AES-256)</div></div>
           <div class="priv-item"><div class="ico">🧩</div><div class="t">Bez zdalnego kodu</div></div>
         </div>
-        <div style="margin-top:26px;"><a href="/pl/workspace-privacy" class="btn btn-ghost">Przeczytaj pełną Politykę Prywatności →</a></div>
+        <div style="margin-top:26px;"><a href="/pl/workspace-privacy" class="btn btn-ghost">Przeczytaj pełną politykę prywatności →</a></div>
       </div>
     </section>
 
@@ -370,34 +379,34 @@
       <div class="section-label">Jedna subskrypcja</div>
       <p class="pro-line">Jedna subskrypcja <b>NODUS PRO</b>, cały ekosystem — NODUS AI + PH Radar + Workspace.</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO jest dostępne już teraz — odblokowuje <b style="color:var(--text)">NODUS AI</b> i <b style="color:var(--text)">PH Radar BI</b>, a Workspace dołączy w chwili premiery.</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO jest dostępny już dziś — odblokowuje już <b style="color:var(--text)">NODUS AI</b> i <b style="color:var(--text)">PH Radar BI</b>, a Workspace dołączy w chwili premiery.</p>
 
       <div class="price-grid">
         <div class="price-card">
-          <div class="price-name">PRO Miesięczne</div>
+          <div class="price-name">PRO Miesięczny</div>
           <div class="price-amt">$4.50<span>/mo</span></div>
           <div class="price-note">Anuluj w dowolnym momencie</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Wybierz PRO Miesięczne</a>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Kup PRO Miesięczny</a>
         </div>
         <div class="price-card feat">
           <div class="price-badge">SAVE 44%</div>
-          <div class="price-name">PRO Roczne</div>
+          <div class="price-name">PRO Roczny</div>
           <div class="price-amt">$30<span>/yr</span></div>
-          <div class="price-note">7-day darmowy okres próbny &#183; &#8776; $2.50/mo</div>
-          <a href="checkout.html" class="btn btn-primary price-cta">Wybierz PRO Roczne</a>
+          <div class="price-note">7-day bezpłatny okres próbny &#183; &#8776; $2.50/mo</div>
+          <a href="checkout.html" class="btn btn-primary price-cta">Kup PRO Roczny</a>
         </div>
         <div class="price-card">
-          <div class="price-name">PRO Lifetime</div>
+          <div class="price-name">PRO Dożywotni</div>
           <div class="price-amt">$79<span> once</span></div>
           <div class="price-note">Płacisz raz, masz na zawsze</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Wybierz Lifetime</a>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Kup Dożywotni</a>
         </div>
       </div>
-      <p class="price-trust">Bezpieczna płatność przez Paddle &#183; 7-day darmowy okres próbny w planie rocznym &#183; anuluj w dowolnym momencie.</p>
+      <p class="price-trust">Bezpieczna płatność przez Paddle &#183; 7-day bezpłatny okres próbny w planie rocznym &#183; anuluj w dowolnym momencie.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
-          <div class="cmp-cell"><span class="free">Bezpłatny</span></div>
+          <div class="cmp-cell"><span class="free">Free</span></div>
           <div class="cmp-cell pro"><span class="pro">NODUS PRO</span></div>
         </div>
         <div class="cmp-row">
@@ -405,27 +414,27 @@
           <div class="cmp-cell pro">Eksport DOCX, XLSX i obrazów</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Czytanie, wyszukiwanie, drukowanie i pobieranie PDF-ów</div>
+          <div class="cmp-cell">Odczyt, wyszukiwanie, drukowanie i pobieranie plików PDF</div>
           <div class="cmp-cell pro">Eksport strony PDF jako PNG</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Wycinki z sieci i notatki</div>
-          <div class="cmp-cell pro">Zaszyfrowana kopia zapasowa i przywracanie</div>
+          <div class="cmp-cell">Wycinki ze stron i notatki</div>
+          <div class="cmp-cell pro">Szyfrowana kopia zapasowa i przywracanie</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Import plików (przeciągnij i upuść)</div>
+          <div class="cmp-cell">Import plików (przeciągnij &amp; upuść)</div>
           <div class="cmp-cell pro">Aktywne alarmy (natychmiastowe powiadomienia)</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Przypomnienia (powiadomienie dzwonkiem)</div>
-          <div class="cmp-cell pro">Operacje zbiorcze</div>
+          <div class="cmp-cell pro">Działania zbiorcze</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">16 languages</div>
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">Złota zasada: <b>wgrywanie treści jest zawsze bezpłatne</b> — eksport/konwersja i automatyzacje są w planie PRO.</p>
+      <p class="golden">Złota zasada: <b>dodawanie treści jest zawsze bezpłatne</b> — eksport/konwersja i automatyzacje są funkcjami PRO.</p>
     </section>
 
     <!-- ── FAQ ── -->
@@ -433,28 +442,29 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Pytania i odpowiedzi.</h2>
       <div class="faq">
-        <details><summary>Czy moje pliki są przechowywane w chmurze?</summary><p>Nie. Wszystko, co tworzysz lub importujesz — dokumenty, arkusze, PDF-y, wycinki, notatki i rysunki — jest przechowywane lokalnie na Twoim urządzeniu, w przeglądarce. Nic nie jest przesyłane do nas ani do nikogo innego.</p></details>
-        <details><summary>Czy potrzebuję konta, żeby z tego korzystać?</summary><p>Nie. Workspace działa bez rejestracji i bez logowania. E-mail podajesz tylko wtedy, gdy zdecydujesz się aktywować NODUS PRO.</p></details>
-        <details><summary>Czy działa offline?</summary><p>Tak. Dzięki architekturze lokalnej możesz tworzyć, edytować i czytać pliki bez połączenia z internetem.</p></details>
-        <details><summary>Co się stanie, gdy zmienię komputer lub przeinstalaję przeglądarkę?</summary><p>Twoje dane żyją tylko na tym urządzeniu, więc przeniesienie ich zależy od Ciebie: skorzystaj z zaszyfrowanej funkcji Kopia zapasowa i przywracanie (funkcja PRO), aby wyeksportować wszystko do pliku i odtworzyć na innym komputerze. Bez kopii zapasowej dane lokalne pozostają tylko w tej przeglądarce.</p></details>
-        <details><summary>Jakie pliki mogę wgrać?</summary><p>Przeciągnij i upuść PDF, DOCX, XLSX, TXT, obrazy i Markdown wprost do panelu. Zasada jest prosta: wgrywanie treści jest zawsze bezpłatne.</p></details>
-        <details><summary>Czy mogę edytować pliki Word i Excel?</summary><p>Możesz je otwierać — DOCX wczytuje się jako zwykły tekst, a XLSX jako wartości (formatowanie i formuły są uproszczone). Lepiej otworzyć bez formatowania niż wcale. Eksport z powrotem do DOCX/XLSX (oraz obrazów) jest funkcją PRO.</p></details>
-        <details><summary>Co jest bezpłatne, a co jest w planie PRO?</summary><p>Bezpłatnie: tworzenie i edytowanie dokumentów oraz arkuszy, czytanie/wyszukiwanie/drukowanie PDF-ów, wycinki z sieci, notatki, przypomnienia, import plików i 16 języków. PRO dodaje eksport (DOCX, XLSX, PNG), konwersję PDF na obraz, zaszyfrowaną kopię zapasową, aktywne alarmy z powiadomieniami oraz operacje zbiorcze.</p></details>
-        <details><summary>Ile kosztuje PRO?</summary><p>$4.50/miesiąc, $30/rok (≈ $2.50/mo) lub $79 jednorazowo (lifetime). Płatność odbywa się bezpiecznie przez Paddle, z 7-dniowym bezpłatnym okresem próbnym w planie rocznym i 14-dniową gwarancją zwrotu pieniędzy.</p></details>
+        <details><summary>Czy moje pliki są przechowywane w chmurze?</summary><p>Nie. Wszystko, co tworzysz lub importujesz — dokumenty, arkusze, pliki PDF, wycinki, notatki i rysunki — jest przechowywane lokalnie na Twoim urządzeniu, w przeglądarce. Nic nie jest przesyłane do nas ani do nikogo innego.</p></details>
+        <details><summary>Gdzie dokładnie są przechowywane moje dane?</summary><p>W lokalnym magazynie Twojej przeglądarki, na Twoim urządzeniu — w tym samym miejscu, gdzie przeglądarka przechowuje dane stron. Nic nie jest wysyłane na serwery NODUS, co czyni Workspace lokalną alternatywą dla chmurowych narzędzi biurowych: Twoje pliki są zawsze przy Tobie i działają offline.</p></details>
+        <details><summary>Czy potrzebuję konta, aby korzystać z aplikacji?</summary><p>Nie. Workspace działa bez rejestracji i bez logowania. E-mail podajesz tylko wtedy, gdy decydujesz się aktywować NODUS PRO.</p></details>
+        <details><summary>Czy działa offline?</summary><p>Tak. Dzięki lokalnej architekturze możesz tworzyć, edytować i przeglądać pliki bez połączenia z internetem.</p></details>
+        <details><summary>Co się stanie, jeśli zmienię komputer lub zainstaluję przeglądarkę od nowa?</summary><p>Twoje dane są wyłącznie na tym urządzeniu, więc przeniesienie ich zależy od Ciebie: użyj szyfrowanej kopii zapasowej i przywracania (funkcja PRO), aby wyeksportować wszystko do pliku i przywrócić na innym komputerze. Bez kopii zapasowej dane lokalne pozostają tylko w tej przeglądarce.</p></details>
+        <details><summary>Jakie pliki mogę dodać?</summary><p>Przeciągnij i upuść PDF, DOCX, XLSX, TXT, obrazy i Markdown bezpośrednio do panelu. Zasada jest prosta: dodawanie treści jest zawsze bezpłatne.</p></details>
+        <details><summary>Czy mogę edytować pliki Word i Excel?</summary><p>Możesz je otworzyć — DOCX wczytuje się jako zwykły tekst, a XLSX jako wartości (formatowanie i formuły są uproszczone). Lepiej otworzyć bez formatowania niż wcale. Eksport z powrotem do DOCX/XLSX (i obrazów) jest funkcją PRO.</p></details>
+        <details><summary>Co jest bezpłatne, a co wymaga PRO?</summary><p>Bezpłatnie: tworzenie i edytowanie dokumentów oraz arkuszy, odczyt/wyszukiwanie/drukowanie plików PDF, wycinki ze stron, notatki, przypomnienia, import plików i 16 języków. PRO dodaje eksport (DOCX, XLSX, PNG), konwersję PDF na obraz, szyfrowaną kopię zapasową, aktywne alarmy z powiadomieniami i działania zbiorcze.</p></details>
+        <details><summary>Ile kosztuje PRO?</summary><p>$4.50/miesiąc, $30/rok (≈ $2.50/mo) lub $79 jednorazowo (dożywotnio). Płatność jest obsługiwana bezpiecznie przez Paddle, z 7-day bezpłatnym okresem próbnym w planie rocznym i 14-day gwarancją zwrotu pieniędzy.</p></details>
         <details><summary>Jedna subskrypcja na wszystko?</summary><p>Tak — jedna subskrypcja NODUS PRO odblokowuje PRO w całym ekosystemie NODUS: NODUS AI, PH Radar i Workspace.</p></details>
-        <details><summary>Czy mogę drukować lub zapisać swoją pracę jako PDF?</summary><p>Tak. Dokumenty i arkusze można wydrukować lub zapisać jako PDF — obydwa sposoby są bezpłatne — a PDF otwiera się bezpośrednio we wbudowanym czytniku.</p></details>
-        <details><summary>Czy to bezpieczne? Co oznacza „brak zdalnego kodu"?</summary><p>Cały kod rozszerzenia jest zawarty w paczce — nic nie jest pobierane i uruchamiane z serwera. Kopie zapasowe są szyfrowane algorytmem AES-256, a my nigdy nie odczytujemy, nie przesyłamy ani nie analizujemy zawartości Twoich plików.</p></details>
-        <details><summary>Które przeglądarki są obsługiwane?</summary><p>Chrome i przeglądarki oparte na Chromium (Edge, Brave i inne). Działa w panelu bocznym przeglądarki, obok tego, nad czym właśnie pracujesz.</p></details>
-        <details><summary>Jak mogę uzyskać pomoc lub zgłosić problem?</summary><p>Napisz do nas na adres <a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a> — czytamy każdą wiadomość.</p></details>
-        <details><summary>Kiedy nastąpi premiera?</summary><p>Wkrótce. Kliknij „Otrzymaj powiadomienie o premierze", a będziesz pierwszą osobą, która się dowie.</p></details>
+        <details><summary>Czy mogę drukować lub zapisywać pracę jako PDF?</summary><p>Tak. Dokumenty i arkusze można drukować lub zapisywać jako PDF — obydwie opcje są bezpłatne — a plik PDF otwiera się bezpośrednio we wbudowanym czytniku.</p></details>
+        <details><summary>Czy to bezpieczne? Co oznacza „bez zdalnego kodu"?</summary><p>Cały kod rozszerzenia jest dostarczany w pakiecie instalacyjnym — nic nie jest pobierane ani uruchamiane z serwera. Kopie zapasowe są szyfrowane przy użyciu AES-256, a my nigdy nie odczytujemy, nie przesyłamy ani nie analizujemy zawartości Twoich plików.</p></details>
+        <details><summary>Które przeglądarki są obsługiwane?</summary><p>Chrome, Firefox i przeglądarki oparte na Chromium (Edge, Brave i inne). Działa w panelu bocznym przeglądarki, obok tego, nad czym właśnie pracujesz.</p></details>
+        <details><summary>Jak uzyskać pomoc lub zgłosić problem?</summary><p>Napisz do nas na adres <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — czytamy każdą wiadomość.</p></details>
+        <details><summary>Kiedy nastąpi premiera?</summary><p>Już wkrótce. Kliknij „Powiadom mnie o premierze" i dowiedz się jako pierwszy.</p></details>
       </div>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
-      <span class="badge"><span class="dot"></span> Wkrótce</span>
+      <span class="badge"><span class="dot"></span> Już wkrótce</span>
       <h2>Bądź pierwszy w kolejce.</h2>
-      <a href="#" class="btn btn-primary" data-ph-cta>Otrzymaj powiadomienie o premierze</a>
+      <a href="#" class="btn btn-primary" data-ph-cta>Powiadom mnie o premierze</a>
     </section>
 
   </div>
@@ -463,14 +473,14 @@
     <div>
       <a href="https://nodus-ai.app">Strona główna NODUS</a>
       <a href="/pl/workspace-privacy">Prywatność</a>
-      <a href="https://nodus-ai.app/terms">Warunki</a>
-      <a href="mailto:mmcarvalho.dev@gmail.com">Wsparcie</a>
+      <a href="https://nodus-ai.app/terms">Regulamin</a>
+      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Pomoc</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. Wszelkie prawa zastrzeżone.</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
       <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
-      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Maszyna przetwarzająca intencję, nie język</span></span>
+      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Maszyna przetwarzająca intencje, nie język</span></span>
       <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Format pliku, który jest jednocześnie kompaktowy i łatwy w nawigacji</span></span>
     </div>
     <!-- research:end -->

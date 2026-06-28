@@ -51,6 +51,14 @@
     .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn-ghost{border:1px solid var(--line2);color:var(--sub)}
     .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+    .btn-soon{position:relative;background:var(--accent-soft);border:1px solid rgba(139,92,246,.45);color:var(--text);cursor:default}
+    .btn-soon img{display:block}
+    .btn-soon::after{content:attr(data-soon);position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
+      background:#0e1117;color:var(--text);border:1px solid var(--line2);font-size:11.5px;font-weight:700;letter-spacing:.3px;
+      padding:5px 10px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .16s}
+    .btn-soon::before{content:'';position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);
+      border:5px solid transparent;border-top-color:var(--line2);opacity:0;transition:opacity .16s}
+    .btn-soon:hover::after,.btn-soon:hover::before{opacity:1}
 
     /* ── badges ── */
     .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
@@ -228,7 +236,8 @@
       <div class="hero-bottom">
         <p class="sub">Documents, spreadsheets, PDFs, web clips and notes, in your browser's side panel. Everything on your device — no cloud, no account.</p>
         <div class="hero-btns">
-          <a href="#" class="btn btn-primary" data-ph-cta>Get notified at launch</a>
+          <a class="btn btn-soon" data-soon="Coming soon" aria-disabled="true"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Install on Chrome</a>
+          <a class="btn btn-soon" data-soon="Coming soon" aria-disabled="true"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Get it on Firefox</a>
           <a href="#features" class="btn btn-ghost">See what's inside ↓</a>
         </div>
       </div>
@@ -434,6 +443,7 @@
       <h2 class="section-title">Questions, answered.</h2>
       <div class="faq">
         <details><summary>Are my files stored in the cloud?</summary><p>No. Everything you create or import — documents, spreadsheets, PDFs, clips, notes and drawings — is stored locally on your device, in your browser. Nothing is uploaded to us or anyone else.</p></details>
+        <details><summary>Where exactly is my data kept?</summary><p>In your browser's own local storage, on your device — the same place your browser keeps site data. Nothing is sent to a NODUS server, which makes Workspace a local-first alternative to cloud office tools: your files are always with you and work offline.</p></details>
         <details><summary>Do I need an account to use it?</summary><p>No. Workspace works with no sign-up and no login. You only enter an email if you choose to activate NODUS PRO.</p></details>
         <details><summary>Does it work offline?</summary><p>Yes. Because it's local-first, you can create, edit and read your files with no internet connection.</p></details>
         <details><summary>What happens if I switch computers or reinstall the browser?</summary><p>Your data lives only on that device, so moving it is up to you: use the encrypted Backup &amp; Restore (a PRO feature) to export everything to a file and bring it back on another machine. Without a backup, local data stays on that browser only.</p></details>
@@ -444,8 +454,8 @@
         <details><summary>One subscription for everything?</summary><p>Yes — a single NODUS PRO subscription unlocks PRO across the whole NODUS ecosystem: NODUS AI, PH Radar and Workspace.</p></details>
         <details><summary>Can I print or save my work as a PDF?</summary><p>Yes. Documents and spreadsheets can be printed or turned into a PDF — both free — and the PDF opens right in the built-in viewer.</p></details>
         <details><summary>Is it secure? What does "no remote code" mean?</summary><p>All of the extension's code ships inside the package — nothing is downloaded and run from a server. Your backups are encrypted with AES-256, and we never read, transmit or analyze the content of your files.</p></details>
-        <details><summary>Which browsers does it support?</summary><p>Chrome and Chromium-based browsers (Edge, Brave and others). It lives in the browser's side panel, alongside whatever you're working on.</p></details>
-        <details><summary>How do I get help or report a problem?</summary><p>Email us at <a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a> — we read every message.</p></details>
+        <details><summary>Which browsers does it support?</summary><p>Chrome, Firefox and Chromium-based browsers (Edge, Brave and others). It lives in the browser's side panel, alongside whatever you're working on.</p></details>
+        <details><summary>How do I get help or report a problem?</summary><p>Email us at <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — we read every message.</p></details>
         <details><summary>When does it launch?</summary><p>Coming soon. Hit "Get notified at launch" and you'll be the first to know.</p></details>
       </div>
     </section>
@@ -464,7 +474,7 @@
       <a href="https://nodus-ai.app">NODUS Home</a>
       <a href="/workspace-privacy">Privacy</a>
       <a href="https://nodus-ai.app/terms">Terms</a>
-      <a href="mailto:mmcarvalho.dev@gmail.com">Support</a>
+      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Support</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
     <!-- research:start -->

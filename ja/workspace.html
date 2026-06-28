@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — ブラウザの中に、ローカルでプライベートなオフィスを</title>
-  <meta name="description" content="ドキュメント、スプレッドシート、PDF、ウェブクリップ、ノート — すべてローカル保存、クラウド不要、アカウント不要。NODUSエコシステムの一部。近日公開。">
+  <title>NODUS Workspace — ブラウザの中に、あなただけのローカルオフィス</title>
+  <meta name="description" content="ドキュメント、スプレッドシート、PDF、ウェブクリップ、メモ — すべてローカル保存、クラウド不要、アカウント不要。NODUSエコシステムの一部。近日公開。">
   <link rel="canonical" href="https://nodus-ai.app/ja/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — ブラウザの中に、ローカルでプライベートなオフィスを">
-  <meta property="og:description" content="ドキュメント、スプレッドシート、PDF、ウェブクリップ、ノート — すべてローカル保存、クラウド不要、アカウント不要。近日公開。">
+  <meta property="og:title" content="NODUS Workspace — ブラウザの中に、あなただけのローカルオフィス">
+  <meta property="og:description" content="ドキュメント、スプレッドシート、PDF、ウェブクリップ、メモ — すべてローカル保存、クラウド不要、アカウント不要。近日公開。">
   <meta property="og:url" content="https://nodus-ai.app/ja/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -51,6 +51,14 @@
     .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn-ghost{border:1px solid var(--line2);color:var(--sub)}
     .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+    .btn-soon{position:relative;background:var(--accent-soft);border:1px solid rgba(139,92,246,.45);color:var(--text);cursor:default}
+    .btn-soon img{display:block}
+    .btn-soon::after{content:attr(data-soon);position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
+      background:#0e1117;color:var(--text);border:1px solid var(--line2);font-size:11.5px;font-weight:700;letter-spacing:.3px;
+      padding:5px 10px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .16s}
+    .btn-soon::before{content:'';position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);
+      border:5px solid transparent;border-top-color:var(--line2);opacity:0;transition:opacity .16s}
+    .btn-soon:hover::after,.btn-soon:hover::before{opacity:1}
 
     /* ── badges ── */
     .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
@@ -222,14 +230,15 @@
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="サイドパネルからドキュメントをフルスクリーンタブにポップアウトし、ライブパネルと並べて表示したところ"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="サイドパネルからドキュメントをフルスクリーンタブにポップアウトし、ライブパネルの隣に表示している様子"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">ドキュメント、スプレッドシート、PDF、ウェブクリップ、ノートが、ブラウザのサイドパネルに。すべてデバイス上に保存 — クラウド不要、アカウント不要。</p>
+        <p class="sub">ドキュメント、スプレッドシート、PDF、ウェブクリップ、メモを、ブラウザのサイドパネルに。すべてあなたのデバイスに — クラウド不要、アカウント不要。</p>
         <div class="hero-btns">
-          <a href="#" class="btn btn-primary" data-ph-cta>リリース時に通知を受け取る</a>
-          <a href="#features" class="btn btn-ghost">機能を見る ↓</a>
+          <a class="btn btn-soon" data-soon="近日公開" aria-disabled="true"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chromeにインストール</a>
+          <a class="btn btn-soon" data-soon="近日公開" aria-disabled="true"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Firefoxで入手</a>
+          <a href="#features" class="btn btn-ghost">中身を見る ↓</a>
         </div>
       </div>
     </header>
@@ -237,26 +246,26 @@
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace は、ブラウザの<b>サイドパネル</b>を、今読んでいるページのすぐ隣に置ける小さなプライベートオフィスに変えます。単なるストレージではありません。見出し・書式・表・画像に対応した本格的な<b>ドキュメントエディタ</b>、数式や合計に対応した<b>スプレッドシート</b>、そして内蔵の<b>PDF リーダー</b>を備えており、<b>表示中のタブを離れることなく</b>、書いて、計算して、読むことができます。さらに、<b>ウェブクリップ</b>、<b>ノート</b>とチェックリスト、フォルダ管理された<b>ファイル</b>を一か所にまとめて管理できます。すべては<b>デバイス上</b>で作成・保存され、クラウド不要、アカウント不要、オフラインでも動作します。
+        NODUS Workspaceは、ブラウザの<b>サイドパネル</b>を、閲覧中のページのすぐ隣に置けるプライベートな小さなオフィスに変えます。単なるストレージではありません。本格的な<b>ドキュメントエディタ</b>（見出し、書式設定、表、画像）、数式や合計に対応した<b>スプレッドシート</b>、そして内蔵の<b>PDFリーダー</b>を使って、<b>今開いているタブを離れることなく</b>、書いたり、計算したり、読んだりできます。さらに、<b>ウェブクリップ</b>、<b>メモ</b>とチェックリスト、すべての<b>ファイル</b>をフォルダ管理できる一元的な場所も備えています。すべては<b>あなたのデバイス上</b>で作成・保存されます — クラウド不要、アカウント不要、オフラインでも動作します。
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
-      <div class="section-label">収録機能</div>
-      <h2 class="section-title">本格的なワークスペース、ただのストレージではない。</h2>
-      <p class="section-sub">パネル内でドキュメントを書き、スプレッドシートを作り、PDF を読む。どのページからでもクリップし、ノートとファイルを整理する — 今いるタブを離れずに、すべてができる。</p>
+      <div class="section-label">中身</div>
+      <h2 class="section-title">ただのストレージではない、本物のワークスペース。</h2>
+      <p class="section-sub">パネルでドキュメントを書き、スプレッドシートを作り、PDFを読む。任意のページからクリップし、メモとファイルを整理する — すべて、今のタブを離れずに。</p>
 
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> キャプチャ <span class="ln"></span></div>
-        <p class="pillar-sub">ウェブ上のあらゆるものを、元のリンク付きで取り込んで保存。</p>
+        <p class="pillar-sub">ウェブから何でも取り込んで保存。元のページへのリンクも一緒に残します。</p>
         <div class="feat-grid one">
           <div class="feature">
-            <h3>ウェブをクリップ — テキストまたは画像</h3>
-            <p>任意のページでテキストや画像を選択して Workspace に送信。各クリップには元のソースへのリンクが保持されるため、後からドキュメントやノートにすぐ活用できます。</p>
-            <div class="caps"><span class="cap">テキストクリップ</span><span class="cap">画像クリップ</span><span class="cap">ソースリンク保持</span><span class="cap">ドキュメント&amp;ノートで再利用</span></div>
-            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="ページからテキストや画像を Workspace にクリップするところ"></video></div>
+            <h3>ウェブをクリップ — テキストでも画像でも</h3>
+            <p>任意のページのテキストや画像を選択して、Workspaceに送信。各クリップには元のソースへのリンクが保持されるため、後でドキュメントやメモにすぐ活用できます。</p>
+            <div class="caps"><span class="cap">テキストクリップ</span><span class="cap">画像クリップ</span><span class="cap">ソースリンク保持</span><span class="cap">ドキュメント&amp;メモで再利用</span></div>
+            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="ページからテキストや画像をWorkspaceにクリップしている様子"></video></div>
           </div>
         </div>
       </div>
@@ -264,26 +273,26 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> 整理 <span class="ln"></span></div>
-        <p class="pillar-sub">ノート、ファイル、PDF を、自分のやり方で整理できる、プライベートな一か所に。</p>
+        <p class="pillar-sub">メモ、ファイル、PDFを、自分好みに整理できるプライベートな場所。</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>すべてをつなぐノート</h3>
-            <p>読んでいるものの真横で、チェックリスト付きのクイックノートを作成。ドキュメント、シート、PDF、クリップなど任意のアイテムにノートをピン留めし、右クリックで現在のページリンクを即座に取得できます。</p>
-            <div class="caps"><span class="cap">チェックリスト</span><span class="cap">任意のアイテムにピン留め</span><span class="cap">右クリックでページリンク</span><span class="cap">リマインダー（ベル通知）</span><span class="cap pro">PRO · アラーム（即時通知）</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace サイドパネルでチェックリスト付きのノートを作成するところ"></video></div>
+            <h3>すべてをつなぐメモ</h3>
+            <p>閲覧中のコンテンツのすぐ隣で、チェックリスト付きのクイックメモ。ドキュメント、シート、PDF、クリップのどのアイテムにもメモをピン留めでき、右クリックで現在のページのリンクをすぐ取得できます。</p>
+            <div class="caps"><span class="cap">チェックリスト</span><span class="cap">任意のアイテムにピン留め</span><span class="cap">右クリックでページリンク取得</span><span class="cap">リマインダー（ベル通知）</span><span class="cap pro">PRO · アラーム（即時通知）</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspaceのサイドパネルでチェックリスト付きのメモを取っている様子"></video></div>
           </div>
           <div class="feature">
-            <h3>すべてのファイルを一か所に</h3>
-            <p>PDF、DOCX、XLSX、TXT、Markdown、画像をどの画面からでも直接ドラッグ&amp;ドロップ — ホーム画面だけでなく、どこからでも。フォルダに整理し、種類でフィルタリングし、まとめて選択できます。</p>
-            <div class="caps"><span class="cap">どこからでもドラッグ&amp;ドロップ</span><span class="cap">フォルダ</span><span class="cap">種類でフィルタリング</span><span class="cap pro">PRO · 一括選択/削除/ダウンロード</span></div>
-            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace でファイルとフォルダを整理するところ"></video></div>
-            <p class="feat-note">正直なインポート：DOCX はテキスト形式で、XLSX は値として取り込まれます — 書式なしでも開けるほうが、まったく開けないよりはるかに良い。</p>
+            <h3>ファイルをすべて一か所に</h3>
+            <p>PDF、DOCX、XLSX、TXT、Markdown、画像をどの画面からでも直接ドラッグ＆ドロップ — ホーム画面に限りません。フォルダで整理し、種類でフィルタリングし、複数を一括選択できます。</p>
+            <div class="caps"><span class="cap">どこからでもドラッグで取り込み</span><span class="cap">フォルダ</span><span class="cap">種類でフィルタ</span><span class="cap pro">PRO · 一括選択/削除/ダウンロード</span></div>
+            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspaceでファイルとフォルダを整理している様子"></video></div>
+            <p class="feat-note">正直なインポート：DOCXはテキストとして、XLSXは値として取り込まれます — 書式なしでも開けるほうが、開けないよりはるかに良い。</p>
           </div>
           <div class="feature">
-            <h3>パネルで PDF を読む</h3>
-            <p>タブを離れることなくパネル内で PDF を開いてページをめくり、Ctrl+F で何でも検索できます。</p>
-            <div class="caps"><span class="cap">パネル内で読む</span><span class="cap">Ctrl+F 検索</span><span class="cap">印刷/ダウンロード</span><span class="cap pro">PRO · ページを PNG としてエクスポート</span></div>
-            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace サイドパネル内で PDF を読むところ"></video></div>
+            <h3>パネルでPDFを読む</h3>
+            <p>タブを離れずにパネルでPDFを開いてページをめくり、Ctrl+Fで何でも検索できます。</p>
+            <div class="caps"><span class="cap">パネル内で閲覧</span><span class="cap">Ctrl+F検索</span><span class="cap">印刷・ダウンロード</span><span class="cap pro">PRO · ページをPNGとしてエクスポート</span></div>
+            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="WorkspaceのサイドパネルでPDFを読んでいる様子"></video></div>
           </div>
         </div>
       </div>
@@ -291,25 +300,25 @@
       <!-- Create -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> 作成 <span class="ln"></span></div>
-        <p class="pillar-sub">ドキュメント、スプレッドシート、図形描画のための本格的なエディタが、パネルの中に。</p>
+        <p class="pillar-sub">ドキュメント、スプレッドシート、描画のための本格的なエディタを、パネルの中に。</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>本格的なドキュメント</h3>
-            <p>パネル内に完全なエディタ — 見出し、<b>太字</b>、<i>斜体</i>、下線、リスト、カラー、表、画像に対応。入力しながら自動保存され、インラインでリネームでき、印刷や PDF として保存も可能です。</p>
-            <div class="caps"><span class="cap">見出し</span><span class="cap">B / I / U</span><span class="cap">リスト</span><span class="cap">表</span><span class="cap">画像</span><span class="cap">自動保存</span><span class="cap">印刷/PDF として保存</span><span class="cap pro">PRO · DOCX をエクスポート</span></div>
-            <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace でドキュメントを編集するところ"></video></div>
+            <p>パネル内のフル機能エディタ — 見出し、<b>太字</b>、<i>斜体</i>、下線、リスト、色、表、画像。入力しながら自動保存、インラインでリネーム、PDFとして印刷・保存も可能。</p>
+            <div class="caps"><span class="cap">見出し</span><span class="cap">B / I / U</span><span class="cap">リスト</span><span class="cap">表</span><span class="cap">画像</span><span class="cap">自動保存</span><span class="cap">印刷・PDFとして保存</span><span class="cap pro">PRO · DOCXをエクスポート</span></div>
+            <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspaceでドキュメントを編集している様子"></video></div>
           </div>
           <div class="feature">
             <h3>スプレッドシート</h3>
-            <p>セル、数式、合計に対応した自動保存つきのスプレッドシートを、作業場所のすぐ隣で。必要なときは XLSX にエクスポートできます。</p>
-            <div class="caps"><span class="cap">数式</span><span class="cap">合計</span><span class="cap">自動保存</span><span class="cap pro">PRO · XLSX をエクスポート</span></div>
-            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace でスプレッドシートを編集するところ"></video></div>
+            <p>セル、数式、合計を自動保存しながら — 作業中の場所でそのまま使えます。必要なときはXLSXにエクスポート。</p>
+            <div class="caps"><span class="cap">数式</span><span class="cap">合計</span><span class="cap">自動保存</span><span class="cap pro">PRO · XLSXをエクスポート</span></div>
+            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspaceでスプレッドシートを編集している様子"></video></div>
           </div>
           <div class="feature">
-            <h3>描画 &amp; アノテーション</h3>
-            <p>ペン、ハイライター、矢印、四角形、テキストをキャンバスに描き、選択ツールでオブジェクトを移動または消去。トリミング、回転、ミラー、元に戻す/やり直しも可能 — そのままエクスポートするか PDF にすることができます。</p>
-            <div class="caps"><span class="cap">ペン &amp; ハイライター</span><span class="cap">矢印 &amp; 図形</span><span class="cap">テキスト</span><span class="cap">選択/移動/消去</span><span class="cap">トリミング/回転/ミラー</span><span class="cap">元に戻す/やり直す</span><span class="cap pro">PRO · PNG/JPG をエクスポート</span><span class="cap">PDF を作成</span></div>
-            <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace でキャンバスに描画するところ"></video></div>
+            <h3>描画 &amp; 注釈</h3>
+            <p>ペン、ハイライター、矢印、長方形、テキストをキャンバス上に描き、選択ツールでオブジェクトの移動や削除が可能。トリミング、回転、反転、元に戻す/やり直し — そのままエクスポートしたりPDFに変換したりできます。</p>
+            <div class="caps"><span class="cap">ペン &amp; ハイライター</span><span class="cap">矢印 &amp; 図形</span><span class="cap">テキスト</span><span class="cap">選択・移動・削除</span><span class="cap">トリミング・回転・反転</span><span class="cap">元に戻す・やり直し</span><span class="cap pro">PRO · PNG/JPGをエクスポート</span><span class="cap">PDFを作成</span></div>
+            <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspaceのキャンバスで描画している様子"></video></div>
           </div>
         </div>
       </div>
@@ -317,36 +326,36 @@
 
     <!-- ── panel vs full-screen ── -->
     <section class="section" id="anywhere">
-      <div class="section-label">NODUS の流儀</div>
-      <h2 class="section-title">作業中はパネルに。スペースが必要なときはフルスクリーンに。</h2>
-      <p class="section-sub">Workspace はブラウザのサイドパネルに常駐し、今読んでいるページのすぐ隣に寄り添います。広いスペースが欲しいときは、ドキュメント、シート、PDF、描画を独立したタブでフルスクリーン表示し、また戻すことができます。同じファイルを2つのビューで — あなたが決める。</p>
+      <div class="section-label">NODUSのやり方</div>
+      <h2 class="section-title">作業中はパネルに。広いスペースが必要なときはフルスクリーンに。</h2>
+      <p class="section-sub">Workspaceはブラウザのサイドパネルに常駐し、閲覧中のコンテンツのすぐ隣にあります。スペースが必要ですか？ドキュメント、シート、PDF、描画を専用タブでフルスクリーン表示し、またパネルに戻すことも。同じファイル、2つのビュー、選択はあなた次第。</p>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">サイドパネル</div><div class="mode-d">ブラウジングと並行して — ページを離れずにキャプチャ・編集。</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">サイドパネル</div><div class="mode-d">ブラウジングの隣に — ページを離れずにキャプチャ・編集。</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">フルスクリーンタブ</div><div class="mode-d">集中したいときはワンクリックで広げ — またパネルに戻る。</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">フルスクリーンタブ</div><div class="mode-d">クリック一つで集中スペースへ — そしてパネルに戻る。</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
       <div class="section-label">使い方</div>
-      <h2 class="section-title">3ステップ。セットアップ不要。</h2>
+      <h2 class="section-title">3ステップ。設定不要。</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>インストール &amp; パネルにピン留め</h3><p>拡張機能を追加して、Workspace をブラウザのサイドパネルにピン留めするだけ。</p></div>
-        <div class="step"><div class="step-n">2</div><h3>ファイルを作成または取り込む</h3><p>ドキュメント、シート、ノートを新規作成するか、PDF、DOCX、XLSX、画像をドラッグ&amp;ドロップで取り込む。</p></div>
-        <div class="step"><div class="step-n">3</div><h3>デバイス上に残る</h3><p>すべてがローカルに保存されます。アカウント不要、クラウド不要、オフラインで動作。</p></div>
+        <div class="step"><div class="step-n">1</div><h3>インストール &amp; パネルをピン留め</h3><p>拡張機能を追加して、Workspaceをブラウザのサイドパネルにピン留めします。</p></div>
+        <div class="step"><div class="step-n">2</div><h3>ファイルを作成または取り込む</h3><p>ドキュメント、シート、メモを新規作成 — またはPDF、DOCX、XLSX、画像をそのままドラッグして取り込む。</p></div>
+        <div class="step"><div class="step-n">3</div><h3>デバイスに保存され続ける</h3><p>すべてローカルに保存。アカウント不要、クラウド不要、オフラインでも動作。</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
-      <div class="section-label">こんな方に</div>
-      <h2 class="section-title">集中した仕事のための、プライベートなデスク。</h2>
+      <div class="section-label">対象ユーザー</div>
+      <h2 class="section-title">集中した作業のための、プライベートなデスク。</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>ソロファウンダー &amp; マイクロビジネス</h3><p>5つもの異なるアプリを行き来する代わりに、クライアントごとのノート、ドキュメント、ファイルを一つのプライベートな場所にまとめて管理。</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>学生</h3><p>資料をクリップし、課題を下書きし、PDF とノートを勉強中のコンテンツの横に並べて閲覧。</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>研究者</h3><p>ソースをリンク付きで収集し、PDF にアノテーションを付け、すべてを整理する — 完全にオフラインで。</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>プライバシー重視の方</h3><p>クラウドに一切触れない完全なオフィス：アカウント不要、追跡なし、デバイスからデータが出ることはありません。</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>ソロ起業家 &amp; 小規模ビジネス</h3><p>5つのアプリを使い分ける代わりに、各クライアントのメモ、ドキュメント、ファイルを一つのプライベートな場所に。</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>学生</h3><p>資料をクリップし、課題を作成し、PDFとメモを学習中のコンテンツと並べて管理。</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>研究者</h3><p>リンク付きでソースをキャプチャし、PDFに注釈を付け、すべてを整理 — 完全オフラインで。</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>プライバシー重視の方</h3><p>クラウドに一切触れない完全なオフィス：アカウント不要、トラッキング不要、デバイスからデータが出ることはありません。</p></div>
       </div>
     </section>
 
@@ -354,9 +363,9 @@
     <section class="section" id="privacy">
       <div class="privacy">
         <h2>ファイルは、あなたのもとに。</h2>
-        <p class="lead">設計からローカルファースト。Workspace は完全にデバイス上で動作 — 信頼すべきサーバーなど存在しません。</p>
+        <p class="lead">設計からローカルファースト。Workspaceは完全にあなたのデバイス上で動作 — 信頼すべきサーバーは存在しません。</p>
         <div class="priv-grid">
-          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% ローカル — クラウドには何も送信されません</div></div>
+          <div class="priv-item"><div class="ico">🔒</div><div class="t">100%ローカル — クラウドには何も送信しない</div></div>
           <div class="priv-item"><div class="ico">🙅</div><div class="t">アカウント不要</div></div>
           <div class="priv-item"><div class="ico">🔑</div><div class="t">暗号化バックアップ（AES-256）</div></div>
           <div class="priv-item"><div class="ico">🧩</div><div class="t">リモートコードなし</div></div>
@@ -367,33 +376,33 @@
 
     <!-- ── 5. ECOSYSTEM + PRO ── -->
     <section class="section" id="pro">
-      <div class="section-label">1つのサブスクリプション</div>
-      <p class="pro-line"><b>NODUS PRO</b> の1つのサブスクリプションで、エコシステム全体を — NODUS AI + PH Radar + Workspace。</p>
+      <div class="section-label">ひとつのサブスクリプション</div>
+      <p class="pro-line">ひとつの<b>NODUS PRO</b>サブスクリプションで、エコシステム全体を — NODUS AI + PH Radar + Workspace。</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO は今日からご利用いただけます — すでに <b style="color:var(--text)">NODUS AI</b> と <b style="color:var(--text)">PH Radar BI</b> がアンロックされており、Workspace はリリースの瞬間に追加されます。</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PROは本日より利用可能 — すでに<b style="color:var(--text)">NODUS AI</b>と<b style="color:var(--text)">PH Radar BI</b>のロックを解除でき、Workspaceはリリース時に即座に追加されます。</p>
 
       <div class="price-grid">
         <div class="price-card">
-          <div class="price-name">PRO 月額プラン</div>
-          <div class="price-amt">$4.50<span>/月</span></div>
-          <div class="price-note">いつでもキャンセル可能</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">PRO 月額を始める</a>
+          <div class="price-name">PRO 月払い</div>
+          <div class="price-amt">$4.50<span>/mo</span></div>
+          <div class="price-note">いつでもキャンセル可</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">PRO 月払いを取得</a>
         </div>
         <div class="price-card feat">
           <div class="price-badge">SAVE 44%</div>
-          <div class="price-name">PRO 年額プラン</div>
-          <div class="price-amt">$30<span>/年</span></div>
-          <div class="price-note">7日間無料トライアル &#183; ≈ $2.50/月</div>
-          <a href="checkout.html" class="btn btn-primary price-cta">PRO 年額を始める</a>
+          <div class="price-name">PRO 年払い</div>
+          <div class="price-amt">$30<span>/yr</span></div>
+          <div class="price-note">7-day 無料トライアル &#183; &#8776; $2.50/mo</div>
+          <a href="checkout.html" class="btn btn-primary price-cta">PRO 年払いを取得</a>
         </div>
         <div class="price-card">
-          <div class="price-name">PRO 買い切りプラン</div>
-          <div class="price-amt">$79<span> 一括払い</span></div>
-          <div class="price-note">一度の支払いで永久に使用可能</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">買い切りプランを購入</a>
+          <div class="price-name">PRO 買い切り</div>
+          <div class="price-amt">$79<span> once</span></div>
+          <div class="price-note">一度払えば、永久に使える</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">買い切りを取得</a>
         </div>
       </div>
-      <p class="price-trust">Paddle による安全な決済 &#183; 年額プランは 7日間無料トライアル付き &#183; いつでもキャンセル可能。</p>
+      <p class="price-trust">Paddleによる安全なチェックアウト &#183; 年払いプランに7-day 無料トライアル &#183; いつでもキャンセル可。</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
@@ -405,11 +414,11 @@
           <div class="cmp-cell pro">DOCX、XLSX、画像のエクスポート</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">PDF の閲覧、検索、印刷、ダウンロード</div>
-          <div class="cmp-cell pro">PDF ページを PNG としてエクスポート</div>
+          <div class="cmp-cell">PDFの閲覧、検索、印刷、ダウンロード</div>
+          <div class="cmp-cell pro">PDFページをPNGとしてエクスポート</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">ウェブクリップとノート</div>
+          <div class="cmp-cell">ウェブクリップとメモ</div>
           <div class="cmp-cell pro">暗号化バックアップ &amp; 復元</div>
         </div>
         <div class="cmp-row">
@@ -425,7 +434,7 @@
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">ゴールデンルール：<b>コンテンツの取り込みは常に無料</b> — エクスポート/変換と自動化は PRO 機能です。</p>
+      <p class="golden">ゴールデンルール：<b>コンテンツの取り込みは常に無料</b> — エクスポート・変換・自動化はPROの機能。</p>
     </section>
 
     <!-- ── FAQ ── -->
@@ -433,27 +442,28 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">よくある質問への回答。</h2>
       <div class="faq">
-        <details><summary>ファイルはクラウドに保存されますか？</summary><p>いいえ。作成またはインポートしたもの — ドキュメント、スプレッドシート、PDF、クリップ、ノート、描画 — はすべてデバイスのブラウザ上にローカル保存されます。私たちや第三者にアップロードされることは一切ありません。</p></details>
-        <details><summary>使用するためにアカウントが必要ですか？</summary><p>いいえ。Workspace はサインアップもログインも不要で動作します。メールアドレスが必要になるのは、NODUS PRO を有効化することを選んだ場合のみです。</p></details>
-        <details><summary>オフラインで動作しますか？</summary><p>はい。ローカルファーストの設計のため、インターネット接続なしでもファイルの作成、編集、閲覧が可能です。</p></details>
-        <details><summary>パソコンを変えたり、ブラウザを再インストールしたりした場合はどうなりますか？</summary><p>データはそのデバイスのみに存在するため、移行はご自身で行っていただく必要があります。暗号化バックアップ &amp; 復元（PRO 機能）を使ってすべてをファイルにエクスポートし、別のマシンに移してください。バックアップなしの場合、ローカルデータはそのブラウザのみに残ります。</p></details>
-        <details><summary>どのファイルを取り込めますか？</summary><p>PDF、DOCX、XLSX、TXT、画像、Markdown をパネルに直接ドラッグ&amp;ドロップするだけです。ルールはシンプル：コンテンツの取り込みは常に無料です。</p></details>
-        <details><summary>Word や Excel ファイルを編集できますか？</summary><p>開くことはできます — DOCX はプレーンテキストとして、XLSX は値として取り込まれます（書式と数式は簡略化されます）。書式なしでも開けるほうが、まったく開けないよりはるかに良い。DOCX/XLSX（および画像）へのエクスポートは PRO 機能です。</p></details>
-        <details><summary>無料と PRO の違いは何ですか？</summary><p>無料：ドキュメントとスプレッドシートの作成・編集、PDF の閲覧/検索/印刷、ウェブクリップ、ノート、リマインダー、ファイルインポート、16言語対応。PRO ではエクスポート（DOCX、XLSX、PNG）、PDF の画像変換、暗号化バックアップ、通知付きアクティブアラーム、一括操作が追加されます。</p></details>
-        <details><summary>PRO の料金はいくらですか？</summary><p>月額 $4.50、年額 $30（≈ $2.50/月）、または $79 の一括払い（買い切り）。決済は Paddle が安全に処理し、年額プランには 7日間無料トライアルと 14日間の返金保証が付いています。</p></details>
-        <details><summary>1つのサブスクリプションですべてが使えますか？</summary><p>はい — NODUS PRO のサブスクリプション1つで、NODUS エコシステム全体にわたる PRO 機能がアンロックされます：NODUS AI、PH Radar、Workspace。</p></details>
-        <details><summary>作業内容を印刷したり PDF として保存したりできますか？</summary><p>はい。ドキュメントとスプレッドシートは印刷または PDF に変換できます — どちらも無料で、PDF はそのまま内蔵ビューアで開きます。</p></details>
-        <details><summary>セキュリティは？「リモートコードなし」とはどういう意味ですか？</summary><p>拡張機能のコードはすべてパッケージ内に同梱されており、サーバーからダウンロードして実行されることはありません。バックアップは AES-256 で暗号化されており、ファイルの内容を読み取ったり、送信したり、分析したりすることは一切ありません。</p></details>
-        <details><summary>どのブラウザに対応していますか？</summary><p>Chrome および Chromium ベースのブラウザ（Edge、Brave など）に対応しています。ブラウザのサイドパネルに常駐し、作業中のコンテンツの横に並んで表示されます。</p></details>
-        <details><summary>サポートの連絡先や問題の報告はどこからできますか？</summary><p><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a> にメールしてください — すべてのメッセージを読んでいます。</p></details>
-        <details><summary>リリースはいつですか？</summary><p>近日公開。「リリース時に通知を受け取る」をクリックすれば、最初にお知らせします。</p></details>
+        <details><summary>ファイルはクラウドに保存されますか？</summary><p>いいえ。作成またはインポートしたすべてのもの — ドキュメント、スプレッドシート、PDF、クリップ、メモ、描画 — はあなたのデバイスのブラウザ内にローカル保存されます。私たちや他の誰かにアップロードされることは一切ありません。</p></details>
+        <details><summary>データは正確にどこに保存されますか？</summary><p>あなたのデバイス上のブラウザ独自のローカルストレージ — ブラウザがサイトデータを保持する場所と同じです。NODUSのサーバーには何も送信されません。これによりWorkspaceは、クラウドオフィスツールに対するローカルファーストの代替となります：ファイルは常にあなたと共にあり、オフラインで動作します。</p></details>
+        <details><summary>使用するにはアカウントが必要ですか？</summary><p>いいえ。Workspaceはサインアップもログインも不要で動作します。メールアドレスを入力するのは、NODUS PROのアクティベートを選択した場合のみです。</p></details>
+        <details><summary>オフラインでも動作しますか？</summary><p>はい。ローカルファーストのため、インターネット接続なしでファイルの作成、編集、閲覧が可能です。</p></details>
+        <details><summary>コンピュータを替えたり、ブラウザを再インストールしたりするとどうなりますか？</summary><p>データはそのデバイス上にのみ存在するため、移行はご自身で行う必要があります：暗号化バックアップ &amp; 復元（PRO機能）を使ってすべてをファイルにエクスポートし、別のマシンで復元してください。バックアップがない場合、ローカルデータはそのブラウザにのみ残ります。</p></details>
+        <details><summary>どのファイルを取り込めますか？</summary><p>PDF、DOCX、XLSX、TXT、画像、Markdownをパネルに直接ドラッグ＆ドロップできます。ルールはシンプル：コンテンツの取り込みは常に無料。</p></details>
+        <details><summary>WordやExcelのファイルは編集できますか？</summary><p>開くことはできます — DOCXはプレーンテキストとして、XLSXは値として取り込まれます（書式設定と数式は簡略化されます）。書式なしで開けるほうが、開けないよりはるかに良い。DOCX/XLSX（および画像）へのエクスポートはPRO機能です。</p></details>
+        <details><summary>無料とPROの違いは何ですか？</summary><p>無料：ドキュメントとスプレッドシートの作成・編集、PDF閲覧・検索・印刷、ウェブクリップ、メモ、リマインダー、ファイルインポート、16言語対応。PROはエクスポート（DOCX、XLSX、PNG）、PDF to画像、暗号化バックアップ、通知付きアクティブアラーム、一括操作を追加します。</p></details>
+        <details><summary>PROの料金はいくらですか？</summary><p>月払い$4.50、年払い$30（≈ $2.50/mo）、または$79の買い切り（ライフタイム）。チェックアウトはPaddleが安全に処理し、年払いプランには7-day 無料トライアルと14-day 返金保証が付きます。</p></details>
+        <details><summary>ひとつのサブスクリプションですべてを？</summary><p>はい — ひとつのNODUS PROサブスクリプションで、NODUSエコシステム全体のPROがアンロックされます：NODUS AI、PH Radar、Workspace。</p></details>
+        <details><summary>作業内容を印刷したりPDFとして保存できますか？</summary><p>はい。ドキュメントとスプレッドシートは、PDFとして印刷または変換できます — どちらも無料 — そしてPDFは内蔵ビューアで即座に開きます。</p></details>
+        <details><summary>安全ですか？「リモートコードなし」とはどういう意味ですか？</summary><p>拡張機能のコードはすべてパッケージ内に含まれています — サーバーから何かをダウンロードして実行することはありません。バックアップはAES-256で暗号化されており、私たちがファイルの内容を読んだり、送信したり、分析したりすることは一切ありません。</p></details>
+        <details><summary>どのブラウザに対応していますか？</summary><p>Chrome、Firefox、Chromiumベースのブラウザ（Edge、Brave他）。ブラウザのサイドパネルに常駐し、作業中のコンテンツの隣に表示されます。</p></details>
+        <details><summary>サポートや問題の報告はどうすればいいですか？</summary><p>Email us at <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — すべてのメッセージを読んでいます。</p></details>
+        <details><summary>リリースはいつですか？</summary><p>近日公開。「リリース時に通知を受け取る」をクリックすれば、最初に知ることができます。</p></details>
       </div>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
       <span class="badge"><span class="dot"></span> 近日公開</span>
-      <h2>先頭に並ぼう。</h2>
+      <h2>最初に手に入れよう。</h2>
       <a href="#" class="btn btn-primary" data-ph-cta>リリース時に通知を受け取る</a>
     </section>
 
@@ -461,17 +471,17 @@
 
   <footer>
     <div>
-      <a href="https://nodus-ai.app">NODUS ホーム</a>
+      <a href="https://nodus-ai.app">NODUSホーム</a>
       <a href="/ja/workspace-privacy">プライバシー</a>
       <a href="https://nodus-ai.app/terms">利用規約</a>
-      <a href="mailto:mmcarvalho.dev@gmail.com">サポート</a>
+      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">サポート</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
       <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
       <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — 言語ではなく、意図を処理するマシン</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — コンパクトかつナビゲーション可能なファイルフォーマット</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — コンパクトでナビゲート可能なファイルフォーマット</span></span>
     </div>
     <!-- research:end -->
   </footer>

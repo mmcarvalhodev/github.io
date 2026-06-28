@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — Seu escritório local, direto no navegador</title>
+  <title>NODUS Workspace — Seu escritório local e privado, direto no navegador</title>
   <meta name="description" content="Documentos, planilhas, PDFs, recortes da web e notas — tudo local, sem nuvem, sem conta. Parte do ecossistema NODUS. Em breve.">
   <link rel="canonical" href="https://nodus-ai.app/pt/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — seu escritório local, direto no navegador">
+  <meta property="og:title" content="NODUS Workspace — seu escritório local e privado, direto no navegador">
   <meta property="og:description" content="Documentos, planilhas, PDFs, recortes da web e notas — tudo local, sem nuvem, sem conta. Em breve.">
   <meta property="og:url" content="https://nodus-ai.app/pt/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
@@ -51,6 +51,14 @@
     .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn-ghost{border:1px solid var(--line2);color:var(--sub)}
     .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+    .btn-soon{position:relative;background:var(--accent-soft);border:1px solid rgba(139,92,246,.45);color:var(--text);cursor:default}
+    .btn-soon img{display:block}
+    .btn-soon::after{content:attr(data-soon);position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
+      background:#0e1117;color:var(--text);border:1px solid var(--line2);font-size:11.5px;font-weight:700;letter-spacing:.3px;
+      padding:5px 10px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .16s}
+    .btn-soon::before{content:'';position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);
+      border:5px solid transparent;border-top-color:var(--line2);opacity:0;transition:opacity .16s}
+    .btn-soon:hover::after,.btn-soon:hover::before{opacity:1}
 
     /* ── badges ── */
     .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
@@ -228,7 +236,8 @@
       <div class="hero-bottom">
         <p class="sub">Documentos, planilhas, PDFs, recortes da web e notas, no painel lateral do seu navegador. Tudo no seu dispositivo — sem nuvem, sem conta.</p>
         <div class="hero-btns">
-          <a href="#" class="btn btn-primary" data-ph-cta>Seja notificado no lançamento</a>
+          <a class="btn btn-soon" data-soon="Em breve" aria-disabled="true"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Instalar no Chrome</a>
+          <a class="btn btn-soon" data-soon="Em breve" aria-disabled="true"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Baixar para Firefox</a>
           <a href="#features" class="btn btn-ghost">Veja o que tem dentro ↓</a>
         </div>
       </div>
@@ -383,7 +392,7 @@
           <div class="price-badge">SAVE 44%</div>
           <div class="price-name">PRO Anual</div>
           <div class="price-amt">$30<span>/ano</span></div>
-          <div class="price-note">7 dias grátis · ≈ $2.50/mês</div>
+          <div class="price-note">7 dias grátis &#183; &#8776; $2.50/mês</div>
           <a href="checkout.html" class="btn btn-primary price-cta">Assinar PRO Anual</a>
         </div>
         <div class="price-card">
@@ -434,6 +443,7 @@
       <h2 class="section-title">Perguntas, respondidas.</h2>
       <div class="faq">
         <details><summary>Meus arquivos ficam armazenados na nuvem?</summary><p>Não. Tudo que você cria ou importa — documentos, planilhas, PDFs, recortes, notas e desenhos — é armazenado localmente no seu dispositivo, no seu navegador. Nada é enviado para nós ou para terceiros.</p></details>
+        <details><summary>Onde exatamente os meus dados ficam guardados?</summary><p>No próprio armazenamento local do seu navegador, no seu dispositivo — o mesmo lugar onde o navegador guarda os dados de sites. Nada é enviado para um servidor do NODUS, o que faz do Workspace uma alternativa local aos aplicativos de escritório em nuvem: seus arquivos estão sempre com você e funcionam offline.</p></details>
         <details><summary>Preciso de uma conta para usar?</summary><p>Não. O Workspace funciona sem cadastro e sem login. Você só informa um e-mail se optar por ativar o NODUS PRO.</p></details>
         <details><summary>Funciona offline?</summary><p>Sim. Por ser local, você pode criar, editar e ler seus arquivos sem conexão com a internet.</p></details>
         <details><summary>O que acontece se eu trocar de computador ou reinstalar o navegador?</summary><p>Seus dados ficam apenas naquele dispositivo, então movê-los é por sua conta: use o Backup &amp; Restauração criptografado (recurso PRO) para exportar tudo para um arquivo e importar em outra máquina. Sem um backup, os dados locais ficam somente naquele navegador.</p></details>
@@ -444,8 +454,8 @@
         <details><summary>Uma assinatura para tudo?</summary><p>Sim — uma única assinatura NODUS PRO dá acesso ao PRO em todo o ecossistema NODUS: NODUS AI, PH Radar e Workspace.</p></details>
         <details><summary>Posso imprimir ou salvar meu trabalho como PDF?</summary><p>Sim. Documentos e planilhas podem ser impressos ou convertidos em PDF — ambos gratuitos — e o PDF abre direto no leitor integrado.</p></details>
         <details><summary>É seguro? O que significa "sem código remoto"?</summary><p>Todo o código da extensão é empacotado junto — nada é baixado e executado de um servidor. Seus backups são criptografados com AES-256, e nós nunca lemos, transmitimos ou analisamos o conteúdo dos seus arquivos.</p></details>
-        <details><summary>Quais navegadores são compatíveis?</summary><p>Chrome e navegadores baseados em Chromium (Edge, Brave e outros). Ele fica no painel lateral do navegador, ao lado de tudo que você está trabalhando.</p></details>
-        <details><summary>Como obtenho ajuda ou relato um problema?</summary><p>Envie um e-mail para <a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a> — lemos todas as mensagens.</p></details>
+        <details><summary>Quais navegadores são compatíveis?</summary><p>Chrome, Firefox e navegadores baseados em Chromium (Edge, Brave e outros). Ele fica no painel lateral do navegador, ao lado de tudo que você está trabalhando.</p></details>
+        <details><summary>Como obtenho ajuda ou relato um problema?</summary><p>Envie um e-mail para <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — lemos todas as mensagens.</p></details>
         <details><summary>Quando é o lançamento?</summary><p>Em breve. Clique em "Seja notificado no lançamento" e você será o primeiro a saber.</p></details>
       </div>
     </section>
@@ -464,7 +474,7 @@
       <a href="https://nodus-ai.app">Início do NODUS</a>
       <a href="/pt/workspace-privacy">Privacidade</a>
       <a href="https://nodus-ai.app/terms">Termos</a>
-      <a href="mailto:mmcarvalho.dev@gmail.com">Suporte</a>
+      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Suporte</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. Todos os direitos reservados.</div>
     <!-- research:start -->
