@@ -46,7 +46,7 @@
     { key:'yt',    name:'YT Radar', ico:'YT', bg:'#ef4444', fg:'#ffffff', i18n:true  },
     { key:'hn',    name:'HN Radar', ico:'HN', bg:'#ff6600', fg:'#ffffff', i18n:true  },
     { key:'ph',    name:'PH Radar', ico:'PH', bg:'#da552f', fg:'#ffffff', i18n:true  },
-    { key:'ws',    name:'Workspace', ico:'W', bg:'#8b5cf6', fg:'#ffffff', i18n:false }
+    { key:'ws',    name:'Workspace', ico:'W', bg:'#8b5cf6', fg:'#ffffff', i18n:true  }
   ];
 
   function detectLang() {
@@ -66,7 +66,7 @@
       case 'yt':    return base + '/yt-radar';
       case 'hn':    return base + '/hn-radar';
       case 'ph':    return base + '/ph-radar';
-      case 'ws':    return '/workspace';
+      case 'ws':    return base + '/workspace';
       default:      return '/';
     }
   }
