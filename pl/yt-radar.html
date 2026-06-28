@@ -123,6 +123,12 @@
 
     /* ── SECTION ── */
     .section { padding: 72px 0; }
+    .shot{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#0b0e14;box-shadow:0 24px 60px rgba(0,0,0,.5);line-height:0}
+    .shot img{display:block;width:100%;height:auto}
+    .shot-hero{max-width:1000px;margin:42px auto 0}
+    .shots-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:880px;margin:44px auto 0;align-items:start}
+    .shots-2 .shot{box-shadow:0 16px 40px rgba(0,0,0,.45)}
+    @media(max-width:700px){.shots-2{grid-template-columns:1fr;max-width:420px}}
     .section-label {
       font-size: 11px; font-weight: 700; letter-spacing: 3px;
       text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
@@ -389,6 +395,7 @@
         </a>
         <a href="#spotlight" class="btn-secondary" id="t-hero-spotlight">⭐ Community Spotlight</a>
       </div>
+      <div class="shot shot-hero"><img src="/yt-shot-context.webp" width="1600" height="807" alt="NODUS YT Radar side panel open next to a news site, showing the live Top videos ranking"></div>
     </div>
 
     <hr class="divider">
@@ -415,6 +422,10 @@
           <h3 id="t-step3-title">Analizuj i odkrywaj</h3>
           <p id="t-step3-desc">Sprawdź Heat, Velocity, Momentum i historię wyświetleń. Odkryj, co naprawdę rośnie.</p>
         </div>
+      </div>
+      <div class="shots-2">
+        <div class="shot"><img src="/yt-shot-search.webp" width="403" height="933" alt="Searching YouTube videos inside the NODUS YT Radar side panel" loading="lazy"></div>
+        <div class="shot"><img src="/yt-shot-metrics.webp" width="403" height="933" alt="A video's live metrics — Heat, Velocity and Engagement — in the side panel" loading="lazy"></div>
       </div>
     </section>
 
@@ -457,6 +468,7 @@
           <p id="t-f6-desc">Filter Top 50 by category — Music, Gaming, News, Sports, and more. Auto-detected from the video you're watching.</p>
         </div>
       </div>
+      <div class="shot shot-hero"><img src="/yt-shot-dashboard.webp" width="1600" height="798" alt="A video's full performance detail and chart in the NODUS YT Radar side panel, next to the page you're reading" loading="lazy"></div>
     </section>
 
     <hr class="divider">
