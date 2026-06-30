@@ -23,22 +23,22 @@
 
   // Short taglines per language, per product
   var TAG = {
-    en:{nodus:'AI chats into structured knowledge', yt:'YouTube video rankings, live', hn:'A calmer Hacker News', ph:'Product Hunt, with history', ws:'Soon · notes, docs & files in your browser'},
-    pt:{nodus:'Conversas de IA em conhecimento estruturado', yt:'Ranking de vídeos do YouTube, ao vivo', hn:'Um Hacker News mais tranquilo', ph:'Product Hunt, com histórico', ws:'Em breve · notas, documentos e arquivos no navegador'},
-    es:{nodus:'Chats de IA en conocimiento estructurado', yt:'Ranking de vídeos de YouTube, en vivo', hn:'Un Hacker News más tranquilo', ph:'Product Hunt, con histórico', ws:'Pronto · notas, documentos y archivos en el navegador'},
-    fr:{nodus:'Vos discussions IA en savoir structuré', yt:'Classement des vidéos YouTube, en direct', hn:'Un Hacker News plus calme', ph:'Product Hunt, avec historique', ws:'Bientôt · notes, documents et fichiers dans le navigateur'},
-    de:{nodus:'KI-Chats als strukturiertes Wissen', yt:'YouTube-Video-Rankings, live', hn:'Ein ruhigeres Hacker News', ph:'Product Hunt, mit Verlauf', ws:'Bald · Notizen, Dokumente & Dateien im Browser'},
-    it:{nodus:'Chat IA in conoscenza strutturata', yt:'Classifiche dei video YouTube, live', hn:'Un Hacker News più tranquillo', ph:'Product Hunt, con lo storico', ws:'Presto · note, documenti e file nel browser'},
-    nl:{nodus:'AI-chats als gestructureerde kennis', yt:'YouTube-videoranglijsten, live', hn:'Een rustiger Hacker News', ph:'Product Hunt, met historie', ws:'Binnenkort · notities, documenten en bestanden in je browser'},
-    pl:{nodus:'Czaty AI w uporządkowaną wiedzę', yt:'Rankingi filmów YouTube, na żywo', hn:'Spokojniejszy Hacker News', ph:'Product Hunt, z historią', ws:'Wkrótce · notatki, dokumenty i pliki w przeglądarce'},
-    id:{nodus:'Obrolan AI jadi pengetahuan terstruktur', yt:'Peringkat video YouTube, langsung', hn:'Hacker News yang lebih tenang', ph:'Product Hunt, dengan riwayat', ws:'Segera · catatan, dokumen, dan file di browser'},
-    vi:{nodus:'Biến chat AI thành kiến thức có cấu trúc', yt:'Xếp hạng video YouTube, trực tiếp', hn:'Một Hacker News điềm tĩnh hơn', ph:'Product Hunt, có chiều sâu lịch sử', ws:'Sắp ra mắt · ghi chú, tài liệu và tệp trong trình duyệt'},
-    ja:{nodus:'AIチャットを構造化された知識に', yt:'YouTube動画のランキングをリアルタイムで', hn:'より穏やかな Hacker News', ph:'Product Hunt を履歴付きで', ws:'近日公開 · ブラウザでメモ・書類・ファイル'},
-    ko:{nodus:'AI 대화를 구조화된 지식으로', yt:'YouTube 영상 순위를 실시간으로', hn:'더 차분한 Hacker News', ph:'기록과 함께 보는 Product Hunt', ws:'곧 출시 · 브라우저에서 메모·문서·파일'},
-    zh:{nodus:'把 AI 对话变成结构化知识', yt:'YouTube 视频实时排名', hn:'更清爽的 Hacker News', ph:'带历史深度的 Product Hunt', ws:'即将推出 · 浏览器中的笔记、文档和文件'},
-    ru:{nodus:'ИИ-чаты в структурированные знания', yt:'Рейтинги видео YouTube в реальном времени', hn:'Более спокойный Hacker News', ph:'Product Hunt с историей', ws:'Скоро · заметки, документы и файлы в браузере'},
-    hi:{nodus:'AI चैट को संरचित ज्ञान में बदलें', yt:'YouTube वीडियो रैंकिंग, लाइव', hn:'एक शांत Hacker News', ph:'इतिहास के साथ Product Hunt', ws:'जल्द ही · ब्राउज़र में नोट्स, दस्तावेज़ और फ़ाइलें'},
-    tr:{nodus:'Yapay zeka sohbetlerini yapılandırılmış bilgiye', yt:'YouTube video sıralamaları, canlı', hn:'Daha sakin bir Hacker News', ph:'Geçmişiyle birlikte Product Hunt', ws:'Yakında · tarayıcıda notlar, belgeler ve dosyalar'}
+    en:{nodus:'AI chats into structured knowledge', yt:'YouTube video rankings, live', hn:'A calmer Hacker News', ph:'Product Hunt, with history', ws:'Notes, docs & files in your browser'},
+    pt:{nodus:'Conversas de IA em conhecimento estruturado', yt:'Ranking de vídeos do YouTube, ao vivo', hn:'Um Hacker News mais tranquilo', ph:'Product Hunt, com histórico', ws:'Notas, documentos e arquivos no navegador'},
+    es:{nodus:'Chats de IA en conocimiento estructurado', yt:'Ranking de vídeos de YouTube, en vivo', hn:'Un Hacker News más tranquilo', ph:'Product Hunt, con histórico', ws:'Notas, documentos y archivos en el navegador'},
+    fr:{nodus:'Vos discussions IA en savoir structuré', yt:'Classement des vidéos YouTube, en direct', hn:'Un Hacker News plus calme', ph:'Product Hunt, avec historique', ws:'Notes, documents et fichiers dans le navigateur'},
+    de:{nodus:'KI-Chats als strukturiertes Wissen', yt:'YouTube-Video-Rankings, live', hn:'Ein ruhigeres Hacker News', ph:'Product Hunt, mit Verlauf', ws:'Notizen, Dokumente & Dateien im Browser'},
+    it:{nodus:'Chat IA in conoscenza strutturata', yt:'Classifiche dei video YouTube, live', hn:'Un Hacker News più tranquillo', ph:'Product Hunt, con lo storico', ws:'Note, documenti e file nel browser'},
+    nl:{nodus:'AI-chats als gestructureerde kennis', yt:'YouTube-videoranglijsten, live', hn:'Een rustiger Hacker News', ph:'Product Hunt, met historie', ws:'Notities, documenten en bestanden in je browser'},
+    pl:{nodus:'Czaty AI w uporządkowaną wiedzę', yt:'Rankingi filmów YouTube, na żywo', hn:'Spokojniejszy Hacker News', ph:'Product Hunt, z historią', ws:'Notatki, dokumenty i pliki w przeglądarce'},
+    id:{nodus:'Obrolan AI jadi pengetahuan terstruktur', yt:'Peringkat video YouTube, langsung', hn:'Hacker News yang lebih tenang', ph:'Product Hunt, dengan riwayat', ws:'Catatan, dokumen, dan file di browser'},
+    vi:{nodus:'Biến chat AI thành kiến thức có cấu trúc', yt:'Xếp hạng video YouTube, trực tiếp', hn:'Một Hacker News điềm tĩnh hơn', ph:'Product Hunt, có chiều sâu lịch sử', ws:'Ghi chú, tài liệu và tệp trong trình duyệt'},
+    ja:{nodus:'AIチャットを構造化された知識に', yt:'YouTube動画のランキングをリアルタイムで', hn:'より穏やかな Hacker News', ph:'Product Hunt を履歴付きで', ws:'ブラウザでメモ・書類・ファイル'},
+    ko:{nodus:'AI 대화를 구조화된 지식으로', yt:'YouTube 영상 순위를 실시간으로', hn:'더 차분한 Hacker News', ph:'기록과 함께 보는 Product Hunt', ws:'브라우저에서 메모·문서·파일'},
+    zh:{nodus:'把 AI 对话变成结构化知识', yt:'YouTube 视频实时排名', hn:'更清爽的 Hacker News', ph:'带历史深度的 Product Hunt', ws:'浏览器中的笔记、文档和文件'},
+    ru:{nodus:'ИИ-чаты в структурированные знания', yt:'Рейтинги видео YouTube в реальном времени', hn:'Более спокойный Hacker News', ph:'Product Hunt с историей', ws:'Заметки, документы и файлы в браузере'},
+    hi:{nodus:'AI चैट को संरचित ज्ञान में बदलें', yt:'YouTube वीडियो रैंकिंग, लाइव', hn:'एक शांत Hacker News', ph:'इतिहास के साथ Product Hunt', ws:'ब्राउज़र में नोट्स, दस्तावेज़ और फ़ाइलें'},
+    tr:{nodus:'Yapay zeka sohbetlerini yapılandırılmış bilgiye', yt:'YouTube video sıralamaları, canlı', hn:'Daha sakin bir Hacker News', ph:'Geçmişiyle birlikte Product Hunt', ws:'Tarayıcıda notlar, belgeler ve dosyalar'}
   };
 
   var PRODUCTS = [
