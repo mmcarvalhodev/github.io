@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — Jouw lokaal-eerst kantoor, in je browser</title>
-  <meta name="description" content="Documenten, spreadsheets, PDF's, webknipsels en notities — alles lokaal, geen cloud, geen account. Onderdeel van het NODUS-ecosysteem. Nu in de Chrome Web Store.">
+  <title>NODUS Workspace — Uw local-first kantoor, in uw browser</title>
+  <meta name="description" content="Documenten, spreadsheets, PDF's, webclips en notities — allemaal lokaal, geen cloud, geen account. Onderdeel van het NODUS-ecosysteem. Nu in de Chrome Web Store.">
   <link rel="canonical" href="https://nodus-ai.app/nl/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — jouw lokaal-eerst kantoor, in je browser">
-  <meta property="og:description" content="Documenten, spreadsheets, PDF's, webknipsels en notities — alles lokaal, geen cloud, geen account. Nu op Chrome.">
+  <meta property="og:title" content="NODUS Workspace — uw local-first kantoor, in uw browser">
+  <meta property="og:description" content="Documenten, spreadsheets, PDF's, webclips en notities — allemaal lokaal, geen cloud, geen account. Nu op Chrome.">
   <meta property="og:url" content="https://nodus-ai.app/nl/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -225,37 +261,49 @@
     <!-- ── 1. HERO ── -->
     <header class="hero">
       <div class="hero-top">
-        <span class="badge"><span class="dot"></span> Nu in Chrome & Firefox</span>
-        <h1>Jouw kantoor, <span class="accent">lokaal en privé</span>, direct in je browser.</h1>
+        <span class="badge"><span class="dot"></span> Nu op Chrome & Firefox</span>
+        <h1>Uw kantoor, <span class="accent">lokaal en privé</span>, rechtstreeks in uw browser.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Een document dat uit het zijpaneel springt naar een volledig-scherm tabblad, naast het live paneel"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Een document dat vanuit het zijpaneel naar een volledig scherm-tabblad is geopend, naast het live paneel"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">Documenten, spreadsheets, PDF's, webknipsels en notities, in het zijpaneel van je browser. Alles op je apparaat — geen cloud, geen account.</p>
+        <p class="sub">Documenten, spreadsheets, PDF's, webclips en notities, in het zijpaneel van uw browser. Alles op uw eigen apparaat — geen cloud, geen account.</p>
         <div class="hero-btns">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Installeren op Chrome</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Download voor Firefox</a>
-          <a href="#features" class="btn btn-ghost">Ontdek wat er in zit ↓</a>
+          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Ontdek het op Firefox</a>
+          <a href="#features" class="btn btn-ghost">Bekijk wat erin zit ↓</a>
         </div>
         <div style="margin-top:22px;display:flex;justify-content:center;"><a href="https://www.producthunt.com/products/nodus-workspace?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nodus-workspace" target="_blank" rel="noopener noreferrer"><img alt="NODUS Workspace - Your local-first productivity workspace | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1181992&amp;theme=light&amp;t=1782833178993"></a></div>
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">Waarom nog een workspace?</div>
+      <h2 class="section-title">Uw werk is verspreid over tabbladen.</h2>
+      <div class="why">
+        <div class="frag">
+          <span>Een tabblad om te schrijven</span><span>Een tabblad voor PDF's</span><span>Een tabblad voor notities</span><span>Een tabblad voor bestanden</span><span>Een tabblad om te clippen</span>
+        </div>
+        <p class="punch">NODUS Workspace brengt alles samen in <b>één local-first zijbalk die u overal volgt</b> — zo stopt u met tabblad-hoppen en <b>blijft u in context</b>.</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace maakt van het <b>zijpaneel</b> van je browser een klein, privé kantoor dat direct naast alles staat wat je leest. Het is niet zomaar opslag: je krijgt een echte <b>documenteditor</b> (koppen, opmaak, tabellen, afbeeldingen), een <b>spreadsheet</b> met formules en totalen, en een ingebouwde <b>PDF-lezer</b>, zodat je kunt schrijven, berekenen en lezen <b>zonder het tabblad te verlaten</b>. Daaromheen één plek voor je <b>webknipsels</b>, je <b>notities</b> en checklists, en al je <b>bestanden</b> in mappen. Alles wordt gemaakt en opgeslagen <b>op je apparaat</b>: geen cloud, geen account, en het werkt offline.
+        NODUS Workspace maakt van het <b>zijpaneel</b> van uw browser een klein, privé kantoor dat vlak naast alles staat wat u leest. Het is niet alleen opslag: u krijgt een echte <b>documenteditor</b> (koppen, opmaak, tabellen, afbeeldingen), een <b>spreadsheet</b> met formules en totalen, en een ingebouwde <b>PDF-lezer</b>, zodat u kunt schrijven, rekenen en lezen <b>zonder het tabblad te verlaten</b> waar u bent. Daaromheen, één plek voor uw <b>webclips</b>, uw <b>notities</b> en checklists, en al uw <b>bestanden</b> in mappen. Alles wordt aangemaakt en opgeslagen <b>op uw eigen apparaat</b>: geen cloud, geen account, en het werkt offline.
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
-      <div class="section-label">Wat er in zit</div>
-      <h2 class="section-title">Een echte werkruimte, niet zomaar opslag.</h2>
-      <p class="section-sub">Schrijf documenten, maak spreadsheets en lees PDF's in het paneel, knip van elke pagina, en houd je notities en bestanden geordend — allemaal zonder het tabblad te verlaten.</p>
+      <div class="section-label">Wat erin zit</div>
+      <h2 class="section-title">Een echte workspace, geen simpele opslag.</h2>
+      <p class="section-sub">Schrijf documenten, bouw spreadsheets en lees PDF's in het paneel, clip vanaf elke pagina, en houd uw notities en bestanden georganiseerd, zonder het tabblad te verlaten waar u bent.</p>
 
       <!-- Capture -->
       <div class="pillar">
@@ -263,10 +311,10 @@
         <p class="pillar-sub">Pak alles van het web en bewaar het, met een link terug naar de bron.</p>
         <div class="feat-grid one">
           <div class="feature">
-            <h3>Knip het web — tekst of afbeelding</h3>
-            <p>Selecteer tekst of een afbeelding op een willekeurige pagina en stuur het naar Workspace. Elk knipsel bewaart de link naar de bron, zodat je het later makkelijk in een document of notitie kunt verwerken.</p>
-            <div class="caps"><span class="cap">Tekstknipsels</span><span class="cap">Afbeeldingsknipsels</span><span class="cap">Bronlink bewaard</span><span class="cap">Hergebruiken in docs &amp; notities</span></div>
-            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Tekst en afbeeldingen van een pagina knippen naar Workspace"></video></div>
+            <h3>Clip het web — tekst of afbeelding</h3>
+            <p>Selecteer tekst of een afbeelding op elke pagina en stuur het naar Workspace. Elke clip behoudt de link naar de bron, zodat u het later zo in een document of notitie kunt plaatsen.</p>
+            <div class="caps"><span class="cap">Tekstclips</span><span class="cap">Afbeeldingsclips</span><span class="cap">Bronlink bewaard</span><span class="cap">Hergebruik in docs &amp; notities</span></div>
+            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Tekst en afbeeldingen van een pagina clippen naar Workspace"></video></div>
           </div>
         </div>
       </div>
@@ -274,24 +322,24 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Organiseren <span class="ln"></span></div>
-        <p class="pillar-sub">Één privéplek voor je notities, bestanden en PDF's, gesorteerd zoals jij wilt.</p>
+        <p class="pillar-sub">Eén privéplek voor uw notities, bestanden en PDF's, gesorteerd zoals u het wilt.</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>Notities die alles verbinden</h3>
-            <p>Snelle notities met checklists, direct naast wat je leest. Koppel een notitie aan elk item — een doc, sheet, PDF of knipsel — en haal de link van de huidige pagina op met een rechtsklik.</p>
-            <div class="caps"><span class="cap">Checklists</span><span class="cap">Koppelen aan elk item</span><span class="cap">Rechtsklik paginalink</span><span class="cap">Herinneringen (bel)</span><span class="cap pro">PRO · Alarmen (direct)</span></div>
+            <h3>Notities die alles samenbrengen</h3>
+            <p>Snelle notities met checklists, vlak naast wat u leest. Zet een notitie vast aan elk item — een doc, sheet, PDF of clip — en pak de link van de huidige pagina met een rechtermuisklik.</p>
+            <div class="caps"><span class="cap">Checklists</span><span class="cap">Vastzetten aan item</span><span class="cap">Paginalink via rechtermuisklik</span><span class="cap">Herinneringen (bel)</span><span class="cap pro">PRO · Alarmen (direct)</span></div>
             <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Notities maken met een checklist in het Workspace-zijpaneel"></video></div>
           </div>
           <div class="feature">
-            <h3>Al je bestanden, op één plek</h3>
-            <p>Sleep PDF, DOCX, XLSX, TXT, Markdown en afbeeldingen er direct in — vanuit elk scherm, niet alleen de startweergave. Sorteer in mappen, filter op type en selecteer meerdere tegelijk.</p>
-            <div class="caps"><span class="cap">Slepen vanuit overal</span><span class="cap">Mappen</span><span class="cap">Filteren op type</span><span class="cap pro">PRO · Meervoudig selecteren/verwijderen/downloaden</span></div>
+            <h3>Al uw bestanden, op één plek</h3>
+            <p>Sleep PDF, DOCX, XLSX, TXT, Markdown en afbeeldingen direct naar binnen — vanaf elk scherm, niet alleen het startscherm. Sorteer in mappen, filter op type, en selecteer er meerdere tegelijk.</p>
+            <div class="caps"><span class="cap">Sleep vanaf overal</span><span class="cap">Mappen</span><span class="cap">Filter op type</span><span class="cap pro">PRO · Batch selecteren/verwijderen/downloaden</span></div>
             <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Bestanden en mappen organiseren in Workspace"></video></div>
-            <p class="feat-note">Eerlijk importeren: DOCX wordt als tekst ingeladen en XLSX als waarden — beter openen zonder opmaak dan helemaal niet.</p>
+            <p class="feat-note">Eerlijke import: DOCX komt binnen als tekst en XLSX als waarden — beter zonder opmaak openen dan helemaal niet.</p>
           </div>
           <div class="feature">
             <h3>Lees PDF's in het paneel</h3>
-            <p>Open en blader door PDF's zonder je tabblad te verlaten, en vind alles met Ctrl+F.</p>
+            <p>Open en blader door PDF's zonder uw tabblad te verlaten, en vind alles met Ctrl+F.</p>
             <div class="caps"><span class="cap">Lezen in paneel</span><span class="cap">Ctrl+F zoeken</span><span class="cap">Afdrukken / downloaden</span><span class="cap pro">PRO · Pagina exporteren als PNG</span></div>
             <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Een PDF lezen in het Workspace-zijpaneel"></video></div>
           </div>
@@ -300,25 +348,25 @@
 
       <!-- Create -->
       <div class="pillar">
-        <div class="pillar-head"><span class="ln"></span> Maken <span class="ln"></span></div>
-        <p class="pillar-sub">Echte editors voor documenten, spreadsheets en tekeningen, direct in het paneel.</p>
+        <div class="pillar-head"><span class="ln"></span> Creëren <span class="ln"></span></div>
+        <p class="pillar-sub">Echte editors voor documenten, spreadsheets en tekeningen, rechtstreeks in het paneel.</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>Echte documenten</h3>
-            <p>Een volwaardige editor in het paneel — koppen, <b>vet</b>, <i>cursief</i>, onderstrepen, lijsten, kleuren, tabellen en afbeeldingen. Automatisch opslaan terwijl je typt, inline hernoemen, en afdrukken of opslaan als PDF.</p>
-            <div class="caps"><span class="cap">Koppen</span><span class="cap">B / I / U</span><span class="cap">Lijsten</span><span class="cap">Tabellen</span><span class="cap">Afbeeldingen</span><span class="cap">Automatisch opslaan</span><span class="cap">Afdrukken / opslaan als PDF</span><span class="cap pro">PRO · Export DOCX</span></div>
+            <p>Een volledige editor in het paneel — koppen, <b>vet</b>, <i>cursief</i>, onderstreping, lijsten, kleuren, tabellen en afbeeldingen. Het slaat automatisch op terwijl u typt, u kunt inline hernoemen, en afdrukken of opslaan als PDF.</p>
+            <div class="caps"><span class="cap">Koppen</span><span class="cap">V / C / O</span><span class="cap">Lijsten</span><span class="cap">Tabellen</span><span class="cap">Afbeeldingen</span><span class="cap">Automatisch opslaan</span><span class="cap">Afdrukken / opslaan als PDF</span><span class="cap pro">PRO · DOCX exporteren</span></div>
             <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Een document bewerken in Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Spreadsheets</h3>
-            <p>Cellen, formules en totalen met automatisch opslaan — precies waar je werkt. Exporteer naar XLSX wanneer je het elders nodig hebt.</p>
-            <div class="caps"><span class="cap">Formules</span><span class="cap">Totalen</span><span class="cap">Automatisch opslaan</span><span class="cap pro">PRO · Export XLSX</span></div>
+            <p>Cellen, formules en totalen met automatisch opslaan — precies waar u werkt. Exporteer naar XLSX wanneer u het elders nodig heeft.</p>
+            <div class="caps"><span class="cap">Formules</span><span class="cap">Totalen</span><span class="cap">Automatisch opslaan</span><span class="cap pro">PRO · XLSX exporteren</span></div>
             <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Een spreadsheet bewerken in Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Tekenen &amp; annoteren</h3>
-            <p>Pen, markeerstift, pijlen, rechthoeken en tekst op een canvas, met een selectiegereedschap om objecten te verplaatsen of te wissen. Bijsnijden, roteren, spiegelen en ongedaan maken/opnieuw uitvoeren — exporteer daarna of zet het om in een PDF.</p>
-            <div class="caps"><span class="cap">Pen &amp; markeerstift</span><span class="cap">Pijlen &amp; vormen</span><span class="cap">Tekst</span><span class="cap">Selecteren / verplaatsen / wissen</span><span class="cap">Bijsnijden / roteren / spiegelen</span><span class="cap">Ongedaan maken / opnieuw</span><span class="cap pro">PRO · Export PNG/JPG</span><span class="cap">PDF maken</span></div>
+            <p>Pen, markeerstift, pijlen, rechthoeken en tekst op een canvas, met een selectietool om objecten te verplaatsen of te wissen. Bijsnijden, roteren, spiegelen en ongedaan maken/opnieuw — exporteer het daarna of maak er een PDF van.</p>
+            <div class="caps"><span class="cap">Pen &amp; markeerstift</span><span class="cap">Pijlen &amp; vormen</span><span class="cap">Tekst</span><span class="cap">Selecteren / verplaatsen / wissen</span><span class="cap">Bijsnijden / roteren / spiegelen</span><span class="cap">Ongedaan maken / opnieuw</span><span class="cap pro">PRO · PNG/JPG exporteren</span><span class="cap">PDF maken</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Tekenen op een canvas in Workspace"></video></div>
           </div>
         </div>
@@ -326,45 +374,79 @@
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">Een typische workflow</div>
+      <h2 class="section-title">Eén tabblad. Een hele werkdag.</h2>
+      <p class="section-sub">U verlaat nooit de pagina waar u bent — de workspace beweegt met u mee.</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">Een artikel lezen — <b>clip</b> de belangrijke delen, met een link terug naar de bron.</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">Open een <b>document</b> in het paneel en begin te schrijven, vlak naast de pagina.</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">Noteer <b>notities</b> en een checklist, vastgezet aan waar u mee bezig bent.</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t">Zet een <b>PDF</b> neer, lees hem en doorzoek hem zonder een nieuw tabblad te openen.</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">Reken cijfers door in een <b>spreadsheet</b> — formules, totalen, klaar.</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">Schets een idee op het <b>teken</b>canvas wanneer woorden niet genoeg zijn.</span></div>
+      </div>
+      <p class="flow-tail">Alles blijft bij elkaar — op uw eigen apparaat.</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">De NODUS-manier</div>
-      <h2 class="section-title">In het paneel terwijl je werkt. Volledig scherm wanneer je ruimte nodig hebt.</h2>
-      <p class="section-sub">Workspace zit in het zijpaneel van je browser, direct naast wat je leest. Meer ruimte nodig? Open een document, sheet, PDF of tekening op volledig scherm in een eigen tabblad — en zet het daarna terug. Dezelfde bestanden, twee weergaven, jouw keuze.</p>
+      <div class="section-label">Blijf in context</div>
+      <h2 class="section-title">De workspace verlaat nooit de pagina waar u mee bezig bent.</h2>
+      <p class="section-sub">Workspace rijdt mee in het zijpaneel van uw browser, vlak naast wat u ook leest. Ruimte nodig? Open elk document, sheet, PDF of tekening op volledig scherm in een eigen tabblad — en klik het daarna weer terug. Dezelfde bestanden, twee weergaven, uw keuze.</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">De pagina die u leest</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 Docs</div><div class="it">📊 Sheets</div><div class="it">📕 PDF's</div><div class="it">📝 Notities</div><div class="it">✂️ Clips</div><div class="it">🎨 Tekenen</div></div>
+      </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Zijpaneel</div><div class="mode-d">Naast je browser — vastleggen en bewerken zonder de pagina te verlaten.</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Zijpaneel</div><div class="mode-d">Naast uw browsen — vastleggen en bewerken zonder de pagina te verlaten.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Volledig-scherm tabblad</div><div class="mode-d">Één klik voor ruimte om te focussen — dan terug naar het paneel.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Volledig scherm</div><div class="mode-d">Eén klik voor ruimte om te focussen — en dan weer terug naar het paneel.</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">De ruil</div>
+      <h2 class="section-title">Minder jongleren. Meer doen.</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12 browsertabbladen</div><div class="swap-cell new">Eén zijbalk</div></div>
+        <div class="swap-row"><div class="swap-cell old">Cloudkantoor</div><div class="swap-cell new">Lokale bestanden</div></div>
+        <div class="swap-row"><div class="swap-cell old">Kopiëren &amp; plakken</div><div class="swap-cell new">Webclips</div></div>
+        <div class="swap-row"><div class="swap-cell old">Een andere app voor alles</div><div class="swap-cell new">Eén workspace</div></div>
+        <div class="swap-row"><div class="swap-cell old">Overal inloggen</div><div class="swap-cell new">Geen account</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
       <div class="section-label">Hoe het werkt</div>
-      <h2 class="section-title">Drie stappen. Geen installatieprocedure.</h2>
+      <h2 class="section-title">Drie stappen. Geen installatiegedoe.</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>Installeer &amp; zet het paneel vast</h3><p>Voeg de extensie toe en zet Workspace vast in het zijpaneel van je browser.</p></div>
-        <div class="step"><div class="step-n">2</div><h3>Maak iets aan of breng bestanden mee</h3><p>Start een doc, sheet of notitie — of sleep PDF's, DOCX, XLSX en afbeeldingen er direct in.</p></div>
-        <div class="step"><div class="step-n">3</div><h3>Het blijft op je apparaat</h3><p>Alles wordt lokaal opgeslagen. Geen account, geen cloud, werkt offline.</p></div>
+        <div class="step"><div class="step-n">1</div><h3>Installeer &amp; zet het paneel vast</h3><p>Voeg de extensie toe en zet Workspace vast in het zijpaneel van uw browser.</p></div>
+        <div class="step"><div class="step-n">2</div><h3>Maak of breng bestanden binnen</h3><p>Begin een doc, sheet of notitie — of sleep PDF's, DOCX, XLSX en afbeeldingen direct naar binnen.</p></div>
+        <div class="step"><div class="step-n">3</div><h3>Het blijft op uw eigen apparaat</h3><p>Alles slaat lokaal op. Geen account, geen cloud, werkt offline.</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
-      <div class="section-label">Voor wie</div>
-      <h2 class="section-title">Een privé bureau voor geconcentreerd werk.</h2>
+      <div class="section-label">Voor wie is dit</div>
+      <h2 class="section-title">Een privébureau voor geconcentreerd werk.</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>Solo-ondernemers &amp; microbedrijven</h3><p>Houd notities, docs en bestanden per klant op één privéplek — in plaats van vijf verschillende apps te jongleren.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>Studenten</h3><p>Knip leesstof, schrijf opdrachten en houd PDF's en notities naast elkaar met wat je bestudeert.</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>Onderzoekers</h3><p>Leg bronnen vast met hun links, annoteer PDF's en organiseer alles — volledig offline.</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>Privacybewuste mensen</h3><p>Een compleet kantoor dat de cloud nooit raakt: geen account, geen tracking, niets verlaat je apparaat.</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>Solo-ondernemers &amp; micro-bedrijven</h3><p>Houd notities, documenten en bestanden voor elke klant op één privéplek — in plaats van te jongleren met vijf verschillende apps.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>Studenten</h3><p>Clip leesstof, werk opdrachten uit, en houd PDF's en notities naast elkaar bij wat u aan het studeren bent.</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>Onderzoekers</h3><p>Leg bronnen vast met hun links, annoteer PDF's, en organiseer alles — volledig offline.</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>Privacybewuste mensen</h3><p>Een compleet kantoor dat de cloud nooit raakt: geen account, geen tracking, niets verlaat uw apparaat.</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>AI power users</h3><p>Houd de docs, notities en bestanden die u opbouwt rond uw AI-chats op één lokale plek — vlak naast de tools waarmee u NODUS al gebruikt.</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>Jouw bestanden blijven bij jou.</h2>
-        <p class="lead">Lokaal-eerst by design. Workspace draait volledig op je apparaat — er is geen server die je hoeft te vertrouwen.</p>
+        <h2>Uw bestanden blijven bij u.</h2>
+        <p class="lead">Local-first by design. Workspace draait volledig op uw eigen apparaat — er is geen server om te vertrouwen.</p>
         <div class="priv-grid">
           <div class="priv-item"><div class="ico">🔒</div><div class="t">100% lokaal — niets gaat naar de cloud</div></div>
           <div class="priv-item"><div class="ico">🙅</div><div class="t">Geen account nodig</div></div>
@@ -377,33 +459,33 @@
 
     <!-- ── 5. ECOSYSTEM + PRO ── -->
     <section class="section" id="pro">
-      <div class="section-label">Één abonnement</div>
-      <p class="pro-line">Één <b>NODUS PRO</b>-abonnement, het hele ecosysteem — NODUS AI + PH Radar + Workspace.</p>
+      <div class="section-label">Eén abonnement</div>
+      <p class="pro-line">Eén <b>NODUS PRO</b>-abonnement, het hele ecosysteem — NODUS AI + PH Radar + Workspace.</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO is vandaag beschikbaar — het ontgrendelt nu al <b style="color:var(--text)">NODUS AI</b> en <b style="color:var(--text)">PH Radar BI</b>, en Workspace sluit zich aan zodra het gelanceerd wordt.</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO is vandaag al beschikbaar — het ontgrendelt nu al <b style="color:var(--text)">NODUS AI</b> en <b style="color:var(--text)">PH Radar BI</b>, en Workspace sluit aan zodra het lanceert.</p>
 
       <div class="price-grid">
         <div class="price-card">
           <div class="price-name">PRO Maandelijks</div>
-          <div class="price-amt">$4.50<span>/mo</span></div>
+          <div class="price-amt">$4.50<span>/mnd</span></div>
           <div class="price-note">Altijd opzegbaar</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">PRO Maandelijks nemen</a>
+          <a href="checkout.html" class="btn btn-ghost price-cta">PRO Maandelijks aanschaffen</a>
         </div>
         <div class="price-card feat">
-          <div class="price-badge">SAVE 44%</div>
+          <div class="price-badge">BESPAAR 44%</div>
           <div class="price-name">PRO Jaarlijks</div>
-          <div class="price-amt">$30<span>/yr</span></div>
-          <div class="price-note">7-day gratis proefperiode &#183; &#8776; $2.50/mo</div>
-          <a href="checkout.html" class="btn btn-primary price-cta">PRO Jaarlijks nemen</a>
+          <div class="price-amt">$30<span>/jr</span></div>
+          <div class="price-note">7 dagen gratis proberen &#183; &#8776; $2.50/mnd</div>
+          <a href="checkout.html" class="btn btn-primary price-cta">PRO Jaarlijks aanschaffen</a>
         </div>
         <div class="price-card">
-          <div class="price-name">PRO Lifetime</div>
-          <div class="price-amt">$79<span> once</span></div>
-          <div class="price-note">Eenmalig betalen, voor altijd van jou</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Lifetime nemen</a>
+          <div class="price-name">PRO Levenslang</div>
+          <div class="price-amt">$79<span> eenmalig</span></div>
+          <div class="price-note">Eén keer betalen, voor altijd van u</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Levenslang aanschaffen</a>
         </div>
       </div>
-      <p class="price-trust">Veilig afrekenen via Paddle &#183; 7-day gratis proefperiode op het jaarplan &#183; altijd opzegbaar.</p>
+      <p class="price-trust">Veilig afrekenen via Paddle &#183; 7 dagen gratis proberen bij het jaarplan &#183; altijd opzegbaar.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
@@ -415,11 +497,11 @@
           <div class="cmp-cell pro">DOCX, XLSX en afbeeldingen exporteren</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">PDF's lezen, zoeken, afdrukken en downloaden</div>
+          <div class="cmp-cell">PDF's lezen, doorzoeken, afdrukken en downloaden</div>
           <div class="cmp-cell pro">Een PDF-pagina exporteren als PNG</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Webknipsels en notities</div>
+          <div class="cmp-cell">Webclips en notities</div>
           <div class="cmp-cell pro">Versleutelde back-up &amp; herstel</div>
         </div>
         <div class="cmp-row">
@@ -428,14 +510,14 @@
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Herinneringen (bel-melding)</div>
-          <div class="cmp-cell pro">Bulkacties</div>
+          <div class="cmp-cell pro">Batchacties</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">16 talen</div>
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">Gulden regel: <b>inhoud invoeren is altijd gratis</b> — exporteren/converteren en automatiseringen zijn PRO.</p>
+      <p class="golden">Gouden regel: <b>inhoud binnenbrengen is altijd gratis</b> — exporteren/converteren en automatiseringen zijn PRO.</p>
     </section>
 
     <!-- ── FAQ ── -->
@@ -443,28 +525,35 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Vragen, beantwoord.</h2>
       <div class="faq">
-        <details><summary>Worden mijn bestanden in de cloud opgeslagen?</summary><p>Nee. Alles wat je maakt of importeert — documenten, spreadsheets, PDF's, knipsels, notities en tekeningen — wordt lokaal op je apparaat opgeslagen, in je browser. Niets wordt naar ons of iemand anders geüpload.</p></details>
-        <details><summary>Waar wordt mijn data precies bewaard?</summary><p>In de eigen lokale opslag van je browser, op je apparaat — dezelfde plek waar je browser sitedata bewaart. Er wordt niets naar een NODUS-server gestuurd, waardoor Workspace een lokaal-eerst alternatief is voor cloud-kantoortools: je bestanden zijn altijd bij je en werken offline.</p></details>
-        <details><summary>Heb ik een account nodig om het te gebruiken?</summary><p>Nee. Workspace werkt zonder aanmelding en zonder inloggen. Je voert alleen een e-mailadres in als je ervoor kiest NODUS PRO te activeren.</p></details>
-        <details><summary>Werkt het offline?</summary><p>Ja. Omdat het lokaal-eerst is, kun je je bestanden maken, bewerken en lezen zonder internetverbinding.</p></details>
-        <details><summary>Wat gebeurt er als ik van computer wissel of de browser opnieuw installeer?</summary><p>Je data leeft alleen op dat apparaat, dus verplaatsen is aan jou: gebruik de versleutelde Back-up &amp; Herstel (een PRO-functie) om alles naar een bestand te exporteren en op een andere machine terug te zetten. Zonder back-up blijft lokale data alleen op die browser.</p></details>
-        <details><summary>Welke bestanden kan ik invoeren?</summary><p>Sleep PDF, DOCX, XLSX, TXT, afbeeldingen en Markdown direct het paneel in. De regel is eenvoudig: inhoud invoeren is altijd gratis.</p></details>
-        <details><summary>Kan ik Word- en Excel-bestanden bewerken?</summary><p>Je kunt ze openen — DOCX komt binnen als platte tekst en XLSX als waarden (opmaak en formules worden vereenvoudigd). Beter openen zonder opmaak dan helemaal niet. Exporteren naar DOCX/XLSX (en afbeeldingen) is een PRO-functie.</p></details>
-        <details><summary>Wat is gratis en wat is PRO?</summary><p>Gratis: documenten en spreadsheets maken en bewerken, PDF's lezen/zoeken/afdrukken, webknipsels, notities, herinneringen, bestanden importeren en 16 talen. PRO voegt export toe (DOCX, XLSX, PNG), PDF naar afbeelding, versleutelde back-up, actieve alarmen met meldingen en bulkacties.</p></details>
-        <details><summary>Hoeveel kost PRO?</summary><p>$4.50/maand, $30/jaar (≈ $2.50/mo) of $79 eenmalig (lifetime). Afrekenen verloopt veilig via Paddle, met een 7-day gratis proefperiode op het jaarplan en een 14-day niet-goed-geld-terug-garantie.</p></details>
-        <details><summary>Één abonnement voor alles?</summary><p>Ja — één NODUS PRO-abonnement ontgrendelt PRO in het hele NODUS-ecosysteem: NODUS AI, PH Radar en Workspace.</p></details>
-        <details><summary>Kan ik mijn werk afdrukken of opslaan als PDF?</summary><p>Ja. Documenten en spreadsheets kunnen worden afgedrukt of omgezet in een PDF — beide gratis — en de PDF opent direct in de ingebouwde viewer.</p></details>
-        <details><summary>Is het veilig? Wat betekent "geen externe code"?</summary><p>Alle code van de extensie zit in het pakket — er wordt niets van een server gedownload en uitgevoerd. Je back-ups zijn versleuteld met AES-256, en we lezen, verzenden of analyseren de inhoud van je bestanden nooit.</p></details>
-        <details><summary>Welke browsers worden ondersteund?</summary><p>Chrome, Firefox en op Chromium gebaseerde browsers (Edge, Brave en anderen). Het leeft in het zijpaneel van de browser, naast alles waaraan je werkt.</p></details>
-        <details><summary>Hoe krijg ik hulp of meld ik een probleem?</summary><p>Stuur ons een e-mail op <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — we lezen elk bericht.</p></details>
-        <details><summary>Waar kan ik het krijgen?</summary><p>NODUS Workspace is nu beschikbaar in de Chrome Web Store en Firefox Add-ons.</p></details>
+        <details><summary>Worden mijn bestanden in de cloud opgeslagen?</summary><p>Nee. Alles wat u maakt of importeert — documenten, spreadsheets, PDF's, clips, notities en tekeningen — wordt lokaal opgeslagen op uw eigen apparaat, in uw browser. Er wordt niets naar ons of iemand anders geüpload.</p></details>
+        <details><summary>Waar precies wordt mijn data bewaard?</summary><p>In de eigen lokale opslag van uw browser, op uw eigen apparaat — dezelfde plek waar uw browser sitegegevens bewaart. Er wordt niets naar een NODUS-server gestuurd, wat Workspace een local-first alternatief maakt voor cloud-kantoortools: uw bestanden zijn altijd bij u en werken offline.</p></details>
+        <details><summary>Heb ik een account nodig om het te gebruiken?</summary><p>Nee. Workspace werkt zonder aanmelden en zonder inloggen. U voert alleen een e-mailadres in als u ervoor kiest NODUS PRO te activeren.</p></details>
+        <details><summary>Werkt het offline?</summary><p>Ja. Omdat het local-first is, kunt u uw bestanden maken, bewerken en lezen zonder internetverbinding.</p></details>
+        <details><summary>Wat gebeurt er als ik van computer wissel of de browser opnieuw installeer?</summary><p>Uw data leeft alleen op dat apparaat, dus het verplaatsen ervan is aan u: gebruik de versleutelde back-up &amp; herstel-functie (een PRO-functie) om alles naar een bestand te exporteren en op een andere machine terug te zetten. Zonder back-up blijft de lokale data alleen op die browser.</p></details>
+        <details><summary>Welke bestanden kan ik binnenbrengen?</summary><p>Sleep PDF, DOCX, XLSX, TXT, afbeeldingen en Markdown direct in het paneel. De regel is simpel: inhoud binnenbrengen is altijd gratis.</p></details>
+        <details><summary>Kan ik Word- en Excel-bestanden bewerken?</summary><p>U kunt ze openen — DOCX komt binnen als platte tekst en XLSX als waarden (opmaak en formules worden vereenvoudigd). Beter zonder opmaak openen dan helemaal niet. Terug exporteren naar DOCX/XLSX (en afbeeldingen) is een PRO-functie.</p></details>
+        <details><summary>Wat is gratis en wat is PRO?</summary><p>Gratis: documenten en spreadsheets maken en bewerken, PDF's lezen/doorzoeken/afdrukken, webclips, notities, herinneringen, bestandsimport, en 16 talen. PRO voegt toe: exporteren (DOCX, XLSX, PNG), PDF-naar-afbeelding, versleutelde back-up, actieve alarmen met meldingen, en batchacties.</p></details>
+        <details><summary>Hoeveel kost PRO?</summary><p>$4.50/maand, $30/jaar (≈ $2.50/mnd) of $79 eenmalig (levenslang). Afrekenen verloopt veilig via Paddle, met 7 dagen gratis proberen bij het jaarplan en een niet-goed-geld-terug-garantie van 14 dagen.</p></details>
+        <details><summary>Eén abonnement voor alles?</summary><p>Ja — één NODUS PRO-abonnement ontgrendelt PRO in het hele NODUS-ecosysteem: NODUS AI, PH Radar en Workspace.</p></details>
+        <details><summary>Kan ik mijn werk afdrukken of opslaan als PDF?</summary><p>Ja. Documenten en spreadsheets kunnen worden afgedrukt of omgezet in een PDF — beide gratis — en de PDF opent meteen in de ingebouwde viewer.</p></details>
+        <details><summary>Is het veilig? Wat betekent "geen externe code"?</summary><p>Alle code van de extensie zit in het pakket zelf — er wordt niets van een server gedownload en uitgevoerd. Uw back-ups zijn versleuteld met AES-256, en we lezen, verzenden of analyseren nooit de inhoud van uw bestanden.</p></details>
+        <details><summary>Welke browsers worden ondersteund?</summary><p>Chrome, Firefox en Chromium-gebaseerde browsers (Edge, Brave en anderen). Het leeft in het zijpaneel van de browser, naast alles waar u mee bezig bent.</p></details>
+        <details><summary>Hoe krijg ik hulp of meld ik een probleem?</summary><p>Mail ons op <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — we lezen elk bericht.</p></details>
+        <details><summary>Waar kan ik het krijgen?</summary><p>NODUS Workspace is nu beschikbaar in de Chrome Web Store en bij Firefox Add-ons.</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>Uw browser is waar werk <span class="accent">al gebeurt</span>.</h2>
+      <div class="words"><span>Onderzoeken</span><span>Schrijven</span><span>Lezen</span><span>Plannen</span><span>Creëren</span></div>
+      <p>Waarom dan blijven springen tussen applicaties? Breng alles samen. Houd alles lokaal. <b style="color:var(--text)">Bezit uw workspace.</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
-      <span class="badge"><span class="dot"></span> Nu in Chrome & Firefox</span>
-      <h2>Direct aan de slag.</h2>
+      <span class="badge"><span class="dot"></span> Nu op Chrome & Firefox</span>
+      <h2>Begin in enkele seconden.</h2>
       <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Installeren op Chrome</a>
     </section>
 
@@ -480,9 +569,9 @@
     <div style="margin-top:10px;">© 2026 NODUS. Alle rechten voorbehouden.</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
-      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
-      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Een machine die intentie verwerkt, niet taal</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Een bestandsformaat dat compact én navigeerbaar is</span></span>
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Onderzoek</span>
+      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Een machine die intentie verwerkt, geen taal</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Een bestandsformaat dat compact en navigeerbaar tegelijk is</span></span>
     </div>
     <!-- research:end -->
   </footer>

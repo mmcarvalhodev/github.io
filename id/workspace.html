@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — Kantor lokal Anda, langsung di browser</title>
-  <meta name="description" content="Dokumen, spreadsheet, PDF, klip web, dan catatan — semua lokal, tanpa cloud, tanpa akun. Bagian dari ekosistem NODUS. Kini tersedia di Chrome Web Store.">
+  <title>NODUS Workspace — Kantor local-first Anda, langsung di browser</title>
+  <meta name="description" content="Dokumen, spreadsheet, PDF, kliping web, dan catatan — semuanya lokal, tanpa cloud, tanpa akun. Bagian dari ekosistem NODUS. Kini tersedia di Chrome Web Store.">
   <link rel="canonical" href="https://nodus-ai.app/id/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — kantor lokal Anda, langsung di browser">
-  <meta property="og:description" content="Dokumen, spreadsheet, PDF, klip web, dan catatan — semua lokal, tanpa cloud, tanpa akun. Kini tersedia di Chrome.">
+  <meta property="og:title" content="NODUS Workspace — kantor local-first Anda, langsung di browser">
+  <meta property="og:description" content="Dokumen, spreadsheet, PDF, kliping web, dan catatan — semuanya lokal, tanpa cloud, tanpa akun. Kini tersedia di Chrome.">
   <meta property="og:url" content="https://nodus-ai.app/id/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -214,7 +250,7 @@
         <a href="#features" class="nav-link">Fitur</a>
         <a href="#privacy" class="nav-link">Privasi</a>
         <a href="#pro" class="nav-link">PRO</a>
-        <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener" class="nav-link highlight">Pasang</a>
+        <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener" class="nav-link highlight">Instal</a>
       </div>
       <a href="https://nodus-ai.app" class="nav-back">← Kembali ke NODUS</a>
     </div>
@@ -226,17 +262,17 @@
     <header class="hero">
       <div class="hero-top">
         <span class="badge"><span class="dot"></span> Kini di Chrome & Firefox</span>
-        <h1>Kantor Anda, <span class="accent">lokal dan privat</span>, langsung di browser.</h1>
+        <h1>Kantor Anda, <span class="accent">lokal dan privat</span>, langsung di browser Anda.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Sebuah dokumen dibuka dari panel samping ke tab layar penuh, di sebelah panel yang aktif"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Sebuah dokumen dilepas dari panel samping ke tab layar penuh, di sebelah panel yang masih aktif"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">Dokumen, spreadsheet, PDF, klip web, dan catatan, di panel samping browser Anda. Semuanya di perangkat Anda — tanpa cloud, tanpa akun.</p>
+        <p class="sub">Dokumen, spreadsheet, PDF, kliping web, dan catatan, di panel samping browser Anda. Semuanya di perangkat Anda — tanpa cloud, tanpa akun.</p>
         <div class="hero-btns">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Pasang di Chrome</a>
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Instal di Chrome</a>
           <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Dapatkan di Firefox</a>
           <a href="#features" class="btn btn-ghost">Lihat isinya ↓</a>
         </div>
@@ -244,29 +280,41 @@
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">Kenapa perlu workspace lagi?</div>
+      <h2 class="section-title">Pekerjaan Anda tercecer di banyak tab.</h2>
+      <div class="why">
+        <div class="frag">
+          <span>Satu tab untuk menulis</span><span>Satu tab untuk PDF</span><span>Satu tab untuk catatan</span><span>Satu tab untuk berkas</span><span>Satu tab untuk kliping web</span>
+        </div>
+        <p class="punch">NODUS Workspace menyatukan semuanya dalam <b>satu sidebar local-first yang mengikuti Anda ke mana pun</b> — jadi Anda berhenti berpindah-pindah tab dan <b>tetap fokus dalam konteks</b>.</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace mengubah <b>panel samping</b> browser Anda menjadi kantor kecil yang privat, tepat di sisi konten yang sedang Anda baca. Ini bukan sekadar penyimpanan: Anda mendapatkan <b>editor dokumen</b> yang sesungguhnya (judul, pemformatan, tabel, gambar), <b>spreadsheet</b> dengan rumus dan total, serta <b>pembaca PDF</b> bawaan, sehingga Anda bisa menulis, menghitung, dan membaca <b>tanpa meninggalkan tab yang sedang dibuka</b>. Di sekelilingnya, satu tempat untuk menyimpan <b>klip web</b>, <b>catatan</b> dan daftar tugas, serta semua <b>file</b> dalam folder. Semuanya dibuat dan disimpan <b>di perangkat Anda</b>: tanpa cloud, tanpa akun, dan bisa digunakan offline.
+        NODUS Workspace mengubah <b>panel samping</b> browser Anda menjadi kantor kecil yang privat, duduk tepat di sebelah apa pun yang sedang Anda baca. Ini bukan sekadar penyimpanan: Anda mendapatkan <b>editor dokumen</b> sungguhan (heading, format teks, tabel, gambar), <b>spreadsheet</b> dengan rumus dan total, serta <b>pembaca PDF</b> bawaan, sehingga Anda bisa menulis, menghitung, dan membaca <b>tanpa meninggalkan tab yang sedang Anda buka</b>. Di sekitarnya, ada satu tempat untuk menyimpan <b>kliping web</b>, <b>catatan</b> dan checklist Anda, serta semua <b>berkas</b> Anda dalam folder. Semuanya dibuat dan disimpan <b>di perangkat Anda</b>: tanpa cloud, tanpa akun, dan tetap berfungsi secara offline.
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
-      <div class="section-label">Isi di dalamnya</div>
-      <h2 class="section-title">Workspace nyata, bukan sekadar penyimpanan.</h2>
-      <p class="section-sub">Tulis dokumen, buat spreadsheet, dan baca PDF di panel, klip dari halaman mana saja, dan jaga catatan serta file Anda tetap teratur — semua tanpa meninggalkan tab yang sedang dibuka.</p>
+      <div class="section-label">Apa saja isinya</div>
+      <h2 class="section-title">Workspace sungguhan, bukan sekadar penyimpanan.</h2>
+      <p class="section-sub">Tulis dokumen, buat spreadsheet, dan baca PDF di dalam panel, klip dari halaman mana pun, serta jaga catatan dan berkas Anda tetap rapi, semua tanpa meninggalkan tab yang sedang Anda buka.</p>
 
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Tangkap <span class="ln"></span></div>
-        <p class="pillar-sub">Ambil apa saja dari web dan simpan, lengkap dengan tautan ke sumbernya.</p>
+        <p class="pillar-sub">Ambil apa saja dari web dan simpan, lengkap dengan tautan kembali ke sumbernya.</p>
         <div class="feat-grid one">
           <div class="feature">
-            <h3>Klip web — teks atau gambar</h3>
-            <p>Pilih teks atau gambar di halaman mana saja dan kirimkan ke Workspace. Setiap klip menyimpan tautan balik ke sumbernya, sehingga siap dimasukkan ke dokumen atau catatan kapan saja.</p>
-            <div class="caps"><span class="cap">Klip teks</span><span class="cap">Klip gambar</span><span class="cap">Tautan sumber tersimpan</span><span class="cap">Gunakan ulang di dok &amp; catatan</span></div>
-            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Mengklip teks dan gambar dari halaman ke Workspace"></video></div>
+            <h3>Klip dari web — teks atau gambar</h3>
+            <p>Pilih teks atau gambar di halaman mana pun dan kirim ke Workspace. Setiap klip menyimpan tautan kembali ke sumbernya, jadi siap dipakai lagi di dokumen atau catatan nanti.</p>
+            <div class="caps"><span class="cap">Klip teks</span><span class="cap">Klip gambar</span><span class="cap">Tautan sumber tersimpan</span><span class="cap">Pakai lagi di dokumen &amp; catatan</span></div>
+            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Mengklip teks dan gambar dari sebuah halaman ke Workspace"></video></div>
           </div>
         </div>
       </div>
@@ -274,23 +322,23 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Atur <span class="ln"></span></div>
-        <p class="pillar-sub">Satu tempat privat untuk catatan, file, dan PDF Anda, tersusun sesuai keinginan.</p>
+        <p class="pillar-sub">Satu tempat privat untuk catatan, berkas, dan PDF Anda, tersusun sesuai keinginan Anda.</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>Catatan yang menghubungkan semuanya</h3>
-            <p>Catatan cepat dengan daftar tugas, tepat di sisi konten yang Anda baca. Sematkan catatan ke item mana saja — dokumen, sheet, PDF, atau klip — dan ambil tautan halaman saat ini dengan klik kanan.</p>
-            <div class="caps"><span class="cap">Daftar tugas</span><span class="cap">Sematkan ke item mana saja</span><span class="cap">Tautan halaman via klik kanan</span><span class="cap">Pengingat (lonceng)</span><span class="cap pro">PRO · Alarm aktif (seketika)</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Membuat catatan dengan daftar tugas di panel samping Workspace"></video></div>
+            <h3>Catatan yang merangkai semuanya</h3>
+            <p>Catatan cepat dengan checklist, tepat di sebelah apa yang sedang Anda baca. Sematkan catatan ke item apa pun — dokumen, sheet, PDF, atau klip — dan ambil tautan halaman saat ini dengan klik kanan.</p>
+            <div class="caps"><span class="cap">Checklist</span><span class="cap">Sematkan ke item apa pun</span><span class="cap">Tautan halaman via klik kanan</span><span class="cap">Pengingat (lonceng)</span><span class="cap pro">PRO · Alarm (instan)</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Membuat catatan dengan checklist di panel samping Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Semua file Anda, satu tempat</h3>
-            <p>Seret PDF, DOCX, XLSX, TXT, Markdown, dan gambar langsung ke dalam — dari layar mana saja, tidak hanya dari tampilan utama. Susun dalam folder, filter berdasarkan jenis, dan pilih banyak sekaligus.</p>
-            <div class="caps"><span class="cap">Seret masuk dari mana saja</span><span class="cap">Folder</span><span class="cap">Filter berdasarkan jenis</span><span class="cap pro">PRO · Pilih/hapus/unduh massal</span></div>
-            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Mengatur file dan folder di Workspace"></video></div>
-            <p class="feat-note">Impor yang jujur: DOCX masuk sebagai teks biasa dan XLSX sebagai nilai — lebih baik terbuka tanpa pemformatan daripada tidak sama sekali.</p>
+            <h3>Semua berkas Anda, satu tempat</h3>
+            <p>Seret PDF, DOCX, XLSX, TXT, Markdown, dan gambar langsung masuk — dari layar mana pun, tidak hanya dari tampilan utama. Susun ke dalam folder, saring berdasarkan jenis, dan pilih banyak berkas sekaligus.</p>
+            <div class="caps"><span class="cap">Seret dari mana saja</span><span class="cap">Folder</span><span class="cap">Saring berdasarkan jenis</span><span class="cap pro">PRO · Pilih/hapus/unduh massal</span></div>
+            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Mengatur berkas dan folder di Workspace"></video></div>
+            <p class="feat-note">Impor yang jujur: DOCX masuk sebagai teks dan XLSX sebagai nilai — lebih baik dibuka tanpa format daripada tidak sama sekali.</p>
           </div>
           <div class="feature">
-            <h3>Baca PDF di panel</h3>
+            <h3>Baca PDF di dalam panel</h3>
             <p>Buka dan telusuri PDF tanpa meninggalkan tab Anda, dan temukan apa saja dengan Ctrl+F.</p>
             <div class="caps"><span class="cap">Baca di panel</span><span class="cap">Pencarian Ctrl+F</span><span class="cap">Cetak / unduh</span><span class="cap pro">PRO · Ekspor halaman sebagai PNG</span></div>
             <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Membaca PDF di dalam panel samping Workspace"></video></div>
@@ -305,71 +353,105 @@
         <div class="feat-grid">
           <div class="feature">
             <h3>Dokumen sungguhan</h3>
-            <p>Editor lengkap di dalam panel — judul, <b>tebal</b>, <i>miring</i>, garis bawah, daftar, warna, tabel, dan gambar. Tersimpan otomatis saat Anda mengetik, bisa diubah nama secara langsung, serta dicetak atau Disimpan sebagai PDF.</p>
-            <div class="caps"><span class="cap">Judul</span><span class="cap">B / I / U</span><span class="cap">Daftar</span><span class="cap">Tabel</span><span class="cap">Gambar</span><span class="cap">Simpan otomatis</span><span class="cap">Cetak / Simpan sebagai PDF</span><span class="cap pro">PRO · Ekspor DOCX</span></div>
+            <p>Editor lengkap di dalam panel — heading, <b>tebal</b>, <i>miring</i>, garis bawah, daftar, warna, tabel, dan gambar. Tersimpan otomatis saat Anda mengetik, bisa diganti nama langsung, serta bisa dicetak atau disimpan sebagai PDF.</p>
+            <div class="caps"><span class="cap">Heading</span><span class="cap">B / I / U</span><span class="cap">Daftar</span><span class="cap">Tabel</span><span class="cap">Gambar</span><span class="cap">Simpan otomatis</span><span class="cap">Cetak / Simpan sebagai PDF</span><span class="cap pro">PRO · Ekspor DOCX</span></div>
             <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Mengedit dokumen di Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Spreadsheet</h3>
-            <p>Sel, rumus, dan total dengan simpan otomatis — tepat di tempat Anda bekerja. Ekspor ke XLSX kapan saja dibutuhkan.</p>
+            <p>Sel, rumus, dan total dengan simpan otomatis — tepat di tempat Anda bekerja. Ekspor ke XLSX saat Anda membutuhkannya di tempat lain.</p>
             <div class="caps"><span class="cap">Rumus</span><span class="cap">Total</span><span class="cap">Simpan otomatis</span><span class="cap pro">PRO · Ekspor XLSX</span></div>
             <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Mengedit spreadsheet di Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Gambar &amp; anotasi</h3>
-            <p>Pena, stabilo, panah, persegi panjang, dan teks di atas kanvas, dengan alat seleksi untuk memindahkan atau menghapus objek. Potong, putar, cerminkan, dan undo/redo — lalu ekspor atau ubah menjadi PDF.</p>
+            <p>Pena, stabilo, panah, kotak, dan teks di atas kanvas, dengan alat seleksi untuk memindahkan atau menghapus objek. Potong, putar, cerminkan, dan undo/redo — lalu ekspor atau jadikan PDF.</p>
             <div class="caps"><span class="cap">Pena &amp; stabilo</span><span class="cap">Panah &amp; bentuk</span><span class="cap">Teks</span><span class="cap">Pilih / pindah / hapus</span><span class="cap">Potong / putar / cerminkan</span><span class="cap">Undo / redo</span><span class="cap pro">PRO · Ekspor PNG/JPG</span><span class="cap">Buat PDF</span></div>
-            <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Menggambar di atas kanvas di Workspace"></video></div>
+            <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Menggambar di kanvas dalam Workspace"></video></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">Alur kerja khas</div>
+      <h2 class="section-title">Satu tab. Satu hari penuh kerja.</h2>
+      <p class="section-sub">Anda tidak pernah meninggalkan halaman yang sedang dibuka — workspace-nya yang bergerak mengikuti Anda.</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">Membaca artikel — <b>klip</b> bagian yang penting, lengkap dengan tautan kembali ke sumbernya.</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">Buka <b>dokumen</b> di panel dan mulai menulis, tepat di sebelah halaman.</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">Tulis <b>catatan</b> dan checklist, disematkan ke apa yang sedang Anda kerjakan.</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t">Masukkan <b>PDF</b>, baca, dan cari isinya tanpa membuka tab baru.</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">Olah angka di <b>spreadsheet</b> — rumus, total, selesai.</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">Sketsakan ide di kanvas <b>gambar</b> saat kata-kata saja tidak cukup.</span></div>
+      </div>
+      <p class="flow-tail">Semuanya tetap menyatu — di perangkat Anda.</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">Cara NODUS</div>
-      <h2 class="section-title">Di panel saat bekerja. Layar penuh saat butuh ruang lebih.</h2>
-      <p class="section-sub">Workspace berjalan di panel samping browser, tepat di sisi konten yang Anda baca. Butuh lebih banyak ruang? Buka dokumen, sheet, PDF, atau gambar apa saja dalam layar penuh di tab tersendiri — lalu kembalikan ke panel. File yang sama, dua tampilan, pilihan ada di tangan Anda.</p>
+      <div class="section-label">Tetap dalam konteks</div>
+      <h2 class="section-title">Workspace tidak pernah meninggalkan halaman yang sedang Anda kerjakan.</h2>
+      <p class="section-sub">Workspace menumpang di panel samping browser Anda, tepat di sebelah apa pun yang sedang Anda baca. Butuh ruang lebih? Buka dokumen, sheet, PDF, atau gambar mana pun dalam layar penuh di tabnya sendiri — lalu kembalikan ke panel. Berkas yang sama, dua tampilan, pilihan Anda.</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">Halaman yang sedang Anda baca</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 Dokumen</div><div class="it">📊 Sheet</div><div class="it">📕 PDF</div><div class="it">📝 Catatan</div><div class="it">✂️ Klip</div><div class="it">🎨 Gambar</div></div>
+      </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Panel samping</div><div class="mode-d">Di sisi browsing Anda — tangkap dan edit tanpa meninggalkan halaman.</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Panel samping</div><div class="mode-d">Berdampingan dengan aktivitas browsing Anda — tangkap dan edit tanpa meninggalkan halaman.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Tab layar penuh</div><div class="mode-d">Satu klik untuk ruang fokus — lalu kembali ke panel.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Tab layar penuh</div><div class="mode-d">Satu klik untuk ruang lebih fokus — lalu kembali ke panel.</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">Pertukarannya</div>
+      <h2 class="section-title">Lebih sedikit repot. Lebih banyak kerja beres.</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12 tab browser</div><div class="swap-cell new">Satu sidebar</div></div>
+        <div class="swap-row"><div class="swap-cell old">Kantor di cloud</div><div class="swap-cell new">Berkas lokal</div></div>
+        <div class="swap-row"><div class="swap-cell old">Salin &amp; tempel</div><div class="swap-cell new">Kliping web</div></div>
+        <div class="swap-row"><div class="swap-cell old">Aplikasi berbeda untuk semuanya</div><div class="swap-cell new">Satu workspace</div></div>
+        <div class="swap-row"><div class="swap-cell old">Login di mana-mana</div><div class="swap-cell new">Tanpa akun</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
       <div class="section-label">Cara kerjanya</div>
-      <h2 class="section-title">Tiga langkah. Tanpa konfigurasi.</h2>
+      <h2 class="section-title">Tiga langkah. Tanpa pengaturan rumit.</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>Pasang &amp; sematkan panel</h3><p>Tambahkan ekstensi dan sematkan Workspace ke panel samping browser Anda.</p></div>
-        <div class="step"><div class="step-n">2</div><h3>Buat atau masukkan file</h3><p>Mulai dokumen, sheet, atau catatan — atau seret masuk PDF, DOCX, XLSX, dan gambar langsung.</p></div>
-        <div class="step"><div class="step-n">3</div><h3>Tetap di perangkat Anda</h3><p>Semua tersimpan secara lokal. Tanpa akun, tanpa cloud, bisa digunakan offline.</p></div>
+        <div class="step"><div class="step-n">1</div><h3>Instal &amp; sematkan panelnya</h3><p>Tambahkan ekstensinya dan sematkan Workspace ke panel samping browser Anda.</p></div>
+        <div class="step"><div class="step-n">2</div><h3>Buat atau bawa masuk berkas</h3><p>Mulai dokumen, sheet, atau catatan baru — atau seret PDF, DOCX, XLSX, dan gambar langsung masuk.</p></div>
+        <div class="step"><div class="step-n">3</div><h3>Tetap di perangkat Anda</h3><p>Semuanya tersimpan secara lokal. Tanpa akun, tanpa cloud, tetap berfungsi offline.</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
-      <div class="section-label">Untuk siapa</div>
-      <h2 class="section-title">Meja kerja privat untuk fokus yang sesungguhnya.</h2>
+      <div class="section-label">Untuk siapa ini</div>
+      <h2 class="section-title">Meja privat untuk kerja yang fokus.</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>Pendiri solo &amp; bisnis mikro</h3><p>Simpan catatan, dokumen, dan file untuk setiap klien di satu tempat yang privat — tanpa harus berpindah-pindah antara lima aplikasi berbeda.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>Pelajar &amp; mahasiswa</h3><p>Klip bacaan, kerjakan tugas, dan simpan PDF serta catatan berdampingan dengan materi yang sedang dipelajari.</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>Peneliti</h3><p>Kumpulkan sumber beserta tautannya, beri anotasi pada PDF, dan atur semuanya — sepenuhnya offline.</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>Pengguna yang peduli privasi</h3><p>Kantor lengkap yang tidak pernah menyentuh cloud: tanpa akun, tanpa pelacakan, tidak ada yang meninggalkan perangkat Anda.</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>Pendiri solo &amp; usaha mikro</h3><p>Simpan catatan, dokumen, dan berkas tiap klien dalam satu tempat privat — bukan berpindah-pindah lima aplikasi berbeda.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>Mahasiswa &amp; pelajar</h3><p>Klip bacaan, susun tugas, dan simpan PDF serta catatan berdampingan dengan apa yang sedang Anda pelajari.</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>Peneliti</h3><p>Tangkap sumber lengkap dengan tautannya, beri anotasi pada PDF, dan atur semuanya — sepenuhnya offline.</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>Orang yang peduli privasi</h3><p>Kantor lengkap yang tidak pernah menyentuh cloud: tanpa akun, tanpa pelacakan, tidak ada yang keluar dari perangkat Anda.</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>Pengguna berat AI</h3><p>Simpan dokumen, catatan, dan berkas yang Anda buat seputar percakapan AI Anda di satu tempat lokal — tepat di sebelah alat yang sudah Anda pakai bersama NODUS.</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>File Anda tetap bersama Anda.</h2>
-        <p class="lead">Lokal sejak awal. Workspace berjalan sepenuhnya di perangkat Anda — tidak ada server yang perlu dipercaya.</p>
+        <h2>Berkas Anda tetap bersama Anda.</h2>
+        <p class="lead">Local-first sejak dirancang. Workspace berjalan sepenuhnya di perangkat Anda — tidak ada server yang perlu dipercaya.</p>
         <div class="priv-grid">
-          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% lokal — tidak ada yang dikirim ke cloud</div></div>
-          <div class="priv-item"><div class="ico">🙅</div><div class="t">Tanpa akun</div></div>
+          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% lokal — tidak ada yang masuk ke cloud</div></div>
+          <div class="priv-item"><div class="ico">🙅</div><div class="t">Tidak perlu akun</div></div>
           <div class="priv-item"><div class="ico">🔑</div><div class="t">Backup terenkripsi (AES-256)</div></div>
-          <div class="priv-item"><div class="ico">🧩</div><div class="t">Tanpa kode jarak jauh</div></div>
+          <div class="priv-item"><div class="ico">🧩</div><div class="t">Tanpa kode dari jarak jauh</div></div>
         </div>
         <div style="margin-top:26px;"><a href="/id/workspace-privacy" class="btn btn-ghost">Baca Kebijakan Privasi lengkap →</a></div>
       </div>
@@ -380,30 +462,30 @@
       <div class="section-label">Satu langganan</div>
       <p class="pro-line">Satu langganan <b>NODUS PRO</b>, seluruh ekosistem — NODUS AI + PH Radar + Workspace.</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO sudah tersedia hari ini — sudah membuka akses ke <b style="color:var(--text)">NODUS AI</b> dan <b style="color:var(--text)">PH Radar BI</b>, dan Workspace bergabung begitu diluncurkan.</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO sudah tersedia sekarang — sudah membuka <b style="color:var(--text)">NODUS AI</b> dan <b style="color:var(--text)">PH Radar BI</b>, dan Workspace akan bergabung begitu diluncurkan.</p>
 
       <div class="price-grid">
         <div class="price-card">
           <div class="price-name">PRO Bulanan</div>
-          <div class="price-amt">$4.50<span>/mo</span></div>
+          <div class="price-amt">$4.50<span>/bln</span></div>
           <div class="price-note">Batalkan kapan saja</div>
           <a href="checkout.html" class="btn btn-ghost price-cta">Dapatkan PRO Bulanan</a>
         </div>
         <div class="price-card feat">
-          <div class="price-badge">SAVE 44%</div>
+          <div class="price-badge">HEMAT 44%</div>
           <div class="price-name">PRO Tahunan</div>
-          <div class="price-amt">$30<span>/yr</span></div>
-          <div class="price-note">Uji coba 7-day gratis &#183; &#8776; $2.50/mo</div>
+          <div class="price-amt">$30<span>/thn</span></div>
+          <div class="price-note">Uji coba gratis 7 hari &#183; &#8776; $2.50/bln</div>
           <a href="checkout.html" class="btn btn-primary price-cta">Dapatkan PRO Tahunan</a>
         </div>
         <div class="price-card">
           <div class="price-name">PRO Seumur Hidup</div>
-          <div class="price-amt">$79<span> once</span></div>
+          <div class="price-amt">$79<span> sekali</span></div>
           <div class="price-note">Bayar sekali, milik Anda selamanya</div>
           <a href="checkout.html" class="btn btn-ghost price-cta">Dapatkan Seumur Hidup</a>
         </div>
       </div>
-      <p class="price-trust">Checkout aman via Paddle &#183; uji coba 7-day gratis untuk paket tahunan &#183; batalkan kapan saja.</p>
+      <p class="price-trust">Checkout aman lewat Paddle &#183; Uji coba gratis 7 hari pada paket tahunan &#183; batalkan kapan saja.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
@@ -419,12 +501,12 @@
           <div class="cmp-cell pro">Ekspor halaman PDF sebagai PNG</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Klip web dan catatan</div>
+          <div class="cmp-cell">Kliping web dan catatan</div>
           <div class="cmp-cell pro">Backup &amp; pemulihan terenkripsi</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Impor file (seret &amp; lepas)</div>
-          <div class="cmp-cell pro">Alarm aktif (notifikasi seketika)</div>
+          <div class="cmp-cell">Impor berkas (seret &amp; lepas)</div>
+          <div class="cmp-cell pro">Alarm aktif (notifikasi instan)</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Pengingat (notifikasi lonceng)</div>
@@ -435,7 +517,7 @@
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">Aturan emas: <b>membawa konten masuk selalu gratis</b> — mengekspor/mengonversi dan otomasi adalah fitur PRO.</p>
+      <p class="golden">Aturan emas: <b>membawa masuk konten selalu gratis</b> — ekspor/konversi dan otomatisasi adalah PRO.</p>
     </section>
 
     <!-- ── FAQ ── -->
@@ -443,29 +525,36 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Pertanyaan, terjawab.</h2>
       <div class="faq">
-        <details><summary>Apakah file saya disimpan di cloud?</summary><p>Tidak. Semua yang Anda buat atau impor — dokumen, spreadsheet, PDF, klip, catatan, dan gambar — disimpan secara lokal di perangkat Anda, di dalam browser. Tidak ada yang diunggah kepada kami atau pihak lain.</p></details>
-        <details><summary>Di mana tepatnya data saya disimpan?</summary><p>Di penyimpanan lokal bawaan browser, di perangkat Anda — tempat yang sama dengan data situs yang disimpan browser. Tidak ada yang dikirim ke server NODUS, menjadikan Workspace alternatif lokal untuk alat kantor berbasis cloud: file Anda selalu ada bersama Anda dan bisa digunakan offline.</p></details>
-        <details><summary>Apakah saya perlu akun untuk menggunakannya?</summary><p>Tidak. Workspace berfungsi tanpa pendaftaran dan tanpa login. Anda hanya perlu memasukkan email jika memilih untuk mengaktifkan NODUS PRO.</p></details>
-        <details><summary>Apakah bisa digunakan secara offline?</summary><p>Ya. Karena bersifat lokal, Anda bisa membuat, mengedit, dan membaca file tanpa koneksi internet.</p></details>
-        <details><summary>Apa yang terjadi jika saya ganti komputer atau instal ulang browser?</summary><p>Data Anda hanya ada di perangkat itu, sehingga pemindahannya ada di tangan Anda: gunakan fitur Backup &amp; Pemulihan terenkripsi (fitur PRO) untuk mengekspor semua data ke sebuah file dan memulihkannya di perangkat lain. Tanpa backup, data lokal hanya ada di browser tersebut.</p></details>
-        <details><summary>File apa saja yang bisa saya masukkan?</summary><p>Seret dan lepas PDF, DOCX, XLSX, TXT, gambar, dan Markdown langsung ke panel. Aturannya sederhana: membawa konten masuk selalu gratis.</p></details>
-        <details><summary>Bisakah saya mengedit file Word dan Excel?</summary><p>Anda bisa membukanya — DOCX masuk sebagai teks biasa dan XLSX sebagai nilai (pemformatan dan rumus disederhanakan). Lebih baik terbuka tanpa pemformatan daripada tidak sama sekali. Mengekspor kembali ke DOCX/XLSX (dan gambar) adalah fitur PRO.</p></details>
-        <details><summary>Apa yang gratis dan apa yang PRO?</summary><p>Gratis: membuat dan mengedit dokumen dan spreadsheet, membaca/mencari/mencetak PDF, klip web, catatan, pengingat, impor file, dan 16 bahasa. PRO menambahkan ekspor (DOCX, XLSX, PNG), PDF ke gambar, backup terenkripsi, alarm aktif dengan notifikasi, dan aksi massal.</p></details>
-        <details><summary>Berapa harga PRO?</summary><p>$4.50/bulan, $30/tahun (≈ $2.50/mo) atau $79 sekali bayar (seumur hidup). Checkout ditangani dengan aman oleh Paddle, dengan uji coba 7-day gratis pada paket tahunan dan jaminan uang kembali 14-day.</p></details>
-        <details><summary>Satu langganan untuk segalanya?</summary><p>Ya — satu langganan NODUS PRO membuka akses PRO di seluruh ekosistem NODUS: NODUS AI, PH Radar, dan Workspace.</p></details>
-        <details><summary>Bisakah saya mencetak atau menyimpan pekerjaan sebagai PDF?</summary><p>Ya. Dokumen dan spreadsheet bisa dicetak atau dijadikan PDF — keduanya gratis — dan PDF tersebut langsung terbuka di penampil bawaan.</p></details>
-        <details><summary>Apakah aman? Apa maksud "tanpa kode jarak jauh"?</summary><p>Semua kode ekstensi sudah ada di dalam paket — tidak ada yang diunduh dan dijalankan dari server. Backup Anda dienkripsi dengan AES-256, dan kami tidak pernah membaca, mengirimkan, atau menganalisis isi file Anda.</p></details>
-        <details><summary>Browser apa saja yang didukung?</summary><p>Chrome, Firefox, dan browser berbasis Chromium (Edge, Brave, dan lainnya). Workspace berjalan di panel samping browser, di sisi konten yang sedang Anda kerjakan.</p></details>
-        <details><summary>Bagaimana cara mendapatkan bantuan atau melaporkan masalah?</summary><p>Kirim email ke <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — kami membaca setiap pesan.</p></details>
+        <details><summary>Apakah berkas saya disimpan di cloud?</summary><p>Tidak. Semua yang Anda buat atau impor — dokumen, spreadsheet, PDF, klip, catatan, dan gambar — disimpan secara lokal di perangkat Anda, di dalam browser Anda. Tidak ada yang diunggah ke kami atau siapa pun.</p></details>
+        <details><summary>Di mana tepatnya data saya disimpan?</summary><p>Di penyimpanan lokal browser Anda sendiri, di perangkat Anda — tempat yang sama di mana browser Anda menyimpan data situs. Tidak ada yang dikirim ke server NODUS, yang menjadikan Workspace alternatif local-first untuk alat kantor berbasis cloud: berkas Anda selalu bersama Anda dan berfungsi offline.</p></details>
+        <details><summary>Apakah saya perlu akun untuk menggunakannya?</summary><p>Tidak. Workspace berfungsi tanpa pendaftaran dan tanpa login. Anda hanya memasukkan email jika memilih untuk mengaktifkan NODUS PRO.</p></details>
+        <details><summary>Apakah bisa dipakai offline?</summary><p>Ya. Karena bersifat local-first, Anda bisa membuat, mengedit, dan membaca berkas Anda tanpa koneksi internet.</p></details>
+        <details><summary>Apa yang terjadi jika saya berganti komputer atau menginstal ulang browser?</summary><p>Data Anda hanya ada di perangkat itu, jadi memindahkannya tergantung Anda: gunakan fitur Backup &amp; Restore terenkripsi (fitur PRO) untuk mengekspor semuanya ke sebuah berkas dan membawanya kembali di perangkat lain. Tanpa backup, data lokal hanya tetap ada di browser tersebut.</p></details>
+        <details><summary>Berkas apa saja yang bisa saya bawa masuk?</summary><p>Seret dan lepas PDF, DOCX, XLSX, TXT, gambar, dan Markdown langsung ke dalam panel. Aturannya sederhana: membawa masuk konten selalu gratis.</p></details>
+        <details><summary>Bisakah saya mengedit berkas Word dan Excel?</summary><p>Anda bisa membukanya — DOCX masuk sebagai teks biasa dan XLSX sebagai nilai (format dan rumus disederhanakan). Lebih baik dibuka tanpa format daripada tidak sama sekali. Mengekspor kembali ke DOCX/XLSX (dan gambar) adalah fitur PRO.</p></details>
+        <details><summary>Apa yang gratis dan apa yang PRO?</summary><p>Gratis: membuat dan mengedit dokumen serta spreadsheet, membaca/mencari/mencetak PDF, kliping web, catatan, pengingat, impor berkas, dan 16 bahasa. PRO menambahkan ekspor (DOCX, XLSX, PNG), PDF-ke-gambar, backup terenkripsi, alarm aktif dengan notifikasi, dan aksi massal.</p></details>
+        <details><summary>Berapa biaya PRO?</summary><p>$4.50/bulan, $30/tahun (≈ $2.50/bln), atau $79 sekali bayar (seumur hidup). Checkout ditangani dengan aman oleh Paddle, dengan uji coba gratis 7 hari pada paket tahunan dan jaminan uang kembali 14 hari.</p></details>
+        <details><summary>Satu langganan untuk semuanya?</summary><p>Ya — satu langganan NODUS PRO membuka PRO di seluruh ekosistem NODUS: NODUS AI, PH Radar, dan Workspace.</p></details>
+        <details><summary>Bisakah saya mencetak atau menyimpan pekerjaan saya sebagai PDF?</summary><p>Ya. Dokumen dan spreadsheet bisa dicetak atau diubah menjadi PDF — keduanya gratis — dan PDF-nya langsung terbuka di penampil bawaan.</p></details>
+        <details><summary>Apakah ini aman? Apa maksud "tanpa kode dari jarak jauh"?</summary><p>Semua kode ekstensi sudah tersedia di dalam paketnya — tidak ada yang diunduh dan dijalankan dari server. Backup Anda dienkripsi dengan AES-256, dan kami tidak pernah membaca, mengirim, atau menganalisis isi berkas Anda.</p></details>
+        <details><summary>Browser mana saja yang didukung?</summary><p>Chrome, Firefox, dan browser berbasis Chromium (Edge, Brave, dan lainnya). Workspace hidup di panel samping browser, berdampingan dengan apa pun yang sedang Anda kerjakan.</p></details>
+        <details><summary>Bagaimana cara mendapatkan bantuan atau melaporkan masalah?</summary><p>Kirim email ke kami di <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — kami membaca setiap pesan.</p></details>
         <details><summary>Di mana saya bisa mendapatkannya?</summary><p>NODUS Workspace kini tersedia di Chrome Web Store dan Firefox Add-ons.</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>Browser Anda adalah tempat pekerjaan <span class="accent">sudah berlangsung</span>.</h2>
+      <div class="words"><span>Meneliti</span><span>Menulis</span><span>Membaca</span><span>Merencanakan</span><span>Berkarya</span></div>
+      <p>Jadi kenapa terus berpindah-pindah aplikasi? Satukan semuanya. Jaga semuanya tetap lokal. <b style="color:var(--text)">Miliki workspace Anda.</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
       <span class="badge"><span class="dot"></span> Kini di Chrome & Firefox</span>
       <h2>Mulai dalam hitungan detik.</h2>
-      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Pasang di Chrome</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Instal di Chrome</a>
     </section>
 
   </div>
@@ -477,12 +566,12 @@
       <a href="https://nodus-ai.app/terms">Ketentuan</a>
       <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Dukungan</a><!--/email_off-->
     </div>
-    <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
+    <div style="margin-top:10px;">© 2026 NODUS. Semua hak dilindungi.</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
-      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
-      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Mesin yang memproses niat, bukan bahasa</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Format file yang ringkas sekaligus mudah dinavigasi</span></span>
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Riset</span>
+      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Mesin yang memproses intensi, bukan bahasa</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Format berkas yang ringkas dan mudah dinavigasi sekaligus</span></span>
     </div>
     <!-- research:end -->
   </footer>

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — 您的本地优先办公室，就在浏览器里</title>
-  <meta name="description" content="文档、电子表格、PDF、网页剪辑和笔记——全部本地存储，无需云端，无需账号。NODUS 生态系统的一部分。现已上架 Chrome 网上应用店。">
+  <title>NODUS Workspace — 本地优先的办公室，就在你的浏览器里</title>
+  <meta name="description" content="文档、电子表格、PDF、网页剪藏和笔记——全部本地，无需云端，无需账号。NODUS 生态系统的一部分。现已上线 Chrome 网上应用店。">
   <link rel="canonical" href="https://nodus-ai.app/zh/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — 您的本地优先办公室，就在浏览器里">
-  <meta property="og:description" content="文档、电子表格、PDF、网页剪辑和笔记——全部本地存储，无需云端，无需账号。现已支持 Chrome。">
+  <meta property="og:title" content="NODUS Workspace — 本地优先的办公室，就在你的浏览器里">
+  <meta property="og:description" content="文档、电子表格、PDF、网页剪藏和笔记——全部本地，无需云端，无需账号。现已上线 Chrome。">
   <meta property="og:url" content="https://nodus-ai.app/zh/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -225,48 +261,60 @@
     <!-- ── 1. HERO ── -->
     <header class="hero">
       <div class="hero-top">
-        <span class="badge"><span class="dot"></span> 现已支持 Chrome 和 Firefox</span>
-        <h1>您的办公室，<span class="accent">本地私密</span>，就在浏览器里。</h1>
+        <span class="badge"><span class="dot"></span> 现已支持 Chrome 与 Firefox</span>
+        <h1>你的办公室，<span class="accent">本地且私密</span>，就在浏览器里。</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="文档从侧边栏弹出为全屏标签页，与实时面板并排显示"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="一份文档从侧边栏弹出到全屏标签页，与实时面板并排显示"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">文档、电子表格、PDF、网页剪辑和笔记，就在浏览器侧边栏中。所有内容保存在您的设备上——无需云端，无需账号。</p>
+        <p class="sub">文档、电子表格、PDF、网页剪藏和笔记，都在浏览器的侧边栏里。一切都保存在你的设备上——无需云端，无需账号。</p>
         <div class="hero-btns">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> 安装到 Chrome</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> 在 Firefox 上获取</a>
-          <a href="#features" class="btn btn-ghost">探索内部功能 ↓</a>
+          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> 在 Firefox 中获取</a>
+          <a href="#features" class="btn btn-ghost">看看里面有什么 ↓</a>
         </div>
         <div style="margin-top:22px;display:flex;justify-content:center;"><a href="https://www.producthunt.com/products/nodus-workspace?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nodus-workspace" target="_blank" rel="noopener noreferrer"><img alt="NODUS Workspace - Your local-first productivity workspace | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1181992&amp;theme=light&amp;t=1782833178993"></a></div>
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">为什么还需要一个工作区？</div>
+      <h2 class="section-title">你的工作分散在各个标签页里。</h2>
+      <div class="why">
+        <div class="frag">
+          <span>一个标签页用来写作</span><span>一个标签页用来看 PDF</span><span>一个标签页用来记笔记</span><span>一个标签页用来管文件</span><span>一个标签页用来剪藏网页</span>
+        </div>
+        <p class="punch">NODUS Workspace 把这一切都整合进 <b>一个本地优先、随处跟随你的侧边栏</b>——让你不再来回切换标签页，<b>始终保持专注</b>。</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace 将浏览器的<b>侧边栏</b>变成一个小型私密办公室，紧挨着您正在浏览的页面。它不只是存储空间：您将获得真正的<b>文档编辑器</b>（支持标题、格式、表格、图片）、带公式和合计的<b>电子表格</b>，以及内置的<b>PDF 阅读器</b>，让您可以在<b>不离开当前标签页</b>的情况下写作、计算和阅读。此外，还有一个统一的地方来保存您的<b>网页剪辑</b>、<b>笔记</b>和待办清单，以及按文件夹整理的所有<b>文件</b>。所有内容均在<b>您的设备上</b>创建和保存：无需云端，无需账号，可离线使用。
+        NODUS Workspace 把浏览器的<b>侧边栏</b>变成一个小巧私密的办公室，就在你正在阅读的内容旁边。它不只是存储空间：你能用上真正的<b>文档编辑器</b>（标题、格式、表格、图片）、带公式和求和的<b>电子表格</b>，还有内置的 <b>PDF 阅读器</b>，让你无需离开当前标签页就能写作、计算和阅读。围绕它们，还有一个地方统一保存你的<b>网页剪藏</b>、<b>笔记</b>和清单，以及分文件夹存放的所有<b>文件</b>。一切都创建并保存在<b>你的设备上</b>：无需云端，无需账号，离线也能用。
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
-      <div class="section-label">内部功能</div>
-      <h2 class="section-title">真正的工作区，不只是存储。</h2>
-      <p class="section-sub">在侧边栏中编写文档、创建电子表格并阅读 PDF，从任意页面剪辑内容，整理笔记和文件——全程无需离开当前标签页。</p>
+      <div class="section-label">里面有什么</div>
+      <h2 class="section-title">一个真正的工作区，而不只是存储空间。</h2>
+      <p class="section-sub">在面板中撰写文档、制作电子表格、阅读 PDF，从任意页面剪藏内容，并整理好你的笔记与文件——完全不用离开当前标签页。</p>
 
       <!-- Capture -->
       <div class="pillar">
-        <div class="pillar-head"><span class="ln"></span> 捕获 <span class="ln"></span></div>
-        <p class="pillar-sub">抓取网络上的任何内容并保存，同时附带来源链接。</p>
+        <div class="pillar-head"><span class="ln"></span> 采集 <span class="ln"></span></div>
+        <p class="pillar-sub">从网页上抓取任何内容并保存下来，同时保留指向来源的链接。</p>
         <div class="feat-grid one">
           <div class="feature">
-            <h3>网页剪辑——文字或图片</h3>
-            <p>在任意页面选中文字或图片，发送到 Workspace。每条剪辑都保留来源链接，方便日后插入文档或笔记。</p>
-            <div class="caps"><span class="cap">文字剪辑</span><span class="cap">图片剪辑</span><span class="cap">保留来源链接</span><span class="cap">可复用于文档和笔记</span></div>
-            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="从页面剪辑文字和图片到 Workspace"></video></div>
+            <h3>剪藏网页——文字或图片</h3>
+            <p>在任意页面选中文字或图片，发送到 Workspace。每条剪藏都保留指向来源的链接，方便你之后放进文档或笔记里。</p>
+            <div class="caps"><span class="cap">文字剪藏</span><span class="cap">图片剪藏</span><span class="cap">保留来源链接</span><span class="cap">可在文档和笔记中复用</span></div>
+            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="从页面中剪藏文字和图片到 Workspace"></video></div>
           </div>
         </div>
       </div>
@@ -274,26 +322,26 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> 整理 <span class="ln"></span></div>
-        <p class="pillar-sub">一个私密的地方，按您喜欢的方式存放笔记、文件和 PDF。</p>
+        <p class="pillar-sub">一个私密的地方，存放你的笔记、文件和 PDF，按你喜欢的方式排列。</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>将一切串联起来的笔记</h3>
-            <p>带待办清单的快速笔记，紧挨着您正在阅读的内容。将笔记固定到任意项目——文档、表格、PDF 或剪辑——并通过右键获取当前页面链接。</p>
-            <div class="caps"><span class="cap">待办清单</span><span class="cap">固定到任意项目</span><span class="cap">右键获取页面链接</span><span class="cap">提醒（铃铛）</span><span class="cap pro">PRO · 即时闹钟</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 侧边栏中使用待办清单做笔记"></video></div>
+            <h3>把一切串联起来的笔记</h3>
+            <p>快速记录带清单的笔记，就在你正在阅读的内容旁边。把笔记固定到任意条目上——文档、表格、PDF 或剪藏——右键点击即可获取当前页面的链接。</p>
+            <div class="caps"><span class="cap">清单</span><span class="cap">固定到任意条目</span><span class="cap">右键获取页面链接</span><span class="cap">提醒（铃铛）</span><span class="cap pro">PRO · 闹钟提醒（即时）</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 侧边栏中用清单记笔记"></video></div>
           </div>
           <div class="feature">
-            <h3>所有文件，一处存放</h3>
-            <p>直接拖入 PDF、DOCX、XLSX、TXT、Markdown 和图片——从任意界面均可，不只限于主页。按文件夹分类，按类型筛选，支持批量选择。</p>
-            <div class="caps"><span class="cap">从任意处拖入</span><span class="cap">文件夹</span><span class="cap">按类型筛选</span><span class="cap pro">PRO · 批量选择/删除/下载</span></div>
+            <h3>所有文件，一处安放</h3>
+            <p>直接拖入 PDF、DOCX、XLSX、TXT、Markdown 和图片——不限于主页视图，任意界面都可以。按文件夹分类、按类型筛选，还能一次选中多个文件。</p>
+            <div class="caps"><span class="cap">随处可拖入</span><span class="cap">文件夹</span><span class="cap">按类型筛选</span><span class="cap pro">PRO · 批量选择/删除/下载</span></div>
             <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 中整理文件和文件夹"></video></div>
-            <p class="feat-note">诚实的导入说明：DOCX 以纯文本导入，XLSX 以数值导入——能无格式打开总比打不开强。</p>
+            <p class="feat-note">诚实的导入方式：DOCX 以纯文本形式导入，XLSX 以数值形式导入——与其打不开，不如先牺牲一些格式打开它。</p>
           </div>
           <div class="feature">
-            <h3>在侧边栏中阅读 PDF</h3>
-            <p>无需离开标签页即可打开并翻阅 PDF，并使用 Ctrl+F 查找任意内容。</p>
-            <div class="caps"><span class="cap">在侧边栏中阅读</span><span class="cap">Ctrl+F 搜索</span><span class="cap">打印/下载</span><span class="cap pro">PRO · 导出页面为 PNG</span></div>
-            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 侧边栏中阅读 PDF"></video></div>
+            <h3>在面板中阅读 PDF</h3>
+            <p>无需离开当前标签页即可打开并翻阅 PDF，用 Ctrl+F 查找任何内容。</p>
+            <div class="caps"><span class="cap">在面板中阅读</span><span class="cap">Ctrl+F 搜索</span><span class="cap">打印 / 下载</span><span class="cap pro">PRO · 将页面导出为 PNG</span></div>
+            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 侧边栏内阅读 PDF"></video></div>
           </div>
         </div>
       </div>
@@ -301,24 +349,24 @@
       <!-- Create -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> 创作 <span class="ln"></span></div>
-        <p class="pillar-sub">真正的文档、电子表格和绘图编辑器，就在侧边栏中。</p>
+        <p class="pillar-sub">真正的文档、电子表格和绘图编辑器，全都在面板内。</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>真正的文档</h3>
-            <p>侧边栏内的完整编辑器——标题、<b>加粗</b>、<i>斜体</i>、下划线、列表、颜色、表格和图片。随时自动保存，支持内联重命名，以及打印或另存为 PDF。</p>
-            <div class="caps"><span class="cap">标题</span><span class="cap">B / I / U</span><span class="cap">列表</span><span class="cap">表格</span><span class="cap">图片</span><span class="cap">自动保存</span><span class="cap">打印/另存为 PDF</span><span class="cap pro">PRO · 导出 DOCX</span></div>
+            <p>面板内的完整编辑器——标题、<b>加粗</b>、<i>斜体</i>、下划线、列表、颜色、表格和图片。边打字边自动保存，可直接重命名，还能打印或另存为 PDF。</p>
+            <div class="caps"><span class="cap">标题</span><span class="cap">B / I / U</span><span class="cap">列表</span><span class="cap">表格</span><span class="cap">图片</span><span class="cap">自动保存</span><span class="cap">打印 / 另存为 PDF</span><span class="cap pro">PRO · 导出 DOCX</span></div>
             <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 中编辑文档"></video></div>
           </div>
           <div class="feature">
             <h3>电子表格</h3>
-            <p>支持公式和合计的单元格，自动保存——就在您工作的地方。需要时可导出为 XLSX。</p>
-            <div class="caps"><span class="cap">公式</span><span class="cap">合计</span><span class="cap">自动保存</span><span class="cap pro">PRO · 导出 XLSX</span></div>
+            <p>单元格、公式和求和，自动保存——就在你工作的地方。需要时可导出为 XLSX。</p>
+            <div class="caps"><span class="cap">公式</span><span class="cap">求和</span><span class="cap">自动保存</span><span class="cap pro">PRO · 导出 XLSX</span></div>
             <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 中编辑电子表格"></video></div>
           </div>
           <div class="feature">
             <h3>绘图与标注</h3>
-            <p>在画布上使用钢笔、荧光笔、箭头、矩形和文本，并用选择工具移动或擦除对象。支持裁剪、旋转、镜像和撤销/重做——然后导出或转为 PDF。</p>
-            <div class="caps"><span class="cap">钢笔和荧光笔</span><span class="cap">箭头和形状</span><span class="cap">文本</span><span class="cap">选择/移动/擦除</span><span class="cap">裁剪/旋转/镜像</span><span class="cap">撤销/重做</span><span class="cap pro">PRO · 导出 PNG/JPG</span><span class="cap">创建 PDF</span></div>
+            <p>画布上的画笔、荧光笔、箭头、矩形和文字，配合选择工具移动或擦除对象。裁剪、旋转、镜像、撤销/重做——然后导出或转成 PDF。</p>
+            <div class="caps"><span class="cap">画笔与荧光笔</span><span class="cap">箭头与形状</span><span class="cap">文字</span><span class="cap">选择 / 移动 / 擦除</span><span class="cap">裁剪 / 旋转 / 镜像</span><span class="cap">撤销 / 重做</span><span class="cap pro">PRO · 导出 PNG/JPG</span><span class="cap">创建 PDF</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="在 Workspace 画布上绘图"></video></div>
           </div>
         </div>
@@ -326,45 +374,79 @@
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">典型工作流程</div>
+      <h2 class="section-title">一个标签页，一整天的工作。</h2>
+      <p class="section-sub">你从不离开当前页面——工作区跟着你一起移动。</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">阅读一篇文章——<b>剪藏</b>重要的部分，并保留指向来源的链接。</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">在面板中打开一份<b>文档</b>，就在页面旁边开始写作。</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">记下<b>笔记</b>和清单，固定在你正在处理的内容上。</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t">拖入一份 <b>PDF</b>，阅读并搜索它，无需打开新标签页。</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">在<b>电子表格</b>中处理数字——公式、求和，一气呵成。</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">当文字不够用时，在<b>绘图</b>画布上勾勒一个想法。</span></div>
+      </div>
+      <p class="flow-tail">一切都留在一起——在你的设备上。</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">NODUS 的方式</div>
-      <h2 class="section-title">工作时在侧边栏。需要空间时全屏显示。</h2>
-      <p class="section-sub">Workspace 嵌于浏览器侧边栏，紧挨着您正在浏览的页面。需要更多空间？将任意文档、表格、PDF 或绘图在独立标签页中全屏打开——再收回来。同样的文件，两种视图，随您选择。</p>
+      <div class="section-label">始终保持专注</div>
+      <h2 class="section-title">工作区从不离开你正在处理的页面。</h2>
+      <p class="section-sub">Workspace 驻留在浏览器的侧边栏中，就在你阅读的内容旁边。需要更多空间？把任意文档、表格、PDF 或绘图在独立标签页中全屏打开——再收回面板。同样的文件，两种视图，由你决定。</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">你正在阅读的页面</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 文档</div><div class="it">📊 表格</div><div class="it">📕 PDF</div><div class="it">📝 笔记</div><div class="it">✂️ 剪藏</div><div class="it">🎨 绘图</div></div>
+      </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">侧边栏</div><div class="mode-d">紧贴浏览——无需离页即可捕获和编辑。</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">侧边栏</div><div class="mode-d">与你的浏览并行——无需离开页面即可采集与编辑。</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">全屏标签页</div><div class="mode-d">一键获得专注空间——再返回侧边栏。</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">全屏标签页</div><div class="mode-d">一键获得专注所需的空间——完成后回到面板。</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">这笔交易</div>
+      <h2 class="section-title">少一点周旋，多一点投入。</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12 个浏览器标签页</div><div class="swap-cell new">一个侧边栏</div></div>
+        <div class="swap-row"><div class="swap-cell old">云端办公软件</div><div class="swap-cell new">本地文件</div></div>
+        <div class="swap-row"><div class="swap-cell old">复制粘贴</div><div class="swap-cell new">网页剪藏</div></div>
+        <div class="swap-row"><div class="swap-cell old">每件事都用不同的应用</div><div class="swap-cell new">一个工作区</div></div>
+        <div class="swap-row"><div class="swap-cell old">到处都要登录</div><div class="swap-cell new">无需账号</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
-      <div class="section-label">使用方式</div>
-      <h2 class="section-title">三步完成。无需配置。</h2>
+      <div class="section-label">工作原理</div>
+      <h2 class="section-title">三个步骤，无需设置。</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>安装并固定侧边栏</h3><p>添加扩展，并将 Workspace 固定到浏览器侧边栏。</p></div>
-        <div class="step"><div class="step-n">2</div><h3>创建或导入文件</h3><p>新建文档、表格或笔记——或直接拖入 PDF、DOCX、XLSX 和图片。</p></div>
-        <div class="step"><div class="step-n">3</div><h3>保存在您的设备上</h3><p>所有内容本地保存。无需账号，无需云端，可离线使用。</p></div>
+        <div class="step"><div class="step-n">1</div><h3>安装并固定面板</h3><p>添加扩展程序，把 Workspace 固定到浏览器的侧边栏。</p></div>
+        <div class="step"><div class="step-n">2</div><h3>创建或导入文件</h3><p>开始一份文档、表格或笔记——或者直接拖入 PDF、DOCX、XLSX 和图片。</p></div>
+        <div class="step"><div class="step-n">3</div><h3>一切都留在你的设备上</h3><p>所有内容都本地保存。无需账号，无需云端，离线也能用。</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
-      <div class="section-label">适合人群</div>
-      <h2 class="section-title">专注工作的私密桌面。</h2>
+      <div class="section-label">适合谁使用</div>
+      <h2 class="section-title">专注工作的私人办公桌。</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>独立创业者和微型企业</h3><p>将每位客户的笔记、文档和文件集中在一个私密的地方——不再需要同时使用五款不同的应用。</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>学生</h3><p>剪辑阅读材料、起草作业，并将 PDF 和笔记与学习内容并排放置。</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>研究人员</h3><p>捕获带链接的来源，标注 PDF，整理所有内容——完全离线。</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>注重隐私的用户</h3><p>完整的办公环境，从不接触云端：无账号、无追踪，任何内容都不会离开您的设备。</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>独立创业者与微型企业</h3><p>把每位客户的笔记、文档和文件都保存在一个私密的地方——而不是在五个不同的应用之间来回周旋。</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>学生</h3><p>剪藏阅读材料、起草作业，把 PDF 和笔记与你正在学习的内容并排放置。</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>研究人员</h3><p>连同链接一起采集资料来源，标注 PDF，并整理一切——完全离线。</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>注重隐私的人</h3><p>一个完全不接触云端的办公室：无需账号，没有追踪，任何内容都不会离开你的设备。</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>AI 重度用户</h3><p>把围绕你的 AI 对话建立的文档、笔记和文件都保存在同一个本地空间——就在你已经使用 NODUS 的工具旁边。</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>您的文件只属于您。</h2>
-        <p class="lead">本地优先，由设计保障。Workspace 完全在您的设备上运行——没有需要信任的服务器。</p>
+        <h2>你的文件始终由你掌控。</h2>
+        <p class="lead">从设计之初就本地优先。Workspace 完全运行在你的设备上——不存在需要信任的服务器。</p>
         <div class="priv-grid">
           <div class="priv-item"><div class="ico">🔒</div><div class="t">100% 本地——不上传到云端</div></div>
           <div class="priv-item"><div class="ico">🙅</div><div class="t">无需账号</div></div>
@@ -377,37 +459,37 @@
 
     <!-- ── 5. ECOSYSTEM + PRO ── -->
     <section class="section" id="pro">
-      <div class="section-label">一个订阅</div>
-      <p class="pro-line">一个 <b>NODUS PRO</b> 订阅，解锁整个生态系统——NODUS AI + PH Radar + Workspace。</p>
+      <div class="section-label">一份订阅</div>
+      <p class="pro-line">一份 <b>NODUS PRO</b> 订阅，解锁整个生态系统——NODUS AI + PH Radar + Workspace。</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO 现已开放——立即解锁 <b style="color:var(--text)">NODUS AI</b> 和 <b style="color:var(--text)">PH Radar BI</b>，Workspace 一经发布即自动加入。</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO 现已开放订阅——目前已解锁 <b style="color:var(--text)">NODUS AI</b> 和 <b style="color:var(--text)">PH Radar BI</b>，Workspace 一上线便会同步加入。</p>
 
       <div class="price-grid">
         <div class="price-card">
           <div class="price-name">PRO 月付</div>
           <div class="price-amt">$4.50<span>/月</span></div>
-          <div class="price-note">随时取消</div>
+          <div class="price-note">随时可取消</div>
           <a href="checkout.html" class="btn btn-ghost price-cta">获取 PRO 月付</a>
         </div>
         <div class="price-card feat">
           <div class="price-badge">节省 44%</div>
           <div class="price-name">PRO 年付</div>
           <div class="price-amt">$30<span>/年</span></div>
-          <div class="price-note">7天免费试用 · ≈ $2.50/月</div>
+          <div class="price-note">7 天免费试用 &#183; 约 $2.50/月</div>
           <a href="checkout.html" class="btn btn-primary price-cta">获取 PRO 年付</a>
         </div>
         <div class="price-card">
           <div class="price-name">PRO 终身版</div>
           <div class="price-amt">$79<span> 一次性</span></div>
-          <div class="price-note">一次付清，永久使用</div>
+          <div class="price-note">一次付费，永久拥有</div>
           <a href="checkout.html" class="btn btn-ghost price-cta">获取终身版</a>
         </div>
       </div>
-      <p class="price-trust">通过 Paddle 安全结账 · 年付计划享 7天免费试用 · 随时取消。</p>
+      <p class="price-trust">通过 Paddle 安全结账 &#183; 年付计划提供 7 天免费试用 &#183; 随时可取消。</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
-          <div class="cmp-cell"><span class="free">免费版</span></div>
+          <div class="cmp-cell"><span class="free">免费</span></div>
           <div class="cmp-cell pro"><span class="pro">NODUS PRO</span></div>
         </div>
         <div class="cmp-row">
@@ -419,12 +501,12 @@
           <div class="cmp-cell pro">将 PDF 页面导出为 PNG</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">网页剪辑和笔记</div>
+          <div class="cmp-cell">网页剪藏和笔记</div>
           <div class="cmp-cell pro">加密备份与恢复</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">导入文件（拖放）</div>
-          <div class="cmp-cell pro">即时闹钟（实时通知）</div>
+          <div class="cmp-cell pro">主动闹钟（即时通知）</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">提醒（铃铛通知）</div>
@@ -435,36 +517,43 @@
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">黄金法则：<b>导入内容永远免费</b>——导出/转换和自动化功能为 PRO 专属。</p>
+      <p class="golden">黄金法则：<b>导入内容永远免费</b>——导出/转换和自动化功能属于 PRO。</p>
     </section>
 
     <!-- ── FAQ ── -->
     <section class="section" id="faq">
       <div class="section-label">常见问题</div>
-      <h2 class="section-title">问题解答。</h2>
+      <h2 class="section-title">你的问题，我们来回答。</h2>
       <div class="faq">
-        <details><summary>我的文件存储在云端吗？</summary><p>不。您创建或导入的所有内容——文档、电子表格、PDF、剪辑、笔记和绘图——均本地存储在您的设备和浏览器中。不会上传给我们或任何第三方。</p></details>
-        <details><summary>我的数据具体存放在哪里？</summary><p>存储在您设备上浏览器自身的本地存储中——与浏览器保存网站数据的位置相同。任何内容都不会发送到 NODUS 服务器，这使 Workspace 成为云端办公工具的本地优先替代方案：您的文件始终在身边，可离线使用。</p></details>
-        <details><summary>使用需要账号吗？</summary><p>不需要。Workspace 无需注册和登录即可使用。只有在您选择激活 NODUS PRO 时，才需要填写邮箱。</p></details>
-        <details><summary>可以离线使用吗？</summary><p>可以。由于采用本地优先设计，您无需网络连接即可创建、编辑和阅读文件。</p></details>
-        <details><summary>如果我换了电脑或重装浏览器，会怎样？</summary><p>您的数据只存在于该设备上，因此迁移由您自行处理：使用加密备份与恢复功能（PRO 专属）将所有内容导出到文件，再在另一台机器上还原。没有备份的话，本地数据只会保留在原来的浏览器中。</p></details>
-        <details><summary>可以导入哪些文件？</summary><p>直接拖放 PDF、DOCX、XLSX、TXT、图片和 Markdown 到侧边栏即可。规则很简单：导入内容永远免费。</p></details>
-        <details><summary>可以编辑 Word 和 Excel 文件吗？</summary><p>可以打开——DOCX 以纯文本导入，XLSX 以数值导入（格式和公式会简化）。能无格式打开总比打不开强。导出回 DOCX/XLSX（以及图片）是 PRO 功能。</p></details>
-        <details><summary>哪些是免费功能，哪些是 PRO 功能？</summary><p>免费版：创建和编辑文档及电子表格、阅读/搜索/打印 PDF、网页剪辑、笔记、提醒、文件导入，以及 16 种语言。PRO 版新增：导出（DOCX、XLSX、PNG）、PDF 转图片、加密备份、即时闹钟通知和批量操作。</p></details>
-        <details><summary>PRO 价格是多少？</summary><p>$4.50/月、$30/年（≈ $2.50/月）或 $79 一次性（终身版）。结账通过 Paddle 安全处理，年付计划享 7天免费试用，并提供 14天退款保障。</p></details>
-        <details><summary>一个订阅涵盖所有产品？</summary><p>是的——单个 NODUS PRO 订阅解锁整个 NODUS 生态系统的 PRO 权益：NODUS AI、PH Radar 和 Workspace。</p></details>
-        <details><summary>可以打印或将内容保存为 PDF 吗？</summary><p>可以。文档和电子表格均可打印或转为 PDF——两者均免费——PDF 会直接在内置阅读器中打开。</p></details>
-        <details><summary>它安全吗？"无远程代码"是什么意思？</summary><p>扩展的所有代码均打包在安装包内——不会从服务器下载并运行任何代码。您的备份使用 AES-256 加密，我们绝不读取、传输或分析您的文件内容。</p></details>
-        <details><summary>支持哪些浏览器？</summary><p>Chrome、Firefox 以及基于 Chromium 的浏览器（Edge、Brave 等）。它位于浏览器侧边栏，与您正在处理的内容并排显示。</p></details>
-        <details><summary>如何获取帮助或反馈问题？</summary><p>发送邮件至 <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> ——我们阅读每一条消息。</p></details>
-        <details><summary>在哪里可以获取？</summary><p>NODUS Workspace 现已在 Chrome 应用商店和 Firefox Add-ons 上线。</p></details>
+        <details><summary>我的文件存储在云端吗？</summary><p>不会。你创建或导入的一切——文档、电子表格、PDF、剪藏、笔记和绘图——都本地保存在你的设备上、你的浏览器里。不会上传给我们或任何其他人。</p></details>
+        <details><summary>我的数据究竟保存在哪里？</summary><p>保存在你浏览器自身的本地存储中，也就是你的设备上——和浏览器保存网站数据的位置相同。不会发送到任何 NODUS 服务器，这让 Workspace 成为云端办公工具的本地优先替代方案：你的文件始终随身携带，离线也能使用。</p></details>
+        <details><summary>使用它需要账号吗？</summary><p>不需要。Workspace 无需注册、无需登录即可使用。只有在你选择激活 NODUS PRO 时，才需要输入邮箱。</p></details>
+        <details><summary>它能离线使用吗？</summary><p>可以。由于它是本地优先的，你可以在没有网络连接的情况下创建、编辑和阅读文件。</p></details>
+        <details><summary>如果我更换电脑或重新安装浏览器会怎样？</summary><p>你的数据只保存在那台设备上，因此迁移由你决定：使用加密的备份与恢复功能（PRO 功能）将所有内容导出为文件，再带到另一台机器上恢复。若没有备份，本地数据只会留在原来的浏览器里。</p></details>
+        <details><summary>我可以导入哪些文件？</summary><p>直接把 PDF、DOCX、XLSX、TXT、图片和 Markdown 拖放进面板即可。规则很简单：导入内容永远免费。</p></details>
+        <details><summary>我能编辑 Word 和 Excel 文件吗？</summary><p>可以打开它们——DOCX 以纯文本形式导入，XLSX 以数值形式导入（格式和公式会被简化）。与其打不开，不如先牺牲格式打开它。导出回 DOCX/XLSX（以及图片）是 PRO 功能。</p></details>
+        <details><summary>哪些是免费的，哪些是 PRO？</summary><p>免费功能：创建和编辑文档与电子表格、阅读/搜索/打印 PDF、网页剪藏、笔记、提醒、文件导入，以及 16 种语言。PRO 增加了导出（DOCX、XLSX、PNG）、PDF 转图片、加密备份、带通知的主动闹钟，以及批量操作。</p></details>
+        <details><summary>PRO 多少钱？</summary><p>$4.50/月、$30/年（约 $2.50/月），或一次性 $79（终身版）。结账由 Paddle 安全处理，年付计划提供 7 天免费试用，并享有 14 天退款保证。</p></details>
+        <details><summary>一份订阅解锁所有产品？</summary><p>是的——一份 NODUS PRO 订阅即可解锁整个 NODUS 生态系统的 PRO 功能：NODUS AI、PH Radar 和 Workspace。</p></details>
+        <details><summary>我能打印或将我的作品另存为 PDF 吗？</summary><p>可以。文档和电子表格都可以打印或转换成 PDF——两者都免费——转换后的 PDF 会直接在内置查看器中打开。</p></details>
+        <details><summary>它安全吗？"无远程代码"是什么意思？</summary><p>扩展程序的全部代码都打包在安装包内——不会从服务器下载并运行任何代码。你的备份使用 AES-256 加密，我们也从不读取、传输或分析你文件的内容。</p></details>
+        <details><summary>它支持哪些浏览器？</summary><p>Chrome、Firefox 以及基于 Chromium 的浏览器（Edge、Brave 等）。它驻留在浏览器的侧边栏中，与你正在处理的内容并排显示。</p></details>
+        <details><summary>如何获得帮助或报告问题？</summary><p>发邮件至 <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off-->——我们会阅读每一封邮件。</p></details>
+        <details><summary>在哪里可以获取它？</summary><p>NODUS Workspace 现已上线 Chrome 网上应用店和 Firefox 附加组件商店。</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>你的浏览器，正是工作<span class="accent">早已发生的地方</span>。</h2>
+      <div class="words"><span>研究</span><span>写作</span><span>阅读</span><span>规划</span><span>创作</span></div>
+      <p>那为什么还要在各个应用之间来回跳转？把一切汇聚到一起。让一切保持本地。<b style="color:var(--text)">拥有属于你的工作区。</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
-      <span class="badge"><span class="dot"></span> 现已支持 Chrome 和 Firefox</span>
-      <h2>几秒钟即可开始使用。</h2>
+      <span class="badge"><span class="dot"></span> 现已支持 Chrome 与 Firefox</span>
+      <h2>几秒钟即可开始。</h2>
       <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> 安装到 Chrome</a>
     </section>
 
@@ -472,17 +561,17 @@
 
   <footer>
     <div>
-      <a href="https://nodus-ai.app">NODUS 首页</a>
-      <a href="/zh/workspace-privacy">隐私政策</a>
-      <a href="https://nodus-ai.app/terms">服务条款</a>
-      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">技术支持</a><!--/email_off-->
+      <a href="https://nodus-ai.app">NODUS 主页</a>
+      <a href="/zh/workspace-privacy">隐私</a>
+      <a href="https://nodus-ai.app/terms">条款</a>
+      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">支持</a><!--/email_off-->
     </div>
-    <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
+    <div style="margin-top:10px;">© 2026 NODUS。保留所有权利。</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
-      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
-      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — 一台处理意图而非语言的机器</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — 一种兼顾紧凑性与可导航性的文件格式</span></span>
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">研究</span>
+      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> —— 一台处理意图而非语言的机器</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> —— 一种既紧凑又易于导航的文件格式</span></span>
     </div>
     <!-- research:end -->
   </footer>

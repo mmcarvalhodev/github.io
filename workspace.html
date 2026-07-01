@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -244,6 +280,18 @@
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">Why another workspace?</div>
+      <h2 class="section-title">Your work is scattered across tabs.</h2>
+      <div class="why">
+        <div class="frag">
+          <span>A tab for writing</span><span>A tab for PDFs</span><span>A tab for notes</span><span>A tab for files</span><span>A tab for web clipping</span>
+        </div>
+        <p class="punch">NODUS Workspace brings it all into <b>one local-first sidebar that follows you everywhere</b> — so you stop tab-hopping and <b>stay in context</b>.</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
@@ -326,14 +374,47 @@
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">A typical workflow</div>
+      <h2 class="section-title">One tab. A whole day of work.</h2>
+      <p class="section-sub">You never leave the page you're on — the workspace moves with you.</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">Reading an article — <b>clip</b> the parts that matter, with a link back to the source.</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">Open a <b>document</b> in the panel and start writing, right beside the page.</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">Jot <b>notes</b> and a checklist, pinned to what you're working on.</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t">Drop in a <b>PDF</b>, read it and search it without opening a new tab.</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">Crunch numbers in a <b>spreadsheet</b> — formulas, totals, done.</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">Sketch an idea on the <b>drawing</b> canvas when words aren't enough.</span></div>
+      </div>
+      <p class="flow-tail">Everything stays together — on your device.</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">The NODUS way</div>
-      <h2 class="section-title">In the panel while you work. Full-screen when you need room.</h2>
+      <div class="section-label">Stay in context</div>
+      <h2 class="section-title">The workspace never leaves the page you're working on.</h2>
       <p class="section-sub">Workspace rides in your browser's side panel, right next to whatever you're reading. Need space? Open any document, sheet, PDF or drawing full-screen in its own tab — then snap it back. Same files, two views, your call.</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">The page you're reading</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 Docs</div><div class="it">📊 Sheets</div><div class="it">📕 PDFs</div><div class="it">📝 Notes</div><div class="it">✂️ Clips</div><div class="it">🎨 Draw</div></div>
+      </div>
       <div class="modes">
         <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Side panel</div><div class="mode-d">Alongside your browsing — capture and edit without leaving the page.</div></div>
         <div class="mode-arrow">⟷</div>
         <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Full-screen tab</div><div class="mode-d">One click for room to focus — then back to the panel.</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">The trade</div>
+      <h2 class="section-title">Less juggling. More doing.</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12 browser tabs</div><div class="swap-cell new">One sidebar</div></div>
+        <div class="swap-row"><div class="swap-cell old">Cloud office</div><div class="swap-cell new">Local files</div></div>
+        <div class="swap-row"><div class="swap-cell old">Copy &amp; paste</div><div class="swap-cell new">Web clips</div></div>
+        <div class="swap-row"><div class="swap-cell old">A different app for everything</div><div class="swap-cell new">One workspace</div></div>
+        <div class="swap-row"><div class="swap-cell old">Log in everywhere</div><div class="swap-cell new">No account</div></div>
       </div>
     </section>
 
@@ -357,6 +438,7 @@
         <div class="who-card"><div class="ico">🎓</div><h3>Students</h3><p>Clip readings, draft assignments, and keep PDFs and notes side by side with whatever you're studying.</p></div>
         <div class="who-card"><div class="ico">🔬</div><h3>Researchers</h3><p>Capture sources with their links, annotate PDFs, and organize everything — fully offline.</p></div>
         <div class="who-card"><div class="ico">🔒</div><h3>Privacy-minded people</h3><p>A complete office that never touches the cloud: no account, no tracking, nothing leaves your device.</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>AI power users</h3><p>Keep the docs, notes and files you build around your AI chats in one local place — right beside the tools you already use NODUS with.</p></div>
       </div>
     </section>
 
@@ -459,6 +541,13 @@
         <details><summary>How do I get help or report a problem?</summary><p>Email us at <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — we read every message.</p></details>
         <details><summary>Where can I get it?</summary><p>NODUS Workspace is available now on the Chrome Web Store and Firefox Add-ons.</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>Your browser is where work <span class="accent">already happens</span>.</h2>
+      <div class="words"><span>Research</span><span>Writing</span><span>Reading</span><span>Planning</span><span>Creating</span></div>
+      <p>So why keep jumping between applications? Bring everything together. Keep everything local. <b style="color:var(--text)">Own your workspace.</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->

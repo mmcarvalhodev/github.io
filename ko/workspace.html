@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — 브라우저 안의 로컬 퍼스트 오피스</title>
-  <meta name="description" content="문서, 스프레드시트, PDF, 웹 클립, 노트 — 모두 로컬에 저장, 클라우드 없음, 계정 없음. NODUS 에코시스템의 일부. 지금 Chrome 웹 스토어에서 만나보세요.">
+  <title>NODUS Workspace — 브라우저 안의 로컬 우선 오피스</title>
+  <meta name="description" content="문서, 스프레드시트, PDF, 웹 클립과 메모까지 — 모두 로컬에, 클라우드도 계정도 없이. NODUS 생태계의 일부. 지금 Chrome 웹 스토어에서 만나보세요.">
   <link rel="canonical" href="https://nodus-ai.app/ko/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — 브라우저 안의 로컬 퍼스트 오피스">
-  <meta property="og:description" content="문서, 스프레드시트, PDF, 웹 클립, 노트 — 모두 로컬에 저장, 클라우드 없음, 계정 없음. 지금 Chrome에서 사용하세요.">
+  <meta property="og:title" content="NODUS Workspace — 브라우저 안의 로컬 우선 오피스">
+  <meta property="og:description" content="문서, 스프레드시트, PDF, 웹 클립과 메모까지 — 모두 로컬에, 클라우드도 계정도 없이. 이제 Chrome에서.">
   <meta property="og:url" content="https://nodus-ai.app/ko/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -225,47 +261,59 @@
     <!-- ── 1. HERO ── -->
     <header class="hero">
       <div class="hero-top">
-        <span class="badge"><span class="dot"></span> 이제 Chrome와 Firefox에서</span>
-        <h1>나만의 오피스, <span class="accent">로컬에서 프라이빗하게</span>, 브라우저 안에서.</h1>
+        <span class="badge"><span class="dot"></span> 이제 Chrome과 Firefox에서</span>
+        <h1>당신의 오피스, <span class="accent">로컬에 안전하게</span>, 브라우저 안에.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="사이드 패널의 문서가 전체 화면 탭으로 펼쳐지고, 라이브 패널 옆에 나란히 표시되는 모습"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="사이드 패널에서 튀어나온 문서가 전체 화면 탭으로 전환되고, 그 옆에 라이브 패널이 있는 모습"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">문서, 스프레드시트, PDF, 웹 클립, 노트를 브라우저 사이드 패널에서 바로 사용하세요. 모든 것이 내 기기에 — 클라우드도, 계정도 없습니다.</p>
+        <p class="sub">문서, 스프레드시트, PDF, 웹 클립과 메모를 브라우저의 사이드 패널에서. 모든 것이 기기 안에 — 클라우드도 계정도 없습니다.</p>
         <div class="hero-btns">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome에 설치하기</a>
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome에 설치</a>
           <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Firefox에서 받기</a>
-          <a href="#features" class="btn btn-ghost">무엇이 있는지 보기 ↓</a>
+          <a href="#features" class="btn btn-ghost">무엇이 담겨 있는지 보기 ↓</a>
         </div>
         <div style="margin-top:22px;display:flex;justify-content:center;"><a href="https://www.producthunt.com/products/nodus-workspace?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nodus-workspace" target="_blank" rel="noopener noreferrer"><img alt="NODUS Workspace - Your local-first productivity workspace | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1181992&amp;theme=light&amp;t=1782833178993"></a></div>
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">왜 또 다른 워크스페이스가 필요할까요?</div>
+      <h2 class="section-title">당신의 작업은 탭 곳곳에 흩어져 있습니다.</h2>
+      <div class="why">
+        <div class="frag">
+          <span>글쓰기용 탭</span><span>PDF용 탭</span><span>메모용 탭</span><span>파일용 탭</span><span>웹 클리핑용 탭</span>
+        </div>
+        <p class="punch">NODUS Workspace는 이 모든 것을 <b>당신을 어디든 따라오는 하나의 로컬 우선 사이드바</b>로 모아, 탭을 옮겨 다니는 대신 <b>맥락을 유지</b>하게 해줍니다.</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace는 브라우저의 <b>사이드 패널</b>을 지금 읽고 있는 페이지 바로 옆에 자리하는 소형 프라이빗 오피스로 바꿔줍니다. 단순한 저장 공간이 아닙니다. 실제 <b>문서 편집기</b>(제목, 서식, 표, 이미지), 수식과 합계를 지원하는 <b>스프레드시트</b>, 내장 <b>PDF 리더</b>까지 갖추고 있어 <b>현재 탭을 벗어나지 않고</b> 작성하고, 계산하고, 읽을 수 있습니다. 그 주변에는 <b>웹 클립</b>, <b>노트</b>와 체크리스트, 그리고 폴더로 정리된 <b>파일</b>을 한 곳에 보관할 수 있습니다. 모든 것이 <b>내 기기</b>에서 생성되고 저장됩니다: 클라우드 없음, 계정 없음, 오프라인에서도 작동합니다.
+        NODUS Workspace는 브라우저의 <b>사이드 패널</b>을, 지금 읽고 있는 페이지 바로 옆에 자리한 작고 사적인 오피스로 바꿔줍니다. 단순한 저장 공간이 아닙니다. 실제로 쓸 수 있는 <b>문서 편집기</b>(제목, 서식, 표, 이미지), 수식과 합계를 지원하는 <b>스프레드시트</b>, 내장 <b>PDF 리더</b>까지 갖추고 있어, <b>지금 있는 탭을 벗어나지 않고도</b> 쓰고, 계산하고, 읽을 수 있습니다. 그 주위에는 <b>웹 클립</b>, <b>메모</b>와 체크리스트, 폴더별 <b>파일</b>을 모두 한곳에 보관합니다. 모든 것이 <b>기기 안</b>에서 만들어지고 저장됩니다. 클라우드도, 계정도 없으며, 오프라인에서도 작동합니다.
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
-      <div class="section-label">무엇이 있나요</div>
-      <h2 class="section-title">단순한 저장 공간이 아닌, 진짜 워크스페이스.</h2>
-      <p class="section-sub">패널에서 문서를 작성하고, 스프레드시트를 만들고, PDF를 읽으세요. 어떤 페이지에서도 클립하고, 노트와 파일을 정리하세요 — 현재 탭을 벗어날 필요 없습니다.</p>
+      <div class="section-label">담긴 기능들</div>
+      <h2 class="section-title">단순한 저장소가 아닌, 진짜 워크스페이스.</h2>
+      <p class="section-sub">패널 안에서 문서를 쓰고, 스프레드시트를 만들고, PDF를 읽으세요. 어떤 페이지에서든 클립하고, 메모와 파일을 정리하세요. 지금 있는 탭을 떠날 필요 없이.</p>
 
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> 캡처 <span class="ln"></span></div>
-        <p class="pillar-sub">웹에서 무엇이든 가져와 출처 링크와 함께 보관하세요.</p>
+        <p class="pillar-sub">웹에서 무엇이든 가져와 보관하고, 원본으로 돌아가는 링크도 함께 남기세요.</p>
         <div class="feat-grid one">
           <div class="feature">
             <h3>웹 클립 — 텍스트 또는 이미지</h3>
-            <p>어떤 페이지에서든 텍스트나 이미지를 선택해 Workspace로 보내세요. 각 클립은 출처 링크를 함께 보관하므로, 나중에 문서나 노트에 바로 활용할 수 있습니다.</p>
-            <div class="caps"><span class="cap">텍스트 클립</span><span class="cap">이미지 클립</span><span class="cap">출처 링크 보관</span><span class="cap">문서 &amp; 노트에서 재사용</span></div>
+            <p>어떤 페이지에서든 텍스트나 이미지를 선택해 Workspace로 보내세요. 각 클립은 출처로 돌아가는 링크를 그대로 유지하므로, 나중에 문서나 메모에 바로 가져다 쓸 수 있습니다.</p>
+            <div class="caps"><span class="cap">텍스트 클립</span><span class="cap">이미지 클립</span><span class="cap">출처 링크 유지</span><span class="cap">문서 &amp; 메모에서 재사용</span></div>
             <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="페이지에서 텍스트와 이미지를 Workspace로 클립하는 모습"></video></div>
           </div>
         </div>
@@ -274,136 +322,170 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> 정리 <span class="ln"></span></div>
-        <p class="pillar-sub">노트, 파일, PDF를 원하는 방식으로 정리하는 하나의 프라이빗 공간.</p>
+        <p class="pillar-sub">메모, 파일, PDF를 위한 하나의 사적인 공간을, 원하는 방식으로 정리하세요.</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>모든 것을 연결하는 노트</h3>
-            <p>지금 읽고 있는 내용 바로 옆에서 체크리스트가 포함된 빠른 노트를 작성하세요. 문서, 시트, PDF, 클립 등 어느 항목에도 노트를 핀 고정하고, 마우스 우클릭으로 현재 페이지 링크를 바로 가져올 수 있습니다.</p>
-            <div class="caps"><span class="cap">체크리스트</span><span class="cap">항목에 핀 고정</span><span class="cap">우클릭으로 페이지 링크</span><span class="cap">리마인더 (벨)</span><span class="cap pro">PRO · 알람 (즉시)</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace 사이드 패널에서 체크리스트와 함께 노트를 작성하는 모습"></video></div>
+            <h3>모든 것을 하나로 엮는 메모</h3>
+            <p>지금 읽고 있는 내용 바로 옆에서 체크리스트가 있는 빠른 메모를 남기세요. 문서, 시트, PDF, 클립 등 어떤 항목에도 메모를 고정할 수 있고, 우클릭으로 현재 페이지 링크를 바로 가져올 수 있습니다.</p>
+            <div class="caps"><span class="cap">체크리스트</span><span class="cap">항목에 고정</span><span class="cap">우클릭 페이지 링크</span><span class="cap">알림(벨)</span><span class="cap pro">PRO · 알람(즉시)</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace 사이드 패널에서 체크리스트로 메모를 작성하는 모습"></video></div>
           </div>
           <div class="feature">
-            <h3>모든 파일, 한 곳에</h3>
-            <p>PDF, DOCX, XLSX, TXT, Markdown과 이미지를 어느 화면에서든 — 홈 뷰가 아니어도 — 바로 드래그해 넣으세요. 폴더로 분류하고, 종류별로 필터링하고, 여러 항목을 한 번에 선택하세요.</p>
-            <div class="caps"><span class="cap">어디서든 드래그 추가</span><span class="cap">폴더</span><span class="cap">종류별 필터</span><span class="cap pro">PRO · 일괄 선택/삭제/다운로드</span></div>
+            <h3>모든 파일을 한곳에</h3>
+            <p>PDF, DOCX, XLSX, TXT, Markdown, 이미지를 바로 끌어다 놓으세요 — 홈 화면뿐 아니라 어떤 화면에서든 가능합니다. 폴더로 정리하고, 유형별로 필터링하고, 여러 개를 한 번에 선택하세요.</p>
+            <div class="caps"><span class="cap">어디서든 드래그로 추가</span><span class="cap">폴더</span><span class="cap">유형별 필터</span><span class="cap pro">PRO · 일괄 선택/삭제/다운로드</span></div>
             <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace에서 파일과 폴더를 정리하는 모습"></video></div>
-            <p class="feat-note">솔직한 가져오기 안내: DOCX는 텍스트로, XLSX는 값으로 불러옵니다 — 서식 없이 열더라도 아예 못 여는 것보다는 낫습니다.</p>
+            <p class="feat-note">솔직한 가져오기 방식: DOCX는 텍스트로, XLSX는 값으로 들어옵니다. 서식 없이 열리더라도 아예 못 여는 것보다는 낫습니다.</p>
           </div>
           <div class="feature">
-            <h3>패널에서 PDF 읽기</h3>
-            <p>탭을 벗어나지 않고 패널 안에서 PDF를 열고 페이지를 넘기며, Ctrl+F로 내용을 검색하세요.</p>
-            <div class="caps"><span class="cap">패널에서 읽기</span><span class="cap">Ctrl+F 검색</span><span class="cap">인쇄 / 다운로드</span><span class="cap pro">PRO · 페이지를 PNG로 내보내기</span></div>
-            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace 사이드 패널에서 PDF를 읽는 모습"></video></div>
+            <h3>패널 안에서 PDF 읽기</h3>
+            <p>탭을 벗어나지 않고 PDF를 열어 페이지를 넘기고, Ctrl+F로 무엇이든 찾아보세요.</p>
+            <div class="caps"><span class="cap">패널 안에서 읽기</span><span class="cap">Ctrl+F 검색</span><span class="cap">인쇄 / 다운로드</span><span class="cap pro">PRO · 페이지를 PNG로 내보내기</span></div>
+            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace 사이드 패널 안에서 PDF를 읽는 모습"></video></div>
           </div>
         </div>
       </div>
 
       <!-- Create -->
       <div class="pillar">
-        <div class="pillar-head"><span class="ln"></span> 제작 <span class="ln"></span></div>
-        <p class="pillar-sub">패널 안에서 바로 쓸 수 있는 문서, 스프레드시트, 드로잉 편집기.</p>
+        <div class="pillar-head"><span class="ln"></span> 만들기 <span class="ln"></span></div>
+        <p class="pillar-sub">문서, 스프레드시트, 그림을 위한 진짜 편집기가 패널 안에 그대로.</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>진짜 문서 편집기</h3>
-            <p>패널 안에 풀 에디터 — 제목, <b>굵게</b>, <i>기울임</i>, 밑줄, 목록, 색상, 표, 이미지. 입력할 때마다 자동 저장되고, 인라인 이름 변경이 가능하며, 인쇄하거나 PDF로 저장할 수 있습니다.</p>
-            <div class="caps"><span class="cap">제목</span><span class="cap">B / I / U</span><span class="cap">목록</span><span class="cap">표</span><span class="cap">이미지</span><span class="cap">자동 저장</span><span class="cap">인쇄 / PDF로 저장</span><span class="cap pro">PRO · DOCX 내보내기</span></div>
+            <h3>진짜 문서</h3>
+            <p>패널 안의 완전한 편집기 — 제목, <b>굵게</b>, <i>기울임</i>, 밑줄, 목록, 색상, 표, 이미지까지. 입력하는 대로 자동 저장되고, 이름은 바로 바꿀 수 있으며, 인쇄하거나 PDF로 저장할 수 있습니다.</p>
+            <div class="caps"><span class="cap">제목</span><span class="cap">B / I / U</span><span class="cap">목록</span><span class="cap">표</span><span class="cap">이미지</span><span class="cap">자동 저장</span><span class="cap">인쇄 / PDF로 저장</span><span class="cap pro">PRO · DOCX로 내보내기</span></div>
             <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace에서 문서를 편집하는 모습"></video></div>
           </div>
           <div class="feature">
             <h3>스프레드시트</h3>
-            <p>자동 저장되는 셀, 수식, 합계 — 작업하는 바로 그 자리에서. 필요할 때 XLSX로 내보내세요.</p>
-            <div class="caps"><span class="cap">수식</span><span class="cap">합계</span><span class="cap">자동 저장</span><span class="cap pro">PRO · XLSX 내보내기</span></div>
+            <p>셀, 수식, 합계까지 자동 저장으로 — 작업하는 바로 그 자리에서. 다른 곳에서 필요하면 XLSX로 내보내세요.</p>
+            <div class="caps"><span class="cap">수식</span><span class="cap">합계</span><span class="cap">자동 저장</span><span class="cap pro">PRO · XLSX로 내보내기</span></div>
             <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace에서 스프레드시트를 편집하는 모습"></video></div>
           </div>
           <div class="feature">
-            <h3>그리기 &amp; 주석 달기</h3>
-            <p>캔버스에 펜, 형광펜, 화살표, 사각형, 텍스트를 사용하고, 선택 도구로 오브젝트를 이동하거나 지울 수 있습니다. 자르기, 회전, 좌우 반전, 실행 취소/다시 실행 — 그 다음 내보내거나 PDF로 변환하세요.</p>
-            <div class="caps"><span class="cap">펜 &amp; 형광펜</span><span class="cap">화살표 &amp; 도형</span><span class="cap">텍스트</span><span class="cap">선택 / 이동 / 지우기</span><span class="cap">자르기 / 회전 / 반전</span><span class="cap">실행 취소 / 다시 실행</span><span class="cap pro">PRO · PNG/JPG 내보내기</span><span class="cap">PDF 만들기</span></div>
-            <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace 캔버스에서 그림을 그리는 모습"></video></div>
+            <h3>그리기 &amp; 주석</h3>
+            <p>펜, 형광펜, 화살표, 사각형, 텍스트를 캔버스 위에서 자유롭게. 선택 도구로 객체를 옮기거나 지울 수도 있습니다. 자르기, 회전, 반전, 실행 취소/다시 실행까지 — 완성하면 내보내거나 PDF로 만드세요.</p>
+            <div class="caps"><span class="cap">펜 &amp; 형광펜</span><span class="cap">화살표 &amp; 도형</span><span class="cap">텍스트</span><span class="cap">선택 / 이동 / 지우기</span><span class="cap">자르기 / 회전 / 반전</span><span class="cap">실행 취소 / 다시 실행</span><span class="cap pro">PRO · PNG/JPG로 내보내기</span><span class="cap">PDF 만들기</span></div>
+            <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace에서 캔버스에 그림을 그리는 모습"></video></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">전형적인 하루 흐름</div>
+      <h2 class="section-title">탭 하나. 하루치 작업 전부.</h2>
+      <p class="section-sub">지금 있는 페이지를 벗어나는 일은 없습니다 — 워크스페이스가 당신을 따라 움직입니다.</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">글을 읽다가 중요한 부분을 <b>클립</b>하고, 출처 링크도 함께 남깁니다.</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">패널에서 <b>문서</b>를 열고, 페이지 바로 옆에서 글을 쓰기 시작합니다.</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">지금 하고 있는 작업에 고정된 <b>메모</b>와 체크리스트를 남깁니다.</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t"><b>PDF</b>를 넣고, 새 탭을 열지 않고 읽고 검색합니다.</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t"><b>스프레드시트</b>로 숫자를 계산합니다 — 수식, 합계, 끝.</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">말로는 부족할 때 <b>그리기</b> 캔버스에 아이디어를 스케치합니다.</span></div>
+      </div>
+      <p class="flow-tail">모든 것이 함께 머뭅니다 — 당신의 기기 안에서.</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">NODUS만의 방식</div>
-      <h2 class="section-title">작업 중에는 패널에서. 공간이 필요할 땐 전체 화면으로.</h2>
-      <p class="section-sub">Workspace는 브라우저 사이드 패널 안에서 지금 읽고 있는 것 바로 옆에 자리합니다. 공간이 더 필요하신가요? 문서, 시트, PDF, 드로잉을 전체 화면 탭으로 열고 — 그 다음 다시 패널로 되돌리세요. 같은 파일, 두 가지 뷰, 선택은 내 몫.</p>
+      <div class="section-label">맥락 안에 머물기</div>
+      <h2 class="section-title">워크스페이스는 작업 중인 페이지를 절대 떠나지 않습니다.</h2>
+      <p class="section-sub">Workspace는 지금 읽고 있는 내용 바로 옆, 브라우저의 사이드 패널에 자리합니다. 더 넓은 공간이 필요하다면? 문서, 시트, PDF, 그림을 자체 탭에서 전체 화면으로 열었다가, 다시 패널로 돌려놓으세요. 같은 파일, 두 가지 보기, 선택은 당신 몫입니다.</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">지금 읽고 있는 페이지</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 문서</div><div class="it">📊 시트</div><div class="it">📕 PDF</div><div class="it">📝 메모</div><div class="it">✂️ 클립</div><div class="it">🎨 그리기</div></div>
+      </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">사이드 패널</div><div class="mode-d">브라우징 옆에서 — 페이지를 벗어나지 않고 캡처하고 편집하세요.</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">사이드 패널</div><div class="mode-d">브라우징과 나란히 — 페이지를 떠나지 않고 캡처하고 편집합니다.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">전체 화면 탭</div><div class="mode-d">한 번의 클릭으로 집중할 공간 확보 — 그리고 다시 패널로.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">전체 화면 탭</div><div class="mode-d">집중이 필요할 땐 클릭 한 번으로 — 그리고 다시 패널로.</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">바꾸는 것</div>
+      <h2 class="section-title">덜 저글링하고, 더 해내기.</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12개의 브라우저 탭</div><div class="swap-cell new">하나의 사이드바</div></div>
+        <div class="swap-row"><div class="swap-cell old">클라우드 오피스</div><div class="swap-cell new">로컬 파일</div></div>
+        <div class="swap-row"><div class="swap-cell old">복사 &amp; 붙여넣기</div><div class="swap-cell new">웹 클립</div></div>
+        <div class="swap-row"><div class="swap-cell old">모든 것마다 다른 앱</div><div class="swap-cell new">하나의 워크스페이스</div></div>
+        <div class="swap-row"><div class="swap-cell old">여기저기 로그인</div><div class="swap-cell new">계정 없음</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
-      <div class="section-label">사용 방법</div>
-      <h2 class="section-title">세 단계. 설정 없음.</h2>
+      <div class="section-label">작동 방식</div>
+      <h2 class="section-title">세 단계. 별도 설정 없음.</h2>
       <div class="steps3">
         <div class="step"><div class="step-n">1</div><h3>설치 &amp; 패널 고정</h3><p>확장 프로그램을 추가하고 Workspace를 브라우저 사이드 패널에 고정하세요.</p></div>
-        <div class="step"><div class="step-n">2</div><h3>만들거나 파일 가져오기</h3><p>문서, 시트, 노트를 시작하거나 — PDF, DOCX, XLSX, 이미지를 바로 드래그해 넣으세요.</p></div>
-        <div class="step"><div class="step-n">3</div><h3>내 기기에 저장됩니다</h3><p>모든 것이 로컬에 저장됩니다. 계정 없음, 클라우드 없음, 오프라인에서도 작동합니다.</p></div>
+        <div class="step"><div class="step-n">2</div><h3>새로 만들거나 파일 가져오기</h3><p>문서, 시트, 메모를 시작하거나 — PDF, DOCX, XLSX, 이미지를 바로 끌어다 놓으세요.</p></div>
+        <div class="step"><div class="step-n">3</div><h3>당신의 기기에 그대로 남습니다</h3><p>모든 것이 로컬에 저장됩니다. 계정도, 클라우드도 없이 오프라인에서도 작동합니다.</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
-      <div class="section-label">이런 분께</div>
-      <h2 class="section-title">집중적인 작업을 위한 프라이빗 데스크.</h2>
+      <div class="section-label">누구를 위한 것인가</div>
+      <h2 class="section-title">집중 작업을 위한 사적인 책상.</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>1인 창업자 &amp; 소규모 비즈니스</h3><p>다섯 개의 앱을 전전하는 대신, 고객별 노트, 문서, 파일을 하나의 프라이빗 공간에 보관하세요.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>학생</h3><p>자료를 클립하고, 과제를 작성하고, PDF와 노트를 공부하는 내용 바로 옆에 나란히 두세요.</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>연구자</h3><p>출처 링크와 함께 자료를 캡처하고, PDF에 주석을 달고, 모든 것을 정리하세요 — 완전 오프라인으로.</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>개인정보를 중시하는 분</h3><p>클라우드에 절대 닿지 않는 완전한 오피스: 계정 없음, 추적 없음, 내 기기를 벗어나는 것 없음.</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>1인 창업자 &amp; 소규모 사업자</h3><p>다섯 개의 서로 다른 앱을 오가는 대신, 클라이언트별 메모, 문서, 파일을 하나의 사적인 공간에 보관하세요.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>학생</h3><p>읽기 자료를 클립하고, 과제를 작성하고, 공부하는 내용 옆에 PDF와 메모를 나란히 두세요.</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>연구자</h3><p>출처를 링크와 함께 캡처하고, PDF에 주석을 달고, 완전히 오프라인으로 모든 것을 정리하세요.</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>프라이버시를 중시하는 사람들</h3><p>클라우드에 전혀 닿지 않는 완전한 오피스: 계정도, 추적도 없이, 아무것도 기기 밖으로 나가지 않습니다.</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>AI 파워 유저</h3><p>이미 NODUS와 함께 쓰는 도구들 바로 옆에서, AI 채팅을 중심으로 만든 문서, 메모, 파일을 한곳의 로컬 공간에 보관하세요.</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>내 파일은 나와 함께합니다.</h2>
-        <p class="lead">설계부터 로컬 퍼스트. Workspace는 전적으로 내 기기에서 실행됩니다 — 신뢰해야 할 서버가 없습니다.</p>
+        <h2>당신의 파일은 당신 곁에 있습니다.</h2>
+        <p class="lead">설계부터 로컬 우선. Workspace는 전적으로 당신의 기기 안에서 실행됩니다 — 신뢰해야 할 서버가 없습니다.</p>
         <div class="priv-grid">
-          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% 로컬 — 클라우드로 아무것도 전송되지 않음</div></div>
-          <div class="priv-item"><div class="ico">🙅</div><div class="t">계정 불필요</div></div>
-          <div class="priv-item"><div class="ico">🔑</div><div class="t">암호화 백업 (AES-256)</div></div>
+          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% 로컬 — 클라우드로 가는 것은 없습니다</div></div>
+          <div class="priv-item"><div class="ico">🙅</div><div class="t">계정 필요 없음</div></div>
+          <div class="priv-item"><div class="ico">🔑</div><div class="t">암호화된 백업(AES-256)</div></div>
           <div class="priv-item"><div class="ico">🧩</div><div class="t">원격 코드 없음</div></div>
         </div>
-        <div style="margin-top:26px;"><a href="/ko/workspace-privacy" class="btn btn-ghost">전체 개인정보 처리방침 읽기 →</a></div>
+        <div style="margin-top:26px;"><a href="/ko/workspace-privacy" class="btn btn-ghost">전체 개인정보 처리방침 보기 →</a></div>
       </div>
     </section>
 
     <!-- ── 5. ECOSYSTEM + PRO ── -->
     <section class="section" id="pro">
       <div class="section-label">하나의 구독</div>
-      <p class="pro-line">하나의 <b>NODUS PRO</b> 구독으로, 전체 에코시스템을 — NODUS AI + PH Radar + Workspace.</p>
+      <p class="pro-line">하나의 <b>NODUS PRO</b> 구독으로, 생태계 전체를 — NODUS AI + PH Radar + Workspace.</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO는 지금 바로 이용 가능합니다 — 이미 <b style="color:var(--text)">NODUS AI</b>와 <b style="color:var(--text)">PH Radar BI</b>를 잠금 해제하며, Workspace는 출시와 동시에 합류합니다.</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO는 지금 바로 이용할 수 있습니다 — 이미 <b style="color:var(--text)">NODUS AI</b>와 <b style="color:var(--text)">PH Radar BI</b>를 잠금 해제하며, Workspace는 출시되는 즉시 합류합니다.</p>
 
       <div class="price-grid">
         <div class="price-card">
-          <div class="price-name">PRO Monthly</div>
-          <div class="price-amt">$4.50<span>/mo</span></div>
-          <div class="price-note">언제든지 취소 가능</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">PRO Monthly 시작하기</a>
+          <div class="price-name">PRO 월간</div>
+          <div class="price-amt">$4.50<span>/월</span></div>
+          <div class="price-note">언제든 취소 가능</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">PRO 월간 구독하기</a>
         </div>
         <div class="price-card feat">
-          <div class="price-badge">SAVE 44%</div>
-          <div class="price-name">PRO Annual</div>
-          <div class="price-amt">$30<span>/yr</span></div>
-          <div class="price-note">7-day free trial &#183; &#8776; $2.50/mo</div>
-          <a href="checkout.html" class="btn btn-primary price-cta">PRO Annual 시작하기</a>
+          <div class="price-badge">44% 절약</div>
+          <div class="price-name">PRO 연간</div>
+          <div class="price-amt">$30<span>/년</span></div>
+          <div class="price-note">7일 무료 체험 &#183; &#8776; $2.50/월</div>
+          <a href="checkout.html" class="btn btn-primary price-cta">PRO 연간 구독하기</a>
         </div>
         <div class="price-card">
-          <div class="price-name">PRO Lifetime</div>
-          <div class="price-amt">$79<span> once</span></div>
-          <div class="price-note">한 번 결제, 영구 사용</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Lifetime 구매하기</a>
+          <div class="price-name">PRO 라이프타임</div>
+          <div class="price-amt">$79<span> 1회 결제</span></div>
+          <div class="price-note">한 번 결제로, 평생 소유</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">라이프타임 구매하기</a>
         </div>
       </div>
-      <p class="price-trust">Paddle을 통한 안전한 결제 &#183; 연간 플랜 7일 무료 체험 &#183; 언제든지 취소 가능.</p>
+      <p class="price-trust">Paddle을 통한 안전한 결제 &#183; 연간 플랜은 7일 무료 체험 &#183; 언제든 취소 가능.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
@@ -411,23 +493,23 @@
           <div class="cmp-cell pro"><span class="pro">NODUS PRO</span></div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">문서 및 스프레드시트 만들기/편집</div>
-          <div class="cmp-cell pro">DOCX, XLSX, 이미지 내보내기</div>
+          <div class="cmp-cell">문서와 스프레드시트 만들기/편집하기</div>
+          <div class="cmp-cell pro">DOCX, XLSX, 이미지로 내보내기</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">PDF 읽기, 검색, 인쇄 및 다운로드</div>
+          <div class="cmp-cell">PDF 읽기, 검색, 인쇄, 다운로드</div>
           <div class="cmp-cell pro">PDF 페이지를 PNG로 내보내기</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">웹 클립 및 노트</div>
-          <div class="cmp-cell pro">암호화 백업 &amp; 복원</div>
+          <div class="cmp-cell">웹 클립과 메모</div>
+          <div class="cmp-cell pro">암호화된 백업 &amp; 복원</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">파일 가져오기 (드래그 &amp; 드롭)</div>
-          <div class="cmp-cell pro">활성 알람 (즉시 알림)</div>
+          <div class="cmp-cell">파일 가져오기(드래그 &amp; 드롭)</div>
+          <div class="cmp-cell pro">활성 알람(즉시 알림)</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">리마인더 (벨 알림)</div>
+          <div class="cmp-cell">알림(벨 알림)</div>
           <div class="cmp-cell pro">일괄 작업</div>
         </div>
         <div class="cmp-row">
@@ -435,37 +517,44 @@
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">황금 원칙: <b>콘텐츠 가져오기는 항상 무료</b> — 내보내기/변환과 자동화는 PRO입니다.</p>
+      <p class="golden">기본 원칙: <b>콘텐츠를 가져오는 것은 언제나 무료</b> — 내보내기/변환과 자동화는 PRO입니다.</p>
     </section>
 
     <!-- ── FAQ ── -->
     <section class="section" id="faq">
       <div class="section-label">FAQ</div>
-      <h2 class="section-title">자주 묻는 질문.</h2>
+      <h2 class="section-title">궁금한 점, 답해드립니다.</h2>
       <div class="faq">
-        <details><summary>파일이 클라우드에 저장되나요?</summary><p>아니요. 생성하거나 가져온 모든 것 — 문서, 스프레드시트, PDF, 클립, 노트, 드로잉 — 은 내 기기의 브라우저에 로컬로 저장됩니다. 저희 혹은 다른 어떤 곳에도 업로드되지 않습니다.</p></details>
-        <details><summary>내 데이터는 정확히 어디에 보관되나요?</summary><p>내 기기의 브라우저 자체 로컬 스토리지에 — 브라우저가 사이트 데이터를 보관하는 바로 그 곳에 저장됩니다. NODUS 서버로는 아무것도 전송되지 않아, Workspace는 클라우드 오피스 도구의 로컬 퍼스트 대안이 됩니다. 내 파일은 항상 내 곁에 있으며 오프라인에서도 사용할 수 있습니다.</p></details>
-        <details><summary>사용하려면 계정이 필요한가요?</summary><p>아니요. Workspace는 가입이나 로그인 없이 작동합니다. NODUS PRO를 활성화하려는 경우에만 이메일을 입력하면 됩니다.</p></details>
-        <details><summary>오프라인에서도 작동하나요?</summary><p>네. 로컬 퍼스트 방식이기 때문에 인터넷 연결 없이도 파일을 만들고, 편집하고, 읽을 수 있습니다.</p></details>
-        <details><summary>컴퓨터를 바꾸거나 브라우저를 재설치하면 어떻게 되나요?</summary><p>데이터는 해당 기기에만 존재하므로, 이동은 직접 해야 합니다. 암호화 백업 &amp; 복원(PRO 기능)으로 모든 것을 파일로 내보낸 뒤 다른 기기에서 복원하세요. 백업이 없으면 로컬 데이터는 그 브라우저에만 남아 있습니다.</p></details>
-        <details><summary>어떤 파일을 가져올 수 있나요?</summary><p>PDF, DOCX, XLSX, TXT, 이미지, Markdown을 패널로 바로 드래그 앤 드롭하세요. 원칙은 간단합니다: 콘텐츠 가져오기는 항상 무료입니다.</p></details>
-        <details><summary>Word 및 Excel 파일을 편집할 수 있나요?</summary><p>열어볼 수는 있습니다 — DOCX는 일반 텍스트로, XLSX는 값으로 불러옵니다(서식과 수식은 단순화됩니다). 서식 없이 열더라도 아예 못 여는 것보다는 낫습니다. DOCX/XLSX(및 이미지)로 내보내기는 PRO 기능입니다.</p></details>
-        <details><summary>무료 기능과 PRO 기능의 차이는 무엇인가요?</summary><p>무료: 문서 및 스프레드시트 만들기/편집, PDF 읽기/검색/인쇄, 웹 클립, 노트, 리마인더, 파일 가져오기, 16개 언어. PRO에서는 내보내기(DOCX, XLSX, PNG), PDF 페이지 이미지 변환, 암호화 백업, 즉시 알림이 있는 활성 알람, 일괄 작업이 추가됩니다.</p></details>
-        <details><summary>PRO 요금은 얼마인가요?</summary><p>월 $4.50, 연간 $30(≈ $2.50/mo), 또는 일시불 $79(평생). 결제는 Paddle을 통해 안전하게 처리되며, 연간 플랜에는 7일 무료 체험과 14일 환불 보장이 제공됩니다.</p></details>
-        <details><summary>하나의 구독으로 모든 것을 사용할 수 있나요?</summary><p>네 — NODUS PRO 구독 하나로 전체 NODUS 에코시스템의 PRO가 잠금 해제됩니다: NODUS AI, PH Radar, Workspace 모두.</p></details>
-        <details><summary>작업물을 인쇄하거나 PDF로 저장할 수 있나요?</summary><p>네. 문서와 스프레드시트는 인쇄하거나 PDF로 변환할 수 있습니다 — 둘 다 무료이며, PDF는 내장 뷰어에서 바로 열립니다.</p></details>
-        <details><summary>안전한가요? "원격 코드 없음"이란 무슨 뜻인가요?</summary><p>확장 프로그램의 모든 코드는 패키지 안에 담겨 배포됩니다 — 서버에서 다운로드하거나 실행되는 것이 없습니다. 백업은 AES-256으로 암호화되며, 파일 내용을 절대 읽거나, 전송하거나, 분석하지 않습니다.</p></details>
-        <details><summary>어떤 브라우저를 지원하나요?</summary><p>Chrome, Firefox, Chromium 기반 브라우저(Edge, Brave 등). 브라우저 사이드 패널에서 작동하며, 지금 하고 있는 작업 바로 옆에 자리합니다.</p></details>
-        <details><summary>도움을 받거나 문제를 신고하려면 어떻게 하나요?</summary><p><!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off-->으로 이메일을 보내주세요 — 모든 메시지를 직접 읽습니다.</p></details>
-        <details><summary>어디서 구할 수 있나요?</summary><p>NODUS Workspace는 이제 Chrome 웹 스토어와 Firefox Add-ons에서 사용할 수 있습니다.</p></details>
+        <details><summary>내 파일이 클라우드에 저장되나요?</summary><p>아니요. 만들거나 가져온 모든 것 — 문서, 스프레드시트, PDF, 클립, 메모, 그림 — 은 당신의 기기 안, 브라우저 안에 로컬로 저장됩니다. 저희나 그 누구에게도 업로드되지 않습니다.</p></details>
+        <details><summary>내 데이터는 정확히 어디에 보관되나요?</summary><p>당신의 기기에 있는 브라우저 자체의 로컬 저장소 안입니다 — 브라우저가 사이트 데이터를 보관하는 바로 그곳입니다. NODUS 서버로는 아무것도 전송되지 않으며, 이 덕분에 Workspace는 클라우드 오피스 도구의 로컬 우선 대안이 됩니다. 파일은 항상 당신 곁에 있고 오프라인에서도 작동합니다.</p></details>
+        <details><summary>사용하려면 계정이 필요한가요?</summary><p>아니요. Workspace는 가입도 로그인도 없이 작동합니다. NODUS PRO를 활성화하기로 선택할 때만 이메일을 입력하게 됩니다.</p></details>
+        <details><summary>오프라인에서도 작동하나요?</summary><p>네. 로컬 우선이기 때문에 인터넷 연결 없이도 파일을 만들고, 편집하고, 읽을 수 있습니다.</p></details>
+        <details><summary>컴퓨터를 바꾸거나 브라우저를 재설치하면 어떻게 되나요?</summary><p>당신의 데이터는 오직 그 기기에만 존재하므로, 옮기는 것은 당신에게 달려 있습니다. 암호화된 백업 &amp; 복원(PRO 기능)을 사용해 모든 것을 파일로 내보내고 다른 기기에서 다시 불러오세요. 백업이 없으면 로컬 데이터는 그 브라우저에만 남습니다.</p></details>
+        <details><summary>어떤 파일을 가져올 수 있나요?</summary><p>PDF, DOCX, XLSX, TXT, 이미지, Markdown을 패널에 바로 드래그 앤 드롭하세요. 규칙은 간단합니다: 콘텐츠를 가져오는 것은 언제나 무료입니다.</p></details>
+        <details><summary>Word와 Excel 파일을 편집할 수 있나요?</summary><p>열 수는 있습니다 — DOCX는 순수 텍스트로, XLSX는 값으로 들어옵니다(서식과 수식은 단순화됩니다). 서식 없이 여는 것이 아예 못 여는 것보다 낫습니다. DOCX/XLSX(및 이미지)로 다시 내보내는 것은 PRO 기능입니다.</p></details>
+        <details><summary>무엇이 무료이고 무엇이 PRO인가요?</summary><p>무료: 문서와 스프레드시트 만들기/편집, PDF 읽기/검색/인쇄, 웹 클립, 메모, 알림, 파일 가져오기, 16개 언어. PRO는 내보내기(DOCX, XLSX, PNG), PDF를 이미지로 변환, 암호화된 백업, 알림이 있는 활성 알람, 일괄 작업을 추가합니다.</p></details>
+        <details><summary>PRO는 얼마인가요?</summary><p>월 $4.50, 연 $30(월 약 $2.50) 또는 1회 결제 $79(라이프타임)입니다. 결제는 Paddle이 안전하게 처리하며, 연간 플랜에는 7일 무료 체험과 14일 환불 보장이 제공됩니다.</p></details>
+        <details><summary>모든 것을 위한 구독이 하나인가요?</summary><p>네 — 단 하나의 NODUS PRO 구독이 NODUS 생태계 전체의 PRO를 잠금 해제합니다: NODUS AI, PH Radar, Workspace.</p></details>
+        <details><summary>작업 내용을 인쇄하거나 PDF로 저장할 수 있나요?</summary><p>네. 문서와 스프레드시트는 인쇄하거나 PDF로 변환할 수 있으며 — 둘 다 무료입니다 — 그 PDF는 내장 뷰어에서 바로 열립니다.</p></details>
+        <details><summary>안전한가요? "원격 코드 없음"은 무슨 뜻인가요?</summary><p>확장 프로그램의 모든 코드는 패키지 안에 포함되어 있습니다 — 서버에서 다운로드해 실행되는 것은 아무것도 없습니다. 백업은 AES-256으로 암호화되며, 저희는 당신 파일의 내용을 읽거나, 전송하거나, 분석하지 않습니다.</p></details>
+        <details><summary>어떤 브라우저를 지원하나요?</summary><p>Chrome, Firefox 그리고 Chromium 기반 브라우저(Edge, Brave 등)입니다. 지금 작업 중인 내용 옆, 브라우저의 사이드 패널에 자리합니다.</p></details>
+        <details><summary>도움을 받거나 문제를 신고하려면 어떻게 하나요?</summary><p><!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off-->으로 이메일을 보내주세요 — 모든 메시지를 읽습니다.</p></details>
+        <details><summary>어디서 받을 수 있나요?</summary><p>NODUS Workspace는 지금 Chrome 웹 스토어와 Firefox 부가 기능에서 이용할 수 있습니다.</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>브라우저는 이미 일이 <span class="accent">일어나고 있는 곳</span>입니다.</h2>
+      <div class="words"><span>연구</span><span>글쓰기</span><span>읽기</span><span>계획</span><span>창작</span></div>
+      <p>그런데 왜 계속 애플리케이션들 사이를 옮겨 다녀야 할까요? 모든 것을 하나로 모으세요. 모든 것을 로컬에 두세요. <b style="color:var(--text)">당신의 워크스페이스를 소유하세요.</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
-      <span class="badge"><span class="dot"></span> 이제 Chrome와 Firefox에서</span>
+      <span class="badge"><span class="dot"></span> 이제 Chrome과 Firefox에서</span>
       <h2>몇 초 만에 시작하세요.</h2>
-      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome에 설치하기</a>
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome에 설치</a>
     </section>
 
   </div>
@@ -480,9 +569,9 @@
     <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
-      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
-      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — 언어가 아닌 의도를 처리하는 기계</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — 압축성과 탐색 가능성을 동시에 갖춘 파일 포맷</span></span>
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">연구</span>
+      <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — 언어가 아니라 의도를 처리하는 기계</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — 압축적이면서도 탐색 가능한 파일 포맷</span></span>
     </div>
     <!-- research:end -->
   </footer>

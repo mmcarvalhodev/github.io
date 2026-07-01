@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — Ваш локальный офис прямо в браузере</title>
-  <meta name="description" content="Документы, таблицы, PDF, веб-клипы и заметки — всё локально, без облака и без аккаунта. Часть экосистемы NODUS. Теперь в Chrome Web Store.">
+  <title>NODUS Workspace — ваш локальный офис прямо в браузере</title>
+  <meta name="description" content="Документы, таблицы, PDF, веб-клипы и заметки — всё локально, без облака, без аккаунта. Часть экосистемы NODUS. Уже в Chrome Web Store.">
   <link rel="canonical" href="https://nodus-ai.app/ru/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
   <meta property="og:title" content="NODUS Workspace — ваш локальный офис прямо в браузере">
-  <meta property="og:description" content="Документы, таблицы, PDF, веб-клипы и заметки — всё локально, без облака и без аккаунта. Теперь в Chrome.">
+  <meta property="og:description" content="Документы, таблицы, PDF, веб-клипы и заметки — всё локально, без облака, без аккаунта. Уже в Chrome.">
   <meta property="og:url" content="https://nodus-ai.app/ru/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -204,8 +240,6 @@
     footer a{color:var(--sub);margin:0 8px;text-decoration:none}
     footer a:hover{color:var(--text)}
   </style>
-
-</style>
 </head>
 <body>
 
@@ -214,7 +248,7 @@
       <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>Workspace</span></a>
       <div class="nav-links">
         <a href="#features" class="nav-link">Возможности</a>
-        <a href="#privacy" class="nav-link">Конфиденциальность</a>
+        <a href="#privacy" class="nav-link">Приватность</a>
         <a href="#pro" class="nav-link">PRO</a>
         <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener" class="nav-link highlight">Установить</a>
       </div>
@@ -232,43 +266,55 @@
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Документ, открытый из боковой панели в полноэкранную вкладку рядом с активной панелью"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Документ развернулся из боковой панели в полноэкранную вкладку рядом с рабочей панелью"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">Документы, таблицы, PDF, веб-клипы и заметки — в боковой панели браузера. Всё на вашем устройстве — никакого облака, никакого аккаунта.</p>
+        <p class="sub">Документы, таблицы, PDF, веб-клипы и заметки — в боковой панели вашего браузера. Всё на вашем устройстве: без облака, без аккаунта.</p>
         <div class="hero-btns">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Установить в Chrome</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Получить для Firefox</a>
-          <a href="#features" class="btn btn-ghost">Посмотреть, что внутри ↓</a>
+          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Получить в Firefox</a>
+          <a href="#features" class="btn btn-ghost">Что внутри ↓</a>
         </div>
         <div style="margin-top:22px;display:flex;justify-content:center;"><a href="https://www.producthunt.com/products/nodus-workspace?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nodus-workspace" target="_blank" rel="noopener noreferrer"><img alt="NODUS Workspace - Your local-first productivity workspace | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1181992&amp;theme=light&amp;t=1782833178993"></a></div>
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">Зачем ещё один workspace?</div>
+      <h2 class="section-title">Ваша работа разбросана по вкладкам.</h2>
+      <div class="why">
+        <div class="frag">
+          <span>Вкладка для текста</span><span>Вкладка для PDF</span><span>Вкладка для заметок</span><span>Вкладка для файлов</span><span>Вкладка для веб-клипов</span>
+        </div>
+        <p class="punch">NODUS Workspace собирает всё в <b>одну локальную боковую панель, которая следует за вами повсюду</b> — чтобы вы перестали прыгать по вкладкам и <b>оставались в контексте</b>.</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace превращает <b>боковую панель</b> браузера в небольшой приватный офис, который располагается рядом с тем, что вы читаете. Это не просто хранилище: здесь есть настоящий <b>редактор документов</b> (заголовки, форматирование, таблицы, изображения), <b>таблицы</b> с формулами и итогами, а также встроенный <b>просмотрщик PDF</b> — чтобы писать, считать и читать, <b>не покидая открытую вкладку</b>. Всё это дополняется единым местом для хранения <b>веб-клипов</b>, <b>заметок</b> и чеклистов, а также всех ваших <b>файлов</b> по папкам. Всё создаётся и сохраняется <b>на вашем устройстве</b>: без облака, без аккаунта, работает офлайн.
+        NODUS Workspace превращает <b>боковую панель</b> вашего браузера в маленький приватный офис прямо рядом с тем, что вы читаете. Это не просто хранилище: у вас есть настоящий <b>редактор документов</b> (заголовки, форматирование, таблицы, изображения), <b>электронная таблица</b> с формулами и итогами, и встроенная <b>читалка PDF</b> — чтобы писать, считать и читать, <b>не покидая текущую вкладку</b>. Рядом — одно место для ваших <b>веб-клипов</b>, <b>заметок</b> и чек-листов, и всех ваших <b>файлов</b> по папкам. Всё создаётся и сохраняется <b>на вашем устройстве</b>: без облака, без аккаунта, и работает офлайн.
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
       <div class="section-label">Что внутри</div>
-      <h2 class="section-title">Настоящее рабочее пространство, а не просто хранилище.</h2>
-      <p class="section-sub">Пишите документы, создавайте таблицы и читайте PDF в панели, сохраняйте клипы с любой страницы и держите заметки и файлы в порядке — не покидая текущую вкладку.</p>
+      <h2 class="section-title">Настоящий workspace, а не просто хранилище.</h2>
+      <p class="section-sub">Пишите документы, создавайте таблицы и читайте PDF в панели, клипуйте с любой страницы, храните заметки и файлы в порядке — и всё это не покидая текущую вкладку.</p>
 
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Захват <span class="ln"></span></div>
-        <p class="pillar-sub">Сохраняйте что угодно из интернета со ссылкой на источник.</p>
+        <p class="pillar-sub">Берите что угодно из веба и сохраняйте, со ссылкой на источник.</p>
         <div class="feat-grid one">
           <div class="feature">
-            <h3>Клипы из веба — текст или изображение</h3>
-            <p>Выделите текст или изображение на любой странице и отправьте в Workspace. Каждый клип сохраняет ссылку на источник — его можно вставить в документ или заметку в любой момент.</p>
-            <div class="caps"><span class="cap">Текстовые клипы</span><span class="cap">Графические клипы</span><span class="cap">Ссылка на источник</span><span class="cap">Использование в документах и заметках</span></div>
-            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Сохранение текста и изображений со страницы в Workspace"></video></div>
+            <h3>Клипуйте веб — текст или изображение</h3>
+            <p>Выделите текст или изображение на любой странице и отправьте в Workspace. Каждый клип хранит ссылку на источник, так что его легко вставить в документ или заметку позже.</p>
+            <div class="caps"><span class="cap">Текстовые клипы</span><span class="cap">Клипы изображений</span><span class="cap">Ссылка на источник сохраняется</span><span class="cap">Повторное использование в документах и заметках</span></div>
+            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Клипование текста и изображений со страницы в Workspace"></video></div>
           </div>
         </div>
       </div>
@@ -276,25 +322,25 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Организация <span class="ln"></span></div>
-        <p class="pillar-sub">Единое приватное место для заметок, файлов и PDF, упорядоченных по вашему усмотрению.</p>
+        <p class="pillar-sub">Одно приватное место для заметок, файлов и PDF, отсортированных так, как удобно вам.</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>Заметки, которые всё связывают</h3>
-            <p>Быстрые заметки с чеклистами, прямо рядом с тем, что вы читаете. Прикрепите заметку к любому элементу — документу, таблице, PDF или клипу — и добавьте ссылку на текущую страницу правым кликом.</p>
-            <div class="caps"><span class="cap">Чеклисты</span><span class="cap">Прикрепление к элементам</span><span class="cap">Ссылка на страницу правым кликом</span><span class="cap">Напоминания (колокольчик)</span><span class="cap pro">PRO · Мгновенные будильники</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Создание заметки с чеклистом в боковой панели Workspace"></video></div>
+            <p>Быстрые заметки с чек-листами прямо рядом с тем, что вы читаете. Прикрепите заметку к любому элементу — документу, таблице, PDF или клипу — и захватите ссылку на текущую страницу правым кликом.</p>
+            <div class="caps"><span class="cap">Чек-листы</span><span class="cap">Прикрепление к любому элементу</span><span class="cap">Ссылка на страницу правым кликом</span><span class="cap">Напоминания (колокольчик)</span><span class="cap pro">PRO · Мгновенные будильники</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Создание заметки с чек-листом в боковой панели Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Все файлы в одном месте</h3>
-            <p>Перетащите PDF, DOCX, XLSX, TXT, Markdown и изображения прямо в панель — с любого экрана, не только с главного. Сортируйте по папкам, фильтруйте по типу и выбирайте несколько файлов сразу.</p>
-            <div class="caps"><span class="cap">Перетаскивание с любого экрана</span><span class="cap">Папки</span><span class="cap">Фильтр по типу</span><span class="cap pro">PRO · Групповое выделение/удаление/скачивание</span></div>
-            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Управление файлами и папками в Workspace"></video></div>
-            <p class="feat-note">Честный импорт: DOCX открывается как текст, а XLSX — как значения. Лучше открыть без форматирования, чем не открыть вовсе.</p>
+            <h3>Все ваши файлы в одном месте</h3>
+            <p>Перетаскивайте PDF, DOCX, XLSX, TXT, Markdown и изображения прямо внутрь — с любого экрана, не только с главного. Сортируйте по папкам, фильтруйте по типу и выбирайте сразу несколько.</p>
+            <div class="caps"><span class="cap">Перетаскивание отовсюду</span><span class="cap">Папки</span><span class="cap">Фильтр по типу</span><span class="cap pro">PRO · Массовый выбор/удаление/скачивание</span></div>
+            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Организация файлов и папок в Workspace"></video></div>
+            <p class="feat-note">Честный импорт: DOCX приходит как текст, а XLSX — как значения; лучше открыть без форматирования, чем не открыть вовсе.</p>
           </div>
           <div class="feature">
             <h3>Читайте PDF в панели</h3>
-            <p>Открывайте PDF и листайте страницы, не покидая вкладку, и ищите нужное с помощью Ctrl+F.</p>
-            <div class="caps"><span class="cap">Чтение в панели</span><span class="cap">Поиск Ctrl+F</span><span class="cap">Печать / скачивание</span><span class="cap pro">PRO · Экспорт страницы как PNG</span></div>
+            <p>Открывайте и листайте PDF, не покидая вкладку, и находите что угодно через Ctrl+F.</p>
+            <div class="caps"><span class="cap">Чтение в панели</span><span class="cap">Поиск Ctrl+F</span><span class="cap">Печать / скачивание</span><span class="cap pro">PRO · Экспорт страницы в PNG</span></div>
             <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Чтение PDF в боковой панели Workspace"></video></div>
           </div>
         </div>
@@ -303,24 +349,24 @@
       <!-- Create -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Создание <span class="ln"></span></div>
-        <p class="pillar-sub">Полноценные редакторы для документов, таблиц и рисунков — прямо в панели.</p>
+        <p class="pillar-sub">Настоящие редакторы документов, таблиц и рисунков прямо внутри панели.</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>Настоящие документы</h3>
-            <p>Полноценный редактор прямо в панели — заголовки, <b>жирный</b>, <i>курсив</i>, подчёркивание, списки, цвета, таблицы и изображения. Автосохранение при вводе, переименование на месте, печать и сохранение в PDF.</p>
-            <div class="caps"><span class="cap">Заголовки</span><span class="cap">Ж / К / Ч</span><span class="cap">Списки</span><span class="cap">Таблицы</span><span class="cap">Изображения</span><span class="cap">Автосохранение</span><span class="cap">Печать / Сохранить как PDF</span><span class="cap pro">PRO · Export DOCX</span></div>
+            <p>Полноценный редактор внутри панели — заголовки, <b>жирный</b>, <i>курсив</i>, подчёркивание, списки, цвета, таблицы и изображения. Автосохранение по мере набора текста, переименование прямо в интерфейсе, печать или сохранение как PDF.</p>
+            <div class="caps"><span class="cap">Заголовки</span><span class="cap">Ж / К / Ч</span><span class="cap">Списки</span><span class="cap">Таблицы</span><span class="cap">Изображения</span><span class="cap">Автосохранение</span><span class="cap">Печать / сохранение как PDF</span><span class="cap pro">PRO · Экспорт в DOCX</span></div>
             <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Редактирование документа в Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Таблицы</h3>
-            <p>Ячейки, формулы и итоги с автосохранением — там, где вы работаете. Экспортируйте в XLSX, когда нужно поделиться.</p>
-            <div class="caps"><span class="cap">Формулы</span><span class="cap">Итоги</span><span class="cap">Автосохранение</span><span class="cap pro">PRO · Export XLSX</span></div>
-            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Редактирование таблицы в Workspace"></video></div>
+            <h3>Электронные таблицы</h3>
+            <p>Ячейки, формулы и итоги с автосохранением — прямо там, где вы работаете. Экспортируйте в XLSX, когда нужно перенести в другое место.</p>
+            <div class="caps"><span class="cap">Формулы</span><span class="cap">Итоги</span><span class="cap">Автосохранение</span><span class="cap pro">PRO · Экспорт в XLSX</span></div>
+            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Редактирование электронной таблицы в Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Рисование &amp; аннотации</h3>
-            <p>Перо, маркер, стрелки, прямоугольники и текст на холсте, с инструментом выделения для перемещения и удаления объектов. Обрезка, поворот, отражение и отмена/повтор действий — затем экспортируйте или создайте PDF.</p>
-            <div class="caps"><span class="cap">Перо &amp; маркер</span><span class="cap">Стрелки &amp; фигуры</span><span class="cap">Текст</span><span class="cap">Выделение / перемещение / удаление</span><span class="cap">Обрезка / поворот / отражение</span><span class="cap">Отмена / повтор</span><span class="cap pro">PRO · Export PNG/JPG</span><span class="cap">Создать PDF</span></div>
+            <h3>Рисуйте и аннотируйте</h3>
+            <p>Перо, маркер, стрелки, прямоугольники и текст на холсте, с инструментом выделения для перемещения или удаления объектов. Обрезка, поворот, отражение и отмена/повтор — затем экспорт или превращение в PDF.</p>
+            <div class="caps"><span class="cap">Перо и маркер</span><span class="cap">Стрелки и фигуры</span><span class="cap">Текст</span><span class="cap">Выделение / перемещение / удаление</span><span class="cap">Обрезка / поворот / отражение</span><span class="cap">Отмена / повтор</span><span class="cap pro">PRO · Экспорт в PNG/JPG</span><span class="cap">Создание PDF</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Рисование на холсте в Workspace"></video></div>
           </div>
         </div>
@@ -328,52 +374,86 @@
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">Типичный рабочий процесс</div>
+      <h2 class="section-title">Одна вкладка. Целый рабочий день.</h2>
+      <p class="section-sub">Вы никогда не покидаете страницу, на которой находитесь — workspace двигается вместе с вами.</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">Читаете статью — <b>клипуете</b> важные фрагменты, со ссылкой на источник.</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">Открываете <b>документ</b> в панели и начинаете писать прямо рядом со страницей.</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">Набрасываете <b>заметки</b> и чек-лист, прикреплённые к тому, над чем работаете.</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t">Загружаете <b>PDF</b>, читаете и ищете по нему, не открывая новую вкладку.</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">Считаете цифры в <b>таблице</b> — формулы, итоги, готово.</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">Набрасываете идею на холсте для <b>рисования</b>, когда слов не хватает.</span></div>
+      </div>
+      <p class="flow-tail">Всё остаётся вместе — на вашем устройстве.</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">Подход NODUS</div>
-      <h2 class="section-title">В панели во время работы. На весь экран, когда нужно больше места.</h2>
-      <p class="section-sub">Workspace располагается в боковой панели браузера прямо рядом с тем, что вы читаете. Нужно больше пространства? Откройте любой документ, таблицу, PDF или рисунок на весь экран в отдельной вкладке — и вернитесь обратно. Те же файлы, два режима, ваш выбор.</p>
+      <div class="section-label">Оставайтесь в контексте</div>
+      <h2 class="section-title">Workspace никогда не покидает страницу, над которой вы работаете.</h2>
+      <p class="section-sub">Workspace живёт в боковой панели браузера, прямо рядом с тем, что вы читаете. Нужно больше места? Откройте любой документ, таблицу, PDF или рисунок на весь экран в отдельной вкладке — а затем сверните обратно. Те же файлы, два вида, выбор за вами.</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">Страница, которую вы читаете</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 Документы</div><div class="it">📊 Таблицы</div><div class="it">📕 PDF</div><div class="it">📝 Заметки</div><div class="it">✂️ Клипы</div><div class="it">🎨 Рисунок</div></div>
+      </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Боковая панель</div><div class="mode-d">Рядом с браузером — сохраняйте и редактируйте, не покидая страницу.</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Боковая панель</div><div class="mode-d">Рядом с вашим просмотром — захват и редактирование без ухода со страницы.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Полноэкранная вкладка</div><div class="mode-d">Один клик для рабочего пространства — и обратно в панель.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Полноэкранная вкладка</div><div class="mode-d">Один клик для простора и фокуса — а потом обратно в панель.</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">Обмен</div>
+      <h2 class="section-title">Меньше жонглирования. Больше дела.</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12 вкладок браузера</div><div class="swap-cell new">Одна боковая панель</div></div>
+        <div class="swap-row"><div class="swap-cell old">Облачный офис</div><div class="swap-cell new">Локальные файлы</div></div>
+        <div class="swap-row"><div class="swap-cell old">Копировать и вставлять</div><div class="swap-cell new">Веб-клипы</div></div>
+        <div class="swap-row"><div class="swap-cell old">Своё приложение для всего</div><div class="swap-cell new">Один workspace</div></div>
+        <div class="swap-row"><div class="swap-cell old">Вход везде</div><div class="swap-cell new">Без аккаунта</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
       <div class="section-label">Как это работает</div>
-      <h2 class="section-title">Три шага. Никакой настройки.</h2>
+      <h2 class="section-title">Три шага. Без настройки.</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>Установите &amp; закрепите панель</h3><p>Добавьте расширение и закрепите Workspace в боковой панели браузера.</p></div>
-        <div class="step"><div class="step-n">2</div><h3>Создайте или загрузите файлы</h3><p>Начните создавать документ, таблицу или заметку — или перетащите PDF, DOCX, XLSX и изображения прямо в панель.</p></div>
+        <div class="step"><div class="step-n">1</div><h3>Установите и закрепите панель</h3><p>Добавьте расширение и закрепите Workspace в боковой панели браузера.</p></div>
+        <div class="step"><div class="step-n">2</div><h3>Создавайте или добавляйте файлы</h3><p>Начните документ, таблицу или заметку — или перетащите PDF, DOCX, XLSX и изображения прямо внутрь.</p></div>
         <div class="step"><div class="step-n">3</div><h3>Всё остаётся на вашем устройстве</h3><p>Всё сохраняется локально. Без аккаунта, без облака, работает офлайн.</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
-      <div class="section-label">Для кого</div>
-      <h2 class="section-title">Приватный рабочий стол для сосредоточенной работы.</h2>
+      <div class="section-label">Для кого это</div>
+      <h2 class="section-title">Приватный стол для сосредоточенной работы.</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>Соло-основатели &amp; малый бизнес</h3><p>Храните заметки, документы и файлы по каждому клиенту в одном приватном месте — вместо пяти разных приложений.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>Студенты</h3><p>Сохраняйте материалы для чтения, пишите работы и держите PDF и заметки рядом с тем, что изучаете.</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>Исследователи</h3><p>Фиксируйте источники со ссылками, аннотируйте PDF и систематизируйте всё — полностью офлайн.</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>Те, кто ценит конфиденциальность</h3><p>Полноценный офис, который никогда не касается облака: без аккаунта, без слежки, ничего не покидает ваше устройство.</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>Соло-предприниматели и микробизнес</h3><p>Храните заметки, документы и файлы по каждому клиенту в одном приватном месте — вместо жонглирования пятью разными приложениями.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>Студенты</h3><p>Клипуйте материалы для чтения, набрасывайте задания, держите PDF и заметки рядом с тем, что изучаете.</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>Исследователи</h3><p>Собирайте источники со ссылками, аннотируйте PDF и организуйте всё полностью офлайн.</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>Люди, ценящие приватность</h3><p>Полноценный офис, который никогда не касается облака: без аккаунта, без слежки, ничего не покидает ваше устройство.</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>Активные пользователи ИИ</h3><p>Храните документы, заметки и файлы, которые вы строите вокруг чатов с ИИ, в одном локальном месте — прямо рядом с инструментами, с которыми вы уже используете NODUS.</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>Ваши файлы остаются у вас.</h2>
-        <p class="lead">Локальность — в основе дизайна. Workspace работает полностью на вашем устройстве — никакого сервера, которому нужно доверять.</p>
+        <h2>Ваши файлы остаются с вами.</h2>
+        <p class="lead">Локальность по умолчанию. Workspace работает полностью на вашем устройстве — доверять серверу не нужно, потому что его нет.</p>
         <div class="priv-grid">
           <div class="priv-item"><div class="ico">🔒</div><div class="t">100% локально — ничего не уходит в облако</div></div>
           <div class="priv-item"><div class="ico">🙅</div><div class="t">Аккаунт не нужен</div></div>
           <div class="priv-item"><div class="ico">🔑</div><div class="t">Зашифрованное резервное копирование (AES-256)</div></div>
-          <div class="priv-item"><div class="ico">🧩</div><div class="t">Никакого удалённого кода</div></div>
+          <div class="priv-item"><div class="ico">🧩</div><div class="t">Без удалённого кода</div></div>
         </div>
-        <div style="margin-top:26px;"><a href="/ru/workspace-privacy" class="btn btn-ghost">Читать полную политику конфиденциальности →</a></div>
+        <div style="margin-top:26px;"><a href="/ru/workspace-privacy" class="btn btn-ghost">Читать полную Политику конфиденциальности →</a></div>
       </div>
     </section>
 
@@ -382,30 +462,30 @@
       <div class="section-label">Одна подписка</div>
       <p class="pro-line">Одна подписка <b>NODUS PRO</b> — вся экосистема: NODUS AI + PH Radar + Workspace.</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO доступен уже сегодня — он уже открывает <b style="color:var(--text)">NODUS AI</b> и <b style="color:var(--text)">PH Radar BI</b>, а Workspace присоединится в момент запуска.</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO уже доступна сегодня — она уже открывает <b style="color:var(--text)">NODUS AI</b> и <b style="color:var(--text)">PH Radar BI</b>, а Workspace присоединится в момент запуска.</p>
 
       <div class="price-grid">
         <div class="price-card">
-          <div class="price-name">PRO Ежемесячно</div>
+          <div class="price-name">PRO Месячная</div>
           <div class="price-amt">$4.50<span>/мес</span></div>
-          <div class="price-note">Отмена в любое время</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Получить PRO Ежемесячно</a>
+          <div class="price-note">Отмена в любой момент</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Взять PRO Месячную</a>
         </div>
         <div class="price-card feat">
-          <div class="price-badge">SAVE 44%</div>
-          <div class="price-name">PRO Ежегодно</div>
+          <div class="price-badge">ЭКОНОМИЯ 44%</div>
+          <div class="price-name">PRO Годовая</div>
           <div class="price-amt">$30<span>/год</span></div>
-          <div class="price-note">7-дневный пробный период &#183; &#8776; $2.50/мес</div>
-          <a href="checkout.html" class="btn btn-primary price-cta">Получить PRO Ежегодно</a>
+          <div class="price-note">7 дней бесплатно &#183; &#8776; $2.50/мес</div>
+          <a href="checkout.html" class="btn btn-primary price-cta">Взять PRO Годовую</a>
         </div>
         <div class="price-card">
-          <div class="price-name">PRO Навсегда</div>
-          <div class="price-amt">$79<span> однократно</span></div>
-          <div class="price-note">Платите один раз, ваше навсегда</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Получить Навсегда</a>
+          <div class="price-name">PRO Пожизненная</div>
+          <div class="price-amt">$79<span> единоразово</span></div>
+          <div class="price-note">Платите один раз, пользуйтесь всегда</div>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Взять пожизненную</a>
         </div>
       </div>
-      <p class="price-trust">Безопасная оплата через Paddle &#183; 7-дневный пробный период для годового плана &#183; отмена в любое время.</p>
+      <p class="price-trust">Безопасная оплата через Paddle &#183; 7 дней бесплатно на годовом плане &#183; отмена в любой момент.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
@@ -413,31 +493,31 @@
           <div class="cmp-cell pro"><span class="pro">NODUS PRO</span></div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Создание и редактирование документов и таблиц</div>
-          <div class="cmp-cell pro">Экспорт DOCX, XLSX и изображений</div>
+          <div class="cmp-cell">Создание/редактирование документов и таблиц</div>
+          <div class="cmp-cell pro">Экспорт в DOCX, XLSX и изображения</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Чтение, поиск, печать и скачивание PDF</div>
-          <div class="cmp-cell pro">Экспорт страницы PDF как PNG</div>
+          <div class="cmp-cell pro">Экспорт страницы PDF в PNG</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Веб-клипы и заметки</div>
-          <div class="cmp-cell pro">Зашифрованное резервное копирование &amp; восстановление</div>
+          <div class="cmp-cell pro">Зашифрованное резервное копирование и восстановление</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Импорт файлов (перетаскивание)</div>
           <div class="cmp-cell pro">Активные будильники (мгновенные уведомления)</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Напоминания (уведомление колокольчика)</div>
-          <div class="cmp-cell pro">Групповые действия</div>
+          <div class="cmp-cell">Напоминания (уведомление-колокольчик)</div>
+          <div class="cmp-cell pro">Массовые действия</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">16 языков</div>
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">Главное правило: <b>импорт контента всегда бесплатен</b> — экспорт/конвертация и автоматизация — это PRO.</p>
+      <p class="golden">Золотое правило: <b>добавлять контент всегда бесплатно</b> — экспорт/конвертация и автоматизация относятся к PRO.</p>
     </section>
 
     <!-- ── FAQ ── -->
@@ -445,28 +525,35 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Вопросы и ответы.</h2>
       <div class="faq">
-        <details><summary>Мои файлы хранятся в облаке?</summary><p>Нет. Всё, что вы создаёте или импортируете — документы, таблицы, PDF, клипы, заметки и рисунки — хранится локально на вашем устройстве, в браузере. Ничего не загружается к нам или кому-либо ещё.</p></details>
-        <details><summary>Где именно хранятся мои данные?</summary><p>В локальном хранилище браузера на вашем устройстве — там же, где браузер хранит данные сайтов. Ничего не отправляется на сервер NODUS, что делает Workspace локальной альтернативой облачным офисным инструментам: ваши файлы всегда с вами и работают офлайн.</p></details>
-        <details><summary>Нужен ли аккаунт для использования?</summary><p>Нет. Workspace работает без регистрации и без входа. Почту вводить нужно только при активации NODUS PRO.</p></details>
-        <details><summary>Работает ли офлайн?</summary><p>Да. Поскольку всё хранится локально, вы можете создавать, редактировать и читать файлы без интернета.</p></details>
-        <details><summary>Что будет, если я сменю компьютер или переустановлю браузер?</summary><p>Данные хранятся только на том устройстве, поэтому их перенос — ваша ответственность: используйте зашифрованное резервное копирование и восстановление (функция PRO), чтобы экспортировать всё в файл и восстановить на другом устройстве. Без резервной копии локальные данные останутся только в том браузере.</p></details>
-        <details><summary>Какие файлы можно загрузить?</summary><p>Перетащите PDF, DOCX, XLSX, TXT, изображения и Markdown прямо в панель. Правило простое: импорт контента всегда бесплатен.</p></details>
-        <details><summary>Можно ли редактировать файлы Word и Excel?</summary><p>Вы можете их открыть — DOCX отображается как простой текст, а XLSX — как значения (форматирование и формулы упрощаются). Лучше открыть без форматирования, чем не открыть вовсе. Экспорт обратно в DOCX/XLSX (и изображения) — функция PRO.</p></details>
-        <details><summary>Что бесплатно, а что входит в PRO?</summary><p>Бесплатно: создание и редактирование документов и таблиц, чтение/поиск/печать PDF, веб-клипы, заметки, напоминания, импорт файлов и 16 языков. PRO добавляет экспорт (DOCX, XLSX, PNG), конвертацию страниц PDF в изображения, зашифрованное резервное копирование, активные будильники с уведомлениями и групповые действия.</p></details>
-        <details><summary>Сколько стоит PRO?</summary><p>$4.50/мес, $30/год (≈ $2.50/мес) или $79 единовременно (навсегда). Оплата производится безопасно через Paddle с 7-дневным пробным периодом для годового плана и 14-дневной гарантией возврата денег.</p></details>
+        <details><summary>Мои файлы хранятся в облаке?</summary><p>Нет. Всё, что вы создаёте или импортируете — документы, таблицы, PDF, клипы, заметки и рисунки — хранится локально на вашем устройстве, в вашем браузере. Ничего не загружается ни нам, ни кому-либо ещё.</p></details>
+        <details><summary>Где именно хранятся мои данные?</summary><p>В собственном локальном хранилище вашего браузера, на вашем устройстве — там же, где браузер хранит данные сайтов. Ничего не отправляется на сервер NODUS, что делает Workspace локальной альтернативой облачным офисным инструментам: ваши файлы всегда с вами и работают офлайн.</p></details>
+        <details><summary>Нужен ли аккаунт для использования?</summary><p>Нет. Workspace работает без регистрации и без входа. Email нужен только если вы решите активировать NODUS PRO.</p></details>
+        <details><summary>Работает ли это офлайн?</summary><p>Да. Поскольку это локальное решение, вы можете создавать, редактировать и читать файлы без подключения к интернету.</p></details>
+        <details><summary>Что будет, если я сменю компьютер или переустановлю браузер?</summary><p>Ваши данные живут только на этом устройстве, поэтому перенос — на ваше усмотрение: используйте зашифрованное резервное копирование и восстановление (функция PRO), чтобы экспортировать всё в файл и вернуть на другой машине. Без резервной копии локальные данные остаются только в этом браузере.</p></details>
+        <details><summary>Какие файлы можно импортировать?</summary><p>Перетащите PDF, DOCX, XLSX, TXT, изображения и Markdown прямо в панель. Правило простое: добавлять контент всегда бесплатно.</p></details>
+        <details><summary>Могу ли я редактировать файлы Word и Excel?</summary><p>Вы можете их открыть — DOCX приходит как обычный текст, а XLSX как значения (форматирование и формулы упрощаются). Лучше открыть без форматирования, чем не открыть вовсе. Экспорт обратно в DOCX/XLSX (и изображения) — функция PRO.</p></details>
+        <details><summary>Что бесплатно, а что PRO?</summary><p>Бесплатно: создание и редактирование документов и таблиц, чтение/поиск/печать PDF, веб-клипы, заметки, напоминания, импорт файлов и 16 языков. PRO добавляет экспорт (DOCX, XLSX, PNG), конвертацию PDF в изображение, зашифрованное резервное копирование, активные будильники с уведомлениями и массовые действия.</p></details>
+        <details><summary>Сколько стоит PRO?</summary><p>$4.50/месяц, $30/год (≈ $2.50/мес) или $79 единоразово (пожизненно). Оплата безопасно обрабатывается через Paddle, с 7 днями бесплатного пробного периода на годовом плане и 14-дневной гарантией возврата денег.</p></details>
         <details><summary>Одна подписка на всё?</summary><p>Да — единая подписка NODUS PRO открывает PRO во всей экосистеме NODUS: NODUS AI, PH Radar и Workspace.</p></details>
-        <details><summary>Можно ли распечатать или сохранить работу как PDF?</summary><p>Да. Документы и таблицы можно распечатать или сохранить как PDF — оба варианта бесплатны — и PDF сразу откроется во встроенном просмотрщике.</p></details>
-        <details><summary>Насколько это безопасно? Что означает «никакого удалённого кода»?</summary><p>Весь код расширения поставляется внутри пакета — ничего не загружается и не запускается с сервера. Резервные копии шифруются с помощью AES-256, и мы никогда не читаем, не передаём и не анализируем содержимое ваших файлов.</p></details>
-        <details><summary>Какие браузеры поддерживаются?</summary><p>Chrome, Firefox и браузеры на основе Chromium (Edge, Brave и другие). Расширение работает в боковой панели браузера, рядом с тем, над чем вы работаете.</p></details>
+        <details><summary>Могу ли я распечатать или сохранить работу как PDF?</summary><p>Да. Документы и таблицы можно распечатать или превратить в PDF — оба варианта бесплатны — а PDF открывается прямо во встроенной читалке.</p></details>
+        <details><summary>Это безопасно? Что значит "без удалённого кода"?</summary><p>Весь код расширения поставляется внутри пакета — ничего не загружается и не выполняется с сервера. Ваши резервные копии зашифрованы AES-256, и мы никогда не читаем, не передаём и не анализируем содержимое ваших файлов.</p></details>
+        <details><summary>Какие браузеры поддерживаются?</summary><p>Chrome, Firefox и браузеры на основе Chromium (Edge, Brave и другие). Workspace живёт в боковой панели браузера, рядом с тем, над чем вы работаете.</p></details>
         <details><summary>Как получить помощь или сообщить о проблеме?</summary><p>Напишите нам на <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — мы читаем каждое сообщение.</p></details>
-        <details><summary>Где его можно получить?</summary><p>NODUS Workspace уже доступен в Chrome Web Store и Firefox Add-ons.</p></details>
+        <details><summary>Где это можно получить?</summary><p>NODUS Workspace уже доступен в Chrome Web Store и Firefox Add-ons.</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>Ваш браузер — это место, где работа <span class="accent">уже происходит</span>.</h2>
+      <div class="words"><span>Исследование</span><span>Письмо</span><span>Чтение</span><span>Планирование</span><span>Создание</span></div>
+      <p>Так зачем же прыгать между приложениями? Соберите всё вместе. Держите всё локально. <b style="color:var(--text)">Владейте своим workspace.</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
       <span class="badge"><span class="dot"></span> Уже в Chrome и Firefox</span>
-      <h2>Начните работу за секунды.</h2>
+      <h2>Начните за несколько секунд.</h2>
       <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Установить в Chrome</a>
     </section>
 
@@ -475,16 +562,16 @@
   <footer>
     <div>
       <a href="https://nodus-ai.app">Главная NODUS</a>
-      <a href="/ru/workspace-privacy">Конфиденциальность</a>
+      <a href="/ru/workspace-privacy">Приватность</a>
       <a href="https://nodus-ai.app/terms">Условия</a>
       <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Поддержка</a><!--/email_off-->
     </div>
-    <div style="margin-top:10px;">© 2026 NODUS. All rights reserved.</div>
+    <div style="margin-top:10px;">© 2026 NODUS. Все права защищены.</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
-      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Исследования</span>
       <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Машина, которая обрабатывает намерение, а не язык</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Формат файла, одновременно компактный и удобный для навигации</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Формат файлов, одновременно компактный и удобный для навигации</span></span>
     </div>
     <!-- research:end -->
   </footer>

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — आपका लोकल-फर्स्ट ऑफिस, आपके ब्राउज़र में</title>
-  <meta name="description" content="दस्तावेज़, स्प्रेडशीट, PDF, वेब क्लिप और नोट्स — सब कुछ लोकल, कोई क्लाउड नहीं, कोई अकाउंट नहीं। NODUS इकोसिस्टम का हिस्सा। अब Chrome Web Store पर उपलब्ध।">
+  <title>NODUS Workspace — आपका लोकल-फ़र्स्ट ऑफिस, आपके ब्राउज़र में</title>
+  <meta name="description" content="डॉक्यूमेंट्स, स्प्रेडशीट्स, PDF, वेब क्लिप्स और नोट्स — सब कुछ लोकल, न कोई क्लाउड, न कोई अकाउंट। NODUS इकोसिस्टम का हिस्सा। अब Chrome Web Store पर उपलब्ध।">
   <link rel="canonical" href="https://nodus-ai.app/hi/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — आपका लोकल-फर्स्ट ऑफिस, आपके ब्राउज़र में">
-  <meta property="og:description" content="दस्तावेज़, स्प्रेडशीट, PDF, वेब क्लिप और नोट्स — सब कुछ लोकल, कोई क्लाउड नहीं, कोई अकाउंट नहीं। अब Chrome पर।">
+  <meta property="og:title" content="NODUS Workspace — आपका लोकल-फ़र्स्ट ऑफिस, आपके ब्राउज़र में">
+  <meta property="og:description" content="डॉक्यूमेंट्स, स्प्रेडशीट्स, PDF, वेब क्लिप्स और नोट्स — सब कुछ लोकल, न कोई क्लाउड, न कोई अकाउंट। अब Chrome पर उपलब्ध।">
   <meta property="og:url" content="https://nodus-ai.app/hi/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -211,12 +247,12 @@
     <div class="nav-inner">
       <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>Workspace</span></a>
       <div class="nav-links">
-        <a href="#features" class="nav-link">फीचर्स</a>
-        <a href="#privacy" class="nav-link">गोपनीयता</a>
+        <a href="#features" class="nav-link">फ़ीचर्स</a>
+        <a href="#privacy" class="nav-link">प्राइवेसी</a>
         <a href="#pro" class="nav-link">PRO</a>
         <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener" class="nav-link highlight">इंस्टॉल करें</a>
       </div>
-      <a href="https://nodus-ai.app" class="nav-back">← NODUS पर वापस जाएं</a>
+      <a href="https://nodus-ai.app" class="nav-back">← NODUS पर वापस जाएँ</a>
     </div>
   </nav>
 
@@ -225,29 +261,41 @@
     <!-- ── 1. HERO ── -->
     <header class="hero">
       <div class="hero-top">
-        <span class="badge"><span class="dot"></span> अब Chrome और Firefox पर</span>
+        <span class="badge"><span class="dot"></span> अब Chrome और Firefox पर उपलब्ध</span>
         <h1>आपका ऑफिस, <span class="accent">लोकल और प्राइवेट</span>, सीधे आपके ब्राउज़र में।</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="एक दस्तावेज़ साइड पैनल से फुल-स्क्रीन टैब में खुला, लाइव पैनल के बगल में"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="साइड पैनल से एक डॉक्यूमेंट फुल-स्क्रीन टैब में खुला, लाइव पैनल के साथ"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">दस्तावेज़, स्प्रेडशीट, PDF, वेब क्लिप और नोट्स, आपके ब्राउज़र के साइड पैनल में। सब कुछ आपके डिवाइस पर — कोई क्लाउड नहीं, कोई अकाउंट नहीं।</p>
+        <p class="sub">डॉक्यूमेंट्स, स्प्रेडशीट्स, PDF, वेब क्लिप्स और नोट्स — आपके ब्राउज़र के साइड पैनल में। सब कुछ आपके डिवाइस पर — न कोई क्लाउड, न कोई अकाउंट।</p>
         <div class="hero-btns">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome पर इंस्टॉल करें</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Firefox पर पाएं</a>
-          <a href="#features" class="btn btn-ghost">अंदर क्या है देखें ↓</a>
+          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Firefox पर पाएँ</a>
+          <a href="#features" class="btn btn-ghost">अंदर क्या है, देखें ↓</a>
         </div>
         <div style="margin-top:22px;display:flex;justify-content:center;"><a href="https://www.producthunt.com/products/nodus-workspace?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nodus-workspace" target="_blank" rel="noopener noreferrer"><img alt="NODUS Workspace - Your local-first productivity workspace | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1181992&amp;theme=light&amp;t=1782833178993"></a></div>
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">एक और वर्कस्पेस क्यों?</div>
+      <h2 class="section-title">आपका काम टैब्स में बिखरा हुआ है।</h2>
+      <div class="why">
+        <div class="frag">
+          <span>लिखने के लिए एक टैब</span><span>PDF के लिए एक टैब</span><span>नोट्स के लिए एक टैब</span><span>फ़ाइलों के लिए एक टैब</span><span>वेब क्लिपिंग के लिए एक टैब</span>
+        </div>
+        <p class="punch">NODUS Workspace इन सबको <b>एक लोकल-फ़र्स्ट साइडबार में</b> ले आता है जो हर जगह आपके साथ रहता है — ताकि आप टैब-हॉपिंग बंद करें और <b>अपने संदर्भ में बने रहें</b>।</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace आपके ब्राउज़र के <b>साइड पैनल</b> को एक छोटे, निजी ऑफिस में बदल देता है जो आप जो भी पढ़ रहे हैं उसके ठीक बगल में रहता है। यह केवल स्टोरेज नहीं है: आपको एक असली <b>दस्तावेज़ संपादक</b> (हेडिंग, फ़ॉर्मेटिंग, टेबल, इमेज), फ़ॉर्मूला और टोटल के साथ एक <b>स्प्रेडशीट</b>, और एक बिल्ट-इन <b>PDF रीडर</b> मिलता है — ताकि आप <b>उस टैब को छोड़े बिना जिस पर आप हैं</b>, लिख, गणना कर और पढ़ सकें। इनके इर्द-गिर्द, एक ही जगह अपनी <b>वेब क्लिप</b>, <b>नोट्स</b> और चेकलिस्ट, और सभी <b>फाइलें</b> फोल्डर में रखें। सब कुछ <b>आपके डिवाइस पर</b> बनाया और सेव किया जाता है: कोई क्लाउड नहीं, कोई अकाउंट नहीं, और ऑफलाइन भी काम करता है।
+        NODUS Workspace आपके ब्राउज़र के <b>साइड पैनल</b> को एक छोटे, प्राइवेट ऑफिस में बदल देता है जो ठीक उसी पेज के बगल में बैठता है जिसे आप पढ़ रहे हैं। यह सिर्फ स्टोरेज नहीं है: आपको एक असली <b>डॉक्यूमेंट एडिटर</b> (हेडिंग्स, फॉर्मेटिंग, टेबल्स, इमेज), फॉर्मूला और टोटल वाला एक <b>स्प्रेडशीट</b>, और एक बिल्ट-इन <b>PDF रीडर</b> मिलता है, ताकि आप <b>जिस टैब पर हैं उसे छोड़े बिना</b> लिख सकें, हिसाब लगा सकें और पढ़ सकें। इनके साथ, अपने <b>वेब क्लिप्स</b>, अपने <b>नोट्स</b> और चेकलिस्ट, और अपनी सारी <b>फ़ाइलों</b> को फ़ोल्डर में रखने की एक जगह। सब कुछ <b>आपके डिवाइस पर</b> बनता और सेव होता है: न कोई क्लाउड, न कोई अकाउंट, और यह ऑफ़लाइन भी काम करता है।
       </div>
     </section>
 
@@ -255,18 +303,18 @@
     <section class="section" id="features">
       <div class="section-label">अंदर क्या है</div>
       <h2 class="section-title">एक असली वर्कस्पेस, सिर्फ स्टोरेज नहीं।</h2>
-      <p class="section-sub">पैनल में दस्तावेज़ लिखें, स्प्रेडशीट बनाएं और PDF पढ़ें, किसी भी पेज से क्लिप करें, और अपने नोट्स व फाइलें व्यवस्थित रखें — बिना उस टैब को छोड़े जिस पर आप हैं।</p>
+      <p class="section-sub">पैनल में डॉक्यूमेंट लिखें, स्प्रेडशीट बनाएँ और PDF पढ़ें, किसी भी पेज से क्लिप करें, और अपने नोट्स व फ़ाइलों को व्यवस्थित रखें — बिना उस टैब को छोड़े जिस पर आप हैं।</p>
 
       <!-- Capture -->
       <div class="pillar">
-        <div class="pillar-head"><span class="ln"></span> कैप्चर करें <span class="ln"></span></div>
-        <p class="pillar-sub">वेब से कुछ भी उठाएं और रखें, साथ में उसके स्रोत का लिंक भी।</p>
+        <div class="pillar-head"><span class="ln"></span> कैप्चर <span class="ln"></span></div>
+        <p class="pillar-sub">वेब से कुछ भी उठाएँ और उसे रखें, उसके स्रोत का लिंक साथ लेकर।</p>
         <div class="feat-grid one">
           <div class="feature">
-            <h3>वेब क्लिप करें — टेक्स्ट या इमेज</h3>
-            <p>किसी भी पेज पर टेक्स्ट या इमेज चुनें और Workspace में भेजें। हर क्लिप अपने स्रोत का लिंक रखती है, ताकि बाद में किसी दस्तावेज़ या नोट में आसानी से डाला जा सके।</p>
-            <div class="caps"><span class="cap">टेक्स्ट क्लिप</span><span class="cap">इमेज क्लिप</span><span class="cap">स्रोत लिंक सुरक्षित</span><span class="cap">दस्तावेज़ और नोट्स में पुनः उपयोग</span></div>
-            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="किसी पेज से Workspace में टेक्स्ट और इमेज क्लिप करना"></video></div>
+            <h3>वेब को क्लिप करें — टेक्स्ट या इमेज</h3>
+            <p>किसी भी पेज पर टेक्स्ट या इमेज चुनें और उसे Workspace में भेजें। हर क्लिप अपने स्रोत का लिंक साथ रखता है, ताकि इसे बाद में किसी डॉक्यूमेंट या नोट में डालना आसान हो।</p>
+            <div class="caps"><span class="cap">टेक्स्ट क्लिप्स</span><span class="cap">इमेज क्लिप्स</span><span class="cap">स्रोत लिंक सुरक्षित</span><span class="cap">डॉक्स और नोट्स में फिर से उपयोग</span></div>
+            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="किसी पेज से टेक्स्ट और इमेज को Workspace में क्लिप करना"></video></div>
           </div>
         </div>
       </div>
@@ -274,51 +322,51 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> व्यवस्थित करें <span class="ln"></span></div>
-        <p class="pillar-sub">आपके नोट्स, फाइलों और PDF के लिए एक निजी जगह, जैसी आप चाहें।</p>
+        <p class="pillar-sub">आपके नोट्स, फ़ाइलों और PDF के लिए एक प्राइवेट जगह, आपकी पसंद के हिसाब से क्रमबद्ध।</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>नोट्स जो सब कुछ जोड़ते हैं</h3>
-            <p>चेकलिस्ट के साथ त्वरित नोट्स, ठीक वहीं जो आप पढ़ रहे हैं उसके बगल में। किसी भी आइटम — दस्तावेज़, शीट, PDF या क्लिप — से नोट पिन करें, और राइट-क्लिक से मौजूदा पेज का लिंक लें।</p>
-            <div class="caps"><span class="cap">चेकलिस्ट</span><span class="cap">किसी भी आइटम से पिन करें</span><span class="cap">राइट-क्लिक पेज लिंक</span><span class="cap">रिमाइंडर (बेल)</span><span class="cap pro">PRO · अलार्म (तत्काल)</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace साइड पैनल में चेकलिस्ट के साथ नोट्स लेना"></video></div>
+            <p>आप जो पढ़ रहे हैं उसके ठीक बगल में, चेकलिस्ट के साथ झटपट नोट्स। किसी भी आइटम पर — डॉक, शीट, PDF या क्लिप — नोट पिन करें और राइट-क्लिक से मौजूदा पेज का लिंक लें।</p>
+            <div class="caps"><span class="cap">चेकलिस्ट</span><span class="cap">किसी भी आइटम पर पिन करें</span><span class="cap">राइट-क्लिक से पेज लिंक</span><span class="cap">रिमाइंडर (बेल)</span><span class="cap pro">PRO · अलार्म (इंस्टेंट)</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace साइड पैनल में चेकलिस्ट के साथ नोट्स बनाना"></video></div>
           </div>
           <div class="feature">
-            <h3>आपकी सभी फाइलें, एक जगह</h3>
-            <p>PDF, DOCX, XLSX, TXT, Markdown और इमेज सीधे खींच कर डालें — किसी भी स्क्रीन से, सिर्फ होम व्यू से नहीं। फोल्डर में सॉर्ट करें, प्रकार से फ़िल्टर करें, और एक साथ कई को चुनें।</p>
-            <div class="caps"><span class="cap">कहीं से भी ड्रैग करें</span><span class="cap">फोल्डर</span><span class="cap">प्रकार से फ़िल्टर</span><span class="cap pro">PRO · बैच चयन/हटाएं/डाउनलोड</span></div>
-            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace में फाइलें और फोल्डर व्यवस्थित करना"></video></div>
-            <p class="feat-note">ईमानदार इम्पोर्ट: DOCX टेक्स्ट के रूप में और XLSX मानों के रूप में आता है — बिना फ़ॉर्मेटिंग के खोलना, न खोलने से बेहतर है।</p>
+            <h3>आपकी सारी फ़ाइलें, एक ही जगह</h3>
+            <p>PDF, DOCX, XLSX, TXT, Markdown और इमेज सीधे खींचकर लाएँ — किसी भी स्क्रीन से, सिर्फ होम व्यू से नहीं। फ़ोल्डर में क्रमबद्ध करें, टाइप के हिसाब से फ़िल्टर करें, और एक साथ कई चुनें।</p>
+            <div class="caps"><span class="cap">कहीं से भी खींचकर लाएँ</span><span class="cap">फ़ोल्डर</span><span class="cap">टाइप के हिसाब से फ़िल्टर</span><span class="cap pro">PRO · बल्क सिलेक्ट/डिलीट/डाउनलोड</span></div>
+            <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace में फ़ाइलों और फ़ोल्डर को व्यवस्थित करना"></video></div>
+            <p class="feat-note">ईमानदार इम्पोर्ट: DOCX टेक्स्ट के रूप में आता है और XLSX वैल्यू के रूप में — बिना फॉर्मेटिंग के खोल पाना, बिल्कुल न खुलने से बेहतर है।</p>
           </div>
           <div class="feature">
             <h3>पैनल में PDF पढ़ें</h3>
-            <p>अपना टैब छोड़े बिना PDF खोलें और पेज करें, और Ctrl+F से कुछ भी खोजें।</p>
-            <div class="caps"><span class="cap">पैनल में पढ़ें</span><span class="cap">Ctrl+F सर्च</span><span class="cap">प्रिंट / डाउनलोड</span><span class="cap pro">PRO · पेज PNG के रूप में एक्सपोर्ट करें</span></div>
-            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace साइड पैनल के अंदर PDF पढ़ना"></video></div>
+            <p>अपना टैब छोड़े बिना PDF खोलें और पन्ने पलटें, और Ctrl+F से कुछ भी ढूँढें।</p>
+            <div class="caps"><span class="cap">पैनल में पढ़ें</span><span class="cap">Ctrl+F सर्च</span><span class="cap">प्रिंट / डाउनलोड</span><span class="cap pro">PRO · पेज को PNG के रूप में एक्सपोर्ट करें</span></div>
+            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace साइड पैनल के अंदर एक PDF पढ़ना"></video></div>
           </div>
         </div>
       </div>
 
       <!-- Create -->
       <div class="pillar">
-        <div class="pillar-head"><span class="ln"></span> बनाएं <span class="ln"></span></div>
-        <p class="pillar-sub">दस्तावेज़, स्प्रेडशीट और ड्रॉइंग के लिए असली संपादक, सीधे पैनल के अंदर।</p>
+        <div class="pillar-head"><span class="ln"></span> बनाएँ <span class="ln"></span></div>
+        <p class="pillar-sub">डॉक्यूमेंट्स, स्प्रेडशीट्स और ड्रॉइंग के लिए असली एडिटर, ठीक पैनल के अंदर।</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>असली दस्तावेज़</h3>
-            <p>पैनल के अंदर एक पूर्ण संपादक — हेडिंग, <b>बोल्ड</b>, <i>इटैलिक</i>, अंडरलाइन, सूचियां, रंग, टेबल और इमेज। टाइप करते समय ऑटोसेव होता है, इनलाइन नाम बदल सकते हैं, और प्रिंट या Save as PDF कर सकते हैं।</p>
-            <div class="caps"><span class="cap">हेडिंग</span><span class="cap">B / I / U</span><span class="cap">सूचियां</span><span class="cap">टेबल</span><span class="cap">इमेज</span><span class="cap">ऑटोसेव</span><span class="cap">प्रिंट / Save as PDF</span><span class="cap pro">PRO · Export DOCX</span></div>
-            <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace में एक दस्तावेज़ संपादित करना"></video></div>
+            <h3>असली डॉक्यूमेंट्स</h3>
+            <p>पैनल के अंदर एक पूरा एडिटर — हेडिंग्स, <b>बोल्ड</b>, <i>इटैलिक</i>, अंडरलाइन, लिस्ट, रंग, टेबल और इमेज। यह टाइप करते ही ऑटोसेव करता है, आप इनलाइन रीनेम कर सकते हैं, और प्रिंट या PDF के रूप में सेव कर सकते हैं।</p>
+            <div class="caps"><span class="cap">हेडिंग्स</span><span class="cap">B / I / U</span><span class="cap">लिस्ट</span><span class="cap">टेबल</span><span class="cap">इमेज</span><span class="cap">ऑटोसेव</span><span class="cap">प्रिंट / PDF के रूप में सेव</span><span class="cap pro">PRO · DOCX एक्सपोर्ट</span></div>
+            <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace में एक डॉक्यूमेंट को एडिट करना"></video></div>
           </div>
           <div class="feature">
-            <h3>स्प्रेडशीट</h3>
-            <p>ऑटोसेव के साथ सेल, फ़ॉर्मूला और टोटल — ठीक जहाँ आप काम करते हैं। जब कहीं और चाहिए हो तो XLSX में एक्सपोर्ट करें।</p>
-            <div class="caps"><span class="cap">फ़ॉर्मूला</span><span class="cap">टोटल</span><span class="cap">ऑटोसेव</span><span class="cap pro">PRO · Export XLSX</span></div>
-            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace में एक स्प्रेडशीट संपादित करना"></video></div>
+            <h3>स्प्रेडशीट्स</h3>
+            <p>सेल्स, फॉर्मूला और टोटल, ऑटोसेव के साथ — ठीक वहीं जहाँ आप काम करते हैं। जरूरत पड़ने पर XLSX में एक्सपोर्ट करें।</p>
+            <div class="caps"><span class="cap">फॉर्मूला</span><span class="cap">टोटल</span><span class="cap">ऑटोसेव</span><span class="cap pro">PRO · XLSX एक्सपोर्ट</span></div>
+            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace में एक स्प्रेडशीट को एडिट करना"></video></div>
           </div>
           <div class="feature">
-            <h3>ड्रॉ &amp; एनोटेट करें</h3>
-            <p>कैनवास पर पेन, हाइलाइटर, तीर, आयत और टेक्स्ट, ऑब्जेक्ट को मूव या मिटाने के लिए सिलेक्शन टूल के साथ। क्रॉप करें, रोटेट करें, मिरर करें, और अनडू/रीडू — फिर एक्सपोर्ट करें या PDF में बदलें।</p>
-            <div class="caps"><span class="cap">पेन &amp; हाइलाइटर</span><span class="cap">तीर &amp; आकृतियां</span><span class="cap">टेक्स्ट</span><span class="cap">चुनें / मूव करें / मिटाएं</span><span class="cap">क्रॉप / रोटेट / मिरर</span><span class="cap">अनडू / रीडू</span><span class="cap pro">PRO · Export PNG/JPG</span><span class="cap">PDF बनाएं</span></div>
+            <h3>ड्रॉ करें और एनोटेट करें</h3>
+            <p>पेन, हाइलाइटर, ऐरो, आयत और टेक्स्ट, एक कैनवास पर — साथ में ऑब्जेक्ट्स को हिलाने या मिटाने के लिए एक सिलेक्शन टूल। क्रॉप, रोटेट, मिरर करें, और अनडू/रीडू करें — फिर एक्सपोर्ट करें या इसे PDF में बदल दें।</p>
+            <div class="caps"><span class="cap">पेन और हाइलाइटर</span><span class="cap">ऐरो और शेप्स</span><span class="cap">टेक्स्ट</span><span class="cap">चुनें / हिलाएँ / मिटाएँ</span><span class="cap">क्रॉप / रोटेट / मिरर</span><span class="cap">अनडू / रीडू</span><span class="cap pro">PRO · PNG/JPG एक्सपोर्ट</span><span class="cap">PDF बनाएँ</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace में कैनवास पर ड्रॉइंग करना"></video></div>
           </div>
         </div>
@@ -326,52 +374,86 @@
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">एक सामान्य वर्कफ़्लो</div>
+      <h2 class="section-title">एक टैब। पूरे दिन का काम।</h2>
+      <p class="section-sub">आप कभी उस पेज को नहीं छोड़ते जिस पर हैं — वर्कस्पेस आपके साथ चलता है।</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">एक आर्टिकल पढ़ते हुए — ज़रूरी हिस्सों को <b>क्लिप</b> करें, स्रोत के लिंक के साथ।</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">पैनल में एक <b>डॉक्यूमेंट</b> खोलें और पेज के ठीक बगल में लिखना शुरू करें।</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">आप जिस पर काम कर रहे हैं उससे पिन करके <b>नोट्स</b> और एक चेकलिस्ट लिखें।</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t">एक <b>PDF</b> डालें, उसे नया टैब खोले बिना पढ़ें और सर्च करें।</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">एक <b>स्प्रेडशीट</b> में आँकड़े निपटाएँ — फॉर्मूला, टोटल, हो गया।</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">जब शब्द काफी न हों तो <b>ड्रॉइंग</b> कैनवास पर एक आइडिया स्केच करें।</span></div>
+      </div>
+      <p class="flow-tail">सब कुछ साथ रहता है — आपके डिवाइस पर।</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">NODUS का तरीका</div>
-      <h2 class="section-title">काम करते समय पैनल में। जब जगह चाहिए तो फुल-स्क्रीन।</h2>
-      <p class="section-sub">Workspace आपके ब्राउज़र के साइड पैनल में चलता है, ठीक वहीं जो आप पढ़ रहे हैं उसके बगल में। जगह चाहिए? किसी भी दस्तावेज़, शीट, PDF या ड्रॉइंग को उसके अपने टैब में फुल-स्क्रीन खोलें — फिर वापस स्नैप करें। वही फाइलें, दो व्यू, आपकी पसंद।</p>
+      <div class="section-label">संदर्भ में बने रहें</div>
+      <h2 class="section-title">वर्कस्पेस कभी उस पेज को नहीं छोड़ता जिस पर आप काम कर रहे हैं।</h2>
+      <p class="section-sub">Workspace आपके ब्राउज़र के साइड पैनल में चलता है, ठीक उसी के बगल में जिसे आप पढ़ रहे हैं। जगह चाहिए? किसी भी डॉक्यूमेंट, शीट, PDF या ड्रॉइंग को उसके अपने टैब में फुल-स्क्रीन खोलें — फिर उसे वापस पैनल में समेट लें। वही फ़ाइलें, दो व्यू, आपकी मर्ज़ी।</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">आप जो पेज पढ़ रहे हैं</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 डॉक्स</div><div class="it">📊 शीट्स</div><div class="it">📕 PDF</div><div class="it">📝 नोट्स</div><div class="it">✂️ क्लिप्स</div><div class="it">🎨 ड्रॉ</div></div>
+      </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">साइड पैनल</div><div class="mode-d">आपकी ब्राउज़िंग के साथ — पेज छोड़े बिना कैप्चर और संपादित करें।</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">साइड पैनल</div><div class="mode-d">आपकी ब्राउज़िंग के साथ — पेज छोड़े बिना कैप्चर और एडिट करें।</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">फुल-स्क्रीन टैब</div><div class="mode-d">फोकस के लिए एक क्लिक में जगह — फिर पैनल पर वापस।</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">फुल-स्क्रीन टैब</div><div class="mode-d">फोकस के लिए एक क्लिक में ज़्यादा जगह — फिर वापस पैनल में।</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">यह ट्रेड</div>
+      <h2 class="section-title">कम जगलिंग। ज़्यादा काम।</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12 ब्राउज़र टैब</div><div class="swap-cell new">एक साइडबार</div></div>
+        <div class="swap-row"><div class="swap-cell old">क्लाउड ऑफिस</div><div class="swap-cell new">लोकल फ़ाइलें</div></div>
+        <div class="swap-row"><div class="swap-cell old">कॉपी और पेस्ट</div><div class="swap-cell new">वेब क्लिप्स</div></div>
+        <div class="swap-row"><div class="swap-cell old">हर चीज़ के लिए अलग ऐप</div><div class="swap-cell new">एक वर्कस्पेस</div></div>
+        <div class="swap-row"><div class="swap-cell old">हर जगह लॉग इन करें</div><div class="swap-cell new">कोई अकाउंट नहीं</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
       <div class="section-label">यह कैसे काम करता है</div>
-      <h2 class="section-title">तीन चरण। कोई सेटअप नहीं।</h2>
+      <h2 class="section-title">तीन स्टेप। कोई सेटअप नहीं।</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>इंस्टॉल करें &amp; पैनल पिन करें</h3><p>एक्सटेंशन जोड़ें और Workspace को अपने ब्राउज़र के साइड पैनल में पिन करें।</p></div>
-        <div class="step"><div class="step-n">2</div><h3>फाइलें बनाएं या लाएं</h3><p>दस्तावेज़, शीट या नोट शुरू करें — या PDF, DOCX, XLSX और इमेज सीधे खींच कर डालें।</p></div>
-        <div class="step"><div class="step-n">3</div><h3>यह आपके डिवाइस पर रहता है</h3><p>सब कुछ लोकली सेव होता है। कोई अकाउंट नहीं, कोई क्लाउड नहीं, ऑफलाइन काम करता है।</p></div>
+        <div class="step"><div class="step-n">1</div><h3>इंस्टॉल करें और पैनल पिन करें</h3><p>एक्सटेंशन जोड़ें और Workspace को अपने ब्राउज़र के साइड पैनल में पिन करें।</p></div>
+        <div class="step"><div class="step-n">2</div><h3>फ़ाइलें बनाएँ या लाएँ</h3><p>एक डॉक, शीट या नोट शुरू करें — या PDF, DOCX, XLSX और इमेज सीधे खींचकर लाएँ।</p></div>
+        <div class="step"><div class="step-n">3</div><h3>यह आपके डिवाइस पर ही रहता है</h3><p>सब कुछ लोकली सेव होता है। न अकाउंट, न क्लाउड, ऑफ़लाइन भी काम करता है।</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
       <div class="section-label">यह किसके लिए है</div>
-      <h2 class="section-title">केंद्रित काम के लिए एक निजी डेस्क।</h2>
+      <h2 class="section-title">फोकस्ड काम के लिए एक प्राइवेट डेस्क।</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>सोलो फाउंडर &amp; माइक्रो-बिज़नेस</h3><p>हर क्लाइंट के नोट्स, दस्तावेज़ और फाइलें एक निजी जगह में रखें — पाँच अलग-अलग ऐप्स की जुगलबाज़ी करने के बजाय।</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>छात्र</h3><p>पाठ्य सामग्री क्लिप करें, असाइनमेंट ड्राफ्ट करें, और जो पढ़ रहे हैं उसके साथ PDF और नोट्स साइड में रखें।</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>शोधकर्ता</h3><p>स्रोतों को उनके लिंक के साथ कैप्चर करें, PDF एनोटेट करें, और सब कुछ व्यवस्थित करें — पूरी तरह ऑफलाइन।</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>गोपनीयता के प्रति सजग लोग</h3><p>एक पूर्ण ऑफिस जो कभी क्लाउड को नहीं छूता: कोई अकाउंट नहीं, कोई ट्रैकिंग नहीं, कुछ भी आपके डिवाइस से बाहर नहीं जाता।</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>सोलो फाउंडर्स और माइक्रो-बिज़नेस</h3><p>हर क्लाइंट के नोट्स, डॉक्स और फ़ाइलों को एक प्राइवेट जगह में रखें — पाँच अलग-अलग ऐप्स में जगलिंग करने के बजाय।</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>छात्र</h3><p>रीडिंग्स क्लिप करें, असाइनमेंट का ड्राफ्ट बनाएँ, और आप जो पढ़ रहे हैं उसके साथ PDF और नोट्स बगल में रखें।</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>रिसर्चर</h3><p>स्रोतों को उनके लिंक के साथ कैप्चर करें, PDF एनोटेट करें, और सब कुछ व्यवस्थित करें — पूरी तरह ऑफ़लाइन।</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>प्राइवेसी को महत्व देने वाले लोग</h3><p>एक पूरा ऑफिस जो कभी क्लाउड को नहीं छूता: न अकाउंट, न ट्रैकिंग, कुछ भी आपके डिवाइस से बाहर नहीं जाता।</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>AI पावर यूज़र्स</h3><p>अपनी AI चैट्स के आसपास बनाए गए डॉक्स, नोट्स और फ़ाइलों को एक लोकल जगह में रखें — ठीक उन्हीं टूल्स के बगल में जिनके साथ आप पहले से NODUS का इस्तेमाल करते हैं।</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>आपकी फाइलें आपके पास रहती हैं।</h2>
-        <p class="lead">डिज़ाइन से लोकल-फर्स्ट। Workspace पूरी तरह आपके डिवाइस पर चलता है — भरोसा करने के लिए कोई सर्वर नहीं।</p>
+        <h2>आपकी फ़ाइलें आपके साथ ही रहती हैं।</h2>
+        <p class="lead">डिज़ाइन से लोकल-फ़र्स्ट। Workspace पूरी तरह आपके डिवाइस पर चलता है — भरोसा करने के लिए कोई सर्वर नहीं है।</p>
         <div class="priv-grid">
-          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% लोकल — कुछ भी क्लाउड पर नहीं जाता</div></div>
-          <div class="priv-item"><div class="ico">🙅</div><div class="t">कोई अकाउंट आवश्यक नहीं</div></div>
+          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% लोकल — कुछ भी क्लाउड में नहीं जाता</div></div>
+          <div class="priv-item"><div class="ico">🙅</div><div class="t">किसी अकाउंट की ज़रूरत नहीं</div></div>
           <div class="priv-item"><div class="ico">🔑</div><div class="t">एन्क्रिप्टेड बैकअप (AES-256)</div></div>
           <div class="priv-item"><div class="ico">🧩</div><div class="t">कोई रिमोट कोड नहीं</div></div>
         </div>
-        <div style="margin-top:26px;"><a href="/hi/workspace-privacy" class="btn btn-ghost">पूरी गोपनीयता नीति पढ़ें →</a></div>
+        <div style="margin-top:26px;"><a href="/hi/workspace-privacy" class="btn btn-ghost">पूरी प्राइवेसी पॉलिसी पढ़ें →</a></div>
       </div>
     </section>
 
@@ -380,62 +462,62 @@
       <div class="section-label">एक सब्सक्रिप्शन</div>
       <p class="pro-line">एक <b>NODUS PRO</b> सब्सक्रिप्शन, पूरा इकोसिस्टम — NODUS AI + PH Radar + Workspace।</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO आज उपलब्ध है — यह पहले से ही <b style="color:var(--text)">NODUS AI</b> और <b style="color:var(--text)">PH Radar BI</b> अनलॉक करता है, और Workspace लॉन्च होते ही इसमें शामिल हो जाएगा।</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO आज ही उपलब्ध है — यह पहले से <b style="color:var(--text)">NODUS AI</b> और <b style="color:var(--text)">PH Radar BI</b> को अनलॉक करता है, और Workspace लॉन्च होते ही जुड़ जाएगा।</p>
 
       <div class="price-grid">
         <div class="price-card">
           <div class="price-name">PRO मासिक</div>
-          <div class="price-amt">$4.50<span>/mo</span></div>
+          <div class="price-amt">$4.50<span>/माह</span></div>
           <div class="price-note">कभी भी रद्द करें</div>
           <a href="checkout.html" class="btn btn-ghost price-cta">PRO मासिक लें</a>
         </div>
         <div class="price-card feat">
-          <div class="price-badge">SAVE 44%</div>
+          <div class="price-badge">44% बचाएँ</div>
           <div class="price-name">PRO वार्षिक</div>
-          <div class="price-amt">$30<span>/yr</span></div>
-          <div class="price-note">7-day फ्री ट्रायल &#183; &#8776; $2.50/mo</div>
+          <div class="price-amt">$30<span>/वर्ष</span></div>
+          <div class="price-note">7-दिन का फ्री ट्रायल &#183; &#8776; $2.50/माह</div>
           <a href="checkout.html" class="btn btn-primary price-cta">PRO वार्षिक लें</a>
         </div>
         <div class="price-card">
           <div class="price-name">PRO लाइफटाइम</div>
-          <div class="price-amt">$79<span> once</span></div>
-          <div class="price-note">एक बार भुगतान करें, हमेशा के लिए</div>
+          <div class="price-amt">$79<span> एक बार</span></div>
+          <div class="price-note">एक बार भुगतान करें, हमेशा के लिए आपका</div>
           <a href="checkout.html" class="btn btn-ghost price-cta">लाइफटाइम लें</a>
         </div>
       </div>
-      <p class="price-trust">Paddle के माध्यम से सुरक्षित चेकआउट &#183; वार्षिक प्लान पर 7-day फ्री ट्रायल &#183; कभी भी रद्द करें।</p>
+      <p class="price-trust">Paddle के ज़रिए सुरक्षित चेकआउट &#183; वार्षिक प्लान पर 7-दिन का फ्री ट्रायल &#183; कभी भी रद्द करें।</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
-          <div class="cmp-cell"><span class="free">निःशुल्क</span></div>
+          <div class="cmp-cell"><span class="free">फ्री</span></div>
           <div class="cmp-cell pro"><span class="pro">NODUS PRO</span></div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">दस्तावेज़ और स्प्रेडशीट बनाएं/संपादित करें</div>
+          <div class="cmp-cell">डॉक्यूमेंट्स और स्प्रेडशीट्स बनाएँ/एडिट करें</div>
           <div class="cmp-cell pro">DOCX, XLSX और इमेज एक्सपोर्ट करें</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">PDF पढ़ें, खोजें, प्रिंट और डाउनलोड करें</div>
+          <div class="cmp-cell">PDF पढ़ें, सर्च करें, प्रिंट करें और डाउनलोड करें</div>
           <div class="cmp-cell pro">PDF पेज को PNG के रूप में एक्सपोर्ट करें</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">वेब क्लिप और नोट्स</div>
-          <div class="cmp-cell pro">एन्क्रिप्टेड बैकअप &amp; रिस्टोर</div>
+          <div class="cmp-cell">वेब क्लिप्स और नोट्स</div>
+          <div class="cmp-cell pro">एन्क्रिप्टेड बैकअप और रीस्टोर</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">फाइलें इम्पोर्ट करें (ड्रैग &amp; ड्रॉप)</div>
-          <div class="cmp-cell pro">एक्टिव अलार्म (तत्काल सूचनाएं)</div>
+          <div class="cmp-cell">फ़ाइलें इम्पोर्ट करें (ड्रैग और ड्रॉप)</div>
+          <div class="cmp-cell pro">सक्रिय अलार्म (इंस्टेंट नोटिफिकेशन)</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">रिमाइंडर (बेल सूचना)</div>
-          <div class="cmp-cell pro">बैच क्रियाएं</div>
+          <div class="cmp-cell">रिमाइंडर (बेल नोटिस)</div>
+          <div class="cmp-cell pro">बल्क एक्शन</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">16 languages</div>
+          <div class="cmp-cell">16 भाषाएँ</div>
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">स्वर्णिम नियम: <b>सामग्री लाना हमेशा मुफ्त है</b> — एक्सपोर्ट/कन्वर्ट करना और ऑटोमेशन PRO है।</p>
+      <p class="golden">गोल्डन रूल: <b>कंटेंट लाना हमेशा फ्री है</b> — एक्सपोर्ट/कन्वर्ट करना और ऑटोमेशन PRO में हैं।</p>
     </section>
 
     <!-- ── FAQ ── -->
@@ -443,27 +525,34 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">सवाल, जवाब के साथ।</h2>
       <div class="faq">
-        <details><summary>क्या मेरी फाइलें क्लाउड में स्टोर होती हैं?</summary><p>नहीं। आप जो कुछ भी बनाते या इम्पोर्ट करते हैं — दस्तावेज़, स्प्रेडशीट, PDF, क्लिप, नोट्स और ड्रॉइंग — वह आपके डिवाइस पर, आपके ब्राउज़र में लोकली स्टोर होता है। कुछ भी हमें या किसी और को अपलोड नहीं किया जाता।</p></details>
-        <details><summary>मेरा डेटा वास्तव में कहाँ रखा जाता है?</summary><p>आपके डिवाइस पर, आपके ब्राउज़र के अपने लोकल स्टोरेज में — वही जगह जहाँ आपका ब्राउज़र साइट डेटा रखता है। कुछ भी NODUS सर्वर को नहीं भेजा जाता, जो Workspace को क्लाउड ऑफिस टूल्स का लोकल-फर्स्ट विकल्प बनाता है: आपकी फाइलें हमेशा आपके साथ हैं और ऑफलाइन काम करती हैं।</p></details>
-        <details><summary>क्या मुझे इसे उपयोग करने के लिए अकाउंट चाहिए?</summary><p>नहीं। Workspace बिना साइन-अप और बिना लॉगिन के काम करता है। आप ईमेल केवल तभी दर्ज करते हैं जब आप NODUS PRO सक्रिय करना चुनते हैं।</p></details>
-        <details><summary>क्या यह ऑफलाइन काम करता है?</summary><p>हाँ। क्योंकि यह लोकल-फर्स्ट है, आप बिना इंटरनेट कनेक्शन के अपनी फाइलें बना, संपादित और पढ़ सकते हैं।</p></details>
-        <details><summary>अगर मैं कंप्यूटर बदलूँ या ब्राउज़र फिर से इंस्टॉल करूँ तो क्या होगा?</summary><p>आपका डेटा केवल उस डिवाइस पर रहता है, इसलिए इसे ले जाना आप पर निर्भर है: एन्क्रिप्टेड बैकअप &amp; रिस्टोर (एक PRO फीचर) का उपयोग करके सब कुछ एक फाइल में एक्सपोर्ट करें और दूसरी मशीन पर वापस लाएं। बिना बैकअप के, लोकल डेटा केवल उस ब्राउज़र पर रहता है।</p></details>
-        <details><summary>मैं कौन सी फाइलें ला सकता/सकती हूँ?</summary><p>PDF, DOCX, XLSX, TXT, इमेज और Markdown सीधे पैनल में खींच कर छोड़ें। नियम सरल है: सामग्री लाना हमेशा मुफ्त है।</p></details>
-        <details><summary>क्या मैं Word और Excel फाइलें संपादित कर सकता/सकती हूँ?</summary><p>आप उन्हें खोल सकते हैं — DOCX सादे टेक्स्ट के रूप में और XLSX मानों के रूप में आता है (फ़ॉर्मेटिंग और फ़ॉर्मूला सरलीकृत हो जाते हैं)। बिना फ़ॉर्मेटिंग के खोलना, न खोलने से बेहतर है। DOCX/XLSX (और इमेज) में वापस एक्सपोर्ट करना PRO फीचर है।</p></details>
-        <details><summary>क्या मुफ्त है और क्या PRO है?</summary><p>मुफ्त: दस्तावेज़ और स्प्रेडशीट बनाना और संपादित करना, PDF पढ़ना/खोजना/प्रिंट करना, वेब क्लिप, नोट्स, रिमाइंडर, फाइल इम्पोर्ट, और 16 languages। PRO एक्सपोर्ट (DOCX, XLSX, PNG), PDF-to-image, एन्क्रिप्टेड बैकअप, सूचनाओं के साथ एक्टिव अलार्म, और बैच क्रियाएं जोड़ता है।</p></details>
-        <details><summary>PRO की कीमत कितनी है?</summary><p>$4.50/month, $30/year (≈ $2.50/mo) या $79 एकमुश्त (लाइफटाइम)। चेकआउट Paddle द्वारा सुरक्षित रूप से संभाला जाता है, वार्षिक प्लान पर 7-day फ्री ट्रायल और 14-day मनी-बैक गारंटी के साथ।</p></details>
-        <details><summary>सब कुछ के लिए एक सब्सक्रिप्शन?</summary><p>हाँ — एक NODUS PRO सब्सक्रिप्शन पूरे NODUS इकोसिस्टम में PRO अनलॉक करता है: NODUS AI, PH Radar और Workspace।</p></details>
-        <details><summary>क्या मैं अपना काम प्रिंट या PDF के रूप में सेव कर सकता/सकती हूँ?</summary><p>हाँ। दस्तावेज़ और स्प्रेडशीट प्रिंट किए जा सकते हैं या PDF में बदले जा सकते हैं — दोनों मुफ्त — और PDF बिल्ट-इन व्यूअर में सीधे खुलती है।</p></details>
-        <details><summary>क्या यह सुरक्षित है? "कोई रिमोट कोड नहीं" का मतलब क्या है?</summary><p>एक्सटेंशन का सारा कोड पैकेज के अंदर आता है — किसी सर्वर से कुछ भी डाउनलोड और चलाया नहीं जाता। आपके बैकअप AES-256 से एन्क्रिप्टेड हैं, और हम आपकी फाइलों की सामग्री कभी नहीं पढ़ते, भेजते या विश्लेषण करते।</p></details>
-        <details><summary>यह कौन से ब्राउज़र सपोर्ट करता है?</summary><p>Chrome, Firefox और Chromium-आधारित ब्राउज़र (Edge, Brave और अन्य)। यह ब्राउज़र के साइड पैनल में रहता है, आप जो भी काम कर रहे हैं उसके बगल में।</p></details>
-        <details><summary>मुझे मदद कैसे मिलेगी या कोई समस्या कैसे रिपोर्ट करूँ?</summary><p>हमें <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> पर ईमेल करें — हम हर संदेश पढ़ते हैं।</p></details>
-        <details><summary>मैं इसे कहाँ से प्राप्त कर सकता/सकती हूँ?</summary><p>NODUS Workspace अब Chrome Web Store और Firefox Add-ons पर उपलब्ध है।</p></details>
+        <details><summary>क्या मेरी फ़ाइलें क्लाउड में स्टोर होती हैं?</summary><p>नहीं। आप जो कुछ भी बनाते या इम्पोर्ट करते हैं — डॉक्यूमेंट्स, स्प्रेडशीट्स, PDF, क्लिप्स, नोट्स और ड्रॉइंग — सब कुछ आपके डिवाइस पर, आपके ब्राउज़र में लोकली स्टोर होता है। कुछ भी हमें या किसी और को अपलोड नहीं किया जाता।</p></details>
+        <details><summary>मेरा डेटा ठीक कहाँ रखा जाता है?</summary><p>आपके ब्राउज़र के अपने लोकल स्टोरेज में, आपके डिवाइस पर — वही जगह जहाँ आपका ब्राउज़र साइट डेटा रखता है। कुछ भी NODUS के किसी सर्वर पर नहीं भेजा जाता, जो Workspace को क्लाउड ऑफिस टूल्स का एक लोकल-फ़र्स्ट विकल्प बनाता है: आपकी फ़ाइलें हमेशा आपके साथ रहती हैं और ऑफ़लाइन भी काम करती हैं।</p></details>
+        <details><summary>क्या इसका इस्तेमाल करने के लिए मुझे अकाउंट चाहिए?</summary><p>नहीं। Workspace बिना साइन-अप और बिना लॉगिन के काम करता है। आप ईमेल तभी डालते हैं जब आप NODUS PRO एक्टिवेट करना चुनते हैं।</p></details>
+        <details><summary>क्या यह ऑफ़लाइन काम करता है?</summary><p>हाँ। चूँकि यह लोकल-फ़र्स्ट है, आप बिना इंटरनेट कनेक्शन के अपनी फ़ाइलें बना, एडिट और पढ़ सकते हैं।</p></details>
+        <details><summary>अगर मैं कंप्यूटर बदलूँ या ब्राउज़र फिर से इंस्टॉल करूँ तो क्या होगा?</summary><p>आपका डेटा सिर्फ उसी डिवाइस पर रहता है, इसलिए इसे ले जाना आप पर निर्भर करता है: सब कुछ एक फ़ाइल में एक्सपोर्ट करने और दूसरी मशीन पर वापस लाने के लिए एन्क्रिप्टेड बैकअप और रीस्टोर (एक PRO फ़ीचर) का उपयोग करें। बिना बैकअप के, लोकल डेटा सिर्फ उसी ब्राउज़र में रहता है।</p></details>
+        <details><summary>मैं कौन सी फ़ाइलें ला सकता/सकती हूँ?</summary><p>PDF, DOCX, XLSX, TXT, इमेज और Markdown को सीधे पैनल में खींचकर छोड़ें। नियम सीधा है: कंटेंट लाना हमेशा फ्री है।</p></details>
+        <details><summary>क्या मैं Word और Excel फ़ाइलें एडिट कर सकता/सकती हूँ?</summary><p>आप उन्हें खोल सकते हैं — DOCX प्लेन टेक्स्ट के रूप में और XLSX वैल्यू के रूप में आता है (फॉर्मेटिंग और फॉर्मूला सरल कर दिए जाते हैं)। बिना फॉर्मेटिंग के खोल पाना, बिल्कुल न खुलने से बेहतर है। DOCX/XLSX (और इमेज) में वापस एक्सपोर्ट करना एक PRO फ़ीचर है।</p></details>
+        <details><summary>क्या फ्री है और क्या PRO है?</summary><p>फ्री: डॉक्यूमेंट्स और स्प्रेडशीट्स बनाना और एडिट करना, PDF पढ़ना/सर्च करना/प्रिंट करना, वेब क्लिप्स, नोट्स, रिमाइंडर, फ़ाइल इम्पोर्ट, और 16 भाषाएँ। PRO में एक्सपोर्ट (DOCX, XLSX, PNG), PDF-टू-इमेज, एन्क्रिप्टेड बैकअप, नोटिफिकेशन वाले सक्रिय अलार्म, और बल्क एक्शन जुड़ते हैं।</p></details>
+        <details><summary>PRO की कीमत कितनी है?</summary><p>$4.50/माह, $30/वर्ष (≈ $2.50/माह) या $79 एक बार (लाइफटाइम)। चेकआउट Paddle द्वारा सुरक्षित रूप से संभाला जाता है, वार्षिक प्लान पर 7-दिन के फ्री ट्रायल और 14-दिन की मनी-बैक गारंटी के साथ।</p></details>
+        <details><summary>सब कुछ के लिए एक सब्सक्रिप्शन?</summary><p>हाँ — एक अकेला NODUS PRO सब्सक्रिप्शन पूरे NODUS इकोसिस्टम में PRO अनलॉक करता है: NODUS AI, PH Radar और Workspace।</p></details>
+        <details><summary>क्या मैं अपना काम प्रिंट कर सकता/सकती हूँ या PDF के रूप में सेव कर सकता/सकती हूँ?</summary><p>हाँ। डॉक्यूमेंट्स और स्प्रेडशीट्स को प्रिंट किया जा सकता है या PDF में बदला जा सकता है — दोनों फ्री हैं — और PDF सीधे बिल्ट-इन व्यूअर में खुलता है।</p></details>
+        <details><summary>क्या यह सुरक्षित है? "कोई रिमोट कोड नहीं" का क्या मतलब है?</summary><p>एक्सटेंशन का सारा कोड पैकेज के अंदर ही शिप होता है — कुछ भी सर्वर से डाउनलोड करके नहीं चलाया जाता। आपके बैकअप AES-256 से एन्क्रिप्ट किए जाते हैं, और हम कभी आपकी फ़ाइलों की सामग्री को पढ़ते, ट्रांसमिट करते या एनालाइज़ नहीं करते।</p></details>
+        <details><summary>यह किन ब्राउज़र्स को सपोर्ट करता है?</summary><p>Chrome, Firefox और Chromium-बेस्ड ब्राउज़र (Edge, Brave और अन्य)। यह ब्राउज़र के साइड पैनल में रहता है, आप जो भी काम कर रहे हैं उसके बगल में।</p></details>
+        <details><summary>मदद कैसे पाऊँ या किसी समस्या की रिपोर्ट कैसे करूँ?</summary><p>हमें <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> पर ईमेल करें — हम हर मैसेज पढ़ते हैं।</p></details>
+        <details><summary>मुझे यह कहाँ मिल सकता है?</summary><p>NODUS Workspace अब Chrome Web Store और Firefox Add-ons पर उपलब्ध है।</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>आपका ब्राउज़र वह जगह है जहाँ काम <span class="accent">पहले से ही हो रहा है</span>।</h2>
+      <div class="words"><span>रिसर्च</span><span>लेखन</span><span>पढ़ना</span><span>योजना</span><span>निर्माण</span></div>
+      <p>तो फिर ऐप्लिकेशन्स के बीच कूदते क्यों रहें? सब कुछ एक साथ लाएँ। सब कुछ लोकल रखें। <b style="color:var(--text)">अपने वर्कस्पेस के मालिक बनें।</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
-      <span class="badge"><span class="dot"></span> अब Chrome और Firefox पर</span>
+      <span class="badge"><span class="dot"></span> अब Chrome और Firefox पर उपलब्ध</span>
       <h2>सेकंडों में शुरू करें।</h2>
       <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome पर इंस्टॉल करें</a>
     </section>
@@ -473,16 +562,16 @@
   <footer>
     <div>
       <a href="https://nodus-ai.app">NODUS होम</a>
-      <a href="/hi/workspace-privacy">गोपनीयता</a>
-      <a href="https://nodus-ai.app/terms">शर्तें</a>
-      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">सहायता</a><!--/email_off-->
+      <a href="/hi/workspace-privacy">प्राइवेसी</a>
+      <a href="https://nodus-ai.app/terms">नियम व शर्तें</a>
+      <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">सपोर्ट</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. सर्वाधिकार सुरक्षित।</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
-      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">रिसर्च</span>
       <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — एक मशीन जो भाषा नहीं, इरादे को प्रोसेस करती है</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — एक फाइल फॉर्मेट जो एक साथ कॉम्पैक्ट और नेविगेबल है</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — एक फ़ाइल फॉर्मेट जो एक साथ कॉम्पैक्ट और नेविगेबल है</span></span>
     </div>
     <!-- research:end -->
   </footer>

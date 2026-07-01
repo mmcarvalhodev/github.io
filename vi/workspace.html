@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — Văn phòng riêng của bạn, ngay trong trình duyệt</title>
-  <meta name="description" content="Tài liệu, bảng tính, PDF, web clip và ghi chú — tất cả lưu cục bộ, không đám mây, không cần tài khoản. Thuộc hệ sinh thái NODUS. Hiện có trên Chrome Web Store.">
+  <title>NODUS Workspace — Văn phòng cục bộ của bạn, ngay trong trình duyệt</title>
+  <meta name="description" content="Tài liệu, bảng tính, PDF, đoạn cắt web và ghi chú — tất cả cục bộ, không đám mây, không cần tài khoản. Một phần của hệ sinh thái NODUS. Hiện đã có trên Chrome Web Store.">
   <link rel="canonical" href="https://nodus-ai.app/vi/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — văn phòng riêng của bạn, ngay trong trình duyệt">
-  <meta property="og:description" content="Tài liệu, bảng tính, PDF, web clip và ghi chú — tất cả lưu cục bộ, không đám mây, không cần tài khoản. Hiện có trên Chrome.">
+  <meta property="og:title" content="NODUS Workspace — văn phòng cục bộ của bạn, ngay trong trình duyệt">
+  <meta property="og:description" content="Tài liệu, bảng tính, PDF, đoạn cắt web và ghi chú — tất cả cục bộ, không đám mây, không cần tài khoản. Hiện đã có trên Chrome.">
   <meta property="og:url" content="https://nodus-ai.app/vi/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,42 @@
     .section-title{text-align:center;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;
       letter-spacing:-.5px;max-width:760px;margin:0 auto}
     .section-sub{text-align:center;color:var(--sub);max-width:680px;margin:14px auto 0;font-size:15.5px}
+    /* ── why / problem ── */
+    .why{max-width:820px;margin:0 auto;text-align:center}
+    .frag{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
+    .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
+    .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
+    .why .punch b{color:var(--accent)}
+    /* ── typical workflow ── */
+    .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
+    .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+    .flow-step .n{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .flow-step .t{font-size:15.5px;color:var(--sub);line-height:1.5}
+    .flow-step .t b{color:var(--text)}
+    .flow-tail{text-align:center;color:#fb923c;font-weight:700;font-size:16px;margin-top:20px}
+    /* ── swap table ── */
+    .swap{max-width:640px;margin:34px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .swap-row{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+    .swap-row+.swap-row{border-top:1px solid var(--line)}
+    .swap-cell{padding:15px 18px;font-size:15px;display:flex;align-items:center}
+    .swap-cell.old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+    .swap-cell.new{color:var(--text);font-weight:700;background:var(--accent-soft);border-left:1px solid var(--line)}
+    .swap-cell.new::before{content:"\2192 ";color:var(--accent);font-weight:800;margin-right:6px}
+    /* ── panel mockup diagram ── */
+    .pmock{max-width:620px;margin:30px auto 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 200px;min-height:240px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+    .pmock .site{background:linear-gradient(180deg,#0e1219,#0b0e14);padding:20px;color:var(--faint);font-size:12px}
+    .pmock .site .bar{height:8px;width:100%;border-radius:99px;background:var(--line2);margin-bottom:11px}
+    .pmock .site .bar.s{width:55%}.pmock .site .bar.m{width:82%}
+    .pmock .ws{background:var(--card);border-left:1px solid var(--accent);padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+    .pmock .ws .h{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+    .pmock .ws .it{font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+    @media(max-width:560px){.pmock{grid-template-columns:1fr}.pmock .ws{border-left:none;border-top:1px solid var(--accent)}}
+    /* ── manifesto ── */
+    .manifesto{text-align:center;padding:72px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}
+    .manifesto h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;letter-spacing:-1px;max-width:820px;margin:0 auto;line-height:1.12}
+    .manifesto h2 .accent{color:var(--accent)}
+    .manifesto .words{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin:22px auto 0;max-width:600px;color:var(--sub);font-size:16px;font-weight:600}
+    .manifesto p{color:var(--sub);font-size:16px;max-width:600px;margin:20px auto 0;line-height:1.6}
 
     /* ── what it is ── */
     .whatis{background:var(--card);border:1px solid var(--line);border-radius:16px;
@@ -212,7 +248,7 @@
       <a href="https://nodus-ai.app" class="nav-logo">NODUS <span>Workspace</span></a>
       <div class="nav-links">
         <a href="#features" class="nav-link">Tính năng</a>
-        <a href="#privacy" class="nav-link">Bảo mật</a>
+        <a href="#privacy" class="nav-link">Quyền riêng tư</a>
         <a href="#pro" class="nav-link">PRO</a>
         <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener" class="nav-link highlight">Cài đặt</a>
       </div>
@@ -225,48 +261,60 @@
     <!-- ── 1. HERO ── -->
     <header class="hero">
       <div class="hero-top">
-        <span class="badge"><span class="dot"></span> Đã có trên Chrome & Firefox</span>
+        <span class="badge"><span class="dot"></span> Hiện đã có trên Chrome & Firefox</span>
         <h1>Văn phòng của bạn, <span class="accent">cục bộ và riêng tư</span>, ngay trong trình duyệt.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
-          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Một tài liệu được mở rộng từ bảng bên ra tab toàn màn hình, bên cạnh bảng đang hoạt động"></video>
+          <video poster="/ws-fullscreen-poster.jpg" data-src="/ws-fullscreen.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Một tài liệu được bung ra từ bảng bên thành một tab toàn màn hình, cạnh bảng đang hoạt động"></video>
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">Tài liệu, bảng tính, PDF, web clip và ghi chú, ngay trong bảng bên của trình duyệt. Tất cả lưu trên thiết bị của bạn — không đám mây, không cần tài khoản.</p>
+        <p class="sub">Tài liệu, bảng tính, PDF, đoạn cắt web và ghi chú, ngay trong bảng bên của trình duyệt. Mọi thứ nằm trên thiết bị của bạn — không đám mây, không cần tài khoản.</p>
         <div class="hero-btns">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Cài đặt trên Chrome</a>
-          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Dùng trên Firefox</a>
+          <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Tải trên Firefox</a>
           <a href="#features" class="btn btn-ghost">Xem có gì bên trong ↓</a>
         </div>
         <div style="margin-top:22px;display:flex;justify-content:center;"><a href="https://www.producthunt.com/products/nodus-workspace?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nodus-workspace" target="_blank" rel="noopener noreferrer"><img alt="NODUS Workspace - Your local-first productivity workspace | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1181992&amp;theme=light&amp;t=1782833178993"></a></div>
       </div>
     </header>
 
+    <!-- ── WHY ── -->
+    <section class="section" id="why">
+      <div class="section-label">Tại sao lại cần thêm một workspace?</div>
+      <h2 class="section-title">Công việc của bạn đang bị rải rác trên nhiều tab.</h2>
+      <div class="why">
+        <div class="frag">
+          <span>Một tab để viết</span><span>Một tab cho PDF</span><span>Một tab để ghi chú</span><span>Một tab cho tệp</span><span>Một tab để cắt web</span>
+        </div>
+        <p class="punch">NODUS Workspace gom tất cả vào <b>một thanh bên cục bộ luôn đi theo bạn</b> — để bạn ngừng nhảy qua nhảy lại giữa các tab và <b>luôn giữ được mạch làm việc</b>.</p>
+      </div>
+    </section>
+
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace biến <b>bảng bên</b> của trình duyệt thành một văn phòng nhỏ, riêng tư, hiện diện ngay bên cạnh mọi trang bạn đang đọc. Đây không chỉ là nơi lưu trữ: bạn có một <b>trình soạn thảo tài liệu</b> thực thụ (tiêu đề, định dạng, bảng, hình ảnh), một <b>bảng tính</b> với công thức và tổng kết, và một <b>trình đọc PDF</b> tích hợp sẵn, để bạn có thể viết, tính toán và đọc <b>mà không cần rời khỏi tab đang mở</b>. Xung quanh đó, một nơi duy nhất để lưu <b>web clip</b>, <b>ghi chú</b> và danh sách kiểm tra, cùng tất cả <b>tệp</b> của bạn trong các thư mục. Mọi thứ đều được tạo và lưu <b>trên thiết bị của bạn</b>: không đám mây, không cần tài khoản, và hoạt động ngoại tuyến.
+        NODUS Workspace biến <b>bảng bên</b> của trình duyệt thành một văn phòng nhỏ, riêng tư, nằm ngay cạnh bất cứ thứ gì bạn đang đọc. Đây không chỉ là nơi lưu trữ: bạn có một <b>trình soạn thảo tài liệu</b> thực thụ (tiêu đề, định dạng, bảng, hình ảnh), một <b>bảng tính</b> với công thức và tổng, và một <b>trình đọc PDF</b> tích hợp sẵn, để bạn viết, tính toán và đọc <b>mà không cần rời khỏi tab đang mở</b>. Bên cạnh đó là một nơi để giữ <b>đoạn cắt web</b>, <b>ghi chú</b> và danh sách việc cần làm, cùng tất cả <b>tệp</b> của bạn trong các thư mục. Mọi thứ được tạo và lưu <b>ngay trên thiết bị của bạn</b>: không đám mây, không cần tài khoản, và hoạt động ngay cả khi ngoại tuyến.
       </div>
     </section>
 
     <!-- ── 3. FEATURES ── -->
     <section class="section" id="features">
-      <div class="section-label">Có gì bên trong</div>
-      <h2 class="section-title">Không gian làm việc thực sự, không chỉ là bộ nhớ.</h2>
-      <p class="section-sub">Soạn thảo tài liệu, tạo bảng tính và đọc PDF trong bảng bên, clip từ bất kỳ trang nào, và giữ ghi chú cùng tệp ngăn nắp — tất cả mà không cần rời khỏi tab đang mở.</p>
+      <div class="section-label">Bên trong có gì</div>
+      <h2 class="section-title">Một workspace thực thụ, không chỉ là nơi lưu trữ.</h2>
+      <p class="section-sub">Viết tài liệu, dựng bảng tính và đọc PDF ngay trong bảng bên, cắt nội dung từ bất kỳ trang nào, và giữ ghi chú cùng tệp của bạn ngăn nắp — tất cả mà không cần rời khỏi tab đang mở.</p>
 
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Thu thập <span class="ln"></span></div>
-        <p class="pillar-sub">Lấy bất cứ thứ gì từ web và lưu lại, kèm liên kết dẫn về nguồn gốc.</p>
+        <p class="pillar-sub">Lấy bất cứ thứ gì từ web và giữ lại, kèm liên kết quay về nguồn gốc.</p>
         <div class="feat-grid one">
           <div class="feature">
-            <h3>Clip web — văn bản hoặc hình ảnh</h3>
-            <p>Chọn văn bản hoặc hình ảnh trên bất kỳ trang nào và gửi vào Workspace. Mỗi clip giữ lại liên kết về nguồn gốc, sẵn sàng để chèn vào tài liệu hoặc ghi chú sau.</p>
-            <div class="caps"><span class="cap">Clip văn bản</span><span class="cap">Clip hình ảnh</span><span class="cap">Giữ liên kết nguồn</span><span class="cap">Tái sử dụng trong tài liệu &amp; ghi chú</span></div>
-            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Clip văn bản và hình ảnh từ trang vào Workspace"></video></div>
+            <h3>Cắt nội dung web — văn bản hoặc hình ảnh</h3>
+            <p>Chọn văn bản hoặc hình ảnh trên bất kỳ trang nào và gửi vào Workspace. Mỗi đoạn cắt luôn giữ liên kết quay về nguồn, sẵn sàng để đưa vào tài liệu hoặc ghi chú sau này.</p>
+            <div class="caps"><span class="cap">Cắt văn bản</span><span class="cap">Cắt hình ảnh</span><span class="cap">Giữ liên kết nguồn</span><span class="cap">Tái sử dụng trong tài liệu & ghi chú</span></div>
+            <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Cắt văn bản và hình ảnh từ một trang vào Workspace"></video></div>
           </div>
         </div>
       </div>
@@ -274,50 +322,50 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Sắp xếp <span class="ln"></span></div>
-        <p class="pillar-sub">Một nơi riêng tư để chứa ghi chú, tệp và PDF, sắp xếp theo ý bạn.</p>
+        <p class="pillar-sub">Một nơi riêng tư cho ghi chú, tệp và PDF của bạn, sắp xếp theo ý bạn muốn.</p>
         <div class="feat-grid">
           <div class="feature">
-            <h3>Ghi chú kết nối mọi thứ</h3>
-            <p>Ghi chú nhanh với danh sách kiểm tra, ngay bên cạnh nội dung bạn đang đọc. Ghim ghi chú vào bất kỳ mục nào — tài liệu, bảng tính, PDF hoặc clip — và lấy liên kết trang hiện tại bằng chuột phải.</p>
-            <div class="caps"><span class="cap">Danh sách kiểm tra</span><span class="cap">Ghim vào bất kỳ mục nào</span><span class="cap">Liên kết trang bằng chuột phải</span><span class="cap">Nhắc nhở (chuông)</span><span class="cap pro">PRO · Báo thức (tức thì)</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Ghi chú với danh sách kiểm tra trong bảng bên Workspace"></video></div>
+            <h3>Ghi chú kết nối mọi thứ lại</h3>
+            <p>Ghi chú nhanh kèm danh sách việc cần làm, ngay cạnh những gì bạn đang đọc. Ghim một ghi chú vào bất kỳ mục nào — tài liệu, bảng tính, PDF hoặc đoạn cắt — và lấy liên kết của trang hiện tại chỉ bằng một cú nhấp chuột phải.</p>
+            <div class="caps"><span class="cap">Danh sách việc cần làm</span><span class="cap">Ghim vào bất kỳ mục nào</span><span class="cap">Lấy liên kết trang bằng chuột phải</span><span class="cap">Nhắc nhở (chuông)</span><span class="cap pro">PRO · Báo thức (tức thì)</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Ghi chú kèm danh sách việc cần làm trong bảng bên của Workspace"></video></div>
           </div>
           <div class="feature">
-            <h3>Tất cả tệp, một nơi duy nhất</h3>
-            <p>Kéo PDF, DOCX, XLSX, TXT, Markdown và hình ảnh vào trực tiếp — từ bất kỳ màn hình nào, không chỉ trang chủ. Sắp xếp vào thư mục, lọc theo loại, và chọn nhiều tệp cùng lúc.</p>
-            <div class="caps"><span class="cap">Kéo vào từ mọi nơi</span><span class="cap">Thư mục</span><span class="cap">Lọc theo loại</span><span class="cap pro">PRO · Chọn/xóa/tải nhiều tệp</span></div>
+            <h3>Tất cả tệp của bạn, một nơi duy nhất</h3>
+            <p>Kéo PDF, DOCX, XLSX, TXT, Markdown và hình ảnh vào thẳng — từ bất kỳ màn hình nào, không chỉ màn hình chính. Sắp xếp vào thư mục, lọc theo loại, và chọn nhiều tệp cùng lúc.</p>
+            <div class="caps"><span class="cap">Kéo-thả từ mọi nơi</span><span class="cap">Thư mục</span><span class="cap">Lọc theo loại</span><span class="cap pro">PRO · Chọn/xóa/tải hàng loạt</span></div>
             <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Sắp xếp tệp và thư mục trong Workspace"></video></div>
-            <p class="feat-note">Nhập trung thực: DOCX được nhập dưới dạng văn bản thuần và XLSX dưới dạng giá trị — mở được mà không có định dạng còn hơn là không mở được.</p>
+            <p class="feat-note">Nhập tệp trung thực: DOCX được nhập vào dưới dạng văn bản thuần và XLSX dưới dạng giá trị — mở được mà không giữ định dạng vẫn tốt hơn là không mở được gì cả.</p>
           </div>
           <div class="feature">
-            <h3>Đọc PDF trong bảng bên</h3>
-            <p>Mở và lật qua các trang PDF mà không rời tab, và tìm kiếm mọi thứ với Ctrl+F.</p>
-            <div class="caps"><span class="cap">Đọc trong bảng bên</span><span class="cap">Tìm kiếm Ctrl+F</span><span class="cap">In / tải xuống</span><span class="cap pro">PRO · Xuất trang dưới dạng PNG</span></div>
-            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Đọc PDF trong bảng bên Workspace"></video></div>
+            <h3>Đọc PDF ngay trong bảng bên</h3>
+            <p>Mở và lật từng trang PDF mà không cần rời khỏi tab đang mở, và tìm bất cứ điều gì bằng Ctrl+F.</p>
+            <div class="caps"><span class="cap">Đọc trong bảng bên</span><span class="cap">Tìm kiếm bằng Ctrl+F</span><span class="cap">In / tải xuống</span><span class="cap pro">PRO · Xuất trang thành PNG</span></div>
+            <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Đọc một tệp PDF bên trong bảng bên của Workspace"></video></div>
           </div>
         </div>
       </div>
 
       <!-- Create -->
       <div class="pillar">
-        <div class="pillar-head"><span class="ln"></span> Tạo nội dung <span class="ln"></span></div>
-        <p class="pillar-sub">Trình soạn thảo thực thụ cho tài liệu, bảng tính và bản vẽ, ngay trong bảng bên.</p>
+        <div class="pillar-head"><span class="ln"></span> Tạo lập <span class="ln"></span></div>
+        <p class="pillar-sub">Trình soạn thảo thực thụ cho tài liệu, bảng tính và bản vẽ, ngay bên trong bảng bên.</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>Tài liệu thực thụ</h3>
-            <p>Trình soạn thảo đầy đủ trong bảng bên — tiêu đề, <b>đậm</b>, <i>nghiêng</i>, gạch chân, danh sách, màu sắc, bảng và hình ảnh. Tự động lưu khi bạn gõ, đổi tên trực tiếp, và in hoặc Lưu dưới dạng PDF.</p>
-            <div class="caps"><span class="cap">Tiêu đề</span><span class="cap">B / I / U</span><span class="cap">Danh sách</span><span class="cap">Bảng</span><span class="cap">Hình ảnh</span><span class="cap">Tự động lưu</span><span class="cap">In / Lưu dưới dạng PDF</span><span class="cap pro">PRO · Xuất DOCX</span></div>
-            <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Chỉnh sửa tài liệu trong Workspace"></video></div>
+            <p>Một trình soạn thảo đầy đủ bên trong bảng bên — tiêu đề, <b>in đậm</b>, <i>in nghiêng</i>, gạch chân, danh sách, màu sắc, bảng và hình ảnh. Tự động lưu khi bạn gõ, đổi tên ngay tại chỗ, và in hoặc lưu thành PDF.</p>
+            <div class="caps"><span class="cap">Tiêu đề</span><span class="cap">B / I / U</span><span class="cap">Danh sách</span><span class="cap">Bảng</span><span class="cap">Hình ảnh</span><span class="cap">Tự động lưu</span><span class="cap">In / Lưu thành PDF</span><span class="cap pro">PRO · Xuất DOCX</span></div>
+            <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Soạn thảo một tài liệu trong Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Bảng tính</h3>
-            <p>Ô, công thức và tổng kết với tự động lưu — ngay nơi bạn làm việc. Xuất sang XLSX khi cần dùng ở nơi khác.</p>
-            <div class="caps"><span class="cap">Công thức</span><span class="cap">Tổng kết</span><span class="cap">Tự động lưu</span><span class="cap pro">PRO · Xuất XLSX</span></div>
-            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Chỉnh sửa bảng tính trong Workspace"></video></div>
+            <p>Ô, công thức và tổng với tự động lưu — ngay tại nơi bạn làm việc. Xuất sang XLSX khi cần dùng ở nơi khác.</p>
+            <div class="caps"><span class="cap">Công thức</span><span class="cap">Tổng</span><span class="cap">Tự động lưu</span><span class="cap pro">PRO · Xuất XLSX</span></div>
+            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Chỉnh sửa một bảng tính trong Workspace"></video></div>
           </div>
           <div class="feature">
             <h3>Vẽ &amp; chú thích</h3>
-            <p>Bút, bút highlight, mũi tên, hình chữ nhật và văn bản trên canvas, với công cụ chọn để di chuyển hoặc xóa đối tượng. Cắt, xoay, lật, và hoàn tác/làm lại — rồi xuất hoặc tạo thành PDF.</p>
+            <p>Bút, bút highlight, mũi tên, hình chữ nhật và văn bản trên canvas, với công cụ chọn để di chuyển hoặc xóa đối tượng. Cắt, xoay, lật, và hoàn tác/làm lại — rồi xuất ra hoặc chuyển thành PDF.</p>
             <div class="caps"><span class="cap">Bút &amp; bút highlight</span><span class="cap">Mũi tên &amp; hình khối</span><span class="cap">Văn bản</span><span class="cap">Chọn / di chuyển / xóa</span><span class="cap">Cắt / xoay / lật</span><span class="cap">Hoàn tác / làm lại</span><span class="cap pro">PRO · Xuất PNG/JPG</span><span class="cap">Tạo PDF</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Vẽ trên canvas trong Workspace"></video></div>
           </div>
@@ -326,84 +374,118 @@
     </section>
 
     <!-- ── panel vs full-screen ── -->
+    <!-- ── TYPICAL WORKFLOW ── -->
+    <section class="section" id="workflow">
+      <div class="section-label">Một quy trình làm việc điển hình</div>
+      <h2 class="section-title">Một tab. Trọn một ngày làm việc.</h2>
+      <p class="section-sub">Bạn không bao giờ phải rời khỏi trang đang mở — workspace di chuyển cùng bạn.</p>
+      <div class="flow">
+        <div class="flow-step"><span class="n">1</span><span class="t">Đang đọc một bài viết — <b>cắt</b> lại những phần quan trọng, kèm liên kết quay về nguồn.</span></div>
+        <div class="flow-step"><span class="n">2</span><span class="t">Mở một <b>tài liệu</b> trong bảng bên và bắt đầu viết, ngay cạnh trang đang mở.</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">Ghi lại <b>ghi chú</b> và một danh sách việc cần làm, ghim vào việc bạn đang thực hiện.</span></div>
+        <div class="flow-step"><span class="n">4</span><span class="t">Thả vào một tệp <b>PDF</b>, đọc và tìm kiếm mà không cần mở tab mới.</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">Tính toán số liệu trong một <b>bảng tính</b> — công thức, tổng, xong.</span></div>
+        <div class="flow-step"><span class="n">6</span><span class="t">Phác thảo ý tưởng trên canvas <b>vẽ</b> khi lời nói không đủ diễn đạt.</span></div>
+      </div>
+      <p class="flow-tail">Mọi thứ luôn ở cùng nhau — ngay trên thiết bị của bạn.</p>
+    </section>
+
     <section class="section" id="anywhere">
-      <div class="section-label">Phong cách NODUS</div>
-      <h2 class="section-title">Trong bảng bên khi bạn làm việc. Toàn màn hình khi cần thêm không gian.</h2>
-      <p class="section-sub">Workspace nằm trong bảng bên của trình duyệt, ngay cạnh mọi thứ bạn đang đọc. Cần thêm không gian? Mở bất kỳ tài liệu, bảng tính, PDF hoặc bản vẽ nào toàn màn hình trong tab riêng — rồi thu lại. Cùng một tệp, hai chế độ xem, tùy bạn quyết định.</p>
+      <div class="section-label">Luôn giữ mạch làm việc</div>
+      <h2 class="section-title">Workspace không bao giờ rời khỏi trang bạn đang làm việc.</h2>
+      <p class="section-sub">Workspace nằm trong bảng bên của trình duyệt, ngay cạnh bất cứ thứ gì bạn đang đọc. Cần thêm không gian? Mở bất kỳ tài liệu, bảng tính, PDF hoặc bản vẽ nào ở chế độ toàn màn hình trong tab riêng — rồi thu gọn lại. Cùng một tệp, hai chế độ xem, tùy bạn chọn.</p>
+      <div class="pmock" aria-hidden="true">
+        <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">Trang bạn đang đọc</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 Tài liệu</div><div class="it">📊 Bảng tính</div><div class="it">📕 PDF</div><div class="it">📝 Ghi chú</div><div class="it">✂️ Đoạn cắt</div><div class="it">🎨 Vẽ</div></div>
+      </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Bảng bên</div><div class="mode-d">Bên cạnh việc duyệt web — thu thập và chỉnh sửa mà không rời trang.</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Bảng bên</div><div class="mode-d">Song hành cùng việc duyệt web của bạn — thu thập và chỉnh sửa mà không rời khỏi trang.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Tab toàn màn hình</div><div class="mode-d">Một cú nhấp để có không gian tập trung — rồi quay lại bảng bên.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Tab toàn màn hình</div><div class="mode-d">Một cú nhấp để có thêm không gian tập trung — rồi quay lại bảng bên.</div></div>
+      </div>
+    </section>
+
+    <!-- ── SWAP TABLE ── -->
+    <section class="section">
+      <div class="section-label">Sự đánh đổi</div>
+      <h2 class="section-title">Bớt xoay xở. Làm được nhiều hơn.</h2>
+      <div class="swap">
+        <div class="swap-row"><div class="swap-cell old">12 tab trình duyệt</div><div class="swap-cell new">Một thanh bên duy nhất</div></div>
+        <div class="swap-row"><div class="swap-cell old">Văn phòng đám mây</div><div class="swap-cell new">Tệp cục bộ</div></div>
+        <div class="swap-row"><div class="swap-cell old">Sao chép &amp; dán</div><div class="swap-cell new">Đoạn cắt web</div></div>
+        <div class="swap-row"><div class="swap-cell old">Một ứng dụng riêng cho mỗi việc</div><div class="swap-cell new">Một workspace duy nhất</div></div>
+        <div class="swap-row"><div class="swap-cell old">Đăng nhập ở khắp mọi nơi</div><div class="swap-cell new">Không cần tài khoản</div></div>
       </div>
     </section>
 
     <!-- ── how it works ── -->
     <section class="section" id="how">
       <div class="section-label">Cách hoạt động</div>
-      <h2 class="section-title">Ba bước. Không cần cài đặt.</h2>
+      <h2 class="section-title">Ba bước. Không cần thiết lập.</h2>
       <div class="steps3">
         <div class="step"><div class="step-n">1</div><h3>Cài đặt &amp; ghim bảng bên</h3><p>Thêm tiện ích và ghim Workspace vào bảng bên của trình duyệt.</p></div>
-        <div class="step"><div class="step-n">2</div><h3>Tạo hoặc đưa tệp vào</h3><p>Bắt đầu một tài liệu, bảng tính hoặc ghi chú — hoặc kéo PDF, DOCX, XLSX và hình ảnh vào trực tiếp.</p></div>
-        <div class="step"><div class="step-n">3</div><h3>Lưu trên thiết bị của bạn</h3><p>Mọi thứ lưu cục bộ. Không cần tài khoản, không đám mây, hoạt động ngoại tuyến.</p></div>
+        <div class="step"><div class="step-n">2</div><h3>Tạo mới hoặc đưa tệp vào</h3><p>Bắt đầu một tài liệu, bảng tính hoặc ghi chú — hoặc kéo PDF, DOCX, XLSX và hình ảnh vào thẳng.</p></div>
+        <div class="step"><div class="step-n">3</div><h3>Luôn ở trên thiết bị của bạn</h3><p>Mọi thứ được lưu cục bộ. Không cần tài khoản, không đám mây, hoạt động ngay cả khi ngoại tuyến.</p></div>
       </div>
     </section>
 
     <!-- ── who it's for ── -->
     <section class="section" id="who">
       <div class="section-label">Dành cho ai</div>
-      <h2 class="section-title">Không gian làm việc riêng tư để tập trung.</h2>
+      <h2 class="section-title">Một bàn làm việc riêng tư cho công việc tập trung.</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>Người sáng lập solo &amp; doanh nghiệp nhỏ</h3><p>Lưu ghi chú, tài liệu và tệp cho từng khách hàng ở một nơi riêng tư — thay vì phải dùng năm ứng dụng khác nhau.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>Sinh viên</h3><p>Clip tài liệu đọc, soạn bài tập và giữ PDF cùng ghi chú bên cạnh nội dung đang học.</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>Nhà nghiên cứu</h3><p>Thu thập nguồn kèm liên kết, chú thích PDF, và tổ chức mọi thứ — hoàn toàn ngoại tuyến.</p></div>
-        <div class="who-card"><div class="ico">🔒</div><h3>Người coi trọng bảo mật</h3><p>Một văn phòng hoàn chỉnh không bao giờ chạm đến đám mây: không tài khoản, không theo dõi, không có gì rời thiết bị của bạn.</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>Người sáng lập độc lập &amp; doanh nghiệp siêu nhỏ</h3><p>Giữ ghi chú, tài liệu và tệp cho từng khách hàng trong một nơi riêng tư duy nhất — thay vì xoay xở giữa năm ứng dụng khác nhau.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>Học sinh, sinh viên</h3><p>Cắt tài liệu đọc, soạn bài tập, và giữ PDF cùng ghi chú song hành với những gì bạn đang học.</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>Nhà nghiên cứu</h3><p>Thu thập nguồn tài liệu kèm liên kết, chú thích PDF, và sắp xếp mọi thứ — hoàn toàn ngoại tuyến.</p></div>
+        <div class="who-card"><div class="ico">🔒</div><h3>Người coi trọng quyền riêng tư</h3><p>Một văn phòng trọn vẹn không bao giờ chạm đến đám mây: không cần tài khoản, không theo dõi, không có gì rời khỏi thiết bị của bạn.</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>Người dùng AI chuyên sâu</h3><p>Giữ tài liệu, ghi chú và tệp bạn xây dựng quanh các cuộc trò chuyện AI trong một nơi cục bộ duy nhất — ngay cạnh những công cụ bạn đã dùng cùng NODUS.</p></div>
       </div>
     </section>
 
     <!-- ── 4. PRIVACY / LOCAL-FIRST ── -->
     <section class="section" id="privacy">
       <div class="privacy">
-        <h2>Tệp của bạn ở lại với bạn.</h2>
-        <p class="lead">Thiết kế cục bộ trước tiên. Workspace chạy hoàn toàn trên thiết bị của bạn — không có máy chủ nào để tin tưởng.</p>
+        <h2>Tệp của bạn luôn ở bên bạn.</h2>
+        <p class="lead">Được thiết kế theo hướng cục bộ trước. Workspace chạy hoàn toàn trên thiết bị của bạn — không có máy chủ nào để phải tin tưởng.</p>
         <div class="priv-grid">
-          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% cục bộ — không có gì lên đám mây</div></div>
+          <div class="priv-item"><div class="ico">🔒</div><div class="t">100% cục bộ — không có gì gửi lên đám mây</div></div>
           <div class="priv-item"><div class="ico">🙅</div><div class="t">Không cần tài khoản</div></div>
           <div class="priv-item"><div class="ico">🔑</div><div class="t">Sao lưu mã hóa (AES-256)</div></div>
           <div class="priv-item"><div class="ico">🧩</div><div class="t">Không có mã từ xa</div></div>
         </div>
-        <div style="margin-top:26px;"><a href="/vi/workspace-privacy" class="btn btn-ghost">Đọc Chính sách Bảo mật đầy đủ →</a></div>
+        <div style="margin-top:26px;"><a href="/vi/workspace-privacy" class="btn btn-ghost">Đọc toàn bộ Chính sách Bảo mật →</a></div>
       </div>
     </section>
 
     <!-- ── 5. ECOSYSTEM + PRO ── -->
     <section class="section" id="pro">
-      <div class="section-label">Một gói đăng ký</div>
-      <p class="pro-line">Một gói đăng ký <b>NODUS PRO</b>, toàn bộ hệ sinh thái — NODUS AI + PH Radar + Workspace.</p>
+      <div class="section-label">Một gói duy nhất</div>
+      <p class="pro-line">Một gói đăng ký <b>NODUS PRO</b> duy nhất, mở khóa toàn bộ hệ sinh thái — NODUS AI + PH Radar + Workspace.</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO có sẵn ngay hôm nay — đã mở khóa <b style="color:var(--text)">NODUS AI</b> và <b style="color:var(--text)">PH Radar BI</b>, và Workspace sẽ tham gia ngay khi ra mắt.</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO đã có sẵn ngay hôm nay — hiện đã mở khóa <b style="color:var(--text)">NODUS AI</b> và <b style="color:var(--text)">PH Radar BI</b>, và Workspace sẽ gia nhập ngay khi ra mắt.</p>
 
       <div class="price-grid">
         <div class="price-card">
           <div class="price-name">PRO Hàng tháng</div>
-          <div class="price-amt">$4.50<span>/mo</span></div>
+          <div class="price-amt">$4.50<span>/tháng</span></div>
           <div class="price-note">Hủy bất cứ lúc nào</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Dùng PRO Hàng tháng</a>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Nhận PRO Hàng tháng</a>
         </div>
         <div class="price-card feat">
-          <div class="price-badge">SAVE 44%</div>
+          <div class="price-badge">TIẾT KIỆM 44%</div>
           <div class="price-name">PRO Hàng năm</div>
-          <div class="price-amt">$30<span>/yr</span></div>
-          <div class="price-note">Dùng thử 7-day miễn phí &#183; &#8776; $2.50/mo</div>
-          <a href="checkout.html" class="btn btn-primary price-cta">Dùng PRO Hàng năm</a>
+          <div class="price-amt">$30<span>/năm</span></div>
+          <div class="price-note">Dùng thử miễn phí 7 ngày &#183; &#8776; $2.50/tháng</div>
+          <a href="checkout.html" class="btn btn-primary price-cta">Nhận PRO Hàng năm</a>
         </div>
         <div class="price-card">
           <div class="price-name">PRO Trọn đời</div>
-          <div class="price-amt">$79<span> once</span></div>
+          <div class="price-amt">$79<span> một lần</span></div>
           <div class="price-note">Trả một lần, dùng mãi mãi</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Mua Trọn đời</a>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Nhận gói Trọn đời</a>
         </div>
       </div>
-      <p class="price-trust">Thanh toán an toàn qua Paddle &#183; Dùng thử 7-day miễn phí với gói hàng năm &#183; hủy bất cứ lúc nào.</p>
+      <p class="price-trust">Thanh toán an toàn qua Paddle &#183; dùng thử miễn phí 7 ngày với gói hàng năm &#183; hủy bất cứ lúc nào.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
@@ -415,16 +497,16 @@
           <div class="cmp-cell pro">Xuất DOCX, XLSX và hình ảnh</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Đọc, tìm kiếm, in và tải xuống PDF</div>
-          <div class="cmp-cell pro">Xuất trang PDF dưới dạng PNG</div>
+          <div class="cmp-cell">Đọc, tìm kiếm, in và tải PDF</div>
+          <div class="cmp-cell pro">Xuất một trang PDF thành PNG</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Web clip và ghi chú</div>
-          <div class="cmp-cell pro">Sao lưu &amp; khôi phục mã hóa</div>
+          <div class="cmp-cell">Đoạn cắt web và ghi chú</div>
+          <div class="cmp-cell pro">Sao lưu &amp; khôi phục có mã hóa</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Nhập tệp (kéo &amp; thả)</div>
-          <div class="cmp-cell pro">Báo thức hoạt động (thông báo tức thì)</div>
+          <div class="cmp-cell pro">Báo thức đang hoạt động (thông báo tức thì)</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Nhắc nhở (thông báo chuông)</div>
@@ -435,36 +517,43 @@
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">Quy tắc vàng: <b>đưa nội dung vào luôn miễn phí</b> — xuất/chuyển đổi và tự động hóa là PRO.</p>
+      <p class="golden">Quy tắc vàng: <b>đưa nội dung vào luôn miễn phí</b> — xuất/chuyển đổi và tự động hóa thuộc về PRO.</p>
     </section>
 
     <!-- ── FAQ ── -->
     <section class="section" id="faq">
-      <div class="section-label">FAQ</div>
-      <h2 class="section-title">Câu hỏi, được giải đáp.</h2>
+      <div class="section-label">Câu hỏi thường gặp</div>
+      <h2 class="section-title">Câu hỏi, đã có lời giải đáp.</h2>
       <div class="faq">
-        <details><summary>Tệp của tôi có được lưu trên đám mây không?</summary><p>Không. Mọi thứ bạn tạo hoặc nhập — tài liệu, bảng tính, PDF, clip, ghi chú và bản vẽ — đều được lưu cục bộ trên thiết bị của bạn, trong trình duyệt. Không có gì được tải lên chúng tôi hay bất kỳ ai khác.</p></details>
-        <details><summary>Dữ liệu của tôi được lưu ở đâu chính xác?</summary><p>Trong bộ nhớ cục bộ của chính trình duyệt, trên thiết bị của bạn — cùng nơi trình duyệt lưu dữ liệu trang web. Không có gì được gửi đến máy chủ NODUS, điều này biến Workspace thành giải pháp thay thế cục bộ cho các công cụ văn phòng đám mây: tệp của bạn luôn ở bên bạn và hoạt động ngoại tuyến.</p></details>
-        <details><summary>Tôi có cần tài khoản để sử dụng không?</summary><p>Không. Workspace hoạt động mà không cần đăng ký và không cần đăng nhập. Bạn chỉ nhập email nếu chọn kích hoạt NODUS PRO.</p></details>
-        <details><summary>Nó có hoạt động ngoại tuyến không?</summary><p>Có. Vì là cục bộ trước tiên, bạn có thể tạo, chỉnh sửa và đọc tệp mà không cần kết nối internet.</p></details>
-        <details><summary>Điều gì xảy ra nếu tôi chuyển máy tính hoặc cài lại trình duyệt?</summary><p>Dữ liệu của bạn chỉ tồn tại trên thiết bị đó, vì vậy việc di chuyển là do bạn quyết định: dùng tính năng Sao lưu &amp; Khôi phục mã hóa (tính năng PRO) để xuất mọi thứ ra tệp và mang về máy khác. Nếu không có bản sao lưu, dữ liệu cục bộ chỉ ở trên trình duyệt đó.</p></details>
-        <details><summary>Tôi có thể đưa những tệp nào vào?</summary><p>Kéo và thả PDF, DOCX, XLSX, TXT, hình ảnh và Markdown thẳng vào bảng bên. Quy tắc rất đơn giản: đưa nội dung vào luôn miễn phí.</p></details>
-        <details><summary>Tôi có thể chỉnh sửa tệp Word và Excel không?</summary><p>Bạn có thể mở chúng — DOCX được nhập dưới dạng văn bản thuần và XLSX dưới dạng giá trị (định dạng và công thức được đơn giản hóa). Mở được mà không có định dạng còn hơn là không mở được. Xuất lại sang DOCX/XLSX (và hình ảnh) là tính năng PRO.</p></details>
-        <details><summary>Miễn phí và PRO có gì khác nhau?</summary><p>Miễn phí: tạo và chỉnh sửa tài liệu và bảng tính, đọc/tìm kiếm/in PDF, web clip, ghi chú, nhắc nhở, nhập tệp, và 16 ngôn ngữ. PRO bổ sung xuất (DOCX, XLSX, PNG), PDF-sang-hình ảnh, sao lưu mã hóa, báo thức hoạt động với thông báo, và thao tác hàng loạt.</p></details>
-        <details><summary>PRO có giá bao nhiêu?</summary><p>$4.50/tháng, $30/năm (≈ $2.50/mo) hoặc $79 một lần (trọn đời). Thanh toán được xử lý an toàn bởi Paddle, với dùng thử 7-day miễn phí cho gói hàng năm và bảo đảm hoàn tiền 14-day.</p></details>
-        <details><summary>Một gói đăng ký cho tất cả mọi thứ?</summary><p>Có — một gói đăng ký NODUS PRO duy nhất mở khóa PRO trên toàn bộ hệ sinh thái NODUS: NODUS AI, PH Radar và Workspace.</p></details>
-        <details><summary>Tôi có thể in hoặc lưu tác phẩm dưới dạng PDF không?</summary><p>Có. Tài liệu và bảng tính có thể được in hoặc chuyển thành PDF — cả hai đều miễn phí — và PDF mở ngay trong trình xem tích hợp.</p></details>
-        <details><summary>Nó có an toàn không? "Không có mã từ xa" có nghĩa là gì?</summary><p>Toàn bộ mã của tiện ích được đóng gói bên trong — không có gì được tải xuống và chạy từ máy chủ. Bản sao lưu của bạn được mã hóa bằng AES-256, và chúng tôi không bao giờ đọc, truyền hay phân tích nội dung tệp của bạn.</p></details>
-        <details><summary>Nó hỗ trợ những trình duyệt nào?</summary><p>Chrome, Firefox và các trình duyệt dựa trên Chromium (Edge, Brave và các trình duyệt khác). Nó nằm trong bảng bên của trình duyệt, bên cạnh mọi thứ bạn đang làm việc.</p></details>
-        <details><summary>Làm thế nào để nhận hỗ trợ hoặc báo cáo sự cố?</summary><p>Gửi email cho chúng tôi tại <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — chúng tôi đọc mọi tin nhắn.</p></details>
-        <details><summary>Tôi có thể tải nó ở đâu?</summary><p>NODUS Workspace hiện đã có trên Chrome Web Store và Firefox Add-ons.</p></details>
+        <details><summary>Tệp của tôi có được lưu trên đám mây không?</summary><p>Không. Mọi thứ bạn tạo hoặc nhập vào — tài liệu, bảng tính, PDF, đoạn cắt, ghi chú và bản vẽ — đều được lưu cục bộ trên thiết bị của bạn, ngay trong trình duyệt. Không có gì được tải lên chúng tôi hay bất kỳ ai khác.</p></details>
+        <details><summary>Dữ liệu của tôi được lưu ở đâu chính xác?</summary><p>Trong bộ nhớ cục bộ riêng của trình duyệt, ngay trên thiết bị của bạn — cùng nơi trình duyệt lưu dữ liệu trang web. Không có gì được gửi đến máy chủ của NODUS, điều này biến Workspace thành một giải pháp thay thế cục bộ trước cho các công cụ văn phòng đám mây: tệp của bạn luôn ở bên bạn và hoạt động ngay cả khi ngoại tuyến.</p></details>
+        <details><summary>Tôi có cần tài khoản để sử dụng không?</summary><p>Không. Workspace hoạt động mà không cần đăng ký hay đăng nhập. Bạn chỉ nhập email nếu chọn kích hoạt NODUS PRO.</p></details>
+        <details><summary>Nó có hoạt động khi ngoại tuyến không?</summary><p>Có. Vì được thiết kế theo hướng cục bộ trước, bạn có thể tạo, chỉnh sửa và đọc tệp mà không cần kết nối internet.</p></details>
+        <details><summary>Điều gì xảy ra nếu tôi đổi máy tính hoặc cài lại trình duyệt?</summary><p>Dữ liệu của bạn chỉ tồn tại trên thiết bị đó, nên việc di chuyển là tùy bạn: dùng tính năng Sao lưu &amp; Khôi phục mã hóa (tính năng PRO) để xuất mọi thứ ra một tệp và mang nó sang máy khác. Nếu không sao lưu, dữ liệu cục bộ chỉ ở lại trên trình duyệt đó.</p></details>
+        <details><summary>Tôi có thể đưa những loại tệp nào vào?</summary><p>Kéo và thả PDF, DOCX, XLSX, TXT, hình ảnh và Markdown thẳng vào bảng bên. Quy tắc rất đơn giản: đưa nội dung vào luôn miễn phí.</p></details>
+        <details><summary>Tôi có thể chỉnh sửa tệp Word và Excel không?</summary><p>Bạn có thể mở chúng — DOCX được nhập vào dưới dạng văn bản thuần và XLSX dưới dạng giá trị (định dạng và công thức được đơn giản hóa). Mở được mà không giữ định dạng vẫn tốt hơn là không mở được gì cả. Xuất ngược lại thành DOCX/XLSX (và hình ảnh) là tính năng PRO.</p></details>
+        <details><summary>Cái gì miễn phí và cái gì thuộc PRO?</summary><p>Miễn phí: tạo và chỉnh sửa tài liệu, bảng tính, đọc/tìm kiếm/in PDF, đoạn cắt web, ghi chú, nhắc nhở, nhập tệp, và 16 ngôn ngữ. PRO bổ sung xuất tệp (DOCX, XLSX, PNG), chuyển PDF thành hình ảnh, sao lưu mã hóa, báo thức đang hoạt động kèm thông báo, và thao tác hàng loạt.</p></details>
+        <details><summary>PRO có giá bao nhiêu?</summary><p>$4.50/tháng, $30/năm (≈ $2.50/tháng) hoặc $79 một lần (trọn đời). Thanh toán được xử lý an toàn bởi Paddle, kèm dùng thử miễn phí 7 ngày với gói hàng năm và bảo hành hoàn tiền trong 14 ngày.</p></details>
+        <details><summary>Một gói đăng ký cho tất cả?</summary><p>Đúng vậy — một gói đăng ký NODUS PRO duy nhất mở khóa PRO trên toàn bộ hệ sinh thái NODUS: NODUS AI, PH Radar và Workspace.</p></details>
+        <details><summary>Tôi có thể in hoặc lưu công việc của mình thành PDF không?</summary><p>Có. Tài liệu và bảng tính có thể được in hoặc chuyển thành PDF — cả hai đều miễn phí — và PDF mở ngay trong trình xem tích hợp sẵn.</p></details>
+        <details><summary>Có an toàn không? "Không có mã từ xa" nghĩa là gì?</summary><p>Toàn bộ mã của tiện ích được đóng gói sẵn bên trong — không có gì được tải xuống và chạy từ một máy chủ. Các bản sao lưu của bạn được mã hóa bằng AES-256, và chúng tôi không bao giờ đọc, truyền tải hay phân tích nội dung tệp của bạn.</p></details>
+        <details><summary>Nó hỗ trợ những trình duyệt nào?</summary><p>Chrome, Firefox và các trình duyệt nền tảng Chromium (Edge, Brave và những trình duyệt khác). Nó nằm trong bảng bên của trình duyệt, ngay cạnh những gì bạn đang làm việc.</p></details>
+        <details><summary>Làm sao để tôi nhận trợ giúp hoặc báo cáo sự cố?</summary><p>Gửi email cho chúng tôi tại <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> — chúng tôi đọc mọi tin nhắn.</p></details>
+        <details><summary>Tôi có thể tải nó ở đâu?</summary><p>NODUS Workspace hiện đã có sẵn trên Chrome Web Store và Firefox Add-ons.</p></details>
       </div>
+    </section>
+
+    <!-- ── MANIFESTO ── -->
+    <section class="manifesto">
+      <h2>Trình duyệt của bạn chính là nơi công việc <span class="accent">đã đang diễn ra</span>.</h2>
+      <div class="words"><span>Nghiên cứu</span><span>Viết lách</span><span>Đọc</span><span>Lên kế hoạch</span><span>Sáng tạo</span></div>
+      <p>Vậy tại sao vẫn phải nhảy qua nhảy lại giữa các ứng dụng? Hãy gom mọi thứ lại một mối. Giữ mọi thứ cục bộ. <b style="color:var(--text)">Làm chủ workspace của bạn.</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
-      <span class="badge"><span class="dot"></span> Đã có trên Chrome & Firefox</span>
-      <h2>Bắt đầu trong vài giây.</h2>
+      <span class="badge"><span class="dot"></span> Hiện đã có trên Chrome & Firefox</span>
+      <h2>Bắt đầu chỉ trong vài giây.</h2>
       <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Cài đặt trên Chrome</a>
     </section>
 
@@ -473,16 +562,16 @@
   <footer>
     <div>
       <a href="https://nodus-ai.app">Trang chủ NODUS</a>
-      <a href="/vi/workspace-privacy">Bảo mật</a>
+      <a href="/vi/workspace-privacy">Quyền riêng tư</a>
       <a href="https://nodus-ai.app/terms">Điều khoản</a>
       <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Hỗ trợ</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. Bảo lưu mọi quyền.</div>
     <!-- research:start -->
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
-      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Research</span>
+      <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Nghiên cứu</span>
       <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Một cỗ máy xử lý ý định, không phải ngôn ngữ</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Định dạng tệp vừa nhỏ gọn vừa có thể điều hướng</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Một định dạng tệp vừa gọn nhẹ vừa dễ điều hướng</span></span>
     </div>
     <!-- research:end -->
   </footer>
