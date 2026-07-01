@@ -98,6 +98,10 @@
     .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
     .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
     .why .punch b{color:var(--accent)}
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:760px;margin:36px auto 0}
+    .stat{flex:1 1 110px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px}
+    .stat .n{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:900;color:var(--accent);line-height:1.1}
+    .stat .l{font-size:12px;color:var(--sub);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
     /* ── typical workflow ── */
     .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
     .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
@@ -262,7 +266,7 @@
     <header class="hero">
       <div class="hero-top">
         <span class="badge"><span class="dot"></span> Kini di Chrome & Firefox</span>
-        <h1>Kantor Anda, <span class="accent">lokal dan privat</span>, langsung di browser Anda.</h1>
+        <h1>Ubah browser Anda menjadi <span class="accent">workspace Anda</span>.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -290,6 +294,13 @@
         </div>
         <p class="punch">NODUS Workspace menyatukan semuanya dalam <b>satu sidebar local-first yang mengikuti Anda ke mana pun</b> — jadi Anda berhenti berpindah-pindah tab dan <b>tetap fokus dalam konteks</b>.</p>
       </div>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">modul</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">lokal</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">akun</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">penyimpanan cloud</div></div>
+        <div class="stat"><div class="n">✓</div><div class="l">berfungsi offline</div></div>
+      </div>
     </section>
 
     <!-- ── 2. WHAT IT IS ── -->
@@ -303,7 +314,7 @@
     <section class="section" id="features">
       <div class="section-label">Apa saja isinya</div>
       <h2 class="section-title">Workspace sungguhan, bukan sekadar penyimpanan.</h2>
-      <p class="section-sub">Tulis dokumen, buat spreadsheet, dan baca PDF di dalam panel, klip dari halaman mana pun, serta jaga catatan dan berkas Anda tetap rapi, semua tanpa meninggalkan tab yang sedang Anda buka.</p>
+      <p class="section-sub">Buat. Baca. Hitung. Klip. Atur. <b style="color:var(--text)">Tanpa berpindah tab.</b></p>
 
       <!-- Capture -->
       <div class="pillar">
@@ -387,7 +398,7 @@
         <div class="flow-step"><span class="n">5</span><span class="t">Olah angka di <b>spreadsheet</b> — rumus, total, selesai.</span></div>
         <div class="flow-step"><span class="n">6</span><span class="t">Sketsakan ide di kanvas <b>gambar</b> saat kata-kata saja tidak cukup.</span></div>
       </div>
-      <p class="flow-tail">Semuanya tetap menyatu — di perangkat Anda.</p>
+      <p class="flow-tail">Semuanya tetap menyatu — di perangkat Anda. Di akhir hari, semuanya sudah rapi tersusun.</p>
     </section>
 
     <section class="section" id="anywhere">

@@ -98,6 +98,10 @@
     .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
     .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
     .why .punch b{color:var(--accent)}
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:760px;margin:36px auto 0}
+    .stat{flex:1 1 110px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px}
+    .stat .n{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:900;color:var(--accent);line-height:1.1}
+    .stat .l{font-size:12px;color:var(--sub);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
     /* ── typical workflow ── */
     .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
     .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
@@ -262,7 +266,7 @@
     <header class="hero">
       <div class="hero-top">
         <span class="badge"><span class="dot"></span> 现已支持 Chrome 与 Firefox</span>
-        <h1>你的办公室，<span class="accent">本地且私密</span>，就在浏览器里。</h1>
+        <h1>把浏览器变成<span class="accent">你的工作区</span>。</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -290,6 +294,13 @@
         </div>
         <p class="punch">NODUS Workspace 把这一切都整合进 <b>一个本地优先、随处跟随你的侧边栏</b>——让你不再来回切换标签页，<b>始终保持专注</b>。</p>
       </div>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">个模块</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">本地</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">账号</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">云存储</div></div>
+        <div class="stat"><div class="n">✓</div><div class="l">离线可用</div></div>
+      </div>
     </section>
 
     <!-- ── 2. WHAT IT IS ── -->
@@ -303,7 +314,7 @@
     <section class="section" id="features">
       <div class="section-label">里面有什么</div>
       <h2 class="section-title">一个真正的工作区，而不只是存储空间。</h2>
-      <p class="section-sub">在面板中撰写文档、制作电子表格、阅读 PDF，从任意页面剪藏内容，并整理好你的笔记与文件——完全不用离开当前标签页。</p>
+      <p class="section-sub">创作。阅读。计算。剪藏。整理。<b style="color:var(--text)">全程无需切换标签页。</b></p>
 
       <!-- Capture -->
       <div class="pillar">
@@ -387,7 +398,7 @@
         <div class="flow-step"><span class="n">5</span><span class="t">在<b>电子表格</b>中处理数字——公式、求和，一气呵成。</span></div>
         <div class="flow-step"><span class="n">6</span><span class="t">当文字不够用时，在<b>绘图</b>画布上勾勒一个想法。</span></div>
       </div>
-      <p class="flow-tail">一切都留在一起——在你的设备上。</p>
+      <p class="flow-tail">一切都留在一起——在你的设备上。一天结束时，所有内容都已经整理妥当。</p>
     </section>
 
     <section class="section" id="anywhere">

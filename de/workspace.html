@@ -98,6 +98,10 @@
     .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
     .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
     .why .punch b{color:var(--accent)}
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:760px;margin:36px auto 0}
+    .stat{flex:1 1 110px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px}
+    .stat .n{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:900;color:var(--accent);line-height:1.1}
+    .stat .l{font-size:12px;color:var(--sub);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
     /* ── typical workflow ── */
     .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
     .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
@@ -262,7 +266,7 @@
     <header class="hero">
       <div class="hero-top">
         <span class="badge"><span class="dot"></span> Jetzt für Chrome & Firefox</span>
-        <h1>Dein Büro, <span class="accent">lokal und privat</span>, direkt in deinem Browser.</h1>
+        <h1>Verwandle deinen Browser in <span class="accent">deinen Workspace</span>.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -290,6 +294,13 @@
         </div>
         <p class="punch">NODUS Workspace bringt alles in <b>eine lokale Seitenleiste, die dich überallhin begleitet</b> — damit du das Tab-Hopping beendest und <b>im Kontext bleibst</b>.</p>
       </div>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">Module</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">lokal</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">Konten</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">Cloud-Speicher</div></div>
+        <div class="stat"><div class="n">✓</div><div class="l">funktioniert offline</div></div>
+      </div>
     </section>
 
     <!-- ── 2. WHAT IT IS ── -->
@@ -303,7 +314,7 @@
     <section class="section" id="features">
       <div class="section-label">Was steckt drin</div>
       <h2 class="section-title">Ein echter Workspace, nicht nur Speicher.</h2>
-      <p class="section-sub">Schreibe Dokumente, erstelle Tabellen und lies PDFs im Panel, clippe von jeder Seite, und halte deine Notizen und Dateien organisiert — ganz ohne den Tab zu verlassen, auf dem du bist.</p>
+      <p class="section-sub">Erstellen. Lesen. Rechnen. Clippen. Organisieren. <b style="color:var(--text)">Ohne den Tab zu wechseln.</b></p>
 
       <!-- Capture -->
       <div class="pillar">
@@ -387,7 +398,7 @@
         <div class="flow-step"><span class="n">5</span><span class="t">Rechne Zahlen in einer <b>Tabelle</b> durch — Formeln, Summen, erledigt.</span></div>
         <div class="flow-step"><span class="n">6</span><span class="t">Skizziere eine Idee auf der <b>Zeichenfläche</b>, wenn Worte nicht reichen.</span></div>
       </div>
-      <p class="flow-tail">Alles bleibt zusammen — auf deinem Gerät.</p>
+      <p class="flow-tail">Alles bleibt zusammen — auf deinem Gerät. Am Ende des Tages ist bereits alles organisiert.</p>
     </section>
 
     <section class="section" id="anywhere">

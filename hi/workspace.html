@@ -98,6 +98,10 @@
     .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
     .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
     .why .punch b{color:var(--accent)}
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:760px;margin:36px auto 0}
+    .stat{flex:1 1 110px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px}
+    .stat .n{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:900;color:var(--accent);line-height:1.1}
+    .stat .l{font-size:12px;color:var(--sub);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
     /* ── typical workflow ── */
     .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
     .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
@@ -262,7 +266,7 @@
     <header class="hero">
       <div class="hero-top">
         <span class="badge"><span class="dot"></span> अब Chrome और Firefox पर उपलब्ध</span>
-        <h1>आपका ऑफिस, <span class="accent">लोकल और प्राइवेट</span>, सीधे आपके ब्राउज़र में।</h1>
+        <h1>अपने ब्राउज़र को बनाएँ <span class="accent">अपना वर्कस्पेस</span>।</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -290,6 +294,13 @@
         </div>
         <p class="punch">NODUS Workspace इन सबको <b>एक लोकल-फ़र्स्ट साइडबार में</b> ले आता है जो हर जगह आपके साथ रहता है — ताकि आप टैब-हॉपिंग बंद करें और <b>अपने संदर्भ में बने रहें</b>।</p>
       </div>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">मॉड्यूल</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">लोकल</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">अकाउंट</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">क्लाउड स्टोरेज</div></div>
+        <div class="stat"><div class="n">✓</div><div class="l">ऑफ़लाइन काम करता है</div></div>
+      </div>
     </section>
 
     <!-- ── 2. WHAT IT IS ── -->
@@ -303,7 +314,7 @@
     <section class="section" id="features">
       <div class="section-label">अंदर क्या है</div>
       <h2 class="section-title">एक असली वर्कस्पेस, सिर्फ स्टोरेज नहीं।</h2>
-      <p class="section-sub">पैनल में डॉक्यूमेंट लिखें, स्प्रेडशीट बनाएँ और PDF पढ़ें, किसी भी पेज से क्लिप करें, और अपने नोट्स व फ़ाइलों को व्यवस्थित रखें — बिना उस टैब को छोड़े जिस पर आप हैं।</p>
+      <p class="section-sub">बनाएँ। पढ़ें। हिसाब लगाएँ। क्लिप करें। व्यवस्थित करें। <b style="color:var(--text)">बिना टैब बदले।</b></p>
 
       <!-- Capture -->
       <div class="pillar">
@@ -387,7 +398,7 @@
         <div class="flow-step"><span class="n">5</span><span class="t">एक <b>स्प्रेडशीट</b> में आँकड़े निपटाएँ — फॉर्मूला, टोटल, हो गया।</span></div>
         <div class="flow-step"><span class="n">6</span><span class="t">जब शब्द काफी न हों तो <b>ड्रॉइंग</b> कैनवास पर एक आइडिया स्केच करें।</span></div>
       </div>
-      <p class="flow-tail">सब कुछ साथ रहता है — आपके डिवाइस पर।</p>
+      <p class="flow-tail">सब कुछ साथ रहता है — आपके डिवाइस पर। दिन के अंत तक, सब कुछ पहले से ही व्यवस्थित होता है।</p>
     </section>
 
     <section class="section" id="anywhere">

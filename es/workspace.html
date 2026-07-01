@@ -98,6 +98,10 @@
     .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
     .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
     .why .punch b{color:var(--accent)}
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:760px;margin:36px auto 0}
+    .stat{flex:1 1 110px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px}
+    .stat .n{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:900;color:var(--accent);line-height:1.1}
+    .stat .l{font-size:12px;color:var(--sub);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
     /* ── typical workflow ── */
     .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
     .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
@@ -262,7 +266,7 @@
     <header class="hero">
       <div class="hero-top">
         <span class="badge"><span class="dot"></span> Ya en Chrome y Firefox</span>
-        <h1>Tu oficina, <span class="accent">local y privada</span>, directamente en tu navegador.</h1>
+        <h1>Convierte tu navegador en <span class="accent">tu espacio de trabajo</span>.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -290,6 +294,13 @@
         </div>
         <p class="punch">NODUS Workspace lo reúne todo en <b>una única barra lateral local que te acompaña a todas partes</b> — para que dejes de saltar entre pestañas y <b>te mantengas en contexto</b>.</p>
       </div>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">módulos</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">local</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">cuentas</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">almacenamiento en la nube</div></div>
+        <div class="stat"><div class="n">✓</div><div class="l">funciona sin conexión</div></div>
+      </div>
     </section>
 
     <!-- ── 2. WHAT IT IS ── -->
@@ -303,7 +314,7 @@
     <section class="section" id="features">
       <div class="section-label">Qué incluye</div>
       <h2 class="section-title">Un espacio de trabajo real, no solo almacenamiento.</h2>
-      <p class="section-sub">Escribe documentos, crea hojas de cálculo y lee PDF en el panel, recorta desde cualquier página, y mantén tus notas y archivos organizados, todo sin salir de la pestaña en la que estás.</p>
+      <p class="section-sub">Escribe. Lee. Calcula. Recorta. Organiza. <b style="color:var(--text)">Sin cambiar de pestaña.</b></p>
 
       <!-- Capture -->
       <div class="pillar">
@@ -387,7 +398,7 @@
         <div class="flow-step"><span class="n">5</span><span class="t">Trabaja con números en una <b>hoja de cálculo</b> — fórmulas, totales, listo.</span></div>
         <div class="flow-step"><span class="n">6</span><span class="t">Esboza una idea en el lienzo de <b>dibujo</b> cuando las palabras no bastan.</span></div>
       </div>
-      <p class="flow-tail">Todo permanece junto — en tu dispositivo.</p>
+      <p class="flow-tail">Todo permanece junto — en tu dispositivo. Al final del día, todo ya está organizado.</p>
     </section>
 
     <section class="section" id="anywhere">

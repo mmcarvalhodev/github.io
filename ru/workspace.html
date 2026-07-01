@@ -98,6 +98,10 @@
     .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
     .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
     .why .punch b{color:var(--accent)}
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:760px;margin:36px auto 0}
+    .stat{flex:1 1 110px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px}
+    .stat .n{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:900;color:var(--accent);line-height:1.1}
+    .stat .l{font-size:12px;color:var(--sub);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
     /* ── typical workflow ── */
     .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
     .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
@@ -262,7 +266,7 @@
     <header class="hero">
       <div class="hero-top">
         <span class="badge"><span class="dot"></span> Уже в Chrome и Firefox</span>
-        <h1>Ваш офис, <span class="accent">локальный и приватный</span>, прямо в браузере.</h1>
+        <h1>Превратите браузер в <span class="accent">ваше рабочее пространство</span>.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -290,6 +294,13 @@
         </div>
         <p class="punch">NODUS Workspace собирает всё в <b>одну локальную боковую панель, которая следует за вами повсюду</b> — чтобы вы перестали прыгать по вкладкам и <b>оставались в контексте</b>.</p>
       </div>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">модулей</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">локально</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">аккаунтов</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">облачного хранения</div></div>
+        <div class="stat"><div class="n">✓</div><div class="l">работает офлайн</div></div>
+      </div>
     </section>
 
     <!-- ── 2. WHAT IT IS ── -->
@@ -303,7 +314,7 @@
     <section class="section" id="features">
       <div class="section-label">Что внутри</div>
       <h2 class="section-title">Настоящий workspace, а не просто хранилище.</h2>
-      <p class="section-sub">Пишите документы, создавайте таблицы и читайте PDF в панели, клипуйте с любой страницы, храните заметки и файлы в порядке — и всё это не покидая текущую вкладку.</p>
+      <p class="section-sub">Создавайте. Читайте. Считайте. Клипуйте. Организуйте. <b style="color:var(--text)">Не переключая вкладок.</b></p>
 
       <!-- Capture -->
       <div class="pillar">
@@ -387,7 +398,7 @@
         <div class="flow-step"><span class="n">5</span><span class="t">Считаете цифры в <b>таблице</b> — формулы, итоги, готово.</span></div>
         <div class="flow-step"><span class="n">6</span><span class="t">Набрасываете идею на холсте для <b>рисования</b>, когда слов не хватает.</span></div>
       </div>
-      <p class="flow-tail">Всё остаётся вместе — на вашем устройстве.</p>
+      <p class="flow-tail">Всё остаётся вместе — на вашем устройстве. К концу дня всё уже организовано.</p>
     </section>
 
     <section class="section" id="anywhere">

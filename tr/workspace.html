@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NODUS Workspace — Tarayıcınızda, yerel-öncelikli ofisiniz</title>
-  <meta name="description" content="Belgeler, elektronik tablolar, PDF'ler, web kırpıntıları ve notlar — hepsi yerel, bulut yok, hesap yok. NODUS ekosisteminin bir parçası. Artık Chrome Web Store'da.">
+  <title>NODUS Workspace — Tarayıcınızdaki yerel-öncelikli ofisiniz</title>
+  <meta name="description" content="Belgeler, e-tablolar, PDF'ler, web kırpmaları ve notlar — tamamı yerel, bulut yok, hesap yok. NODUS ekosisteminin bir parçası. Artık Chrome Web Store'da.">
   <link rel="canonical" href="https://nodus-ai.app/tr/workspace" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e1117'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23facc15'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230e1117'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NODUS Workspace — tarayıcınızda, yerel-öncelikli ofisiniz">
-  <meta property="og:description" content="Belgeler, elektronik tablolar, PDF'ler, web kırpıntıları ve notlar — hepsi yerel, bulut yok, hesap yok. Artık Chrome'da.">
+  <meta property="og:title" content="NODUS Workspace — tarayıcınızdaki yerel-öncelikli ofisiniz">
+  <meta property="og:description" content="Belgeler, e-tablolar, PDF'ler, web kırpmaları ve notlar — tamamı yerel, bulut yok, hesap yok. Artık Chrome'da.">
   <meta property="og:url" content="https://nodus-ai.app/tr/workspace">
   <meta property="og:image" content="https://nodus-ai.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -98,6 +98,10 @@
     .frag span{font-size:13.5px;color:var(--sub);background:var(--bg-soft);border:1px solid var(--line2);border-radius:8px;padding:8px 14px}
     .why .punch{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:800;color:var(--text);line-height:1.4;margin-top:6px}
     .why .punch b{color:var(--accent)}
+    .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:760px;margin:36px auto 0}
+    .stat{flex:1 1 110px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px}
+    .stat .n{font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:900;color:var(--accent);line-height:1.1}
+    .stat .l{font-size:12px;color:var(--sub);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
     /* ── typical workflow ── */
     .flow{max-width:720px;margin:36px auto 0;display:flex;flex-direction:column;gap:8px}
     .flow-step{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px}
@@ -250,7 +254,7 @@
         <a href="#features" class="nav-link">Özellikler</a>
         <a href="#privacy" class="nav-link">Gizlilik</a>
         <a href="#pro" class="nav-link">PRO</a>
-        <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener" class="nav-link highlight">Kur</a>
+        <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener" class="nav-link highlight">Yükle</a>
       </div>
       <a href="https://nodus-ai.app" class="nav-back">← NODUS'a dön</a>
     </div>
@@ -261,8 +265,8 @@
     <!-- ── 1. HERO ── -->
     <header class="hero">
       <div class="hero-top">
-        <span class="badge"><span class="dot"></span> Artık Chrome & Firefox'ta</span>
-        <h1>Ofisiniz, <span class="accent">yerel ve özel</span>, tarayıcınızın tam içinde.</h1>
+        <span class="badge"><span class="dot"></span> Artık Chrome ve Firefox'ta</span>
+        <h1>Tarayıcınızı <span class="accent">çalışma alanınıza</span> dönüştürün.</h1>
       </div>
       <div class="hero-media">
         <div class="demo">
@@ -270,11 +274,11 @@
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="sub">Belgeler, elektronik tablolar, PDF'ler, web kırpıntıları ve notlar, tarayıcınızın yan panelinde. Her şey cihazınızda — bulut yok, hesap yok.</p>
+        <p class="sub">Belgeler, e-tablolar, PDF'ler, web kırpmaları ve notlar, tarayıcınızın yan panelinde. Her şey cihazınızda — bulut yok, hesap yok.</p>
         <div class="hero-btns">
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome'a kur</a>
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome'a yükle</a>
           <a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Firefox'ta edinin</a>
-          <a href="#features" class="btn btn-ghost">İçinde neler var, görün ↓</a>
+          <a href="#features" class="btn btn-ghost">İçinde neler var ↓</a>
         </div>
         <div style="margin-top:22px;display:flex;justify-content:center;"><a href="https://www.producthunt.com/products/nodus-workspace?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nodus-workspace" target="_blank" rel="noopener noreferrer"><img alt="NODUS Workspace - Your local-first productivity workspace | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1181992&amp;theme=light&amp;t=1782833178993"></a></div>
       </div>
@@ -286,16 +290,23 @@
       <h2 class="section-title">İşiniz sekmeler arasında dağılmış durumda.</h2>
       <div class="why">
         <div class="frag">
-          <span>Yazı yazmak için bir sekme</span><span>PDF'ler için bir sekme</span><span>Notlar için bir sekme</span><span>Dosyalar için bir sekme</span><span>Web kırpma için bir sekme</span>
+          <span>Yazı için bir sekme</span><span>PDF'ler için bir sekme</span><span>Notlar için bir sekme</span><span>Dosyalar için bir sekme</span><span>Web kırpma için bir sekme</span>
         </div>
-        <p class="punch">NODUS Workspace hepsini <b>her yerde sizi takip eden tek, yerel-öncelikli bir yan panelde</b> birleştirir — böylece sekme aramayı bırakır ve <b>bağlamda kalırsınız</b>.</p>
+        <p class="punch">NODUS Workspace hepsini <b>her yerde sizi takip eden tek bir yerel-öncelikli kenar çubuğunda</b> toplar — böylece sekme değiştirmeyi bırakır ve <b>bağlamda kalırsınız</b>.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">7</div><div class="l">modül</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">yerel</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">hesap</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">bulut depolama</div></div>
+        <div class="stat"><div class="n">✓</div><div class="l">çevrimdışı çalışır</div></div>
       </div>
     </section>
 
     <!-- ── 2. WHAT IT IS ── -->
     <section class="section">
       <div class="whatis">
-        NODUS Workspace, tarayıcınızın <b>yan panelini</b>, okuduğunuz her şeyin hemen yanında duran küçük, özel bir ofise dönüştürür. Sadece depolama değil: gerçek bir <b>belge düzenleyici</b> (başlıklar, biçimlendirme, tablolar, görseller), toplamlarıyla ve formülleriyle bir <b>elektronik tablo</b> ve yerleşik bir <b>PDF okuyucu</b> elde edersiniz — böylece <b>bulunduğunuz sekmeden çıkmadan</b> yazabilir, hesap yapabilir ve okuyabilirsiniz. Bunların çevresinde, <b>web kırpıntılarınızı</b>, <b>notlarınızı</b> ve kontrol listelerinizi, tüm <b>dosyalarınızı</b> klasörler halinde tutacağınız tek bir yer. Her şey <b>cihazınızda</b> oluşturulur ve kaydedilir: bulut yok, hesap yok, ve çevrimdışı çalışır.
+        NODUS Workspace, tarayıcınızın <b>yan panelini</b> okuduğunuz her şeyin hemen yanında duran küçük, özel bir ofise dönüştürür. Sadece depolama değil: gerçek bir <b>belge düzenleyici</b> (başlıklar, biçimlendirme, tablolar, görseller), formüller ve toplamlarıyla bir <b>e-tablo</b> ve yerleşik bir <b>PDF okuyucu</b> alırsınız; böylece <b>bulunduğunuz sekmeden ayrılmadan</b> yazabilir, hesaplayabilir ve okuyabilirsiniz. Bunların etrafında <b>web kırpmalarınızı</b>, <b>notlarınızı</b> ve yapılacaklar listelerinizi, tüm <b>dosyalarınızı</b> klasörler halinde tutabileceğiniz tek bir yer bulunur. Her şey <b>cihazınızda</b> oluşturulur ve kaydedilir: bulut yok, hesap yok ve çevrimdışı çalışır.
       </div>
     </section>
 
@@ -303,17 +314,17 @@
     <section class="section" id="features">
       <div class="section-label">İçinde neler var</div>
       <h2 class="section-title">Sadece depolama değil, gerçek bir çalışma alanı.</h2>
-      <p class="section-sub">Panelde belgeler yazın, elektronik tablolar oluşturun ve PDF'ler okuyun, herhangi bir sayfadan kırpın, notlarınızı ve dosyalarınızı düzenli tutun — bulunduğunuz sekmeden hiç çıkmadan.</p>
+      <p class="section-sub">Oluşturun. Okuyun. Hesaplayın. Kırpın. Düzenleyin. <b style="color:var(--text)">Sekme değiştirmeden.</b></p>
 
       <!-- Capture -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Yakala <span class="ln"></span></div>
-        <p class="pillar-sub">Web'den her şeyi alın ve saklayın, geldiği yere bağlantısıyla birlikte.</p>
+        <p class="pillar-sub">Web'den her şeyi alın ve nereden geldiğine dair bir bağlantıyla saklayın.</p>
         <div class="feat-grid one">
           <div class="feature">
             <h3>Web'i kırpın — metin veya görsel</h3>
-            <p>Herhangi bir sayfada metin veya görsel seçin ve Workspace'e gönderin. Her kırpıntı, kaynağına geri dönen bağlantıyı korur — böylece daha sonra bir belgeye veya nota bırakmaya hazırdır.</p>
-            <div class="caps"><span class="cap">Metin kırpıntıları</span><span class="cap">Görsel kırpıntıları</span><span class="cap">Kaynak bağlantısı korunur</span><span class="cap">Belge ve notlarda yeniden kullanın</span></div>
+            <p>Herhangi bir sayfada metin veya görsel seçin ve Workspace'e gönderin. Her kırpma, kaynağına geri dönen bağlantıyı korur, böylece daha sonra bir belgeye veya nota bırakmaya hazır olur.</p>
+            <div class="caps"><span class="cap">Metin kırpmaları</span><span class="cap">Görsel kırpmaları</span><span class="cap">Kaynak bağlantısı korunur</span><span class="cap">Belgelerde ve notlarda yeniden kullanım</span></div>
             <div class="demo"><video poster="/ws-clips-poster.jpg" data-src="/ws-clips.mp4" muted loop playsinline preload="none" width="1200" height="588" aria-label="Bir sayfadan metin ve görselleri Workspace'e kırpma"></video></div>
           </div>
         </div>
@@ -322,24 +333,24 @@
       <!-- Organize -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Düzenle <span class="ln"></span></div>
-        <p class="pillar-sub">Notlarınız, dosyalarınız ve PDF'leriniz için, istediğiniz gibi sıralanmış, özel bir yer.</p>
+        <p class="pillar-sub">Notlarınız, dosyalarınız ve PDF'leriniz için istediğiniz gibi sıralanmış, özel bir yer.</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>Her şeyi birbirine bağlayan notlar</h3>
-            <p>Okuduğunuzun hemen yanında, kontrol listeli hızlı notlar. Bir notu herhangi bir öğeye — belge, tablo, PDF veya kırpıntıya — sabitleyin ve sağ tıklamayla mevcut sayfanın bağlantısını alın.</p>
-            <div class="caps"><span class="cap">Kontrol listeleri</span><span class="cap">Herhangi bir öğeye sabitleme</span><span class="cap">Sağ tık sayfa bağlantısı</span><span class="cap">Hatırlatmalar (zil)</span><span class="cap pro">PRO · Alarmlar (anında)</span></div>
-            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace yan panelinde kontrol listeli not alma"></video></div>
+            <p>Okuduğunuz şeyin hemen yanında, yapılacaklar listeli hızlı notlar. Bir notu herhangi bir öğeye — belge, e-tablo, PDF veya kırpma — sabitleyin ve sağ tıklayarak geçerli sayfanın bağlantısını alın.</p>
+            <div class="caps"><span class="cap">Yapılacaklar listeleri</span><span class="cap">Herhangi bir öğeye sabitleme</span><span class="cap">Sağ tık sayfa bağlantısı</span><span class="cap">Hatırlatıcılar (zil)</span><span class="cap pro">PRO · Alarmlar (anlık)</span></div>
+            <div class="demo"><video poster="/ws-notes-poster.jpg" data-src="/ws-notes.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace yan panelinde yapılacaklar listesiyle not alma"></video></div>
           </div>
           <div class="feature">
             <h3>Tüm dosyalarınız, tek bir yerde</h3>
-            <p>PDF, DOCX, XLSX, TXT, Markdown ve görselleri doğrudan içeri sürükleyin — sadece ana ekrandan değil, herhangi bir ekrandan. Klasörlere ayırın, türe göre filtreleyin ve birden fazlasını aynı anda seçin.</p>
-            <div class="caps"><span class="cap">Her yerden sürükleyip bırakma</span><span class="cap">Klasörler</span><span class="cap">Türe göre filtrele</span><span class="cap pro">PRO · Toplu seçim/silme/indirme</span></div>
+            <p>PDF, DOCX, XLSX, TXT, Markdown ve görselleri doğrudan sürükleyin — sadece ana ekrandan değil, herhangi bir ekrandan. Klasörlere ayırın, türe göre filtreleyin ve birden fazlasını aynı anda seçin.</p>
+            <div class="caps"><span class="cap">Her yerden sürükle-bırak</span><span class="cap">Klasörler</span><span class="cap">Türe göre filtrele</span><span class="cap pro">PRO · Toplu seçim/silme/indirme</span></div>
             <div class="demo"><video poster="/ws-files-poster.jpg" data-src="/ws-files.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace'te dosya ve klasörleri düzenleme"></video></div>
-            <p class="feat-note">Dürüst içe aktarma: DOCX metin olarak, XLSX ise değer olarak gelir — biçimlendirmesiz açmak, hiç açamamaktan iyidir.</p>
+            <p class="feat-note">Dürüst içe aktarma: DOCX metin olarak, XLSX ise değerler olarak gelir — hiç açamamaktansa biçimlendirmesiz açmak daha iyidir.</p>
           </div>
           <div class="feature">
             <h3>PDF'leri panelde okuyun</h3>
-            <p>Sekmenizden çıkmadan PDF'leri açın ve sayfalarında gezinin, Ctrl+F ile her şeyi bulun.</p>
+            <p>Sekmenizden ayrılmadan PDF'leri açın ve sayfalarını çevirin, Ctrl+F ile her şeyi bulun.</p>
             <div class="caps"><span class="cap">Panelde okuma</span><span class="cap">Ctrl+F arama</span><span class="cap">Yazdır / indir</span><span class="cap pro">PRO · Sayfayı PNG olarak dışa aktar</span></div>
             <div class="demo"><video poster="/ws-pdf-poster.jpg" data-src="/ws-pdf.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace yan panelinde bir PDF okuma"></video></div>
           </div>
@@ -349,24 +360,24 @@
       <!-- Create -->
       <div class="pillar">
         <div class="pillar-head"><span class="ln"></span> Oluştur <span class="ln"></span></div>
-        <p class="pillar-sub">Panelin tam içinde, belgeler, elektronik tablolar ve çizimler için gerçek düzenleyiciler.</p>
+        <p class="pillar-sub">Panelin tam içinde, belgeler, e-tablolar ve çizimler için gerçek düzenleyiciler.</p>
         <div class="feat-grid">
           <div class="feature">
             <h3>Gerçek belgeler</h3>
-            <p>Panelin içinde tam bir düzenleyici — başlıklar, <b>kalın</b>, <i>italik</i>, altı çizili, listeler, renkler, tablolar ve görseller. Yazarken otomatik kaydeder, satır içinde yeniden adlandırabilir, yazdırabilir veya PDF olarak kaydedebilirsiniz.</p>
-            <div class="caps"><span class="cap">Başlıklar</span><span class="cap">K / İ / A</span><span class="cap">Listeler</span><span class="cap">Tablolar</span><span class="cap">Görseller</span><span class="cap">Otomatik kayıt</span><span class="cap">Yazdır / PDF olarak kaydet</span><span class="cap pro">PRO · DOCX dışa aktar</span></div>
+            <p>Panelin içinde tam bir düzenleyici — başlıklar, <b>kalın</b>, <i>italik</i>, altı çizili, listeler, renkler, tablolar ve görseller. Yazdıkça otomatik kaydeder, satır içinde yeniden adlandırabilir, yazdırabilir veya PDF olarak kaydedebilirsiniz.</p>
+            <div class="caps"><span class="cap">Başlıklar</span><span class="cap">K / İ / A</span><span class="cap">Listeler</span><span class="cap">Tablolar</span><span class="cap">Görseller</span><span class="cap">Otomatik kayıt</span><span class="cap">Yazdır / PDF olarak kaydet</span><span class="cap pro">PRO · DOCX olarak dışa aktar</span></div>
             <div class="demo"><video poster="/ws-docs-poster.jpg" data-src="/ws-docs.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace'te bir belge düzenleme"></video></div>
           </div>
           <div class="feature">
-            <h3>Elektronik tablolar</h3>
-            <p>Otomatik kayıtlı hücreler, formüller ve toplamlar — tam çalıştığınız yerde. Başka bir yerde ihtiyacınız olduğunda XLSX'e aktarın.</p>
-            <div class="caps"><span class="cap">Formüller</span><span class="cap">Toplamlar</span><span class="cap">Otomatik kayıt</span><span class="cap pro">PRO · XLSX dışa aktar</span></div>
-            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace'te bir elektronik tablo düzenleme"></video></div>
+            <h3>E-tablolar</h3>
+            <p>Otomatik kayıtla hücreler, formüller ve toplamlar — tam çalıştığınız yerde. İhtiyaç duyduğunuzda XLSX olarak dışa aktarın.</p>
+            <div class="caps"><span class="cap">Formüller</span><span class="cap">Toplamlar</span><span class="cap">Otomatik kayıt</span><span class="cap pro">PRO · XLSX olarak dışa aktar</span></div>
+            <div class="demo"><video poster="/ws-sheets-poster.jpg" data-src="/ws-sheets.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace'te bir e-tablo düzenleme"></video></div>
           </div>
           <div class="feature">
-            <h3>Çiz ve açıkla</h3>
-            <p>Bir tuval üzerinde kalem, fosforlu kalem, oklar, dikdörtgenler ve metin, nesneleri taşımak veya silmek için bir seçim aracıyla birlikte. Kırpın, döndürün, yansıtın ve geri al/yinele — sonra dışa aktarın veya bir PDF'e dönüştürün.</p>
-            <div class="caps"><span class="cap">Kalem ve fosforlu kalem</span><span class="cap">Oklar ve şekiller</span><span class="cap">Metin</span><span class="cap">Seç / taşı / sil</span><span class="cap">Kırp / döndür / yansıt</span><span class="cap">Geri al / yinele</span><span class="cap pro">PRO · PNG/JPG dışa aktar</span><span class="cap">PDF oluştur</span></div>
+            <h3>Çizin ve not düşün</h3>
+            <p>Kalem, fosforlu kalem, oklar, dikdörtgenler ve tuval üzerinde metin, nesneleri taşımak veya silmek için bir seçim aracıyla birlikte. Kırpın, döndürün, aynalayın ve geri al/yinele — ardından dışa aktarın veya PDF'ye dönüştürün.</p>
+            <div class="caps"><span class="cap">Kalem ve fosforlu kalem</span><span class="cap">Oklar ve şekiller</span><span class="cap">Metin</span><span class="cap">Seç / taşı / sil</span><span class="cap">Kırp / döndür / aynala</span><span class="cap">Geri al / yinele</span><span class="cap pro">PRO · PNG/JPG olarak dışa aktar</span><span class="cap">PDF oluştur</span></div>
             <div class="demo"><video poster="/ws-drawing-poster.jpg" data-src="/ws-drawing.mp4" muted loop playsinline preload="none" width="820" height="802" aria-label="Workspace'te bir tuval üzerinde çizim yapma"></video></div>
           </div>
         </div>
@@ -377,31 +388,31 @@
     <!-- ── TYPICAL WORKFLOW ── -->
     <section class="section" id="workflow">
       <div class="section-label">Tipik bir iş akışı</div>
-      <h2 class="section-title">Tek sekme. Bütün bir günlük iş.</h2>
-      <p class="section-sub">Bulunduğunuz sayfadan hiç çıkmazsınız — çalışma alanı sizinle birlikte hareket eder.</p>
+      <h2 class="section-title">Tek sekme. Koca bir günlük iş.</h2>
+      <p class="section-sub">Bulunduğunuz sayfadan hiç ayrılmazsınız — çalışma alanı sizinle birlikte hareket eder.</p>
       <div class="flow">
-        <div class="flow-step"><span class="n">1</span><span class="t">Bir makale okurken — önemli kısımları, kaynağa geri dönen bir bağlantıyla <b>kırpın</b>.</span></div>
+        <div class="flow-step"><span class="n">1</span><span class="t">Bir makale okuyorsunuz — kaynağa geri dönen bağlantıyla önemli kısımları <b>kırpın</b>.</span></div>
         <div class="flow-step"><span class="n">2</span><span class="t">Panelde bir <b>belge</b> açın ve sayfanın hemen yanında yazmaya başlayın.</span></div>
-        <div class="flow-step"><span class="n">3</span><span class="t">Üzerinde çalıştığınız şeye sabitlenmiş <b>notlar</b> ve bir kontrol listesi yazın.</span></div>
+        <div class="flow-step"><span class="n">3</span><span class="t">Üzerinde çalıştığınız şeye sabitlenmiş <b>notlar</b> ve bir yapılacaklar listesi düşün.</span></div>
         <div class="flow-step"><span class="n">4</span><span class="t">Bir <b>PDF</b> bırakın, yeni bir sekme açmadan okuyun ve içinde arama yapın.</span></div>
-        <div class="flow-step"><span class="n">5</span><span class="t">Bir <b>elektronik tabloda</b> sayıları hesaplayın — formüller, toplamlar, bitti.</span></div>
+        <div class="flow-step"><span class="n">5</span><span class="t">Bir <b>e-tabloda</b> sayıları hesaplayın — formüller, toplamlar, tamamdır.</span></div>
         <div class="flow-step"><span class="n">6</span><span class="t">Kelimeler yetmediğinde bir fikri <b>çizim</b> tuvalinde eskize dökün.</span></div>
       </div>
-      <p class="flow-tail">Her şey bir arada kalır — cihazınızda.</p>
+      <p class="flow-tail">Her şey bir arada kalır — cihazınızda. Günün sonunda her şey zaten düzenlenmiş olur.</p>
     </section>
 
     <section class="section" id="anywhere">
       <div class="section-label">Bağlamda kalın</div>
       <h2 class="section-title">Çalışma alanı, üzerinde çalıştığınız sayfayı asla terk etmez.</h2>
-      <p class="section-sub">Workspace, okuduğunuz her şeyin tam yanında, tarayıcınızın yan panelinde çalışır. Alana mı ihtiyacınız var? Herhangi bir belgeyi, tabloyu, PDF'i veya çizimi kendi sekmesinde tam ekran açın — sonra tekrar panele geri alın. Aynı dosyalar, iki görünüm, karar sizin.</p>
+      <p class="section-sub">Workspace, okuduğunuz her şeyin hemen yanında, tarayıcınızın yan panelinde yol alır. Daha fazla alana mı ihtiyacınız var? Herhangi bir belgeyi, e-tabloyu, PDF'i veya çizimi kendi sekmesinde tam ekran açın — sonra tekrar geri döndürün. Aynı dosyalar, iki görünüm, karar sizin.</p>
       <div class="pmock" aria-hidden="true">
         <div class="site"><div class="bar m"></div><div class="bar s"></div><div class="bar"></div><div class="bar m"></div><div class="bar s"></div><div style="margin-top:16px">Okuduğunuz sayfa</div></div>
-        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 Belgeler</div><div class="it">📊 Tablolar</div><div class="it">📕 PDF'ler</div><div class="it">📝 Notlar</div><div class="it">✂️ Kırpıntılar</div><div class="it">🎨 Çizim</div></div>
+        <div class="ws"><div class="h">◐ Workspace</div><div class="it">📄 Belgeler</div><div class="it">📊 E-tablolar</div><div class="it">📕 PDF'ler</div><div class="it">📝 Notlar</div><div class="it">✂️ Kırpmalar</div><div class="it">🎨 Çizim</div></div>
       </div>
       <div class="modes">
-        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Yan panel</div><div class="mode-d">Gezinmenizin yanında — sayfadan çıkmadan yakalayın ve düzenleyin.</div></div>
+        <div class="mode"><div class="mode-ico">📑</div><div class="mode-t">Yan panel</div><div class="mode-d">Gezinmenizin yanında — sayfadan ayrılmadan yakalayın ve düzenleyin.</div></div>
         <div class="mode-arrow">⟷</div>
-        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Tam ekran sekmesi</div><div class="mode-d">Odaklanmak için tek tıkla daha fazla alan — sonra tekrar panele.</div></div>
+        <div class="mode"><div class="mode-ico">🖥️</div><div class="mode-t">Tam ekran sekme</div><div class="mode-d">Odaklanmak için tek tıkla daha fazla alan — sonra tekrar panele.</div></div>
       </div>
     </section>
 
@@ -410,11 +421,11 @@
       <div class="section-label">Takas</div>
       <h2 class="section-title">Daha az jonglörlük. Daha çok iş.</h2>
       <div class="swap">
-        <div class="swap-row"><div class="swap-cell old">12 tarayıcı sekmesi</div><div class="swap-cell new">Tek bir yan panel</div></div>
+        <div class="swap-row"><div class="swap-cell old">12 tarayıcı sekmesi</div><div class="swap-cell new">Tek bir kenar çubuğu</div></div>
         <div class="swap-row"><div class="swap-cell old">Bulut ofisi</div><div class="swap-cell new">Yerel dosyalar</div></div>
-        <div class="swap-row"><div class="swap-cell old">Kopyala &amp; yapıştır</div><div class="swap-cell new">Web kırpıntıları</div></div>
+        <div class="swap-row"><div class="swap-cell old">Kopyala ve yapıştır</div><div class="swap-cell new">Web kırpmaları</div></div>
         <div class="swap-row"><div class="swap-cell old">Her şey için farklı bir uygulama</div><div class="swap-cell new">Tek bir çalışma alanı</div></div>
-        <div class="swap-row"><div class="swap-cell old">Her yerde giriş yapın</div><div class="swap-cell new">Hesap yok</div></div>
+        <div class="swap-row"><div class="swap-cell old">Her yerde oturum açın</div><div class="swap-cell new">Hesap yok</div></div>
       </div>
     </section>
 
@@ -423,8 +434,8 @@
       <div class="section-label">Nasıl çalışır</div>
       <h2 class="section-title">Üç adım. Kurulum yok.</h2>
       <div class="steps3">
-        <div class="step"><div class="step-n">1</div><h3>Kurun ve paneli sabitleyin</h3><p>Uzantıyı ekleyin ve Workspace'i tarayıcınızın yan paneline sabitleyin.</p></div>
-        <div class="step"><div class="step-n">2</div><h3>Oluşturun veya dosyaları içeri getirin</h3><p>Bir belge, tablo veya not başlatın — ya da PDF'leri, DOCX, XLSX ve görselleri doğrudan sürükleyin.</p></div>
+        <div class="step"><div class="step-n">1</div><h3>Yükleyin ve paneli sabitleyin</h3><p>Eklentiyi ekleyin ve Workspace'i tarayıcınızın yan paneline sabitleyin.</p></div>
+        <div class="step"><div class="step-n">2</div><h3>Oluşturun veya dosya ekleyin</h3><p>Bir belge, e-tablo veya not başlatın — ya da PDF, DOCX, XLSX ve görselleri doğrudan sürükleyin.</p></div>
         <div class="step"><div class="step-n">3</div><h3>Cihazınızda kalır</h3><p>Her şey yerel olarak kaydedilir. Hesap yok, bulut yok, çevrimdışı çalışır.</p></div>
       </div>
     </section>
@@ -434,11 +445,11 @@
       <div class="section-label">Kimler için</div>
       <h2 class="section-title">Odaklanmış çalışma için özel bir masa.</h2>
       <div class="who">
-        <div class="who-card"><div class="ico">🚀</div><h3>Tekil girişimciler &amp; mikro işletmeler</h3><p>Her müşteri için notları, belgeleri ve dosyaları beş farklı uygulama arasında gidip gelmek yerine tek, özel bir yerde tutun.</p></div>
-        <div class="who-card"><div class="ico">🎓</div><h3>Öğrenciler</h3><p>Okumaları kırpın, ödevleri taslak haline getirin ve çalıştığınız her şeyin yanında PDF'leri ve notları bir arada tutun.</p></div>
-        <div class="who-card"><div class="ico">🔬</div><h3>Araştırmacılar</h3><p>Kaynakları bağlantılarıyla yakalayın, PDF'leri açıklayın ve her şeyi — tamamen çevrimdışı — düzenleyin.</p></div>
+        <div class="who-card"><div class="ico">🚀</div><h3>Solo kurucular ve mikro işletmeler</h3><p>Her müşteri için notları, belgeleri ve dosyaları tek bir özel yerde tutun — beş farklı uygulamayı jonglörlük yapmak yerine.</p></div>
+        <div class="who-card"><div class="ico">🎓</div><h3>Öğrenciler</h3><p>Okumaları kırpın, ödevlerinizi taslak haline getirin ve PDF'leri ile notlarınızı çalıştığınız şeyin yanında tutun.</p></div>
+        <div class="who-card"><div class="ico">🔬</div><h3>Araştırmacılar</h3><p>Kaynakları bağlantılarıyla yakalayın, PDF'lere not düşün ve her şeyi tamamen çevrimdışı olarak düzenleyin.</p></div>
         <div class="who-card"><div class="ico">🔒</div><h3>Gizliliğe önem verenler</h3><p>Buluta asla dokunmayan eksiksiz bir ofis: hesap yok, izleme yok, cihazınızdan hiçbir şey çıkmaz.</p></div>
-        <div class="who-card"><div class="ico">🤖</div><h3>Yapay zeka güç kullanıcıları</h3><p>Yapay zeka sohbetleriniz etrafında oluşturduğunuz belgeleri, notları ve dosyaları — NODUS ile zaten kullandığınız araçların tam yanında — tek bir yerel yerde tutun.</p></div>
+        <div class="who-card"><div class="ico">🤖</div><h3>AI güç kullanıcıları</h3><p>NODUS'u zaten kullandığınız araçların hemen yanında, AI sohbetleriniz etrafında oluşturduğunuz belgeleri, notları ve dosyaları tek bir yerel yerde tutun.</p></div>
       </div>
     </section>
 
@@ -450,7 +461,7 @@
         <div class="priv-grid">
           <div class="priv-item"><div class="ico">🔒</div><div class="t">%100 yerel — buluta hiçbir şey gitmez</div></div>
           <div class="priv-item"><div class="ico">🙅</div><div class="t">Hesap gerekmez</div></div>
-          <div class="priv-item"><div class="ico">🔑</div><div class="t">Şifreli yedekleme (AES-256)</div></div>
+          <div class="priv-item"><div class="ico">🔑</div><div class="t">Şifrelenmiş yedekleme (AES-256)</div></div>
           <div class="priv-item"><div class="ico">🧩</div><div class="t">Uzaktan kod yok</div></div>
         </div>
         <div style="margin-top:26px;"><a href="/tr/workspace-privacy" class="btn btn-ghost">Tam Gizlilik Politikasını okuyun →</a></div>
@@ -462,30 +473,30 @@
       <div class="section-label">Tek abonelik</div>
       <p class="pro-line">Tek bir <b>NODUS PRO</b> aboneliği, tüm ekosistem — NODUS AI + PH Radar + Workspace.</p>
 
-      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO bugün kullanılabilir — zaten <b style="color:var(--text)">NODUS AI</b> ve <b style="color:var(--text)">PH Radar BI</b>'yi kilidini açıyor, Workspace ise başlar başlamaz eklenecek.</p>
+      <p style="text-align:center;color:var(--sub);font-size:14px;max-width:620px;margin:6px auto 0;">PRO bugün kullanılabilir — şimdiden <b style="color:var(--text)">NODUS AI</b> ve <b style="color:var(--text)">PH Radar BI</b>'ın kilidini açıyor, Workspace de yayınlandığı an eklenecek.</p>
 
       <div class="price-grid">
         <div class="price-card">
           <div class="price-name">PRO Aylık</div>
           <div class="price-amt">$4.50<span>/ay</span></div>
           <div class="price-note">İstediğiniz zaman iptal edin</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">PRO Aylık'ı alın</a>
+          <a href="checkout.html" class="btn btn-ghost price-cta">PRO Aylık alın</a>
         </div>
         <div class="price-card feat">
           <div class="price-badge">%44 TASARRUF</div>
           <div class="price-name">PRO Yıllık</div>
           <div class="price-amt">$30<span>/yıl</span></div>
-          <div class="price-note">7 gün ücretsiz deneme &#183; &#8776; $2.50/ay</div>
-          <a href="checkout.html" class="btn btn-primary price-cta">PRO Yıllık'ı alın</a>
+          <div class="price-note">7 günlük ücretsiz deneme &#183; &#8776; $2.50/ay</div>
+          <a href="checkout.html" class="btn btn-primary price-cta">PRO Yıllık alın</a>
         </div>
         <div class="price-card">
-          <div class="price-name">PRO Ömür Boyu</div>
+          <div class="price-name">PRO Yaşam Boyu</div>
           <div class="price-amt">$79<span> tek seferlik</span></div>
           <div class="price-note">Bir kez ödeyin, sonsuza dek sizin olsun</div>
-          <a href="checkout.html" class="btn btn-ghost price-cta">Ömür Boyu'yu alın</a>
+          <a href="checkout.html" class="btn btn-ghost price-cta">Yaşam Boyu alın</a>
         </div>
       </div>
-      <p class="price-trust">Paddle üzerinden güvenli ödeme &#183; yıllık planda 7 gün ücretsiz deneme &#183; istediğiniz zaman iptal edin.</p>
+      <p class="price-trust">Paddle ile güvenli ödeme &#183; yıllık planda 7 günlük ücretsiz deneme &#183; istediğiniz zaman iptal edin.</p>
 
       <div class="cmp">
         <div class="cmp-row cmp-head">
@@ -493,23 +504,23 @@
           <div class="cmp-cell pro"><span class="pro">NODUS PRO</span></div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Belge ve elektronik tablo oluşturma/düzenleme</div>
-          <div class="cmp-cell pro">DOCX, XLSX ve görselleri dışa aktarma</div>
+          <div class="cmp-cell">Belge ve e-tablo oluşturma/düzenleme</div>
+          <div class="cmp-cell pro">DOCX, XLSX ve görsel olarak dışa aktarma</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">PDF'leri okuma, arama, yazdırma ve indirme</div>
           <div class="cmp-cell pro">Bir PDF sayfasını PNG olarak dışa aktarma</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Web kırpıntıları ve notlar</div>
-          <div class="cmp-cell pro">Şifreli yedekleme &amp; geri yükleme</div>
+          <div class="cmp-cell">Web kırpmaları ve notlar</div>
+          <div class="cmp-cell pro">Şifrelenmiş yedekleme ve geri yükleme</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Dosya içe aktarma (sürükle &amp; bırak)</div>
-          <div class="cmp-cell pro">Aktif alarmlar (anında bildirimler)</div>
+          <div class="cmp-cell">Dosya içe aktarma (sürükle ve bırak)</div>
+          <div class="cmp-cell pro">Aktif alarmlar (anlık bildirimler)</div>
         </div>
         <div class="cmp-row">
-          <div class="cmp-cell">Hatırlatmalar (zil bildirimi)</div>
+          <div class="cmp-cell">Hatırlatıcılar (zil bildirimi)</div>
           <div class="cmp-cell pro">Toplu işlemler</div>
         </div>
         <div class="cmp-row">
@@ -517,7 +528,7 @@
           <div class="cmp-cell pro">—</div>
         </div>
       </div>
-      <p class="golden">Altın kural: <b>içeri getirmek her zaman ücretsizdir</b> — dışa aktarma/dönüştürme ve otomasyonlar PRO'dur.</p>
+      <p class="golden">Altın kural: <b>içerik getirmek her zaman ücretsizdir</b> — dışa aktarma/dönüştürme ve otomasyonlar PRO'dur.</p>
     </section>
 
     <!-- ── FAQ ── -->
@@ -525,36 +536,36 @@
       <div class="section-label">SSS</div>
       <h2 class="section-title">Sorular, yanıtlandı.</h2>
       <div class="faq">
-        <details><summary>Dosyalarım bulutta mı saklanıyor?</summary><p>Hayır. Oluşturduğunuz veya içe aktardığınız her şey — belgeler, elektronik tablolar, PDF'ler, kırpıntılar, notlar ve çizimler — cihazınızda, tarayıcınızda yerel olarak saklanır. Hiçbir şey bize veya başka kimseye yüklenmez.</p></details>
-        <details><summary>Verilerim tam olarak nerede tutuluyor?</summary><p>Tarayıcınızın kendi yerel depolamasında, cihazınızda — tarayıcınızın site verilerini tuttuğu yerin aynısında. Hiçbir şey bir NODUS sunucusuna gönderilmez, bu da Workspace'i bulut ofis araçlarına yerel-öncelikli bir alternatif yapar: dosyalarınız her zaman yanınızdadır ve çevrimdışı çalışır.</p></details>
-        <details><summary>Kullanmak için hesaba ihtiyacım var mı?</summary><p>Hayır. Workspace, kayıt olmadan ve giriş yapmadan çalışır. Yalnızca NODUS PRO'yu etkinleştirmek isterseniz bir e-posta girersiniz.</p></details>
-        <details><summary>Çevrimdışı çalışıyor mu?</summary><p>Evet. Yerel-öncelikli olduğu için, internet bağlantısı olmadan dosyalarınızı oluşturabilir, düzenleyebilir ve okuyabilirsiniz.</p></details>
-        <details><summary>Bilgisayar değiştirirsem veya tarayıcıyı yeniden kurarsam ne olur?</summary><p>Verileriniz yalnızca o cihazda yaşar, bu yüzden taşımak size bağlıdır: her şeyi bir dosyaya aktarmak ve başka bir makinede geri getirmek için şifreli Yedekleme &amp; Geri Yükleme'yi (bir PRO özelliği) kullanın. Yedekleme olmadan, yerel veriler yalnızca o tarayıcıda kalır.</p></details>
-        <details><summary>Hangi dosyaları içeri getirebilirim?</summary><p>PDF, DOCX, XLSX, TXT, görseller ve Markdown'ı doğrudan panele sürükleyip bırakın. Kural basit: içeri getirmek her zaman ücretsizdir.</p></details>
-        <details><summary>Word ve Excel dosyalarını düzenleyebilir miyim?</summary><p>Bunları açabilirsiniz — DOCX düz metin olarak, XLSX ise değer olarak gelir (biçimlendirme ve formüller basitleştirilir). Biçimlendirmesiz açmak, hiç açamamaktan iyidir. DOCX/XLSX'e (ve görsellere) geri dışa aktarma bir PRO özelliğidir.</p></details>
-        <details><summary>Neler ücretsiz, neler PRO?</summary><p>Ücretsiz: belge ve elektronik tablo oluşturma ve düzenleme, PDF okuma/arama/yazdırma, web kırpıntıları, notlar, hatırlatmalar, dosya içe aktarma ve 16 dil. PRO; dışa aktarma (DOCX, XLSX, PNG), PDF'den görsele dönüştürme, şifreli yedekleme, bildirimli aktif alarmlar ve toplu işlemler ekler.</p></details>
-        <details><summary>PRO ne kadara mal oluyor?</summary><p>Ayda $4.50, yılda $30 (≈ $2.50/ay) veya tek seferlik $79 (ömür boyu). Ödeme, yıllık planda 7 gün ücretsiz deneme ve 14 günlük para iade garantisiyle Paddle tarafından güvenli bir şekilde işlenir.</p></details>
+        <details><summary>Dosyalarım bulutta mı saklanıyor?</summary><p>Hayır. Oluşturduğunuz veya içe aktardığınız her şey — belgeler, e-tablolar, PDF'ler, kırpmalar, notlar ve çizimler — tarayıcınızda, cihazınızda yerel olarak saklanır. Hiçbir şey bize veya başka birine yüklenmez.</p></details>
+        <details><summary>Verilerim tam olarak nerede tutuluyor?</summary><p>Tarayıcınızın kendi yerel depolamasında, cihazınızda — tarayıcınızın site verilerini sakladığı yerin aynısı. Hiçbir şey bir NODUS sunucusuna gönderilmez, bu da Workspace'i bulut ofis araçlarına yerel-öncelikli bir alternatif yapar: dosyalarınız her zaman yanınızdadır ve çevrimdışı çalışır.</p></details>
+        <details><summary>Kullanmak için hesaba ihtiyacım var mı?</summary><p>Hayır. Workspace kayıt veya oturum açma olmadan çalışır. Yalnızca NODUS PRO'yu etkinleştirmeyi seçerseniz bir e-posta girersiniz.</p></details>
+        <details><summary>Çevrimdışı çalışır mı?</summary><p>Evet. Yerel-öncelikli olduğu için internet bağlantısı olmadan dosyalarınızı oluşturabilir, düzenleyebilir ve okuyabilirsiniz.</p></details>
+        <details><summary>Bilgisayar değiştirirsem veya tarayıcıyı yeniden yüklersem ne olur?</summary><p>Verileriniz yalnızca o cihazda yaşar, bu yüzden taşımak size kalmıştır: her şeyi bir dosyaya aktarmak ve başka bir makinede geri getirmek için şifrelenmiş Yedekleme ve Geri Yükleme'yi (bir PRO özelliği) kullanın. Yedekleme olmadan, yerel veriler yalnızca o tarayıcıda kalır.</p></details>
+        <details><summary>Hangi dosyaları getirebilirim?</summary><p>PDF, DOCX, XLSX, TXT, görseller ve Markdown'ı doğrudan panele sürükleyip bırakın. Kural basit: içerik getirmek her zaman ücretsizdir.</p></details>
+        <details><summary>Word ve Excel dosyalarını düzenleyebilir miyim?</summary><p>Onları açabilirsiniz — DOCX düz metin olarak, XLSX ise değerler olarak gelir (biçimlendirme ve formüller basitleştirilir). Hiç açamamaktansa biçimlendirmesiz açmak daha iyidir. DOCX/XLSX'e (ve görsellere) geri dışa aktarma bir PRO özelliğidir.</p></details>
+        <details><summary>Neler ücretsiz, neler PRO?</summary><p>Ücretsiz: belge ve e-tablo oluşturma ve düzenleme, PDF okuma/arama/yazdırma, web kırpmaları, notlar, hatırlatıcılar, dosya içe aktarma ve 16 dil. PRO, dışa aktarma (DOCX, XLSX, PNG), PDF'den görsele, şifrelenmiş yedekleme, bildirimli aktif alarmlar ve toplu işlemler ekler.</p></details>
+        <details><summary>PRO ne kadar tutuyor?</summary><p>Ayda $4.50, yılda $30 (≈ $2.50/ay) veya tek seferlik $79 (yaşam boyu). Ödeme, yıllık planda 7 günlük ücretsiz deneme ve 14 günlük para iade garantisiyle Paddle tarafından güvenli bir şekilde yönetilir.</p></details>
         <details><summary>Her şey için tek abonelik mi?</summary><p>Evet — tek bir NODUS PRO aboneliği, tüm NODUS ekosisteminde PRO'nun kilidini açar: NODUS AI, PH Radar ve Workspace.</p></details>
-        <details><summary>Çalışmamı PDF olarak yazdırabilir veya kaydedebilir miyim?</summary><p>Evet. Belgeler ve elektronik tablolar yazdırılabilir veya bir PDF'e dönüştürülebilir — ikisi de ücretsiz — ve PDF, yerleşik görüntüleyicide tam olarak açılır.</p></details>
-        <details><summary>Güvenli mi? "Uzaktan kod yok" ne anlama geliyor?</summary><p>Uzantının tüm kodu paket içinde gönderilir — hiçbir şey bir sunucudan indirilip çalıştırılmaz. Yedeklemeleriniz AES-256 ile şifrelenir ve dosyalarınızın içeriğini asla okumaz, iletmez veya analiz etmeyiz.</p></details>
-        <details><summary>Hangi tarayıcıları destekliyor?</summary><p>Chrome, Firefox ve Chromium tabanlı tarayıcılar (Edge, Brave ve diğerleri). Üzerinde çalıştığınız her şeyin yanında, tarayıcının yan panelinde yaşar.</p></details>
-        <details><summary>Nasıl yardım alabilirim veya bir sorunu nasıl bildirebilirim?</summary><p>Bize <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> adresinden e-posta gönderin — her mesajı okuyoruz.</p></details>
-        <details><summary>Nereden edinebilirim?</summary><p>NODUS Workspace artık Chrome Web Store ve Firefox Add-ons'ta kullanılabilir.</p></details>
+        <details><summary>Çalışmamı yazdırabilir veya PDF olarak kaydedebilir miyim?</summary><p>Evet. Belgeler ve e-tablolar yazdırılabilir veya PDF'ye dönüştürülebilir — ikisi de ücretsizdir — ve PDF doğrudan yerleşik görüntüleyicide açılır.</p></details>
+        <details><summary>Güvenli mi? "Uzaktan kod yok" ne demek?</summary><p>Eklentinin tüm kodu paketin içinde gelir — hiçbir şey bir sunucudan indirilip çalıştırılmaz. Yedeklemeleriniz AES-256 ile şifrelenir ve dosyalarınızın içeriğini asla okumaz, iletmez veya analiz etmeyiz.</p></details>
+        <details><summary>Hangi tarayıcıları destekliyor?</summary><p>Chrome, Firefox ve Chromium tabanlı tarayıcılar (Edge, Brave ve diğerleri). Üzerinde çalıştığınız şeyin hemen yanında, tarayıcının yan panelinde yaşar.</p></details>
+        <details><summary>Nasıl yardım alabilirim veya bir sorunu bildirebilirim?</summary><p>Bize <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com" style="color:var(--accent)">mmcarvalho.dev@gmail.com</a><!--/email_off--> adresinden e-posta gönderin — her mesajı okuyoruz.</p></details>
+        <details><summary>Nereden edinebilirim?</summary><p>NODUS Workspace artık Chrome Web Store ve Firefox Eklentileri'nde mevcut.</p></details>
       </div>
     </section>
 
     <!-- ── MANIFESTO ── -->
     <section class="manifesto">
-      <h2>İşin <span class="accent">zaten gerçekleştiği</span> yer, tarayıcınız.</h2>
-      <div class="words"><span>Araştırma</span><span>Yazma</span><span>Okuma</span><span>Planlama</span><span>Oluşturma</span></div>
-      <p>Öyleyse neden uygulamalar arasında sıçramaya devam edesiniz? Her şeyi bir araya getirin. Her şeyi yerel tutun. <b style="color:var(--text)">Çalışma alanınızın sahibi olun.</b></p>
+      <h2>Tarayıcınız, işin <span class="accent">zaten gerçekleştiği</span> yerdir.</h2>
+      <div class="words"><span>Araştırma</span><span>Yazma</span><span>Okuma</span><span>Planlama</span><span>Yaratma</span></div>
+      <p>Peki neden uygulamalar arasında zıplamaya devam edesiniz? Her şeyi bir araya getirin. Her şeyi yerel tutun. <b style="color:var(--text)">Çalışma alanınızın sahibi olun.</b></p>
     </section>
 
     <!-- ── 6. FINAL CTA ── -->
     <section class="final">
-      <span class="badge"><span class="dot"></span> Artık Chrome & Firefox'ta</span>
+      <span class="badge"><span class="dot"></span> Artık Chrome ve Firefox'ta</span>
       <h2>Saniyeler içinde başlayın.</h2>
-      <div class="final-btns" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px"><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome'a kur</a><a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Firefox'ta edinin</a></div>
+      <div class="final-btns" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px"><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener"><img src="/chrome-icon.svg" width="18" height="18" alt=""> Chrome'a yükle</a><a class="btn btn-ghost" href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener"><img src="/firefox-icon.svg" width="18" height="18" alt=""> Firefox'ta edinin</a></div>
     </section>
 
   </div>
@@ -563,7 +574,7 @@
     <div>
       <a href="https://nodus-ai.app">NODUS Ana Sayfa</a>
       <a href="/tr/workspace-privacy">Gizlilik</a>
-      <a href="https://nodus-ai.app/terms">Koşullar</a>
+      <a href="https://nodus-ai.app/terms">Şartlar</a>
       <!--email_off--><a href="mailto:mmcarvalho.dev@gmail.com">Destek</a><!--/email_off-->
     </div>
     <div style="margin-top:10px;">© 2026 NODUS. Tüm hakları saklıdır.</div>
@@ -571,7 +582,7 @@
     <div style="margin-top:16px;font-size:12px;line-height:1.6;">
       <span style="text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#fb923c;">Araştırma</span>
       <span style="display:block;margin-top:5px;"><a href="/intent-ai" style="color:#fb923c;text-decoration:none;font-weight:600;">Intent AI</a><span style="color:#fb923c;opacity:.7;"> — Dili değil, niyeti işleyen bir makine</span></span>
-      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Aynı anda hem kompakt hem gezilebilir bir dosya biçimi</span></span>
+      <span style="display:block;margin-top:5px;"><a href="https://mmcarvalhodev.github.io/hierarchical-bits/" target="_blank" rel="noopener" style="color:#fb923c;text-decoration:none;font-weight:600;">Hierarchical Bits</a><span style="color:#fb923c;opacity:.7;"> — Aynı anda hem kompakt hem gezinilebilir bir dosya biçimi</span></span>
     </div>
     <!-- research:end -->
   </footer>
