@@ -1,11 +1,11 @@
-// Idempotent injector: adds <script src="/resources-menu.js" defer></script>
+// Idempotent injector: adds <script src="/products-menu.js" defer></script>
 // before </body> on every content HTML page. Re-runnable.
-// Run: node _inject-resources-menu.mjs
+// Run: node _inject-products-menu.mjs
 import fs from 'fs';
 import path from 'path';
 
 const ROOT = process.cwd();
-const TAG = '  <script src="/resources-menu.js" defer></script>\n';
+const TAG = '  <script src="/products-menu.js" defer></script>\n';
 const SKIP_NAMES = new Set([
   'googlecd7c5054b794efce.html', // Google site verification token
   'checkout.html'                // Paddle checkout (do not touch)
@@ -29,7 +29,7 @@ for (const file of files) {
   if (base.startsWith('_') || SKIP_NAMES.has(base)) { skipped++; continue; }
 
   let html = fs.readFileSync(file, 'utf8');
-  if (html.includes('resources-menu.js')) { already++; continue; }
+  if (html.includes('products-menu.js')) { already++; continue; }
 
   // NOTE: do NOT use html.toLowerCase().lastIndexOf('</body>') here — .toLowerCase()
   // can change string length for some Unicode characters (e.g. Turkish İ -> "i̇",
