@@ -21,28 +21,31 @@
   var LIVE_TXT = { en: 'Live', pt: 'Ao vivo' };
   var SOON_TXT = { en: 'Soon', pt: 'Em breve' };
 
-  // key, name (per lang), tag (per lang), icon text, colors, href (null = not live yet)
+  // key, name (per lang), tag (per lang), icon text, colors, hrefBase (null = not live yet)
+  // hrefBase é sem prefixo de idioma — o prefixo é adicionado depois, com o
+  // idioma já detectado (langHref), pois o worker-nodus-insights serve
+  // /{lang}/ph/today para 15 idiomas (inglês fica sem prefixo).
   var ITEMS = [
     {
-      key: 'ph', live: true, ico: 'PH', bg: '#da552f', fg: '#ffffff', href: '/ph/today',
+      key: 'ph', live: true, ico: 'PH', bg: '#da552f', fg: '#ffffff', hrefBase: '/ph/today',
       name: { en: 'Product Hunt', pt: 'Product Hunt' },
       tag:  { en: 'Live analytics', pt: 'Análises ao vivo' }
     },
     {
-      key: 'hn', live: true, ico: 'HN', bg: '#ff6600', fg: '#ffffff', href: '/hn/today',
+      key: 'hn', live: true, ico: 'HN', bg: '#ff6600', fg: '#ffffff', hrefBase: '/hn/today',
       name: { en: 'Hacker News', pt: 'Hacker News' },
       tag:  { en: 'Live analytics', pt: 'Análises ao vivo' }
     },
     {
-      key: 'newsletters', live: false, ico: 'AI', bg: '#242c39', fg: '#64748b', href: null,
+      key: 'newsletters', live: false, ico: 'AI', bg: '#242c39', fg: '#64748b', hrefBase: null,
       name: { en: 'AI newsletters', pt: 'Newsletters de IA' }
     },
     {
-      key: 'communities', live: false, ico: 'CM', bg: '#242c39', fg: '#64748b', href: null,
+      key: 'communities', live: false, ico: 'CM', bg: '#242c39', fg: '#64748b', hrefBase: null,
       name: { en: 'Communities', pt: 'Comunidades' }
     },
     {
-      key: 'tools', live: false, ico: 'RT', bg: '#242c39', fg: '#64748b', href: null,
+      key: 'tools', live: false, ico: 'RT', bg: '#242c39', fg: '#64748b', hrefBase: null,
       name: { en: 'Recommended tools', pt: 'Ferramentas recomendadas' }
     }
   ];
@@ -141,10 +144,11 @@
   }
 
   function buildRow(item) {
-    var el = document.createElement(item.href ? 'a' : 'div');
-    el.className = 'nrm-link' + (item.href ? '' : ' nrm-disabled');
-    if (item.href) {
-      el.href = item.href;
+    var href = item.hrefBase && (lang === 'en' ? item.hrefBase : '/' + lang + item.hrefBase);
+    var el = document.createElement(href ? 'a' : 'div');
+    el.className = 'nrm-link' + (href ? '' : ' nrm-disabled');
+    if (href) {
+      el.href = href;
       el.setAttribute('role', 'menuitem');
     } else {
       el.setAttribute('aria-disabled', 'true');
