@@ -20,13 +20,13 @@
 
   var LABEL = {
     en: {
-      title: 'Today\'s Insights', explore: 'Explore all →', ph: 'PH', hn: 'HN',
+      title: 'Today\'s Insights', subtitle: 'See what\'s happening right now', explore: 'Explore all →', ph: 'PH', hn: 'HN',
       votes: 'votes', points: 'points', avgVotes: 'avg votes/day', avgPoints: 'avg points/day',
       bestDay: 'best day', distinctWinners: 'different winners', distinctStories: 'different stories',
       seeWeek: 'see the week →',
     },
     pt: {
-      title: 'Insights de hoje', explore: 'Ver tudo →', ph: 'PH', hn: 'HN',
+      title: 'Insights de hoje', subtitle: 'Veja o que está acontecendo agora', explore: 'Ver tudo →', ph: 'PH', hn: 'HN',
       votes: 'votos', points: 'pontos', avgVotes: 'votos/dia', avgPoints: 'pontos/dia',
       bestDay: 'melhor dia', distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes',
       seeWeek: 'ver a semana →',
@@ -61,11 +61,12 @@
     if (document.getElementById('iw-style')) return;
     var css = ''
     + '.iw-section{max-width:1140px;margin:20px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;}'
-    + '.iw-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}'
-    + '.iw-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#94a3b8;}'
-    + '.iw-explore{font-size:13px;color:#facc15;text-decoration:none;}'
+    + '.iw-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px;gap:12px;}'
+    + '.iw-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#64748b;margin-bottom:4px;}'
+    + '.iw-subtitle{font-size:17px;font-weight:700;color:#e2e8f0;}'
+    + '.iw-explore{font-size:13px;color:#facc15;text-decoration:none;white-space:nowrap;flex-shrink:0;}'
     + '.iw-explore:hover{text-decoration:underline;}'
-    + '.iw-rows{display:flex;flex-direction:column;gap:6px;}'
+    + '.iw-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:8px;}'
     + '.iw-row{background:#151a23;border:1px solid #232b38;border-radius:8px;overflow:hidden;transition:border-color .15s;text-decoration:none;display:block;}'
     + '.iw-row:hover{border-color:#3a4356;text-decoration:none;}'
     + '.iw-line{display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;}'
@@ -77,7 +78,7 @@
     + '.iw-chevron{font-size:11px;color:#475569;transition:transform .2s;flex-shrink:0;}'
     + '.iw-row:hover .iw-chevron{transform:rotate(180deg);}'
     + '.iw-expand{max-height:0;opacity:0;overflow:hidden;transition:max-height .25s ease,opacity .2s ease;padding:0 14px;}'
-    + '.iw-row:hover .iw-expand{max-height:110px;opacity:1;padding:0 14px 12px;}'
+    + '.iw-row:hover .iw-expand{max-height:140px;opacity:1;padding:0 14px 12px;}'
     + '.iw-tagline{font-size:12px;color:#94a3b8;margin-bottom:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
     + '.iw-mini-stats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}'
     + '.iw-mini-stat{font-size:11px;color:#64748b;background:#1c222d;border:1px solid #232b38;border-radius:6px;padding:3px 8px;}'
@@ -86,7 +87,7 @@
     + '.iw-dot{width:6px;height:6px;border-radius:50%;background:#2d3748;flex-shrink:0;}'
     + '.iw-dot-active{background:#facc15;}'
     + '.iw-weeklink{font-size:11px;color:#facc15;margin-left:auto;white-space:nowrap;}'
-    + '@media(hover:none){.iw-expand{max-height:110px;opacity:1;padding:0 14px 12px;}}';
+    + '@media(hover:none){.iw-expand{max-height:140px;opacity:1;padding:0 14px 12px;}}';
     var s = document.createElement('style');
     s.id = 'iw-style';
     s.textContent = css;
@@ -210,7 +211,7 @@
     var header = document.createElement('div');
     header.className = 'iw-header';
     header.innerHTML =
-      '<span class="iw-title">' + esc(t.title) + '</span>'
+      '<div><div class="iw-title">' + esc(t.title) + '</div><div class="iw-subtitle">' + esc(t.subtitle) + '</div></div>'
       + '<a class="iw-explore" href="' + langHref('/ph/today') + '">' + esc(t.explore) + '</a>';
     section.appendChild(header);
 
