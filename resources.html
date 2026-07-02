@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODUS Resources — Curated newsletters, communities and tools</title>
+  <meta name="description" content="Hand-picked AI newsletters, communities and tools for makers, curated by the NODUS team.">
+  <link rel="canonical" href="https://nodus-ai.app/resources" />
+  <link rel="alternate" hreflang="en" href="https://nodus-ai.app/resources" />
+  <link rel="alternate" hreflang="pt" href="https://nodus-ai.app/pt/resources" />
+  <link rel="alternate" hreflang="x-default" href="https://nodus-ai.app/resources" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0c12; --panel: #131720; --border: #2d3748;
+      --yellow: #facc15; --text: #e2e8f0; --sub: #94a3b8; --muted: #475569;
+      --green: #10b981;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 40px 20px 80px; }
+    nav { max-width: 860px; margin: 0 auto 48px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .nav-logo { font-size: 18px; font-weight: 900; color: var(--yellow); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-back { font-size: 13px; color: var(--sub); text-decoration: none; }
+    .nav-back:hover { color: var(--text); }
+
+    .container { max-width: 860px; margin: 0 auto; }
+
+    /* HERO */
+    .hero { text-align: center; margin-bottom: 56px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(250,204,21,0.1); border: 1px solid rgba(250,204,21,0.25); color: var(--yellow); font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 99px; margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
+    .hero h1 span { color: var(--yellow); }
+    .hero p { font-size: 16px; color: var(--sub); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+
+    /* RESOURCE SECTIONS */
+    .res-section { margin-bottom: 28px; }
+    .res-section h2 { font-size: 16px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .res-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .res-icon.newsletters { background: rgba(96,165,250,0.15); }
+    .res-icon.communities { background: rgba(167,139,250,0.15); }
+    .res-icon.tools { background: rgba(52,211,153,0.15); }
+
+    .empty-state { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; text-align: center; }
+    .empty-state p { font-size: 14px; color: var(--sub); margin-bottom: 14px; line-height: 1.6; }
+    .empty-state a { display: inline-block; font-size: 13px; font-weight: 700; color: var(--yellow); text-decoration: none; }
+    .empty-state a:hover { text-decoration: underline; }
+
+    footer { max-width: 860px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--sub); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="https://nodus-ai.app" class="nav-logo">NODUS</a>
+      <a href="https://nodus-ai.app" class="nav-back">← Back to home</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">Resources</div>
+      <h1>Curated for <span>makers</span></h1>
+      <p>Newsletters, communities and tools worth your time — hand-picked by the NODUS team, not an algorithm.</p>
+    </div>
+
+    <!-- NEWSLETTERS -->
+    <section class="res-section">
+      <h2><span class="res-icon newsletters">✉️</span> AI Newsletters</h2>
+      <div class="empty-state">
+        <p>We're curating this list — check back soon.</p>
+        <a href="mailto:support@nodus-ai.app?subject=Newsletter%20suggestion%20for%20NODUS%20Resources">Suggest a newsletter →</a>
+      </div>
+    </section>
+
+    <!-- COMMUNITIES -->
+    <section class="res-section">
+      <h2><span class="res-icon communities">💬</span> Communities</h2>
+      <div class="empty-state">
+        <p>We're curating this list — check back soon.</p>
+        <a href="mailto:support@nodus-ai.app?subject=Community%20suggestion%20for%20NODUS%20Resources">Suggest a community →</a>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="res-section">
+      <h2><span class="res-icon tools">🛠️</span> Recommended Tools</h2>
+      <div class="empty-state">
+        <p>We're curating this list — check back soon.</p>
+        <a href="mailto:support@nodus-ai.app?subject=Tool%20suggestion%20for%20NODUS%20Resources">Suggest a tool →</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 NODUS · <a href="https://nodus-ai.app">Home</a> · <a href="privacy.html">Privacy</a>
+  </footer>
+
+  <script src="/products-menu.js" defer></script>
+  <script src="/resources-menu.js" defer></script>
+  <script src="/about-menu.js" defer></script>
+</body>
+</html>
