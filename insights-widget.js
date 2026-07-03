@@ -1,11 +1,14 @@
 /* =====================================================================
    NODUS — Today's Insights widget (homepage only, shared, self-contained)
-   - Busca dados ao vivo de /api/ph/week e /api/hn/week (mesma origem,
-     CORS já liberado no worker-nodus-insights para consumo por widgets)
-   - Uma linha só: frase de contexto + um "chip" compacto por plataforma
-     (nome do vencedor de hoje + sparkline dos últimos 7 dias). No hover,
-     um popover flutuante (position:absolute) mostra tagline, mini-
-     estatísticas da semana e os 7 dias em dots — sem empurrar o layout.
+   Fase 2: carrossel de slot único (PH / HN / YT), ativado agora que a
+   3ª fonte (YT Insights) está no ar. Card revezaou sozinho a cada 5s
+   (desktop) / 6s (mobile) e PARA DE VEZ (não retoma) assim que o usuário
+   interage — hover ou clique num tracinho. Altura do popover travada em
+   368px nos 3 estados, para o card nunca "pular" ao trocar de fonte.
+   - Busca dados ao vivo de /api/ph/week, /api/hn/week, /api/yt/week
+   - Cada fonte tem uma caixa de mídia do mesmo tamanho: thumbnail real
+     (YT), favicon do domínio (HN) ou monograma do produto (PH, até o
+     coletor do PH Radar propagar thumbnail_url real)
    - Só monta se encontrar .hero na página (ou seja, só na home) e só
      depois que os dados chegarem — sem estado de loading, sem no-op feio
    - Auto-detecta idioma (mesmo padrão de resources-menu.js) só para o
@@ -21,20 +24,25 @@
 
   var LABEL = {
     en: {
-      phrase: 'See what\'s happening right now', explore: 'Explore Insights →', ph: 'PH', hn: 'HN',
-      votes: 'votes', points: 'points', avgVotes: 'avg votes/day', avgPoints: 'avg points/day',
-      bestDay: 'Best day', distinctWinners: 'different winners', distinctStories: 'different stories',
-      winnerEyebrow: '🏆 Winner', topStoryEyebrow: '🔥 Top story',
+      phrase: 'See what\'s happening right now', explore: 'Explore Insights →',
+      ph: 'PH', hn: 'HN', yt: 'YT',
+      avgVotes: 'avg votes/day', avgPoints: 'avg points/day', avgViews: 'avg views/day',
+      bestDay: 'Best day', distinctWinners: 'different winners', distinctStories: 'different stories', distinctChannels: 'different channels',
+      winnerEyebrow: '🏆 Winner', topStoryEyebrow: '🔥 Top story', trendingEyebrow: '📈 Trending now',
       openDashboard: 'Open dashboard →', install: 'Install {name} →',
     },
     pt: {
-      phrase: 'Veja o que está acontecendo agora', explore: 'Ver Insights →', ph: 'PH', hn: 'HN',
-      votes: 'votos', points: 'pontos', avgVotes: 'votos/dia', avgPoints: 'pontos/dia',
-      bestDay: 'Melhor dia', distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes',
-      winnerEyebrow: '🏆 Vencedor', topStoryEyebrow: '🔥 Destaque',
+      phrase: 'Veja o que está acontecendo agora', explore: 'Ver Insights →',
+      ph: 'PH', hn: 'HN', yt: 'YT',
+      avgVotes: 'votos/dia', avgPoints: 'pontos/dia', avgViews: 'views/dia',
+      bestDay: 'Melhor dia', distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes', distinctChannels: 'canais diferentes',
+      winnerEyebrow: '🏆 Vencedor', topStoryEyebrow: '🔥 Destaque', trendingEyebrow: '📈 Em alta agora',
       openDashboard: 'Abrir dashboard →', install: 'Instalar {name} →',
     },
   };
+
+  var DESKTOP_INTERVAL = 5000;
+  var MOBILE_INTERVAL = 6000;
 
   function detectLang() {
     var l = (window._forcedLang || '').toLowerCase();
@@ -48,6 +56,7 @@
 
   var lang = detectLang();
   var t = LABEL[lang] || LABEL.en;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function langHref(path) {
     return lang === 'en' ? path : '/' + lang + path;
@@ -60,22 +69,45 @@
     } catch (e) { return iso; }
   }
 
+  function esc(str) {
+    var d = document.createElement('div');
+    d.textContent = String(str == null ? '' : str);
+    return d.innerHTML;
+  }
+
+  function fmt(n) {
+    return (n || 0).toLocaleString('en-US');
+  }
+
   function injectCSS() {
     if (document.getElementById('iw-style')) return;
     var css = ''
     + '.iw-section{max-width:1140px;margin:20px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;}'
-    + '.iw-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}'
+    + '.iw-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}'
     + '.iw-phrase{font-size:14px;font-weight:600;color:#e2e8f0;white-space:nowrap;flex-shrink:0;}'
-    + '.iw-chip{position:relative;display:flex;align-items:center;gap:7px;background:#151a23;border:1px solid #232b38;border-radius:20px;padding:6px 12px 6px 6px;text-decoration:none;max-width:260px;transition:border-color .15s;}'
+    + '.iw-slot{position:relative;flex-shrink:0;}'
+    + '.iw-chip{position:relative;display:flex;align-items:center;gap:7px;background:#151a23;border:1px solid #232b38;border-radius:20px;padding:6px 12px 6px 6px;text-decoration:none;width:280px;max-width:280px;transition:border-color .15s;}'
     + '.iw-chip:hover{border-color:#3a4356;text-decoration:none;}'
     + '.iw-chip-badge{font-size:10px;font-weight:700;color:#facc15;background:rgba(250,204,21,.1);border-radius:14px;padding:3px 7px;white-space:nowrap;flex-shrink:0;}'
-    + '.iw-chip-name{font-size:13px;font-weight:600;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px;}'
-    + '.iw-chip-spark{width:28px;height:14px;flex-shrink:0;}'
+    + '.iw-chip-name{font-size:13px;font-weight:600;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;}'
     + '.iw-chip-stat{font-size:12px;color:#10b981;font-weight:600;white-space:nowrap;flex-shrink:0;}'
+    + '.iw-progress{position:absolute;left:0;bottom:-7px;height:2px;width:100%;background:#232b38;border-radius:2px;overflow:hidden;}'
+    + '.iw-progress-fill{height:100%;width:0%;background:#facc15;}'
+    + '.iw-progress.iw-paused .iw-progress-fill{background:#475569;}'
+    + '.iw-dots{display:flex;align-items:center;gap:6px;margin-top:14px;padding-left:2px;}'
+    + '.iw-dot{width:16px;height:4px;border-radius:2px;background:#2d3748;border:none;padding:0;cursor:pointer;transition:background .2s,width .2s;}'
+    + '.iw-dot-active{background:#facc15;width:22px;}'
+    + '.iw-dot:hover{background:#4a5568;}'
     + '.iw-explore{font-size:13px;color:#facc15;text-decoration:none;white-space:nowrap;margin-left:auto;flex-shrink:0;}'
     + '.iw-explore:hover{text-decoration:underline;}'
-    + '.iw-pop{position:absolute;top:calc(100% + 8px);left:0;width:280px;background:#1a1f29;border:1px solid #2d3748;border-radius:10px;padding:14px;z-index:20;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .15s ease,transform .15s ease;}'
+    + '.iw-pop{position:absolute;top:calc(100% + 14px);left:0;width:290px;height:368px;background:#1a1f29;border:1px solid #2d3748;border-radius:10px;padding:14px;z-index:20;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .15s ease,transform .15s ease;display:flex;flex-direction:column;}'
     + '.iw-chip:hover .iw-pop{opacity:1;transform:translateY(0);pointer-events:auto;}'
+    + '.iw-media{width:100%;height:130px;border-radius:8px;margin-bottom:10px;position:relative;overflow:hidden;flex-shrink:0;background:#0e1117;}'
+    + '.iw-media img.iw-media-thumb{width:100%;height:100%;object-fit:cover;display:block;}'
+    + '.iw-media-tile-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#1c2330,#12161f);}'
+    + '.iw-media-tile{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#0a0c12;overflow:hidden;}'
+    + '.iw-media-tile img{width:100%;height:100%;object-fit:contain;}'
+    + '.iw-pop-body{flex:1;min-height:0;display:flex;flex-direction:column;}'
     + '.iw-pop-head{display:flex;align-items:baseline;gap:6px;}'
     + '.iw-pop-eyebrow{font-size:10px;font-weight:700;color:#facc15;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap;flex-shrink:0;}'
     + '.iw-pop-name{font-size:14px;font-weight:700;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
@@ -85,163 +117,125 @@
     + '.iw-stat-cell{background:#0e1117;border:1px solid #232b38;border-radius:6px;padding:6px 8px;text-align:center;}'
     + '.iw-stat-cell b{display:block;font-size:15px;font-weight:700;color:#e2e8f0;}'
     + '.iw-stat-cell span{font-size:10px;color:#64748b;}'
-    + '.iw-pop-bestday{font-size:11px;color:#94a3b8;margin-top:8px;text-align:center;}'
-    + '.iw-pop-bestday b{color:#e2e8f0;}'
-    + '.iw-week{display:flex;align-items:center;justify-content:center;gap:5px;margin:12px 0;}'
-    + '.iw-dot{width:6px;height:6px;border-radius:50%;background:#2d3748;flex-shrink:0;}'
-    + '.iw-dot-active{background:#facc15;}'
-    + '.iw-cta-row{display:flex;gap:6px;margin-top:12px;}'
-    + '.iw-cta{flex:1;display:block;text-align:center;font-size:11.5px;font-weight:700;border-radius:7px;padding:8px 6px;text-decoration:none;transition:filter .15s,background .15s;white-space:nowrap;}'
+    + '.iw-cta-row{display:flex;gap:6px;margin-top:auto;padding-top:12px;}'
+    + '.iw-cta{flex:1;display:block;text-align:center;font-size:11.5px;font-weight:700;border-radius:7px;padding:8px 6px;text-decoration:none;transition:filter .15s,background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}'
     + '.iw-cta-primary{color:#0a0c12;background:#facc15;}'
     + '.iw-cta-primary:hover{filter:brightness(1.1);text-decoration:none;}'
     + '.iw-cta-secondary{color:#e2e8f0;background:transparent;border:1px solid #2d3748;}'
     + '.iw-cta-secondary:hover{border-color:#4a5568;text-decoration:none;}'
     + '@media(max-width:640px){.iw-phrase{width:100%;}.iw-pop{left:auto;right:0;}}'
-    + '@media(hover:none){.iw-pop{position:static;opacity:1;transform:none;pointer-events:auto;width:auto;margin-top:8px;display:none;}}';
+    + '@media(hover:none){.iw-pop{position:static;opacity:1;transform:none;pointer-events:auto;width:auto;height:auto;margin-top:8px;display:none;}}';
     var s = document.createElement('style');
     s.id = 'iw-style';
     s.textContent = css;
     document.head.appendChild(s);
   }
 
-  function esc(str) {
-    var d = document.createElement('div');
-    d.textContent = String(str == null ? '' : str);
-    return d.innerHTML;
+  // ── Normaliza cada fonte pra um formato comum consumido pelo carrossel ──
+
+  function computeWeekStats(week, valueKey, distinctKey) {
+    var values = week.map(function (w) { return w[valueKey] || 0; });
+    var avg = Math.round(values.reduce(function (a, b) { return a + b; }, 0) / values.length);
+    var distinct = {};
+    week.forEach(function (w) { distinct[w[distinctKey]] = true; });
+    return { avg: avg, distinctCount: Object.keys(distinct).length };
   }
 
-  function sparklinePoints(values) {
-    var min = Math.min.apply(null, values), max = Math.max.apply(null, values);
-    var range = (max - min) || 1, n = values.length;
-    return values.map(function (v, i) {
-      var x = n > 1 ? (i / (n - 1)) * 60 : 30;
-      var y = 18 - ((v - min) / range) * 16;
-      return x.toFixed(1) + ',' + y.toFixed(1);
-    }).join(' ');
+  function buildPHSource(phWeek) {
+    var top = phWeek[0];
+    var stats = computeWeekStats(phWeek, 'votes_count', 'name');
+    return {
+      badge: t.ph,
+      name: top.name,
+      stat: '▲' + fmt(top.votes_count),
+      tagline: top.tagline || '',
+      eyebrow: t.winnerEyebrow,
+      href: 'https://www.producthunt.com/posts/' + top.slug,
+      dashboardHref: langHref('/ph/today'),
+      installHref: 'https://chromewebstore.google.com/detail/nodus-ph-radar/cmibcnnkebddlcdjinibkegejpcafgag',
+      productName: 'PH Radar',
+      avg: stats.avg, avgLabel: t.avgVotes,
+      distinctCount: stats.distinctCount, distinctLabel: t.distinctWinners,
+      media: top.thumbnail_url
+        ? { type: 'img', url: top.thumbnail_url }
+        : { type: 'mono', letter: (top.name || '?').charAt(0).toUpperCase(), bg: '#facc15' },
+    };
   }
 
-  function svgNS(tag, attrs) {
-    var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-    for (var k in attrs) el.setAttribute(k, attrs[k]);
-    return el;
+  function buildHNSource(hnWeek) {
+    var top = hnWeek[0];
+    var stats = computeWeekStats(hnWeek, 'score', 'title');
+    var domain = top.domain || 'news.ycombinator.com';
+    return {
+      badge: t.hn,
+      name: top.title,
+      stat: '▲' + fmt(top.score),
+      tagline: domain,
+      eyebrow: t.topStoryEyebrow,
+      href: top.url || ('https://news.ycombinator.com/item?id=' + top.item_id),
+      dashboardHref: langHref('/hn/today'),
+      installHref: 'https://chromewebstore.google.com/detail/nodus-hn-radar/khodlkgkgdkhkljapdllfjnfedamhkmn',
+      productName: 'HN Radar',
+      avg: stats.avg, avgLabel: t.avgPoints,
+      distinctCount: stats.distinctCount, distinctLabel: t.distinctStories,
+      media: { type: 'favicon', domain: domain, letter: domain.charAt(0).toUpperCase(), bg: '#ff6600' },
+    };
   }
 
-  function divider() {
-    var d = document.createElement('div');
-    d.className = 'iw-pop-divider';
-    return d;
+  function buildYTSource(ytWeek) {
+    var top = ytWeek[0];
+    var stats = computeWeekStats(ytWeek, 'view_count', 'channel');
+    return {
+      badge: t.yt,
+      name: top.title,
+      stat: '▲' + fmt(top.view_count),
+      tagline: top.channel || '',
+      eyebrow: t.trendingEyebrow,
+      href: 'https://www.youtube.com/watch?v=' + top.video_id,
+      dashboardHref: langHref('/yt/today'),
+      installHref: 'https://chromewebstore.google.com/detail/nodus-yt-radar/ebfnahokkelbeiknkmkkkmeliikhmdhk',
+      productName: 'YT Radar',
+      avg: stats.avg, avgLabel: t.avgViews,
+      distinctCount: stats.distinctCount, distinctLabel: t.distinctChannels,
+      media: { type: 'img', url: 'https://i.ytimg.com/vi/' + encodeURIComponent(top.video_id) + '/hqdefault.jpg' },
+    };
   }
 
-  // week: array ordenado DESC por dia (mais recente primeiro), como a API já devolve.
-  // valueKey: 'votes_count' (PH) ou 'score' (HN). nameKey: 'name' (PH) ou 'title' (HN).
-  function buildChip(opts) {
-    var week = opts.week, valueKey = opts.valueKey, nameKey = opts.nameKey;
-    var top = week[0];
-    var values = week.map(function (w) { return w[valueKey]; }).reverse(); // cronológico p/ sparkline
-
-    var chip = document.createElement('a');
-    chip.className = 'iw-chip';
-    chip.href = opts.href;
-    chip.target = '_blank';
-    chip.rel = 'noopener';
-
-    var badge = document.createElement('span');
-    badge.className = 'iw-chip-badge';
-    badge.textContent = opts.icon + ' ' + opts.badge;
-    chip.appendChild(badge);
-
-    var name = document.createElement('span');
-    name.className = 'iw-chip-name';
-    name.textContent = top[nameKey];
-    chip.appendChild(name);
-
-    if (week.length > 1) {
-      var svg = svgNS('svg', { class: 'iw-chip-spark', viewBox: '0 0 60 20', preserveAspectRatio: 'none' });
-      svg.appendChild(svgNS('polyline', { points: sparklinePoints(values), fill: 'none', stroke: '#facc15', 'stroke-width': '1.8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }));
-      var lastPt = sparklinePoints(values).split(' ').pop().split(',');
-      svg.appendChild(svgNS('circle', { cx: lastPt[0], cy: lastPt[1], r: '2', fill: '#facc15' }));
-      chip.appendChild(svg);
+  function renderMedia(media) {
+    if (media.type === 'img') {
+      var img = document.createElement('img');
+      img.className = 'iw-media-thumb';
+      img.src = media.url;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.onerror = function () { img.style.display = 'none'; };
+      return img;
     }
-
-    var stat = document.createElement('span');
-    stat.className = 'iw-chip-stat';
-    stat.textContent = '▲' + top[valueKey];
-    chip.appendChild(stat);
-
-    if (week.length > 1) {
-      var avg = Math.round(values.reduce(function (a, b) { return a + b; }, 0) / values.length);
-      var bestIdx = 0;
-      for (var i = 1; i < week.length; i++) if (week[i][valueKey] > week[bestIdx][valueKey]) bestIdx = i;
-      var distinct = {};
-      week.forEach(function (w) { distinct[w[nameKey]] = true; });
-      var distinctCount = Object.keys(distinct).length;
-
-      var pop = document.createElement('div');
-      pop.className = 'iw-pop';
-
-      var head = document.createElement('div');
-      head.className = 'iw-pop-head';
-      head.innerHTML = '<span class="iw-pop-eyebrow">' + esc(opts.eyebrow) + '</span><span class="iw-pop-name">' + esc(top[nameKey]) + '</span>';
-      pop.appendChild(head);
-
-      var tagline = document.createElement('div');
-      tagline.className = 'iw-pop-tagline';
-      tagline.textContent = opts.subtitle || '';
-      pop.appendChild(tagline);
-
-      pop.appendChild(divider());
-
-      var grid = document.createElement('div');
-      grid.className = 'iw-stat-grid';
-      grid.innerHTML =
-        '<div class="iw-stat-cell"><b>' + avg + '</b><span>' + esc(opts.avgLabel) + '</span></div>'
-        + '<div class="iw-stat-cell"><b>' + distinctCount + '</b><span>' + esc(opts.distinctLabel) + '</span></div>';
-      pop.appendChild(grid);
-
-      var bestday = document.createElement('div');
-      bestday.className = 'iw-pop-bestday';
-      bestday.innerHTML = esc(t.bestDay) + ': <b>' + esc(opts.bestDayLabel(bestIdx)) + '</b> · ' + week[bestIdx][valueKey];
-      pop.appendChild(bestday);
-
-      pop.appendChild(divider());
-
-      var weekRow = document.createElement('div');
-      weekRow.className = 'iw-week';
-      week.forEach(function (w, idx) {
-        var dot = document.createElement('span');
-        dot.className = 'iw-dot' + (idx === 0 ? ' iw-dot-active' : '');
-        dot.title = dayLabel(w[opts.dateKey]) + ' · ' + w[valueKey];
-        weekRow.appendChild(dot);
-      });
-      pop.appendChild(weekRow);
-
-      var ctaRow = document.createElement('div');
-      ctaRow.className = 'iw-cta-row';
-
-      var ctaDash = document.createElement('a');
-      ctaDash.className = 'iw-cta iw-cta-primary';
-      ctaDash.href = opts.dashboardHref;
-      ctaDash.textContent = t.openDashboard;
-      ctaRow.appendChild(ctaDash);
-
-      var ctaInstall = document.createElement('a');
-      ctaInstall.className = 'iw-cta iw-cta-secondary';
-      ctaInstall.href = opts.installHref;
-      ctaInstall.target = '_blank';
-      ctaInstall.rel = 'noopener';
-      ctaInstall.textContent = t.install.replace('{name}', opts.productName);
-      ctaRow.appendChild(ctaInstall);
-
-      pop.appendChild(ctaRow);
-
-      chip.appendChild(pop);
+    // favicon ou monograma: tile colorido com letra; favicon tenta carregar
+    // a imagem por cima e cai pro monograma se falhar (domínio sem favicon).
+    var wrap = document.createElement('div');
+    wrap.className = 'iw-media-tile-wrap';
+    var tile = document.createElement('div');
+    tile.className = 'iw-media-tile';
+    tile.style.background = media.bg || '#facc15';
+    tile.textContent = media.letter || '?';
+    wrap.appendChild(tile);
+    if (media.type === 'favicon') {
+      var fav = document.createElement('img');
+      fav.src = 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(media.domain) + '&sz=128';
+      fav.alt = '';
+      fav.onerror = function () { fav.remove(); };
+      fav.onload = function () { tile.textContent = ''; tile.style.background = 'transparent'; tile.appendChild(fav); };
+      // pré-carrega fora da árvore visível; só entra na tile se der certo
     }
-
-    return chip;
+    return wrap;
   }
 
-  function buildSection(phWeek, hnWeek) {
+  // ── Carrossel: 1 slot só, revezaou entre as fontes, para de vez no hover/clique ──
+
+  function mountCarousel(hero, sources) {
     injectCSS();
+
     var section = document.createElement('section');
     section.className = 'iw-section';
 
@@ -253,36 +247,23 @@
     phrase.textContent = t.phrase;
     bar.appendChild(phrase);
 
-    if (phWeek.length) {
-      bar.appendChild(buildChip({
-        week: phWeek, icon: '🏆', badge: t.ph, valueKey: 'votes_count', nameKey: 'name', dateKey: 'pt_day',
-        href: 'https://www.producthunt.com/posts/' + phWeek[0].slug,
-        dashboardHref: langHref('/ph/today'),
-        installHref: 'https://chromewebstore.google.com/detail/nodus-ph-radar/cmibcnnkebddlcdjinibkegejpcafgag',
-        productName: 'PH Radar',
-        eyebrow: t.winnerEyebrow,
-        subtitle: phWeek[0].tagline,
-        avgLabel: t.avgVotes,
-        bestDayLabel: function (idx) { return dayLabel(phWeek[idx].pt_day).split(',')[0]; },
-        distinctLabel: t.distinctWinners,
-      }));
-    }
-    if (hnWeek.length) {
-      bar.appendChild(buildChip({
-        week: hnWeek, icon: '🔥', badge: t.hn, valueKey: 'score', nameKey: 'title', dateKey: 'collected_date',
-        href: hnWeek[0].url || ('https://news.ycombinator.com/item?id=' + hnWeek[0].item_id),
-        dashboardHref: langHref('/hn/today'),
-        installHref: 'https://chromewebstore.google.com/detail/nodus-hn-radar/khodlkgkgdkhkljapdllfjnfedamhkmn',
-        productName: 'HN Radar',
-        eyebrow: t.topStoryEyebrow,
-        subtitle: hnWeek[0].domain || 'news.ycombinator.com',
-        avgLabel: t.avgPoints,
-        bestDayLabel: function (idx) { return dayLabel(hnWeek[idx].collected_date).split(',')[0]; },
-        distinctLabel: t.distinctStories,
-      }));
-    }
+    var slot = document.createElement('div');
+    slot.className = 'iw-slot';
 
-    if (bar.children.length < 2) return null; // só a frase, sem nenhum chip -> no-op
+    var chip = document.createElement('a');
+    chip.className = 'iw-chip';
+    chip.target = '_blank';
+    chip.rel = 'noopener';
+    slot.appendChild(chip);
+
+    var progress = document.createElement('div');
+    progress.className = 'iw-progress';
+    var fill = document.createElement('div');
+    fill.className = 'iw-progress-fill';
+    progress.appendChild(fill);
+    if (sources.length > 1) slot.appendChild(progress);
+
+    bar.appendChild(slot);
 
     var explore = document.createElement('a');
     explore.className = 'iw-explore';
@@ -291,7 +272,136 @@
     bar.appendChild(explore);
 
     section.appendChild(bar);
-    return section;
+
+    var dots = document.createElement('div');
+    dots.className = 'iw-dots';
+    if (sources.length > 1) section.appendChild(dots);
+
+    var idx = 0, timer = null, stopped = false;
+    var interval = window.matchMedia('(max-width: 640px)').matches ? MOBILE_INTERVAL : DESKTOP_INTERVAL;
+
+    function draw() {
+      var s = sources[idx];
+      chip.href = s.href;
+      chip.innerHTML = '';
+
+      var badge = document.createElement('span');
+      badge.className = 'iw-chip-badge';
+      badge.textContent = s.badge;
+      chip.appendChild(badge);
+
+      var name = document.createElement('span');
+      name.className = 'iw-chip-name';
+      name.textContent = s.name;
+      chip.appendChild(name);
+
+      var stat = document.createElement('span');
+      stat.className = 'iw-chip-stat';
+      stat.textContent = s.stat;
+      chip.appendChild(stat);
+
+      var pop = document.createElement('div');
+      pop.className = 'iw-pop';
+      pop.appendChild(renderMedia(s.media));
+
+      var body = document.createElement('div');
+      body.className = 'iw-pop-body';
+
+      var head = document.createElement('div');
+      head.className = 'iw-pop-head';
+      head.innerHTML = '<span class="iw-pop-eyebrow">' + esc(s.eyebrow) + '</span><span class="iw-pop-name">' + esc(s.name) + '</span>';
+      body.appendChild(head);
+
+      var tagline = document.createElement('div');
+      tagline.className = 'iw-pop-tagline';
+      tagline.textContent = s.tagline;
+      body.appendChild(tagline);
+
+      var d1 = document.createElement('div');
+      d1.className = 'iw-pop-divider';
+      body.appendChild(d1);
+
+      var grid = document.createElement('div');
+      grid.className = 'iw-stat-grid';
+      grid.innerHTML =
+        '<div class="iw-stat-cell"><b>' + fmt(s.avg) + '</b><span>' + esc(s.avgLabel) + '</span></div>'
+        + '<div class="iw-stat-cell"><b>' + s.distinctCount + '</b><span>' + esc(s.distinctLabel) + '</span></div>';
+      body.appendChild(grid);
+
+      var ctaRow = document.createElement('div');
+      ctaRow.className = 'iw-cta-row';
+
+      var ctaDash = document.createElement('a');
+      ctaDash.className = 'iw-cta iw-cta-primary';
+      ctaDash.href = s.dashboardHref;
+      ctaDash.textContent = t.openDashboard;
+      ctaRow.appendChild(ctaDash);
+
+      var ctaInstall = document.createElement('a');
+      ctaInstall.className = 'iw-cta iw-cta-secondary';
+      ctaInstall.href = s.installHref;
+      ctaInstall.target = '_blank';
+      ctaInstall.rel = 'noopener';
+      ctaInstall.textContent = t.install.replace('{name}', s.productName);
+      ctaRow.appendChild(ctaInstall);
+
+      body.appendChild(ctaRow);
+      pop.appendChild(body);
+      chip.appendChild(pop);
+
+      if (sources.length > 1) {
+        dots.innerHTML = '';
+        sources.forEach(function (_, i) {
+          var dot = document.createElement('button');
+          dot.className = 'iw-dot' + (i === idx ? ' iw-dot-active' : '');
+          dot.setAttribute('aria-label', sources[i].badge);
+          dot.addEventListener('click', function (e) {
+            e.preventDefault();
+            idx = i;
+            draw();
+            stopRotation();
+          });
+          dots.appendChild(dot);
+        });
+      }
+    }
+
+    function runProgress() {
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      void fill.offsetWidth; // força reflow p/ reiniciar a animação
+      fill.style.transition = 'width ' + interval + 'ms linear';
+      fill.style.width = '100%';
+    }
+
+    function tick() {
+      idx = (idx + 1) % sources.length;
+      draw();
+      runProgress();
+    }
+
+    function startRotation() {
+      if (reducedMotion || stopped || sources.length < 2) return;
+      runProgress();
+      timer = setInterval(tick, interval);
+    }
+
+    function stopRotation() {
+      if (stopped) return;
+      stopped = true;
+      clearInterval(timer);
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      progress.classList.add('iw-paused');
+    }
+
+    chip.addEventListener('mouseenter', stopRotation);
+    chip.addEventListener('click', stopRotation);
+
+    draw();
+    startRotation();
+
+    hero.parentNode.insertBefore(section, hero);
   }
 
   function mount() {
@@ -301,9 +411,15 @@
     Promise.all([
       fetch('/api/ph/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
       fetch('/api/hn/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
+      fetch('/api/yt/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
     ]).then(function (results) {
-      var section = buildSection(results[0] || [], results[1] || []);
-      if (section) hero.parentNode.insertBefore(section, hero);
+      var phWeek = results[0] || [], hnWeek = results[1] || [], ytWeek = results[2] || [];
+      var sources = [];
+      if (phWeek.length > 1) sources.push(buildPHSource(phWeek));
+      if (hnWeek.length > 1) sources.push(buildHNSource(hnWeek));
+      if (ytWeek.length > 1) sources.push(buildYTSource(ytWeek));
+      if (!sources.length) return; // sem dados de nenhuma fonte -> no-op
+      mountCarousel(hero, sources);
     });
   }
 
