@@ -37,6 +37,11 @@
       tag:  { en: 'Live analytics', pt: 'Análises ao vivo' }
     },
     {
+      key: 'yt', live: true, ico: 'YT', bg: '#ff0000', fg: '#ffffff', hrefBase: '/yt/today',
+      name: { en: 'YouTube', pt: 'YouTube' },
+      tag:  { en: 'Live analytics', pt: 'Análises ao vivo' }
+    },
+    {
       key: 'newsletters', live: false, ico: 'AI', bg: '#242c39', fg: '#64748b', hrefBase: null,
       name: { en: 'AI newsletters', pt: 'Newsletters de IA' }
     },
