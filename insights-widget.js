@@ -25,14 +25,14 @@
       votes: 'votes', points: 'points', avgVotes: 'avg votes/day', avgPoints: 'avg points/day',
       bestDay: 'Best day', distinctWinners: 'different winners', distinctStories: 'different stories',
       winnerEyebrow: '🏆 Winner', topStoryEyebrow: '🔥 Top story',
-      openDashboard: 'Open dashboard →',
+      openDashboard: 'Open dashboard →', install: 'Install {name} →',
     },
     pt: {
       phrase: 'Veja o que está acontecendo agora', explore: 'Ver Insights →', ph: 'PH', hn: 'HN',
       votes: 'votos', points: 'pontos', avgVotes: 'votos/dia', avgPoints: 'pontos/dia',
       bestDay: 'Melhor dia', distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes',
       winnerEyebrow: '🏆 Vencedor', topStoryEyebrow: '🔥 Destaque',
-      openDashboard: 'Abrir dashboard →',
+      openDashboard: 'Abrir dashboard →', install: 'Instalar {name} →',
     },
   };
 
@@ -90,8 +90,12 @@
     + '.iw-week{display:flex;align-items:center;justify-content:center;gap:5px;margin:12px 0;}'
     + '.iw-dot{width:6px;height:6px;border-radius:50%;background:#2d3748;flex-shrink:0;}'
     + '.iw-dot-active{background:#facc15;}'
-    + '.iw-cta{display:block;text-align:center;font-size:12px;font-weight:700;color:#0a0c12;background:#facc15;border-radius:7px;padding:9px;text-decoration:none;transition:filter .15s;}'
-    + '.iw-cta:hover{filter:brightness(1.1);text-decoration:none;}'
+    + '.iw-cta-row{display:flex;gap:6px;margin-top:12px;}'
+    + '.iw-cta{flex:1;display:block;text-align:center;font-size:11.5px;font-weight:700;border-radius:7px;padding:8px 6px;text-decoration:none;transition:filter .15s,background .15s;white-space:nowrap;}'
+    + '.iw-cta-primary{color:#0a0c12;background:#facc15;}'
+    + '.iw-cta-primary:hover{filter:brightness(1.1);text-decoration:none;}'
+    + '.iw-cta-secondary{color:#e2e8f0;background:transparent;border:1px solid #2d3748;}'
+    + '.iw-cta-secondary:hover{border-color:#4a5568;text-decoration:none;}'
     + '@media(max-width:640px){.iw-phrase{width:100%;}.iw-pop{left:auto;right:0;}}'
     + '@media(hover:none){.iw-pop{position:static;opacity:1;transform:none;pointer-events:auto;width:auto;margin-top:8px;display:none;}}';
     var s = document.createElement('style');
@@ -211,11 +215,24 @@
       });
       pop.appendChild(weekRow);
 
-      var cta = document.createElement('a');
-      cta.className = 'iw-cta';
-      cta.href = opts.dashboardHref;
-      cta.textContent = t.openDashboard;
-      pop.appendChild(cta);
+      var ctaRow = document.createElement('div');
+      ctaRow.className = 'iw-cta-row';
+
+      var ctaDash = document.createElement('a');
+      ctaDash.className = 'iw-cta iw-cta-primary';
+      ctaDash.href = opts.dashboardHref;
+      ctaDash.textContent = t.openDashboard;
+      ctaRow.appendChild(ctaDash);
+
+      var ctaInstall = document.createElement('a');
+      ctaInstall.className = 'iw-cta iw-cta-secondary';
+      ctaInstall.href = opts.installHref;
+      ctaInstall.target = '_blank';
+      ctaInstall.rel = 'noopener';
+      ctaInstall.textContent = t.install.replace('{name}', opts.productName);
+      ctaRow.appendChild(ctaInstall);
+
+      pop.appendChild(ctaRow);
 
       chip.appendChild(pop);
     }
@@ -241,6 +258,8 @@
         week: phWeek, icon: '🏆', badge: t.ph, valueKey: 'votes_count', nameKey: 'name', dateKey: 'pt_day',
         href: 'https://www.producthunt.com/posts/' + phWeek[0].slug,
         dashboardHref: langHref('/ph/today'),
+        installHref: 'https://chromewebstore.google.com/detail/nodus-ph-radar/cmibcnnkebddlcdjinibkegejpcafgag',
+        productName: 'PH Radar',
         eyebrow: t.winnerEyebrow,
         subtitle: phWeek[0].tagline,
         avgLabel: t.avgVotes,
@@ -253,6 +272,8 @@
         week: hnWeek, icon: '🔥', badge: t.hn, valueKey: 'score', nameKey: 'title', dateKey: 'collected_date',
         href: hnWeek[0].url || ('https://news.ycombinator.com/item?id=' + hnWeek[0].item_id),
         dashboardHref: langHref('/hn/today'),
+        installHref: 'https://chromewebstore.google.com/detail/nodus-hn-radar/khodlkgkgdkhkljapdllfjnfedamhkmn',
+        productName: 'HN Radar',
         eyebrow: t.topStoryEyebrow,
         subtitle: hnWeek[0].domain || 'news.ycombinator.com',
         avgLabel: t.avgPoints,
