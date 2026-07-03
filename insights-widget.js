@@ -21,16 +21,18 @@
 
   var LABEL = {
     en: {
-      phrase: 'See what\'s happening right now', explore: 'Explore all →', ph: 'PH', hn: 'HN',
+      phrase: 'See what\'s happening right now', explore: 'Explore Insights →', ph: 'PH', hn: 'HN',
       votes: 'votes', points: 'points', avgVotes: 'avg votes/day', avgPoints: 'avg points/day',
-      bestDay: 'best day', distinctWinners: 'different winners', distinctStories: 'different stories',
-      seeWeek: 'see the week →',
+      bestDay: 'Best day', distinctWinners: 'different winners', distinctStories: 'different stories',
+      winnerEyebrow: '🏆 Winner', topStoryEyebrow: '🔥 Top story',
+      openDashboard: 'Open dashboard →',
     },
     pt: {
-      phrase: 'Veja o que está acontecendo agora', explore: 'Ver tudo →', ph: 'PH', hn: 'HN',
+      phrase: 'Veja o que está acontecendo agora', explore: 'Ver Insights →', ph: 'PH', hn: 'HN',
       votes: 'votos', points: 'pontos', avgVotes: 'votos/dia', avgPoints: 'pontos/dia',
-      bestDay: 'melhor dia', distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes',
-      seeWeek: 'ver a semana →',
+      bestDay: 'Melhor dia', distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes',
+      winnerEyebrow: '🏆 Vencedor', topStoryEyebrow: '🔥 Destaque',
+      openDashboard: 'Abrir dashboard →',
     },
   };
 
@@ -72,16 +74,24 @@
     + '.iw-chip-stat{font-size:12px;color:#10b981;font-weight:600;white-space:nowrap;flex-shrink:0;}'
     + '.iw-explore{font-size:13px;color:#facc15;text-decoration:none;white-space:nowrap;margin-left:auto;flex-shrink:0;}'
     + '.iw-explore:hover{text-decoration:underline;}'
-    + '.iw-pop{position:absolute;top:calc(100% + 8px);left:0;width:260px;background:#1a1f29;border:1px solid #2d3748;border-radius:10px;padding:12px;z-index:20;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .15s ease,transform .15s ease;}'
+    + '.iw-pop{position:absolute;top:calc(100% + 8px);left:0;width:280px;background:#1a1f29;border:1px solid #2d3748;border-radius:10px;padding:14px;z-index:20;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .15s ease,transform .15s ease;}'
     + '.iw-chip:hover .iw-pop{opacity:1;transform:translateY(0);pointer-events:auto;}'
-    + '.iw-pop-tagline{font-size:12px;color:#94a3b8;margin-bottom:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
-    + '.iw-mini-stats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}'
-    + '.iw-mini-stat{font-size:11px;color:#64748b;background:#0e1117;border:1px solid #232b38;border-radius:6px;padding:3px 8px;}'
-    + '.iw-mini-stat b{color:#e2e8f0;font-weight:600;}'
-    + '.iw-week{display:flex;align-items:center;gap:5px;}'
+    + '.iw-pop-head{display:flex;align-items:baseline;gap:6px;}'
+    + '.iw-pop-eyebrow{font-size:10px;font-weight:700;color:#facc15;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap;flex-shrink:0;}'
+    + '.iw-pop-name{font-size:14px;font-weight:700;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
+    + '.iw-pop-tagline{font-size:12px;color:#94a3b8;margin:4px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
+    + '.iw-pop-divider{height:1px;background:#232b38;margin:10px 0;}'
+    + '.iw-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}'
+    + '.iw-stat-cell{background:#0e1117;border:1px solid #232b38;border-radius:6px;padding:6px 8px;text-align:center;}'
+    + '.iw-stat-cell b{display:block;font-size:15px;font-weight:700;color:#e2e8f0;}'
+    + '.iw-stat-cell span{font-size:10px;color:#64748b;}'
+    + '.iw-pop-bestday{font-size:11px;color:#94a3b8;margin-top:8px;text-align:center;}'
+    + '.iw-pop-bestday b{color:#e2e8f0;}'
+    + '.iw-week{display:flex;align-items:center;justify-content:center;gap:5px;margin:12px 0;}'
     + '.iw-dot{width:6px;height:6px;border-radius:50%;background:#2d3748;flex-shrink:0;}'
     + '.iw-dot-active{background:#facc15;}'
-    + '.iw-weeklink{font-size:11px;color:#facc15;margin-left:auto;white-space:nowrap;}'
+    + '.iw-cta{display:block;text-align:center;font-size:12px;font-weight:700;color:#0a0c12;background:#facc15;border-radius:7px;padding:9px;text-decoration:none;transition:filter .15s;}'
+    + '.iw-cta:hover{filter:brightness(1.1);text-decoration:none;}'
     + '@media(max-width:640px){.iw-phrase{width:100%;}.iw-pop{left:auto;right:0;}}'
     + '@media(hover:none){.iw-pop{position:static;opacity:1;transform:none;pointer-events:auto;width:auto;margin-top:8px;display:none;}}';
     var s = document.createElement('style');
@@ -110,6 +120,12 @@
     var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
     for (var k in attrs) el.setAttribute(k, attrs[k]);
     return el;
+  }
+
+  function divider() {
+    var d = document.createElement('div');
+    d.className = 'iw-pop-divider';
+    return d;
   }
 
   // week: array ordenado DESC por dia (mais recente primeiro), como a API já devolve.
@@ -159,18 +175,31 @@
       var pop = document.createElement('div');
       pop.className = 'iw-pop';
 
+      var head = document.createElement('div');
+      head.className = 'iw-pop-head';
+      head.innerHTML = '<span class="iw-pop-eyebrow">' + esc(opts.eyebrow) + '</span><span class="iw-pop-name">' + esc(top[nameKey]) + '</span>';
+      pop.appendChild(head);
+
       var tagline = document.createElement('div');
       tagline.className = 'iw-pop-tagline';
       tagline.textContent = opts.subtitle || '';
       pop.appendChild(tagline);
 
-      var mini = document.createElement('div');
-      mini.className = 'iw-mini-stats';
-      mini.innerHTML =
-        '<span class="iw-mini-stat"><b>' + avg + '</b> ' + esc(opts.avgLabel) + '</span>'
-        + '<span class="iw-mini-stat"><b>' + esc(opts.bestDayLabel(bestIdx)) + '</b> ' + esc(t.bestDay) + ' · ' + week[bestIdx][valueKey] + '</span>'
-        + '<span class="iw-mini-stat"><b>' + distinctCount + '</b> ' + esc(opts.distinctLabel) + '</span>';
-      pop.appendChild(mini);
+      pop.appendChild(divider());
+
+      var grid = document.createElement('div');
+      grid.className = 'iw-stat-grid';
+      grid.innerHTML =
+        '<div class="iw-stat-cell"><b>' + avg + '</b><span>' + esc(opts.avgLabel) + '</span></div>'
+        + '<div class="iw-stat-cell"><b>' + distinctCount + '</b><span>' + esc(opts.distinctLabel) + '</span></div>';
+      pop.appendChild(grid);
+
+      var bestday = document.createElement('div');
+      bestday.className = 'iw-pop-bestday';
+      bestday.innerHTML = esc(t.bestDay) + ': <b>' + esc(opts.bestDayLabel(bestIdx)) + '</b> · ' + week[bestIdx][valueKey];
+      pop.appendChild(bestday);
+
+      pop.appendChild(divider());
 
       var weekRow = document.createElement('div');
       weekRow.className = 'iw-week';
@@ -180,11 +209,13 @@
         dot.title = dayLabel(w[opts.dateKey]) + ' · ' + w[valueKey];
         weekRow.appendChild(dot);
       });
-      var weekLink = document.createElement('span');
-      weekLink.className = 'iw-weeklink';
-      weekLink.textContent = t.seeWeek;
-      weekRow.appendChild(weekLink);
       pop.appendChild(weekRow);
+
+      var cta = document.createElement('a');
+      cta.className = 'iw-cta';
+      cta.href = opts.dashboardHref;
+      cta.textContent = t.openDashboard;
+      pop.appendChild(cta);
 
       chip.appendChild(pop);
     }
@@ -209,6 +240,8 @@
       bar.appendChild(buildChip({
         week: phWeek, icon: '🏆', badge: t.ph, valueKey: 'votes_count', nameKey: 'name', dateKey: 'pt_day',
         href: 'https://www.producthunt.com/posts/' + phWeek[0].slug,
+        dashboardHref: langHref('/ph/today'),
+        eyebrow: t.winnerEyebrow,
         subtitle: phWeek[0].tagline,
         avgLabel: t.avgVotes,
         bestDayLabel: function (idx) { return dayLabel(phWeek[idx].pt_day).split(',')[0]; },
@@ -219,6 +252,8 @@
       bar.appendChild(buildChip({
         week: hnWeek, icon: '🔥', badge: t.hn, valueKey: 'score', nameKey: 'title', dateKey: 'collected_date',
         href: hnWeek[0].url || ('https://news.ycombinator.com/item?id=' + hnWeek[0].item_id),
+        dashboardHref: langHref('/hn/today'),
+        eyebrow: t.topStoryEyebrow,
         subtitle: hnWeek[0].domain || 'news.ycombinator.com',
         avgLabel: t.avgPoints,
         bestDayLabel: function (idx) { return dayLabel(hnWeek[idx].collected_date).split(',')[0]; },
