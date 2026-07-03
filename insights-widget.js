@@ -201,7 +201,12 @@
     };
   }
 
+  // Sempre retorna uma caixa .iw-media (130px fixo, via CSS) — é essa altura
+  // travada que garante que o popover não muda de tamanho entre PH/HN/YT.
   function renderMedia(media) {
+    var box = document.createElement('div');
+    box.className = 'iw-media';
+
     if (media.type === 'img') {
       var img = document.createElement('img');
       img.className = 'iw-media-thumb';
@@ -209,8 +214,10 @@
       img.alt = '';
       img.loading = 'lazy';
       img.onerror = function () { img.style.display = 'none'; };
-      return img;
+      box.appendChild(img);
+      return box;
     }
+
     // favicon ou monograma: tile colorido com letra; favicon tenta carregar
     // a imagem por cima e cai pro monograma se falhar (domínio sem favicon).
     var wrap = document.createElement('div');
@@ -228,7 +235,8 @@
       fav.onload = function () { tile.textContent = ''; tile.style.background = 'transparent'; tile.appendChild(fav); };
       // pré-carrega fora da árvore visível; só entra na tile se der certo
     }
-    return wrap;
+    box.appendChild(wrap);
+    return box;
   }
 
   // ── Carrossel: 1 slot só, revezaou entre as fontes, para de vez no hover/clique ──
