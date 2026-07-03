@@ -421,11 +421,14 @@
       fetch('/api/hn/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
       fetch('/api/yt/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
     ]).then(function (results) {
+      // >= 1 basta pra entrar no carrossel (uma fonte recém-lançada como o YT
+      // pode ter só 1 dia de histórico ainda) — computeWeekStats já lida bem
+      // com semanas de 1 item só (média = o próprio valor, 1 distinto).
       var phWeek = results[0] || [], hnWeek = results[1] || [], ytWeek = results[2] || [];
       var sources = [];
-      if (phWeek.length > 1) sources.push(buildPHSource(phWeek));
-      if (hnWeek.length > 1) sources.push(buildHNSource(hnWeek));
-      if (ytWeek.length > 1) sources.push(buildYTSource(ytWeek));
+      if (phWeek.length) sources.push(buildPHSource(phWeek));
+      if (hnWeek.length) sources.push(buildHNSource(hnWeek));
+      if (ytWeek.length) sources.push(buildYTSource(ytWeek));
       if (!sources.length) return; // sem dados de nenhuma fonte -> no-op
       mountCarousel(hero, sources);
     });
