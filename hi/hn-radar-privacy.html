@@ -16,7 +16,7 @@
   <div class="hero">
     <div class="hero-label">कानूनी · HN Radar</div>
     <h1>गोपनीयता नीति</h1>
-    <p>NODUS HN Radar ब्राउज़र एक्सटेंशन &nbsp;·&nbsp; अपडेट किया गया: मई 2026 &nbsp;·&nbsp; v0.15</p>
+    <p>NODUS HN Radar ब्राउज़र एक्सटेंशन &nbsp;·&nbsp; अपडेट किया गया: जुलाई 2026 &nbsp;·&nbsp; v0.16.15</p>
   </div>
   <div class="page">
     <div class="toc">
@@ -41,10 +41,10 @@
         <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
         <li>HN Radar — यह दस्तावेज़</li>
       </ul>
-      <p>HN Radar दो एंडपॉइंट्स से जुड़ता है, दोनों <strong>Hacker News के स्वयं के</strong> हैं:</p>
+      <p>HN Radar तीन एंडपॉइंट्स से जुड़ता है — दो <strong>Hacker News के स्वयं के</strong> हैं, और एक छोटा NODUS सर्वर है जो केवल फ़ुटर प्रमोशन के लिए उपयोग होता है:</p>
       <div class="card"><div class="card-title"><span class="badge badge-green">आवश्यक</span> news.ycombinator.com</div><p>वह साइट जिसे आप पढ़ रहे हैं। कंटेंट स्क्रिप्ट उन पृष्ठों को बेहतर बनाती है जिन्हें आप स्वयं लोड करते हैं — बिना सक्रिय fetch के।</p></div>
       <div class="card"><div class="card-title"><span class="badge badge-green">आवश्यक</span> hacker-news.firebaseio.com</div><p>Hacker News की सार्वजनिक Firebase API। Radar डैशबोर्ड के लिए ट्रेंडिंग सूचियाँ (Top / Show / Ask / Best) और व्यक्तिगत आइटम विवरण प्राप्त करने के लिए उपयोग की जाती है।</p></div>
-      <div class="card"><div class="card-title"><span class="badge badge-gray">कोई नहीं</span> NODUS सर्वर</div><p>HN Radar किसी भी NODUS इंफ्रास्ट्रक्चर से संपर्क नहीं करता। YT Radar (Community Spotlight worker) या मुख्य NODUS (PRO लाइसेंस) के विपरीत, इस एक्सटेंशन की कोई NODUS बैकएंड निर्भरता नहीं है।</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">नया · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div><p>एक्सटेंशन के फ़ुटर में एक घूर्णन बैनर को शक्ति देता है जो अन्य NODUS एक्सटेंशन (जैसे PH Radar) का क्रॉस-प्रमोशन करता है। एक्सटेंशन बैनर दिखाए जाने या क्लिक किए जाने पर केवल एक अपारदर्शी प्रमोशन ID भेजता है, जिसका उपयोग केवल कुल इंप्रेशन/क्लिक गिनने के लिए किया जाता है। इस सर्वर पर कभी भी कोई व्यक्तिगत डेटा, ब्राउज़िंग इतिहास, या Hacker News कंटेंट नहीं भेजा जाता।</p></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="local-data"></span>
@@ -64,7 +64,7 @@
 
     <div class="section"><span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. बाहरी एंडपॉइंट्स की व्याख्या</h2>
-      <p>एक्सटेंशन केवल दो डोमेन से fetch करती है, जो <code>host_permissions</code> में घोषित हैं और इंस्टॉलेशन से पहले Chrome को दिखाई देते हैं।</p>
+      <p>एक्सटेंशन केवल तीन डोमेन से fetch करती है, जो <code>host_permissions</code> में घोषित हैं और इंस्टॉलेशन से पहले Chrome को दिखाई देते हैं।</p>
       <h3>3a. Hacker News साइट</h3>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">केवल कंटेंट स्क्रिप्ट</span></div><div class="endpoint-body"><p>कंटेंट स्क्रिप्ट उन पृष्ठों पर CSS और छोटे DOM सुधार (पिन बटन, टाइप बैज, अनुवाद बटन) इंजेक्ट करती है जिन्हें आप लोड करते हैं। एक्सटेंशन बैकग्राउंड में सक्रिय रूप से HN fetch नहीं करती।</p><p class="data-sent"><strong>एक्सटेंशन द्वारा भेजा गया डेटा:</strong> उससे अधिक कुछ नहीं जो आपका ब्राउज़र पहले से भेजता है।</p></div></div>
       <h3>3b. Hacker News सार्वजनिक Firebase API</h3>
@@ -72,6 +72,10 @@
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">यदि टैब सक्रिय</span></div><div class="endpoint-body"><p>Best, Show HN और Ask HN टैब के लिए वही।</p></div></div>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">प्रति पोस्ट</span></div><div class="endpoint-body"><p>Radar में या प्रीव्यू में प्रदर्शित प्रत्येक पोस्ट या टिप्पणी का सार्वजनिक विवरण प्राप्त करता है।</p><p class="data-sent"><strong>भेजा गया डेटा:</strong> पोस्ट का ID। आपका कोई पहचानकर्ता नहीं।</p></div></div>
       <p style="font-size:13px;color:#64748b;">Hacker News और Y Combinator इन अनुरोधों को अपनी नीतियों के अनुसार लॉग कर सकते हैं। एक्सटेंशन स्वयं हेडर, कुकीज़ या auth नहीं जोड़ती।</p>
+
+      <h3>3c. NODUS इकोसिस्टम क्रॉस-प्रमो (worker-ph-radar)</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span><span class="badge badge-green">फ़ुटर बैनर के लिए आवश्यक</span></div><div class="endpoint-body"><p>एक्सटेंशन के फ़ुटर में दिखाने के लिए NODUS इकोसिस्टम की सक्रिय प्रमोशन पूल प्राप्त करता है (जैसे PH Radar का विज्ञापन)। अधिकतम हर 10 मिनट में रिफ़्रेश होता है, बीच में स्थानीय रूप से कैश किया जाता है।</p><p class="data-sent"><strong>भेजा गया डेटा:</strong> कुछ भी पहचानयोग्य नहीं — बस अनुरोध। कोई पोस्ट ID, ब्राउज़िंग डेटा, या HN कंटेंट नहीं।</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span><span class="badge badge-green">वैकल्पिक · केवल तकनीकी/इंटरैक्शन</span></div><div class="endpoint-body"><p>जब फ़ुटर प्रमोशन दिखाई जाती है या क्लिक की जाती है, तब भेजा जाता है, केवल उस प्रमोशन के कुल इंप्रेशन/क्लिक गिनने के लिए।</p><p class="data-sent"><strong>भेजा गया डेटा:</strong> एक एकल अपारदर्शी प्रमोशन ID (जैसे <code>cross-hn-to-ph</code>)। कोई उपयोगकर्ता पहचानकर्ता, IP-आधारित प्रोफ़ाइल, या किसी भी प्रकार का व्यक्तिगत डेटा आपसे जुड़ा या संग्रहीत नहीं किया जाता।</p></div></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="translation"></span>
@@ -91,7 +95,7 @@
       <h2><span class="icon">🚫</span> 5. जो हम कभी नहीं करते</h2>
       <ul class="check cross">
         <li>आपका डेटा तीसरे पक्षों को बेचना</li>
-        <li>NODUS सर्वरों को कुछ भी भेजना (इस एक्सटेंशन के लिए कोई NODUS बैकएंड नहीं)</li>
+        <li>NODUS सर्वरों को ऐसा कुछ भी भेजना जो आपकी पहचान करे (केवल फ़ुटर बैनर के कुल आँकड़ों के लिए एक अपारदर्शी प्रमोशन ID)</li>
         <li>आप कौन से पोस्ट्स पढ़ते, क्लिक करते या पिन करते हैं, उन्हें ट्रैक करना</li>
         <li>news.ycombinator.com के बाहर विज़िट की गई साइटों को ट्रैक करना</li>
         <li>तृतीय-पक्ष एनालिटिक्स या विज्ञापन SDKs का उपयोग करना</li>

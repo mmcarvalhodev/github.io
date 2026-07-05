@@ -16,7 +16,7 @@
   <div class="hero">
     <div class="hero-label">法的事項 · HN Radar</div>
     <h1>プライバシーポリシー</h1>
-    <p>NODUS HN Radar ブラウザ拡張機能 &nbsp;·&nbsp; 更新日:2026年5月 &nbsp;·&nbsp; v0.15</p>
+    <p>NODUS HN Radar ブラウザ拡張機能 &nbsp;·&nbsp; 更新日:2026年7月 &nbsp;·&nbsp; v0.16.15</p>
   </div>
   <div class="page">
     <div class="toc">
@@ -41,10 +41,10 @@
         <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
         <li>HN Radar — このドキュメント</li>
       </ul>
-      <p>HN Radar は2つのエンドポイントに接続し、両方とも <strong>Hacker News 自身</strong> に属します:</p>
+      <p>HN Radar は3つのエンドポイントに接続します — 2つは <strong>Hacker News 自身</strong> に属し、1つはフッターのプロモーション表示のみに使用される小さな NODUS サーバーです:</p>
       <div class="card"><div class="card-title"><span class="badge badge-green">必須</span> news.ycombinator.com</div><p>あなたが読んでいるサイトそのもの。content script はあなた自身が読み込んだページを改善します — プロアクティブな fetch はありません。</p></div>
       <div class="card"><div class="card-title"><span class="badge badge-green">必須</span> hacker-news.firebaseio.com</div><p>Hacker News の公開 Firebase API。上昇中リスト(Top / Show / Ask / Best)と Radar ダッシュボード用の個別アイテム詳細を取得するために使用します。</p></div>
-      <div class="card"><div class="card-title"><span class="badge badge-gray">なし</span> NODUS サーバー</div><p>HN Radar は NODUS インフラに一切接続しません。YT Radar(Community Spotlight worker)や NODUS メイン(PRO ライセンス)とは異なり、この拡張機能には NODUS バックエンドへの依存はありません。</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">新規 · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div><p>拡張機能のフッターに他の NODUS 拡張機能(例:PH Radar)を相互プロモーションするローテーションバナーを表示するために使用します。拡張機能はバナーが表示またはクリックされたときに不透明なプロモーション ID のみを送信し、集計インプレッション/クリック数をカウントするためだけに使用されます。個人データ、閲覧履歴、Hacker News のコンテンツがこのサーバーに送信されることはありません。</p></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="local-data"></span>
@@ -64,7 +64,7 @@
 
     <div class="section"><span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. 外部エンドポイントの説明</h2>
-      <p>拡張機能は <code>host_permissions</code> に宣言された2つのドメインからのみ fetch を行い、これはインストール前に Chrome で確認できます。</p>
+      <p>拡張機能は <code>host_permissions</code> に宣言された3つのドメインからのみ fetch を行い、これはインストール前に Chrome で確認できます。</p>
       <h3>3a. Hacker News サイト</h3>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">content script のみ</span></div><div class="endpoint-body"><p>content script はあなたが読み込むページに CSS と小さな DOM 改善(ピンボタン、タイプバッジ、翻訳ボタン)を注入します。拡張機能はバックグラウンドで HN にプロアクティブな fetch を行いません。</p><p class="data-sent"><strong>拡張機能から送信されるデータ:</strong> ブラウザが既に送信しているもの以外はなし。</p></div></div>
       <h3>3b. Hacker News の公開 Firebase API</h3>
@@ -72,6 +72,10 @@
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">アクティブなタブの場合</span></div><div class="endpoint-body"><p>Best、Show HN、Ask HN タブにも同様。</p></div></div>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">投稿ごと</span></div><div class="endpoint-body"><p>Radar またはプレビューで表示される各投稿またはコメントの公開詳細を取得します。</p><p class="data-sent"><strong>送信されるデータ:</strong> 投稿の ID のみ。あなたを示す識別子はなし。</p></div></div>
       <p style="font-size:13px;color:#64748b;">Hacker News と Y Combinator は独自のポリシーに従ってこれらのリクエストをログに記録する可能性があります。拡張機能自体はヘッダー、Cookie、認証情報を追加しません。</p>
+
+      <h3>3c. NODUS エコシステムの相互プロモーション(worker-ph-radar)</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span><span class="badge badge-green">フッターバナーに必須</span></div><div class="endpoint-body"><p>拡張機能のフッターに表示する、NODUS エコシステムのアクティブなプロモーションのプール(例:PH Radar の広告)を取得します。最短10分間隔で更新され、それまではローカルにキャッシュされます。</p><p class="data-sent"><strong>送信されるデータ:</strong> 識別情報はなし — リクエストのみ。投稿 ID、閲覧データ、HN のコンテンツは含まれません。</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span><span class="badge badge-green">任意 · 技術的なインタラクションのみ</span></div><div class="endpoint-body"><p>フッターのプロモーションが表示またはクリックされたときに送信され、そのプロモーションの集計インプレッション/クリック数をカウントするためだけに使用されます。</p><p class="data-sent"><strong>送信されるデータ:</strong> 単一の不透明なプロモーション ID(例:<code>cross-hn-to-ph</code>)。ユーザー識別子、IP ベースのプロファイル、いかなる種類の個人データもあなたに関連付けて添付・保存されることはありません。</p></div></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="translation"></span>
@@ -91,7 +95,7 @@
       <h2><span class="icon">🚫</span> 5. 決して行わないこと</h2>
       <ul class="check cross">
         <li>あなたのデータを第三者に販売すること</li>
-        <li>NODUS サーバーに何かを送信すること(この拡張機能には NODUS バックエンドはありません)</li>
+        <li>あなたを特定できる情報を NODUS サーバーに送信すること(フッターバナーの集計統計のための不透明なプロモーション ID のみ)</li>
         <li>あなたが読んだ、クリックした、ピン留めした投稿を追跡すること</li>
         <li>news.ycombinator.com 以外で訪問したサイトを追跡すること</li>
         <li>サードパーティのアナリティクスや広告 SDK を使用すること</li>

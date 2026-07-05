@@ -16,7 +16,7 @@
   <div class="hero">
     <div class="hero-label">Yasal · HN Radar</div>
     <h1>Gizlilik Politikası</h1>
-    <p>NODUS HN Radar tarayıcı uzantısı &nbsp;·&nbsp; Güncellendi: Mayıs 2026 &nbsp;·&nbsp; v0.15</p>
+    <p>NODUS HN Radar tarayıcı uzantısı &nbsp;·&nbsp; Güncellendi: Temmuz 2026 &nbsp;·&nbsp; v0.16.15</p>
   </div>
   <div class="page">
     <div class="toc">
@@ -41,10 +41,10 @@
         <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
         <li>HN Radar — bu belge</li>
       </ul>
-      <p>HN Radar iki endpoint'e bağlanır, ikisi de <strong>Hacker News'in kendisine</strong> aittir:</p>
+      <p>HN Radar üç endpoint'e bağlanır — ikisi <strong>Hacker News'in kendisine</strong> ait, biri ise yalnızca footer'daki bir promosyon için kullanılan küçük bir NODUS sunucusudur:</p>
       <div class="card"><div class="card-title"><span class="badge badge-green">gerekli</span> news.ycombinator.com</div><p>Okuduğunuz site. Content script kendiniz yüklediğiniz sayfaları iyileştirir — proaktif fetch yok.</p></div>
       <div class="card"><div class="card-title"><span class="badge badge-green">gerekli</span> hacker-news.firebaseio.com</div><p>Hacker News'in genel Firebase API'si. Yükselen listeleri (Top / Show / Ask / Best) ve Radar paneli için bireysel öğe ayrıntılarını almak için kullanılır.</p></div>
-      <div class="card"><div class="card-title"><span class="badge badge-gray">hiçbiri</span> NODUS sunucuları</div><p>HN Radar herhangi bir NODUS altyapısıyla iletişim kurmaz. YT Radar (Community Spotlight worker) veya ana NODUS'un (PRO lisansı) aksine, bu uzantının NODUS backend bağımlılığı yoktur.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">yeni · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div><p>Uzantının footer'ında diğer NODUS uzantılarını (ör. PH Radar) çapraz tanıtan dönen bir banner'ı besler. Uzantı, bir banner gösterildiğinde veya tıklandığında yalnızca anlamsız bir promosyon kimliği gönderir; bu, yalnızca toplam gösterim/tıklama sayısını saymak için kullanılır. Bu sunucuya hiçbir kişisel veri, gezinme geçmişi veya Hacker News içeriği asla gönderilmez.</p></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="local-data"></span>
@@ -64,7 +64,7 @@
 
     <div class="section"><span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. Dış endpoint'ler açıklandı</h2>
-      <p>Uzantı yalnızca <code>host_permissions</code>'da bildirilen ve yüklemeden önce Chrome'a görünür olan iki alan adından fetch yapar.</p>
+      <p>Uzantı yalnızca <code>host_permissions</code>'da bildirilen ve yüklemeden önce Chrome'a görünür olan üç alan adından fetch yapar.</p>
       <h3>3a. Hacker News sitesi</h3>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">yalnızca content script</span></div><div class="endpoint-body"><p>Content script, yüklediğiniz sayfalara CSS ve küçük DOM iyileştirmeleri (pin düğmeleri, tür rozetleri, çeviri düğmeleri) enjekte eder. Uzantı arka planda HN'yi proaktif olarak fetch etmez.</p><p class="data-sent"><strong>Uzantı tarafından gönderilen veriler:</strong> tarayıcınızın zaten gönderdiklerinin ötesinde hiçbir şey.</p></div></div>
       <h3>3b. Hacker News genel Firebase API'si</h3>
@@ -72,6 +72,10 @@
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">sekme aktifse</span></div><div class="endpoint-body"><p>Best, Show HN ve Ask HN sekmeleri için aynı.</p></div></div>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">gönderi başına</span></div><div class="endpoint-body"><p>Radar'da veya önizlemede görüntülenen her gönderi veya yorumun genel ayrıntılarını alır.</p><p class="data-sent"><strong>Gönderilen veriler:</strong> gönderinin ID'si. Sizden hiçbir tanımlayıcı yok.</p></div></div>
       <p style="font-size:13px;color:#64748b;">Hacker News ve Y Combinator, bu istekleri kendi politikalarına göre kaydedebilir. Uzantının kendisi header, çerez veya kimlik doğrulama eklemez.</p>
+
+      <h3>3c. NODUS ekosistemi çapraz tanıtımı (worker-ph-radar)</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span><span class="badge badge-green">footer banner'ı için gerekli</span></div><div class="endpoint-body"><p>Uzantının footer'ında gösterilecek etkin NODUS ekosistemi promosyonları havuzunu getirir (ör. PH Radar için bir reklam). En fazla 10 dakikada bir yenilenir, aralarda yerel olarak önbelleğe alınır.</p><p class="data-sent"><strong>Gönderilen veriler:</strong> tanımlayıcı hiçbir şey — yalnızca istek. Gönderi ID'si, gezinme verisi veya HN içeriği yok.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span><span class="badge badge-green">isteğe bağlı · yalnızca teknik/etkileşim</span></div><div class="endpoint-body"><p>Bir footer promosyonu gösterildiğinde veya tıklandığında, yalnızca bu promosyon için toplam gösterim/tıklama sayısını saymak amacıyla gönderilir.</p><p class="data-sent"><strong>Gönderilen veriler:</strong> tek bir anlamsız promosyon kimliği (ör. <code>cross-hn-to-ph</code>). Size ait hiçbir kullanıcı tanımlayıcısı, IP tabanlı profil veya herhangi bir türde kişisel veri eklenmez veya saklanmaz.</p></div></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="translation"></span>
@@ -91,7 +95,7 @@
       <h2><span class="icon">🚫</span> 5. Asla yapmadıklarımız</h2>
       <ul class="check cross">
         <li>Verilerinizi üçüncü taraflara satmak</li>
-        <li>NODUS sunucularına herhangi bir şey göndermek (bu uzantı için NODUS backend'i yok)</li>
+        <li>NODUS sunucularına sizi tanımlayan herhangi bir şey göndermek (yalnızca footer banner'ının toplam istatistikleri için anlamsız bir promosyon kimliği)</li>
         <li>Hangi gönderileri okuduğunuzu, tıkladığınızı veya sabitlediğinizi takip etmek</li>
         <li>news.ycombinator.com dışında ziyaret edilen siteleri takip etmek</li>
         <li>Üçüncü taraf analitik veya reklam SDK'ları kullanmak</li>

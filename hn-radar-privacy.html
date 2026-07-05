@@ -17,7 +17,7 @@
   <div class="hero">
     <div class="hero-label">Legal · HN Radar</div>
     <h1>Privacy Policy</h1>
-    <p>NODUS HN Radar browser extension &nbsp;·&nbsp; Last updated: May 2026 &nbsp;·&nbsp; v0.15</p>
+    <p>NODUS HN Radar browser extension &nbsp;·&nbsp; Last updated: July 2026 &nbsp;·&nbsp; v0.16.15</p>
   </div>
 
   <div class="page">
@@ -52,7 +52,7 @@
         <li>HN Radar — this document</li>
       </ul>
 
-      <p>HN Radar connects to two endpoints, both belonging to <strong>Hacker News itself</strong>:</p>
+      <p>HN Radar connects to three endpoints — two belonging to <strong>Hacker News itself</strong>, and one small NODUS server used only for a footer promotion:</p>
 
       <div class="card">
         <div class="card-title"><span class="badge badge-green">required</span> news.ycombinator.com</div>
@@ -63,8 +63,8 @@
         <p>Hacker News's public Firebase API. Used to fetch trending lists (Top / Show / Ask / Best) and individual item details for the Radar dashboard.</p>
       </div>
       <div class="card">
-        <div class="card-title"><span class="badge badge-gray">none</span> NODUS servers</div>
-        <p>HN Radar does not contact any NODUS infrastructure. Unlike YT Radar (Community Spotlight worker) or the main NODUS (PRO license), this extension has zero NODUS backend dependencies.</p>
+        <div class="card-title"><span class="badge badge-green">new · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div>
+        <p>Powers a rotating banner in the extension's footer that cross-promotes other NODUS extensions (e.g. PH Radar). The extension sends only an opaque promotion ID when a banner is shown or clicked, used solely to count aggregate impressions/clicks. No personal data, browsing history, or Hacker News content is ever sent to this server.</p>
       </div>
     </div>
 
@@ -122,7 +122,7 @@
       <span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. External endpoints explained</h2>
 
-      <p>The extension only fetches from two domains, both declared in <code>host_permissions</code> and visible to your browser before install.</p>
+      <p>The extension only fetches from three domains, all declared in <code>host_permissions</code> and visible to your browser before install.</p>
 
       <h3>3a. Hacker News website</h3>
 
@@ -172,6 +172,30 @@
       </div>
 
       <p style="font-size:13px; color:#64748b;">Hacker News and Y Combinator may log these requests according to their own policies. The extension itself adds no headers, cookies, or auth.</p>
+
+      <h3>3c. NODUS ecosystem cross-promo (worker-ph-radar)</h3>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span>
+          <span class="badge badge-green">required for footer banner</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Fetches the pool of active NODUS ecosystem promotions to show in the extension's footer (e.g. an ad for PH Radar). Refreshed at most every 10 minutes, cached locally in between.</p>
+          <p class="data-sent"><strong>Data sent:</strong> nothing identifying — just the request. No post IDs, browsing data, or HN content.</p>
+        </div>
+      </div>
+
+      <div class="endpoint-block">
+        <div class="endpoint-header">
+          <span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span>
+          <span class="badge badge-green">optional · technical/interaction only</span>
+        </div>
+        <div class="endpoint-body">
+          <p>Sent when a footer promotion is shown or clicked, purely to count aggregate impressions/clicks for that promotion.</p>
+          <p class="data-sent"><strong>Data sent:</strong> a single opaque promotion ID (e.g. <code>cross-hn-to-ph</code>). No user identifier, IP-based profile, or personal data of any kind is attached or stored against you.</p>
+        </div>
+      </div>
     </div>
 
     <!-- 4. TRANSLATION -->
@@ -201,7 +225,7 @@
 
       <ul class="check cross">
         <li>Sell your data to any third party</li>
-        <li>Send anything to NODUS servers (no NODUS backend exists for this extension)</li>
+        <li>Send anything that identifies you to NODUS servers (only an opaque promotion ID, for the footer banner's aggregate stats)</li>
         <li>Track which posts you read, click, or pin</li>
         <li>Track websites you visit outside news.ycombinator.com</li>
         <li>Use third-party analytics or advertising SDKs</li>

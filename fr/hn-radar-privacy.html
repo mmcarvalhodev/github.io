@@ -16,7 +16,7 @@
   <div class="hero">
     <div class="hero-label">Légal · HN Radar</div>
     <h1>Politique de confidentialité</h1>
-    <p>Extension de navigateur NODUS HN Radar &nbsp;·&nbsp; Mis à jour : Mai 2026 &nbsp;·&nbsp; v0.15</p>
+    <p>Extension de navigateur NODUS HN Radar &nbsp;·&nbsp; Mis à jour : Juillet 2026 &nbsp;·&nbsp; v0.16.15</p>
   </div>
   <div class="page">
     <div class="toc">
@@ -41,10 +41,10 @@
         <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
         <li>HN Radar — ce document</li>
       </ul>
-      <p>HN Radar se connecte à deux endpoints, tous deux appartenant à <strong>Hacker News lui-même</strong> :</p>
+      <p>HN Radar se connecte à trois endpoints — deux appartenant à <strong>Hacker News lui-même</strong>, et un petit serveur NODUS utilisé uniquement pour une promotion en pied de page :</p>
       <div class="card"><div class="card-title"><span class="badge badge-green">requis</span> news.ycombinator.com</div><p>Le site que vous lisez. Le content script améliore les pages que vous chargez vous-même — sans fetch proactif.</p></div>
       <div class="card"><div class="card-title"><span class="badge badge-green">requis</span> hacker-news.firebaseio.com</div><p>API publique Firebase de Hacker News. Utilisée pour récupérer les listes en hausse (Top / Show / Ask / Best) et les détails individuels d'items pour le tableau de bord Radar.</p></div>
-      <div class="card"><div class="card-title"><span class="badge badge-gray">aucun</span> Serveurs NODUS</div><p>HN Radar ne contacte aucune infrastructure NODUS. Contrairement à YT Radar (worker Community Spotlight) ou à NODUS principal (licence PRO), cette extension n'a aucune dépendance backend NODUS.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">nouveau · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div><p>Alimente une bannière rotative dans le pied de page de l'extension qui fait la promotion croisée d'autres extensions NODUS (ex. PH Radar). L'extension envoie uniquement un ID de promotion opaque lorsqu'une bannière est affichée ou cliquée, utilisé uniquement pour compter les impressions/clics agrégés. Aucune donnée personnelle, historique de navigation ou contenu Hacker News n'est jamais envoyé à ce serveur.</p></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="local-data"></span>
@@ -64,7 +64,7 @@
 
     <div class="section"><span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. Endpoints externes expliqués</h2>
-      <p>L'extension ne fetch que depuis deux domaines, déclarés dans <code>host_permissions</code> et visibles à Chrome avant l'installation.</p>
+      <p>L'extension ne fetch que depuis trois domaines, déclarés dans <code>host_permissions</code> et visibles à Chrome avant l'installation.</p>
       <h3>3a. Site Hacker News</h3>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">content script uniquement</span></div><div class="endpoint-body"><p>Le content script injecte du CSS et de petites améliorations DOM (boutons pin, badges de type, boutons de traduction) sur les pages que vous chargez. L'extension ne fetch pas HN proactivement en background.</p><p class="data-sent"><strong>Données envoyées par l'extension :</strong> aucune au-delà de ce que votre navigateur envoie déjà.</p></div></div>
       <h3>3b. API publique Firebase de Hacker News</h3>
@@ -72,6 +72,10 @@
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">si onglet actif</span></div><div class="endpoint-body"><p>Idem pour les onglets Best, Show HN et Ask HN.</p></div></div>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">par post</span></div><div class="endpoint-body"><p>Récupère les détails publics de chaque post ou commentaire affiché dans le Radar ou en aperçu.</p><p class="data-sent"><strong>Données envoyées :</strong> l'ID du post. Aucun identifiant de vous.</p></div></div>
       <p style="font-size:13px;color:#64748b;">Hacker News et Y Combinator peuvent journaliser ces requêtes selon leurs propres politiques. L'extension elle-même n'ajoute pas de headers, cookies, ou auth.</p>
+
+      <h3>3c. Promotion croisée de l'écosystème NODUS (worker-ph-radar)</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span><span class="badge badge-green">requis pour la bannière en pied de page</span></div><div class="endpoint-body"><p>Récupère l'ensemble des promotions actives de l'écosystème NODUS à afficher dans le pied de page de l'extension (ex. une publicité pour PH Radar). Actualisé au maximum toutes les 10 minutes, mis en cache localement entre-temps.</p><p class="data-sent"><strong>Données envoyées :</strong> rien d'identifiant — juste la requête. Aucun ID de post, donnée de navigation ou contenu HN.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span><span class="badge badge-green">optionnel · technique/interaction uniquement</span></div><div class="endpoint-body"><p>Envoyé lorsqu'une promotion en pied de page est affichée ou cliquée, uniquement pour compter les impressions/clics agrégés de cette promotion.</p><p class="data-sent"><strong>Données envoyées :</strong> un seul ID de promotion opaque (ex. <code>cross-hn-to-ph</code>). Aucun identifiant utilisateur, profil basé sur IP ou donnée personnelle d'aucune sorte n'est associé ou stocké à votre sujet.</p></div></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="translation"></span>
@@ -91,7 +95,7 @@
       <h2><span class="icon">🚫</span> 5. Ce que nous ne faisons jamais</h2>
       <ul class="check cross">
         <li>Vendre vos données à des tiers</li>
-        <li>Envoyer quoi que ce soit aux serveurs NODUS (aucun backend NODUS pour cette extension)</li>
+        <li>Envoyer quoi que ce soit qui vous identifie aux serveurs NODUS (seulement un ID de promotion opaque, pour les statistiques agrégées de la bannière en pied de page)</li>
         <li>Tracker quels posts vous lisez, cliquez ou épinglez</li>
         <li>Tracker les sites visités hors news.ycombinator.com</li>
         <li>Utiliser des analytics ou SDKs publicitaires tiers</li>

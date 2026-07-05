@@ -16,7 +16,7 @@
   <div class="hero">
     <div class="hero-label">Legal · HN Radar</div>
     <h1>Kebijakan privasi</h1>
-    <p>Ekstensi browser NODUS HN Radar &nbsp;·&nbsp; Diperbarui: Mei 2026 &nbsp;·&nbsp; v0.15</p>
+    <p>Ekstensi browser NODUS HN Radar &nbsp;·&nbsp; Diperbarui: Juli 2026 &nbsp;·&nbsp; v0.16.15</p>
   </div>
   <div class="page">
     <div class="toc">
@@ -41,10 +41,10 @@
         <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
         <li>HN Radar — dokumen ini</li>
       </ul>
-      <p>HN Radar terhubung ke dua endpoint, keduanya milik <strong>Hacker News itu sendiri</strong>:</p>
+      <p>HN Radar terhubung ke tiga endpoint — dua milik <strong>Hacker News itu sendiri</strong>, dan satu server NODUS kecil yang digunakan hanya untuk promosi di footer:</p>
       <div class="card"><div class="card-title"><span class="badge badge-green">wajib</span> news.ycombinator.com</div><p>Situs yang Anda baca. Content script meningkatkan halaman yang Anda muat sendiri — tanpa fetch proaktif.</p></div>
       <div class="card"><div class="card-title"><span class="badge badge-green">wajib</span> hacker-news.firebaseio.com</div><p>API publik Firebase milik Hacker News. Digunakan untuk mengambil daftar yang sedang naik (Top / Show / Ask / Best) dan detail item individual untuk dasbor Radar.</p></div>
-      <div class="card"><div class="card-title"><span class="badge badge-gray">tidak ada</span> Server NODUS</div><p>HN Radar tidak menghubungi infrastruktur NODUS apa pun. Berbeda dengan YT Radar (worker Community Spotlight) atau NODUS utama (lisensi PRO), ekstensi ini tidak memiliki dependensi backend NODUS.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">baru · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div><p>Menyediakan banner rotasi di footer ekstensi yang mempromosikan silang ekstensi NODUS lainnya (mis. PH Radar). Ekstensi hanya mengirim ID promosi opaque saat banner ditampilkan atau diklik, digunakan semata-mata untuk menghitung impresi/klik agregat. Tidak ada data pribadi, riwayat penjelajahan, atau konten Hacker News yang pernah dikirim ke server ini.</p></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="local-data"></span>
@@ -64,7 +64,7 @@
 
     <div class="section"><span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. Endpoint eksternal yang dijelaskan</h2>
-      <p>Ekstensi hanya melakukan fetch dari dua domain, yang dideklarasikan dalam <code>host_permissions</code> dan terlihat oleh Chrome sebelum instalasi.</p>
+      <p>Ekstensi hanya melakukan fetch dari tiga domain, yang dideklarasikan dalam <code>host_permissions</code> dan terlihat oleh Chrome sebelum instalasi.</p>
       <h3>3a. Situs Hacker News</h3>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">hanya content script</span></div><div class="endpoint-body"><p>Content script menyuntikkan CSS dan peningkatan DOM kecil (tombol pin, badge jenis, tombol terjemahan) pada halaman yang Anda muat. Ekstensi tidak melakukan fetch HN secara proaktif di background.</p><p class="data-sent"><strong>Data yang dikirim oleh ekstensi:</strong> tidak ada di luar yang sudah dikirim oleh browser Anda.</p></div></div>
       <h3>3b. API publik Firebase Hacker News</h3>
@@ -72,6 +72,10 @@
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">jika tab aktif</span></div><div class="endpoint-body"><p>Sama untuk tab Best, Show HN dan Ask HN.</p></div></div>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">per postingan</span></div><div class="endpoint-body"><p>Mengambil detail publik dari setiap postingan atau komentar yang ditampilkan di Radar atau di pratinjau.</p><p class="data-sent"><strong>Data yang dikirim:</strong> ID postingan. Tidak ada pengenal Anda.</p></div></div>
       <p style="font-size:13px;color:#64748b;">Hacker News dan Y Combinator dapat mencatat permintaan ini sesuai kebijakan mereka sendiri. Ekstensi itu sendiri tidak menambahkan header, cookie, atau auth.</p>
+
+      <h3>3c. Promosi silang ekosistem NODUS (worker-ph-radar)</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span><span class="badge badge-green">wajib untuk banner footer</span></div><div class="endpoint-body"><p>Mengambil kumpulan promosi aktif ekosistem NODUS untuk ditampilkan di footer ekstensi (mis. iklan PH Radar). Diperbarui paling sering setiap 10 menit, di-cache secara lokal di antaranya.</p><p class="data-sent"><strong>Data yang dikirim:</strong> tidak ada yang mengidentifikasi — hanya permintaan saja. Tidak ada ID postingan, data penjelajahan, atau konten HN.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span><span class="badge badge-green">opsional · hanya teknis/interaksi</span></div><div class="endpoint-body"><p>Dikirim saat promosi footer ditampilkan atau diklik, semata-mata untuk menghitung impresi/klik agregat promosi tersebut.</p><p class="data-sent"><strong>Data yang dikirim:</strong> satu ID promosi opaque tunggal (mis. <code>cross-hn-to-ph</code>). Tidak ada identifikator pengguna, profil berbasis IP, atau data pribadi jenis apa pun yang dilampirkan atau disimpan terkait Anda.</p></div></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="translation"></span>
@@ -91,7 +95,7 @@
       <h2><span class="icon">🚫</span> 5. Yang tidak pernah kami lakukan</h2>
       <ul class="check cross">
         <li>Menjual data Anda kepada pihak ketiga</li>
-        <li>Mengirim apa pun ke server NODUS (tidak ada backend NODUS untuk ekstensi ini)</li>
+        <li>Mengirim apa pun yang mengidentifikasi Anda ke server NODUS (hanya ID promosi opaque, untuk statistik agregat banner footer)</li>
         <li>Melacak postingan apa yang Anda baca, klik, atau sematkan</li>
         <li>Melacak situs yang dikunjungi di luar news.ycombinator.com</li>
         <li>Menggunakan analytics atau SDK iklan pihak ketiga</li>

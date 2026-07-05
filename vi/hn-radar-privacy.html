@@ -16,7 +16,7 @@
   <div class="hero">
     <div class="hero-label">Pháp lý · HN Radar</div>
     <h1>Chính sách quyền riêng tư</h1>
-    <p>Tiện ích trình duyệt NODUS HN Radar &nbsp;·&nbsp; Cập nhật: Tháng 5 năm 2026 &nbsp;·&nbsp; v0.15</p>
+    <p>Tiện ích trình duyệt NODUS HN Radar &nbsp;·&nbsp; Cập nhật: Tháng 7 năm 2026 &nbsp;·&nbsp; v0.16.15</p>
   </div>
   <div class="page">
     <div class="toc">
@@ -41,10 +41,10 @@
         <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
         <li>HN Radar — tài liệu này</li>
       </ul>
-      <p>HN Radar kết nối với hai endpoint, cả hai đều thuộc về <strong>chính Hacker News</strong>:</p>
+      <p>HN Radar kết nối với ba endpoint — hai thuộc về <strong>chính Hacker News</strong>, và một máy chủ NODUS nhỏ chỉ dùng cho một quảng cáo ở footer:</p>
       <div class="card"><div class="card-title"><span class="badge badge-green">bắt buộc</span> news.ycombinator.com</div><p>Trang web bạn đang đọc. Content script cải thiện các trang bạn tự tải — không có fetch chủ động.</p></div>
       <div class="card"><div class="card-title"><span class="badge badge-green">bắt buộc</span> hacker-news.firebaseio.com</div><p>API Firebase công khai của Hacker News. Được dùng để lấy danh sách bài đang lên (Top / Show / Ask / Best) và chi tiết từng item cho bảng điều khiển Radar.</p></div>
-      <div class="card"><div class="card-title"><span class="badge badge-gray">không có</span> Máy chủ NODUS</div><p>HN Radar không liên hệ với bất kỳ hạ tầng NODUS nào. Khác với YT Radar (worker Community Spotlight) hoặc NODUS chính (giấy phép PRO), tiện ích này không có phụ thuộc backend NODUS nào.</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">mới · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div><p>Cung cấp banner xoay vòng ở footer của tiện ích để quảng bá chéo các tiện ích NODUS khác (vd. PH Radar). Tiện ích chỉ gửi một ID quảng cáo không định danh khi banner được hiển thị hoặc nhấp, chỉ dùng để đếm số lượt hiển thị/nhấp tổng hợp. Không có dữ liệu cá nhân, lịch sử duyệt web, hay nội dung Hacker News nào từng được gửi đến máy chủ này.</p></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="local-data"></span>
@@ -64,7 +64,7 @@
 
     <div class="section"><span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. Giải thích các endpoint bên ngoài</h2>
-      <p>Tiện ích chỉ fetch từ hai tên miền, được khai báo trong <code>host_permissions</code> và hiển thị cho Chrome trước khi cài đặt.</p>
+      <p>Tiện ích chỉ fetch từ ba tên miền, được khai báo trong <code>host_permissions</code> và hiển thị cho Chrome trước khi cài đặt.</p>
       <h3>3a. Trang web Hacker News</h3>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">chỉ content script</span></div><div class="endpoint-body"><p>Content script chèn CSS và các cải tiến DOM nhỏ (nút pin, badge theo loại, nút dịch) vào các trang bạn tải. Tiện ích không fetch HN một cách chủ động ở background.</p><p class="data-sent"><strong>Dữ liệu tiện ích gửi đi:</strong> không có gì ngoài những gì trình duyệt của bạn đã gửi.</p></div></div>
       <h3>3b. API Firebase công khai của Hacker News</h3>
@@ -72,6 +72,10 @@
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">nếu tab đang hoạt động</span></div><div class="endpoint-body"><p>Tương tự cho các tab Best, Show HN và Ask HN.</p></div></div>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">theo từng bài</span></div><div class="endpoint-body"><p>Lấy chi tiết công khai của mỗi bài hoặc bình luận hiển thị trong Radar hoặc trong bản xem trước.</p><p class="data-sent"><strong>Dữ liệu gửi đi:</strong> ID của bài. Không có thông tin nhận dạng của bạn.</p></div></div>
       <p style="font-size:13px;color:#64748b;">Hacker News và Y Combinator có thể ghi log những yêu cầu này theo chính sách của họ. Bản thân tiện ích không thêm header, cookie hay xác thực nào.</p>
+
+      <h3>3c. Quảng bá chéo hệ sinh thái NODUS (worker-ph-radar)</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span><span class="badge badge-green">bắt buộc cho banner footer</span></div><div class="endpoint-body"><p>Lấy tập hợp các quảng cáo đang hoạt động trong hệ sinh thái NODUS để hiển thị ở footer của tiện ích (vd. một quảng cáo cho PH Radar). Được làm mới tối đa mỗi 10 phút, được cache cục bộ giữa các lần đó.</p><p class="data-sent"><strong>Dữ liệu gửi đi:</strong> không có gì nhận dạng — chỉ là yêu cầu. Không có ID bài, dữ liệu duyệt web, hay nội dung HN.</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span><span class="badge badge-green">tùy chọn · chỉ mang tính kỹ thuật/tương tác</span></div><div class="endpoint-body"><p>Được gửi khi một quảng cáo ở footer được hiển thị hoặc nhấp, chỉ nhằm đếm số lượt hiển thị/nhấp tổng hợp cho quảng cáo đó.</p><p class="data-sent"><strong>Dữ liệu gửi đi:</strong> một ID quảng cáo không định danh duy nhất (vd. <code>cross-hn-to-ph</code>). Không có định danh người dùng, hồ sơ dựa trên IP, hay dữ liệu cá nhân dưới bất kỳ hình thức nào được đính kèm hoặc lưu trữ liên quan đến bạn.</p></div></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="translation"></span>
@@ -91,7 +95,7 @@
       <h2><span class="icon">🚫</span> 5. Những điều chúng tôi không bao giờ làm</h2>
       <ul class="check cross">
         <li>Bán dữ liệu của bạn cho bên thứ ba</li>
-        <li>Gửi bất cứ gì tới máy chủ NODUS (không có backend NODUS cho tiện ích này)</li>
+        <li>Gửi bất cứ gì có thể nhận dạng bạn tới máy chủ NODUS (chỉ một ID quảng cáo không định danh, cho thống kê tổng hợp của banner footer)</li>
         <li>Theo dõi bạn đọc, nhấp hoặc ghim bài nào</li>
         <li>Theo dõi các trang web bạn ghé thăm ngoài news.ycombinator.com</li>
         <li>Sử dụng analytics hoặc SDK quảng cáo của bên thứ ba</li>

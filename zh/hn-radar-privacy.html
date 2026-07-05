@@ -16,7 +16,7 @@
   <div class="hero">
     <div class="hero-label">法律 · HN Radar</div>
     <h1>隐私政策</h1>
-    <p>NODUS HN Radar 浏览器扩展 &nbsp;·&nbsp; 更新日期：2026年5月 &nbsp;·&nbsp; v0.15</p>
+    <p>NODUS HN Radar 浏览器扩展 &nbsp;·&nbsp; 更新日期：2026年7月 &nbsp;·&nbsp; v0.16.15</p>
   </div>
   <div class="page">
     <div class="toc">
@@ -41,10 +41,10 @@
         <li>YT Radar — <a href="../yt-radar-privacy.html" style="color:#ff8c42;">yt-radar-privacy.html</a></li>
         <li>HN Radar — 本文档</li>
       </ul>
-      <p>HN Radar 连接到两个端点，二者都属于 <strong>Hacker News 自身</strong>：</p>
+      <p>HN Radar 连接到三个端点 — 两个属于 <strong>Hacker News 自身</strong>，另一个是仅用于页脚推广的小型 NODUS 服务器：</p>
       <div class="card"><div class="card-title"><span class="badge badge-green">必需</span> news.ycombinator.com</div><p>您正在阅读的网站。内容脚本会对您自行加载的页面进行优化 — 不主动 fetch。</p></div>
       <div class="card"><div class="card-title"><span class="badge badge-green">必需</span> hacker-news.firebaseio.com</div><p>Hacker News 的公共 Firebase API。用于获取上升帖列表（Top / Show / Ask / Best）以及 Radar 仪表板的单项详情。</p></div>
-      <div class="card"><div class="card-title"><span class="badge badge-gray">无</span> NODUS 服务器</div><p>HN Radar 不联系任何 NODUS 基础设施。与 YT Radar（Community Spotlight worker）或主 NODUS（PRO 许可证）不同，本扩展没有任何 NODUS 后端依赖。</p></div>
+      <div class="card"><div class="card-title"><span class="badge badge-green">新增 · v0.16.15</span> worker-ph-radar.mmcarvalho-dev.workers.dev</div><p>为扩展页脚中的轮播横幅提供支持，用于交叉推广其他 NODUS 扩展（例如 PH Radar）。扩展仅在横幅展示或被点击时发送一个不透明的推广 ID，仅用于统计汇总的展示次数/点击次数。个人数据、浏览历史或 Hacker News 内容永远不会发送到此服务器。</p></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="local-data"></span>
@@ -64,7 +64,7 @@
 
     <div class="section"><span class="section-anchor" id="endpoints"></span>
       <h2><span class="icon">🌐</span> 3. 外部端点说明</h2>
-      <p>本扩展仅从两个域名 fetch，已在 <code>host_permissions</code> 中声明，安装前对 Chrome 可见。</p>
+      <p>本扩展仅从三个域名 fetch，已在 <code>host_permissions</code> 中声明，安装前对 Chrome 可见。</p>
       <h3>3a. Hacker News 网站</h3>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">https://news.ycombinator.com/*</span><span class="badge badge-green">仅内容脚本</span></div><div class="endpoint-body"><p>内容脚本向您加载的页面注入 CSS 和小型 DOM 增强功能（置顶按钮、类型徽章、翻译按钮）。扩展不会在后台主动 fetch HN。</p><p class="data-sent"><strong>扩展发送的数据：</strong>不超过您的浏览器本来发送的内容。</p></div></div>
       <h3>3b. Hacker News 的公共 Firebase API</h3>
@@ -72,6 +72,10 @@
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/{best,show,ask}stories.json</span><span class="badge badge-green">如果标签页激活</span></div><div class="endpoint-body"><p>Best、Show HN 和 Ask HN 标签页同理。</p></div></div>
       <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">…/v0/item/&lt;id&gt;.json</span><span class="badge badge-green">按帖子</span></div><div class="endpoint-body"><p>获取 Radar 或预览中显示的每个帖子或评论的公共详情。</p><p class="data-sent"><strong>发送的数据：</strong>帖子的 ID。不包含您的任何标识符。</p></div></div>
       <p style="font-size:13px;color:#64748b;">Hacker News 和 Y Combinator 可能会按其自身政策记录这些请求。扩展本身不添加 header、cookie 或 auth。</p>
+
+      <h3>3c. NODUS 生态系统交叉推广（worker-ph-radar）</h3>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">GET https://worker-ph-radar.mmcarvalho-dev.workers.dev/cross-promo?target=hn-radar</span><span class="badge badge-green">页脚横幅所需</span></div><div class="endpoint-body"><p>获取活跃的 NODUS 生态系统推广内容池，用于在扩展页脚中展示（例如 PH Radar 的广告）。最多每 10 分钟刷新一次，期间在本地缓存。</p><p class="data-sent"><strong>发送的数据：</strong>无可识别信息 — 仅是请求本身。不包含帖子 ID、浏览数据或 HN 内容。</p></div></div>
+      <div class="endpoint-block"><div class="endpoint-header"><span class="endpoint-url">POST …/cross-promo/impression · POST …/cross-promo/click</span><span class="badge badge-green">可选 · 仅技术性/交互统计</span></div><div class="endpoint-body"><p>在页脚推广内容展示或被点击时发送，仅用于统计该推广内容的汇总展示次数/点击次数。</p><p class="data-sent"><strong>发送的数据：</strong>单个不透明的推广 ID（例如 <code>cross-hn-to-ph</code>）。不会附加或存储任何用户标识符、基于 IP 的画像或任何形式的个人数据。</p></div></div>
     </div>
 
     <div class="section"><span class="section-anchor" id="translation"></span>
@@ -91,7 +95,7 @@
       <h2><span class="icon">🚫</span> 5. 我们绝不做的事</h2>
       <ul class="check cross">
         <li>将您的数据出售给第三方</li>
-        <li>向 NODUS 服务器发送任何内容（本扩展无 NODUS 后端）</li>
+        <li>向 NODUS 服务器发送任何可识别您身份的信息（仅发送一个不透明的推广 ID，用于页脚横幅的汇总统计）</li>
         <li>跟踪您阅读、点击或置顶哪些帖子</li>
         <li>跟踪 news.ycombinator.com 之外访问的网站</li>
         <li>使用第三方分析或广告 SDK</li>
