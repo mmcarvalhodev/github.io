@@ -87,6 +87,7 @@
     + '.iw-phrase{font-size:14px;font-weight:600;color:#e2e8f0;white-space:nowrap;flex-shrink:0;}'
     + '.iw-slot{position:relative;flex-shrink:0;}'
     + '.iw-chip{position:relative;display:flex;align-items:center;gap:7px;background:#151a23;border:1px solid #232b38;border-radius:20px;padding:6px 12px 6px 6px;text-decoration:none;width:280px;max-width:280px;transition:border-color .15s;}'
+    + '.iw-chip::after{content:"";position:absolute;top:100%;left:0;width:100%;height:14px;}'
     + '.iw-chip:hover{border-color:#3a4356;text-decoration:none;}'
     + '.iw-chip-badge{font-size:10px;font-weight:700;color:#facc15;background:rgba(250,204,21,.1);border-radius:14px;padding:3px 7px;white-space:nowrap;flex-shrink:0;}'
     + '.iw-chip-name{font-size:13px;font-weight:600;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;}'
