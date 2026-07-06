@@ -25,19 +25,19 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding: 40px 20px 60px;
+      padding: 24px 20px 36px;
     }
 
     nav {
       max-width: 900px;
-      margin: 0 auto 48px;
+      margin: 0 auto 24px;
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .nav-logo { font-size: 18px; font-weight: 900; color: var(--yellow); text-decoration: none; letter-spacing: -0.5px; }
     .nav-back { font-size: 13px; color: var(--sub); text-decoration: none; }
     .nav-back:hover { color: var(--text); }
 
-    .page-header { text-align: center; margin-bottom: 48px; }
+    .page-header { text-align: center; margin-bottom: 24px; }
     .ph-badge {
       display: inline-flex;
       align-items: center;
@@ -53,9 +53,9 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
-    .page-title { font-size: clamp(28px, 5vw, 44px); font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+    .page-title { font-size: clamp(22px, 4vw, 32px); font-weight: 900; letter-spacing: -0.8px; margin-bottom: 8px; }
     .page-title span { color: var(--yellow); }
-    .page-sub { font-size: 16px; color: var(--sub); }
+    .page-sub { font-size: 14px; color: var(--sub); }
 
     .error-message {
       background: rgba(239,68,68,0.12);
@@ -72,11 +72,11 @@
 
     .lifetime-card {
       max-width: 900px;
-      margin: 0 auto 24px;
+      margin: 0 auto 16px;
       background: linear-gradient(135deg, #1a1a0e 0%, #131720 60%);
       border: 2px solid var(--yellow);
-      border-radius: 20px;
-      padding: 40px;
+      border-radius: 18px;
+      padding: 24px 28px;
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -101,21 +101,21 @@
       font-weight: 800;
       padding: 4px 12px;
       border-radius: 99px;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .lifetime-name { font-size: 28px; font-weight: 900; color: var(--yellow); margin-bottom: 8px; letter-spacing: -0.5px; }
-    .lifetime-desc { font-size: 15px; color: var(--sub); line-height: 1.6; max-width: 420px; }
+    .lifetime-name { font-size: 21px; font-weight: 900; color: var(--yellow); margin-bottom: 6px; letter-spacing: -0.5px; }
+    .lifetime-desc { font-size: 13px; color: var(--sub); line-height: 1.5; max-width: 420px; }
     .lifetime-right { text-align: right; flex-shrink: 0; }
-    .lifetime-price-old { font-size: 14px; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
-    .lifetime-price { font-size: 56px; font-weight: 900; color: var(--yellow); line-height: 1; letter-spacing: -2px; }
-    .lifetime-once { font-size: 14px; color: var(--sub); margin-top: 4px; }
+    .lifetime-price-old { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 2px; }
+    .lifetime-price { font-size: 38px; font-weight: 900; color: var(--yellow); line-height: 1; letter-spacing: -1.5px; }
+    .lifetime-once { font-size: 12.5px; color: var(--sub); margin-top: 3px; }
     .lifetime-slots {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 12px;
+      margin-top: 8px;
       background: rgba(239,68,68,0.12);
       border: 1px solid rgba(239,68,68,0.3);
       color: #f87171;
@@ -130,22 +130,22 @@
     .lifetime-features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin: 28px 0;
-      padding-top: 28px;
+      gap: 8px;
+      margin: 16px 0;
+      padding-top: 16px;
       border-top: 1px solid rgba(250,204,21,0.2);
     }
-    .lf-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text); }
+    .lf-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text); }
     .lf-item::before { content: "✓"; color: var(--yellow); font-weight: 800; flex-shrink: 0; }
 
     .btn-lifetime {
       width: 100%;
-      padding: 18px;
+      padding: 14px;
       background: var(--yellow);
       color: #0a0c12;
       border: none;
       border-radius: 12px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.2s;
@@ -153,11 +153,11 @@
     }
     .btn-lifetime:hover:not(:disabled) { background: #fde047; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(250,204,21,0.3); }
     .btn-lifetime:disabled { opacity: 0.6; cursor: wait; }
-    .btn-lifetime-sub { text-align: center; font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .btn-lifetime-sub { text-align: center; font-size: 11.5px; color: var(--muted); margin-top: 8px; }
 
     .or-divider {
       max-width: 900px;
-      margin: 8px auto 20px;
+      margin: 6px auto 14px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -166,13 +166,13 @@
     }
     .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto 32px; }
+    .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 0 auto 20px; }
     @media (max-width: 640px) { .plans { grid-template-columns: 1fr; } }
 
     .plan {
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px 24px;
+      border-radius: 14px;
+      padding: 18px 18px;
       background: var(--panel);
       position: relative;
       transition: border-color 0.2s, transform 0.2s;
@@ -193,39 +193,39 @@
       text-transform: uppercase;
     }
 
-    .plan-name { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .plan-price { font-size: 40px; font-weight: 900; color: var(--purple); margin-bottom: 4px; letter-spacing: -1px; }
-    .plan-period { font-size: 14px; color: var(--sub); margin-bottom: 16px; }
+    .plan-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .plan-price { font-size: 30px; font-weight: 900; color: var(--purple); margin-bottom: 2px; letter-spacing: -1px; }
+    .plan-period { font-size: 13px; color: var(--sub); margin-bottom: 10px; }
     .savings-tag {
       display: inline-block;
       background: rgba(16,185,129,0.12);
       color: var(--green);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 6px;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
-    .plan-features { list-style: none; margin-bottom: 24px; }
+    .plan-features { list-style: none; margin-bottom: 14px; }
     .plan-features li {
-      padding: 7px 0;
-      font-size: 13px;
+      padding: 5px 0;
+      font-size: 12.5px;
       color: var(--sub);
       display: flex;
       align-items: center;
       gap: 8px;
       border-bottom: 1px solid rgba(255,255,255,0.04);
     }
-    .plan-features li::before { content: "✓"; color: var(--green); font-weight: 700; font-size: 14px; flex-shrink: 0; }
+    .plan-features li::before { content: "✓"; color: var(--green); font-weight: 700; font-size: 13px; flex-shrink: 0; }
 
     .btn-plan {
       width: 100%;
-      padding: 14px;
+      padding: 11px;
       background: transparent;
       border: 1.5px solid var(--purple);
       color: var(--purple);
       border-radius: 10px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
@@ -235,39 +235,36 @@
 
     .trial-notice {
       max-width: 900px;
-      margin: 0 auto 16px;
+      margin: 0 auto 12px;
       text-align: center;
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--muted);
-      padding: 14px;
+      padding: 10px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 10px;
     }
     .trial-notice strong { color: var(--green); }
 
-    .page-footer { max-width: 900px; margin: 24px auto 0; text-align: center; font-size: 13px; color: var(--muted); }
+    .page-footer { max-width: 900px; margin: 16px auto 0; text-align: center; font-size: 12.5px; color: var(--muted); }
     .page-footer a { color: var(--sub); text-decoration: none; }
     .page-footer a:hover { color: var(--text); }
 
     @media (max-width: 640px) {
       .lifetime-top { flex-direction: column; }
       .lifetime-right { text-align: left; }
-      .lifetime-price { font-size: 44px; }
+      .lifetime-price { font-size: 32px; }
     }
 
     /* ── PRO bundle (what one subscription unlocks) ── */
-    .pro-bundle{max-width:760px;margin:0 auto 22px;padding:20px 22px;
+    .pro-bundle{max-width:760px;margin:0 auto 14px;padding:14px 18px;
       background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:14px}
-    .pb-title{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
-      color:#94a3b8;text-align:center;margin-bottom:16px}
-    .pb-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .pb-app-name{font-size:15px;font-weight:800;color:#facc15;margin-bottom:5px}
-    .pb-soon{font-size:9px;font-weight:700;color:#a78bfa;border:1px solid rgba(167,139,250,.4);
-      background:rgba(167,139,250,.12);padding:1px 7px;border-radius:99px;vertical-align:middle;
-      margin-left:5px;text-transform:uppercase;letter-spacing:.5px}
-    .pb-app-desc{font-size:12.5px;color:#94a3b8;line-height:1.5}
-    @media(max-width:640px){.pb-apps{grid-template-columns:1fr;gap:14px}}
+    .pb-title{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+      color:#94a3b8;text-align:center;margin-bottom:10px}
+    .pb-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .pb-app-name{font-size:13.5px;font-weight:800;color:#facc15;margin-bottom:3px}
+    .pb-app-desc{font-size:11.5px;color:#94a3b8;line-height:1.45}
+    @media(max-width:640px){.pb-apps{grid-template-columns:1fr;gap:10px}}
   </style>
   <link rel="canonical" href="https://nodus-ai.app/checkout" />
 </head>
@@ -300,7 +297,7 @@
         <div class="pb-app-desc" id="t-pb-ph">Product Hunt analytics — saved dashboards, period comparison, alerts, CSV/PDF export.</div>
       </div>
       <div class="pb-app">
-        <div class="pb-app-name">Workspace <span class="pb-soon" id="t-pb-soon">soon</span></div>
+        <div class="pb-app-name">Workspace</div>
         <div class="pb-app-desc" id="t-pb-ws">Notes, docs, sheets, PDFs, files &amp; web clippings.</div>
       </div>
     </div>
@@ -391,8 +388,7 @@
       'pb-title': { en:'Everything NODUS PRO unlocks', pt:'Tudo o que o NODUS PRO desbloqueia' },
       'pb-ai':    { en:'Capture & organize AI chats — queues, chains, export, encrypted backup.', pt:'Capture e organize conversas de IA — filas, chains, export, backup criptografado.' },
       'pb-ph':    { en:'Product Hunt analytics — saved dashboards, period comparison, alerts, CSV/PDF export.', pt:'Analytics do Product Hunt — dashboards salvos, comparação de períodos, alertas, export CSV/PDF.' },
-      'pb-ws':    { en:'Notes, docs, sheets, PDFs, files & web clippings.', pt:'Notas, documentos, planilhas, PDFs, arquivos e recortes da web.' },
-      'pb-soon':  { en:'soon', pt:'em breve' }
+      'pb-ws':    { en:'Notes, docs, sheets, PDFs, files & web clippings.', pt:'Notas, documentos, planilhas, PDFs, arquivos e recortes da web.' }
     };
 
     function t(key) {
@@ -411,7 +407,6 @@
         't-pb-ai':         'pb-ai',
         't-pb-ph':         'pb-ph',
         't-pb-ws':         'pb-ws',
-        't-pb-soon':       'pb-soon',
         't-lt-badge':      'lt-badge',
         't-lt-name':       'lt-name',
         't-lt-desc':       'lt-desc',
