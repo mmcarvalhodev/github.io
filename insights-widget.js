@@ -98,11 +98,12 @@
     + '.iw-progress-fill-yellow{background:#facc15;}'
     + '.iw-progress-fill-blue{background:#60a5fa;}'
     + '.iw-progress.iw-paused .iw-progress-fill{background:#475569 !important;}'
-    + '.iw-dots{position:absolute;left:0;bottom:-16px;display:flex;align-items:center;gap:4px;}'
-    + '.iw-dot{width:12px;height:3px;border-radius:2px;background:#2d3748;border:none;padding:0;cursor:pointer;transition:background .2s,width .2s;}'
-    + '.iw-dot-active-yellow{background:#facc15;width:16px;}'
-    + '.iw-dot-active-blue{background:#60a5fa;width:16px;}'
-    + '.iw-dot:hover{background:#4a5568;}'
+    + '.iw-dots{position:absolute;left:-4px;bottom:-20px;display:flex;align-items:center;}'
+    + '.iw-dot{width:20px;height:18px;background:transparent;border:none;padding:0;margin:0;cursor:pointer;display:flex;align-items:center;justify-content:center;}'
+    + '.iw-dot-visual{width:12px;height:3px;border-radius:2px;background:#2d3748;transition:background .2s;}'
+    + '.iw-dot:hover .iw-dot-visual{background:#4a5568;}'
+    + '.iw-dot-active-yellow .iw-dot-visual{background:#facc15;}'
+    + '.iw-dot-active-blue .iw-dot-visual{background:#60a5fa;}'
     + '.iw-explore{font-size:13px;color:#facc15;text-decoration:none;white-space:nowrap;margin-left:auto;flex-shrink:0;}'
     + '.iw-explore:hover{text-decoration:underline;}'
     + '.iw-pop{position:absolute;top:calc(100% + 14px);left:0;width:290px;height:368px;background:#1a1f29;border:1px solid #2d3748;border-radius:10px;padding:14px;z-index:20;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .15s ease,transform .15s ease;display:flex;flex-direction:column;}'
@@ -356,8 +357,14 @@
         dots.innerHTML = '';
         sources.forEach(function (_, i) {
           var dot = document.createElement('button');
+          // O botão em si é maior (20x18px) que o tracinho visível (12x3px,
+          // no span interno) — alvo de clique real precisa de mais margem
+          // do que o desenho sugere, senão o usuário erra o clique.
           dot.className = 'iw-dot' + (i === idx ? ' iw-dot-active-' + accent : '');
           dot.setAttribute('aria-label', sources[i].badge + ' ' + (i + 1));
+          var visual = document.createElement('span');
+          visual.className = 'iw-dot-visual';
+          dot.appendChild(visual);
           dot.addEventListener('click', function (e) {
             e.preventDefault();
             idx = i;
@@ -398,8 +405,14 @@
       progress.classList.add('iw-paused');
     }
 
-    chip.addEventListener('mouseenter', stopRotation);
-    chip.addEventListener('click', stopRotation);
+    // No slot inteiro (não só no chip) — os dots ficam FORA do <a> do chip,
+    // então um listener só no chip nunca disparava ao passar o mouse nos
+    // dots. Resultado: a rotação continuava trocando os dots embaixo do
+    // cursor bem na hora que o usuário tentava clicar num específico —
+    // um alvo se movendo. Parar assim que o mouse entra em QUALQUER parte
+    // do slot resolve isso.
+    slot.addEventListener('mouseenter', stopRotation);
+    slot.addEventListener('click', stopRotation);
 
     draw();
     startRotation();
