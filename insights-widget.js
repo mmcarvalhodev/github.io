@@ -1,14 +1,18 @@
 /* =====================================================================
    NODUS — Today's Insights widget (homepage only, shared, self-contained)
-   Fase 2: carrossel de slot único (PH / HN / YT), ativado agora que a
-   3ª fonte (YT Insights) está no ar. Card revezaou sozinho a cada 5s
-   (desktop) / 6s (mobile) e PARA DE VEZ (não retoma) assim que o usuário
-   interage — hover ou clique num tracinho. Altura do popover travada em
-   368px nos 3 estados, para o card nunca "pular" ao trocar de fonte.
-   - Busca dados ao vivo de /api/ph/week, /api/hn/week, /api/yt/week
+   Fase 2: dois carrosséis de slot único, lado a lado NA MESMA LINHA —
+   "See what's happening right now [PH/HN/YT]  Newsletters [newsletters]".
+   Cada slot revezaou sozinho a cada 5s (desktop) / 6s (mobile) e PARA
+   DE VEZ (não retoma) assim que o usuário interage com ELE — hover ou
+   clique num tracinho. Altura do popover travada (368px) em todos os
+   estados de um mesmo slot, pra nunca "pular" ao trocar de fonte.
+   - Slot 1 (dado ao vivo, amarelo): /api/ph/week, /api/hn/week, /api/yt/week
+   - Slot 2 (curadoria via PH topic, azul): /api/newsletters — feed
+     "rolling top-N", sem conceito de dia/semana; funil de CTA único
+     ("Assinar →"), não dois botões como o slot 1.
    - Cada fonte tem uma caixa de mídia do mesmo tamanho: thumbnail real
-     (YT), favicon do domínio (HN) ou monograma do produto (PH, até o
-     coletor do PH Radar propagar thumbnail_url real)
+     (YT, newsletters quando existir), favicon do domínio (HN) ou
+     monograma do produto (PH/newsletters sem thumbnail_url)
    - Só monta se encontrar .hero na página (ou seja, só na home) e só
      depois que os dados chegarem — sem estado de loading, sem no-op feio
    - Auto-detecta idioma (mesmo padrão de resources-menu.js) só para o
@@ -25,19 +29,21 @@
   var LABEL = {
     en: {
       phrase: 'See what\'s happening right now', explore: 'Explore Insights →',
-      ph: 'PH', hn: 'HN', yt: 'YT',
+      nlPhrase: 'Newsletters',
+      ph: 'PH', hn: 'HN', yt: 'YT', nl: 'NL',
       avgVotes: 'avg votes/day', avgPoints: 'avg points/day', avgViews: 'avg views/day',
-      bestDay: 'Best day', distinctWinners: 'different winners', distinctStories: 'different stories', distinctChannels: 'different channels',
-      winnerEyebrow: '🏆 Winner', topStoryEyebrow: '🔥 Top story', trendingEyebrow: '📈 Trending now',
-      openDashboard: 'Open dashboard →', install: 'Install {name} →',
+      distinctWinners: 'different winners', distinctStories: 'different stories', distinctChannels: 'different channels',
+      winnerEyebrow: '🏆 Winner', topStoryEyebrow: '🔥 Top story', trendingEyebrow: '📈 Trending now', nlEyebrow: '✉️ Newsletter',
+      openDashboard: 'Open dashboard →', install: 'Install {name} →', subscribe: 'Subscribe →',
     },
     pt: {
       phrase: 'Veja o que está acontecendo agora', explore: 'Ver Insights →',
-      ph: 'PH', hn: 'HN', yt: 'YT',
+      nlPhrase: 'Newsletters',
+      ph: 'PH', hn: 'HN', yt: 'YT', nl: 'NL',
       avgVotes: 'votos/dia', avgPoints: 'pontos/dia', avgViews: 'views/dia',
-      bestDay: 'Melhor dia', distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes', distinctChannels: 'canais diferentes',
-      winnerEyebrow: '🏆 Vencedor', topStoryEyebrow: '🔥 Destaque', trendingEyebrow: '📈 Em alta agora',
-      openDashboard: 'Abrir dashboard →', install: 'Instalar {name} →',
+      distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes', distinctChannels: 'canais diferentes',
+      winnerEyebrow: '🏆 Vencedor', topStoryEyebrow: '🔥 Destaque', trendingEyebrow: '📈 Em alta agora', nlEyebrow: '✉️ Newsletter',
+      openDashboard: 'Abrir dashboard →', install: 'Instalar {name} →', subscribe: 'Assinar →',
     },
   };
 
@@ -62,13 +68,6 @@
     return lang === 'en' ? path : '/' + lang + path;
   }
 
-  function dayLabel(iso) {
-    try {
-      var d = new Date(iso + 'T12:00:00Z');
-      return d.toLocaleDateString(lang, { weekday: 'short', month: 'short', day: 'numeric' });
-    } catch (e) { return iso; }
-  }
-
   function esc(str) {
     var d = document.createElement('div');
     d.textContent = String(str == null ? '' : str);
@@ -83,26 +82,32 @@
     if (document.getElementById('iw-style')) return;
     var css = ''
     + '.iw-section{max-width:1140px;margin:20px auto 0;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;}'
-    + '.iw-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}'
+    + '.iw-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}'
     + '.iw-phrase{font-size:14px;font-weight:600;color:#e2e8f0;white-space:nowrap;flex-shrink:0;}'
     + '.iw-slot{position:relative;flex-shrink:0;}'
-    + '.iw-chip{position:relative;display:flex;align-items:center;gap:7px;background:#151a23;border:1px solid #232b38;border-radius:20px;padding:6px 12px 6px 6px;text-decoration:none;width:280px;max-width:280px;transition:border-color .15s;}'
+    + '.iw-chip{position:relative;display:flex;align-items:center;gap:7px;background:#151a23;border:1px solid #232b38;border-radius:20px;padding:6px 12px 6px 6px;text-decoration:none;width:250px;max-width:250px;transition:border-color .15s;}'
     + '.iw-chip::after{content:"";position:absolute;top:100%;left:0;width:100%;height:14px;}'
     + '.iw-chip:hover{border-color:#3a4356;text-decoration:none;}'
-    + '.iw-chip-badge{font-size:10px;font-weight:700;color:#facc15;background:rgba(250,204,21,.1);border-radius:14px;padding:3px 7px;white-space:nowrap;flex-shrink:0;}'
+    + '.iw-chip-badge{font-size:10px;font-weight:700;border-radius:14px;padding:3px 7px;white-space:nowrap;flex-shrink:0;}'
+    + '.iw-chip-badge-yellow{color:#facc15;background:rgba(250,204,21,.1);}'
+    + '.iw-chip-badge-blue{color:#60a5fa;background:rgba(96,165,250,.12);}'
     + '.iw-chip-name{font-size:13px;font-weight:600;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;}'
     + '.iw-chip-stat{font-size:12px;color:#10b981;font-weight:600;white-space:nowrap;flex-shrink:0;}'
     + '.iw-progress{position:absolute;left:0;bottom:-7px;height:2px;width:100%;background:#232b38;border-radius:2px;overflow:hidden;}'
-    + '.iw-progress-fill{height:100%;width:0%;background:#facc15;}'
-    + '.iw-progress.iw-paused .iw-progress-fill{background:#475569;}'
-    + '.iw-dots{display:flex;align-items:center;gap:6px;margin-top:14px;padding-left:2px;}'
-    + '.iw-dot{width:16px;height:4px;border-radius:2px;background:#2d3748;border:none;padding:0;cursor:pointer;transition:background .2s,width .2s;}'
-    + '.iw-dot-active{background:#facc15;width:22px;}'
+    + '.iw-progress-fill{height:100%;width:0%;}'
+    + '.iw-progress-fill-yellow{background:#facc15;}'
+    + '.iw-progress-fill-blue{background:#60a5fa;}'
+    + '.iw-progress.iw-paused .iw-progress-fill{background:#475569 !important;}'
+    + '.iw-dots{position:absolute;left:0;bottom:-16px;display:flex;align-items:center;gap:4px;}'
+    + '.iw-dot{width:12px;height:3px;border-radius:2px;background:#2d3748;border:none;padding:0;cursor:pointer;transition:background .2s,width .2s;}'
+    + '.iw-dot-active-yellow{background:#facc15;width:16px;}'
+    + '.iw-dot-active-blue{background:#60a5fa;width:16px;}'
     + '.iw-dot:hover{background:#4a5568;}'
     + '.iw-explore{font-size:13px;color:#facc15;text-decoration:none;white-space:nowrap;margin-left:auto;flex-shrink:0;}'
     + '.iw-explore:hover{text-decoration:underline;}'
     + '.iw-pop{position:absolute;top:calc(100% + 14px);left:0;width:290px;height:368px;background:#1a1f29;border:1px solid #2d3748;border-radius:10px;padding:14px;z-index:20;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .15s ease,transform .15s ease;display:flex;flex-direction:column;}'
     + '.iw-chip:hover .iw-pop{opacity:1;transform:translateY(0);pointer-events:auto;}'
+    + '@media(max-width:640px){.iw-pop{left:auto;right:0;}}'
     + '.iw-media{width:100%;height:130px;border-radius:8px;margin-bottom:10px;position:relative;overflow:hidden;flex-shrink:0;background:#0e1117;}'
     + '.iw-media img.iw-media-thumb{width:100%;height:100%;object-fit:cover;display:block;}'
     + '.iw-media-tile-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#1c2330,#12161f);}'
@@ -110,7 +115,9 @@
     + '.iw-media-tile img{width:100%;height:100%;object-fit:contain;}'
     + '.iw-pop-body{flex:1;min-height:0;display:flex;flex-direction:column;}'
     + '.iw-pop-head{display:flex;align-items:baseline;gap:6px;}'
-    + '.iw-pop-eyebrow{font-size:10px;font-weight:700;color:#facc15;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap;flex-shrink:0;}'
+    + '.iw-pop-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap;flex-shrink:0;}'
+    + '.iw-pop-eyebrow-yellow{color:#facc15;}'
+    + '.iw-pop-eyebrow-blue{color:#60a5fa;}'
     + '.iw-pop-name{font-size:14px;font-weight:700;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
     + '.iw-pop-tagline{font-size:12px;color:#94a3b8;margin:4px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
     + '.iw-pop-divider{height:1px;background:#232b38;margin:10px 0;}'
@@ -120,11 +127,13 @@
     + '.iw-stat-cell span{font-size:10px;color:#64748b;}'
     + '.iw-cta-row{display:flex;gap:6px;margin-top:auto;padding-top:12px;}'
     + '.iw-cta{flex:1;display:block;text-align:center;font-size:11.5px;font-weight:700;border-radius:7px;padding:8px 6px;text-decoration:none;transition:filter .15s,background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}'
-    + '.iw-cta-primary{color:#0a0c12;background:#facc15;}'
-    + '.iw-cta-primary:hover{filter:brightness(1.1);text-decoration:none;}'
+    + '.iw-cta-primary-yellow{color:#0a0c12;background:#facc15;}'
+    + '.iw-cta-primary-yellow:hover{filter:brightness(1.1);text-decoration:none;}'
+    + '.iw-cta-primary-blue{color:#0a0c12;background:#60a5fa;}'
+    + '.iw-cta-primary-blue:hover{filter:brightness(1.1);text-decoration:none;}'
     + '.iw-cta-secondary{color:#e2e8f0;background:transparent;border:1px solid #2d3748;}'
     + '.iw-cta-secondary:hover{border-color:#4a5568;text-decoration:none;}'
-    + '@media(max-width:640px){.iw-phrase{width:100%;}.iw-pop{left:auto;right:0;}}'
+    + '@media(max-width:640px){.iw-bar{gap:14px 12px;}}'
     + '@media(hover:none){.iw-pop{position:static;opacity:1;transform:none;pointer-events:auto;width:auto;height:auto;margin-top:8px;display:none;}}';
     var s = document.createElement('style');
     s.id = 'iw-style';
@@ -132,7 +141,9 @@
     document.head.appendChild(s);
   }
 
-  // ── Normaliza cada fonte pra um formato comum consumido pelo carrossel ──
+  // ── Normaliza cada fonte pra um formato comum consumido pelo carrossel.
+  // ctas: array de { label, href, style: 'primary'|'secondary', external } —
+  // PH/HN/YT têm 2 (dashboard + instalar extensão), newsletters tem 1 (assinar).
 
   function computeWeekStats(week, valueKey, distinctKey) {
     var values = week.map(function (w) { return w[valueKey] || 0; });
@@ -146,20 +157,16 @@
     var top = phWeek[0];
     var stats = computeWeekStats(phWeek, 'votes_count', 'name');
     return {
-      badge: t.ph,
-      name: top.name,
-      stat: '▲' + fmt(top.votes_count),
-      tagline: top.tagline || '',
-      eyebrow: t.winnerEyebrow,
-      href: 'https://www.producthunt.com/posts/' + top.slug,
-      dashboardHref: langHref('/ph/today'),
-      installHref: 'https://chromewebstore.google.com/detail/nodus-ph-radar/cmibcnnkebddlcdjinibkegejpcafgag',
-      productName: 'PH Radar',
-      avg: stats.avg, avgLabel: t.avgVotes,
-      distinctCount: stats.distinctCount, distinctLabel: t.distinctWinners,
+      badge: t.ph, name: top.name, stat: '▲' + fmt(top.votes_count), tagline: top.tagline || '',
+      eyebrow: t.winnerEyebrow, href: 'https://www.producthunt.com/posts/' + top.slug,
+      avg: stats.avg, avgLabel: t.avgVotes, distinctCount: stats.distinctCount, distinctLabel: t.distinctWinners,
       media: top.thumbnail_url
         ? { type: 'img', url: top.thumbnail_url }
         : { type: 'mono', letter: (top.name || '?').charAt(0).toUpperCase(), bg: '#facc15' },
+      ctas: [
+        { label: t.openDashboard, href: langHref('/ph/today'), style: 'primary' },
+        { label: t.install.replace('{name}', 'PH Radar'), href: 'https://chromewebstore.google.com/detail/nodus-ph-radar/cmibcnnkebddlcdjinibkegejpcafgag', style: 'secondary', external: true },
+      ],
     };
   }
 
@@ -168,18 +175,14 @@
     var stats = computeWeekStats(hnWeek, 'score', 'title');
     var domain = top.domain || 'news.ycombinator.com';
     return {
-      badge: t.hn,
-      name: top.title,
-      stat: '▲' + fmt(top.score),
-      tagline: domain,
-      eyebrow: t.topStoryEyebrow,
-      href: top.url || ('https://news.ycombinator.com/item?id=' + top.item_id),
-      dashboardHref: langHref('/hn/today'),
-      installHref: 'https://chromewebstore.google.com/detail/nodus-hn-radar/khodlkgkgdkhkljapdllfjnfedamhkmn',
-      productName: 'HN Radar',
-      avg: stats.avg, avgLabel: t.avgPoints,
-      distinctCount: stats.distinctCount, distinctLabel: t.distinctStories,
+      badge: t.hn, name: top.title, stat: '▲' + fmt(top.score), tagline: domain,
+      eyebrow: t.topStoryEyebrow, href: top.url || ('https://news.ycombinator.com/item?id=' + top.item_id),
+      avg: stats.avg, avgLabel: t.avgPoints, distinctCount: stats.distinctCount, distinctLabel: t.distinctStories,
       media: { type: 'favicon', domain: domain, letter: domain.charAt(0).toUpperCase(), bg: '#ff6600' },
+      ctas: [
+        { label: t.openDashboard, href: langHref('/hn/today'), style: 'primary' },
+        { label: t.install.replace('{name}', 'HN Radar'), href: 'https://chromewebstore.google.com/detail/nodus-hn-radar/khodlkgkgdkhkljapdllfjnfedamhkmn', style: 'secondary', external: true },
+      ],
     };
   }
 
@@ -187,23 +190,38 @@
     var top = ytWeek[0];
     var stats = computeWeekStats(ytWeek, 'view_count', 'channel');
     return {
-      badge: t.yt,
-      name: top.title,
-      stat: '▲' + fmt(top.view_count),
-      tagline: top.channel || '',
-      eyebrow: t.trendingEyebrow,
-      href: 'https://www.youtube.com/watch?v=' + top.video_id,
-      dashboardHref: langHref('/yt/today'),
-      installHref: 'https://chromewebstore.google.com/detail/nodus-yt-radar/ebfnahokkelbeiknkmkkkmeliikhmdhk',
-      productName: 'YT Radar',
-      avg: stats.avg, avgLabel: t.avgViews,
-      distinctCount: stats.distinctCount, distinctLabel: t.distinctChannels,
+      badge: t.yt, name: top.title, stat: '▲' + fmt(top.view_count), tagline: top.channel || '',
+      eyebrow: t.trendingEyebrow, href: 'https://www.youtube.com/watch?v=' + top.video_id,
+      avg: stats.avg, avgLabel: t.avgViews, distinctCount: stats.distinctCount, distinctLabel: t.distinctChannels,
       media: { type: 'img', url: 'https://i.ytimg.com/vi/' + encodeURIComponent(top.video_id) + '/hqdefault.jpg' },
+      ctas: [
+        { label: t.openDashboard, href: langHref('/yt/today'), style: 'primary' },
+        { label: t.install.replace('{name}', 'YT Radar'), href: 'https://chromewebstore.google.com/detail/nodus-yt-radar/ebfnahokkelbeiknkmkkkmeliikhmdhk', style: 'secondary', external: true },
+      ],
     };
   }
 
+  // Newsletters: feed "rolling top-N" via topic da PH (sem today/week) —
+  // ver worker-nodus-insights/api/newsletters.js. CTA único (assinar), não
+  // funil de 2 botões, porque não existe "dashboard" nem extensão aqui.
+  function buildNewsletterSources(list) {
+    return list.slice(0, 8).map(function (n) {
+      return {
+        badge: t.nl, name: n.name, stat: '▲' + fmt(n.votes_count), tagline: n.tagline || '',
+        eyebrow: t.nlEyebrow, href: n.website || ('https://www.producthunt.com/posts/' + n.slug),
+        avg: null, distinctCount: null,
+        media: n.thumbnail_url
+          ? { type: 'img', url: n.thumbnail_url }
+          : { type: 'mono', letter: (n.name || '?').charAt(0).toUpperCase(), bg: '#60a5fa' },
+        ctas: [
+          { label: t.subscribe, href: n.website || ('https://www.producthunt.com/posts/' + n.slug), style: 'primary', external: true },
+        ],
+      };
+    });
+  }
+
   // Sempre retorna uma caixa .iw-media (130px fixo, via CSS) — é essa altura
-  // travada que garante que o popover não muda de tamanho entre PH/HN/YT.
+  // travada que garante que o popover não muda de tamanho entre estados.
   function renderMedia(media) {
     var box = document.createElement('div');
     box.className = 'iw-media';
@@ -240,22 +258,12 @@
     return box;
   }
 
-  // ── Carrossel: 1 slot só, revezaou entre as fontes, para de vez no hover/clique ──
+  // ── Um slot: 1 card que revezaou entre `sources`, para de vez no hover/clique ──
+  // `accent` ('yellow'|'blue') controla a cor de destaque do slot (amarelo =
+  // dado ao vivo, azul = curadoria), pra diferenciar visualmente sem mudar
+  // o mecanismo. Retorna o elemento do slot pronto pra entrar na .iw-bar.
 
-  function mountCarousel(hero, sources) {
-    injectCSS();
-
-    var section = document.createElement('section');
-    section.className = 'iw-section';
-
-    var bar = document.createElement('div');
-    bar.className = 'iw-bar';
-
-    var phrase = document.createElement('span');
-    phrase.className = 'iw-phrase';
-    phrase.textContent = t.phrase;
-    bar.appendChild(phrase);
-
+  function buildSlot(sources, accent) {
     var slot = document.createElement('div');
     slot.className = 'iw-slot';
 
@@ -268,23 +276,13 @@
     var progress = document.createElement('div');
     progress.className = 'iw-progress';
     var fill = document.createElement('div');
-    fill.className = 'iw-progress-fill';
+    fill.className = 'iw-progress-fill iw-progress-fill-' + accent;
     progress.appendChild(fill);
     if (sources.length > 1) slot.appendChild(progress);
 
-    bar.appendChild(slot);
-
-    var explore = document.createElement('a');
-    explore.className = 'iw-explore';
-    explore.href = langHref('/ph/today');
-    explore.textContent = t.explore;
-    bar.appendChild(explore);
-
-    section.appendChild(bar);
-
     var dots = document.createElement('div');
     dots.className = 'iw-dots';
-    if (sources.length > 1) section.appendChild(dots);
+    if (sources.length > 1) slot.appendChild(dots);
 
     var idx = 0, timer = null, stopped = false;
     var interval = window.matchMedia('(max-width: 640px)').matches ? MOBILE_INTERVAL : DESKTOP_INTERVAL;
@@ -295,7 +293,7 @@
       chip.innerHTML = '';
 
       var badge = document.createElement('span');
-      badge.className = 'iw-chip-badge';
+      badge.className = 'iw-chip-badge iw-chip-badge-' + accent;
       badge.textContent = s.badge;
       chip.appendChild(badge);
 
@@ -318,7 +316,7 @@
 
       var head = document.createElement('div');
       head.className = 'iw-pop-head';
-      head.innerHTML = '<span class="iw-pop-eyebrow">' + esc(s.eyebrow) + '</span><span class="iw-pop-name">' + esc(s.name) + '</span>';
+      head.innerHTML = '<span class="iw-pop-eyebrow iw-pop-eyebrow-' + accent + '">' + esc(s.eyebrow) + '</span><span class="iw-pop-name">' + esc(s.name) + '</span>';
       body.appendChild(head);
 
       var tagline = document.createElement('div');
@@ -326,35 +324,31 @@
       tagline.textContent = s.tagline;
       body.appendChild(tagline);
 
-      var d1 = document.createElement('div');
-      d1.className = 'iw-pop-divider';
-      body.appendChild(d1);
+      if (s.avg != null) {
+        var d1 = document.createElement('div');
+        d1.className = 'iw-pop-divider';
+        body.appendChild(d1);
 
-      var grid = document.createElement('div');
-      grid.className = 'iw-stat-grid';
-      grid.innerHTML =
-        '<div class="iw-stat-cell"><b>' + fmt(s.avg) + '</b><span>' + esc(s.avgLabel) + '</span></div>'
-        + '<div class="iw-stat-cell"><b>' + s.distinctCount + '</b><span>' + esc(s.distinctLabel) + '</span></div>';
-      body.appendChild(grid);
+        var grid = document.createElement('div');
+        grid.className = 'iw-stat-grid';
+        grid.innerHTML =
+          '<div class="iw-stat-cell"><b>' + fmt(s.avg) + '</b><span>' + esc(s.avgLabel) + '</span></div>'
+          + '<div class="iw-stat-cell"><b>' + s.distinctCount + '</b><span>' + esc(s.distinctLabel) + '</span></div>';
+        body.appendChild(grid);
+      }
 
       var ctaRow = document.createElement('div');
       ctaRow.className = 'iw-cta-row';
-
-      var ctaDash = document.createElement('a');
-      ctaDash.className = 'iw-cta iw-cta-primary';
-      ctaDash.href = s.dashboardHref;
-      ctaDash.textContent = t.openDashboard;
-      ctaRow.appendChild(ctaDash);
-
-      var ctaInstall = document.createElement('a');
-      ctaInstall.className = 'iw-cta iw-cta-secondary';
-      ctaInstall.href = s.installHref;
-      ctaInstall.target = '_blank';
-      ctaInstall.rel = 'noopener';
-      ctaInstall.textContent = t.install.replace('{name}', s.productName);
-      ctaRow.appendChild(ctaInstall);
-
+      s.ctas.forEach(function (c) {
+        var a = document.createElement('a');
+        a.className = 'iw-cta ' + (c.style === 'primary' ? 'iw-cta-primary-' + accent : 'iw-cta-secondary');
+        a.href = c.href;
+        if (c.external) { a.target = '_blank'; a.rel = 'noopener'; }
+        a.textContent = c.label;
+        ctaRow.appendChild(a);
+      });
       body.appendChild(ctaRow);
+
       pop.appendChild(body);
       chip.appendChild(pop);
 
@@ -362,8 +356,8 @@
         dots.innerHTML = '';
         sources.forEach(function (_, i) {
           var dot = document.createElement('button');
-          dot.className = 'iw-dot' + (i === idx ? ' iw-dot-active' : '');
-          dot.setAttribute('aria-label', sources[i].badge);
+          dot.className = 'iw-dot' + (i === idx ? ' iw-dot-active-' + accent : '');
+          dot.setAttribute('aria-label', sources[i].badge + ' ' + (i + 1));
           dot.addEventListener('click', function (e) {
             e.preventDefault();
             idx = i;
@@ -410,7 +404,7 @@
     draw();
     startRotation();
 
-    hero.parentNode.insertBefore(section, hero);
+    return slot;
   }
 
   function mount() {
@@ -421,17 +415,55 @@
       fetch('/api/ph/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
       fetch('/api/hn/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
       fetch('/api/yt/week').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
+      fetch('/api/newsletters').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
     ]).then(function (results) {
       // >= 1 basta pra entrar no carrossel (uma fonte recém-lançada como o YT
       // pode ter só 1 dia de histórico ainda) — computeWeekStats já lida bem
       // com semanas de 1 item só (média = o próprio valor, 1 distinto).
       var phWeek = results[0] || [], hnWeek = results[1] || [], ytWeek = results[2] || [];
-      var sources = [];
-      if (phWeek.length) sources.push(buildPHSource(phWeek));
-      if (hnWeek.length) sources.push(buildHNSource(hnWeek));
-      if (ytWeek.length) sources.push(buildYTSource(ytWeek));
-      if (!sources.length) return; // sem dados de nenhuma fonte -> no-op
-      mountCarousel(hero, sources);
+      var newsletters = results[3] || [];
+
+      var insightSources = [];
+      if (phWeek.length) insightSources.push(buildPHSource(phWeek));
+      if (hnWeek.length) insightSources.push(buildHNSource(hnWeek));
+      if (ytWeek.length) insightSources.push(buildYTSource(ytWeek));
+
+      var nlSources = newsletters.length ? buildNewsletterSources(newsletters) : [];
+
+      if (!insightSources.length && !nlSources.length) return; // sem dado nenhum -> no-op
+
+      injectCSS();
+
+      var section = document.createElement('section');
+      section.className = 'iw-section';
+
+      var bar = document.createElement('div');
+      bar.className = 'iw-bar';
+
+      if (insightSources.length) {
+        var phrase1 = document.createElement('span');
+        phrase1.className = 'iw-phrase';
+        phrase1.textContent = t.phrase;
+        bar.appendChild(phrase1);
+        bar.appendChild(buildSlot(insightSources, 'yellow'));
+      }
+
+      if (nlSources.length) {
+        var phrase2 = document.createElement('span');
+        phrase2.className = 'iw-phrase';
+        phrase2.textContent = t.nlPhrase;
+        bar.appendChild(phrase2);
+        bar.appendChild(buildSlot(nlSources, 'blue'));
+      }
+
+      var explore = document.createElement('a');
+      explore.className = 'iw-explore';
+      explore.href = langHref('/ph/today');
+      explore.textContent = t.explore;
+      bar.appendChild(explore);
+
+      section.appendChild(bar);
+      hero.parentNode.insertBefore(section, hero);
     });
   }
 
