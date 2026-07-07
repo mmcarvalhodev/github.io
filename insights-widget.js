@@ -85,11 +85,12 @@
     + '.iw-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}'
     + '.iw-phrase{font-size:14px;font-weight:600;color:#e2e8f0;white-space:nowrap;flex-shrink:0;}'
     // z-index explícito é essencial aqui: .hero (logo depois deste widget no
-    // HTML) também tem position:relative, então sem um z-index nosso os dois
-    // caem no mesmo "balde" de empilhamento CSS (positioned, z-index:auto) —
-    // nesse balde, quem vem DEPOIS no HTML pinta por cima, e .hero vence,
-    // cobrindo os dots inteiros (só descoberto testando em produção real).
-    + '.iw-slot{position:relative;z-index:1;flex-shrink:0;}'
+    // HTML) também é positioned, e o wrapper interno dele (.hero .container,
+    // em style.css) usa exatamente z-index:1 — empate exato com o que
+    // usávamos aqui, e num empate quem vem DEPOIS no HTML pinta por cima.
+    // 5 fica com folga acima do que o hero usa, mas bem abaixo dos z-index
+    // de nav/dropdowns do site (99, 100, 999+), então não briga com eles.
+    + '.iw-slot{position:relative;z-index:5;flex-shrink:0;}'
     + '.iw-chip{position:relative;display:flex;align-items:center;gap:7px;background:#151a23;border:1px solid #232b38;border-radius:20px;padding:6px 12px 6px 6px;text-decoration:none;width:250px;max-width:250px;transition:border-color .15s;}'
     + '.iw-chip::after{content:"";position:absolute;top:100%;left:0;width:100%;height:14px;}'
     + '.iw-chip:hover{border-color:#3a4356;text-decoration:none;}'
