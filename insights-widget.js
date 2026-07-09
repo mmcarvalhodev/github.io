@@ -35,6 +35,7 @@
       distinctWinners: 'different winners', distinctStories: 'different stories', distinctChannels: 'different channels',
       winnerEyebrow: '🏆 Winner', topStoryEyebrow: '🔥 Top story', trendingEyebrow: '📈 Trending now', nlEyebrow: '✉️ Newsletter',
       openDashboard: 'Open dashboard →', install: 'Install {name} →', subscribe: 'Subscribe →',
+      nlMoreLabel: 'Also trending this week', nlCuratedBy: 'Curated by {user}', subscribeTo: 'Subscribe to {name} →',
     },
     pt: {
       phrase: 'Veja o que está acontecendo agora', explore: 'Ver Insights →',
@@ -44,6 +45,7 @@
       distinctWinners: 'vencedores diferentes', distinctStories: 'histórias diferentes', distinctChannels: 'canais diferentes',
       winnerEyebrow: '🏆 Vencedor', topStoryEyebrow: '🔥 Destaque', trendingEyebrow: '📈 Em alta agora', nlEyebrow: '✉️ Newsletter',
       openDashboard: 'Abrir dashboard →', install: 'Instalar {name} →', subscribe: 'Assinar →',
+      nlMoreLabel: 'Também em alta esta semana', nlCuratedBy: 'Selecionado por {user}', subscribeTo: 'Assinar {name} →',
     },
   };
 
@@ -140,6 +142,28 @@
     + '.iw-cta-primary-blue:hover{filter:brightness(1.1);text-decoration:none;}'
     + '.iw-cta-secondary{color:#e2e8f0;background:transparent;border:1px solid #2d3748;}'
     + '.iw-cta-secondary:hover{border-color:#4a5568;text-decoration:none;}'
+    // Newsletter (kind:'nl') não usa a caixa .iw-media/cta-row de produto —
+    // vira "assinatura editorial" (avatar redondo + citação + outras
+    // newsletters já buscadas), ver buildNewsletterSources().
+    + '.iw-nl-head{display:flex;align-items:center;gap:8px;}'
+    + '.iw-nl-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;overflow:hidden;}'
+    + '.iw-nl-avatar img{width:100%;height:100%;object-fit:cover;display:block;}'
+    + '.iw-nl-title{min-width:0;display:flex;flex-direction:column;overflow:hidden;}'
+    + '.iw-nl-name{font-size:13.5px;font-weight:700;color:#e2e8f0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}'
+    + '.iw-nl-quote{position:relative;margin:10px 0 8px;}'
+    + '.iw-nl-quote::before{content:"\\201C";position:absolute;top:-16px;left:-6px;font-size:38px;font-weight:800;color:#232b38;font-family:Georgia,serif;line-height:1;}'
+    + '.iw-nl-quote p{font-size:13.5px;color:#dbe4f0;line-height:1.45;font-weight:500;position:relative;z-index:1;margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}'
+    + '.iw-nl-quote-meta{font-size:11px;color:#64748b;margin-top:6px;}'
+    + '.iw-nl-divider{height:1px;background:#232b38;margin:10px 0;}'
+    + '.iw-nl-more-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#4a5568;margin-bottom:7px;}'
+    + '.iw-nl-list{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;overflow:hidden;}'
+    + '.iw-nl-row{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;}'
+    + '.iw-nl-row-avatar{width:20px;height:20px;border-radius:50%;background:#2d3748;color:#94a3b8;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}'
+    + '.iw-nl-row-name{font-size:12px;color:#cbd5e1;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}'
+    + '.iw-nl-row:hover .iw-nl-row-name{color:#e2e8f0;}'
+    + '.iw-nl-row-stat{font-size:11px;color:#64748b;flex-shrink:0;}'
+    + '.iw-nl-link{font-size:12.5px;font-weight:700;color:#60a5fa;text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:10px;}'
+    + '.iw-nl-link:hover{text-decoration:underline;}'
     + '@media(max-width:640px){.iw-bar{gap:14px 12px;}}'
     + '@media(hover:none){.iw-pop{position:static;opacity:1;transform:none;pointer-events:auto;width:auto;height:auto;margin-top:8px;display:none;}}';
     var s = document.createElement('style');
@@ -214,12 +238,12 @@
   function buildNewsletterSources(list) {
     return list.slice(0, 8).map(function (n) {
       return {
+        kind: 'nl',
         badge: t.nl, name: n.name, stat: '▲' + fmt(n.votes_count), tagline: n.tagline || '',
+        comments: n.comments_count || 0, curator: n.hunter_username || null,
         eyebrow: t.nlEyebrow, href: n.website || ('https://www.producthunt.com/posts/' + n.slug),
         avg: null, distinctCount: null,
-        media: n.thumbnail_url
-          ? { type: 'img', url: n.thumbnail_url }
-          : { type: 'mono', letter: (n.name || '?').charAt(0).toUpperCase(), bg: '#60a5fa' },
+        media: n.thumbnail_url ? { type: 'img', url: n.thumbnail_url } : null,
         ctas: [
           { label: t.subscribe, href: n.website || ('https://www.producthunt.com/posts/' + n.slug), style: 'primary', external: true },
         ],
@@ -316,45 +340,131 @@
 
       var pop = document.createElement('div');
       pop.className = 'iw-pop';
-      pop.appendChild(renderMedia(s.media));
 
       var body = document.createElement('div');
       body.className = 'iw-pop-body';
 
-      var head = document.createElement('div');
-      head.className = 'iw-pop-head';
-      head.innerHTML = '<span class="iw-pop-eyebrow iw-pop-eyebrow-' + accent + '">' + esc(s.eyebrow) + '</span><span class="iw-pop-name">' + esc(s.name) + '</span>';
-      body.appendChild(head);
+      if (s.kind === 'nl') {
+        // Mini-digest editorial: avatar redondo + citação + outras newsletters
+        // já buscadas no /api/newsletters (não dá pra puxar matéria real de
+        // dentro da newsletter — RSS e PH Discussions travaram, decisão
+        // registrada — então preenchemos com dado real já em mãos, que hoje
+        // só ficava acessível via os pontinhos de navegação).
+        var nlHead = document.createElement('div');
+        nlHead.className = 'iw-nl-head';
+        var avatar = document.createElement('div');
+        avatar.className = 'iw-nl-avatar';
+        avatar.textContent = (s.name || '?').charAt(0).toUpperCase();
+        if (s.media && s.media.url) {
+          var avImg = document.createElement('img');
+          avImg.src = s.media.url;
+          avImg.alt = '';
+          avImg.loading = 'lazy';
+          avImg.onerror = function () { avImg.remove(); };
+          avatar.appendChild(avImg);
+        }
+        nlHead.appendChild(avatar);
+        var nlTitle = document.createElement('div');
+        nlTitle.className = 'iw-nl-title';
+        nlTitle.innerHTML = '<span class="iw-pop-eyebrow iw-pop-eyebrow-' + accent + '">' + esc(s.eyebrow) + '</span><span class="iw-nl-name">' + esc(s.name) + '</span>';
+        nlHead.appendChild(nlTitle);
+        body.appendChild(nlHead);
 
-      var tagline = document.createElement('div');
-      tagline.className = 'iw-pop-tagline';
-      tagline.textContent = s.tagline;
-      body.appendChild(tagline);
+        var quote = document.createElement('div');
+        quote.className = 'iw-nl-quote';
+        var qp = document.createElement('p');
+        qp.textContent = s.tagline;
+        quote.appendChild(qp);
+        var qMeta = document.createElement('div');
+        qMeta.className = 'iw-nl-quote-meta';
+        qMeta.textContent = s.stat
+          + (s.comments ? ' · 💬' + fmt(s.comments) : '')
+          + (s.curator ? ' · ' + t.nlCuratedBy.replace('{user}', '@' + s.curator) : '');
+        quote.appendChild(qMeta);
+        body.appendChild(quote);
 
-      if (s.avg != null) {
-        var d1 = document.createElement('div');
-        d1.className = 'iw-pop-divider';
-        body.appendChild(d1);
+        var others = sources.filter(function (_, i) { return i !== idx; }).slice(0, 3);
+        if (others.length) {
+          var nlDiv = document.createElement('div');
+          nlDiv.className = 'iw-nl-divider';
+          body.appendChild(nlDiv);
 
-        var grid = document.createElement('div');
-        grid.className = 'iw-stat-grid';
-        grid.innerHTML =
-          '<div class="iw-stat-cell"><b>' + fmt(s.avg) + '</b><span>' + esc(s.avgLabel) + '</span></div>'
-          + '<div class="iw-stat-cell"><b>' + s.distinctCount + '</b><span>' + esc(s.distinctLabel) + '</span></div>';
-        body.appendChild(grid);
+          var moreLabel = document.createElement('div');
+          moreLabel.className = 'iw-nl-more-label';
+          moreLabel.textContent = t.nlMoreLabel;
+          body.appendChild(moreLabel);
+
+          var list = document.createElement('div');
+          list.className = 'iw-nl-list';
+          others.forEach(function (o) {
+            var row = document.createElement('a');
+            row.className = 'iw-nl-row';
+            row.href = o.href;
+            row.target = '_blank';
+            row.rel = 'noopener';
+            var rAvatar = document.createElement('span');
+            rAvatar.className = 'iw-nl-row-avatar';
+            rAvatar.textContent = (o.name || '?').charAt(0).toUpperCase();
+            var rName = document.createElement('span');
+            rName.className = 'iw-nl-row-name';
+            rName.textContent = o.name;
+            var rStat = document.createElement('span');
+            rStat.className = 'iw-nl-row-stat';
+            rStat.textContent = o.stat;
+            row.appendChild(rAvatar);
+            row.appendChild(rName);
+            row.appendChild(rStat);
+            list.appendChild(row);
+          });
+          body.appendChild(list);
+        }
+
+        var nlLink = document.createElement('a');
+        nlLink.className = 'iw-nl-link';
+        nlLink.href = s.href;
+        nlLink.target = '_blank';
+        nlLink.rel = 'noopener';
+        nlLink.textContent = t.subscribeTo.replace('{name}', s.name);
+        body.appendChild(nlLink);
+
+      } else {
+        pop.appendChild(renderMedia(s.media));
+
+        var head = document.createElement('div');
+        head.className = 'iw-pop-head';
+        head.innerHTML = '<span class="iw-pop-eyebrow iw-pop-eyebrow-' + accent + '">' + esc(s.eyebrow) + '</span><span class="iw-pop-name">' + esc(s.name) + '</span>';
+        body.appendChild(head);
+
+        var tagline = document.createElement('div');
+        tagline.className = 'iw-pop-tagline';
+        tagline.textContent = s.tagline;
+        body.appendChild(tagline);
+
+        if (s.avg != null) {
+          var d1 = document.createElement('div');
+          d1.className = 'iw-pop-divider';
+          body.appendChild(d1);
+
+          var grid = document.createElement('div');
+          grid.className = 'iw-stat-grid';
+          grid.innerHTML =
+            '<div class="iw-stat-cell"><b>' + fmt(s.avg) + '</b><span>' + esc(s.avgLabel) + '</span></div>'
+            + '<div class="iw-stat-cell"><b>' + s.distinctCount + '</b><span>' + esc(s.distinctLabel) + '</span></div>';
+          body.appendChild(grid);
+        }
+
+        var ctaRow = document.createElement('div');
+        ctaRow.className = 'iw-cta-row';
+        s.ctas.forEach(function (c) {
+          var a = document.createElement('a');
+          a.className = 'iw-cta ' + (c.style === 'primary' ? 'iw-cta-primary-' + accent : 'iw-cta-secondary');
+          a.href = c.href;
+          if (c.external) { a.target = '_blank'; a.rel = 'noopener'; }
+          a.textContent = c.label;
+          ctaRow.appendChild(a);
+        });
+        body.appendChild(ctaRow);
       }
-
-      var ctaRow = document.createElement('div');
-      ctaRow.className = 'iw-cta-row';
-      s.ctas.forEach(function (c) {
-        var a = document.createElement('a');
-        a.className = 'iw-cta ' + (c.style === 'primary' ? 'iw-cta-primary-' + accent : 'iw-cta-secondary');
-        a.href = c.href;
-        if (c.external) { a.target = '_blank'; a.rel = 'noopener'; }
-        a.textContent = c.label;
-        ctaRow.appendChild(a);
-      });
-      body.appendChild(ctaRow);
 
       pop.appendChild(body);
       chip.appendChild(pop);
