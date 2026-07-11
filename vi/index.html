@@ -264,6 +264,7 @@
           <div class="hero-eyebrow reveal">
             <span class="badge badge-green">Miễn phí mãi mãi</span>
             <span class="badge">Giấy phép MIT</span>
+            <a href="#ecosystem" class="badge" style="text-decoration:none;">🧩 Một phần của hệ sinh thái NODUS</a>
           </div>
 
           <h1 class="hero-title reveal reveal-delay-1" id="hero-headline">
@@ -1181,11 +1182,58 @@
   </section>
 
 
+  <!-- ECOSYSTEM STRIP -->
+  <section id="ecosystem" style="padding:56px 0; border-top:1px solid #1e2736;">
+    <div class="container">
+      <div style="text-align:center; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:22px;">Khám phá hệ sinh thái</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:14px; max-width:980px; margin:0 auto;">
+        <a href="#" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#facc15'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#facc15;">NODUS AI</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Biến chat AI thành kiến thức có cấu trúc</div>
+        </a>
+        <a href="/workspace" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#8b5cf6'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#8b5cf6;">Workspace</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Ghi chú, tài liệu và tệp trong trình duyệt</div>
+        </a>
+        <a href="/ph-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#da552f'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#da552f;">PH Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Product Hunt, có chiều sâu lịch sử</div>
+        </a>
+        <a href="/hn-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ff6600'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ff6600;">HN Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Một Hacker News điềm tĩnh hơn</div>
+        </a>
+        <a href="/yt-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ef4444'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ef4444;">YT Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Xếp hạng video YouTube, trực tiếp</div>
+        </a>
+        <a href="/resources" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#94a3b8'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#e2e8f0;">Tài nguyên</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Thông tin chuyên sâu, bản tin &amp; công cụ</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
     <div class="container">
 
-      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+      <style>
+        .ftr-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;border-bottom:1px solid #1e2736;}
+        .ftr-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#334155;margin-bottom:16px;}
+        .ftr-links{display:flex;flex-direction:column;gap:10px;}
+        .ftr-links a{font-size:13px;color:#64748b;text-decoration:none;transition:color 0.2s;}
+        .ftr-links a:hover{color:#e2e8f0;}
+        .ftr-built-by{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid #1e2736;}
+        .ftr-featured{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;}
+        .ftr-featured a{font-size:12.5px;color:#64748b;text-decoration:none;}
+        .ftr-featured a:hover{color:#e2e8f0;}
+        @media(max-width:900px){.ftr-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:560px){.ftr-grid{grid-template-columns:1fr;gap:28px;}.ftr-built-by{grid-template-columns:1fr;}}
+      </style>
+
+      <div class="ftr-grid">
 
         <!-- Cột 1 — thương hiệu -->
         <div>
@@ -1204,44 +1252,70 @@
           </div>
         </div>
 
-        <!-- Cột 2 — sản phẩm -->
+        <!-- Cột 2 — NODUS AI -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Sản phẩm</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="../index.html#cach-hoat-dong" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Cách hoạt động</a>
-            <a href="../index.html#chuoi" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Chuỗi</a>
-            <a href="../index.html#pricing" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Giá cả</a>
-            <a href="../index.html#rieng-tu" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Quyền riêng tư</a>
-            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Ảnh chụp màn hình</a>
-            <a href="../faq" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">FAQ đầy đủ</a>
-            <a href="../yt-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">YT Radar</a>
-            <a href="../hn-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">HN Radar</a>
-            <a href="../ph-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">PH Radar</a>
+          <div class="ftr-title">NODUS AI</div>
+          <div class="ftr-links">
+            <a href="../index.html#cach-hoat-dong">Cách hoạt động</a>
+            <a href="../index.html#chuoi">Chuỗi</a>
+            <a href="../index.html#pricing">Giá cả</a>
+            <a href="../index.html#rieng-tu">Quyền riêng tư</a>
+            <a href="../docs/screenshots.html">Ảnh chụp màn hình</a>
+            <a href="../faq">FAQ đầy đủ</a>
           </div>
         </div>
 
-        <!-- Cột 3 — tài nguyên -->
+        <!-- Cột 3 — Sản phẩm (hệ sinh thái) -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Tài nguyên</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
-            <a href="https://github.com/mmcarvalhodev/nodus/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Changelog</a>
-            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Báo cáo lỗi</a>
-            <a href="../checkout.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Dùng PRO</a>
+          <div class="ftr-title">Sản phẩm</div>
+          <div class="ftr-links">
+            <a href="/workspace">Workspace</a>
+            <a href="/ph-radar">PH Radar</a>
+            <a href="/hn-radar">HN Radar</a>
+            <a href="/yt-radar">YT Radar</a>
           </div>
         </div>
 
-        <!-- Cột 4 — pháp lý -->
+        <!-- Cột 4 — Thông tin chuyên sâu -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Pháp lý</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="privacy.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Chính sách Bảo mật</a>
-            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Điều khoản Sử dụng</a>
-            <a href="mailto:suporte@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Liên hệ</a>
-            <a href="../affiliates.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Liên kết</a>
+          <div class="ftr-title">Thông tin chuyên sâu</div>
+          <div class="ftr-links">
+            <a href="/ph/today">Product Hunt</a>
+            <a href="/hn/today">Hacker News</a>
+            <a href="/yt/today">YouTube</a>
+            <a href="/resources">Tất cả tài nguyên →</a>
+            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
 
+        <!-- Cột 5 — Công ty -->
+        <div>
+          <div class="ftr-title">Công ty</div>
+          <div class="ftr-links">
+            <a href="privacy.html">Chính sách Bảo mật</a>
+            <a href="../terms.html">Điều khoản Sử dụng</a>
+            <a href="mailto:mmcarvalho.dev@gmail.com">Liên hệ</a>
+            <a href="../affiliates.html">Liên kết</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Built by + Featured on -->
+      <div class="ftr-built-by">
+        <div>
+          <div class="ftr-title" style="margin-bottom:8px;">Được xây dựng bởi</div>
+          <p style="font-size:13px; color:#64748b; line-height:1.7; max-width:420px;">
+            <span style="color:#e2e8f0; font-weight:700;">Márcio Menezes</span> — nhà phát triển độc lập xây dựng các công cụ năng suất local-first cho AI maker.
+          </p>
+        </div>
+        <div class="ftr-featured">
+          <span class="ftr-title" style="margin-bottom:0;">Xuất hiện trên</span>
+          <a href="https://www.producthunt.com/products/nodus-2" target="_blank" rel="noopener">Product Hunt</a>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Chrome Web Store</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">Firefox Add-ons</a>
+          <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
 
       <!-- research:start -->

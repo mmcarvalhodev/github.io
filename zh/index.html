@@ -264,6 +264,7 @@
           <div class="hero-eyebrow reveal">
             <span class="badge badge-green">永久免费</span>
             <span class="badge">MIT 许可证</span>
+            <a href="#ecosystem" class="badge" style="text-decoration:none;">🧩 NODUS 生态系统的一部分</a>
           </div>
 
           <h1 class="hero-title reveal reveal-delay-1" id="hero-headline">
@@ -1060,9 +1061,58 @@
 
 
   <!-- FOOTER -->
+  <!-- ECOSYSTEM STRIP -->
+  <section id="ecosystem" style="padding:56px 0; border-top:1px solid #1e2736;">
+    <div class="container">
+      <div style="text-align:center; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:22px;">探索生态系统</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:14px; max-width:980px; margin:0 auto;">
+        <a href="#" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#facc15'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#facc15;">NODUS AI</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">把 AI 对话变成结构化知识</div>
+        </a>
+        <a href="/workspace" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#8b5cf6'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#8b5cf6;">Workspace</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">浏览器中的笔记、文档和文件</div>
+        </a>
+        <a href="/ph-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#da552f'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#da552f;">PH Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">带历史深度的 Product Hunt</div>
+        </a>
+        <a href="/hn-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ff6600'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ff6600;">HN Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">更清爽的 Hacker News</div>
+        </a>
+        <a href="/yt-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ef4444'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ef4444;">YT Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">YouTube 视频实时排名</div>
+        </a>
+        <a href="/resources" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#94a3b8'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#e2e8f0;">资源</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">洞察、通讯与工具</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
     <div class="container">
-      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+      <style>
+        .ftr-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;border-bottom:1px solid #1e2736;}
+        .ftr-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#334155;margin-bottom:16px;}
+        .ftr-links{display:flex;flex-direction:column;gap:10px;}
+        .ftr-links a{font-size:13px;color:#64748b;text-decoration:none;transition:color 0.2s;}
+        .ftr-links a:hover{color:#e2e8f0;}
+        .ftr-built-by{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid #1e2736;}
+        .ftr-featured{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;}
+        .ftr-featured a{font-size:12.5px;color:#64748b;text-decoration:none;}
+        .ftr-featured a:hover{color:#e2e8f0;}
+        @media(max-width:900px){.ftr-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:560px){.ftr-grid{grid-template-columns:1fr;gap:28px;}.ftr-built-by{grid-template-columns:1fr;}}
+      </style>
+
+      <div class="ftr-grid">
+
+        <!-- Column 1 — brand -->
         <div>
           <div style="font-size:18px; font-weight:900; color:#facc15; letter-spacing:-0.5px; margin-bottom:14px;">★ NODUS</div>
           <p style="font-size:13px; color:#475569; line-height:1.7; max-width:280px; margin-bottom:20px;">捕获、整理和重用您最好的AI对话。无服务器。无账户。您的数据与您同在。</p>
@@ -1071,36 +1121,70 @@
             <a href="../checkout.html" style="display:inline-flex; align-items:center; gap:6px; border:1px solid #2d3748; color:#94a3b8; font-size:12px; font-weight:600; padding:7px 14px; border-radius:7px; text-decoration:none;">获取 PRO</a>
           </div>
         </div>
+
+        <!-- Column 2 — NODUS AI -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">产品</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="../index.html#como-funciona" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">工作原理</a>
-            <a href="../index.html#cadeias" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">链条</a>
-            <a href="../index.html#pricing" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">价格</a>
-            <a href="../index.html#privacidade" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">隐私</a>
-            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">截图</a>
-            <a href="../faq" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">完整FAQ</a>
-            <a href="../yt-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">YT Radar</a>
-            <a href="../hn-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">HN Radar</a>
-            <a href="../ph-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">PH Radar</a>
+          <div class="ftr-title">NODUS AI</div>
+          <div class="ftr-links">
+            <a href="../index.html#como-funciona">工作原理</a>
+            <a href="../index.html#cadeias">链条</a>
+            <a href="../index.html#pricing">价格</a>
+            <a href="../index.html#privacidade">隐私</a>
+            <a href="../docs/screenshots.html">截图</a>
+            <a href="../faq">完整FAQ</a>
           </div>
         </div>
+
+        <!-- Column 3 — Products -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">资源</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
-            <a href="https://github.com/mmcarvalhodev/nodus/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">变更日志</a>
-            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">反馈问题</a>
+          <div class="ftr-title">产品</div>
+          <div class="ftr-links">
+            <a href="/workspace">Workspace</a>
+            <a href="/ph-radar">PH Radar</a>
+            <a href="/hn-radar">HN Radar</a>
+            <a href="/yt-radar">YT Radar</a>
           </div>
         </div>
+
+        <!-- Column 4 — Insights -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">法律</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="privacy.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">隐私政策</a>
-            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">使用条款</a>
-            <a href="mailto:suporte@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">联系我们</a>
-            <a href="../affiliates.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">推广合作</a>
+          <div class="ftr-title">洞察</div>
+          <div class="ftr-links">
+            <a href="/ph/today">Product Hunt</a>
+            <a href="/hn/today">Hacker News</a>
+            <a href="/yt/today">YouTube</a>
+            <a href="/resources">查看所有资源 →</a>
+            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
           </div>
+        </div>
+
+        <!-- Column 5 — Company -->
+        <div>
+          <div class="ftr-title">公司</div>
+          <div class="ftr-links">
+            <a href="privacy.html">隐私政策</a>
+            <a href="../terms.html">使用条款</a>
+            <a href="mailto:mmcarvalho.dev@gmail.com">联系我们</a>
+            <a href="../affiliates.html">推广合作</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Built by + Featured on -->
+      <div class="ftr-built-by">
+        <div>
+          <div class="ftr-title" style="margin-bottom:8px;">开发者</div>
+          <p style="font-size:13px; color:#64748b; line-height:1.7; max-width:420px;">
+            <span style="color:#e2e8f0; font-weight:700;">Márcio Menezes</span> — 独立开发者，为 AI 创作者打造本地优先的效率工具。
+          </p>
+        </div>
+        <div class="ftr-featured">
+          <span class="ftr-title" style="margin-bottom:0;">媒体报道</span>
+          <a href="https://www.producthunt.com/products/nodus-2" target="_blank" rel="noopener">Product Hunt</a>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Chrome Web Store</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">Firefox Add-ons</a>
+          <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
       <!-- research:start -->

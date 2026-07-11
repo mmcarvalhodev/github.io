@@ -264,6 +264,7 @@
           <div class="hero-eyebrow reveal">
             <span class="badge badge-green">Sonsuza kadar ücretsiz</span>
             <span class="badge">MIT Lisansı</span>
+            <a href="#ecosystem" class="badge" style="text-decoration:none;">🧩 NODUS ekosisteminin bir parçası</a>
           </div>
 
           <h1 class="hero-title reveal reveal-delay-1" id="hero-headline">
@@ -1074,10 +1075,59 @@
   </section>
 
 
+  <!-- ECOSYSTEM STRIP -->
+  <section id="ecosystem" style="padding:56px 0; border-top:1px solid #1e2736;">
+    <div class="container">
+      <div style="text-align:center; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:22px;">Ekosistemi keşfedin</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:14px; max-width:980px; margin:0 auto;">
+        <a href="#" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#facc15'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#facc15;">NODUS AI</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Yapay zeka sohbetlerini yapılandırılmış bilgiye</div>
+        </a>
+        <a href="/workspace" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#8b5cf6'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#8b5cf6;">Workspace</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Tarayıcıda notlar, belgeler ve dosyalar</div>
+        </a>
+        <a href="/ph-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#da552f'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#da552f;">PH Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Geçmişiyle birlikte Product Hunt</div>
+        </a>
+        <a href="/hn-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ff6600'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ff6600;">HN Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Daha sakin bir Hacker News</div>
+        </a>
+        <a href="/yt-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ef4444'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ef4444;">YT Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">YouTube video sıralamaları, canlı</div>
+        </a>
+        <a href="/resources" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#94a3b8'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#e2e8f0;">Kaynaklar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">İçgörüler, bültenler ve araçlar</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
     <div class="container">
-      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+      <style>
+        .ftr-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;border-bottom:1px solid #1e2736;}
+        .ftr-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#334155;margin-bottom:16px;}
+        .ftr-links{display:flex;flex-direction:column;gap:10px;}
+        .ftr-links a{font-size:13px;color:#64748b;text-decoration:none;transition:color 0.2s;}
+        .ftr-links a:hover{color:#e2e8f0;}
+        .ftr-built-by{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid #1e2736;}
+        .ftr-featured{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;}
+        .ftr-featured a{font-size:12.5px;color:#64748b;text-decoration:none;}
+        .ftr-featured a:hover{color:#e2e8f0;}
+        @media(max-width:900px){.ftr-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:560px){.ftr-grid{grid-template-columns:1fr;gap:28px;}.ftr-built-by{grid-template-columns:1fr;}}
+      </style>
+
+      <div class="ftr-grid">
+
+        <!-- Column 1 — brand -->
         <div>
           <div style="font-size:18px; font-weight:900; color:#facc15; letter-spacing:-0.5px; margin-bottom:14px;">★ NODUS</div>
           <p style="font-size:13px; color:#475569; line-height:1.7; max-width:280px; margin-bottom:20px;">En iyi yapay zeka sohbetlerini yakala, düzenle, yeniden kullan. Sunucu yok. Hesap yok. Veriler sizde.</p>
@@ -1086,36 +1136,70 @@
             <a href="../checkout.html" style="display:inline-flex; align-items:center; gap:6px; border:1px solid #2d3748; color:#94a3b8; font-size:12px; font-weight:600; padding:7px 14px; border-radius:7px; text-decoration:none;">PRO al</a>
           </div>
         </div>
+
+        <!-- Column 2 — NODUS AI -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Ürün</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="../index.html#como-funciona" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Nasıl çalışır</a>
-            <a href="../index.html#cadeias" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Zincirler</a>
-            <a href="../index.html#pricing" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Fiyatlandırma</a>
-            <a href="../index.html#privacidade" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Gizlilik</a>
-            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Ekran görüntüleri</a>
-            <a href="../faq" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Tüm SSS</a>
-            <a href="../yt-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">YT Radar</a>
-            <a href="../hn-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">HN Radar</a>
-            <a href="../ph-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">PH Radar</a>
+          <div class="ftr-title">NODUS AI</div>
+          <div class="ftr-links">
+            <a href="../index.html#como-funciona">Nasıl çalışır</a>
+            <a href="../index.html#cadeias">Zincirler</a>
+            <a href="../index.html#pricing">Fiyatlandırma</a>
+            <a href="../index.html#privacidade">Gizlilik</a>
+            <a href="../docs/screenshots.html">Ekran görüntüleri</a>
+            <a href="../faq">Tüm SSS</a>
           </div>
         </div>
+
+        <!-- Column 3 — Products -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Kaynaklar</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
-            <a href="https://github.com/mmcarvalhodev/nodus/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Değişiklik günlüğü</a>
-            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Hata bildirimi</a>
+          <div class="ftr-title">Ürünler</div>
+          <div class="ftr-links">
+            <a href="/workspace">Workspace</a>
+            <a href="/ph-radar">PH Radar</a>
+            <a href="/hn-radar">HN Radar</a>
+            <a href="/yt-radar">YT Radar</a>
           </div>
         </div>
+
+        <!-- Column 4 — Insights -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Yasal</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="privacy.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Gizlilik Politikası</a>
-            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Kullanım Şartları</a>
-            <a href="mailto:suporte@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">İletişim</a>
-            <a href="../affiliates.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Ortaklık</a>
+          <div class="ftr-title">İçgörüler</div>
+          <div class="ftr-links">
+            <a href="/ph/today">Product Hunt</a>
+            <a href="/hn/today">Hacker News</a>
+            <a href="/yt/today">YouTube</a>
+            <a href="/resources">Tüm kaynaklar →</a>
+            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
           </div>
+        </div>
+
+        <!-- Column 5 — Company -->
+        <div>
+          <div class="ftr-title">Şirket</div>
+          <div class="ftr-links">
+            <a href="privacy.html">Gizlilik Politikası</a>
+            <a href="../terms.html">Kullanım Şartları</a>
+            <a href="mailto:mmcarvalho.dev@gmail.com">İletişim</a>
+            <a href="../affiliates.html">Ortaklık</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Built by + Featured on -->
+      <div class="ftr-built-by">
+        <div>
+          <div class="ftr-title" style="margin-bottom:8px;">Geliştiren</div>
+          <p style="font-size:13px; color:#64748b; line-height:1.7; max-width:420px;">
+            <span style="color:#e2e8f0; font-weight:700;">Márcio Menezes</span> — AI maker'lar için yerel öncelikli (local-first) verimlilik araçları geliştiren bağımsız bir yazılımcı.
+          </p>
+        </div>
+        <div class="ftr-featured">
+          <span class="ftr-title" style="margin-bottom:0;">Yer aldığı platformlar</span>
+          <a href="https://www.producthunt.com/products/nodus-2" target="_blank" rel="noopener">Product Hunt</a>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Chrome Web Store</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">Firefox Add-ons</a>
+          <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
       <!-- research:start -->

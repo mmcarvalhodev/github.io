@@ -265,6 +265,7 @@
           <div class="hero-eyebrow reveal">
             <span class="badge badge-green">Gratis per sempre</span>
             <span class="badge">Licenza MIT</span>
+            <a href="#ecosystem" class="badge" style="text-decoration:none;">🧩 Parte dell'ecosistema NODUS</a>
           </div>
 
           <!-- HEADLINE: alterna tra V1 e V2 -->
@@ -1187,11 +1188,58 @@
   </section>
 
 
+  <!-- ECOSYSTEM STRIP -->
+  <section id="ecosystem" style="padding:56px 0; border-top:1px solid #1e2736;">
+    <div class="container">
+      <div style="text-align:center; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:22px;">Esplora l'ecosistema</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:14px; max-width:980px; margin:0 auto;">
+        <a href="#" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#facc15'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#facc15;">NODUS AI</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Chat IA in conoscenza strutturata</div>
+        </a>
+        <a href="/workspace" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#8b5cf6'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#8b5cf6;">Workspace</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Note, documenti e file nel browser</div>
+        </a>
+        <a href="/ph-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#da552f'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#da552f;">PH Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Product Hunt, con lo storico</div>
+        </a>
+        <a href="/hn-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ff6600'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ff6600;">HN Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Un Hacker News più tranquillo</div>
+        </a>
+        <a href="/yt-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ef4444'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ef4444;">YT Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Classifiche dei video YouTube, live</div>
+        </a>
+        <a href="/resources" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#94a3b8'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#e2e8f0;">Risorse</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">Insights, newsletter e strumenti</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- PIÈ DI PAGINA -->
   <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
     <div class="container">
 
-      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+      <style>
+        .ftr-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;border-bottom:1px solid #1e2736;}
+        .ftr-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#334155;margin-bottom:16px;}
+        .ftr-links{display:flex;flex-direction:column;gap:10px;}
+        .ftr-links a{font-size:13px;color:#64748b;text-decoration:none;transition:color 0.2s;}
+        .ftr-links a:hover{color:#e2e8f0;}
+        .ftr-built-by{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid #1e2736;}
+        .ftr-featured{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;}
+        .ftr-featured a{font-size:12.5px;color:#64748b;text-decoration:none;}
+        .ftr-featured a:hover{color:#e2e8f0;}
+        @media(max-width:900px){.ftr-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:560px){.ftr-grid{grid-template-columns:1fr;gap:28px;}.ftr-built-by{grid-template-columns:1fr;}}
+      </style>
+
+      <div class="ftr-grid">
 
         <!-- Colonna 1 — brand -->
         <div>
@@ -1210,44 +1258,70 @@
           </div>
         </div>
 
-        <!-- Colonna 2 — prodotto -->
+        <!-- Colonna 2 — NODUS AI -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Prodotto</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="../index.html#come-funziona" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Come funziona</a>
-            <a href="../index.html#catene" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Catene</a>
-            <a href="../index.html#pricing" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Prezzi</a>
-            <a href="../index.html#privacy" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Privacy</a>
-            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Screenshot</a>
-            <a href="../faq" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">FAQ completo</a>
-            <a href="../yt-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">YT Radar</a>
-            <a href="../hn-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">HN Radar</a>
-            <a href="../ph-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">PH Radar</a>
+          <div class="ftr-title">NODUS AI</div>
+          <div class="ftr-links">
+            <a href="../index.html#come-funziona">Come funziona</a>
+            <a href="../index.html#catene">Catene</a>
+            <a href="../index.html#pricing">Prezzi</a>
+            <a href="../index.html#privacy">Privacy</a>
+            <a href="../docs/screenshots.html">Screenshot</a>
+            <a href="../faq">FAQ completo</a>
           </div>
         </div>
 
-        <!-- Colonna 3 — risorse -->
+        <!-- Colonna 3 — Prodotti -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Risorse</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
-            <a href="https://github.com/mmcarvalhodev/nodus/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Changelog</a>
-            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Segnala un bug</a>
-            <a href="../checkout.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Ottieni PRO</a>
+          <div class="ftr-title">Prodotti</div>
+          <div class="ftr-links">
+            <a href="/workspace">Workspace</a>
+            <a href="/ph-radar">PH Radar</a>
+            <a href="/hn-radar">HN Radar</a>
+            <a href="/yt-radar">YT Radar</a>
           </div>
         </div>
 
-        <!-- Colonna 4 — legale -->
+        <!-- Colonna 4 — Insights -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">Legale</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="privacy.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Informativa sulla privacy</a>
-            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Termini di utilizzo</a>
-            <a href="mailto:suporte@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Contatto</a>
-            <a href="../affiliates.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">Affiliati</a>
+          <div class="ftr-title">Insights</div>
+          <div class="ftr-links">
+            <a href="/ph/today">Product Hunt</a>
+            <a href="/hn/today">Hacker News</a>
+            <a href="/yt/today">YouTube</a>
+            <a href="/resources">Tutte le risorse →</a>
+            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
 
+        <!-- Colonna 5 — Azienda -->
+        <div>
+          <div class="ftr-title">Azienda</div>
+          <div class="ftr-links">
+            <a href="privacy.html">Informativa sulla privacy</a>
+            <a href="../terms.html">Termini di utilizzo</a>
+            <a href="mailto:mmcarvalho.dev@gmail.com">Contatto</a>
+            <a href="../affiliates.html">Affiliati</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Creato da + In evidenza su -->
+      <div class="ftr-built-by">
+        <div>
+          <div class="ftr-title" style="margin-bottom:8px;">Creato da</div>
+          <p style="font-size:13px; color:#64748b; line-height:1.7; max-width:420px;">
+            <span style="color:#e2e8f0; font-weight:700;">Márcio Menezes</span> — sviluppatore indipendente che crea strumenti di produttività local-first per gli AI maker.
+          </p>
+        </div>
+        <div class="ftr-featured">
+          <span class="ftr-title" style="margin-bottom:0;">In evidenza su</span>
+          <a href="https://www.producthunt.com/products/nodus-2" target="_blank" rel="noopener">Product Hunt</a>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Chrome Web Store</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">Firefox Add-ons</a>
+          <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
 
       <!-- Riga inferiore -->

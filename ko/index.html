@@ -264,6 +264,7 @@
           <div class="hero-eyebrow reveal">
             <span class="badge badge-green">영원히 무료</span>
             <span class="badge">MIT 라이선스</span>
+            <a href="#ecosystem" class="badge" style="text-decoration:none;">🧩 NODUS 생태계의 일부</a>
           </div>
 
           <h1 class="hero-title reveal reveal-delay-1" id="hero-headline">
@@ -1059,10 +1060,59 @@
   </section>
 
 
+  <!-- ECOSYSTEM STRIP -->
+  <section id="ecosystem" style="padding:56px 0; border-top:1px solid #1e2736;">
+    <div class="container">
+      <div style="text-align:center; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:22px;">생태계 둘러보기</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:14px; max-width:980px; margin:0 auto;">
+        <a href="#" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#facc15'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#facc15;">NODUS AI</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">AI 대화를 구조화된 지식으로</div>
+        </a>
+        <a href="/workspace" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#8b5cf6'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#8b5cf6;">Workspace</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">브라우저에서 메모·문서·파일</div>
+        </a>
+        <a href="/ph-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#da552f'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#da552f;">PH Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">기록과 함께 보는 Product Hunt</div>
+        </a>
+        <a href="/hn-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ff6600'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ff6600;">HN Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">더 차분한 Hacker News</div>
+        </a>
+        <a href="/yt-radar" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#ef4444'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#ef4444;">YT Radar</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">YouTube 영상 순위를 실시간으로</div>
+        </a>
+        <a href="/resources" style="text-decoration:none; display:block; padding:16px 14px; border-radius:12px; border:1px solid #2d3748; background:#1a1f29; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#94a3b8'" onmouseout="this.style.borderColor='#2d3748'">
+          <div style="font-size:13px; font-weight:800; color:#e2e8f0;">리소스</div>
+          <div style="font-size:11.5px; color:#64748b; margin-top:3px;">인사이트, 뉴스레터 &amp; 도구</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer style="background:#080b10; border-top:1px solid #1e2736; padding:56px 0 0;">
     <div class="container">
-      <div style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid #1e2736;">
+      <style>
+        .ftr-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;border-bottom:1px solid #1e2736;}
+        .ftr-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#334155;margin-bottom:16px;}
+        .ftr-links{display:flex;flex-direction:column;gap:10px;}
+        .ftr-links a{font-size:13px;color:#64748b;text-decoration:none;transition:color 0.2s;}
+        .ftr-links a:hover{color:#e2e8f0;}
+        .ftr-built-by{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid #1e2736;}
+        .ftr-featured{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;}
+        .ftr-featured a{font-size:12.5px;color:#64748b;text-decoration:none;}
+        .ftr-featured a:hover{color:#e2e8f0;}
+        @media(max-width:900px){.ftr-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:560px){.ftr-grid{grid-template-columns:1fr;gap:28px;}.ftr-built-by{grid-template-columns:1fr;}}
+      </style>
+
+      <div class="ftr-grid">
+
+        <!-- Column 1 — brand -->
         <div>
           <div style="font-size:18px; font-weight:900; color:#facc15; letter-spacing:-0.5px; margin-bottom:14px;">★ NODUS</div>
           <p style="font-size:13px; color:#475569; line-height:1.7; max-width:280px; margin-bottom:20px;">최고의 AI 대화를 캡처, 정리, 재사용하세요. 서버 없음. 계정 없음. 데이터는 당신과 함께.</p>
@@ -1071,36 +1121,70 @@
             <a href="../checkout.html" style="display:inline-flex; align-items:center; gap:6px; border:1px solid #2d3748; color:#94a3b8; font-size:12px; font-weight:600; padding:7px 14px; border-radius:7px; text-decoration:none;">PRO 구매</a>
           </div>
         </div>
+
+        <!-- Column 2 — NODUS AI -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">제품</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="../index.html#como-funciona" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">작동 방식</a>
-            <a href="../index.html#cadeias" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">체인</a>
-            <a href="../index.html#pricing" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">요금제</a>
-            <a href="../index.html#privacidade" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">개인정보</a>
-            <a href="../docs/screenshots.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">스크린샷</a>
-            <a href="../faq" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">전체 FAQ</a>
-            <a href="../yt-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">YT Radar</a>
-            <a href="../hn-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">HN Radar</a>
-            <a href="../ph-radar" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">PH Radar</a>
+          <div class="ftr-title">NODUS AI</div>
+          <div class="ftr-links">
+            <a href="../index.html#como-funciona">작동 방식</a>
+            <a href="../index.html#cadeias">체인</a>
+            <a href="../index.html#pricing">요금제</a>
+            <a href="../index.html#privacidade">개인정보</a>
+            <a href="../docs/screenshots.html">스크린샷</a>
+            <a href="../faq">전체 FAQ</a>
           </div>
         </div>
+
+        <!-- Column 3 — Products -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">리소스</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">GitHub</a>
-            <a href="https://github.com/mmcarvalhodev/nodus/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">변경 이력</a>
-            <a href="#" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">버그 신고</a>
+          <div class="ftr-title">제품</div>
+          <div class="ftr-links">
+            <a href="/workspace">Workspace</a>
+            <a href="/ph-radar">PH Radar</a>
+            <a href="/hn-radar">HN Radar</a>
+            <a href="/yt-radar">YT Radar</a>
           </div>
         </div>
+
+        <!-- Column 4 — Insights -->
         <div>
-          <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#334155; margin-bottom:16px;">법적 정보</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <a href="privacy.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">개인정보 처리방침</a>
-            <a href="../terms.html" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">이용약관</a>
-            <a href="mailto:suporte@nodus.app" style="font-size:13px; color:#64748b; text-decoration:none;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">문의하기</a>
-            <a href="../affiliates.html" style="font-size:13px; color:#64748b; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#64748b'">제휴</a>
+          <div class="ftr-title">인사이트</div>
+          <div class="ftr-links">
+            <a href="/ph/today">Product Hunt</a>
+            <a href="/hn/today">Hacker News</a>
+            <a href="/yt/today">YouTube</a>
+            <a href="/resources">모든 리소스 보기 →</a>
+            <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
           </div>
+        </div>
+
+        <!-- Column 5 — Company -->
+        <div>
+          <div class="ftr-title">회사</div>
+          <div class="ftr-links">
+            <a href="privacy.html">개인정보 처리방침</a>
+            <a href="../terms.html">이용약관</a>
+            <a href="mailto:mmcarvalho.dev@gmail.com">문의하기</a>
+            <a href="../affiliates.html">제휴</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Built by + Featured on -->
+      <div class="ftr-built-by">
+        <div>
+          <div class="ftr-title" style="margin-bottom:8px;">제작자</div>
+          <p style="font-size:13px; color:#64748b; line-height:1.7; max-width:420px;">
+            <span style="color:#e2e8f0; font-weight:700;">Márcio Menezes</span> — AI 메이커를 위한 로컬 퍼스트 생산성 도구를 만드는 독립 개발자입니다.
+          </p>
+        </div>
+        <div class="ftr-featured">
+          <span class="ftr-title" style="margin-bottom:0;">소개된 곳</span>
+          <a href="https://www.producthunt.com/products/nodus-2" target="_blank" rel="noopener">Product Hunt</a>
+          <a href="https://chromewebstore.google.com/detail/nodus-ai-idea-capture/egidifchnpakfghmbnpghgefaojbijdf" target="_blank" rel="noopener">Chrome Web Store</a>
+          <a href="https://addons.mozilla.org/firefox/addon/nodus-ai-idea-capture/" target="_blank" rel="noopener">Firefox Add-ons</a>
+          <a href="https://github.com/mmcarvalhodev/nodus" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
       <!-- research:start -->
