@@ -71,9 +71,18 @@
     }
   }
 
+  var SEE_ALL = {
+    en:'See all products →', pt:'Ver todos os produtos →', es:'Ver todos los productos →',
+    fr:'Voir tous les produits →', de:'Alle Produkte ansehen →', it:'Vedi tutti i prodotti →',
+    nl:'Bekijk alle producten →', pl:'Zobacz wszystkie produkty →', id:'Lihat semua produk →',
+    vi:'Xem tất cả sản phẩm →', ja:'すべてのプロダクトを見る →', ko:'모든 제품 보기 →',
+    zh:'查看所有产品 →', ru:'Смотреть все продукты →', hi:'सभी प्रोडक्ट्स देखें →', tr:'Tüm ürünleri gör →'
+  };
+
   var lang  = detectLang();
   var label = LABEL[lang] || LABEL.en;
   var tags  = TAG[lang]  || TAG.en;
+  var seeAll = SEE_ALL[lang] || SEE_ALL.en;
 
   /* ---------- styles (hardcoded palette so it looks right on every page) ---------- */
   function injectCSS() {
@@ -98,6 +107,9 @@
     + '.npm-txt{display:flex;flex-direction:column;gap:1px;min-width:0;}'
     + '.npm-name{color:#e2e8f0;font-size:14px;font-weight:600;line-height:1.3;}'
     + '.npm-desc{color:#94a3b8;font-size:12px;line-height:1.45;}'
+    + '.npm-seeall{display:block;margin-top:4px;padding:10px;border-top:1px solid #2d3748;'
+      + 'font-size:12.5px;font-weight:700;color:#facc15;text-decoration:none;text-align:center;}'
+    + '.npm-seeall:hover{background:rgba(250,204,21,.06);text-decoration:none;}'
     + '@media (max-width:880px){.npm-wrap{width:100%;}.npm-menu{position:static;width:100%;max-width:none;box-shadow:none;margin-top:6px;}}'
     + '@media (prefers-reduced-motion:reduce){.npm-track{transition:none;}}'
     // ----- compact top-bar trigger (mobile): icon-only, lives in .nav-inner -----
@@ -164,6 +176,13 @@
       a.appendChild(ico); a.appendChild(txt);
       menu.appendChild(a);
     });
+
+    var seeAllA = document.createElement('a');
+    seeAllA.className = 'npm-seeall';
+    seeAllA.href = (lang === 'en' ? '' : '/' + lang) + '/products';
+    seeAllA.textContent = seeAll;
+    menu.appendChild(seeAllA);
+
     return menu;
   }
 
