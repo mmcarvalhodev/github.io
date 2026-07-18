@@ -376,6 +376,39 @@
   .domains-note{text-align:center;font-size:.86rem;color:var(--ink-faint);
     margin-top:1.4rem;font-style:italic}
 
+  /* ── category diagram ── */
+  .catflow{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:2.4rem}
+  .cat-box{font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:.02em;
+    padding:14px 26px;border-radius:30px;border:1px solid var(--line);text-align:center;
+    color:var(--ink-dim);background:var(--bg-soft)}
+  .cat-box.main{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:var(--fire);
+    border-color:rgba(230,181,102,.4);background:linear-gradient(rgba(230,181,102,.1),transparent);
+    padding:16px 34px}
+  .cat-arrow{color:var(--ink-faint);font-size:1.3rem;line-height:1}
+  .cat-sub{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:2px 0}
+  .cat-chip{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cool);
+    border:1px solid var(--line);border-radius:20px;padding:6px 14px}
+
+  /* ── the wow moment ── */
+  .wow-chain{display:flex;flex-direction:column;align-items:center;gap:8px;margin:2.4rem 0 1.6rem}
+  .wc-q{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink-dim);text-align:center}
+  .wc-a{font-family:var(--serif);font-size:1.6rem;color:var(--ink);font-weight:500}
+  .wc-arrow{color:var(--ink-faint);font-size:1.1rem;line-height:1}
+  .wc-hyp{font-family:var(--serif);font-size:1.3rem;color:var(--fire);text-align:center;max-width:34ch;
+    margin-top:6px;line-height:1.4}
+  .wow-status{text-align:center;margin:1.6rem 0}
+  .ws-tag{display:inline-block;font-family:var(--sans);font-size:1.3rem;font-weight:800;
+    letter-spacing:.06em;padding:14px 30px;border-radius:14px;border:2px solid rgba(230,181,102,.55);
+    color:var(--fire);background:linear-gradient(rgba(230,181,102,.12),transparent)}
+  .wow-states{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-top:2rem}
+  .wtok{font-family:var(--sans);font-size:1.05rem;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-dim);padding:10px 18px;border:1px solid var(--line);
+    border-radius:30px}
+  .wtok-last{color:var(--ink-faint);border-style:dashed}
+  .warrow{color:var(--fire);font-size:1.2rem}
+  .wow-note{text-align:center;font-size:.9rem;color:var(--ink-faint);margin-top:1.4rem;font-style:italic;
+    max-width:52ch;margin-left:auto;margin-right:auto}
+
   /* ── real examples ── */
   .ex-list{margin-top:2.2rem;display:flex;flex-direction:column;gap:16px}
   .ex-card{border:1px solid var(--line);border-radius:10px;padding:22px 24px;
@@ -445,6 +478,33 @@
       <span class="b">Intent&nbsp;AI responde o que você
       quis&nbsp;dizer.</span>
     </p>
+  </div>
+</section>
+
+<!-- ── CATEGORY ────────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="cat.k">Uma categoria diferente</span>
+    <h2 class="reveal" data-i18n="cat.h">Isto não é mais um modelo de linguagem.</h2>
+    <p class="reveal" data-i18n="cat.p">
+      A maioria das IAs de hoje cai numa única categoria: modelos de
+      linguagem que preveem a próxima palavra. Intent AI resolve um
+      problema diferente — não prever texto, mas <strong>auditar
+      conhecimento</strong>.
+    </p>
+    <div class="catflow reveal">
+      <div class="cat-box" data-i18n="cat.llm">Modelos de IA baseados em LLM</div>
+      <div class="cat-arrow">↓</div>
+      <div class="cat-box main">Intent&nbsp;AI</div>
+      <div class="cat-sub">
+        <span class="cat-chip" data-i18n="cat.c1">significado</span>
+        <span class="cat-chip" data-i18n="cat.c2">raciocínio</span>
+        <span class="cat-chip" data-i18n="cat.c3">conhecimento</span>
+        <span class="cat-chip" data-i18n="cat.c4">auditoria</span>
+      </div>
+      <div class="cat-arrow">↓</div>
+      <div class="cat-box" data-i18n="cat.ans">Resposta</div>
+    </div>
   </div>
 </section>
 
@@ -601,6 +661,44 @@
         <button class="ast-restart" type="button" data-i18n="ast.restart"><span class="ico">↻</span> reiniciar</button>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── THE WOW MOMENT ──────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="wow.k">O que nenhum outro sistema faz</span>
+    <h2 class="reveal" data-i18n="wow.h">Deduz o que ninguém escreveu. E diz exatamente o que isso é.</h2>
+    <p class="reveal" data-i18n="wow.p">
+      Nenhum fato abaixo estava escrito em lugar nenhum. O sistema
+      montou a resposta a partir de duas relações conhecidas — e
+      rotulou o resultado com precisão.
+    </p>
+    <div class="wow-chain reveal">
+      <div class="wc-q" data-i18n="wow.q1">"Quem foi mestre de Aristóteles?"</div>
+      <div class="wc-arrow">↓</div>
+      <div class="wc-a" data-i18n="wow.plato">Platão</div>
+      <div class="wc-arrow">↓</div>
+      <div class="wc-q" data-i18n="wow.q2">"Quem foi mestre de Platão?"</div>
+      <div class="wc-arrow">↓</div>
+      <div class="wc-a" data-i18n="wow.soc">Sócrates</div>
+      <div class="wc-arrow">↓</div>
+      <div class="wc-hyp" data-i18n="wow.hyp">Hipótese: Aristóteles pode ser entendido como descendente intelectual de Sócrates.</div>
+    </div>
+    <div class="wow-status reveal">
+      <span class="ws-tag" data-i18n="wow.tag">DEDUZIDO, NÃO AFIRMADO</span>
+    </div>
+    <div class="wow-states reveal">
+      <span class="wtok" data-i18n="wow.s1">conhecido</span><span class="warrow">→</span>
+      <span class="wtok" data-i18n="wow.s2">deduzido</span><span class="warrow">→</span>
+      <span class="wtok" data-i18n="wow.s3">hipótese</span><span class="warrow">→</span>
+      <span class="wtok wtok-last" data-i18n="wow.s4">abster</span>
+    </div>
+    <p class="wow-note reveal" data-i18n="wow.note">
+      Esta sequência resume o Intent AI: o que é sabido, é usado; o que
+      é deduzido, é rotulado; o que é hipótese, nunca vira fato; o que
+      não há base para dizer, o sistema recusa a dizer.
+    </p>
   </div>
 </section>
 
@@ -833,12 +931,6 @@
       <div class="slabel"><span class="dot"></span><span data-i18n="status.label">Foco atual · em desenvolvimento ativo</span></div>
       <p data-i18n="status.text">Agora mesmo, provando que <b>o mesmo raciocínio acontece em português e em inglês</b> — com a linguagem só nas bordas. A coluna cognitiva já responde nos dois idiomas a partir da mesma estrutura; falta a prova mecânica de que o estado interno é idêntico, ponto a ponto.</p>
     </div>
-    <div class="status reveal" style="margin-top:16px;">
-      <div class="slabel"><span class="dot"></span><span data-i18n="gen.label">Primeiro raciocínio gerado</span></div>
-      <p data-i18n="gen.intro">Pergunte como Aristóteles se relaciona com Sócrates. A resposta não está guardada em lado nenhum:</p>
-      <p data-i18n="gen.quote" style="font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;color:var(--ink);border-left:2px solid var(--fire);padding-left:18px;margin:14px 0;">Hipótese estrutural, não evidência directa: Aristóteles pode ser lido como descendente intelectual de Sócrates, porque foi aluno de Platão, e Platão foi aluno de Sócrates.</p>
-      <p data-i18n="gen.after">A frase foi <b>composta</b> de duas relações — não estava escrita em parte nenhuma. E nasceu como <b>hipótese</b>: explícita, falsificável, nunca afirmada como facto. O sistema derivou o que ninguém lhe ensinou, e foi honesto sobre o que isso é.</p>
-    </div>
   </div>
 </section>
 
@@ -1061,6 +1153,15 @@
     "hero.lede": `Language is only the doorway. Thought happens beneath it.`,
     "hero.cue": `scroll to begin`,
     "contrast.s": `<span class="a">Language models answer what you&nbsp;said.</span><br><span class="b">Intent&nbsp;AI answers what you&nbsp;meant.</span>`,
+    "cat.k": `A different category`,
+    "cat.h": `This is no longer a language model.`,
+    "cat.p": `Most AI today falls into a single category: language models that predict the next word. Intent AI solves a different problem — not predicting text, but <strong>auditing knowledge</strong>.`,
+    "cat.llm": `LLM-based AI models`,
+    "cat.c1": `meaning`,
+    "cat.c2": `reasoning`,
+    "cat.c3": `knowledge`,
+    "cat.c4": `audit`,
+    "cat.ans": `Answer`,
     "prem.k": `The premise`,
     "prem.h": `Words are labels.<br>Concepts are something else.`,
     "prem.p1": `When two languages give different names to the same idea, the idea doesn't change — only the label. Beneath every sentence lies a structure of meaning that <strong>belongs to no language</strong>.`,
@@ -1099,6 +1200,20 @@
     "ast.aline3": `<b>What the structure does not decide:</b> the exact degree of that construction and Plato's intention — the available sources are not independent of one another.`,
     "ast.note": `simplified representation — the labels stand in for the real internal structure`,
     "ast.restart": `<span class="ico">↻</span> restart`,
+    "wow.k": `What no other system does`,
+    "wow.h": `Derives what no one wrote. And says exactly what that is.`,
+    "wow.p": `Nothing below was written anywhere. The system assembled the answer from two known relations — and labeled the result with precision.`,
+    "wow.q1": `"Who was Aristotle's teacher?"`,
+    "wow.q2": `"Who was Plato's teacher?"`,
+    "wow.plato": `Plato`,
+    "wow.soc": `Socrates`,
+    "wow.hyp": `Hypothesis: Aristotle can be understood as an intellectual descendant of Socrates.`,
+    "wow.tag": `DERIVED, NOT ASSERTED`,
+    "wow.s1": `known`,
+    "wow.s2": `derived`,
+    "wow.s3": `hypothesis`,
+    "wow.s4": `abstain`,
+    "wow.note": `This sequence sums up Intent AI: what is known gets used; what is derived gets labeled; what is a hypothesis never becomes fact; what there is no basis to say, the system refuses to say.`,
     "pull1": `Thought comes first. <span class="em">Language is the edge.</span>`,
     "arch.k": `The architecture`,
     "arch.h": `A cognitive system in layers.`,
@@ -1153,10 +1268,6 @@
     "conv.note": `The reasoning is the same. Only the surface changes language.`,
     "status.label": `Current focus · in active development`,
     "status.text": `Right now, proving that <b>the same reasoning happens in Portuguese and in English</b> — with language only at the edges. The cognitive column already answers in both languages from the same structure; what remains is the mechanical proof that the internal state is identical, point by point.`,
-    "gen.label": `First generated reasoning`,
-    "gen.intro": `Ask how Aristotle relates to Socrates. The answer is stored nowhere:`,
-    "gen.quote": `A structural hypothesis, not direct evidence: Aristotle can be read as an intellectual descendant of Socrates, because he studied under Plato, and Plato under Socrates.`,
-    "gen.after": `The sentence was <b>composed</b> from two relations — it was written nowhere. And it arrived as a <b>hypothesis</b>: explicit, falsifiable, never asserted as fact. The system derived what no one taught it, and was honest about what that is.`,
     "why.k": `Why it matters`,
     "why.h": `Real problems Intent AI tackles.`,
     "why.p": `Each layer of the architecture is born from a concrete pain of today's AI systems.`,
