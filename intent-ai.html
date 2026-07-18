@@ -609,11 +609,11 @@
 
     <div class="stack-cap reveal" data-i18n="arch.cap">módulos construídos e testados</div>
     <div class="stack reveal">
-      <div class="layer pending">
+      <div class="layer">
         <div class="tag">L7</div>
         <div><div class="name" data-i18n="L7.name">Personalidade</div>
-          <div class="role" data-i18n="L7.role">a voz — aplicada depois do raciocínio, nunca antes</div></div>
-        <div class="count"><span class="num" data-i18n="L7.count">por vir</span></div>
+          <div class="role" data-i18n="L7.role">a voz — aplicada depois do raciocínio, nunca antes; módulo carregável, nunca fonte de fatos</div></div>
+        <div class="count"><span class="num" data-i18n="L7.count">Sócrates</span><span class="unit" data-i18n="L7.unit">persona completa</span></div>
       </div>
       <div class="layer heart">
         <div class="tag">L6</div>
@@ -804,9 +804,11 @@
       <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i4">Pipeline de raciocínio ponta a ponta</div></div>
       <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i5">Três papers fundadores documentados</div></div>
       <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i6">Raciocínio bilíngue (PT + EN) a partir da mesma estrutura</div></div>
-      <div class="sitem wip"><div class="mk">⟳</div><div class="tx" data-i18n="st.i7">Prova mecânica de equivalência entre idiomas — em desenvolvimento</div></div>
-      <div class="sitem wip"><div class="mk">⟳</div><div class="tx" data-i18n="st.i8">Demonstração pública interativa — futura</div></div>
-      <div class="sitem todo"><div class="mk">○</div><div class="tx" data-i18n="st.i9">Camada de Personalidade — especificada, ainda não implementada</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i7">Prova mecânica de equivalência entre idiomas — mantida como instrumento de qualidade (núcleo genuinamente idêntico verificado, zero vazamento de superfície entre PT e EN)</div></div>
+      <div class="sitem wip"><div class="mk">⟳</div><div class="tx" data-i18n="st.i8">Demonstração pública interativa — roteiro pronto, apresentação em preparação</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i9">Camada de Personalidade — implementada (persona completa: Sócrates com ironia, elenchus e memórias vividas)</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i10">Honestidade epistêmica como gate estrutural — 50/50 corretas no benchmark, zero alucinação, mantido como invariante</div></div>
+      <div class="sitem done"><div class="mk">✓</div><div class="tx" data-i18n="st.i11">Composição procedural — o sistema monta programas por dedução em 4 linguagens (BASIC, Portugol, pseudocódigo, Python)</div></div>
     </div>
     <div class="status reveal">
       <div class="slabel"><span class="dot"></span><span data-i18n="status.label">Foco atual · em desenvolvimento ativo</span></div>
@@ -874,6 +876,44 @@
       <p data-i18n="prin.p4">O que é conhecido, processa direto. O que é parcial, examina
         com mais cuidado. O que é novo, vai buscar. O mesmo padrão em
         todas as camadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIMITS ─────────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="lim.k">Honestidade sobre fronteiras</span>
+    <h2 class="reveal" data-i18n="lim.h">O que ainda não está pronto.</h2>
+    <p class="reveal" data-i18n="lim.p">
+      A mesma regra que rege as respostas rege esta página: o que é
+      fronteira, está marcado como fronteira.
+    </p>
+    <div class="why reveal">
+      <div class="why-card"><div class="wp" data-i18n="lim.p1">Escopo de conhecimento</div><div class="wa" data-i18n="lim.a1">Profundo nos domínios com pacote curado; fora deles, o sistema diz que não sabe — por desenho, não por falha.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="lim.p2">Programas não são executados</div><div class="wa" data-i18n="lim.a2">O sistema monta e rotula planos de código; não há interpretador. Fronteira futura.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="lim.p3">Tela Mental ainda é textual</div><div class="wa" data-i18n="lim.a3">Hoje os quadros de raciocínio são estruturados em texto; um canvas visual real é fronteira.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="lim.p4">Protótipo single-node</div><div class="wa" data-i18n="lim.a4">A demo web roda em ~4GB de RAM; ainda não é infraestrutura distribuída.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ADVANTAGES ─────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="adv.k">O que o Intent tem que os LLMs não têm</span>
+    <h2 class="reveal" data-i18n="adv.h">Seis vantagens da arquitetura, não do ajuste fino.</h2>
+    <p class="reveal" data-i18n="adv.p">
+      Cada uma é consequência direta de como o sistema é construído —
+      não um recurso adicionado por cima.
+    </p>
+    <div class="why reveal">
+      <div class="why-card"><div class="wp" data-i18n="adv.p1">Zero alucinação por desenho</div><div class="wa" data-i18n="adv.a1">Não é um filtro colado por cima — uma resposta afirmativa é estruturalmente impossível sem evidência indexada. 50/50 no benchmark, mantido por meses.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="adv.p2">Sabe o que sabe</div><div class="wa" data-i18n="adv.a2">Enumera o próprio conhecimento e o escopo encolhe visivelmente ao desligar um pacote — nenhum LLM delimita a si mesmo com essa precisão.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="adv.p3">Atualiza sem retreinar</div><div class="wa" data-i18n="adv.a3">Domínio novo é um arquivo de dados; corrigir um fato é editar um nó. Custo de treino zero, rollback trivial.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="adv.p4">Memória que não esquece</div><div class="wa" data-i18n="adv.a4">Compressão não-destrutiva e fatos do usuário com proveniência — a janela de contexto de um LLM descarta; aqui, acumula.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="adv.p5">Multilíngue por construção</div><div class="wa" data-i18n="adv.a5">O raciocínio é o mesmo em qualquer idioma; adicionar um novo é adicionar dados, não reconstruir o pensamento.</div></div>
+      <div class="why-card"><div class="wp" data-i18n="adv.p6">Determinismo</div><div class="wa" data-i18n="adv.a6">Mesma pergunta, mesmo estado → mesma resposta, byte a byte. Essencial para testes de regressão e responsabilidade.</div></div>
     </div>
   </div>
 </section>
@@ -973,7 +1013,8 @@
     "arch.cap": `modules built and tested`,
     "L7.name": `Personality`,
     "L7.role": `the voice — applied after reasoning, never before`,
-    "L7.count": `upcoming`,
+    "L7.count": `Socrates`,
+    "L7.unit": `full persona`,
     "L6.name": `Sense Layer`,
     "L6.role": `where concepts live, independent of language — the heart`,
     "L5.name": `Focus`,
@@ -1059,9 +1100,11 @@
     "st.i4": `End-to-end reasoning pipeline`,
     "st.i5": `Three founding papers documented`,
     "st.i6": `Bilingual reasoning (PT + EN) from the same structure`,
-    "st.i7": `Mechanical proof of cross-language equivalence — in development`,
-    "st.i8": `Interactive public demo — upcoming`,
-    "st.i9": `Personality Layer — specified, not yet implemented`,
+    "st.i7": `Mechanical proof of cross-language equivalence — maintained as a quality gate (genuinely identical core verified, zero surface leakage between PT and EN)`,
+    "st.i8": `Interactive public demo — script ready, presentation in preparation`,
+    "st.i9": `Personality Layer — implemented (full persona: Socrates with irony, elenchus and lived memories)`,
+    "st.i10": `Epistemic honesty as a structural gate — 50/50 correct on benchmark, zero hallucination, maintained as an invariant`,
+    "st.i11": `Procedural composition — the system assembles programs by deduction across 4 languages (BASIC, Portugol, pseudocode, Python)`,
     "dom.k": `Compartmentalized knowledge`,
     "dom.h": `Knowledge lives in compartments.`,
     "dom.p": `The system's knowledge is not one monolithic block. Each domain — philosophy, the everyday, a technical field — is its own graph of connected concepts. <strong>Adding an area of knowledge means plugging in a new compartment</strong>; the reasoning that traverses it is always the same.`,
@@ -1088,7 +1131,33 @@
     "prin.h4": `Recognize, examine, search.`,
     "prin.p4": `What is known, it processes directly. What is partial, it examines more closely. What is new, it goes to fetch. The same pattern across every layer.`,
     "close.pull": `Not a better model. <span class="em">A different architecture.</span>`,
-    "foot": `Modular cognitive architecture · work in progress`
+    "foot": `Modular cognitive architecture · work in progress`,
+    "lim.k": `Honesty about the edges`,
+    "lim.h": `What isn't ready yet.`,
+    "lim.p": `The same rule that governs the answers governs this page: what is a frontier is marked as a frontier.`,
+    "lim.p1": `Knowledge scope`,
+    "lim.a1": `Deep in domains with a curated pack; outside them, the system says it doesn't know — by design, not failure.`,
+    "lim.p2": `Programs aren't executed`,
+    "lim.a2": `The system assembles and labels code plans; there's no interpreter. A future frontier.`,
+    "lim.p3": `The Mental Canvas is still textual`,
+    "lim.a3": `Today's reasoning boards are structured text; a real visual canvas is a frontier.`,
+    "lim.p4": `Single-node prototype`,
+    "lim.a4": `The web demo runs on ~4GB of RAM; not yet distributed infrastructure.`,
+    "adv.k": `What Intent has that LLMs don't`,
+    "adv.h": `Six advantages from the architecture, not fine-tuning.`,
+    "adv.p": `Each one is a direct consequence of how the system is built — not a feature bolted on top.`,
+    "adv.p1": `Zero hallucination by design`,
+    "adv.a1": `Not a filter bolted on top — an affirmative answer is structurally impossible without indexed evidence. 50/50 on benchmark, held for months.`,
+    "adv.p2": `Knows what it knows`,
+    "adv.a2": `Enumerates its own knowledge, and scope visibly shrinks when a pack is switched off — no LLM can delimit itself this precisely.`,
+    "adv.p3": `Updates without retraining`,
+    "adv.a3": `A new domain is a data file; fixing a fact means editing a node. Zero training cost, trivial rollback.`,
+    "adv.p4": `Memory that doesn't forget`,
+    "adv.a4": `Non-destructive compression and user facts with provenance — an LLM's context window discards; here, it accumulates.`,
+    "adv.p5": `Multilingual by construction`,
+    "adv.a5": `Reasoning is the same in any language; adding one means adding data, not rebuilding thought.`,
+    "adv.p6": `Determinism`,
+    "adv.a6": `Same question, same state → same answer, byte for byte. Essential for regression testing and accountability.`
   };
 
   const i18nNodes = document.querySelectorAll('[data-i18n]');
