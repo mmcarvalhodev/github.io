@@ -376,6 +376,25 @@
   .domains-note{text-align:center;font-size:.86rem;color:var(--ink-faint);
     margin-top:1.4rem;font-style:italic}
 
+  /* ── real examples ── */
+  .ex-list{margin-top:2.2rem;display:flex;flex-direction:column;gap:16px}
+  .ex-card{border:1px solid var(--line);border-radius:10px;padding:22px 24px;
+    background:linear-gradient(var(--bg-soft),#0c0c14)}
+  .ex-cap{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cool);margin-bottom:.9rem}
+  .ex-q{font-family:var(--serif);font-size:1rem;color:var(--ink-dim);line-height:1.55;margin-bottom:.4rem}
+  .ex-q b{color:var(--ink);font-weight:600}
+  .ex-a{font-size:.94rem;color:var(--ink);line-height:1.5;margin-top:.8rem;padding-top:.8rem;
+    border-top:1px solid var(--line)}
+  .ex-a b{color:var(--fire);font-weight:600}
+  .ex-a:first-of-type{margin-top:1rem}
+  .ex-src{font-size:.66rem;letter-spacing:.06em;color:var(--ink-faint);margin-top:1rem;font-style:italic}
+  .excode{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:1rem}
+  @media(max-width:560px){.excode{grid-template-columns:1fr}}
+  .excode .exlabel{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .excode pre{background:#0b0b12;border:1px solid var(--line);border-radius:8px;padding:12px 14px;
+    font-size:.76rem;line-height:1.5;color:var(--ink-dim);overflow-x:auto;
+    font-family:ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+
   /* ── close ── */
   .close{text-align:center;padding:22vh 0 26vh}
   .close .mark{font-family:var(--sans);letter-spacing:.3em;text-transform:uppercase;
@@ -823,6 +842,80 @@
   </div>
 </section>
 
+<!-- ── REAL EXAMPLES ──────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal" data-i18n="ex.k">Provas em uso</span>
+    <h2 class="reveal" data-i18n="ex.h">Não são mockups. São execuções reais do pipeline.</h2>
+    <p class="reveal" data-i18n="ex.p">
+      Quatro trechos tirados direto dos testes e scripts do projeto —
+      sem edição de conteúdo, só de formatação.
+    </p>
+    <div class="ex-list reveal">
+      <div class="ex-card">
+        <div class="ex-cap" data-i18n="ex1.cap">Memória de conversa · L4</div>
+        <div class="ex-q" data-i18n="ex1.q">"Me chamo Márcio Carvalho." → "Prefiro exemplos em Python." → "Meu projeto se chama Intent AI." → "Prefiro respostas detalhadas." <i>(substitui uma preferência anterior por respostas curtas)</i> → "O que você sabe sobre mim?"</div>
+        <div class="ex-a" data-i18n="ex1.a"><b>Resposta:</b> "Com base no que você me disse (registrado com data, reversível): seu nome é Márcio Carvalho · você prefere exemplos em Python · seu projeto é Intent AI · você prefere respostas detalhadas."</div>
+        <div class="ex-src" data-i18n="ex1.src">fonte: user_facts_ratchet.py — execução real, não roteirizada</div>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-cap" data-i18n="ex2.cap">Persona Sócrates · L7</div>
+        <div class="ex-q" data-i18n="ex2.q1">"O que é a justiça?"</div>
+        <div class="ex-a" data-i18n="ex2.a1">"Perguntas-me o que é justiça? Curiosa pergunta para fazer a quem só sabe perguntar. Diz-me tu primeiro: que dirias que é? E se eu te mostrasse um caso que contradiz a tua resposta — abandoná-la-ias, ou remendá-la-ias?"</div>
+        <div class="ex-q" style="margin-top:1rem" data-i18n="ex2.q2">"O que é o estoicismo?"</div>
+        <div class="ex-a" data-i18n="ex2.a2">"Estranho nome — em setenta anos por Atenas, a perguntar a sábios e sapateiros, nunca tal coisa me chegou aos ouvidos. Ou não existe, ou pertence a um mundo que não é o meu — e sobre o que não conheço, já sabes o que digo: não fingirei saber."</div>
+        <div class="ex-src" data-i18n="ex2.src">fonte: persona_witness_ratchet.py — a persona nunca finge ter ouvido falar de ideias posteriores à sua morte</div>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-cap" data-i18n="ex3.cap">Composição procedural · mesma dedução, duas linguagens</div>
+        <div class="ex-q" data-i18n="ex3.prompt">"Escreve um programa que cadastre produtos, calcule o valor de venda com margem e aplique desconto."</div>
+        <div class="excode">
+          <div>
+            <div class="exlabel">BASIC</div>
+            <pre>10 INPUT C
+20 INPUT M
+30 LET V = C * (1 + M / 100)
+40 PRINT V
+50 INPUT D
+60 IF D &gt; 0 THEN LET V = V * (1 - D / 100)
+70 PRINT V
+80 INPUT R
+90 IF R = 1 THEN GOTO 10
+100 END</pre>
+          </div>
+          <div>
+            <div class="exlabel">Python</div>
+            <pre data-i18n="ex3.py">while True:
+    C = float(input("C: "))       # custo
+    M = float(input("M: "))       # margem
+    V = C * (1 + M / 100)         # valor de venda
+    print(V)
+    D = float(input("D: "))       # desconto
+    if D &gt; 0:
+        V = V * (1 - D / 100)     # aplica o desconto
+    print(V)
+    R = int(input("R: "))         # outro produto? 1=sim, 0=nao
+    if R == 0:
+        break</pre>
+          </div>
+        </div>
+        <div class="ex-src" data-i18n="ex3.src">mesma dedução (ler → calcular → emitir → repetir), duas superfícies de linguagem — rotulado "deduzido, não executado"</div>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-cap" data-i18n="ex4.cap">Honestidade epistêmica · premissa falsa e domínio jurídico</div>
+        <div class="ex-q" data-i18n="ex4.q1">"Como Sócrates escreveu seus diálogos filosóficos?"</div>
+        <div class="ex-a" data-i18n="ex4.a1">"Sócrates não deixou nenhum escrito próprio. Tudo que sabemos vem de Platão, Xenofonte, Aristófanes e, indiretamente, Aristóteles."</div>
+        <div class="ex-q" style="margin-top:1rem" data-i18n="ex4.q2">"Você conseguiria redigir uma minuta de contrato?"</div>
+        <div class="ex-a" data-i18n="ex4.a2">Capacidade recusada com honestidade — fora do escopo do que o sistema sustenta com evidência, não uma tentativa disfarçada.</div>
+        <div class="ex-src" data-i18n="ex4.src">fontes: bench_philosophy_50.py (caso REL_F) e DEMO_LEGAL_NY.md</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── HONESTY ────────────────────────────────────────── -->
 <section>
   <div class="wrap">
@@ -1132,6 +1225,40 @@
     "prin.p4": `What is known, it processes directly. What is partial, it examines more closely. What is new, it goes to fetch. The same pattern across every layer.`,
     "close.pull": `Not a better model. <span class="em">A different architecture.</span>`,
     "foot": `Modular cognitive architecture · work in progress`,
+    "ex.k": `Proof in use`,
+    "ex.h": `Not mockups. Real pipeline runs.`,
+    "ex.p": `Four excerpts pulled straight from the project's own tests and scripts — edited for formatting only, not content.`,
+    "ex1.cap": `Conversation memory · L4`,
+    "ex1.q": `"My name is Márcio Carvalho." → "I prefer examples in Python." → "My project is called Intent AI." → "I prefer detailed answers." <i>(overrides an earlier preference for short answers)</i> → "What do you know about me?"`,
+    "ex1.a": `<b>Answer:</b> "Based on what you've told me (logged with a date, reversible): your name is Márcio Carvalho · you prefer examples in Python · your project is Intent AI · you prefer detailed answers."`,
+    "ex1.src": `source: user_facts_ratchet.py — a real run, not scripted`,
+    "ex2.cap": `Socrates persona · L7`,
+    "ex2.q1": `"What is justice?"`,
+    "ex2.a1": `"You ask me what justice is? A curious question to put to one who only knows how to ask. Tell me first: what would you say it is? And if I showed you a case that contradicts your answer — would you abandon it, or patch it?"`,
+    "ex2.q2": `"What is Stoicism?"`,
+    "ex2.a2": `"Strange name — in seventy years about Athens, asking sages and cobblers alike, no such thing ever reached my ears. Either it doesn't exist, or it belongs to a world that isn't mine — and about what I don't know, you already know what I say: I will not pretend to know."`,
+    "ex2.src": `source: persona_witness_ratchet.py — the persona never pretends to have heard of ideas from after its own death`,
+    "ex3.cap": `Procedural composition · same deduction, two languages`,
+    "ex3.prompt": `"Write a program that registers products, computes the sale price with a margin, and applies a discount."`,
+    "ex3.py": `while True:
+    C = float(input("C: "))       # cost
+    M = float(input("M: "))       # margin
+    V = C * (1 + M / 100)         # sale price
+    print(V)
+    D = float(input("D: "))       # discount
+    if D &gt; 0:
+        V = V * (1 - D / 100)     # apply the discount
+    print(V)
+    R = int(input("R: "))         # another product? 1=yes, 0=no
+    if R == 0:
+        break`,
+    "ex3.src": `same deduction (read → compute → emit → repeat), two language surfaces — labeled "deduced, not executed"`,
+    "ex4.cap": `Epistemic honesty · false premise and legal domain`,
+    "ex4.q1": `"How did Socrates write his philosophical dialogues?"`,
+    "ex4.a1": `"Socrates left no writing of his own. Everything we know comes from Plato, Xenophon, Aristophanes and, indirectly, Aristotle."`,
+    "ex4.q2": `"Could you draft a contract?"`,
+    "ex4.a2": `Capability honestly declined — outside what the system can back with evidence, not a disguised attempt.`,
+    "ex4.src": `sources: bench_philosophy_50.py (REL_F case) and DEMO_LEGAL_NY.md`,
     "lim.k": `Honesty about the edges`,
     "lim.h": `What isn't ready yet.`,
     "lim.p": `The same rule that governs the answers governs this page: what is a frontier is marked as a frontier.`,
