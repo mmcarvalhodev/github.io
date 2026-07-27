@@ -1,0 +1,287 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-controle-despesas",
+  "slug": "controle-despesas",
+  "type": "sheet",
+  "lang": "es",
+  "title": "Control de Gastos",
+  "snapshot": {
+    "id": "tpl-controle-despesas",
+    "name": "Control de Gastos",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        },
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "mny": {
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "dat": {
+        "n": {
+          "pattern": "dd/mm/yyyy"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Gastos",
+        "rowCount": 200,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 110
+          },
+          "1": {
+            "w": 260
+          },
+          "2": {
+            "w": 150
+          },
+          "3": {
+            "w": 150
+          },
+          "4": {
+            "w": 130
+          },
+          "5": {
+            "w": 40
+          },
+          "6": {
+            "w": 170
+          },
+          "7": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Control de Gastos",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Anota cada gasto en una fila. El resumen de la derecha suma solo por categoría."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Fecha",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Descripción",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Categoría",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Pago",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Importe",
+              "s": "hdr"
+            },
+            "6": {
+              "v": "Resumen por categoría",
+              "s": "hd2"
+            },
+            "7": {
+              "v": "Total",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "1": {
+              "v": "Ejemplo: compra de la semana"
+            },
+            "2": {
+              "v": "Alimentación"
+            },
+            "3": {
+              "v": "Débito"
+            },
+            "4": {
+              "v": 0,
+              "s": "mny"
+            },
+            "6": {
+              "v": "Vivienda"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G5,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "5": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Alimentación"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G6,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "6": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Transporte"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G7,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "7": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Salud"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G8,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "8": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Educación"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G9,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "9": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Ocio"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G10,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "10": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Suscripciones"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G11,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "11": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Otros"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G12,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "12": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "TOTAL",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=SUM(H5:H12)",
+              "s": "tot"
+            }
+          },
+          "13": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "14": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "15": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "16": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "17": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "18": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "19": {
+            "4": {
+              "s": "mny"
+            }
+          }
+        }
+      }
+    }
+  }
+}

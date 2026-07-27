@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · PLANILHA</text>
+<text class="ttl" x="40" y="90">समय लॉग</text><text class="sub" x="40" y="118">हर कार्यदिवस के लिए एक पंक्ति। घंटे दशमलव में लिखें (1घं30 = 1.5)।</text><rect x="40" y="132" width="720" height="30" fill="#FF6600" rx="3"/><text class="hdr" x="48" y="152">तारीख</text><text class="hdr" x="131.36842105263156" y="152">परियोजना</text><text class="hdr" x="260.2105263157895" y="152">विवरण</text><text class="hdr" x="472.42105263157896" y="152">घंटे</text><text class="hdr" x="548.2105263157895" y="152">सारांश</text><text class="hdr" x="684.6315789473684" y="152">घंटे</text><rect x="40" y="162" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="260.2105263157895" y="182">उदाहरण: संरेखण बैठक</text><text class="cel" x="472.42105263157896" y="182">0</text><text class="celb" x="548.2105263157895" y="182">कुल घंटे</text><text class="celb" x="684.6315789473684" y="182">—</text><text class="celb" x="548.2105263157895" y="212">दर्ज दिन</text><text class="celb" x="684.6315789473684" y="212">—</text><rect x="40" y="222" width="720" height="30" fill="#FAFAFA"/><text class="celb" x="548.2105263157895" y="242">प्रति दिन औसत</text><text class="celb" x="684.6315789473684" y="242">—</text><rect x="40" y="282" width="720" height="30" fill="#FAFAFA"/><rect x="40" y="342" width="720" height="30" fill="#FAFAFA"/><rect x="40" y="132" width="720" height="270" fill="none" stroke="#EDEDED"/>
+</svg>

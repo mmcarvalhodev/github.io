@@ -1,0 +1,242 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-registro-horas",
+  "slug": "registro-horas",
+  "type": "sheet",
+  "lang": "fr",
+  "title": "Suivi du Temps",
+  "snapshot": {
+    "id": "tpl-registro-horas",
+    "name": "Suivi du Temps",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        },
+        "n": {
+          "pattern": "0.00"
+        }
+      },
+      "hrs": {
+        "n": {
+          "pattern": "0.00"
+        }
+      },
+      "dat": {
+        "n": {
+          "pattern": "dd/mm/yyyy"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Heures",
+        "rowCount": 300,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 110
+          },
+          "1": {
+            "w": 170
+          },
+          "2": {
+            "w": 280
+          },
+          "3": {
+            "w": 100
+          },
+          "4": {
+            "w": 40
+          },
+          "5": {
+            "w": 180
+          },
+          "6": {
+            "w": 110
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Suivi du Temps",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Une ligne par jour travaillé. Saisissez les heures en décimal (1h30 = 1,5)."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Date",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Projet",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Description",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Heures",
+              "s": "hdr"
+            },
+            "5": {
+              "v": "Résumé",
+              "s": "hd2"
+            },
+            "6": {
+              "v": "Heures",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "s": "dat"
+            },
+            "2": {
+              "v": "Exemple : réunion de cadrage"
+            },
+            "3": {
+              "v": 0,
+              "s": "hrs"
+            },
+            "5": {
+              "v": "Total des heures",
+              "s": "tot"
+            },
+            "6": {
+              "f": "=SUM($D$5:$D$204)",
+              "s": "tot"
+            }
+          },
+          "5": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            },
+            "5": {
+              "v": "Jours enregistrés",
+              "s": "tot"
+            },
+            "6": {
+              "f": "=COUNTA($A$5:$A$204)",
+              "s": "tot"
+            }
+          },
+          "6": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            },
+            "5": {
+              "v": "Moyenne par jour",
+              "s": "tot"
+            },
+            "6": {
+              "f": "=IF(G6=0,0,G5/G6)",
+              "s": "tot"
+            }
+          },
+          "7": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "8": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "9": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "10": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "11": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "12": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "13": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "14": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          }
+        }
+      }
+    }
+  }
+}

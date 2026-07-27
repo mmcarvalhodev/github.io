@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · PLANILHA</text>
+<text class="ttl" x="40" y="90">Budżet miesięczny</text><text class="sub" x="40" y="118">Na początku miesiąca wpisz kwoty planowane, a w trakcie – rzeczywiste.</text><rect x="40" y="132" width="720" height="30" fill="#FF6600" rx="3"/><text class="hdr" x="48" y="152">Kategoria</text><text class="hdr" x="307.672131147541" y="152">Plan</text><text class="hdr" x="461.11475409836066" y="152">Rzeczywiste</text><text class="hdr" x="614.5573770491803" y="152">Różnica</text><rect x="40" y="162" width="720" height="30" fill="#FAFAFA"/><text class="celb" x="48" y="182">PRZYCHODY</text><text class="cel" x="48" y="212">Wynagrodzenie</text><text class="cel" x="307.672131147541" y="212">0</text><text class="cel" x="461.11475409836066" y="212">0</text><text class="cel" x="614.5573770491803" y="212">—</text><rect x="40" y="222" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="48" y="242">Zlecenia / dodatki</text><text class="cel" x="307.672131147541" y="242">0</text><text class="cel" x="461.11475409836066" y="242">0</text><text class="cel" x="614.5573770491803" y="242">—</text><text class="cel" x="48" y="272">Inne przychody</text><text class="cel" x="307.672131147541" y="272">0</text><text class="cel" x="461.11475409836066" y="272">0</text><text class="cel" x="614.5573770491803" y="272">—</text><rect x="40" y="282" width="720" height="30" fill="#FAFAFA"/><text class="celb" x="48" y="302">Suma przychodów</text><text class="celb" x="307.672131147541" y="302">—</text><text class="celb" x="461.11475409836066" y="302">—</text><text class="celb" x="614.5573770491803" y="302">—</text><text class="celb" x="48" y="332">WYDATKI</text><rect x="40" y="342" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="48" y="362">Mieszkanie</text><text class="cel" x="307.672131147541" y="362">0</text><text class="cel" x="461.11475409836066" y="362">0</text><text class="cel" x="614.5573770491803" y="362">—</text><text class="cel" x="48" y="392">Jedzenie</text><text class="cel" x="307.672131147541" y="392">0</text><text class="cel" x="461.11475409836066" y="392">0</text><text class="cel" x="614.5573770491803" y="392">—</text><rect x="40" y="132" width="720" height="270" fill="none" stroke="#EDEDED"/>
+</svg>

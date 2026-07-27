@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">提示词模板</text><text class="p" x="40" y="132">填写下面各部分。角色、背景和期望格式越清晰，回答越好，日后也越容易复用。</text><text class="h2" x="40" y="156">角色</text><text class="p" x="40" y="182">AI 回答时应扮演的角色。例如：严格的技术评审、有耐心的老师、擅长合同的律师。</text><text class="h2" x="40" y="206">背景</text><text class="p" x="40" y="232">开始前需要知道的信息：项目、受众、已尝试过什么、什么不能改动。</text><text class="h2" x="40" y="256">任务</text><text class="p" x="40" y="282">用一句话直接说明你要什么。一个提示词一个请求，通常胜过一次提五个。</text><text class="h2" x="40" y="306">回答格式</text><text class="p" x="40" y="332">回答应以什么形式呈现：表格、列表、连续文字、多少字、用哪种语言。</text><text class="h2" x="40" y="356">限制</text><text class="p" x="40" y="382">需要避免的：行话、无出处的假设、改动已定事项、超出篇幅。</text><text class="h2" x="40" y="406">我期望的示例</text><text class="p" x="40" y="432">期望结果的简短示例。这对回答的提升最大，也最常被遗漏。</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · PLANILHA</text>
+<text class="ttl" x="40" y="90">AI Model Comparison</text><text class="sub" x="40" y="118">Give each criterion a weight and score every model from 0 to 10. The final score takes the …</text><rect x="40" y="132" width="720" height="30" fill="#FF6600" rx="3"/><text class="hdr" x="48" y="152">Criterion</text><text class="hdr" x="294.5753424657534" y="152">Weight</text><text class="hdr" x="383.3424657534246" y="152">Model A</text><text class="hdr" x="511.5616438356164" y="152">Model B</text><text class="hdr" x="639.7808219178082" y="152">Model C</text><rect x="40" y="162" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="48" y="182">Answer quality</text><text class="cel" x="294.5753424657534" y="182">1</text><text class="cel" x="383.3424657534246" y="182">0</text><text class="cel" x="511.5616438356164" y="182">0</text><text class="cel" x="639.7808219178082" y="182">0</text><text class="cel" x="48" y="212">Speed</text><text class="cel" x="294.5753424657534" y="212">1</text><text class="cel" x="383.3424657534246" y="212">0</text><text class="cel" x="511.5616438356164" y="212">0</text><text class="cel" x="639.7808219178082" y="212">0</text><rect x="40" y="222" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="48" y="242">Cost</text><text class="cel" x="294.5753424657534" y="242">1</text><text class="cel" x="383.3424657534246" y="242">0</text><text class="cel" x="511.5616438356164" y="242">0</text><text class="cel" x="639.7808219178082" y="242">0</text><text class="cel" x="48" y="272">Context window</text><text class="cel" x="294.5753424657534" y="272">1</text><text class="cel" x="383.3424657534246" y="272">0</text><text class="cel" x="511.5616438356164" y="272">0</text><text class="cel" x="639.7808219178082" y="272">0</text><rect x="40" y="282" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="48" y="302">Privacy</text><text class="cel" x="294.5753424657534" y="302">1</text><text class="cel" x="383.3424657534246" y="302">0</text><text class="cel" x="511.5616438356164" y="302">0</text><text class="cel" x="639.7808219178082" y="302">0</text><text class="celb" x="48" y="332">Final score</text><text class="celb" x="294.5753424657534" y="332">—</text><text class="celb" x="383.3424657534246" y="332">—</text><text class="celb" x="511.5616438356164" y="332">—</text><text class="celb" x="639.7808219178082" y="332">—</text><rect x="40" y="132" width="720" height="210" fill="none" stroke="#EDEDED"/>
+</svg>

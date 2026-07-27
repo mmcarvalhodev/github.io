@@ -1,0 +1,251 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-tarefas-projeto",
+  "slug": "tarefas-projeto",
+  "type": "sheet",
+  "lang": "pt-BR",
+  "title": "Lista de Tarefas de Projeto",
+  "snapshot": {
+    "id": "tpl-tarefas-projeto",
+    "name": "Lista de Tarefas de Projeto",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "dat": {
+        "n": {
+          "pattern": "dd/mm/yyyy"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Tarefas",
+        "rowCount": 200,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 300
+          },
+          "1": {
+            "w": 150
+          },
+          "2": {
+            "w": 130
+          },
+          "3": {
+            "w": 120
+          },
+          "4": {
+            "w": 120
+          },
+          "5": {
+            "w": 40
+          },
+          "6": {
+            "w": 150
+          },
+          "7": {
+            "w": 100
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Lista de Tarefas de Projeto",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Use os status: A fazer · Em andamento · Concluída. O painel à direita conta sozinho."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Tarefa",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Responsável",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Status",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Prioridade",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Prazo",
+              "s": "hdr"
+            },
+            "6": {
+              "v": "Situação",
+              "s": "hd2"
+            },
+            "7": {
+              "v": "Qtd.",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Exemplo: definir escopo do projeto"
+            },
+            "1": {
+              "v": ""
+            },
+            "2": {
+              "v": "A fazer"
+            },
+            "3": {
+              "v": "Alta"
+            },
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "A fazer"
+            },
+            "7": {
+              "f": "=COUNTIF($C$5:$C$104,$G5)"
+            }
+          },
+          "5": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Em andamento"
+            },
+            "7": {
+              "f": "=COUNTIF($C$5:$C$104,$G6)"
+            }
+          },
+          "6": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Concluída"
+            },
+            "7": {
+              "f": "=COUNTIF($C$5:$C$104,$G7)"
+            }
+          },
+          "7": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "TOTAL",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=COUNTA($A$5:$A$104)",
+              "s": "tot"
+            }
+          },
+          "8": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Concluído (%)",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=IF(H8=0,0,H7/H8)",
+              "s": "tot"
+            }
+          },
+          "9": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "10": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "11": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "12": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "13": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "14": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "15": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "16": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "17": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "18": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "19": {
+            "4": {
+              "s": "dat"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-comparacao-modelos",
+  "slug": "comparacao-modelos",
+  "type": "sheet",
+  "lang": "tr",
+  "title": "Yapay Zekâ Model Karşılaştırması",
+  "snapshot": {
+    "id": "tpl-comparacao-modelos",
+    "name": "Yapay Zekâ Model Karşılaştırması",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "wrap": {
+        "tb": 3
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Karşılaştırma",
+        "rowCount": 100,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 250
+          },
+          "1": {
+            "w": 90
+          },
+          "2": {
+            "w": 130
+          },
+          "3": {
+            "w": 130
+          },
+          "4": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Yapay Zekâ Model Karşılaştırması",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Her ölçüte bir ağırlık verin ve her modeli 0-10 arası puanlayın. Nihai puan ağırlıkları dikkate alır."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Ölçüt",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Ağırlık",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Model A",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Model B",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Model C",
+              "s": "hdr"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Yanıt kalitesi"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "5": {
+            "0": {
+              "v": "Hız"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "6": {
+            "0": {
+              "v": "Maliyet"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "7": {
+            "0": {
+              "v": "Bağlam penceresi"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "8": {
+            "0": {
+              "v": "Gizlilik"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "10": {
+            "0": {
+              "v": "Nihai puan",
+              "s": "tot"
+            },
+            "1": {
+              "f": "=SUM(B5:B9)",
+              "s": "tot"
+            },
+            "2": {
+              "f": "=SUMPRODUCT($B$5:$B$9,C5:C9)",
+              "s": "tot"
+            },
+            "3": {
+              "f": "=SUMPRODUCT($B$5:$B$9,D5:D9)",
+              "s": "tot"
+            },
+            "4": {
+              "f": "=SUMPRODUCT($B$5:$B$9,E5:E9)",
+              "s": "tot"
+            }
+          }
+        }
+      }
+    }
+  }
+}

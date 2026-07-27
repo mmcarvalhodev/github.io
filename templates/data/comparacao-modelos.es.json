@@ -1,0 +1,213 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-comparacao-modelos",
+  "slug": "comparacao-modelos",
+  "type": "sheet",
+  "lang": "es",
+  "title": "Comparación de Modelos de IA",
+  "snapshot": {
+    "id": "tpl-comparacao-modelos",
+    "name": "Comparación de Modelos de IA",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "wrap": {
+        "tb": 3
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Comparación",
+        "rowCount": 100,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 250
+          },
+          "1": {
+            "w": 90
+          },
+          "2": {
+            "w": 130
+          },
+          "3": {
+            "w": 130
+          },
+          "4": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Comparación de Modelos de IA",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Da un peso a cada criterio y una nota de 0 a 10 por modelo. La puntuación final tiene en cuenta los pesos."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Criterio",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Peso",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Modelo A",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Modelo B",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Modelo C",
+              "s": "hdr"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Calidad de las respuestas"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "5": {
+            "0": {
+              "v": "Velocidad"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "6": {
+            "0": {
+              "v": "Coste"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "7": {
+            "0": {
+              "v": "Ventana de contexto"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "8": {
+            "0": {
+              "v": "Privacidad"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "10": {
+            "0": {
+              "v": "Puntuación final",
+              "s": "tot"
+            },
+            "1": {
+              "f": "=SUM(B5:B9)",
+              "s": "tot"
+            },
+            "2": {
+              "f": "=SUMPRODUCT($B$5:$B$9,C5:C9)",
+              "s": "tot"
+            },
+            "3": {
+              "f": "=SUMPRODUCT($B$5:$B$9,D5:D9)",
+              "s": "tot"
+            },
+            "4": {
+              "f": "=SUMPRODUCT($B$5:$B$9,E5:E9)",
+              "s": "tot"
+            }
+          }
+        }
+      }
+    }
+  }
+}

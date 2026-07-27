@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · PLANILHA</text>
+<text class="ttl" x="40" y="90">구독 관리</text><text class="sub" x="40" y="118">각 구독의 결제 주기를 정하세요. 월 비용에는 연간 구독을 12개월로 나눈 금액이 포함됩니다.</text><rect x="40" y="132" width="720" height="30" fill="#FF6600" rx="3"/><text class="hdr" x="48" y="152">서비스</text><text class="hdr" x="208" y="152">항목</text><text class="hdr" x="328" y="152">주기</text><text class="hdr" x="416" y="152">금액</text><text class="hdr" x="512" y="152">다음 결제</text><text class="hdr" x="632" y="152">요약</text><rect x="40" y="162" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="48" y="182">예: 동영상 스트리밍</text><text class="cel" x="208" y="182">여가</text><text class="cel" x="328" y="182">월간</text><text class="cel" x="416" y="182">0</text><text class="cel" x="632" y="182">월간</text><text class="cel" x="632" y="212">연간</text><rect x="40" y="222" width="720" height="30" fill="#FAFAFA"/><text class="celb" x="632" y="242">월 비용</text><text class="celb" x="632" y="272">연 비용</text><rect x="40" y="282" width="720" height="30" fill="#FAFAFA"/><rect x="40" y="342" width="720" height="30" fill="#FAFAFA"/><rect x="40" y="132" width="720" height="270" fill="none" stroke="#EDEDED"/>
+</svg>

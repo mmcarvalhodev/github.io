@@ -1,0 +1,261 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-modelo-prompt",
+  "slug": "modelo-prompt",
+  "type": "doc",
+  "lang": "hi",
+  "title": "प्रॉम्प्ट टेम्पलेट",
+  "snapshot": {
+    "id": "tpl-modelo-prompt",
+    "title": "प्रॉम्प्ट टेम्पलेट",
+    "body": {
+      "dataStream": "प्रॉम्प्ट टेम्पलेट\rनीचे के अनुभाग भरें। भूमिका, संदर्भ और अपेक्षित प्रारूप जितने स्पष्ट होंगे, उत्तर उतना बेहतर — और प्रॉम्प्ट दोबारा उपयोग करना उतना आसान।\rभूमिका\rउत्तर देते समय AI कौन हो। जैसे: कड़ा तकनीकी समीक्षक, धैर्यवान शिक्षक, अनुबंध विशेषज्ञ वकील।\rसंदर्भ\rशुरू करने से पहले क्या जानना ज़रूरी है: परियोजना, पाठक, क्या पहले आज़माया गया, क्या नहीं बदल सकता।\rकार्य\rआप क्या चाहते हैं, एक सीधे वाक्य में। एक प्रॉम्प्ट में एक अनुरोध, पाँच एक साथ से बेहतर होता है।\rउत्तर का प्रारूप\rउत्तर किस रूप में चाहिए: तालिका, सूची, सतत पाठ, कितने शब्द, किस भाषा में।\rबाधाएँ\rक्या टालें: जार्गन, बिना स्रोत की धारणाएँ, तय बातों को बदलना, तय लंबाई पार करना।\rमैं जो चाहता हूँ उसका उदाहरण\rवांछित परिणाम का छोटा उदाहरण। यही उत्तर को सबसे अधिक बेहतर बनाता है और सबसे अधिक भुला दिया जाता है।\rअंतिम प्रॉम्प्ट\r\r\n",
+      "textRuns": [
+        {
+          "st": 0,
+          "ed": 18,
+          "ts": {
+            "bl": 1,
+            "fs": 22
+          }
+        },
+        {
+          "st": 19,
+          "ed": 155,
+          "ts": {
+            "it": 1,
+            "cl": {
+              "rgb": "#8A8A8A"
+            }
+          }
+        },
+        {
+          "st": 156,
+          "ed": 162,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 255,
+          "ed": 261,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 361,
+          "ed": 366,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 463,
+          "ed": 479,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 554,
+          "ed": 560,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 642,
+          "ed": 670,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 771,
+          "ed": 786,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "startIndex": 18,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 0
+            },
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 155,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 162,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 254,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 261,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 360,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 366,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 462,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 479,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 553,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 560,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 641,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 670,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 770,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 786,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 787,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        }
+      ],
+      "sectionBreaks": [
+        {
+          "startIndex": 788
+        }
+      ]
+    },
+    "documentStyle": {
+      "pageSize": {
+        "width": 595,
+        "height": 842
+      },
+      "marginTop": 60,
+      "marginBottom": 60,
+      "marginRight": 50,
+      "marginLeft": 50
+    }
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-controle-assinaturas",
+  "slug": "controle-assinaturas",
+  "type": "sheet",
+  "lang": "fr",
+  "title": "Suivi des Abonnements",
+  "snapshot": {
+    "id": "tpl-controle-assinaturas",
+    "name": "Suivi des Abonnements",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        },
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "mny": {
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "dat": {
+        "n": {
+          "pattern": "dd/mm/yyyy"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Abonnements",
+        "rowCount": 200,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 200
+          },
+          "1": {
+            "w": 150
+          },
+          "2": {
+            "w": 110
+          },
+          "3": {
+            "w": 120
+          },
+          "4": {
+            "w": 150
+          },
+          "5": {
+            "w": 40
+          },
+          "6": {
+            "w": 170
+          },
+          "7": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Suivi des Abonnements",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Indiquez le cycle de chaque abonnement. Le coût mensuel répartit déjà les annuels sur 12 mois."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Service",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Catégorie",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Cycle",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Montant",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Prochain prélèvement",
+              "s": "hdr"
+            },
+            "6": {
+              "v": "Résumé",
+              "s": "hd2"
+            },
+            "7": {
+              "v": "Total",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Exemple : streaming vidéo"
+            },
+            "1": {
+              "v": "Loisirs"
+            },
+            "2": {
+              "v": "Mensuel"
+            },
+            "3": {
+              "v": 0,
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Mensuel"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G5,$D$5:$D$104)",
+              "s": "mny"
+            }
+          },
+          "5": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Annuel"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G6,$D$5:$D$104)",
+              "s": "mny"
+            }
+          },
+          "6": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Coût mensuel",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=H5+H6/12",
+              "s": "tot"
+            }
+          },
+          "7": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Coût annuel",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=H7*12",
+              "s": "tot"
+            }
+          },
+          "8": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            }
+          },
+          "9": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            }
+          },
+          "10": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            }
+          },
+          "11": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            }
+          },
+          "12": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            }
+          },
+          "13": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            }
+          },
+          "14": {
+            "3": {
+              "s": "mny"
+            },
+            "4": {
+              "s": "dat"
+            }
+          }
+        }
+      }
+    }
+  }
+}

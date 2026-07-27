@@ -1,0 +1,213 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-comparacao-modelos",
+  "slug": "comparacao-modelos",
+  "type": "sheet",
+  "lang": "id",
+  "title": "Perbandingan Model AI",
+  "snapshot": {
+    "id": "tpl-comparacao-modelos",
+    "name": "Perbandingan Model AI",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "wrap": {
+        "tb": 3
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Perbandingan",
+        "rowCount": 100,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 250
+          },
+          "1": {
+            "w": 90
+          },
+          "2": {
+            "w": 130
+          },
+          "3": {
+            "w": 130
+          },
+          "4": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Perbandingan Model AI",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Beri bobot pada tiap kriteria dan nilai 0 sampai 10 untuk tiap model. Skor akhir memperhitungkan bobotnya."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Kriteria",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Bobot",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Model A",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Model B",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Model C",
+              "s": "hdr"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Kualitas jawaban"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "5": {
+            "0": {
+              "v": "Kecepatan"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "6": {
+            "0": {
+              "v": "Biaya"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "7": {
+            "0": {
+              "v": "Jendela konteks"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "8": {
+            "0": {
+              "v": "Privasi"
+            },
+            "1": {
+              "v": 1
+            },
+            "2": {
+              "v": 0
+            },
+            "3": {
+              "v": 0
+            },
+            "4": {
+              "v": 0
+            }
+          },
+          "10": {
+            "0": {
+              "v": "Skor akhir",
+              "s": "tot"
+            },
+            "1": {
+              "f": "=SUM(B5:B9)",
+              "s": "tot"
+            },
+            "2": {
+              "f": "=SUMPRODUCT($B$5:$B$9,C5:C9)",
+              "s": "tot"
+            },
+            "3": {
+              "f": "=SUMPRODUCT($B$5:$B$9,D5:D9)",
+              "s": "tot"
+            },
+            "4": {
+              "f": "=SUMPRODUCT($B$5:$B$9,E5:E9)",
+              "s": "tot"
+            }
+          }
+        }
+      }
+    }
+  }
+}

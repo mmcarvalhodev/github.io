@@ -1,0 +1,287 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-controle-despesas",
+  "slug": "controle-despesas",
+  "type": "sheet",
+  "lang": "id",
+  "title": "Pelacak Pengeluaran",
+  "snapshot": {
+    "id": "tpl-controle-despesas",
+    "name": "Pelacak Pengeluaran",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        },
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "mny": {
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "dat": {
+        "n": {
+          "pattern": "dd/mm/yyyy"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Pengeluaran",
+        "rowCount": 200,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 110
+          },
+          "1": {
+            "w": 260
+          },
+          "2": {
+            "w": 150
+          },
+          "3": {
+            "w": 150
+          },
+          "4": {
+            "w": 130
+          },
+          "5": {
+            "w": 40
+          },
+          "6": {
+            "w": 170
+          },
+          "7": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Pelacak Pengeluaran",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Catat setiap pengeluaran pada satu baris. Ringkasan di kanan menjumlahkan sendiri per kategori."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Tanggal",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Keterangan",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Kategori",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Pembayaran",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Jumlah",
+              "s": "hdr"
+            },
+            "6": {
+              "v": "Ringkasan per kategori",
+              "s": "hd2"
+            },
+            "7": {
+              "v": "Total",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "1": {
+              "v": "Contoh: belanja mingguan"
+            },
+            "2": {
+              "v": "Makanan"
+            },
+            "3": {
+              "v": "Kartu debit"
+            },
+            "4": {
+              "v": 0,
+              "s": "mny"
+            },
+            "6": {
+              "v": "Tempat tinggal"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G5,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "5": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Makanan"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G6,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "6": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Transportasi"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G7,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "7": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Kesehatan"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G8,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "8": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Pendidikan"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G9,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "9": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Hiburan"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G10,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "10": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Langganan"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G11,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "11": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "Lainnya"
+            },
+            "7": {
+              "f": "=SUMIF($C$5:$C$104,$G12,$E$5:$E$104)",
+              "s": "mny"
+            }
+          },
+          "12": {
+            "4": {
+              "s": "mny"
+            },
+            "6": {
+              "v": "TOTAL",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=SUM(H5:H12)",
+              "s": "tot"
+            }
+          },
+          "13": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "14": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "15": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "16": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "17": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "18": {
+            "4": {
+              "s": "mny"
+            }
+          },
+          "19": {
+            "4": {
+              "s": "mny"
+            }
+          }
+        }
+      }
+    }
+  }
+}

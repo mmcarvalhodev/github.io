@@ -1,0 +1,204 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-biblioteca-prompts",
+  "slug": "biblioteca-prompts",
+  "type": "sheet",
+  "lang": "id",
+  "title": "Pustaka Prompt",
+  "snapshot": {
+    "id": "tpl-biblioteca-prompts",
+    "name": "Pustaka Prompt",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "wrap": {
+        "tb": 3
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Prompt",
+        "rowCount": 300,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 220
+          },
+          "1": {
+            "w": 150
+          },
+          "2": {
+            "w": 420
+          },
+          "3": {
+            "w": 150
+          },
+          "4": {
+            "w": 80
+          },
+          "5": {
+            "w": 130
+          },
+          "6": {
+            "w": 40
+          },
+          "7": {
+            "w": 190
+          },
+          "8": {
+            "w": 90
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Pustaka Prompt",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Simpan yang berhasil. Satu prompt bagus yang dipakai ulang lebih berharga daripada sepuluh yang ditulis ulang."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Nama",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Kategori",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Prompt",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Model",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Nilai",
+              "s": "hdr"
+            },
+            "5": {
+              "v": "Terakhir dipakai",
+              "s": "hdr"
+            },
+            "7": {
+              "v": "Ringkasan",
+              "s": "hd2"
+            },
+            "8": {
+              "v": "Jml",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Contoh: koreksi teks tanpa mengubah nadanya"
+            },
+            "2": {
+              "s": "wrap"
+            },
+            "7": {
+              "v": "Prompt tersimpan",
+              "s": "tot"
+            },
+            "8": {
+              "f": "=COUNTA($A$5:$A$204)",
+              "s": "tot"
+            }
+          },
+          "5": {
+            "2": {
+              "s": "wrap"
+            },
+            "7": {
+              "v": "Nilai tertinggi",
+              "s": "tot"
+            },
+            "8": {
+              "f": "=COUNTIF($E$5:$E$204,5)",
+              "s": "tot"
+            }
+          },
+          "6": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "7": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "8": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "9": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "10": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "11": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "12": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "13": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "14": {
+            "2": {
+              "s": "wrap"
+            }
+          }
+        }
+      }
+    }
+  }
+}

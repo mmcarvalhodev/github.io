@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">Prompt Template</text><text class="p" x="40" y="132">Fill in the sections below. The clearer the role, the context and the expected format…</text><text class="h2" x="40" y="156">Role</text><text class="p" x="40" y="182">Who the AI should be when answering. E.g. a demanding technical reviewer, a patient t…</text><text class="h2" x="40" y="206">Context</text><text class="p" x="40" y="232">What it needs to know before starting: the project, the audience, what has been tried…</text><text class="h2" x="40" y="256">Task</text><text class="p" x="40" y="282">What you want, in one direct sentence. One request per prompt usually beats five at o…</text><text class="h2" x="40" y="306">Answer format</text><text class="p" x="40" y="332">How the answer should arrive: table, list, running text, how many words, in which lan…</text><text class="h2" x="40" y="356">Constraints</text><text class="p" x="40" y="382">What to avoid: jargon, unsourced assumptions, changing what is already decided, going…</text><text class="h2" x="40" y="406">Example of what I expect</text><text class="p" x="40" y="432">A short example of the result you want. It improves the answer the most — and is the …</text>
+</svg>

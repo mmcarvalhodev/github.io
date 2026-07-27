@@ -1,0 +1,251 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-tarefas-projeto",
+  "slug": "tarefas-projeto",
+  "type": "sheet",
+  "lang": "es",
+  "title": "Lista de Tareas del Proyecto",
+  "snapshot": {
+    "id": "tpl-tarefas-projeto",
+    "name": "Lista de Tareas del Proyecto",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "dat": {
+        "n": {
+          "pattern": "dd/mm/yyyy"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Tareas",
+        "rowCount": 200,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 300
+          },
+          "1": {
+            "w": 150
+          },
+          "2": {
+            "w": 130
+          },
+          "3": {
+            "w": 120
+          },
+          "4": {
+            "w": 120
+          },
+          "5": {
+            "w": 40
+          },
+          "6": {
+            "w": 150
+          },
+          "7": {
+            "w": 100
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Lista de Tareas del Proyecto",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Usa los estados: Por hacer · En curso · Hecha. El panel de la derecha cuenta solo."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Tarea",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Responsable",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Estado",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Prioridad",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Fecha límite",
+              "s": "hdr"
+            },
+            "6": {
+              "v": "Situación",
+              "s": "hd2"
+            },
+            "7": {
+              "v": "Cant.",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Ejemplo: definir el alcance del proyecto"
+            },
+            "1": {
+              "v": ""
+            },
+            "2": {
+              "v": "Por hacer"
+            },
+            "3": {
+              "v": "Alta"
+            },
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Por hacer"
+            },
+            "7": {
+              "f": "=COUNTIF($C$5:$C$104,$G5)"
+            }
+          },
+          "5": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "En curso"
+            },
+            "7": {
+              "f": "=COUNTIF($C$5:$C$104,$G6)"
+            }
+          },
+          "6": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Hecha"
+            },
+            "7": {
+              "f": "=COUNTIF($C$5:$C$104,$G7)"
+            }
+          },
+          "7": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "TOTAL",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=COUNTA($A$5:$A$104)",
+              "s": "tot"
+            }
+          },
+          "8": {
+            "4": {
+              "s": "dat"
+            },
+            "6": {
+              "v": "Completado (%)",
+              "s": "tot"
+            },
+            "7": {
+              "f": "=IF(H8=0,0,H7/H8)",
+              "s": "tot"
+            }
+          },
+          "9": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "10": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "11": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "12": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "13": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "14": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "15": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "16": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "17": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "18": {
+            "4": {
+              "s": "dat"
+            }
+          },
+          "19": {
+            "4": {
+              "s": "dat"
+            }
+          }
+        }
+      }
+    }
+  }
+}

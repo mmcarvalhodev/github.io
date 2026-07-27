@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">プロンプトのひな形</text><text class="p" x="40" y="132">以下の各項目を埋めてください。役割・文脈・期待する形式が明確なほど回答は良くなり、後で再利用しやすくなります。</text><text class="h2" x="40" y="156">役割</text><text class="p" x="40" y="182">回答するときのAIの役割。例：厳しい技術レビュアー、辛抱強い教師、契約に詳しい弁護士。</text><text class="h2" x="40" y="206">文脈</text><text class="p" x="40" y="232">始める前に知っておくべきこと：プロジェクト、読み手、すでに試したこと、変えてはいけないこと。</text><text class="h2" x="40" y="256">タスク</text><text class="p" x="40" y="282">求めることを一文で直接に。1つのプロンプトに1つの依頼のほうが、5つまとめるより良い結果になります。</text><text class="h2" x="40" y="306">回答の形式</text><text class="p" x="40" y="332">回答の形式：表、箇条書き、文章、語数、どの言語か。</text><text class="h2" x="40" y="356">制約</text><text class="p" x="40" y="382">避けること：専門用語、出典のない推測、決定済みの変更、指定の長さ超過。</text><text class="h2" x="40" y="406">期待する結果の例</text><text class="p" x="40" y="432">望む結果の短い例。回答を最も良くする要素であり、最も書き忘れられる要素でもあります。</text>
+</svg>

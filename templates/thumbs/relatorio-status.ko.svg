@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">주간 현황 보고</text><text class="p" x="40" y="132">주 1페이지. 읽는 사람이 아무것도 묻지 않고 1분 안에 상황을 파악할 수 있어야 합니다.</text><text class="h2" x="40" y="156">기간</text><rect x="40" y="172" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="208">진전된 것</text><text class="p" x="40" y="234">활동이 아니라 결과를. &quot;가입 기능 오픈&quot;이 &quot;가입 작업을 했다&quot;보다 많은 것을 말합니다.</text><text class="h2" x="40" y="258">막힌 것</text><text class="p" x="40" y="284">진전이 없었던 것과 그 이유. 숨기면 문제를 미룰 뿐입니다.</text><text class="h2" x="40" y="308">위험</text><text class="p" x="40" y="334">아직 문제는 아니지만 문제가 될 수 있는 것. 일찍 알리는 편이 낫습니다.</text><text class="h2" x="40" y="358">도움이 필요한 것</text><text class="p" x="40" y="384">다른 사람이 풀어 줘야 하는 결정, 권한, 인력.</text><text class="h2" x="40" y="408">다음 주</text><rect x="40" y="424" width="560" height="1" fill="#E8E8E8"/>
+</svg>

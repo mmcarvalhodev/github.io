@@ -1,0 +1,1914 @@
+{
+  "schema": 1,
+  "univerSchema": "0.25",
+  "templates": [
+    {
+      "id": "tpl-orcamento-mensal",
+      "slug": "orcamento-mensal",
+      "type": "sheet",
+      "category": "financas",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Orçamento Mensal",
+          "description": "Compare o que você planejou gastar com o que gastou de verdade, por categoria, e veja o saldo do mês.",
+          "thumb": "/templates/thumbs/orcamento-mensal.pt-BR.svg",
+          "data": "/templates/data/orcamento-mensal.pt-BR.json"
+        },
+        "en": {
+          "title": "Monthly Budget",
+          "description": "Compare what you planned to spend with what you actually spent, by category, and see your balance for the month.",
+          "thumb": "/templates/thumbs/orcamento-mensal.en.svg",
+          "data": "/templates/data/orcamento-mensal.en.json"
+        },
+        "es": {
+          "title": "Presupuesto Mensual",
+          "description": "Compara lo que planeaste gastar con lo que gastaste de verdad, por categoría, y consulta el saldo del mes.",
+          "thumb": "/templates/thumbs/orcamento-mensal.es.svg",
+          "data": "/templates/data/orcamento-mensal.es.json"
+        },
+        "fr": {
+          "title": "Budget Mensuel",
+          "description": "Comparez ce que vous aviez prévu de dépenser avec vos dépenses réelles, par catégorie, et voyez le solde du mois.",
+          "thumb": "/templates/thumbs/orcamento-mensal.fr.svg",
+          "data": "/templates/data/orcamento-mensal.fr.json"
+        },
+        "de": {
+          "title": "Monatsbudget",
+          "description": "Vergleichen Sie geplante und tatsächliche Ausgaben nach Kategorie und sehen Sie Ihren Monatssaldo.",
+          "thumb": "/templates/thumbs/orcamento-mensal.de.svg",
+          "data": "/templates/data/orcamento-mensal.de.json"
+        },
+        "it": {
+          "title": "Budget Mensile",
+          "description": "Confronta quanto avevi previsto di spendere con quanto hai speso davvero, per categoria, e vedi il saldo del mese.",
+          "thumb": "/templates/thumbs/orcamento-mensal.it.svg",
+          "data": "/templates/data/orcamento-mensal.it.json"
+        },
+        "nl": {
+          "title": "Maandbudget",
+          "description": "Vergelijk wat je wilde uitgeven met wat je echt uitgaf, per categorie, en zie je saldo van de maand.",
+          "thumb": "/templates/thumbs/orcamento-mensal.nl.svg",
+          "data": "/templates/data/orcamento-mensal.nl.json"
+        },
+        "pl": {
+          "title": "Budżet miesięczny",
+          "description": "Porównaj planowane wydatki z rzeczywistymi według kategorii i sprawdź saldo miesiąca.",
+          "thumb": "/templates/thumbs/orcamento-mensal.pl.svg",
+          "data": "/templates/data/orcamento-mensal.pl.json"
+        },
+        "id": {
+          "title": "Anggaran Bulanan",
+          "description": "Bandingkan rencana pengeluaran dengan realisasinya per kategori, dan lihat saldo bulan ini.",
+          "thumb": "/templates/thumbs/orcamento-mensal.id.svg",
+          "data": "/templates/data/orcamento-mensal.id.json"
+        },
+        "vi": {
+          "title": "Ngân sách hàng tháng",
+          "description": "So sánh số tiền bạn dự định chi với số thực chi theo danh mục và xem số dư trong tháng.",
+          "thumb": "/templates/thumbs/orcamento-mensal.vi.svg",
+          "data": "/templates/data/orcamento-mensal.vi.json"
+        },
+        "ja": {
+          "title": "月間予算",
+          "description": "予定した支出と実際の支出をカテゴリ別に比べ、今月の収支を確認できます。",
+          "thumb": "/templates/thumbs/orcamento-mensal.ja.svg",
+          "data": "/templates/data/orcamento-mensal.ja.json"
+        },
+        "ko": {
+          "title": "월간 예산",
+          "description": "계획한 지출과 실제 지출을 항목별로 비교하고 이달의 잔액을 확인하세요.",
+          "thumb": "/templates/thumbs/orcamento-mensal.ko.svg",
+          "data": "/templates/data/orcamento-mensal.ko.json"
+        },
+        "zh": {
+          "title": "月度预算",
+          "description": "按类别对比计划支出与实际支出，并查看本月结余。",
+          "thumb": "/templates/thumbs/orcamento-mensal.zh.svg",
+          "data": "/templates/data/orcamento-mensal.zh.json"
+        },
+        "ru": {
+          "title": "Месячный бюджет",
+          "description": "Сравните запланированные и фактические траты по категориям и посмотрите баланс за месяц.",
+          "thumb": "/templates/thumbs/orcamento-mensal.ru.svg",
+          "data": "/templates/data/orcamento-mensal.ru.json"
+        },
+        "hi": {
+          "title": "मासिक बजट",
+          "description": "श्रेणी के अनुसार नियोजित और वास्तविक खर्च की तुलना करें और महीने का शेष देखें।",
+          "thumb": "/templates/thumbs/orcamento-mensal.hi.svg",
+          "data": "/templates/data/orcamento-mensal.hi.json"
+        },
+        "tr": {
+          "title": "Aylık Bütçe",
+          "description": "Planladığınız harcamalarla gerçekleşenleri kategori bazında karşılaştırın ve ay bakiyenizi görün.",
+          "thumb": "/templates/thumbs/orcamento-mensal.tr.svg",
+          "data": "/templates/data/orcamento-mensal.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-controle-despesas",
+      "slug": "controle-despesas",
+      "type": "sheet",
+      "category": "financas",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Controle de Despesas",
+          "description": "Lance cada gasto numa linha e veja o resumo somado por categoria automaticamente.",
+          "thumb": "/templates/thumbs/controle-despesas.pt-BR.svg",
+          "data": "/templates/data/controle-despesas.pt-BR.json"
+        },
+        "en": {
+          "title": "Expense Tracker",
+          "description": "Log each expense on its own row and see the totals add up by category automatically.",
+          "thumb": "/templates/thumbs/controle-despesas.en.svg",
+          "data": "/templates/data/controle-despesas.en.json"
+        },
+        "es": {
+          "title": "Control de Gastos",
+          "description": "Anota cada gasto en una fila y consulta el resumen sumado por categoría automáticamente.",
+          "thumb": "/templates/thumbs/controle-despesas.es.svg",
+          "data": "/templates/data/controle-despesas.es.json"
+        },
+        "fr": {
+          "title": "Suivi des Dépenses",
+          "description": "Notez chaque dépense sur une ligne et voyez le résumé s'additionner par catégorie automatiquement.",
+          "thumb": "/templates/thumbs/controle-despesas.fr.svg",
+          "data": "/templates/data/controle-despesas.fr.json"
+        },
+        "de": {
+          "title": "Ausgabenübersicht",
+          "description": "Tragen Sie jede Ausgabe in eine eigene Zeile ein und sehen Sie die Summen automatisch nach Kategorie.",
+          "thumb": "/templates/thumbs/controle-despesas.de.svg",
+          "data": "/templates/data/controle-despesas.de.json"
+        },
+        "it": {
+          "title": "Registro Spese",
+          "description": "Registra ogni spesa su una riga e vedi il riepilogo sommato per categoria automaticamente.",
+          "thumb": "/templates/thumbs/controle-despesas.it.svg",
+          "data": "/templates/data/controle-despesas.it.json"
+        },
+        "nl": {
+          "title": "Uitgavenoverzicht",
+          "description": "Noteer elke uitgave op een eigen regel en zie het overzicht automatisch per categorie optellen.",
+          "thumb": "/templates/thumbs/controle-despesas.nl.svg",
+          "data": "/templates/data/controle-despesas.nl.json"
+        },
+        "pl": {
+          "title": "Rejestr wydatków",
+          "description": "Zapisuj każdy wydatek w osobnym wierszu i automatycznie sprawdzaj podsumowanie według kategorii.",
+          "thumb": "/templates/thumbs/controle-despesas.pl.svg",
+          "data": "/templates/data/controle-despesas.pl.json"
+        },
+        "id": {
+          "title": "Pelacak Pengeluaran",
+          "description": "Catat setiap pengeluaran pada barisnya sendiri dan lihat ringkasan otomatis per kategori.",
+          "thumb": "/templates/thumbs/controle-despesas.id.svg",
+          "data": "/templates/data/controle-despesas.id.json"
+        },
+        "vi": {
+          "title": "Theo dõi Chi tiêu",
+          "description": "Ghi từng khoản chi trên một dòng và xem tổng hợp tự động theo danh mục.",
+          "thumb": "/templates/thumbs/controle-despesas.vi.svg",
+          "data": "/templates/data/controle-despesas.vi.json"
+        },
+        "ja": {
+          "title": "支出管理",
+          "description": "支出を1行ずつ記録すると、カテゴリ別の集計が自動で出ます。",
+          "thumb": "/templates/thumbs/controle-despesas.ja.svg",
+          "data": "/templates/data/controle-despesas.ja.json"
+        },
+        "ko": {
+          "title": "지출 관리",
+          "description": "지출을 한 줄씩 기록하면 항목별 합계가 자동으로 계산됩니다.",
+          "thumb": "/templates/thumbs/controle-despesas.ko.svg",
+          "data": "/templates/data/controle-despesas.ko.json"
+        },
+        "zh": {
+          "title": "支出记录",
+          "description": "每笔支出记录一行，按类别的汇总自动生成。",
+          "thumb": "/templates/thumbs/controle-despesas.zh.svg",
+          "data": "/templates/data/controle-despesas.zh.json"
+        },
+        "ru": {
+          "title": "Учёт расходов",
+          "description": "Записывайте каждый расход отдельной строкой и получайте сводку по категориям автоматически.",
+          "thumb": "/templates/thumbs/controle-despesas.ru.svg",
+          "data": "/templates/data/controle-despesas.ru.json"
+        },
+        "hi": {
+          "title": "व्यय ट्रैकर",
+          "description": "हर खर्च को अलग पंक्ति में दर्ज करें और श्रेणी अनुसार योग अपने आप देखें।",
+          "thumb": "/templates/thumbs/controle-despesas.hi.svg",
+          "data": "/templates/data/controle-despesas.hi.json"
+        },
+        "tr": {
+          "title": "Gider Takibi",
+          "description": "Her gideri kendi satırına kaydedin, kategori bazlı toplamları otomatik görün.",
+          "thumb": "/templates/thumbs/controle-despesas.tr.svg",
+          "data": "/templates/data/controle-despesas.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-tarefas-projeto",
+      "slug": "tarefas-projeto",
+      "type": "sheet",
+      "category": "trabalho",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Lista de Tarefas de Projeto",
+          "description": "Organize tarefas com responsável, status, prioridade e prazo — com contagem automática do andamento.",
+          "thumb": "/templates/thumbs/tarefas-projeto.pt-BR.svg",
+          "data": "/templates/data/tarefas-projeto.pt-BR.json"
+        },
+        "en": {
+          "title": "Project Task List",
+          "description": "Organize tasks with owner, status, priority and due date — with progress counted automatically.",
+          "thumb": "/templates/thumbs/tarefas-projeto.en.svg",
+          "data": "/templates/data/tarefas-projeto.en.json"
+        },
+        "es": {
+          "title": "Lista de Tareas del Proyecto",
+          "description": "Organiza tareas con responsable, estado, prioridad y fecha límite, con el avance contado automáticamente.",
+          "thumb": "/templates/thumbs/tarefas-projeto.es.svg",
+          "data": "/templates/data/tarefas-projeto.es.json"
+        },
+        "fr": {
+          "title": "Liste des Tâches du Projet",
+          "description": "Organisez les tâches avec responsable, statut, priorité et échéance — l'avancement se compte tout seul.",
+          "thumb": "/templates/thumbs/tarefas-projeto.fr.svg",
+          "data": "/templates/data/tarefas-projeto.fr.json"
+        },
+        "de": {
+          "title": "Projekt-Aufgabenliste",
+          "description": "Organisieren Sie Aufgaben mit Verantwortlichem, Status, Priorität und Frist — der Fortschritt zählt sich selbst.",
+          "thumb": "/templates/thumbs/tarefas-projeto.de.svg",
+          "data": "/templates/data/tarefas-projeto.de.json"
+        },
+        "it": {
+          "title": "Elenco Attività di Progetto",
+          "description": "Organizza le attività con responsabile, stato, priorità e scadenza, con l'avanzamento contato in automatico.",
+          "thumb": "/templates/thumbs/tarefas-projeto.it.svg",
+          "data": "/templates/data/tarefas-projeto.it.json"
+        },
+        "nl": {
+          "title": "Projecttakenlijst",
+          "description": "Organiseer taken met verantwoordelijke, status, prioriteit en deadline — de voortgang telt vanzelf.",
+          "thumb": "/templates/thumbs/tarefas-projeto.nl.svg",
+          "data": "/templates/data/tarefas-projeto.nl.json"
+        },
+        "pl": {
+          "title": "Lista zadań projektu",
+          "description": "Organizuj zadania z odpowiedzialnym, statusem, priorytetem i terminem — postęp liczy się sam.",
+          "thumb": "/templates/thumbs/tarefas-projeto.pl.svg",
+          "data": "/templates/data/tarefas-projeto.pl.json"
+        },
+        "id": {
+          "title": "Daftar Tugas Proyek",
+          "description": "Atur tugas dengan penanggung jawab, status, prioritas, dan tenggat — kemajuannya dihitung otomatis.",
+          "thumb": "/templates/thumbs/tarefas-projeto.id.svg",
+          "data": "/templates/data/tarefas-projeto.id.json"
+        },
+        "vi": {
+          "title": "Danh sách Công việc Dự án",
+          "description": "Sắp xếp công việc theo người phụ trách, trạng thái, ưu tiên và hạn chót — tiến độ được tính tự động.",
+          "thumb": "/templates/thumbs/tarefas-projeto.vi.svg",
+          "data": "/templates/data/tarefas-projeto.vi.json"
+        },
+        "ja": {
+          "title": "プロジェクトタスク一覧",
+          "description": "担当者・ステータス・優先度・期限でタスクを整理し、進捗は自動で集計されます。",
+          "thumb": "/templates/thumbs/tarefas-projeto.ja.svg",
+          "data": "/templates/data/tarefas-projeto.ja.json"
+        },
+        "ko": {
+          "title": "프로젝트 작업 목록",
+          "description": "담당자, 상태, 우선순위, 마감일로 작업을 정리하고 진행률은 자동으로 계산됩니다.",
+          "thumb": "/templates/thumbs/tarefas-projeto.ko.svg",
+          "data": "/templates/data/tarefas-projeto.ko.json"
+        },
+        "zh": {
+          "title": "项目任务清单",
+          "description": "用负责人、状态、优先级和截止日期整理任务，进度自动统计。",
+          "thumb": "/templates/thumbs/tarefas-projeto.zh.svg",
+          "data": "/templates/data/tarefas-projeto.zh.json"
+        },
+        "ru": {
+          "title": "Список задач проекта",
+          "description": "Организуйте задачи по ответственному, статусу, приоритету и сроку — прогресс считается сам.",
+          "thumb": "/templates/thumbs/tarefas-projeto.ru.svg",
+          "data": "/templates/data/tarefas-projeto.ru.json"
+        },
+        "hi": {
+          "title": "परियोजना कार्य सूची",
+          "description": "कार्यों को ज़िम्मेदार, स्थिति, प्राथमिकता और नियत तिथि के साथ व्यवस्थित करें — प्रगति स्वतः गिनी जाती है।",
+          "thumb": "/templates/thumbs/tarefas-projeto.hi.svg",
+          "data": "/templates/data/tarefas-projeto.hi.json"
+        },
+        "tr": {
+          "title": "Proje Görev Listesi",
+          "description": "Görevleri sorumlu, durum, öncelik ve son tarihle düzenleyin — ilerleme kendiliğinden sayılır.",
+          "thumb": "/templates/thumbs/tarefas-projeto.tr.svg",
+          "data": "/templates/data/tarefas-projeto.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-controle-assinaturas",
+      "slug": "controle-assinaturas",
+      "type": "sheet",
+      "category": "financas",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Controle de Assinaturas",
+          "description": "Veja tudo o que você paga por mês e por ano — e descubra o custo real das assinaturas que esqueceu.",
+          "thumb": "/templates/thumbs/controle-assinaturas.pt-BR.svg",
+          "data": "/templates/data/controle-assinaturas.pt-BR.json"
+        },
+        "en": {
+          "title": "Subscription Tracker",
+          "description": "See everything you pay monthly and yearly — and find out the real cost of the subscriptions you forgot.",
+          "thumb": "/templates/thumbs/controle-assinaturas.en.svg",
+          "data": "/templates/data/controle-assinaturas.en.json"
+        },
+        "es": {
+          "title": "Control de Suscripciones",
+          "description": "Ve todo lo que pagas al mes y al año, y descubre el coste real de las suscripciones que olvidaste.",
+          "thumb": "/templates/thumbs/controle-assinaturas.es.svg",
+          "data": "/templates/data/controle-assinaturas.es.json"
+        },
+        "fr": {
+          "title": "Suivi des Abonnements",
+          "description": "Voyez tout ce que vous payez par mois et par an — et découvrez le coût réel des abonnements oubliés.",
+          "thumb": "/templates/thumbs/controle-assinaturas.fr.svg",
+          "data": "/templates/data/controle-assinaturas.fr.json"
+        },
+        "de": {
+          "title": "Abo-Übersicht",
+          "description": "Sehen Sie, was Sie monatlich und jährlich zahlen — und was vergessene Abos wirklich kosten.",
+          "thumb": "/templates/thumbs/controle-assinaturas.de.svg",
+          "data": "/templates/data/controle-assinaturas.de.json"
+        },
+        "it": {
+          "title": "Gestione Abbonamenti",
+          "description": "Vedi quanto paghi al mese e all’anno e scopri il costo reale degli abbonamenti dimenticati.",
+          "thumb": "/templates/thumbs/controle-assinaturas.it.svg",
+          "data": "/templates/data/controle-assinaturas.it.json"
+        },
+        "nl": {
+          "title": "Abonnementenoverzicht",
+          "description": "Zie wat je per maand en per jaar betaalt — en wat vergeten abonnementen echt kosten.",
+          "thumb": "/templates/thumbs/controle-assinaturas.nl.svg",
+          "data": "/templates/data/controle-assinaturas.nl.json"
+        },
+        "pl": {
+          "title": "Rejestr subskrypcji",
+          "description": "Zobacz, ile płacisz miesięcznie i rocznie, i poznaj prawdziwy koszt zapomnianych subskrypcji.",
+          "thumb": "/templates/thumbs/controle-assinaturas.pl.svg",
+          "data": "/templates/data/controle-assinaturas.pl.json"
+        },
+        "id": {
+          "title": "Pelacak Langganan",
+          "description": "Lihat total yang kamu bayar per bulan dan per tahun, dan temukan biaya nyata langganan yang terlupakan.",
+          "thumb": "/templates/thumbs/controle-assinaturas.id.svg",
+          "data": "/templates/data/controle-assinaturas.id.json"
+        },
+        "vi": {
+          "title": "Theo dõi Thuê bao",
+          "description": "Xem bạn trả bao nhiêu mỗi tháng và mỗi năm — và chi phí thật của những thuê bao đã quên.",
+          "thumb": "/templates/thumbs/controle-assinaturas.vi.svg",
+          "data": "/templates/data/controle-assinaturas.vi.json"
+        },
+        "ja": {
+          "title": "サブスク管理",
+          "description": "毎月・毎年いくら払っているかを把握し、忘れていたサブスクの本当の費用が見えます。",
+          "thumb": "/templates/thumbs/controle-assinaturas.ja.svg",
+          "data": "/templates/data/controle-assinaturas.ja.json"
+        },
+        "ko": {
+          "title": "구독 관리",
+          "description": "매달과 매년 얼마를 내는지 확인하고, 잊고 있던 구독의 실제 비용을 알아보세요.",
+          "thumb": "/templates/thumbs/controle-assinaturas.ko.svg",
+          "data": "/templates/data/controle-assinaturas.ko.json"
+        },
+        "zh": {
+          "title": "订阅管理",
+          "description": "查看每月和每年的支出，发现被遗忘订阅的真实成本。",
+          "thumb": "/templates/thumbs/controle-assinaturas.zh.svg",
+          "data": "/templates/data/controle-assinaturas.zh.json"
+        },
+        "ru": {
+          "title": "Учёт подписок",
+          "description": "Посмотрите, сколько платите в месяц и в год, и узнайте реальную цену забытых подписок.",
+          "thumb": "/templates/thumbs/controle-assinaturas.ru.svg",
+          "data": "/templates/data/controle-assinaturas.ru.json"
+        },
+        "hi": {
+          "title": "सदस्यता ट्रैकर",
+          "description": "देखें कि आप हर महीने और हर साल कितना चुकाते हैं — और भूली हुई सदस्यताओं की असली लागत जानें।",
+          "thumb": "/templates/thumbs/controle-assinaturas.hi.svg",
+          "data": "/templates/data/controle-assinaturas.hi.json"
+        },
+        "tr": {
+          "title": "Abonelik Takibi",
+          "description": "Ayda ve yılda ne kadar ödediğinizi görün; unuttuğunuz aboneliklerin gerçek maliyetini keşfedin.",
+          "thumb": "/templates/thumbs/controle-assinaturas.tr.svg",
+          "data": "/templates/data/controle-assinaturas.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-divisao-contas",
+      "slug": "divisao-contas",
+      "type": "sheet",
+      "category": "financas",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Divisão de Contas em Grupo",
+          "description": "Quem pagou o quê numa viagem ou república, e quanto cada pessoa ainda deve receber ou pagar.",
+          "thumb": "/templates/thumbs/divisao-contas.pt-BR.svg",
+          "data": "/templates/data/divisao-contas.pt-BR.json"
+        },
+        "en": {
+          "title": "Group Bill Splitter",
+          "description": "Who paid what on a trip or in a shared flat, and how much each person still owes or is owed.",
+          "thumb": "/templates/thumbs/divisao-contas.en.svg",
+          "data": "/templates/data/divisao-contas.en.json"
+        },
+        "es": {
+          "title": "División de Cuentas en Grupo",
+          "description": "Quién pagó qué en un viaje o piso compartido, y cuánto debe o le deben a cada persona.",
+          "thumb": "/templates/thumbs/divisao-contas.es.svg",
+          "data": "/templates/data/divisao-contas.es.json"
+        },
+        "fr": {
+          "title": "Partage des Dépenses de Groupe",
+          "description": "Qui a payé quoi lors d’un voyage ou en colocation, et ce que chacun doit ou doit recevoir.",
+          "thumb": "/templates/thumbs/divisao-contas.fr.svg",
+          "data": "/templates/data/divisao-contas.fr.json"
+        },
+        "de": {
+          "title": "Gruppenabrechnung",
+          "description": "Wer hat auf der Reise oder in der WG was bezahlt — und wer bekommt oder schuldet noch wie viel.",
+          "thumb": "/templates/thumbs/divisao-contas.de.svg",
+          "data": "/templates/data/divisao-contas.de.json"
+        },
+        "it": {
+          "title": "Divisione Spese di Gruppo",
+          "description": "Chi ha pagato cosa in viaggio o in casa condivisa, e quanto ognuno deve dare o ricevere.",
+          "thumb": "/templates/thumbs/divisao-contas.it.svg",
+          "data": "/templates/data/divisao-contas.it.json"
+        },
+        "nl": {
+          "title": "Kosten Delen in de Groep",
+          "description": "Wie betaalde wat op reis of in een gedeeld huis, en wat iedereen nog krijgt of moet betalen.",
+          "thumb": "/templates/thumbs/divisao-contas.nl.svg",
+          "data": "/templates/data/divisao-contas.nl.json"
+        },
+        "pl": {
+          "title": "Podział rachunków w grupie",
+          "description": "Kto za co zapłacił na wyjeździe lub we wspólnym mieszkaniu i ile każdy ma dostać lub oddać.",
+          "thumb": "/templates/thumbs/divisao-contas.pl.svg",
+          "data": "/templates/data/divisao-contas.pl.json"
+        },
+        "id": {
+          "title": "Pembagian Tagihan Grup",
+          "description": "Siapa membayar apa saat perjalanan atau kos bersama, dan berapa yang masih harus diterima atau dibayar.",
+          "thumb": "/templates/thumbs/divisao-contas.id.svg",
+          "data": "/templates/data/divisao-contas.id.json"
+        },
+        "vi": {
+          "title": "Chia Tiền Nhóm",
+          "description": "Ai đã trả khoản nào trong chuyến đi hoặc nhà chung, và mỗi người còn phải nhận hay trả bao nhiêu.",
+          "thumb": "/templates/thumbs/divisao-contas.vi.svg",
+          "data": "/templates/data/divisao-contas.vi.json"
+        },
+        "ja": {
+          "title": "グループ割り勘",
+          "description": "旅行やシェアハウスで誰が何を払ったか、そして各自がいくら受け取る・払うかが分かります。",
+          "thumb": "/templates/thumbs/divisao-contas.ja.svg",
+          "data": "/templates/data/divisao-contas.ja.json"
+        },
+        "ko": {
+          "title": "그룹 정산",
+          "description": "여행이나 공동생활에서 누가 무엇을 냈는지, 각자 얼마를 받거나 내야 하는지 정리합니다.",
+          "thumb": "/templates/thumbs/divisao-contas.ko.svg",
+          "data": "/templates/data/divisao-contas.ko.json"
+        },
+        "zh": {
+          "title": "团体分账",
+          "description": "旅行或合租时谁付了什么，以及每个人还应收或应付多少。",
+          "thumb": "/templates/thumbs/divisao-contas.zh.svg",
+          "data": "/templates/data/divisao-contas.zh.json"
+        },
+        "ru": {
+          "title": "Деление счетов в группе",
+          "description": "Кто и за что платил в поездке или на съёмной квартире и кому сколько причитается.",
+          "thumb": "/templates/thumbs/divisao-contas.ru.svg",
+          "data": "/templates/data/divisao-contas.ru.json"
+        },
+        "hi": {
+          "title": "समूह बिल विभाजन",
+          "description": "यात्रा या साझा घर में किसने क्या चुकाया, और हर व्यक्ति को कितना मिलना या देना है।",
+          "thumb": "/templates/thumbs/divisao-contas.hi.svg",
+          "data": "/templates/data/divisao-contas.hi.json"
+        },
+        "tr": {
+          "title": "Grup Hesap Paylaşımı",
+          "description": "Bir gezide ya da ev arkadaşlığında kim neyi ödedi ve kim ne kadar alacaklı veya borçlu.",
+          "thumb": "/templates/thumbs/divisao-contas.tr.svg",
+          "data": "/templates/data/divisao-contas.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-registro-horas",
+      "slug": "registro-horas",
+      "type": "sheet",
+      "category": "trabalho",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Registro de Horas",
+          "description": "Anote as horas por dia e projeto, com total, dias trabalhados e média automática.",
+          "thumb": "/templates/thumbs/registro-horas.pt-BR.svg",
+          "data": "/templates/data/registro-horas.pt-BR.json"
+        },
+        "en": {
+          "title": "Time Log",
+          "description": "Log hours by day and project, with total, days worked and average worked out for you.",
+          "thumb": "/templates/thumbs/registro-horas.en.svg",
+          "data": "/templates/data/registro-horas.en.json"
+        },
+        "es": {
+          "title": "Registro de Horas",
+          "description": "Anota las horas por día y proyecto, con total, días trabajados y media automática.",
+          "thumb": "/templates/thumbs/registro-horas.es.svg",
+          "data": "/templates/data/registro-horas.es.json"
+        },
+        "fr": {
+          "title": "Suivi du Temps",
+          "description": "Notez les heures par jour et par projet, avec total, jours travaillés et moyenne automatiques.",
+          "thumb": "/templates/thumbs/registro-horas.fr.svg",
+          "data": "/templates/data/registro-horas.fr.json"
+        },
+        "de": {
+          "title": "Zeiterfassung",
+          "description": "Erfassen Sie Stunden nach Tag und Projekt — Summe, Arbeitstage und Durchschnitt automatisch.",
+          "thumb": "/templates/thumbs/registro-horas.de.svg",
+          "data": "/templates/data/registro-horas.de.json"
+        },
+        "it": {
+          "title": "Registro Ore",
+          "description": "Registra le ore per giorno e progetto, con totale, giorni lavorati e media automatici.",
+          "thumb": "/templates/thumbs/registro-horas.it.svg",
+          "data": "/templates/data/registro-horas.it.json"
+        },
+        "nl": {
+          "title": "Urenregistratie",
+          "description": "Leg uren vast per dag en project, met totaal, gewerkte dagen en gemiddelde automatisch.",
+          "thumb": "/templates/thumbs/registro-horas.nl.svg",
+          "data": "/templates/data/registro-horas.nl.json"
+        },
+        "pl": {
+          "title": "Rejestr godzin",
+          "description": "Zapisuj godziny według dnia i projektu — suma, dni pracy i średnia liczą się same.",
+          "thumb": "/templates/thumbs/registro-horas.pl.svg",
+          "data": "/templates/data/registro-horas.pl.json"
+        },
+        "id": {
+          "title": "Catatan Jam Kerja",
+          "description": "Catat jam per hari dan proyek, dengan total, hari kerja, dan rata-rata otomatis.",
+          "thumb": "/templates/thumbs/registro-horas.id.svg",
+          "data": "/templates/data/registro-horas.id.json"
+        },
+        "vi": {
+          "title": "Nhật ký Giờ làm",
+          "description": "Ghi giờ theo ngày và dự án, với tổng, số ngày làm và trung bình tự động.",
+          "thumb": "/templates/thumbs/registro-horas.vi.svg",
+          "data": "/templates/data/registro-horas.vi.json"
+        },
+        "ja": {
+          "title": "作業時間記録",
+          "description": "日ごと・案件ごとに時間を記録。合計、稼働日数、平均が自動で出ます。",
+          "thumb": "/templates/thumbs/registro-horas.ja.svg",
+          "data": "/templates/data/registro-horas.ja.json"
+        },
+        "ko": {
+          "title": "근무 시간 기록",
+          "description": "날짜와 프로젝트별로 시간을 기록하면 합계, 근무일, 평균이 자동 계산됩니다.",
+          "thumb": "/templates/thumbs/registro-horas.ko.svg",
+          "data": "/templates/data/registro-horas.ko.json"
+        },
+        "zh": {
+          "title": "工时记录",
+          "description": "按日期和项目记录工时，总计、工作天数和日均自动生成。",
+          "thumb": "/templates/thumbs/registro-horas.zh.svg",
+          "data": "/templates/data/registro-horas.zh.json"
+        },
+        "ru": {
+          "title": "Учёт времени",
+          "description": "Записывайте часы по дням и проектам — сумма, рабочие дни и среднее считаются сами.",
+          "thumb": "/templates/thumbs/registro-horas.ru.svg",
+          "data": "/templates/data/registro-horas.ru.json"
+        },
+        "hi": {
+          "title": "समय लॉग",
+          "description": "दिन और परियोजना के अनुसार घंटे दर्ज करें — कुल, कार्यदिवस और औसत स्वतः।",
+          "thumb": "/templates/thumbs/registro-horas.hi.svg",
+          "data": "/templates/data/registro-horas.hi.json"
+        },
+        "tr": {
+          "title": "Zaman Kaydı",
+          "description": "Saatleri gün ve projeye göre kaydedin; toplam, çalışılan gün ve ortalama otomatik.",
+          "thumb": "/templates/thumbs/registro-horas.tr.svg",
+          "data": "/templates/data/registro-horas.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-controle-estoque",
+      "slug": "controle-estoque",
+      "type": "sheet",
+      "category": "trabalho",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Controle de Estoque",
+          "description": "Entradas, saídas e saldo por produto, com alerta automático quando o estoque fica abaixo do mínimo.",
+          "thumb": "/templates/thumbs/controle-estoque.pt-BR.svg",
+          "data": "/templates/data/controle-estoque.pt-BR.json"
+        },
+        "en": {
+          "title": "Inventory Tracker",
+          "description": "Stock in, stock out and balance per product, with an automatic alert when it drops below the minimum.",
+          "thumb": "/templates/thumbs/controle-estoque.en.svg",
+          "data": "/templates/data/controle-estoque.en.json"
+        },
+        "es": {
+          "title": "Control de Inventario",
+          "description": "Entradas, salidas y saldo por producto, con aviso automático cuando baja del mínimo.",
+          "thumb": "/templates/thumbs/controle-estoque.es.svg",
+          "data": "/templates/data/controle-estoque.es.json"
+        },
+        "fr": {
+          "title": "Suivi des Stocks",
+          "description": "Entrées, sorties et solde par produit, avec alerte automatique sous le seuil minimum.",
+          "thumb": "/templates/thumbs/controle-estoque.fr.svg",
+          "data": "/templates/data/controle-estoque.fr.json"
+        },
+        "de": {
+          "title": "Bestandsübersicht",
+          "description": "Zugänge, Abgänge und Bestand je Produkt — mit automatischer Warnung unter dem Mindestbestand.",
+          "thumb": "/templates/thumbs/controle-estoque.de.svg",
+          "data": "/templates/data/controle-estoque.de.json"
+        },
+        "it": {
+          "title": "Gestione Magazzino",
+          "description": "Carichi, scarichi e giacenza per prodotto, con avviso automatico sotto la scorta minima.",
+          "thumb": "/templates/thumbs/controle-estoque.it.svg",
+          "data": "/templates/data/controle-estoque.it.json"
+        },
+        "nl": {
+          "title": "Voorraadbeheer",
+          "description": "Inkomend, uitgaand en saldo per product, met automatische waarschuwing onder het minimum.",
+          "thumb": "/templates/thumbs/controle-estoque.nl.svg",
+          "data": "/templates/data/controle-estoque.nl.json"
+        },
+        "pl": {
+          "title": "Kontrola zapasów",
+          "description": "Przyjęcia, wydania i stan na produkt, z automatycznym alertem poniżej minimum.",
+          "thumb": "/templates/thumbs/controle-estoque.pl.svg",
+          "data": "/templates/data/controle-estoque.pl.json"
+        },
+        "id": {
+          "title": "Kontrol Stok",
+          "description": "Barang masuk, keluar, dan saldo per produk, dengan peringatan otomatis saat di bawah minimum.",
+          "thumb": "/templates/thumbs/controle-estoque.id.svg",
+          "data": "/templates/data/controle-estoque.id.json"
+        },
+        "vi": {
+          "title": "Quản lý Kho",
+          "description": "Nhập, xuất và tồn theo sản phẩm, kèm cảnh báo tự động khi dưới mức tối thiểu.",
+          "thumb": "/templates/thumbs/controle-estoque.vi.svg",
+          "data": "/templates/data/controle-estoque.vi.json"
+        },
+        "ja": {
+          "title": "在庫管理",
+          "description": "商品ごとの入庫・出庫・残数を管理し、最小値を下回ると自動で警告します。",
+          "thumb": "/templates/thumbs/controle-estoque.ja.svg",
+          "data": "/templates/data/controle-estoque.ja.json"
+        },
+        "ko": {
+          "title": "재고 관리",
+          "description": "제품별 입고·출고·잔량을 관리하고 최소 수량 미만이면 자동으로 경고합니다.",
+          "thumb": "/templates/thumbs/controle-estoque.ko.svg",
+          "data": "/templates/data/controle-estoque.ko.json"
+        },
+        "zh": {
+          "title": "库存管理",
+          "description": "按产品记录入库、出库和结余，低于最低库存时自动提醒。",
+          "thumb": "/templates/thumbs/controle-estoque.zh.svg",
+          "data": "/templates/data/controle-estoque.zh.json"
+        },
+        "ru": {
+          "title": "Учёт склада",
+          "description": "Приход, расход и остаток по каждому товару с автоматическим сигналом ниже минимума.",
+          "thumb": "/templates/thumbs/controle-estoque.ru.svg",
+          "data": "/templates/data/controle-estoque.ru.json"
+        },
+        "hi": {
+          "title": "इन्वेंटरी ट्रैकर",
+          "description": "हर उत्पाद की आवक, जावक और शेष, न्यूनतम से नीचे जाने पर स्वतः चेतावनी के साथ।",
+          "thumb": "/templates/thumbs/controle-estoque.hi.svg",
+          "data": "/templates/data/controle-estoque.hi.json"
+        },
+        "tr": {
+          "title": "Stok Takibi",
+          "description": "Ürün bazında giriş, çıkış ve bakiye; asgarinin altına inince otomatik uyarı.",
+          "thumb": "/templates/thumbs/controle-estoque.tr.svg",
+          "data": "/templates/data/controle-estoque.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-rastreador-habitos",
+      "slug": "rastreador-habitos",
+      "type": "sheet",
+      "category": "produtividade",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Rastreador de Hábitos",
+          "description": "Marque os dias em que cumpriu cada hábito e acompanhe a sua meta do mês.",
+          "thumb": "/templates/thumbs/rastreador-habitos.pt-BR.svg",
+          "data": "/templates/data/rastreador-habitos.pt-BR.json"
+        },
+        "en": {
+          "title": "Habit Tracker",
+          "description": "Mark the days you kept each habit and track your goal for the month.",
+          "thumb": "/templates/thumbs/rastreador-habitos.en.svg",
+          "data": "/templates/data/rastreador-habitos.en.json"
+        },
+        "es": {
+          "title": "Rastreador de Hábitos",
+          "description": "Marca los días en que cumpliste cada hábito y sigue tu meta del mes.",
+          "thumb": "/templates/thumbs/rastreador-habitos.es.svg",
+          "data": "/templates/data/rastreador-habitos.es.json"
+        },
+        "fr": {
+          "title": "Suivi des Habitudes",
+          "description": "Marquez les jours où vous avez tenu chaque habitude et suivez votre objectif du mois.",
+          "thumb": "/templates/thumbs/rastreador-habitos.fr.svg",
+          "data": "/templates/data/rastreador-habitos.fr.json"
+        },
+        "de": {
+          "title": "Gewohnheiten-Tracker",
+          "description": "Markieren Sie die Tage mit eingehaltener Gewohnheit und verfolgen Sie Ihr Monatsziel.",
+          "thumb": "/templates/thumbs/rastreador-habitos.de.svg",
+          "data": "/templates/data/rastreador-habitos.de.json"
+        },
+        "it": {
+          "title": "Tracker Abitudini",
+          "description": "Segna i giorni in cui hai rispettato ogni abitudine e segui il tuo obiettivo del mese.",
+          "thumb": "/templates/thumbs/rastreador-habitos.it.svg",
+          "data": "/templates/data/rastreador-habitos.it.json"
+        },
+        "nl": {
+          "title": "Gewoontetracker",
+          "description": "Markeer de dagen dat je elke gewoonte volhield en volg je doel voor de maand.",
+          "thumb": "/templates/thumbs/rastreador-habitos.nl.svg",
+          "data": "/templates/data/rastreador-habitos.nl.json"
+        },
+        "pl": {
+          "title": "Śledzenie nawyków",
+          "description": "Zaznacz dni, w których wykonałeś nawyk, i śledź swój miesięczny cel.",
+          "thumb": "/templates/thumbs/rastreador-habitos.pl.svg",
+          "data": "/templates/data/rastreador-habitos.pl.json"
+        },
+        "id": {
+          "title": "Pelacak Kebiasaan",
+          "description": "Tandai hari saat kamu menjalankan tiap kebiasaan dan pantau targetmu bulan ini.",
+          "thumb": "/templates/thumbs/rastreador-habitos.id.svg",
+          "data": "/templates/data/rastreador-habitos.id.json"
+        },
+        "vi": {
+          "title": "Theo dõi Thói quen",
+          "description": "Đánh dấu những ngày bạn giữ được từng thói quen và theo dõi mục tiêu tháng.",
+          "thumb": "/templates/thumbs/rastreador-habitos.vi.svg",
+          "data": "/templates/data/rastreador-habitos.vi.json"
+        },
+        "ja": {
+          "title": "習慣トラッカー",
+          "description": "習慣を守れた日に印を付けて、今月の目標を追いかけましょう。",
+          "thumb": "/templates/thumbs/rastreador-habitos.ja.svg",
+          "data": "/templates/data/rastreador-habitos.ja.json"
+        },
+        "ko": {
+          "title": "습관 트래커",
+          "description": "습관을 지킨 날을 표시하고 이달 목표를 확인하세요.",
+          "thumb": "/templates/thumbs/rastreador-habitos.ko.svg",
+          "data": "/templates/data/rastreador-habitos.ko.json"
+        },
+        "zh": {
+          "title": "习惯打卡",
+          "description": "标记坚持习惯的日子，追踪本月目标。",
+          "thumb": "/templates/thumbs/rastreador-habitos.zh.svg",
+          "data": "/templates/data/rastreador-habitos.zh.json"
+        },
+        "ru": {
+          "title": "Трекер привычек",
+          "description": "Отмечайте дни, когда выполнили привычку, и следите за целью на месяц.",
+          "thumb": "/templates/thumbs/rastreador-habitos.ru.svg",
+          "data": "/templates/data/rastreador-habitos.ru.json"
+        },
+        "hi": {
+          "title": "आदत ट्रैकर",
+          "description": "जिन दिनों आपने आदत निभाई उन्हें चिह्नित करें और महीने का लक्ष्य देखें।",
+          "thumb": "/templates/thumbs/rastreador-habitos.hi.svg",
+          "data": "/templates/data/rastreador-habitos.hi.json"
+        },
+        "tr": {
+          "title": "Alışkanlık Takibi",
+          "description": "Her alışkanlığı sürdürdüğünüz günleri işaretleyin ve aylık hedefinizi takip edin.",
+          "thumb": "/templates/thumbs/rastreador-habitos.tr.svg",
+          "data": "/templates/data/rastreador-habitos.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-biblioteca-prompts",
+      "slug": "biblioteca-prompts",
+      "type": "sheet",
+      "category": "ia",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Biblioteca de Prompts",
+          "description": "Guarde os prompts que funcionam, com modelo, categoria e nota — para reusar em vez de reescrever.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.pt-BR.svg",
+          "data": "/templates/data/biblioteca-prompts.pt-BR.json"
+        },
+        "en": {
+          "title": "Prompt Library",
+          "description": "Keep the prompts that work, with model, category and rating — so you reuse instead of rewriting.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.en.svg",
+          "data": "/templates/data/biblioteca-prompts.en.json"
+        },
+        "es": {
+          "title": "Biblioteca de Prompts",
+          "description": "Guarda los prompts que funcionan, con modelo, categoría y nota, para reutilizar en vez de reescribir.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.es.svg",
+          "data": "/templates/data/biblioteca-prompts.es.json"
+        },
+        "fr": {
+          "title": "Bibliothèque de Prompts",
+          "description": "Gardez les prompts qui marchent, avec modèle, catégorie et note — pour réutiliser au lieu de réécrire.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.fr.svg",
+          "data": "/templates/data/biblioteca-prompts.fr.json"
+        },
+        "de": {
+          "title": "Prompt-Bibliothek",
+          "description": "Sammeln Sie Prompts, die funktionieren, mit Modell, Kategorie und Bewertung — wiederverwenden statt neu schreiben.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.de.svg",
+          "data": "/templates/data/biblioteca-prompts.de.json"
+        },
+        "it": {
+          "title": "Libreria di Prompt",
+          "description": "Conserva i prompt che funzionano, con modello, categoria e voto, per riusarli invece di riscriverli.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.it.svg",
+          "data": "/templates/data/biblioteca-prompts.it.json"
+        },
+        "nl": {
+          "title": "Promptbibliotheek",
+          "description": "Bewaar prompts die werken, met model, categorie en score — hergebruiken in plaats van herschrijven.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.nl.svg",
+          "data": "/templates/data/biblioteca-prompts.nl.json"
+        },
+        "pl": {
+          "title": "Biblioteka promptów",
+          "description": "Zbieraj prompty, które działają, z modelem, kategorią i oceną — używaj ponownie zamiast pisać od nowa.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.pl.svg",
+          "data": "/templates/data/biblioteca-prompts.pl.json"
+        },
+        "id": {
+          "title": "Pustaka Prompt",
+          "description": "Simpan prompt yang berhasil, lengkap dengan model, kategori, dan nilai — agar dipakai ulang, bukan ditulis ulang.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.id.svg",
+          "data": "/templates/data/biblioteca-prompts.id.json"
+        },
+        "vi": {
+          "title": "Thư viện Prompt",
+          "description": "Lưu những prompt hiệu quả cùng mô hình, danh mục và điểm — để dùng lại thay vì viết lại.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.vi.svg",
+          "data": "/templates/data/biblioteca-prompts.vi.json"
+        },
+        "ja": {
+          "title": "プロンプト集",
+          "description": "うまくいったプロンプトをモデル・カテゴリ・評価付きで保存し、書き直さずに再利用します。",
+          "thumb": "/templates/thumbs/biblioteca-prompts.ja.svg",
+          "data": "/templates/data/biblioteca-prompts.ja.json"
+        },
+        "ko": {
+          "title": "프롬프트 라이브러리",
+          "description": "효과 있는 프롬프트를 모델·카테고리·평점과 함께 저장해 다시 쓰지 말고 재사용하세요.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.ko.svg",
+          "data": "/templates/data/biblioteca-prompts.ko.json"
+        },
+        "zh": {
+          "title": "提示词库",
+          "description": "保存有效的提示词，附上模型、类别和评分，复用而不是重写。",
+          "thumb": "/templates/thumbs/biblioteca-prompts.zh.svg",
+          "data": "/templates/data/biblioteca-prompts.zh.json"
+        },
+        "ru": {
+          "title": "Библиотека промптов",
+          "description": "Сохраняйте рабочие промпты с моделью, категорией и оценкой — чтобы использовать снова, а не писать заново.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.ru.svg",
+          "data": "/templates/data/biblioteca-prompts.ru.json"
+        },
+        "hi": {
+          "title": "प्रॉम्प्ट लाइब्रेरी",
+          "description": "काम करने वाले प्रॉम्प्ट मॉडल, श्रेणी और रेटिंग के साथ सहेजें — दोबारा लिखने के बजाय दोबारा उपयोग करें।",
+          "thumb": "/templates/thumbs/biblioteca-prompts.hi.svg",
+          "data": "/templates/data/biblioteca-prompts.hi.json"
+        },
+        "tr": {
+          "title": "Prompt Kütüphanesi",
+          "description": "İşe yarayan promptları model, kategori ve puanıyla saklayın; yeniden yazmak yerine yeniden kullanın.",
+          "thumb": "/templates/thumbs/biblioteca-prompts.tr.svg",
+          "data": "/templates/data/biblioteca-prompts.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-comparacao-modelos",
+      "slug": "comparacao-modelos",
+      "type": "sheet",
+      "category": "ia",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Comparação de Modelos de IA",
+          "description": "Compare modelos por critérios com peso próprio e chegue a uma pontuação final defensável.",
+          "thumb": "/templates/thumbs/comparacao-modelos.pt-BR.svg",
+          "data": "/templates/data/comparacao-modelos.pt-BR.json"
+        },
+        "en": {
+          "title": "AI Model Comparison",
+          "description": "Compare models against criteria with their own weights and reach a final score you can defend.",
+          "thumb": "/templates/thumbs/comparacao-modelos.en.svg",
+          "data": "/templates/data/comparacao-modelos.en.json"
+        },
+        "es": {
+          "title": "Comparación de Modelos de IA",
+          "description": "Compara modelos por criterios con peso propio y llega a una puntuación final defendible.",
+          "thumb": "/templates/thumbs/comparacao-modelos.es.svg",
+          "data": "/templates/data/comparacao-modelos.es.json"
+        },
+        "fr": {
+          "title": "Comparaison de Modèles d’IA",
+          "description": "Comparez des modèles selon des critères pondérés et obtenez un score final défendable.",
+          "thumb": "/templates/thumbs/comparacao-modelos.fr.svg",
+          "data": "/templates/data/comparacao-modelos.fr.json"
+        },
+        "de": {
+          "title": "KI-Modellvergleich",
+          "description": "Vergleichen Sie Modelle anhand gewichteter Kriterien und kommen Sie zu einer belastbaren Endpunktzahl.",
+          "thumb": "/templates/thumbs/comparacao-modelos.de.svg",
+          "data": "/templates/data/comparacao-modelos.de.json"
+        },
+        "it": {
+          "title": "Confronto Modelli IA",
+          "description": "Confronta i modelli su criteri con pesi propri e arriva a un punteggio finale difendibile.",
+          "thumb": "/templates/thumbs/comparacao-modelos.it.svg",
+          "data": "/templates/data/comparacao-modelos.it.json"
+        },
+        "nl": {
+          "title": "AI-modellen vergelijken",
+          "description": "Vergelijk modellen op criteria met eigen gewichten en kom tot een verdedigbare eindscore.",
+          "thumb": "/templates/thumbs/comparacao-modelos.nl.svg",
+          "data": "/templates/data/comparacao-modelos.nl.json"
+        },
+        "pl": {
+          "title": "Porównanie modeli AI",
+          "description": "Porównaj modele według kryteriów z własnymi wagami i uzyskaj wynik, który da się obronić.",
+          "thumb": "/templates/thumbs/comparacao-modelos.pl.svg",
+          "data": "/templates/data/comparacao-modelos.pl.json"
+        },
+        "id": {
+          "title": "Perbandingan Model AI",
+          "description": "Bandingkan model berdasarkan kriteria berbobot dan dapatkan skor akhir yang bisa dipertanggungjawabkan.",
+          "thumb": "/templates/thumbs/comparacao-modelos.id.svg",
+          "data": "/templates/data/comparacao-modelos.id.json"
+        },
+        "vi": {
+          "title": "So sánh Mô hình AI",
+          "description": "So sánh các mô hình theo tiêu chí có trọng số riêng và có được điểm cuối đủ căn cứ.",
+          "thumb": "/templates/thumbs/comparacao-modelos.vi.svg",
+          "data": "/templates/data/comparacao-modelos.vi.json"
+        },
+        "ja": {
+          "title": "AIモデル比較",
+          "description": "重み付きの評価項目でモデルを比較し、根拠のある最終スコアを出します。",
+          "thumb": "/templates/thumbs/comparacao-modelos.ja.svg",
+          "data": "/templates/data/comparacao-modelos.ja.json"
+        },
+        "ko": {
+          "title": "AI 모델 비교",
+          "description": "가중치가 있는 기준으로 모델을 비교해 근거 있는 최종 점수를 얻으세요.",
+          "thumb": "/templates/thumbs/comparacao-modelos.ko.svg",
+          "data": "/templates/data/comparacao-modelos.ko.json"
+        },
+        "zh": {
+          "title": "AI 模型对比",
+          "description": "按带权重的标准对比模型，得出可以站得住脚的最终得分。",
+          "thumb": "/templates/thumbs/comparacao-modelos.zh.svg",
+          "data": "/templates/data/comparacao-modelos.zh.json"
+        },
+        "ru": {
+          "title": "Сравнение моделей ИИ",
+          "description": "Сравните модели по критериям с собственными весами и получите обоснованный итоговый балл.",
+          "thumb": "/templates/thumbs/comparacao-modelos.ru.svg",
+          "data": "/templates/data/comparacao-modelos.ru.json"
+        },
+        "hi": {
+          "title": "AI मॉडल तुलना",
+          "description": "अपने भार वाले मानदंडों पर मॉडल की तुलना करें और एक ठोस अंतिम स्कोर पाएँ।",
+          "thumb": "/templates/thumbs/comparacao-modelos.hi.svg",
+          "data": "/templates/data/comparacao-modelos.hi.json"
+        },
+        "tr": {
+          "title": "Yapay Zekâ Model Karşılaştırması",
+          "description": "Modelleri kendi ağırlıkları olan ölçütlerle karşılaştırın ve savunulabilir bir nihai puana ulaşın.",
+          "thumb": "/templates/thumbs/comparacao-modelos.tr.svg",
+          "data": "/templates/data/comparacao-modelos.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-modelo-prompt",
+      "slug": "modelo-prompt",
+      "type": "doc",
+      "category": "ia",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Modelo de Prompt",
+          "description": "",
+          "thumb": "/templates/thumbs/modelo-prompt.pt-BR.svg",
+          "data": "/templates/data/modelo-prompt.pt-BR.json"
+        },
+        "en": {
+          "title": "Prompt Template",
+          "description": "A ready structure for writing better prompts: role, context, task, format and constraints.",
+          "thumb": "/templates/thumbs/modelo-prompt.en.svg",
+          "data": "/templates/data/modelo-prompt.en.json"
+        },
+        "es": {
+          "title": "Plantilla de Prompt",
+          "description": "Una estructura lista para escribir mejores prompts: papel, contexto, tarea, formato y restricciones.",
+          "thumb": "/templates/thumbs/modelo-prompt.es.svg",
+          "data": "/templates/data/modelo-prompt.es.json"
+        },
+        "fr": {
+          "title": "Modèle de Prompt",
+          "description": "Une structure prête pour écrire de meilleurs prompts : rôle, contexte, tâche, format et contraintes.",
+          "thumb": "/templates/thumbs/modelo-prompt.fr.svg",
+          "data": "/templates/data/modelo-prompt.fr.json"
+        },
+        "de": {
+          "title": "Prompt-Vorlage",
+          "description": "Eine fertige Struktur für bessere Prompts: Rolle, Kontext, Aufgabe, Format und Einschränkungen.",
+          "thumb": "/templates/thumbs/modelo-prompt.de.svg",
+          "data": "/templates/data/modelo-prompt.de.json"
+        },
+        "it": {
+          "title": "Modello di Prompt",
+          "description": "Una struttura pronta per scrivere prompt migliori: ruolo, contesto, compito, formato e vincoli.",
+          "thumb": "/templates/thumbs/modelo-prompt.it.svg",
+          "data": "/templates/data/modelo-prompt.it.json"
+        },
+        "nl": {
+          "title": "Promptsjabloon",
+          "description": "Een kant-en-klare structuur voor betere prompts: rol, context, taak, formaat en beperkingen.",
+          "thumb": "/templates/thumbs/modelo-prompt.nl.svg",
+          "data": "/templates/data/modelo-prompt.nl.json"
+        },
+        "pl": {
+          "title": "Szablon promptu",
+          "description": "Gotowa struktura do pisania lepszych promptów: rola, kontekst, zadanie, format i ograniczenia.",
+          "thumb": "/templates/thumbs/modelo-prompt.pl.svg",
+          "data": "/templates/data/modelo-prompt.pl.json"
+        },
+        "id": {
+          "title": "Templat Prompt",
+          "description": "Struktur siap pakai untuk menulis prompt yang lebih baik: peran, konteks, tugas, format, dan batasan.",
+          "thumb": "/templates/thumbs/modelo-prompt.id.svg",
+          "data": "/templates/data/modelo-prompt.id.json"
+        },
+        "vi": {
+          "title": "Mẫu Prompt",
+          "description": "Cấu trúc sẵn có để viết prompt tốt hơn: vai trò, ngữ cảnh, nhiệm vụ, định dạng và ràng buộc.",
+          "thumb": "/templates/thumbs/modelo-prompt.vi.svg",
+          "data": "/templates/data/modelo-prompt.vi.json"
+        },
+        "ja": {
+          "title": "プロンプトのひな形",
+          "description": "より良いプロンプトを書くための型：役割・文脈・タスク・形式・制約。",
+          "thumb": "/templates/thumbs/modelo-prompt.ja.svg",
+          "data": "/templates/data/modelo-prompt.ja.json"
+        },
+        "ko": {
+          "title": "프롬프트 템플릿",
+          "description": "더 나은 프롬프트를 쓰기 위한 구조: 역할, 맥락, 과제, 형식, 제약.",
+          "thumb": "/templates/thumbs/modelo-prompt.ko.svg",
+          "data": "/templates/data/modelo-prompt.ko.json"
+        },
+        "zh": {
+          "title": "提示词模板",
+          "description": "写好提示词的现成结构：角色、背景、任务、格式与限制。",
+          "thumb": "/templates/thumbs/modelo-prompt.zh.svg",
+          "data": "/templates/data/modelo-prompt.zh.json"
+        },
+        "ru": {
+          "title": "Шаблон промпта",
+          "description": "Готовая структура для хороших промптов: роль, контекст, задача, формат и ограничения.",
+          "thumb": "/templates/thumbs/modelo-prompt.ru.svg",
+          "data": "/templates/data/modelo-prompt.ru.json"
+        },
+        "hi": {
+          "title": "प्रॉम्प्ट टेम्पलेट",
+          "description": "बेहतर प्रॉम्प्ट लिखने का तैयार ढाँचा: भूमिका, संदर्भ, कार्य, प्रारूप और बाधाएँ।",
+          "thumb": "/templates/thumbs/modelo-prompt.hi.svg",
+          "data": "/templates/data/modelo-prompt.hi.json"
+        },
+        "tr": {
+          "title": "Prompt Şablonu",
+          "description": "Daha iyi prompt yazmak için hazır bir yapı: rol, bağlam, görev, biçim ve kısıtlar.",
+          "thumb": "/templates/thumbs/modelo-prompt.tr.svg",
+          "data": "/templates/data/modelo-prompt.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-resumo-conversa-ia",
+      "slug": "resumo-conversa-ia",
+      "type": "doc",
+      "category": "ia",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Resumo de Conversa com IA",
+          "description": "",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.pt-BR.svg",
+          "data": "/templates/data/resumo-conversa-ia.pt-BR.json"
+        },
+        "en": {
+          "title": "AI Conversation Summary",
+          "description": "Turn a long AI conversation into decisions, open questions and next steps.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.en.svg",
+          "data": "/templates/data/resumo-conversa-ia.en.json"
+        },
+        "es": {
+          "title": "Resumen de Conversación con IA",
+          "description": "Convierte una conversación larga con IA en decisiones, pendientes y próximos pasos.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.es.svg",
+          "data": "/templates/data/resumo-conversa-ia.es.json"
+        },
+        "fr": {
+          "title": "Résumé de Conversation avec l’IA",
+          "description": "Transformez une longue conversation avec l’IA en décisions, questions ouvertes et prochaines étapes.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.fr.svg",
+          "data": "/templates/data/resumo-conversa-ia.fr.json"
+        },
+        "de": {
+          "title": "Zusammenfassung eines KI-Gesprächs",
+          "description": "Machen Sie aus einem langen KI-Gespräch Entscheidungen, offene Punkte und nächste Schritte.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.de.svg",
+          "data": "/templates/data/resumo-conversa-ia.de.json"
+        },
+        "it": {
+          "title": "Riepilogo di Conversazione con IA",
+          "description": "Trasforma una lunga conversazione con l’IA in decisioni, punti aperti e prossimi passi.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.it.svg",
+          "data": "/templates/data/resumo-conversa-ia.it.json"
+        },
+        "nl": {
+          "title": "Samenvatting van AI-gesprek",
+          "description": "Zet een lang AI-gesprek om in besluiten, openstaande vragen en volgende stappen.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.nl.svg",
+          "data": "/templates/data/resumo-conversa-ia.nl.json"
+        },
+        "pl": {
+          "title": "Podsumowanie rozmowy z AI",
+          "description": "Zamień długą rozmowę z AI w decyzje, otwarte kwestie i następne kroki.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.pl.svg",
+          "data": "/templates/data/resumo-conversa-ia.pl.json"
+        },
+        "id": {
+          "title": "Ringkasan Percakapan AI",
+          "description": "Ubah percakapan AI yang panjang menjadi keputusan, hal terbuka, dan langkah berikutnya.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.id.svg",
+          "data": "/templates/data/resumo-conversa-ia.id.json"
+        },
+        "vi": {
+          "title": "Tóm tắt Cuộc trò chuyện với AI",
+          "description": "Biến cuộc trò chuyện dài với AI thành quyết định, việc còn bỏ ngỏ và bước tiếp theo.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.vi.svg",
+          "data": "/templates/data/resumo-conversa-ia.vi.json"
+        },
+        "ja": {
+          "title": "AI会話のまとめ",
+          "description": "長いAIとの会話を、決定・未解決事項・次の一手に変えます。",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.ja.svg",
+          "data": "/templates/data/resumo-conversa-ia.ja.json"
+        },
+        "ko": {
+          "title": "AI 대화 요약",
+          "description": "긴 AI 대화를 결정, 남은 질문, 다음 단계로 정리하세요.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.ko.svg",
+          "data": "/templates/data/resumo-conversa-ia.ko.json"
+        },
+        "zh": {
+          "title": "AI 对话摘要",
+          "description": "把冗长的 AI 对话，变成决定、待办与下一步。",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.zh.svg",
+          "data": "/templates/data/resumo-conversa-ia.zh.json"
+        },
+        "ru": {
+          "title": "Итоги разговора с ИИ",
+          "description": "Превратите долгий разговор с ИИ в решения, открытые вопросы и следующие шаги.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.ru.svg",
+          "data": "/templates/data/resumo-conversa-ia.ru.json"
+        },
+        "hi": {
+          "title": "AI बातचीत का सारांश",
+          "description": "लंबी AI बातचीत को निर्णय, खुले सवाल और अगले कदम में बदलें।",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.hi.svg",
+          "data": "/templates/data/resumo-conversa-ia.hi.json"
+        },
+        "tr": {
+          "title": "Yapay Zekâ Sohbet Özeti",
+          "description": "Uzun bir yapay zekâ sohbetini kararlara, açık sorulara ve sonraki adımlara dönüştürün.",
+          "thumb": "/templates/thumbs/resumo-conversa-ia.tr.svg",
+          "data": "/templates/data/resumo-conversa-ia.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-fluxo-caixa",
+      "slug": "fluxo-caixa",
+      "type": "sheet",
+      "category": "financas",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Fluxo de Caixa",
+          "description": "Entradas e saídas em ordem de data, com saldo acumulado linha a linha — o retrato de quando o dinheiro falta.",
+          "thumb": "/templates/thumbs/fluxo-caixa.pt-BR.svg",
+          "data": "/templates/data/fluxo-caixa.pt-BR.json"
+        },
+        "en": {
+          "title": "Cash Flow",
+          "description": "Money in and out in date order, with a running balance line by line — the picture of when cash runs short.",
+          "thumb": "/templates/thumbs/fluxo-caixa.en.svg",
+          "data": "/templates/data/fluxo-caixa.en.json"
+        },
+        "es": {
+          "title": "Flujo de Caja",
+          "description": "Entradas y salidas por fecha, con saldo acumulado línea a línea: el retrato de cuándo falta caja.",
+          "thumb": "/templates/thumbs/fluxo-caixa.es.svg",
+          "data": "/templates/data/fluxo-caixa.es.json"
+        },
+        "fr": {
+          "title": "Flux de Trésorerie",
+          "description": "Entrées et sorties par date, avec un solde cumulé ligne à ligne — le portrait du moment où la trésorerie manque.",
+          "thumb": "/templates/thumbs/fluxo-caixa.fr.svg",
+          "data": "/templates/data/fluxo-caixa.fr.json"
+        },
+        "de": {
+          "title": "Cashflow",
+          "description": "Ein- und Ausgänge nach Datum, mit laufendem Saldo Zeile für Zeile — das Bild davon, wann das Geld knapp wird.",
+          "thumb": "/templates/thumbs/fluxo-caixa.de.svg",
+          "data": "/templates/data/fluxo-caixa.de.json"
+        },
+        "it": {
+          "title": "Flusso di Cassa",
+          "description": "Entrate e uscite in ordine di data, con saldo progressivo riga per riga: il ritratto di quando la cassa manca.",
+          "thumb": "/templates/thumbs/fluxo-caixa.it.svg",
+          "data": "/templates/data/fluxo-caixa.it.json"
+        },
+        "nl": {
+          "title": "Kasstroom",
+          "description": "Inkomsten en uitgaven op datum, met een lopend saldo per regel — het beeld van wanneer het geld krap wordt.",
+          "thumb": "/templates/thumbs/fluxo-caixa.nl.svg",
+          "data": "/templates/data/fluxo-caixa.nl.json"
+        },
+        "pl": {
+          "title": "Przepływy pieniężne",
+          "description": "Wpływy i wypływy według dat, z saldem narastającym wiersz po wierszu — obraz tego, kiedy zabraknie gotówki.",
+          "thumb": "/templates/thumbs/fluxo-caixa.pl.svg",
+          "data": "/templates/data/fluxo-caixa.pl.json"
+        },
+        "id": {
+          "title": "Arus Kas",
+          "description": "Uang masuk dan keluar berurutan tanggal, dengan saldo berjalan baris demi baris — gambaran kapan kas menipis.",
+          "thumb": "/templates/thumbs/fluxo-caixa.id.svg",
+          "data": "/templates/data/fluxo-caixa.id.json"
+        },
+        "vi": {
+          "title": "Dòng Tiền",
+          "description": "Thu và chi theo thứ tự ngày, kèm số dư lũy kế từng dòng — bức tranh về lúc thiếu tiền mặt.",
+          "thumb": "/templates/thumbs/fluxo-caixa.vi.svg",
+          "data": "/templates/data/fluxo-caixa.vi.json"
+        },
+        "ja": {
+          "title": "資金繰り",
+          "description": "入出金を日付順に並べ、行ごとに累計残高を表示。資金が不足する時期が見えます。",
+          "thumb": "/templates/thumbs/fluxo-caixa.ja.svg",
+          "data": "/templates/data/fluxo-caixa.ja.json"
+        },
+        "ko": {
+          "title": "현금 흐름",
+          "description": "입출금을 날짜순으로, 줄마다 누적 잔액과 함께 — 언제 자금이 부족해지는지 보여줍니다.",
+          "thumb": "/templates/thumbs/fluxo-caixa.ko.svg",
+          "data": "/templates/data/fluxo-caixa.ko.json"
+        },
+        "zh": {
+          "title": "现金流",
+          "description": "按日期记录收支，逐行显示累计余额——看清资金何时吃紧。",
+          "thumb": "/templates/thumbs/fluxo-caixa.zh.svg",
+          "data": "/templates/data/fluxo-caixa.zh.json"
+        },
+        "ru": {
+          "title": "Денежный поток",
+          "description": "Поступления и списания по датам с накопительным остатком построчно — видно, когда денег не хватит.",
+          "thumb": "/templates/thumbs/fluxo-caixa.ru.svg",
+          "data": "/templates/data/fluxo-caixa.ru.json"
+        },
+        "hi": {
+          "title": "नकदी प्रवाह",
+          "description": "तारीख के क्रम में आवक-जावक, हर पंक्ति पर संचित शेष के साथ — कब नकदी कम पड़ेगी, इसका चित्र।",
+          "thumb": "/templates/thumbs/fluxo-caixa.hi.svg",
+          "data": "/templates/data/fluxo-caixa.hi.json"
+        },
+        "tr": {
+          "title": "Nakit Akışı",
+          "description": "Tarih sırasıyla giriş ve çıkışlar, satır satır birikimli bakiyeyle — nakdin ne zaman azalacağının resmi.",
+          "thumb": "/templates/thumbs/fluxo-caixa.tr.svg",
+          "data": "/templates/data/fluxo-caixa.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-metas-poupanca",
+      "slug": "metas-poupanca",
+      "type": "sheet",
+      "category": "financas",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Metas de Poupança",
+          "description": "Quanto falta para cada meta, em valor e em porcentagem, com prazo para não virar promessa vaga.",
+          "thumb": "/templates/thumbs/metas-poupanca.pt-BR.svg",
+          "data": "/templates/data/metas-poupanca.pt-BR.json"
+        },
+        "en": {
+          "title": "Savings Goals",
+          "description": "How much is left for each goal, in money and in percentage, with a deadline so it does not stay a vague promise.",
+          "thumb": "/templates/thumbs/metas-poupanca.en.svg",
+          "data": "/templates/data/metas-poupanca.en.json"
+        },
+        "es": {
+          "title": "Metas de Ahorro",
+          "description": "Cuánto falta para cada meta, en importe y en porcentaje, con plazo para que no quede en promesa vaga.",
+          "thumb": "/templates/thumbs/metas-poupanca.es.svg",
+          "data": "/templates/data/metas-poupanca.es.json"
+        },
+        "fr": {
+          "title": "Objectifs d’Épargne",
+          "description": "Ce qui reste pour chaque objectif, en montant et en pourcentage, avec une échéance pour ne pas rester une vague promesse.",
+          "thumb": "/templates/thumbs/metas-poupanca.fr.svg",
+          "data": "/templates/data/metas-poupanca.fr.json"
+        },
+        "de": {
+          "title": "Sparziele",
+          "description": "Wie viel bis zu jedem Ziel fehlt, in Geld und Prozent, mit Frist — damit es kein vages Versprechen bleibt.",
+          "thumb": "/templates/thumbs/metas-poupanca.de.svg",
+          "data": "/templates/data/metas-poupanca.de.json"
+        },
+        "it": {
+          "title": "Obiettivi di Risparmio",
+          "description": "Quanto manca per ogni obiettivo, in denaro e in percentuale, con una scadenza per non restare una promessa vaga.",
+          "thumb": "/templates/thumbs/metas-poupanca.it.svg",
+          "data": "/templates/data/metas-poupanca.it.json"
+        },
+        "nl": {
+          "title": "Spaardoelen",
+          "description": "Hoeveel er nog nodig is per doel, in geld en procenten, met een datum zodat het geen vage belofte blijft.",
+          "thumb": "/templates/thumbs/metas-poupanca.nl.svg",
+          "data": "/templates/data/metas-poupanca.nl.json"
+        },
+        "pl": {
+          "title": "Cele oszczędnościowe",
+          "description": "Ile brakuje do każdego celu, w kwocie i procentach, z terminem — żeby nie została mglista obietnica.",
+          "thumb": "/templates/thumbs/metas-poupanca.pl.svg",
+          "data": "/templates/data/metas-poupanca.pl.json"
+        },
+        "id": {
+          "title": "Target Tabungan",
+          "description": "Berapa yang kurang untuk tiap target, dalam nilai dan persentase, dengan tenggat agar tak jadi janji kosong.",
+          "thumb": "/templates/thumbs/metas-poupanca.id.svg",
+          "data": "/templates/data/metas-poupanca.id.json"
+        },
+        "vi": {
+          "title": "Mục tiêu Tiết kiệm",
+          "description": "Còn thiếu bao nhiêu cho từng mục tiêu, theo tiền và phần trăm, kèm hạn chót để không thành lời hứa suông.",
+          "thumb": "/templates/thumbs/metas-poupanca.vi.svg",
+          "data": "/templates/data/metas-poupanca.vi.json"
+        },
+        "ja": {
+          "title": "貯金の目標",
+          "description": "各目標にあといくら必要かを金額と割合で表示。期限付きなので、漠然とした願いで終わりません。",
+          "thumb": "/templates/thumbs/metas-poupanca.ja.svg",
+          "data": "/templates/data/metas-poupanca.ja.json"
+        },
+        "ko": {
+          "title": "저축 목표",
+          "description": "목표마다 얼마가 남았는지 금액과 비율로, 기한과 함께 — 막연한 다짐으로 끝나지 않도록.",
+          "thumb": "/templates/thumbs/metas-poupanca.ko.svg",
+          "data": "/templates/data/metas-poupanca.ko.json"
+        },
+        "zh": {
+          "title": "储蓄目标",
+          "description": "每个目标还差多少，以金额和百分比显示，并带期限，避免沦为空泛的承诺。",
+          "thumb": "/templates/thumbs/metas-poupanca.zh.svg",
+          "data": "/templates/data/metas-poupanca.zh.json"
+        },
+        "ru": {
+          "title": "Цели накоплений",
+          "description": "Сколько осталось до каждой цели — в деньгах и процентах, со сроком, чтобы это не осталось обещанием.",
+          "thumb": "/templates/thumbs/metas-poupanca.ru.svg",
+          "data": "/templates/data/metas-poupanca.ru.json"
+        },
+        "hi": {
+          "title": "बचत लक्ष्य",
+          "description": "हर लक्ष्य के लिए कितना शेष है, राशि और प्रतिशत में, समय-सीमा के साथ — ताकि यह अस्पष्ट वादा न रह जाए।",
+          "thumb": "/templates/thumbs/metas-poupanca.hi.svg",
+          "data": "/templates/data/metas-poupanca.hi.json"
+        },
+        "tr": {
+          "title": "Birikim Hedefleri",
+          "description": "Her hedefe ne kadar kaldığı, tutar ve yüzde olarak, tarihiyle birlikte — belirsiz bir söz olarak kalmasın diye.",
+          "thumb": "/templates/thumbs/metas-poupanca.tr.svg",
+          "data": "/templates/data/metas-poupanca.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-lista-compras",
+      "slug": "lista-compras",
+      "type": "sheet",
+      "category": "casa",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Lista de Compras",
+          "description": "Quantidade, preço unitário e total por item — você sabe quanto vai gastar antes de chegar ao caixa.",
+          "thumb": "/templates/thumbs/lista-compras.pt-BR.svg",
+          "data": "/templates/data/lista-compras.pt-BR.json"
+        },
+        "en": {
+          "title": "Shopping List",
+          "description": "Quantity, unit price and total per item — you know what you will spend before you reach the till.",
+          "thumb": "/templates/thumbs/lista-compras.en.svg",
+          "data": "/templates/data/lista-compras.en.json"
+        },
+        "es": {
+          "title": "Lista de la Compra",
+          "description": "Cantidad, precio unitario y total por artículo: sabes cuánto vas a gastar antes de llegar a la caja.",
+          "thumb": "/templates/thumbs/lista-compras.es.svg",
+          "data": "/templates/data/lista-compras.es.json"
+        },
+        "fr": {
+          "title": "Liste de Courses",
+          "description": "Quantité, prix unitaire et total par article — vous savez ce que vous allez dépenser avant la caisse.",
+          "thumb": "/templates/thumbs/lista-compras.fr.svg",
+          "data": "/templates/data/lista-compras.fr.json"
+        },
+        "de": {
+          "title": "Einkaufsliste",
+          "description": "Menge, Stückpreis und Summe je Artikel — Sie wissen vor der Kasse, was Sie ausgeben.",
+          "thumb": "/templates/thumbs/lista-compras.de.svg",
+          "data": "/templates/data/lista-compras.de.json"
+        },
+        "it": {
+          "title": "Lista della Spesa",
+          "description": "Quantità, prezzo unitario e totale per articolo: sai quanto spenderai prima della cassa.",
+          "thumb": "/templates/thumbs/lista-compras.it.svg",
+          "data": "/templates/data/lista-compras.it.json"
+        },
+        "nl": {
+          "title": "Boodschappenlijst",
+          "description": "Aantal, stukprijs en totaal per item — je weet wat je uitgeeft vóór de kassa.",
+          "thumb": "/templates/thumbs/lista-compras.nl.svg",
+          "data": "/templates/data/lista-compras.nl.json"
+        },
+        "pl": {
+          "title": "Lista zakupów",
+          "description": "Ilość, cena jednostkowa i suma na pozycję — wiesz, ile wydasz, zanim staniesz przy kasie.",
+          "thumb": "/templates/thumbs/lista-compras.pl.svg",
+          "data": "/templates/data/lista-compras.pl.json"
+        },
+        "id": {
+          "title": "Daftar Belanja",
+          "description": "Jumlah, harga satuan, dan total per item — kamu tahu akan menghabiskan berapa sebelum ke kasir.",
+          "thumb": "/templates/thumbs/lista-compras.id.svg",
+          "data": "/templates/data/lista-compras.id.json"
+        },
+        "vi": {
+          "title": "Danh sách Mua sắm",
+          "description": "Số lượng, đơn giá và tổng theo từng món — biết mình sẽ tiêu bao nhiêu trước khi ra quầy.",
+          "thumb": "/templates/thumbs/lista-compras.vi.svg",
+          "data": "/templates/data/lista-compras.vi.json"
+        },
+        "ja": {
+          "title": "買い物リスト",
+          "description": "数量・単価・小計を品目ごとに。レジに着く前に、いくら使うか分かります。",
+          "thumb": "/templates/thumbs/lista-compras.ja.svg",
+          "data": "/templates/data/lista-compras.ja.json"
+        },
+        "ko": {
+          "title": "장보기 목록",
+          "description": "품목별 수량, 단가, 합계 — 계산대에 가기 전에 얼마를 쓸지 알 수 있습니다.",
+          "thumb": "/templates/thumbs/lista-compras.ko.svg",
+          "data": "/templates/data/lista-compras.ko.json"
+        },
+        "zh": {
+          "title": "购物清单",
+          "description": "每件商品的数量、单价与小计——结账前就知道要花多少。",
+          "thumb": "/templates/thumbs/lista-compras.zh.svg",
+          "data": "/templates/data/lista-compras.zh.json"
+        },
+        "ru": {
+          "title": "Список покупок",
+          "description": "Количество, цена за единицу и сумма по каждой позиции — вы знаете расходы ещё до кассы.",
+          "thumb": "/templates/thumbs/lista-compras.ru.svg",
+          "data": "/templates/data/lista-compras.ru.json"
+        },
+        "hi": {
+          "title": "खरीदारी सूची",
+          "description": "हर वस्तु की मात्रा, इकाई मूल्य और कुल — काउंटर पर पहुँचने से पहले खर्च पता होता है।",
+          "thumb": "/templates/thumbs/lista-compras.hi.svg",
+          "data": "/templates/data/lista-compras.hi.json"
+        },
+        "tr": {
+          "title": "Alışveriş Listesi",
+          "description": "Ürün başına adet, birim fiyat ve toplam — kasaya varmadan ne harcayacağınızı bilirsiniz.",
+          "thumb": "/templates/thumbs/lista-compras.tr.svg",
+          "data": "/templates/data/lista-compras.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-ata-reuniao",
+      "slug": "ata-reuniao",
+      "type": "doc",
+      "category": "trabalho",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Ata de Reunião",
+          "description": "",
+          "thumb": "/templates/thumbs/ata-reuniao.pt-BR.svg",
+          "data": "/templates/data/ata-reuniao.pt-BR.json"
+        },
+        "en": {
+          "title": "Meeting Notes",
+          "description": "Agenda, decisions and owners recorded on the spot, so the meeting does not have to happen again.",
+          "thumb": "/templates/thumbs/ata-reuniao.en.svg",
+          "data": "/templates/data/ata-reuniao.en.json"
+        },
+        "es": {
+          "title": "Acta de Reunión",
+          "description": "Orden del día, decisiones y responsables anotados en el momento, para que la reunión no se repita.",
+          "thumb": "/templates/thumbs/ata-reuniao.es.svg",
+          "data": "/templates/data/ata-reuniao.es.json"
+        },
+        "fr": {
+          "title": "Compte Rendu de Réunion",
+          "description": "Ordre du jour, décisions et responsables notés sur le moment, pour que la réunion n’ait pas à se répéter.",
+          "thumb": "/templates/thumbs/ata-reuniao.fr.svg",
+          "data": "/templates/data/ata-reuniao.fr.json"
+        },
+        "de": {
+          "title": "Besprechungsprotokoll",
+          "description": "Tagesordnung, Entscheidungen und Verantwortliche sofort festgehalten — damit die Besprechung nicht erneut nötig wird.",
+          "thumb": "/templates/thumbs/ata-reuniao.de.svg",
+          "data": "/templates/data/ata-reuniao.de.json"
+        },
+        "it": {
+          "title": "Verbale di Riunione",
+          "description": "Ordine del giorno, decisioni e responsabili annotati sul momento, così la riunione non deve ripetersi.",
+          "thumb": "/templates/thumbs/ata-reuniao.it.svg",
+          "data": "/templates/data/ata-reuniao.it.json"
+        },
+        "nl": {
+          "title": "Vergadernotulen",
+          "description": "Agenda, besluiten en verantwoordelijken meteen vastgelegd, zodat de vergadering niet opnieuw hoeft.",
+          "thumb": "/templates/thumbs/ata-reuniao.nl.svg",
+          "data": "/templates/data/ata-reuniao.nl.json"
+        },
+        "pl": {
+          "title": "Protokół spotkania",
+          "description": "Agenda, decyzje i odpowiedzialni zapisani na bieżąco, żeby spotkanie nie musiało się powtórzyć.",
+          "thumb": "/templates/thumbs/ata-reuniao.pl.svg",
+          "data": "/templates/data/ata-reuniao.pl.json"
+        },
+        "id": {
+          "title": "Notulen Rapat",
+          "description": "Agenda, keputusan, dan penanggung jawab dicatat langsung, supaya rapatnya tak perlu diulang.",
+          "thumb": "/templates/thumbs/ata-reuniao.id.svg",
+          "data": "/templates/data/ata-reuniao.id.json"
+        },
+        "vi": {
+          "title": "Biên bản Cuộc họp",
+          "description": "Chương trình, quyết định và người phụ trách được ghi ngay, để cuộc họp không phải lặp lại.",
+          "thumb": "/templates/thumbs/ata-reuniao.vi.svg",
+          "data": "/templates/data/ata-reuniao.vi.json"
+        },
+        "ja": {
+          "title": "議事録",
+          "description": "議題・決定・担当をその場で記録。同じ会議を二度やらずに済みます。",
+          "thumb": "/templates/thumbs/ata-reuniao.ja.svg",
+          "data": "/templates/data/ata-reuniao.ja.json"
+        },
+        "ko": {
+          "title": "회의록",
+          "description": "안건, 결정, 담당자를 그 자리에서 기록 — 같은 회의를 다시 하지 않도록.",
+          "thumb": "/templates/thumbs/ata-reuniao.ko.svg",
+          "data": "/templates/data/ata-reuniao.ko.json"
+        },
+        "zh": {
+          "title": "会议纪要",
+          "description": "当场记录议程、决定和负责人，让这场会议不必再开一次。",
+          "thumb": "/templates/thumbs/ata-reuniao.zh.svg",
+          "data": "/templates/data/ata-reuniao.zh.json"
+        },
+        "ru": {
+          "title": "Протокол встречи",
+          "description": "Повестка, решения и ответственные — записанные сразу, чтобы встречу не пришлось повторять.",
+          "thumb": "/templates/thumbs/ata-reuniao.ru.svg",
+          "data": "/templates/data/ata-reuniao.ru.json"
+        },
+        "hi": {
+          "title": "बैठक कार्यवृत्त",
+          "description": "कार्यसूची, निर्णय और ज़िम्मेदार तुरंत दर्ज — ताकि बैठक दोबारा न करनी पड़े।",
+          "thumb": "/templates/thumbs/ata-reuniao.hi.svg",
+          "data": "/templates/data/ata-reuniao.hi.json"
+        },
+        "tr": {
+          "title": "Toplantı Tutanağı",
+          "description": "Gündem, kararlar ve sorumlular anında kayda geçer; böylece toplantı tekrar edilmez.",
+          "thumb": "/templates/thumbs/ata-reuniao.tr.svg",
+          "data": "/templates/data/ata-reuniao.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-relatorio-status",
+      "slug": "relatorio-status",
+      "type": "doc",
+      "category": "trabalho",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Relatório de Status Semanal",
+          "description": "",
+          "thumb": "/templates/thumbs/relatorio-status.pt-BR.svg",
+          "data": "/templates/data/relatorio-status.pt-BR.json"
+        },
+        "en": {
+          "title": "Weekly Status Report",
+          "description": "What moved, what got stuck and where you need help — one page a week.",
+          "thumb": "/templates/thumbs/relatorio-status.en.svg",
+          "data": "/templates/data/relatorio-status.en.json"
+        },
+        "es": {
+          "title": "Informe Semanal de Estado",
+          "description": "Lo que avanzó, lo que se atascó y dónde necesitas ayuda: una página por semana.",
+          "thumb": "/templates/thumbs/relatorio-status.es.svg",
+          "data": "/templates/data/relatorio-status.es.json"
+        },
+        "fr": {
+          "title": "Rapport Hebdomadaire d’Avancement",
+          "description": "Ce qui a avancé, ce qui a bloqué et où vous avez besoin d’aide — une page par semaine.",
+          "thumb": "/templates/thumbs/relatorio-status.fr.svg",
+          "data": "/templates/data/relatorio-status.fr.json"
+        },
+        "de": {
+          "title": "Wöchentlicher Statusbericht",
+          "description": "Was voranging, was feststeckt und wo Sie Hilfe brauchen — eine Seite pro Woche.",
+          "thumb": "/templates/thumbs/relatorio-status.de.svg",
+          "data": "/templates/data/relatorio-status.de.json"
+        },
+        "it": {
+          "title": "Report Settimanale di Stato",
+          "description": "Cosa è avanzato, cosa si è bloccato e dove serve aiuto: una pagina a settimana.",
+          "thumb": "/templates/thumbs/relatorio-status.it.svg",
+          "data": "/templates/data/relatorio-status.it.json"
+        },
+        "nl": {
+          "title": "Wekelijkse Statusrapportage",
+          "description": "Wat vooruitging, wat vastliep en waar je hulp nodig hebt — één pagina per week.",
+          "thumb": "/templates/thumbs/relatorio-status.nl.svg",
+          "data": "/templates/data/relatorio-status.nl.json"
+        },
+        "pl": {
+          "title": "Tygodniowy raport statusu",
+          "description": "Co ruszyło, co utknęło i gdzie potrzebujesz pomocy — jedna strona tygodniowo.",
+          "thumb": "/templates/thumbs/relatorio-status.pl.svg",
+          "data": "/templates/data/relatorio-status.pl.json"
+        },
+        "id": {
+          "title": "Laporan Status Mingguan",
+          "description": "Yang maju, yang macet, dan di mana kamu butuh bantuan — satu halaman per minggu.",
+          "thumb": "/templates/thumbs/relatorio-status.id.svg",
+          "data": "/templates/data/relatorio-status.id.json"
+        },
+        "vi": {
+          "title": "Báo cáo Tình hình Hàng tuần",
+          "description": "Việc tiến triển, việc bị tắc và chỗ bạn cần hỗ trợ — mỗi tuần một trang.",
+          "thumb": "/templates/thumbs/relatorio-status.vi.svg",
+          "data": "/templates/data/relatorio-status.vi.json"
+        },
+        "ja": {
+          "title": "週次ステータス報告",
+          "description": "進んだこと、止まっていること、助けが必要なこと。週に1ページ。",
+          "thumb": "/templates/thumbs/relatorio-status.ja.svg",
+          "data": "/templates/data/relatorio-status.ja.json"
+        },
+        "ko": {
+          "title": "주간 현황 보고",
+          "description": "진전된 것, 막힌 것, 도움이 필요한 곳 — 주 1페이지.",
+          "thumb": "/templates/thumbs/relatorio-status.ko.svg",
+          "data": "/templates/data/relatorio-status.ko.json"
+        },
+        "zh": {
+          "title": "每周状态报告",
+          "description": "有什么进展、什么卡住、哪里需要帮助——每周一页。",
+          "thumb": "/templates/thumbs/relatorio-status.zh.svg",
+          "data": "/templates/data/relatorio-status.zh.json"
+        },
+        "ru": {
+          "title": "Еженедельный отчёт о статусе",
+          "description": "Что продвинулось, что застряло и где нужна помощь — одна страница в неделю.",
+          "thumb": "/templates/thumbs/relatorio-status.ru.svg",
+          "data": "/templates/data/relatorio-status.ru.json"
+        },
+        "hi": {
+          "title": "साप्ताहिक स्थिति रिपोर्ट",
+          "description": "क्या आगे बढ़ा, क्या अटका और कहाँ मदद चाहिए — सप्ताह में एक पृष्ठ।",
+          "thumb": "/templates/thumbs/relatorio-status.hi.svg",
+          "data": "/templates/data/relatorio-status.hi.json"
+        },
+        "tr": {
+          "title": "Haftalık Durum Raporu",
+          "description": "Ne ilerledi, ne tıkandı ve nerede yardım gerekiyor — haftada bir sayfa.",
+          "thumb": "/templates/thumbs/relatorio-status.tr.svg",
+          "data": "/templates/data/relatorio-status.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-briefing-projeto",
+      "slug": "briefing-projeto",
+      "type": "doc",
+      "category": "trabalho",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Briefing de Projeto",
+          "description": "",
+          "thumb": "/templates/thumbs/briefing-projeto.pt-BR.svg",
+          "data": "/templates/data/briefing-projeto.pt-BR.json"
+        },
+        "en": {
+          "title": "Project Brief",
+          "description": "Objective, audience, scope and definition of success agreed before anyone starts working.",
+          "thumb": "/templates/thumbs/briefing-projeto.en.svg",
+          "data": "/templates/data/briefing-projeto.en.json"
+        },
+        "es": {
+          "title": "Briefing de Proyecto",
+          "description": "Objetivo, público, alcance y criterio de éxito acordados antes de que alguien empiece a trabajar.",
+          "thumb": "/templates/thumbs/briefing-projeto.es.svg",
+          "data": "/templates/data/briefing-projeto.es.json"
+        },
+        "fr": {
+          "title": "Brief de Projet",
+          "description": "Objectif, public, périmètre et critère de réussite alignés avant que quiconque commence.",
+          "thumb": "/templates/thumbs/briefing-projeto.fr.svg",
+          "data": "/templates/data/briefing-projeto.fr.json"
+        },
+        "de": {
+          "title": "Projekt-Briefing",
+          "description": "Ziel, Zielgruppe, Umfang und Erfolgskriterium abgestimmt, bevor jemand anfängt.",
+          "thumb": "/templates/thumbs/briefing-projeto.de.svg",
+          "data": "/templates/data/briefing-projeto.de.json"
+        },
+        "it": {
+          "title": "Brief di Progetto",
+          "description": "Obiettivo, pubblico, ambito e criterio di successo concordati prima che qualcuno inizi.",
+          "thumb": "/templates/thumbs/briefing-projeto.it.svg",
+          "data": "/templates/data/briefing-projeto.it.json"
+        },
+        "nl": {
+          "title": "Projectbriefing",
+          "description": "Doel, doelgroep, scope en succescriterium afgestemd voordat iemand begint.",
+          "thumb": "/templates/thumbs/briefing-projeto.nl.svg",
+          "data": "/templates/data/briefing-projeto.nl.json"
+        },
+        "pl": {
+          "title": "Brief projektu",
+          "description": "Cel, odbiorcy, zakres i kryterium sukcesu ustalone, zanim ktokolwiek zacznie.",
+          "thumb": "/templates/thumbs/briefing-projeto.pl.svg",
+          "data": "/templates/data/briefing-projeto.pl.json"
+        },
+        "id": {
+          "title": "Brief Proyek",
+          "description": "Tujuan, audiens, ruang lingkup, dan kriteria sukses disepakati sebelum ada yang mulai.",
+          "thumb": "/templates/thumbs/briefing-projeto.id.svg",
+          "data": "/templates/data/briefing-projeto.id.json"
+        },
+        "vi": {
+          "title": "Bản Tóm tắt Dự án",
+          "description": "Mục tiêu, đối tượng, phạm vi và tiêu chí thành công được thống nhất trước khi bắt tay vào làm.",
+          "thumb": "/templates/thumbs/briefing-projeto.vi.svg",
+          "data": "/templates/data/briefing-projeto.vi.json"
+        },
+        "ja": {
+          "title": "プロジェクト概要",
+          "description": "目的・対象・範囲・成功基準を、誰かが作業を始める前にそろえます。",
+          "thumb": "/templates/thumbs/briefing-projeto.ja.svg",
+          "data": "/templates/data/briefing-projeto.ja.json"
+        },
+        "ko": {
+          "title": "프로젝트 브리프",
+          "description": "목적, 대상, 범위, 성공 기준을 누군가 시작하기 전에 맞춥니다.",
+          "thumb": "/templates/thumbs/briefing-projeto.ko.svg",
+          "data": "/templates/data/briefing-projeto.ko.json"
+        },
+        "zh": {
+          "title": "项目简报",
+          "description": "在任何人动手之前，先对齐目标、受众、范围和成功标准。",
+          "thumb": "/templates/thumbs/briefing-projeto.zh.svg",
+          "data": "/templates/data/briefing-projeto.zh.json"
+        },
+        "ru": {
+          "title": "Бриф проекта",
+          "description": "Цель, аудитория, объём и критерий успеха согласованы до начала работы.",
+          "thumb": "/templates/thumbs/briefing-projeto.ru.svg",
+          "data": "/templates/data/briefing-projeto.ru.json"
+        },
+        "hi": {
+          "title": "परियोजना ब्रीफ",
+          "description": "उद्देश्य, दर्शक, दायरा और सफलता का मानदंड — किसी के काम शुरू करने से पहले तय।",
+          "thumb": "/templates/thumbs/briefing-projeto.hi.svg",
+          "data": "/templates/data/briefing-projeto.hi.json"
+        },
+        "tr": {
+          "title": "Proje Brifi",
+          "description": "Amaç, hedef kitle, kapsam ve başarı ölçütü, kimse çalışmaya başlamadan netleşir.",
+          "thumb": "/templates/thumbs/briefing-projeto.tr.svg",
+          "data": "/templates/data/briefing-projeto.tr.json"
+        }
+      }
+    }
+  ]
+}

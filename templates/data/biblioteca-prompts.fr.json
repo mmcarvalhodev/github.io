@@ -1,0 +1,204 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-biblioteca-prompts",
+  "slug": "biblioteca-prompts",
+  "type": "sheet",
+  "lang": "fr",
+  "title": "Bibliothèque de Prompts",
+  "snapshot": {
+    "id": "tpl-biblioteca-prompts",
+    "name": "Bibliothèque de Prompts",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "wrap": {
+        "tb": 3
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Prompts",
+        "rowCount": 300,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 220
+          },
+          "1": {
+            "w": 150
+          },
+          "2": {
+            "w": 420
+          },
+          "3": {
+            "w": 150
+          },
+          "4": {
+            "w": 80
+          },
+          "5": {
+            "w": 130
+          },
+          "6": {
+            "w": 40
+          },
+          "7": {
+            "w": 190
+          },
+          "8": {
+            "w": 90
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Bibliothèque de Prompts",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Gardez ce qui a marché. Un bon prompt réutilisé vaut mieux que dix réécrits de zéro."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Nom",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Catégorie",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Prompt",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Modèle",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Note",
+              "s": "hdr"
+            },
+            "5": {
+              "v": "Dernière utilisation",
+              "s": "hdr"
+            },
+            "7": {
+              "v": "Résumé",
+              "s": "hd2"
+            },
+            "8": {
+              "v": "Nb",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Exemple : relire sans changer le ton"
+            },
+            "2": {
+              "s": "wrap"
+            },
+            "7": {
+              "v": "Prompts enregistrés",
+              "s": "tot"
+            },
+            "8": {
+              "f": "=COUNTA($A$5:$A$204)",
+              "s": "tot"
+            }
+          },
+          "5": {
+            "2": {
+              "s": "wrap"
+            },
+            "7": {
+              "v": "Note maximale",
+              "s": "tot"
+            },
+            "8": {
+              "f": "=COUNTIF($E$5:$E$204,5)",
+              "s": "tot"
+            }
+          },
+          "6": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "7": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "8": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "9": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "10": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "11": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "12": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "13": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "14": {
+            "2": {
+              "s": "wrap"
+            }
+          }
+        }
+      }
+    }
+  }
+}

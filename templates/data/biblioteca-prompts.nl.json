@@ -1,0 +1,204 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-biblioteca-prompts",
+  "slug": "biblioteca-prompts",
+  "type": "sheet",
+  "lang": "nl",
+  "title": "Promptbibliotheek",
+  "snapshot": {
+    "id": "tpl-biblioteca-prompts",
+    "name": "Promptbibliotheek",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      },
+      "wrap": {
+        "tb": 3
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Prompts",
+        "rowCount": 300,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 220
+          },
+          "1": {
+            "w": 150
+          },
+          "2": {
+            "w": 420
+          },
+          "3": {
+            "w": 150
+          },
+          "4": {
+            "w": 80
+          },
+          "5": {
+            "w": 130
+          },
+          "6": {
+            "w": 40
+          },
+          "7": {
+            "w": 190
+          },
+          "8": {
+            "w": 90
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Promptbibliotheek",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Bewaar wat werkte. Één goede prompt hergebruiken is beter dan tien opnieuw schrijven."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Naam",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Categorie",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Prompt",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Model",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Score",
+              "s": "hdr"
+            },
+            "5": {
+              "v": "Laatst gebruikt",
+              "s": "hdr"
+            },
+            "7": {
+              "v": "Samenvatting",
+              "s": "hd2"
+            },
+            "8": {
+              "v": "Aantal",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Voorbeeld: tekst nakijken zonder de toon te wijzigen"
+            },
+            "2": {
+              "s": "wrap"
+            },
+            "7": {
+              "v": "Opgeslagen prompts",
+              "s": "tot"
+            },
+            "8": {
+              "f": "=COUNTA($A$5:$A$204)",
+              "s": "tot"
+            }
+          },
+          "5": {
+            "2": {
+              "s": "wrap"
+            },
+            "7": {
+              "v": "Hoogst beoordeeld",
+              "s": "tot"
+            },
+            "8": {
+              "f": "=COUNTIF($E$5:$E$204,5)",
+              "s": "tot"
+            }
+          },
+          "6": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "7": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "8": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "9": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "10": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "11": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "12": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "13": {
+            "2": {
+              "s": "wrap"
+            }
+          },
+          "14": {
+            "2": {
+              "s": "wrap"
+            }
+          }
+        }
+      }
+    }
+  }
+}

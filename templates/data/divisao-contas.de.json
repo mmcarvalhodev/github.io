@@ -1,0 +1,241 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-divisao-contas",
+  "slug": "divisao-contas",
+  "type": "sheet",
+  "lang": "de",
+  "title": "Gruppenabrechnung",
+  "snapshot": {
+    "id": "tpl-divisao-contas",
+    "name": "Gruppenabrechnung",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        },
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "mny": {
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "num": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Abrechnung",
+        "rowCount": 200,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 250
+          },
+          "1": {
+            "w": 160
+          },
+          "2": {
+            "w": 130
+          },
+          "3": {
+            "w": 40
+          },
+          "4": {
+            "w": 170
+          },
+          "5": {
+            "w": 130
+          },
+          "6": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Gruppenabrechnung",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Tragen Sie jede Ausgabe und den Zahler ein. Ein positiver Saldo heißt: diese Person bekommt Geld zurück."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Beschreibung",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Wer bezahlt hat",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Betrag",
+              "s": "hdr"
+            },
+            "4": {
+              "v": "Übersicht",
+              "s": "hd2"
+            },
+            "5": {
+              "v": "Betrag",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "Beispiel: Abendessen am Freitag"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "4": {
+              "v": "Personen in der Gruppe"
+            },
+            "5": {
+              "v": 4,
+              "s": "num"
+            }
+          },
+          "5": {
+            "2": {
+              "s": "mny"
+            },
+            "4": {
+              "v": "Gesamtausgaben",
+              "s": "tot"
+            },
+            "5": {
+              "f": "=SUM($C$5:$C$104)",
+              "s": "tot"
+            }
+          },
+          "6": {
+            "2": {
+              "s": "mny"
+            },
+            "4": {
+              "v": "Pro Person",
+              "s": "tot"
+            },
+            "5": {
+              "f": "=IF(F5=0,0,F6/F5)",
+              "s": "tot"
+            }
+          },
+          "8": {
+            "4": {
+              "v": "Person",
+              "s": "hd2"
+            },
+            "5": {
+              "v": "Bezahlt",
+              "s": "hd2"
+            },
+            "6": {
+              "v": "Saldo",
+              "s": "hd2"
+            }
+          },
+          "9": {
+            "2": {
+              "s": "mny"
+            },
+            "5": {
+              "f": "=SUMIF($B$5:$B$104,$E10,$C$5:$C$104)",
+              "s": "mny"
+            },
+            "6": {
+              "f": "=F10-$F$7",
+              "s": "mny"
+            }
+          },
+          "10": {
+            "2": {
+              "s": "mny"
+            },
+            "5": {
+              "f": "=SUMIF($B$5:$B$104,$E11,$C$5:$C$104)",
+              "s": "mny"
+            },
+            "6": {
+              "f": "=F11-$F$7",
+              "s": "mny"
+            }
+          },
+          "11": {
+            "2": {
+              "s": "mny"
+            },
+            "5": {
+              "f": "=SUMIF($B$5:$B$104,$E12,$C$5:$C$104)",
+              "s": "mny"
+            },
+            "6": {
+              "f": "=F12-$F$7",
+              "s": "mny"
+            }
+          },
+          "12": {
+            "2": {
+              "s": "mny"
+            },
+            "5": {
+              "f": "=SUMIF($B$5:$B$104,$E13,$C$5:$C$104)",
+              "s": "mny"
+            },
+            "6": {
+              "f": "=F13-$F$7",
+              "s": "mny"
+            }
+          },
+          "13": {
+            "2": {
+              "s": "mny"
+            }
+          },
+          "14": {
+            "2": {
+              "s": "mny"
+            }
+          }
+        }
+      }
+    }
+  }
+}

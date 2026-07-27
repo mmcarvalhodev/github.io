@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">프롬프트 템플릿</text><text class="p" x="40" y="132">아래 항목을 채우세요. 역할, 맥락, 원하는 형식이 명확할수록 답변이 좋아지고 나중에 재사용하기도 쉽습니다.</text><text class="h2" x="40" y="156">역할</text><text class="p" x="40" y="182">답변할 때 AI가 맡을 역할. 예: 까다로운 기술 검토자, 인내심 있는 교사, 계약 전문 변호사.</text><text class="h2" x="40" y="206">맥락</text><text class="p" x="40" y="232">시작 전에 알아야 할 것: 프로젝트, 대상 독자, 이미 시도한 것, 바꾸면 안 되는 것.</text><text class="h2" x="40" y="256">작업</text><text class="p" x="40" y="282">원하는 것을 한 문장으로 분명하게. 프롬프트 하나에 요청 하나가 다섯 개를 한꺼번에 넣는 것보다 낫습니다.</text><text class="h2" x="40" y="306">답변 형식</text><text class="p" x="40" y="332">답변이 어떤 형태여야 하는지: 표, 목록, 줄글, 몇 단어, 어떤 언어.</text><text class="h2" x="40" y="356">제약</text><text class="p" x="40" y="382">피해야 할 것: 전문 용어, 출처 없는 추측, 이미 정해진 것 바꾸기, 분량 초과.</text><text class="h2" x="40" y="406">기대하는 결과 예시</text><text class="p" x="40" y="432">원하는 결과의 짧은 예시. 답변을 가장 크게 개선하지만 가장 자주 빠뜨리는 부분입니다.</text>
+</svg>

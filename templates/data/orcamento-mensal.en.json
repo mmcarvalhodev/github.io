@@ -1,0 +1,385 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-orcamento-mensal",
+  "slug": "orcamento-mensal",
+  "type": "sheet",
+  "lang": "en",
+  "title": "Monthly Budget",
+  "snapshot": {
+    "id": "tpl-orcamento-mensal",
+    "name": "Monthly Budget",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "sec": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        },
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "mny": {
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      },
+      "sld": {
+        "bl": 1,
+        "fs": 13,
+        "bg": {
+          "rgb": "#E8F5E9"
+        },
+        "n": {
+          "pattern": "R$ #,##0.00"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Budget",
+        "rowCount": 100,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 220
+          },
+          "1": {
+            "w": 130
+          },
+          "2": {
+            "w": 130
+          },
+          "3": {
+            "w": 130
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Monthly Budget",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Fill in the planned amounts at the start of the month and the actual ones as you go."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Category",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Planned",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Actual",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Difference",
+              "s": "hdr"
+            }
+          },
+          "4": {
+            "0": {
+              "v": "INCOME",
+              "s": "sec"
+            },
+            "1": {
+              "s": "sec"
+            },
+            "2": {
+              "s": "sec"
+            },
+            "3": {
+              "s": "sec"
+            }
+          },
+          "5": {
+            "0": {
+              "v": "Salary"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C6-B6",
+              "s": "mny"
+            }
+          },
+          "6": {
+            "0": {
+              "v": "Freelance / side income"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C7-B7",
+              "s": "mny"
+            }
+          },
+          "7": {
+            "0": {
+              "v": "Other income"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C8-B8",
+              "s": "mny"
+            }
+          },
+          "8": {
+            "0": {
+              "v": "Total income",
+              "s": "tot"
+            },
+            "1": {
+              "f": "=SUM(B6:B8)",
+              "s": "tot"
+            },
+            "2": {
+              "f": "=SUM(C6:C8)",
+              "s": "tot"
+            },
+            "3": {
+              "f": "=C9-B9",
+              "s": "tot"
+            }
+          },
+          "10": {
+            "0": {
+              "v": "EXPENSES",
+              "s": "sec"
+            },
+            "1": {
+              "s": "sec"
+            },
+            "2": {
+              "s": "sec"
+            },
+            "3": {
+              "s": "sec"
+            }
+          },
+          "11": {
+            "0": {
+              "v": "Housing"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C12-B12",
+              "s": "mny"
+            }
+          },
+          "12": {
+            "0": {
+              "v": "Food"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C13-B13",
+              "s": "mny"
+            }
+          },
+          "13": {
+            "0": {
+              "v": "Transport"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C14-B14",
+              "s": "mny"
+            }
+          },
+          "14": {
+            "0": {
+              "v": "Health"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C15-B15",
+              "s": "mny"
+            }
+          },
+          "15": {
+            "0": {
+              "v": "Education"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C16-B16",
+              "s": "mny"
+            }
+          },
+          "16": {
+            "0": {
+              "v": "Leisure"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C17-B17",
+              "s": "mny"
+            }
+          },
+          "17": {
+            "0": {
+              "v": "Subscriptions"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C18-B18",
+              "s": "mny"
+            }
+          },
+          "18": {
+            "0": {
+              "v": "Other"
+            },
+            "1": {
+              "v": 0,
+              "s": "mny"
+            },
+            "2": {
+              "v": 0,
+              "s": "mny"
+            },
+            "3": {
+              "f": "=C19-B19",
+              "s": "mny"
+            }
+          },
+          "19": {
+            "0": {
+              "v": "Total expenses",
+              "s": "tot"
+            },
+            "1": {
+              "f": "=SUM(B12:B19)",
+              "s": "tot"
+            },
+            "2": {
+              "f": "=SUM(C12:C19)",
+              "s": "tot"
+            },
+            "3": {
+              "f": "=C20-B20",
+              "s": "tot"
+            }
+          },
+          "21": {
+            "0": {
+              "v": "Balance for the month",
+              "s": "sld"
+            },
+            "1": {
+              "f": "=B9-B20",
+              "s": "sld"
+            },
+            "2": {
+              "f": "=C9-C20",
+              "s": "sld"
+            },
+            "3": {
+              "f": "=C22-B22",
+              "s": "sld"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · PLANILHA</text>
+<text class="ttl" x="40" y="90">Proje Görev Listesi</text><text class="sub" x="40" y="118">Şu durumları kullanın: Yapılacak · Devam ediyor · Tamamlandı. Sağdaki panel kendiliğinden s…</text><rect x="40" y="132" width="720" height="30" fill="#FF6600" rx="3"/><text class="hdr" x="48" y="152">Görev</text><text class="hdr" x="270.680412371134" y="152">Sorumlu</text><text class="hdr" x="382.02061855670104" y="152">Durum</text><text class="hdr" x="478.5154639175258" y="152">Öncelik</text><text class="hdr" x="567.5876288659794" y="152">Son tarih</text><text class="hdr" x="656.659793814433" y="152">Durum özeti</text><rect x="40" y="162" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="48" y="182">Örnek: proje kapsamını bel…</text><text class="cel" x="382.02061855670104" y="182">Yapılacak</text><text class="cel" x="478.5154639175258" y="182">Yüksek</text><text class="cel" x="656.659793814433" y="182">Yapılacak</text><text class="cel" x="656.659793814433" y="212">Devam ediyor</text><rect x="40" y="222" width="720" height="30" fill="#FAFAFA"/><text class="cel" x="656.659793814433" y="242">Tamamlandı</text><text class="celb" x="656.659793814433" y="272">TOPLAM</text><rect x="40" y="282" width="720" height="30" fill="#FAFAFA"/><text class="celb" x="656.659793814433" y="302">Tamamlanan (…</text><rect x="40" y="342" width="720" height="30" fill="#FAFAFA"/><rect x="40" y="132" width="720" height="270" fill="none" stroke="#EDEDED"/>
+</svg>

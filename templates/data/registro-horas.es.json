@@ -1,0 +1,242 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-registro-horas",
+  "slug": "registro-horas",
+  "type": "sheet",
+  "lang": "es",
+  "title": "Registro de Horas",
+  "snapshot": {
+    "id": "tpl-registro-horas",
+    "name": "Registro de Horas",
+    "sheetOrder": [
+      "s1"
+    ],
+    "styles": {
+      "ttl": {
+        "bl": 1,
+        "fs": 16
+      },
+      "hdr": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FF6600"
+        },
+        "cl": {
+          "rgb": "#FFFFFF"
+        }
+      },
+      "hd2": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#EFEFEF"
+        }
+      },
+      "tot": {
+        "bl": 1,
+        "bg": {
+          "rgb": "#FFF4E5"
+        },
+        "n": {
+          "pattern": "0.00"
+        }
+      },
+      "hrs": {
+        "n": {
+          "pattern": "0.00"
+        }
+      },
+      "dat": {
+        "n": {
+          "pattern": "dd/mm/yyyy"
+        }
+      }
+    },
+    "sheets": {
+      "s1": {
+        "id": "s1",
+        "name": "Horas",
+        "rowCount": 300,
+        "columnCount": 20,
+        "columnData": {
+          "0": {
+            "w": 110
+          },
+          "1": {
+            "w": 170
+          },
+          "2": {
+            "w": 280
+          },
+          "3": {
+            "w": 100
+          },
+          "4": {
+            "w": 40
+          },
+          "5": {
+            "w": 180
+          },
+          "6": {
+            "w": 110
+          }
+        },
+        "cellData": {
+          "0": {
+            "0": {
+              "v": "Registro de Horas",
+              "s": "ttl"
+            }
+          },
+          "1": {
+            "0": {
+              "v": "Una fila por día de trabajo. Anota las horas en decimal (1h30 = 1,5)."
+            }
+          },
+          "3": {
+            "0": {
+              "v": "Fecha",
+              "s": "hdr"
+            },
+            "1": {
+              "v": "Proyecto",
+              "s": "hdr"
+            },
+            "2": {
+              "v": "Descripción",
+              "s": "hdr"
+            },
+            "3": {
+              "v": "Horas",
+              "s": "hdr"
+            },
+            "5": {
+              "v": "Resumen",
+              "s": "hd2"
+            },
+            "6": {
+              "v": "Horas",
+              "s": "hd2"
+            }
+          },
+          "4": {
+            "0": {
+              "s": "dat"
+            },
+            "2": {
+              "v": "Ejemplo: reunión de alineación"
+            },
+            "3": {
+              "v": 0,
+              "s": "hrs"
+            },
+            "5": {
+              "v": "Total de horas",
+              "s": "tot"
+            },
+            "6": {
+              "f": "=SUM($D$5:$D$204)",
+              "s": "tot"
+            }
+          },
+          "5": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            },
+            "5": {
+              "v": "Días registrados",
+              "s": "tot"
+            },
+            "6": {
+              "f": "=COUNTA($A$5:$A$204)",
+              "s": "tot"
+            }
+          },
+          "6": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            },
+            "5": {
+              "v": "Media por día",
+              "s": "tot"
+            },
+            "6": {
+              "f": "=IF(G6=0,0,G5/G6)",
+              "s": "tot"
+            }
+          },
+          "7": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "8": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "9": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "10": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "11": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "12": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "13": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          },
+          "14": {
+            "0": {
+              "s": "dat"
+            },
+            "3": {
+              "s": "hrs"
+            }
+          }
+        }
+      }
+    }
+  }
+}
