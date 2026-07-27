@@ -6,3 +6,8 @@ Allow: /
 Disallow: /*?lang=
 
 Sitemap: https://nodus-ai.app/sitemap.xml
+
+# As páginas de dia do History (/ph/day/AAAA-MM-DD) nascem uma por dia, então
+# são servidas por um sitemap DINÂMICO gerado pelo worker-nodus-insights —
+# num arquivo estático ele estaria desatualizado desde a coleta seguinte.
+Sitemap: https://nodus-ai.app/ph/sitemap-days.xml
