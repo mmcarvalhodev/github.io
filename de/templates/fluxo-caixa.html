@@ -56,25 +56,49 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .catnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
 .catnav a{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--sub)}
 .catnav a:hover{border-color:var(--yellow);color:var(--yellow);text-decoration:none}
-.cat-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub);margin:34px 0 14px;padding-top:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s}
-.card:hover{border-color:var(--yellow)}
-.card-thumb{background:#0e1117;border-bottom:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.card-body{padding:15px 16px;display:flex;flex-direction:column;flex:1}
+.cat-head{display:flex;align-items:baseline;gap:9px;margin:32px 0 12px;padding-top:8px}
+.cat-head h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+.cat-head .n{font-size:12px;color:var(--muted)}
 .card-badges{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
 .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-radius:5px;padding:2px 7px;background:rgba(148,163,184,.12);color:var(--sub)}
 .badge.free{background:rgba(16,185,129,.14);color:var(--green)}
-.card-title{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.3}
-.card-desc{font-size:13px;color:var(--sub);flex:1;margin-bottom:14px}
+/* mosaico compacto: o thumb é um render 800x500 da planilha — ilegível em
+   miniatura, por isso o azulejo mostra um ícone do tipo e o preview grande
+   fica na fatia que abre ao clicar. Toggle é CSS puro (checkbox + irmão),
+   o conteúdo está sempre no DOM para o Google indexar. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:10px}
+.tgl{position:absolute;width:1px;height:1px;opacity:0}
+.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.tile:hover{border-color:var(--yellow)}
+.tile-ico{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.12);color:var(--sub)}
+.tile-ico svg{width:16px;height:16px;display:block}
+.tile.sheet .tile-ico{background:rgba(16,185,129,.14);color:var(--green)}
+.tile.doc .tile-ico{background:rgba(250,204,21,.14);color:var(--yellow)}
+.tile-tx{flex:1;min-width:0}
+.tile-tt{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-ty{display:block;font-size:11px;color:var(--muted);line-height:1.4}
+.tile-cv{flex:none;color:var(--muted);transition:transform .18s}
+.tile-cv svg{display:block}
+.tgl:checked + .tile{border-color:var(--yellow);background:#20262f}
+.tgl:checked + .tile .tile-cv{transform:rotate(180deg);color:var(--yellow)}
+.tgl:focus-visible + .tile{outline:2px solid var(--yellow);outline-offset:2px}
+.slice{display:none;grid-column:1/-1}
+.tgl:checked + .tile + .slice{display:block}
+.slice-in{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start;background:var(--panel);border:1px solid var(--yellow);border-radius:13px;padding:18px;margin:2px 0 6px}
+@media(max-width:760px){.slice-in{grid-template-columns:1fr}}
+.slice-thumb{background:#0e1117;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.slice-thumb img{width:100%;height:auto;display:block}
+.slice-tt{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:9px;line-height:1.25}
+.slice-tt a{color:var(--text)}
+.slice-desc{font-size:14px;color:var(--sub);margin-bottom:16px}
+.slice .btn{display:block}
 .btn{display:inline-block;text-align:center;background:var(--yellow);color:#0a0c12;font-weight:700;font-size:13.5px;border-radius:9px;padding:10px 16px;cursor:grab}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
 .drag-hint{font-size:11.5px;color:var(--muted);margin-top:7px;text-align:center}
 .detail{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;padding:36px 0 12px;align-items:start}
 @media(max-width:860px){.detail{grid-template-columns:1fr}}
 .detail-thumb{background:#0e1117;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.detail-thumb img{width:100%;display:block}
+.detail-thumb img{width:100%;height:auto;display:block}
 .detail h1{font-size:29px;font-weight:800;letter-spacing:-.02em;margin:10px 0 12px}
 .detail-desc{color:var(--sub);font-size:16px;margin-bottom:22px}
 .side{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px}
@@ -100,7 +124,7 @@ footer a{color:var(--muted)}
   <a class="back" href="/de/templates.html">← Alle Vorlagen</a>
   <div class="detail">
     <div>
-      <div class="detail-thumb"><img src="/templates/thumbs/fluxo-caixa.de.svg" alt="Cashflow" width="800" height="600"></div>
+      <div class="detail-thumb"><img src="/templates/thumbs/fluxo-caixa.de.svg" alt="Cashflow" width="800" height="500"></div>
       <h1>Cashflow</h1>
       <p class="detail-desc">Ein- und Ausgänge nach Datum, mit laufendem Saldo Zeile für Zeile — das Bild davon, wann das Geld knapp wird.</p>
       <section class="how"><h2>So funktioniert es</h2><p>Ziehen Sie die Schaltfläche „In Workspace öffnen“ direkt in das Workspace-Panel im Browser. Die Vorlage öffnet sich als neue Datei, bereits ausgefüllt. Nichts wird hochgeladen — sie entsteht lokal auf Ihrem Rechner.</p></section>

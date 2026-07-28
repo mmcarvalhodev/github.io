@@ -56,25 +56,49 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .catnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
 .catnav a{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--sub)}
 .catnav a:hover{border-color:var(--yellow);color:var(--yellow);text-decoration:none}
-.cat-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub);margin:34px 0 14px;padding-top:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s}
-.card:hover{border-color:var(--yellow)}
-.card-thumb{background:#0e1117;border-bottom:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.card-body{padding:15px 16px;display:flex;flex-direction:column;flex:1}
+.cat-head{display:flex;align-items:baseline;gap:9px;margin:32px 0 12px;padding-top:8px}
+.cat-head h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+.cat-head .n{font-size:12px;color:var(--muted)}
 .card-badges{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
 .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-radius:5px;padding:2px 7px;background:rgba(148,163,184,.12);color:var(--sub)}
 .badge.free{background:rgba(16,185,129,.14);color:var(--green)}
-.card-title{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.3}
-.card-desc{font-size:13px;color:var(--sub);flex:1;margin-bottom:14px}
+/* mosaico compacto: o thumb é um render 800x500 da planilha — ilegível em
+   miniatura, por isso o azulejo mostra um ícone do tipo e o preview grande
+   fica na fatia que abre ao clicar. Toggle é CSS puro (checkbox + irmão),
+   o conteúdo está sempre no DOM para o Google indexar. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:10px}
+.tgl{position:absolute;width:1px;height:1px;opacity:0}
+.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.tile:hover{border-color:var(--yellow)}
+.tile-ico{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.12);color:var(--sub)}
+.tile-ico svg{width:16px;height:16px;display:block}
+.tile.sheet .tile-ico{background:rgba(16,185,129,.14);color:var(--green)}
+.tile.doc .tile-ico{background:rgba(250,204,21,.14);color:var(--yellow)}
+.tile-tx{flex:1;min-width:0}
+.tile-tt{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-ty{display:block;font-size:11px;color:var(--muted);line-height:1.4}
+.tile-cv{flex:none;color:var(--muted);transition:transform .18s}
+.tile-cv svg{display:block}
+.tgl:checked + .tile{border-color:var(--yellow);background:#20262f}
+.tgl:checked + .tile .tile-cv{transform:rotate(180deg);color:var(--yellow)}
+.tgl:focus-visible + .tile{outline:2px solid var(--yellow);outline-offset:2px}
+.slice{display:none;grid-column:1/-1}
+.tgl:checked + .tile + .slice{display:block}
+.slice-in{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start;background:var(--panel);border:1px solid var(--yellow);border-radius:13px;padding:18px;margin:2px 0 6px}
+@media(max-width:760px){.slice-in{grid-template-columns:1fr}}
+.slice-thumb{background:#0e1117;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.slice-thumb img{width:100%;height:auto;display:block}
+.slice-tt{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:9px;line-height:1.25}
+.slice-tt a{color:var(--text)}
+.slice-desc{font-size:14px;color:var(--sub);margin-bottom:16px}
+.slice .btn{display:block}
 .btn{display:inline-block;text-align:center;background:var(--yellow);color:#0a0c12;font-weight:700;font-size:13.5px;border-radius:9px;padding:10px 16px;cursor:grab}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
 .drag-hint{font-size:11.5px;color:var(--muted);margin-top:7px;text-align:center}
 .detail{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;padding:36px 0 12px;align-items:start}
 @media(max-width:860px){.detail{grid-template-columns:1fr}}
 .detail-thumb{background:#0e1117;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.detail-thumb img{width:100%;display:block}
+.detail-thumb img{width:100%;height:auto;display:block}
 .detail h1{font-size:29px;font-weight:800;letter-spacing:-.02em;margin:10px 0 12px}
 .detail-desc{color:var(--sub);font-size:16px;margin-bottom:22px}
 .side{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px}
@@ -105,197 +129,350 @@ footer a{color:var(--muted)}
   <section class="how"><h2>यह कैसे काम करता है</h2><p>“Workspace में खोलें” बटन को सीधे ब्राउज़र के Workspace पैनल में खींचें। टेम्पलेट पहले से भरी हुई नई फ़ाइल के रूप में खुलता है। कुछ भी अपलोड नहीं होता — यह आपके डिवाइस पर ही बनता है।</p></section>
   <nav class="catnav"><a href="#financas">वित्त</a><a href="#trabalho">काम</a><a href="#produtividade">उत्पादकता</a><a href="#ia">एआई</a><a href="#casa">घर</a></nav>
   
-  <h2 class="cat-title" id="financas">वित्त</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/hi/templates/orcamento-mensal.html"><img src="/templates/thumbs/orcamento-mensal.hi.svg" alt="मासिक बजट" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/orcamento-mensal.html" style="color:inherit">मासिक बजट</a></h3>
-    <p class="card-desc">श्रेणी के अनुसार नियोजित और वास्तविक खर्च की तुलना करें और महीने का शेष देखें।</p>
-    <a class="btn" href="/hi/templates/orcamento-mensal.html" draggable="true">Workspace में खोलें</a>
+  <div class="cat-head" id="financas"><h2>वित्त</h2><span class="n">6</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-orcamento-mensal">
+<label class="tile sheet" for="t-orcamento-mensal">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">मासिक बजट</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/orcamento-mensal.hi.svg" alt="मासिक बजट" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/orcamento-mensal.html">मासिक बजट</a></h3>
+      <p class="slice-desc">श्रेणी के अनुसार नियोजित और वास्तविक खर्च की तुलना करें और महीने का शेष देखें।</p>
+      <a class="btn" href="/hi/templates/orcamento-mensal.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/controle-despesas.html"><img src="/templates/thumbs/controle-despesas.hi.svg" alt="व्यय ट्रैकर" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/controle-despesas.html" style="color:inherit">व्यय ट्रैकर</a></h3>
-    <p class="card-desc">हर खर्च को अलग पंक्ति में दर्ज करें और श्रेणी अनुसार योग अपने आप देखें।</p>
-    <a class="btn" href="/hi/templates/controle-despesas.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-controle-despesas">
+<label class="tile sheet" for="t-controle-despesas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">व्यय ट्रैकर</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/controle-despesas.hi.svg" alt="व्यय ट्रैकर" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/controle-despesas.html">व्यय ट्रैकर</a></h3>
+      <p class="slice-desc">हर खर्च को अलग पंक्ति में दर्ज करें और श्रेणी अनुसार योग अपने आप देखें।</p>
+      <a class="btn" href="/hi/templates/controle-despesas.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/controle-assinaturas.html"><img src="/templates/thumbs/controle-assinaturas.hi.svg" alt="सदस्यता ट्रैकर" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/controle-assinaturas.html" style="color:inherit">सदस्यता ट्रैकर</a></h3>
-    <p class="card-desc">देखें कि आप हर महीने और हर साल कितना चुकाते हैं — और भूली हुई सदस्यताओं की असली लागत जानें।</p>
-    <a class="btn" href="/hi/templates/controle-assinaturas.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-controle-assinaturas">
+<label class="tile sheet" for="t-controle-assinaturas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">सदस्यता ट्रैकर</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/controle-assinaturas.hi.svg" alt="सदस्यता ट्रैकर" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/controle-assinaturas.html">सदस्यता ट्रैकर</a></h3>
+      <p class="slice-desc">देखें कि आप हर महीने और हर साल कितना चुकाते हैं — और भूली हुई सदस्यताओं की असली लागत जानें।</p>
+      <a class="btn" href="/hi/templates/controle-assinaturas.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/divisao-contas.html"><img src="/templates/thumbs/divisao-contas.hi.svg" alt="समूह बिल विभाजन" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/divisao-contas.html" style="color:inherit">समूह बिल विभाजन</a></h3>
-    <p class="card-desc">यात्रा या साझा घर में किसने क्या चुकाया, और हर व्यक्ति को कितना मिलना या देना है।</p>
-    <a class="btn" href="/hi/templates/divisao-contas.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-divisao-contas">
+<label class="tile sheet" for="t-divisao-contas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">समूह बिल विभाजन</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/divisao-contas.hi.svg" alt="समूह बिल विभाजन" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/divisao-contas.html">समूह बिल विभाजन</a></h3>
+      <p class="slice-desc">यात्रा या साझा घर में किसने क्या चुकाया, और हर व्यक्ति को कितना मिलना या देना है।</p>
+      <a class="btn" href="/hi/templates/divisao-contas.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/fluxo-caixa.html"><img src="/templates/thumbs/fluxo-caixa.hi.svg" alt="नकदी प्रवाह" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/fluxo-caixa.html" style="color:inherit">नकदी प्रवाह</a></h3>
-    <p class="card-desc">तारीख के क्रम में आवक-जावक, हर पंक्ति पर संचित शेष के साथ — कब नकदी कम पड़ेगी, इसका चित्र।</p>
-    <a class="btn" href="/hi/templates/fluxo-caixa.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-fluxo-caixa">
+<label class="tile sheet" for="t-fluxo-caixa">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">नकदी प्रवाह</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/fluxo-caixa.hi.svg" alt="नकदी प्रवाह" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/fluxo-caixa.html">नकदी प्रवाह</a></h3>
+      <p class="slice-desc">तारीख के क्रम में आवक-जावक, हर पंक्ति पर संचित शेष के साथ — कब नकदी कम पड़ेगी, इसका चित्र।</p>
+      <a class="btn" href="/hi/templates/fluxo-caixa.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/metas-poupanca.html"><img src="/templates/thumbs/metas-poupanca.hi.svg" alt="बचत लक्ष्य" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/metas-poupanca.html" style="color:inherit">बचत लक्ष्य</a></h3>
-    <p class="card-desc">हर लक्ष्य के लिए कितना शेष है, राशि और प्रतिशत में, समय-सीमा के साथ — ताकि यह अस्पष्ट वादा न रह जाए।</p>
-    <a class="btn" href="/hi/templates/metas-poupanca.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-metas-poupanca">
+<label class="tile sheet" for="t-metas-poupanca">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">बचत लक्ष्य</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/metas-poupanca.hi.svg" alt="बचत लक्ष्य" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/metas-poupanca.html">बचत लक्ष्य</a></h3>
+      <p class="slice-desc">हर लक्ष्य के लिए कितना शेष है, राशि और प्रतिशत में, समय-सीमा के साथ — ताकि यह अस्पष्ट वादा न रह जाए।</p>
+      <a class="btn" href="/hi/templates/metas-poupanca.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="trabalho">काम</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/hi/templates/tarefas-projeto.html"><img src="/templates/thumbs/tarefas-projeto.hi.svg" alt="परियोजना कार्य सूची" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/tarefas-projeto.html" style="color:inherit">परियोजना कार्य सूची</a></h3>
-    <p class="card-desc">कार्यों को ज़िम्मेदार, स्थिति, प्राथमिकता और नियत तिथि के साथ व्यवस्थित करें — प्रगति स्वतः गिनी जाती है।</p>
-    <a class="btn" href="/hi/templates/tarefas-projeto.html" draggable="true">Workspace में खोलें</a>
+  <div class="cat-head" id="trabalho"><h2>काम</h2><span class="n">6</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-tarefas-projeto">
+<label class="tile sheet" for="t-tarefas-projeto">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">परियोजना कार्य सूची</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/tarefas-projeto.hi.svg" alt="परियोजना कार्य सूची" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/tarefas-projeto.html">परियोजना कार्य सूची</a></h3>
+      <p class="slice-desc">कार्यों को ज़िम्मेदार, स्थिति, प्राथमिकता और नियत तिथि के साथ व्यवस्थित करें — प्रगति स्वतः गिनी जाती है।</p>
+      <a class="btn" href="/hi/templates/tarefas-projeto.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/registro-horas.html"><img src="/templates/thumbs/registro-horas.hi.svg" alt="समय लॉग" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/registro-horas.html" style="color:inherit">समय लॉग</a></h3>
-    <p class="card-desc">दिन और परियोजना के अनुसार घंटे दर्ज करें — कुल, कार्यदिवस और औसत स्वतः।</p>
-    <a class="btn" href="/hi/templates/registro-horas.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-registro-horas">
+<label class="tile sheet" for="t-registro-horas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">समय लॉग</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/registro-horas.hi.svg" alt="समय लॉग" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/registro-horas.html">समय लॉग</a></h3>
+      <p class="slice-desc">दिन और परियोजना के अनुसार घंटे दर्ज करें — कुल, कार्यदिवस और औसत स्वतः।</p>
+      <a class="btn" href="/hi/templates/registro-horas.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/controle-estoque.html"><img src="/templates/thumbs/controle-estoque.hi.svg" alt="इन्वेंटरी ट्रैकर" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/controle-estoque.html" style="color:inherit">इन्वेंटरी ट्रैकर</a></h3>
-    <p class="card-desc">हर उत्पाद की आवक, जावक और शेष, न्यूनतम से नीचे जाने पर स्वतः चेतावनी के साथ।</p>
-    <a class="btn" href="/hi/templates/controle-estoque.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-controle-estoque">
+<label class="tile sheet" for="t-controle-estoque">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">इन्वेंटरी ट्रैकर</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/controle-estoque.hi.svg" alt="इन्वेंटरी ट्रैकर" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/controle-estoque.html">इन्वेंटरी ट्रैकर</a></h3>
+      <p class="slice-desc">हर उत्पाद की आवक, जावक और शेष, न्यूनतम से नीचे जाने पर स्वतः चेतावनी के साथ।</p>
+      <a class="btn" href="/hi/templates/controle-estoque.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/ata-reuniao.html"><img src="/templates/thumbs/ata-reuniao.hi.svg" alt="बैठक कार्यवृत्त" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/ata-reuniao.html" style="color:inherit">बैठक कार्यवृत्त</a></h3>
-    <p class="card-desc">कार्यसूची, निर्णय और ज़िम्मेदार तुरंत दर्ज — ताकि बैठक दोबारा न करनी पड़े।</p>
-    <a class="btn" href="/hi/templates/ata-reuniao.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-ata-reuniao">
+<label class="tile doc" for="t-ata-reuniao">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">बैठक कार्यवृत्त</span><span class="tile-ty">दस्तावेज़</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/ata-reuniao.hi.svg" alt="बैठक कार्यवृत्त" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/ata-reuniao.html">बैठक कार्यवृत्त</a></h3>
+      <p class="slice-desc">कार्यसूची, निर्णय और ज़िम्मेदार तुरंत दर्ज — ताकि बैठक दोबारा न करनी पड़े।</p>
+      <a class="btn" href="/hi/templates/ata-reuniao.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/relatorio-status.html"><img src="/templates/thumbs/relatorio-status.hi.svg" alt="साप्ताहिक स्थिति रिपोर्ट" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/relatorio-status.html" style="color:inherit">साप्ताहिक स्थिति रिपोर्ट</a></h3>
-    <p class="card-desc">क्या आगे बढ़ा, क्या अटका और कहाँ मदद चाहिए — सप्ताह में एक पृष्ठ।</p>
-    <a class="btn" href="/hi/templates/relatorio-status.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-relatorio-status">
+<label class="tile doc" for="t-relatorio-status">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">साप्ताहिक स्थिति रिपोर्ट</span><span class="tile-ty">दस्तावेज़</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/relatorio-status.hi.svg" alt="साप्ताहिक स्थिति रिपोर्ट" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/relatorio-status.html">साप्ताहिक स्थिति रिपोर्ट</a></h3>
+      <p class="slice-desc">क्या आगे बढ़ा, क्या अटका और कहाँ मदद चाहिए — सप्ताह में एक पृष्ठ।</p>
+      <a class="btn" href="/hi/templates/relatorio-status.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/briefing-projeto.html"><img src="/templates/thumbs/briefing-projeto.hi.svg" alt="परियोजना ब्रीफ" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/briefing-projeto.html" style="color:inherit">परियोजना ब्रीफ</a></h3>
-    <p class="card-desc">उद्देश्य, दर्शक, दायरा और सफलता का मानदंड — किसी के काम शुरू करने से पहले तय।</p>
-    <a class="btn" href="/hi/templates/briefing-projeto.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-briefing-projeto">
+<label class="tile doc" for="t-briefing-projeto">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">परियोजना ब्रीफ</span><span class="tile-ty">दस्तावेज़</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/briefing-projeto.hi.svg" alt="परियोजना ब्रीफ" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/briefing-projeto.html">परियोजना ब्रीफ</a></h3>
+      <p class="slice-desc">उद्देश्य, दर्शक, दायरा और सफलता का मानदंड — किसी के काम शुरू करने से पहले तय।</p>
+      <a class="btn" href="/hi/templates/briefing-projeto.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="produtividade">उत्पादकता</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/hi/templates/rastreador-habitos.html"><img src="/templates/thumbs/rastreador-habitos.hi.svg" alt="आदत ट्रैकर" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/rastreador-habitos.html" style="color:inherit">आदत ट्रैकर</a></h3>
-    <p class="card-desc">जिन दिनों आपने आदत निभाई उन्हें चिह्नित करें और महीने का लक्ष्य देखें।</p>
-    <a class="btn" href="/hi/templates/rastreador-habitos.html" draggable="true">Workspace में खोलें</a>
+  <div class="cat-head" id="produtividade"><h2>उत्पादकता</h2><span class="n">1</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-rastreador-habitos">
+<label class="tile sheet" for="t-rastreador-habitos">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">आदत ट्रैकर</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/rastreador-habitos.hi.svg" alt="आदत ट्रैकर" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/rastreador-habitos.html">आदत ट्रैकर</a></h3>
+      <p class="slice-desc">जिन दिनों आपने आदत निभाई उन्हें चिह्नित करें और महीने का लक्ष्य देखें।</p>
+      <a class="btn" href="/hi/templates/rastreador-habitos.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="ia">एआई</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/hi/templates/biblioteca-prompts.html"><img src="/templates/thumbs/biblioteca-prompts.hi.svg" alt="प्रॉम्प्ट लाइब्रेरी" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/biblioteca-prompts.html" style="color:inherit">प्रॉम्प्ट लाइब्रेरी</a></h3>
-    <p class="card-desc">काम करने वाले प्रॉम्प्ट मॉडल, श्रेणी और रेटिंग के साथ सहेजें — दोबारा लिखने के बजाय दोबारा उपयोग करें।</p>
-    <a class="btn" href="/hi/templates/biblioteca-prompts.html" draggable="true">Workspace में खोलें</a>
+  <div class="cat-head" id="ia"><h2>एआई</h2><span class="n">4</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-biblioteca-prompts">
+<label class="tile sheet" for="t-biblioteca-prompts">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">प्रॉम्प्ट लाइब्रेरी</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/biblioteca-prompts.hi.svg" alt="प्रॉम्प्ट लाइब्रेरी" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/biblioteca-prompts.html">प्रॉम्प्ट लाइब्रेरी</a></h3>
+      <p class="slice-desc">काम करने वाले प्रॉम्प्ट मॉडल, श्रेणी और रेटिंग के साथ सहेजें — दोबारा लिखने के बजाय दोबारा उपयोग करें।</p>
+      <a class="btn" href="/hi/templates/biblioteca-prompts.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/comparacao-modelos.html"><img src="/templates/thumbs/comparacao-modelos.hi.svg" alt="AI मॉडल तुलना" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/comparacao-modelos.html" style="color:inherit">AI मॉडल तुलना</a></h3>
-    <p class="card-desc">अपने भार वाले मानदंडों पर मॉडल की तुलना करें और एक ठोस अंतिम स्कोर पाएँ।</p>
-    <a class="btn" href="/hi/templates/comparacao-modelos.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-comparacao-modelos">
+<label class="tile sheet" for="t-comparacao-modelos">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">AI मॉडल तुलना</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/comparacao-modelos.hi.svg" alt="AI मॉडल तुलना" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/comparacao-modelos.html">AI मॉडल तुलना</a></h3>
+      <p class="slice-desc">अपने भार वाले मानदंडों पर मॉडल की तुलना करें और एक ठोस अंतिम स्कोर पाएँ।</p>
+      <a class="btn" href="/hi/templates/comparacao-modelos.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/modelo-prompt.html"><img src="/templates/thumbs/modelo-prompt.hi.svg" alt="प्रॉम्प्ट टेम्पलेट" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/modelo-prompt.html" style="color:inherit">प्रॉम्प्ट टेम्पलेट</a></h3>
-    <p class="card-desc">बेहतर प्रॉम्प्ट लिखने का तैयार ढाँचा: भूमिका, संदर्भ, कार्य, प्रारूप और बाधाएँ।</p>
-    <a class="btn" href="/hi/templates/modelo-prompt.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-modelo-prompt">
+<label class="tile doc" for="t-modelo-prompt">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">प्रॉम्प्ट टेम्पलेट</span><span class="tile-ty">दस्तावेज़</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/modelo-prompt.hi.svg" alt="प्रॉम्प्ट टेम्पलेट" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/modelo-prompt.html">प्रॉम्प्ट टेम्पलेट</a></h3>
+      <p class="slice-desc">बेहतर प्रॉम्प्ट लिखने का तैयार ढाँचा: भूमिका, संदर्भ, कार्य, प्रारूप और बाधाएँ।</p>
+      <a class="btn" href="/hi/templates/modelo-prompt.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/hi/templates/resumo-conversa-ia.html"><img src="/templates/thumbs/resumo-conversa-ia.hi.svg" alt="AI बातचीत का सारांश" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/resumo-conversa-ia.html" style="color:inherit">AI बातचीत का सारांश</a></h3>
-    <p class="card-desc">लंबी AI बातचीत को निर्णय, खुले सवाल और अगले कदम में बदलें।</p>
-    <a class="btn" href="/hi/templates/resumo-conversa-ia.html" draggable="true">Workspace में खोलें</a>
+</div>
+<input type="checkbox" class="tgl" id="t-resumo-conversa-ia">
+<label class="tile doc" for="t-resumo-conversa-ia">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">AI बातचीत का सारांश</span><span class="tile-ty">दस्तावेज़</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/resumo-conversa-ia.hi.svg" alt="AI बातचीत का सारांश" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">दस्तावेज़</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/resumo-conversa-ia.html">AI बातचीत का सारांश</a></h3>
+      <p class="slice-desc">लंबी AI बातचीत को निर्णय, खुले सवाल और अगले कदम में बदलें।</p>
+      <a class="btn" href="/hi/templates/resumo-conversa-ia.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="casa">घर</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/hi/templates/lista-compras.html"><img src="/templates/thumbs/lista-compras.hi.svg" alt="खरीदारी सूची" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
-    <h3 class="card-title"><a href="/hi/templates/lista-compras.html" style="color:inherit">खरीदारी सूची</a></h3>
-    <p class="card-desc">हर वस्तु की मात्रा, इकाई मूल्य और कुल — काउंटर पर पहुँचने से पहले खर्च पता होता है।</p>
-    <a class="btn" href="/hi/templates/lista-compras.html" draggable="true">Workspace में खोलें</a>
+  <div class="cat-head" id="casa"><h2>घर</h2><span class="n">1</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-lista-compras">
+<label class="tile sheet" for="t-lista-compras">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">खरीदारी सूची</span><span class="tile-ty">स्प्रेडशीट</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/lista-compras.hi.svg" alt="खरीदारी सूची" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">स्प्रेडशीट</span><span class="badge free">मुफ़्त</span></div>
+      <h3 class="slice-tt"><a href="/hi/templates/lista-compras.html">खरीदारी सूची</a></h3>
+      <p class="slice-desc">हर वस्तु की मात्रा, इकाई मूल्य और कुल — काउंटर पर पहुँचने से पहले खर्च पता होता है।</p>
+      <a class="btn" href="/hi/templates/lista-compras.html" draggable="true">Workspace में खोलें</a>
       <div class="drag-hint">इस बटन को Workspace पैनल में खींचें</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 </div>
 <footer>NODUS · <a href="https://nodus-ai.app">nodus-ai.app</a></footer>
+<script>
+// Só uma fatia aberta de cada vez. Sem isto a página continua a funcionar —
+// o abrir/fechar é CSS puro; o script apenas fecha as outras.
+document.addEventListener('change', function (ev) {
+  var el = ev.target;
+  if (!el.classList || !el.classList.contains('tgl') || !el.checked) return;
+  document.querySelectorAll('.tgl').forEach(function (o) { if (o !== el) o.checked = false; });
+});
+</script>
 <script src="/lang-switcher.js"></script>
 </body>
 </html>

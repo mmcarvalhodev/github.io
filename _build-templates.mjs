@@ -176,25 +176,49 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .catnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
 .catnav a{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--sub)}
 .catnav a:hover{border-color:var(--yellow);color:var(--yellow);text-decoration:none}
-.cat-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub);margin:34px 0 14px;padding-top:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s}
-.card:hover{border-color:var(--yellow)}
-.card-thumb{background:#0e1117;border-bottom:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.card-body{padding:15px 16px;display:flex;flex-direction:column;flex:1}
+.cat-head{display:flex;align-items:baseline;gap:9px;margin:32px 0 12px;padding-top:8px}
+.cat-head h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+.cat-head .n{font-size:12px;color:var(--muted)}
 .card-badges{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
 .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-radius:5px;padding:2px 7px;background:rgba(148,163,184,.12);color:var(--sub)}
 .badge.free{background:rgba(16,185,129,.14);color:var(--green)}
-.card-title{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.3}
-.card-desc{font-size:13px;color:var(--sub);flex:1;margin-bottom:14px}
+/* mosaico compacto: o thumb é um render 800x500 da planilha — ilegível em
+   miniatura, por isso o azulejo mostra um ícone do tipo e o preview grande
+   fica na fatia que abre ao clicar. Toggle é CSS puro (checkbox + irmão),
+   o conteúdo está sempre no DOM para o Google indexar. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:10px}
+.tgl{position:absolute;width:1px;height:1px;opacity:0}
+.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.tile:hover{border-color:var(--yellow)}
+.tile-ico{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.12);color:var(--sub)}
+.tile-ico svg{width:16px;height:16px;display:block}
+.tile.sheet .tile-ico{background:rgba(16,185,129,.14);color:var(--green)}
+.tile.doc .tile-ico{background:rgba(250,204,21,.14);color:var(--yellow)}
+.tile-tx{flex:1;min-width:0}
+.tile-tt{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-ty{display:block;font-size:11px;color:var(--muted);line-height:1.4}
+.tile-cv{flex:none;color:var(--muted);transition:transform .18s}
+.tile-cv svg{display:block}
+.tgl:checked + .tile{border-color:var(--yellow);background:#20262f}
+.tgl:checked + .tile .tile-cv{transform:rotate(180deg);color:var(--yellow)}
+.tgl:focus-visible + .tile{outline:2px solid var(--yellow);outline-offset:2px}
+.slice{display:none;grid-column:1/-1}
+.tgl:checked + .tile + .slice{display:block}
+.slice-in{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start;background:var(--panel);border:1px solid var(--yellow);border-radius:13px;padding:18px;margin:2px 0 6px}
+@media(max-width:760px){.slice-in{grid-template-columns:1fr}}
+.slice-thumb{background:#0e1117;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.slice-thumb img{width:100%;height:auto;display:block}
+.slice-tt{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:9px;line-height:1.25}
+.slice-tt a{color:var(--text)}
+.slice-desc{font-size:14px;color:var(--sub);margin-bottom:16px}
+.slice .btn{display:block}
 .btn{display:inline-block;text-align:center;background:var(--yellow);color:#0a0c12;font-weight:700;font-size:13.5px;border-radius:9px;padding:10px 16px;cursor:grab}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
 .drag-hint{font-size:11.5px;color:var(--muted);margin-top:7px;text-align:center}
 .detail{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;padding:36px 0 12px;align-items:start}
 @media(max-width:860px){.detail{grid-template-columns:1fr}}
 .detail-thumb{background:#0e1117;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.detail-thumb img{width:100%;display:block}
+.detail-thumb img{width:100%;height:auto;display:block}
 .detail h1{font-size:29px;font-weight:800;letter-spacing:-.02em;margin:10px 0 12px}
 .detail-desc{color:var(--sub);font-size:16px;margin-bottom:22px}
 .side{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px}
@@ -255,17 +279,36 @@ function openButton(t, dir, slug) {
       <div class="drag-hint">${esc(t.dragHint)}</div>`;
 }
 
-function card(t, dir, tpl, e) {
+const ICON = {
+  sheet: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg>`,
+  doc: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg>`,
+};
+const CHEVRON = `<svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg>`;
+
+// Azulejo + fatia. O azulejo é um <label> de um checkbox escondido: a fatia
+// abre sem JS. A descrição e o link para a página do modelo ficam SEMPRE no
+// HTML (só ocultos por CSS), para não perder indexação nem o rastreio.
+function tile(t, dir, tpl, e) {
   const typeLabel = tpl.type === 'sheet' ? t.sheet : t.doc;
-  return `<article class="card">
-  <a class="card-thumb" href="${templatePath(dir, tpl.slug)}"><img src="${e.thumb}" alt="${esc(e.title)}" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">${esc(typeLabel)}</span><span class="badge free">${esc(t.free)}</span></div>
-    <h3 class="card-title"><a href="${templatePath(dir, tpl.slug)}" style="color:inherit">${esc(e.title)}</a></h3>
-    <p class="card-desc">${esc(e.description || '')}</p>
-    ${openButton(t, dir, tpl.slug)}
+  const id = `t-${tpl.slug}`;
+  const href = templatePath(dir, tpl.slug);
+  return `<input type="checkbox" class="tgl" id="${id}">
+<label class="tile ${tpl.type === 'sheet' ? 'sheet' : 'doc'}" for="${id}">
+  <span class="tile-ico">${tpl.type === 'sheet' ? ICON.sheet : ICON.doc}</span>
+  <span class="tile-tx"><span class="tile-tt">${esc(e.title)}</span><span class="tile-ty">${esc(typeLabel)}</span></span>
+  <span class="tile-cv">${CHEVRON}</span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="${e.thumb}" alt="${esc(e.title)}" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">${esc(typeLabel)}</span><span class="badge free">${esc(t.free)}</span></div>
+      <h3 class="slice-tt"><a href="${href}">${esc(e.title)}</a></h3>
+      ${e.description ? `<p class="slice-desc">${esc(e.description)}</p>` : ''}
+      ${openButton(t, dir, tpl.slug)}
+    </div>
   </div>
-</article>`;
+</div>`;
 }
 
 function galleryPage(t, L, templates) {
@@ -275,8 +318,8 @@ function galleryPage(t, L, templates) {
 
   const catNav = cats.map(c => `<a href="#${c}">${esc(t.cats[c] || c)}</a>`).join('');
   const sections = cats.map(c => `
-  <h2 class="cat-title" id="${c}">${esc(t.cats[c] || c)}</h2>
-  <div class="grid">${byCat[c].map(tpl => card(t, L.dir, tpl, tpl.i18n[L.key])).join('\n')}</div>`).join('\n');
+  <div class="cat-head" id="${c}"><h2>${esc(t.cats[c] || c)}</h2><span class="n">${byCat[c].length}</span></div>
+  <div class="grid">${byCat[c].map(tpl => tile(t, L.dir, tpl, tpl.i18n[L.key])).join('\n')}</div>`).join('\n');
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -308,7 +351,16 @@ function galleryPage(t, L, templates) {
   <nav class="catnav">${catNav}</nav>
   ${sections}
 </div>
-${footer()}`;
+${footer()}
+<script>
+// Só uma fatia aberta de cada vez. Sem isto a página continua a funcionar —
+// o abrir/fechar é CSS puro; o script apenas fecha as outras.
+document.addEventListener('change', function (ev) {
+  var el = ev.target;
+  if (!el.classList || !el.classList.contains('tgl') || !el.checked) return;
+  document.querySelectorAll('.tgl').forEach(function (o) { if (o !== el) o.checked = false; });
+});
+</script>`;
 
   return shell({
     lang: L.tag, title: t.metaTitle, desc: t.metaDesc,
@@ -344,7 +396,7 @@ function templatePage(t, L, tpl) {
   <a class="back" href="${galleryPath(L.dir)}">${esc(t.back)}</a>
   <div class="detail">
     <div>
-      <div class="detail-thumb"><img src="${e.thumb}" alt="${esc(e.title)}" width="800" height="600"></div>
+      <div class="detail-thumb"><img src="${e.thumb}" alt="${esc(e.title)}" width="800" height="500"></div>
       <h1>${esc(e.title)}</h1>
       <p class="detail-desc">${esc(e.description || '')}</p>
       <section class="how"><h2>${esc(t.howTitle)}</h2><p>${esc(t.howBody)}</p></section>

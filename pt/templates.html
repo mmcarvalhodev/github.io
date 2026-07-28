@@ -56,25 +56,49 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .catnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
 .catnav a{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--sub)}
 .catnav a:hover{border-color:var(--yellow);color:var(--yellow);text-decoration:none}
-.cat-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub);margin:34px 0 14px;padding-top:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s}
-.card:hover{border-color:var(--yellow)}
-.card-thumb{background:#0e1117;border-bottom:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.card-body{padding:15px 16px;display:flex;flex-direction:column;flex:1}
+.cat-head{display:flex;align-items:baseline;gap:9px;margin:32px 0 12px;padding-top:8px}
+.cat-head h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+.cat-head .n{font-size:12px;color:var(--muted)}
 .card-badges{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
 .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-radius:5px;padding:2px 7px;background:rgba(148,163,184,.12);color:var(--sub)}
 .badge.free{background:rgba(16,185,129,.14);color:var(--green)}
-.card-title{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.3}
-.card-desc{font-size:13px;color:var(--sub);flex:1;margin-bottom:14px}
+/* mosaico compacto: o thumb é um render 800x500 da planilha — ilegível em
+   miniatura, por isso o azulejo mostra um ícone do tipo e o preview grande
+   fica na fatia que abre ao clicar. Toggle é CSS puro (checkbox + irmão),
+   o conteúdo está sempre no DOM para o Google indexar. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:10px}
+.tgl{position:absolute;width:1px;height:1px;opacity:0}
+.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.tile:hover{border-color:var(--yellow)}
+.tile-ico{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.12);color:var(--sub)}
+.tile-ico svg{width:16px;height:16px;display:block}
+.tile.sheet .tile-ico{background:rgba(16,185,129,.14);color:var(--green)}
+.tile.doc .tile-ico{background:rgba(250,204,21,.14);color:var(--yellow)}
+.tile-tx{flex:1;min-width:0}
+.tile-tt{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-ty{display:block;font-size:11px;color:var(--muted);line-height:1.4}
+.tile-cv{flex:none;color:var(--muted);transition:transform .18s}
+.tile-cv svg{display:block}
+.tgl:checked + .tile{border-color:var(--yellow);background:#20262f}
+.tgl:checked + .tile .tile-cv{transform:rotate(180deg);color:var(--yellow)}
+.tgl:focus-visible + .tile{outline:2px solid var(--yellow);outline-offset:2px}
+.slice{display:none;grid-column:1/-1}
+.tgl:checked + .tile + .slice{display:block}
+.slice-in{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start;background:var(--panel);border:1px solid var(--yellow);border-radius:13px;padding:18px;margin:2px 0 6px}
+@media(max-width:760px){.slice-in{grid-template-columns:1fr}}
+.slice-thumb{background:#0e1117;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.slice-thumb img{width:100%;height:auto;display:block}
+.slice-tt{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:9px;line-height:1.25}
+.slice-tt a{color:var(--text)}
+.slice-desc{font-size:14px;color:var(--sub);margin-bottom:16px}
+.slice .btn{display:block}
 .btn{display:inline-block;text-align:center;background:var(--yellow);color:#0a0c12;font-weight:700;font-size:13.5px;border-radius:9px;padding:10px 16px;cursor:grab}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
 .drag-hint{font-size:11.5px;color:var(--muted);margin-top:7px;text-align:center}
 .detail{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;padding:36px 0 12px;align-items:start}
 @media(max-width:860px){.detail{grid-template-columns:1fr}}
 .detail-thumb{background:#0e1117;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.detail-thumb img{width:100%;display:block}
+.detail-thumb img{width:100%;height:auto;display:block}
 .detail h1{font-size:29px;font-weight:800;letter-spacing:-.02em;margin:10px 0 12px}
 .detail-desc{color:var(--sub);font-size:16px;margin-bottom:22px}
 .side{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px}
@@ -105,197 +129,350 @@ footer a{color:var(--muted)}
   <section class="how"><h2>Como funciona</h2><p>Arraste o botão “Abrir no Workspace” direto para o painel do Workspace no seu navegador. O modelo abre como um novo arquivo, já preenchido. Nada é enviado para servidor — é criado localmente na sua máquina.</p></section>
   <nav class="catnav"><a href="#financas">Finanças</a><a href="#trabalho">Trabalho</a><a href="#produtividade">Produtividade</a><a href="#ia">IA</a><a href="#casa">Casa</a></nav>
   
-  <h2 class="cat-title" id="financas">Finanças</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/pt/templates/orcamento-mensal.html"><img src="/templates/thumbs/orcamento-mensal.pt-BR.svg" alt="Orçamento Mensal" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/orcamento-mensal.html" style="color:inherit">Orçamento Mensal</a></h3>
-    <p class="card-desc">Compare o que você planejou gastar com o que gastou de verdade, por categoria, e veja o saldo do mês.</p>
-    <a class="btn" href="/pt/templates/orcamento-mensal.html" draggable="true">Abrir no Workspace</a>
+  <div class="cat-head" id="financas"><h2>Finanças</h2><span class="n">6</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-orcamento-mensal">
+<label class="tile sheet" for="t-orcamento-mensal">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Orçamento Mensal</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/orcamento-mensal.pt-BR.svg" alt="Orçamento Mensal" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/orcamento-mensal.html">Orçamento Mensal</a></h3>
+      <p class="slice-desc">Compare o que você planejou gastar com o que gastou de verdade, por categoria, e veja o saldo do mês.</p>
+      <a class="btn" href="/pt/templates/orcamento-mensal.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/controle-despesas.html"><img src="/templates/thumbs/controle-despesas.pt-BR.svg" alt="Controle de Despesas" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/controle-despesas.html" style="color:inherit">Controle de Despesas</a></h3>
-    <p class="card-desc">Lance cada gasto numa linha e veja o resumo somado por categoria automaticamente.</p>
-    <a class="btn" href="/pt/templates/controle-despesas.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-controle-despesas">
+<label class="tile sheet" for="t-controle-despesas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Controle de Despesas</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/controle-despesas.pt-BR.svg" alt="Controle de Despesas" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/controle-despesas.html">Controle de Despesas</a></h3>
+      <p class="slice-desc">Lance cada gasto numa linha e veja o resumo somado por categoria automaticamente.</p>
+      <a class="btn" href="/pt/templates/controle-despesas.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/controle-assinaturas.html"><img src="/templates/thumbs/controle-assinaturas.pt-BR.svg" alt="Controle de Assinaturas" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/controle-assinaturas.html" style="color:inherit">Controle de Assinaturas</a></h3>
-    <p class="card-desc">Veja tudo o que você paga por mês e por ano — e descubra o custo real das assinaturas que esqueceu.</p>
-    <a class="btn" href="/pt/templates/controle-assinaturas.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-controle-assinaturas">
+<label class="tile sheet" for="t-controle-assinaturas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Controle de Assinaturas</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/controle-assinaturas.pt-BR.svg" alt="Controle de Assinaturas" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/controle-assinaturas.html">Controle de Assinaturas</a></h3>
+      <p class="slice-desc">Veja tudo o que você paga por mês e por ano — e descubra o custo real das assinaturas que esqueceu.</p>
+      <a class="btn" href="/pt/templates/controle-assinaturas.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/divisao-contas.html"><img src="/templates/thumbs/divisao-contas.pt-BR.svg" alt="Divisão de Contas em Grupo" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/divisao-contas.html" style="color:inherit">Divisão de Contas em Grupo</a></h3>
-    <p class="card-desc">Quem pagou o quê numa viagem ou república, e quanto cada pessoa ainda deve receber ou pagar.</p>
-    <a class="btn" href="/pt/templates/divisao-contas.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-divisao-contas">
+<label class="tile sheet" for="t-divisao-contas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Divisão de Contas em Grupo</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/divisao-contas.pt-BR.svg" alt="Divisão de Contas em Grupo" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/divisao-contas.html">Divisão de Contas em Grupo</a></h3>
+      <p class="slice-desc">Quem pagou o quê numa viagem ou república, e quanto cada pessoa ainda deve receber ou pagar.</p>
+      <a class="btn" href="/pt/templates/divisao-contas.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/fluxo-caixa.html"><img src="/templates/thumbs/fluxo-caixa.pt-BR.svg" alt="Fluxo de Caixa" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/fluxo-caixa.html" style="color:inherit">Fluxo de Caixa</a></h3>
-    <p class="card-desc">Entradas e saídas em ordem de data, com saldo acumulado linha a linha — o retrato de quando o dinheiro falta.</p>
-    <a class="btn" href="/pt/templates/fluxo-caixa.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-fluxo-caixa">
+<label class="tile sheet" for="t-fluxo-caixa">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Fluxo de Caixa</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/fluxo-caixa.pt-BR.svg" alt="Fluxo de Caixa" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/fluxo-caixa.html">Fluxo de Caixa</a></h3>
+      <p class="slice-desc">Entradas e saídas em ordem de data, com saldo acumulado linha a linha — o retrato de quando o dinheiro falta.</p>
+      <a class="btn" href="/pt/templates/fluxo-caixa.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/metas-poupanca.html"><img src="/templates/thumbs/metas-poupanca.pt-BR.svg" alt="Metas de Poupança" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/metas-poupanca.html" style="color:inherit">Metas de Poupança</a></h3>
-    <p class="card-desc">Quanto falta para cada meta, em valor e em porcentagem, com prazo para não virar promessa vaga.</p>
-    <a class="btn" href="/pt/templates/metas-poupanca.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-metas-poupanca">
+<label class="tile sheet" for="t-metas-poupanca">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Metas de Poupança</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/metas-poupanca.pt-BR.svg" alt="Metas de Poupança" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/metas-poupanca.html">Metas de Poupança</a></h3>
+      <p class="slice-desc">Quanto falta para cada meta, em valor e em porcentagem, com prazo para não virar promessa vaga.</p>
+      <a class="btn" href="/pt/templates/metas-poupanca.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="trabalho">Trabalho</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/pt/templates/tarefas-projeto.html"><img src="/templates/thumbs/tarefas-projeto.pt-BR.svg" alt="Lista de Tarefas de Projeto" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/tarefas-projeto.html" style="color:inherit">Lista de Tarefas de Projeto</a></h3>
-    <p class="card-desc">Organize tarefas com responsável, status, prioridade e prazo — com contagem automática do andamento.</p>
-    <a class="btn" href="/pt/templates/tarefas-projeto.html" draggable="true">Abrir no Workspace</a>
+  <div class="cat-head" id="trabalho"><h2>Trabalho</h2><span class="n">6</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-tarefas-projeto">
+<label class="tile sheet" for="t-tarefas-projeto">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Lista de Tarefas de Projeto</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/tarefas-projeto.pt-BR.svg" alt="Lista de Tarefas de Projeto" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/tarefas-projeto.html">Lista de Tarefas de Projeto</a></h3>
+      <p class="slice-desc">Organize tarefas com responsável, status, prioridade e prazo — com contagem automática do andamento.</p>
+      <a class="btn" href="/pt/templates/tarefas-projeto.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/registro-horas.html"><img src="/templates/thumbs/registro-horas.pt-BR.svg" alt="Registro de Horas" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/registro-horas.html" style="color:inherit">Registro de Horas</a></h3>
-    <p class="card-desc">Anote as horas por dia e projeto, com total, dias trabalhados e média automática.</p>
-    <a class="btn" href="/pt/templates/registro-horas.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-registro-horas">
+<label class="tile sheet" for="t-registro-horas">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Registro de Horas</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/registro-horas.pt-BR.svg" alt="Registro de Horas" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/registro-horas.html">Registro de Horas</a></h3>
+      <p class="slice-desc">Anote as horas por dia e projeto, com total, dias trabalhados e média automática.</p>
+      <a class="btn" href="/pt/templates/registro-horas.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/controle-estoque.html"><img src="/templates/thumbs/controle-estoque.pt-BR.svg" alt="Controle de Estoque" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/controle-estoque.html" style="color:inherit">Controle de Estoque</a></h3>
-    <p class="card-desc">Entradas, saídas e saldo por produto, com alerta automático quando o estoque fica abaixo do mínimo.</p>
-    <a class="btn" href="/pt/templates/controle-estoque.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-controle-estoque">
+<label class="tile sheet" for="t-controle-estoque">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Controle de Estoque</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/controle-estoque.pt-BR.svg" alt="Controle de Estoque" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/controle-estoque.html">Controle de Estoque</a></h3>
+      <p class="slice-desc">Entradas, saídas e saldo por produto, com alerta automático quando o estoque fica abaixo do mínimo.</p>
+      <a class="btn" href="/pt/templates/controle-estoque.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/ata-reuniao.html"><img src="/templates/thumbs/ata-reuniao.pt-BR.svg" alt="Ata de Reunião" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/ata-reuniao.html" style="color:inherit">Ata de Reunião</a></h3>
-    <p class="card-desc"></p>
-    <a class="btn" href="/pt/templates/ata-reuniao.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-ata-reuniao">
+<label class="tile doc" for="t-ata-reuniao">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Ata de Reunião</span><span class="tile-ty">Documento</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/ata-reuniao.pt-BR.svg" alt="Ata de Reunião" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/ata-reuniao.html">Ata de Reunião</a></h3>
+      
+      <a class="btn" href="/pt/templates/ata-reuniao.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/relatorio-status.html"><img src="/templates/thumbs/relatorio-status.pt-BR.svg" alt="Relatório de Status Semanal" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/relatorio-status.html" style="color:inherit">Relatório de Status Semanal</a></h3>
-    <p class="card-desc"></p>
-    <a class="btn" href="/pt/templates/relatorio-status.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-relatorio-status">
+<label class="tile doc" for="t-relatorio-status">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Relatório de Status Semanal</span><span class="tile-ty">Documento</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/relatorio-status.pt-BR.svg" alt="Relatório de Status Semanal" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/relatorio-status.html">Relatório de Status Semanal</a></h3>
+      
+      <a class="btn" href="/pt/templates/relatorio-status.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/briefing-projeto.html"><img src="/templates/thumbs/briefing-projeto.pt-BR.svg" alt="Briefing de Projeto" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/briefing-projeto.html" style="color:inherit">Briefing de Projeto</a></h3>
-    <p class="card-desc"></p>
-    <a class="btn" href="/pt/templates/briefing-projeto.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-briefing-projeto">
+<label class="tile doc" for="t-briefing-projeto">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Briefing de Projeto</span><span class="tile-ty">Documento</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/briefing-projeto.pt-BR.svg" alt="Briefing de Projeto" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/briefing-projeto.html">Briefing de Projeto</a></h3>
+      
+      <a class="btn" href="/pt/templates/briefing-projeto.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="produtividade">Produtividade</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/pt/templates/rastreador-habitos.html"><img src="/templates/thumbs/rastreador-habitos.pt-BR.svg" alt="Rastreador de Hábitos" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/rastreador-habitos.html" style="color:inherit">Rastreador de Hábitos</a></h3>
-    <p class="card-desc">Marque os dias em que cumpriu cada hábito e acompanhe a sua meta do mês.</p>
-    <a class="btn" href="/pt/templates/rastreador-habitos.html" draggable="true">Abrir no Workspace</a>
+  <div class="cat-head" id="produtividade"><h2>Produtividade</h2><span class="n">1</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-rastreador-habitos">
+<label class="tile sheet" for="t-rastreador-habitos">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Rastreador de Hábitos</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/rastreador-habitos.pt-BR.svg" alt="Rastreador de Hábitos" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/rastreador-habitos.html">Rastreador de Hábitos</a></h3>
+      <p class="slice-desc">Marque os dias em que cumpriu cada hábito e acompanhe a sua meta do mês.</p>
+      <a class="btn" href="/pt/templates/rastreador-habitos.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="ia">IA</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/pt/templates/biblioteca-prompts.html"><img src="/templates/thumbs/biblioteca-prompts.pt-BR.svg" alt="Biblioteca de Prompts" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/biblioteca-prompts.html" style="color:inherit">Biblioteca de Prompts</a></h3>
-    <p class="card-desc">Guarde os prompts que funcionam, com modelo, categoria e nota — para reusar em vez de reescrever.</p>
-    <a class="btn" href="/pt/templates/biblioteca-prompts.html" draggable="true">Abrir no Workspace</a>
+  <div class="cat-head" id="ia"><h2>IA</h2><span class="n">4</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-biblioteca-prompts">
+<label class="tile sheet" for="t-biblioteca-prompts">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Biblioteca de Prompts</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/biblioteca-prompts.pt-BR.svg" alt="Biblioteca de Prompts" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/biblioteca-prompts.html">Biblioteca de Prompts</a></h3>
+      <p class="slice-desc">Guarde os prompts que funcionam, com modelo, categoria e nota — para reusar em vez de reescrever.</p>
+      <a class="btn" href="/pt/templates/biblioteca-prompts.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/comparacao-modelos.html"><img src="/templates/thumbs/comparacao-modelos.pt-BR.svg" alt="Comparação de Modelos de IA" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/comparacao-modelos.html" style="color:inherit">Comparação de Modelos de IA</a></h3>
-    <p class="card-desc">Compare modelos por critérios com peso próprio e chegue a uma pontuação final defensável.</p>
-    <a class="btn" href="/pt/templates/comparacao-modelos.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-comparacao-modelos">
+<label class="tile sheet" for="t-comparacao-modelos">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Comparação de Modelos de IA</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/comparacao-modelos.pt-BR.svg" alt="Comparação de Modelos de IA" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/comparacao-modelos.html">Comparação de Modelos de IA</a></h3>
+      <p class="slice-desc">Compare modelos por critérios com peso próprio e chegue a uma pontuação final defensável.</p>
+      <a class="btn" href="/pt/templates/comparacao-modelos.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/modelo-prompt.html"><img src="/templates/thumbs/modelo-prompt.pt-BR.svg" alt="Modelo de Prompt" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/modelo-prompt.html" style="color:inherit">Modelo de Prompt</a></h3>
-    <p class="card-desc"></p>
-    <a class="btn" href="/pt/templates/modelo-prompt.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-modelo-prompt">
+<label class="tile doc" for="t-modelo-prompt">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Modelo de Prompt</span><span class="tile-ty">Documento</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/modelo-prompt.pt-BR.svg" alt="Modelo de Prompt" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/modelo-prompt.html">Modelo de Prompt</a></h3>
+      
+      <a class="btn" href="/pt/templates/modelo-prompt.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article>
-<article class="card">
-  <a class="card-thumb" href="/pt/templates/resumo-conversa-ia.html"><img src="/templates/thumbs/resumo-conversa-ia.pt-BR.svg" alt="Resumo de Conversa com IA" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/resumo-conversa-ia.html" style="color:inherit">Resumo de Conversa com IA</a></h3>
-    <p class="card-desc"></p>
-    <a class="btn" href="/pt/templates/resumo-conversa-ia.html" draggable="true">Abrir no Workspace</a>
+</div>
+<input type="checkbox" class="tgl" id="t-resumo-conversa-ia">
+<label class="tile doc" for="t-resumo-conversa-ia">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Resumo de Conversa com IA</span><span class="tile-ty">Documento</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/resumo-conversa-ia.pt-BR.svg" alt="Resumo de Conversa com IA" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Documento</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/resumo-conversa-ia.html">Resumo de Conversa com IA</a></h3>
+      
+      <a class="btn" href="/pt/templates/resumo-conversa-ia.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 
-  <h2 class="cat-title" id="casa">Casa</h2>
-  <div class="grid"><article class="card">
-  <a class="card-thumb" href="/pt/templates/lista-compras.html"><img src="/templates/thumbs/lista-compras.pt-BR.svg" alt="Lista de Compras" loading="lazy" width="400" height="300"></a>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
-    <h3 class="card-title"><a href="/pt/templates/lista-compras.html" style="color:inherit">Lista de Compras</a></h3>
-    <p class="card-desc">Quantidade, preço unitário e total por item — você sabe quanto vai gastar antes de chegar ao caixa.</p>
-    <a class="btn" href="/pt/templates/lista-compras.html" draggable="true">Abrir no Workspace</a>
+  <div class="cat-head" id="casa"><h2>Casa</h2><span class="n">1</span></div>
+  <div class="grid"><input type="checkbox" class="tgl" id="t-lista-compras">
+<label class="tile sheet" for="t-lista-compras">
+  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+  <span class="tile-tx"><span class="tile-tt">Lista de Compras</span><span class="tile-ty">Planilha</span></span>
+  <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
+</label>
+<div class="slice">
+  <div class="slice-in">
+    <div class="slice-thumb"><img src="/templates/thumbs/lista-compras.pt-BR.svg" alt="Lista de Compras" loading="lazy" width="800" height="500"></div>
+    <div>
+      <div class="card-badges"><span class="badge">Planilha</span><span class="badge free">Grátis</span></div>
+      <h3 class="slice-tt"><a href="/pt/templates/lista-compras.html">Lista de Compras</a></h3>
+      <p class="slice-desc">Quantidade, preço unitário e total por item — você sabe quanto vai gastar antes de chegar ao caixa.</p>
+      <a class="btn" href="/pt/templates/lista-compras.html" draggable="true">Abrir no Workspace</a>
       <div class="drag-hint">Arraste este botão para o painel do Workspace</div>
+    </div>
   </div>
-</article></div>
+</div></div>
 </div>
 <footer>NODUS · <a href="https://nodus-ai.app">nodus-ai.app</a></footer>
+<script>
+// Só uma fatia aberta de cada vez. Sem isto a página continua a funcionar —
+// o abrir/fechar é CSS puro; o script apenas fecha as outras.
+document.addEventListener('change', function (ev) {
+  var el = ev.target;
+  if (!el.classList || !el.classList.contains('tgl') || !el.checked) return;
+  document.querySelectorAll('.tgl').forEach(function (o) { if (o !== el) o.checked = false; });
+});
+</script>
 <script src="/lang-switcher.js"></script>
 </body>
 </html>
