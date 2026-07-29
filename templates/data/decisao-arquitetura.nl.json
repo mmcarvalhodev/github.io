@@ -1,0 +1,207 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-decisao-arquitetura",
+  "slug": "decisao-arquitetura",
+  "type": "doc",
+  "lang": "nl",
+  "title": "Architectuurbesluit (ADR)",
+  "snapshot": {
+    "id": "tpl-decisao-arquitetura",
+    "title": "Architectuurbesluit (ADR)",
+    "body": {
+      "dataStream": "Architectuurbesluit (ADR)\rEén besluit per document. De waarde zit niet in de keuze maar in het waarom — dat voorkomt dat je de discussie over een jaar overdoet.\rStatus\rVoorgesteld · Aanvaard · Vervangen. Bij vervanging: door welke.\rContext\rWat ons dwong te beslissen. Echte beperkingen: deadline, team, kosten, het bestaande.\rBesluit\r\rOverwogen alternatieven\rWat er nog is bekeken en waarom het afviel. Verwerpen zonder vastleggen nodigt de vraag uit terug te komen.\rGevolgen\rWat makkelijker wordt en wat moeilijker. Elke beslissing kost iets — benoem dat.\r\n",
+      "textRuns": [
+        {
+          "st": 0,
+          "ed": 25,
+          "ts": {
+            "bl": 1,
+            "fs": 22
+          }
+        },
+        {
+          "st": 26,
+          "ed": 160,
+          "ts": {
+            "it": 1,
+            "cl": {
+              "rgb": "#8A8A8A"
+            }
+          }
+        },
+        {
+          "st": 161,
+          "ed": 167,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 232,
+          "ed": 239,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 326,
+          "ed": 333,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 335,
+          "ed": 358,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 467,
+          "ed": 475,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "startIndex": 25,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 0
+            },
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 160,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 167,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 231,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 239,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 325,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 333,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 334,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 358,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 466,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 475,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 556,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        }
+      ],
+      "sectionBreaks": [
+        {
+          "startIndex": 557
+        }
+      ]
+    },
+    "documentStyle": {
+      "pageSize": {
+        "width": 595,
+        "height": 842
+      },
+      "marginTop": 60,
+      "marginBottom": 60,
+      "marginRight": 50,
+      "marginLeft": 50
+    }
+  }
+}

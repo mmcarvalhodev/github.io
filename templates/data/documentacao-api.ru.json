@@ -1,0 +1,234 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-documentacao-api",
+  "slug": "documentacao-api",
+  "type": "doc",
+  "lang": "ru",
+  "title": "Документация API",
+  "snapshot": {
+    "id": "tpl-documentacao-api",
+    "title": "Документация API",
+    "body": {
+      "dataStream": "Документация API\rПишите для того, кто пришёл без контекста и должен за пять минут выполнить первый запрос.\rОбзор\r\rАутентификация\r\rЭндпоинты\rМетод, путь, параметры и что возвращается. Один реальный пример лучше трёх абзацев.\rОшибки\rКоды и что каждый значит на практике — включая, что делать дальше.\rПримеры\r\rЛимиты и квоты\r\r\n",
+      "textRuns": [
+        {
+          "st": 0,
+          "ed": 16,
+          "ts": {
+            "bl": 1,
+            "fs": 22
+          }
+        },
+        {
+          "st": 17,
+          "ed": 106,
+          "ts": {
+            "it": 1,
+            "cl": {
+              "rgb": "#8A8A8A"
+            }
+          }
+        },
+        {
+          "st": 107,
+          "ed": 112,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 114,
+          "ed": 128,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 130,
+          "ed": 139,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 224,
+          "ed": 230,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 298,
+          "ed": 305,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 307,
+          "ed": 321,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "startIndex": 16,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 0
+            },
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 106,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 112,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 113,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 128,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 129,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 139,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 223,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 230,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 297,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 305,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 306,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 321,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 322,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        }
+      ],
+      "sectionBreaks": [
+        {
+          "startIndex": 323
+        }
+      ]
+    },
+    "documentStyle": {
+      "pageSize": {
+        "width": 595,
+        "height": 842
+      },
+      "marginTop": 60,
+      "marginBottom": 60,
+      "marginRight": 50,
+      "marginLeft": 50
+    }
+  }
+}

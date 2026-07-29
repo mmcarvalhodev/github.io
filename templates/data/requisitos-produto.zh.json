@@ -1,0 +1,234 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-requisitos-produto",
+  "slug": "requisitos-produto",
+  "type": "doc",
+  "lang": "zh",
+  "title": "产品需求文档 (PRD)",
+  "snapshot": {
+    "id": "tpl-requisitos-produto",
+    "title": "产品需求文档 (PRD)",
+    "body": {
+      "dataStream": "产品需求文档 (PRD)\r描述问题和期望结果，而不是技术方案。怎么做，由实现的人决定。\r问题\r今天什么在痛、痛的是谁、多久痛一次。没有这些，其余都只是意见。\r受众\r\r目标\r\r需求\r要让问题消失，必须存在什么。把\"必须\"和\"最好有\"分开。\r范围之外\r\r成功指标\r我们怎么知道问题解决了——最好是可衡量的。\r\n",
+      "textRuns": [
+        {
+          "st": 0,
+          "ed": 12,
+          "ts": {
+            "bl": 1,
+            "fs": 22
+          }
+        },
+        {
+          "st": 13,
+          "ed": 43,
+          "ts": {
+            "it": 1,
+            "cl": {
+              "rgb": "#8A8A8A"
+            }
+          }
+        },
+        {
+          "st": 44,
+          "ed": 46,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 79,
+          "ed": 81,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 83,
+          "ed": 85,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 87,
+          "ed": 89,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 119,
+          "ed": 123,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 125,
+          "ed": 129,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "startIndex": 12,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 0
+            },
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 43,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 46,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 78,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 81,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 82,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 85,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 86,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 89,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 118,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 123,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 124,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 129,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 151,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        }
+      ],
+      "sectionBreaks": [
+        {
+          "startIndex": 152
+        }
+      ]
+    },
+    "documentStyle": {
+      "pageSize": {
+        "width": 595,
+        "height": 842
+      },
+      "marginTop": 60,
+      "marginBottom": 60,
+      "marginRight": 50,
+      "marginLeft": 50
+    }
+  }
+}

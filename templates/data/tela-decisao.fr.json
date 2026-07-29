@@ -1,0 +1,234 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-tela-decisao",
+  "slug": "tela-decisao",
+  "type": "doc",
+  "lang": "fr",
+  "title": "Toile de Décision",
+  "snapshot": {
+    "id": "tpl-tela-decisao",
+    "title": "Toile de Décision",
+    "body": {
+      "dataStream": "Toile de Décision\rPour les décisions qu’il faudra justifier plus tard — y compris à soi-même.\rDécision à prendre\r\rPour\r\rContre\r\rRisques\rCe qui peut mal tourner et ce que cela coûterait. Un risque sans coût estimé n’aide pas à décider.\rImpact\rSur qui et sur quoi. Une décision réversible mérite moins d’analyse qu’une décision définitive.\rDécision finale\r\r\n",
+      "textRuns": [
+        {
+          "st": 0,
+          "ed": 17,
+          "ts": {
+            "bl": 1,
+            "fs": 22
+          }
+        },
+        {
+          "st": 18,
+          "ed": 93,
+          "ts": {
+            "it": 1,
+            "cl": {
+              "rgb": "#8A8A8A"
+            }
+          }
+        },
+        {
+          "st": 94,
+          "ed": 112,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 114,
+          "ed": 118,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 120,
+          "ed": 126,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 128,
+          "ed": 135,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 235,
+          "ed": 241,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 338,
+          "ed": 353,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "startIndex": 17,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 0
+            },
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 93,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 112,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 113,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 118,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 119,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 126,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 127,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 135,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 234,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 241,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 337,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 353,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 354,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        }
+      ],
+      "sectionBreaks": [
+        {
+          "startIndex": 355
+        }
+      ]
+    },
+    "documentStyle": {
+      "pageSize": {
+        "width": 595,
+        "height": 842
+      },
+      "marginTop": 60,
+      "marginBottom": 60,
+      "marginRight": 50,
+      "marginLeft": 50
+    }
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-documentacao-api",
+  "slug": "documentacao-api",
+  "type": "doc",
+  "lang": "hi",
+  "title": "API दस्तावेज़",
+  "snapshot": {
+    "id": "tpl-documentacao-api",
+    "title": "API दस्तावेज़",
+    "body": {
+      "dataStream": "API दस्तावेज़\rउस व्यक्ति के लिए लिखें जो बिना संदर्भ आता है और पाँच मिनट में पहली कॉल चलाना चाहता है।\rअवलोकन\r\rप्रमाणीकरण\r\rएंडपॉइंट\rविधि, पथ, पैरामीटर और क्या लौटता है। एक वास्तविक उदाहरण तीन अनुच्छेदों से बेहतर है।\rत्रुटियाँ\rकोड और व्यवहार में हर एक का अर्थ — साथ ही आगे क्या करना है।\rउदाहरण\r\rसीमाएँ और कोटा\r\r\n",
+      "textRuns": [
+        {
+          "st": 0,
+          "ed": 13,
+          "ts": {
+            "bl": 1,
+            "fs": 22
+          }
+        },
+        {
+          "st": 14,
+          "ed": 101,
+          "ts": {
+            "it": 1,
+            "cl": {
+              "rgb": "#8A8A8A"
+            }
+          }
+        },
+        {
+          "st": 102,
+          "ed": 108,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 110,
+          "ed": 120,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 122,
+          "ed": 130,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 215,
+          "ed": 224,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 285,
+          "ed": 291,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 293,
+          "ed": 307,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "startIndex": 13,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 0
+            },
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 101,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 108,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 109,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 120,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 121,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 130,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 214,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 224,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 284,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 291,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 292,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 307,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 308,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        }
+      ],
+      "sectionBreaks": [
+        {
+          "startIndex": 309
+        }
+      ]
+    },
+    "documentStyle": {
+      "pageSize": {
+        "width": 595,
+        "height": 842
+      },
+      "marginTop": 60,
+      "marginBottom": 60,
+      "marginRight": 50,
+      "marginLeft": 50
+    }
+  }
+}

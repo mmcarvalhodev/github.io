@@ -1,0 +1,207 @@
+{
+  "nodusTemplate": 1,
+  "univerSchema": "0.25",
+  "id": "tpl-decisao-arquitetura",
+  "slug": "decisao-arquitetura",
+  "type": "doc",
+  "lang": "hi",
+  "title": "आर्किटेक्चर निर्णय रिकॉर्ड",
+  "snapshot": {
+    "id": "tpl-decisao-arquitetura",
+    "title": "आर्किटेक्चर निर्णय रिकॉर्ड",
+    "body": {
+      "dataStream": "आर्किटेक्चर निर्णय रिकॉर्ड\rहर दस्तावेज़ में एक निर्णय। मूल्य चुनाव में नहीं, कारण में है — यही एक साल बाद वही चर्चा दोहराने से बचाता है।\rस्थिति\rप्रस्तावित · स्वीकृत · प्रतिस्थापित। यदि प्रतिस्थापित, तो किससे — बताएँ।\rसंदर्भ\rकिसने निर्णय के लिए मजबूर किया। वास्तविक बाधाएँ: समय-सीमा, टीम, लागत, जो पहले से है।\rनिर्णय\r\rविचारित विकल्प\rऔर क्या आँका गया और क्यों नहीं चुना गया। बिना दर्ज किए छोड़ना, प्रश्न को लौटने का न्योता है।\rपरिणाम\rक्या आसान होगा और क्या कठिन। हर निर्णय की कीमत होती है — अपनी कीमत लिखें।\r\n",
+      "textRuns": [
+        {
+          "st": 0,
+          "ed": 26,
+          "ts": {
+            "bl": 1,
+            "fs": 22
+          }
+        },
+        {
+          "st": 27,
+          "ed": 136,
+          "ts": {
+            "it": 1,
+            "cl": {
+              "rgb": "#8A8A8A"
+            }
+          }
+        },
+        {
+          "st": 137,
+          "ed": 143,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 217,
+          "ed": 223,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 309,
+          "ed": 315,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 317,
+          "ed": 331,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        },
+        {
+          "st": 425,
+          "ed": 431,
+          "ts": {
+            "bl": 1,
+            "fs": 15
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "startIndex": 26,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 0
+            },
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 136,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 14
+            }
+          }
+        },
+        {
+          "startIndex": 143,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 216,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 223,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 308,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 315,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 316,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 331,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 424,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        },
+        {
+          "startIndex": 431,
+          "paragraphStyle": {
+            "spaceAbove": {
+              "v": 16
+            },
+            "spaceBelow": {
+              "v": 6
+            }
+          }
+        },
+        {
+          "startIndex": 505,
+          "paragraphStyle": {
+            "spaceBelow": {
+              "v": 8
+            }
+          }
+        }
+      ],
+      "sectionBreaks": [
+        {
+          "startIndex": 506
+        }
+      ]
+    },
+    "documentStyle": {
+      "pageSize": {
+        "width": 595,
+        "height": 842
+      },
+      "marginTop": 60,
+      "marginBottom": 60,
+      "marginRight": 50,
+      "marginLeft": 50
+    }
+  }
+}

@@ -25,10 +25,15 @@ const catalog = JSON.parse(fs.readFileSync('templates/index.json', 'utf8'));
 const slugs = catalog.templates.map(t => t.slug);
 
 let xml = fs.readFileSync('sitemap.xml', 'utf8');
-if (xml.includes('/templates.html')) {
-  console.log('sitemap já tem entradas de /templates — nada a fazer.');
-  process.exit(0);
-}
+// Re-executável: em vez de desistir quando já há entradas, retira as antigas e
+// volta a escrevê-las a partir do catálogo. Sair cedo deixava de fora todos os
+// modelos acrescentados depois da primeira corrida — foi o que aconteceu ao
+// passar de 18 para 33.
+const before = (xml.match(/<loc>[^<]*\/templates/g) || []).length;
+xml = xml.replace(/[ \t]*<url>[\s\S]*?<\/url>\n?/g, block =>
+  /<loc>[^<]*\/templates(?:\.html|\/)/.test(block) ? '' : block);
+xml = xml.replace(/\n{3,}/g, '\n\n');
+if (before) console.log(`removidas ${before} entradas antigas de /templates`);
 
 // hreflang SEMPRE a partir do caminho BASE (sem prefixo), nunca do já
 // prefixado — o erro inverso gerou centenas de 404 no Search Console.

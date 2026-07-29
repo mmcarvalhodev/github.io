@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">소프트웨어 아키텍처</text><text class="p" x="40" y="132">새로 온 사람이 코드를 만지기 전에 읽는 지도. 완전하지만 읽을 수 없는 다이어그램보다, 잘 설명된 상자 몇 개가 낫습니다.</text><text class="h2" x="40" y="156">개요</text><rect x="40" y="172" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="208">구성 요소</text><text class="p" x="40" y="234">각 부분이 무엇을 하는지, 그리고 무엇보다 무엇을 하지 않는지.</text><text class="h2" x="40" y="258">데이터 흐름</text><text class="p" x="40" y="284">정보가 어디로 들어오고, 어디에 저장되며, 어디로 나가는지.</text><text class="h2" x="40" y="308">기술적 결정</text><text class="p" x="40" y="334">나머지 전부를 좌우하는 선택들. 각각은 별도의 결정 기록을 가질 만합니다.</text><text class="h2" x="40" y="358">위험</text><rect x="40" y="374" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="410">아직 정해지지 않은 것</text><rect x="40" y="426" width="560" height="1" fill="#E8E8E8"/>
+</svg>

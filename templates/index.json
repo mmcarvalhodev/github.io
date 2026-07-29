@@ -1909,6 +1909,1596 @@
           "data": "/templates/data/briefing-projeto.tr.json"
         }
       }
+    },
+    {
+      "id": "tpl-decisao-arquitetura",
+      "slug": "decisao-arquitetura",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Registro de Decisão de Arquitetura",
+          "description": "",
+          "thumb": "/templates/thumbs/decisao-arquitetura.pt-BR.svg",
+          "data": "/templates/data/decisao-arquitetura.pt-BR.json"
+        },
+        "en": {
+          "title": "Architecture Decision Record",
+          "description": "Record the technical decision and the reasoning behind it, so the team does not redo the same debate a year from now.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.en.svg",
+          "data": "/templates/data/decisao-arquitetura.en.json"
+        },
+        "es": {
+          "title": "Registro de Decisión de Arquitectura",
+          "description": "Registra la decisión técnica y su porqué, para que el equipo no repita la misma discusión dentro de un año.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.es.svg",
+          "data": "/templates/data/decisao-arquitetura.es.json"
+        },
+        "fr": {
+          "title": "Registre de Décision d’Architecture",
+          "description": "Consignez la décision technique et sa raison, pour que l’équipe ne refasse pas le même débat dans un an.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.fr.svg",
+          "data": "/templates/data/decisao-arquitetura.fr.json"
+        },
+        "de": {
+          "title": "Architekturentscheidung (ADR)",
+          "description": "Halten Sie die technische Entscheidung und ihre Begründung fest, damit das Team die Debatte nicht in einem Jahr wiederholt.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.de.svg",
+          "data": "/templates/data/decisao-arquitetura.de.json"
+        },
+        "it": {
+          "title": "Registro di Decisione Architetturale",
+          "description": "Registra la decisione tecnica e il perché, così il team non rifà la stessa discussione fra un anno.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.it.svg",
+          "data": "/templates/data/decisao-arquitetura.it.json"
+        },
+        "nl": {
+          "title": "Architectuurbesluit (ADR)",
+          "description": "Leg de technische beslissing en het waarom vast, zodat het team over een jaar niet dezelfde discussie voert.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.nl.svg",
+          "data": "/templates/data/decisao-arquitetura.nl.json"
+        },
+        "pl": {
+          "title": "Zapis decyzji architektonicznej",
+          "description": "Zapisz decyzję techniczną i jej uzasadnienie, by zespół nie powtarzał dyskusji za rok.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.pl.svg",
+          "data": "/templates/data/decisao-arquitetura.pl.json"
+        },
+        "id": {
+          "title": "Catatan Keputusan Arsitektur",
+          "description": "Catat keputusan teknis dan alasannya, agar tim tidak mengulang perdebatan yang sama setahun lagi.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.id.svg",
+          "data": "/templates/data/decisao-arquitetura.id.json"
+        },
+        "vi": {
+          "title": "Bản ghi Quyết định Kiến trúc",
+          "description": "Ghi lại quyết định kỹ thuật và lý do, để một năm sau đội ngũ không bàn lại từ đầu.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.vi.svg",
+          "data": "/templates/data/decisao-arquitetura.vi.json"
+        },
+        "ja": {
+          "title": "アーキテクチャ決定記録",
+          "description": "技術的な決定とその理由を残し、1年後に同じ議論を繰り返さないようにします。",
+          "thumb": "/templates/thumbs/decisao-arquitetura.ja.svg",
+          "data": "/templates/data/decisao-arquitetura.ja.json"
+        },
+        "ko": {
+          "title": "아키텍처 결정 기록",
+          "description": "기술적 결정을 이유와 함께 기록해, 1년 뒤 같은 논의를 반복하지 않게 합니다.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.ko.svg",
+          "data": "/templates/data/decisao-arquitetura.ko.json"
+        },
+        "zh": {
+          "title": "架构决策记录",
+          "description": "记录技术决策及其理由，让团队一年后不必重复同样的讨论。",
+          "thumb": "/templates/thumbs/decisao-arquitetura.zh.svg",
+          "data": "/templates/data/decisao-arquitetura.zh.json"
+        },
+        "ru": {
+          "title": "Запись архитектурного решения",
+          "description": "Зафиксируйте техническое решение и его причину, чтобы команда не спорила об этом через год.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.ru.svg",
+          "data": "/templates/data/decisao-arquitetura.ru.json"
+        },
+        "hi": {
+          "title": "आर्किटेक्चर निर्णय रिकॉर्ड",
+          "description": "तकनीकी निर्णय और उसका कारण दर्ज करें, ताकि टीम एक साल बाद वही बहस न दोहराए।",
+          "thumb": "/templates/thumbs/decisao-arquitetura.hi.svg",
+          "data": "/templates/data/decisao-arquitetura.hi.json"
+        },
+        "tr": {
+          "title": "Mimari Karar Kaydı",
+          "description": "Teknik kararı ve gerekçesini kaydedin; ekip bir yıl sonra aynı tartışmayı tekrarlamasın.",
+          "thumb": "/templates/thumbs/decisao-arquitetura.tr.svg",
+          "data": "/templates/data/decisao-arquitetura.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-requisitos-produto",
+      "slug": "requisitos-produto",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Documento de Requisitos (PRD)",
+          "description": "",
+          "thumb": "/templates/thumbs/requisitos-produto.pt-BR.svg",
+          "data": "/templates/data/requisitos-produto.pt-BR.json"
+        },
+        "en": {
+          "title": "Product Requirements (PRD)",
+          "description": "Problem, audience and expected outcome — without prescribing the technical solution.",
+          "thumb": "/templates/thumbs/requisitos-produto.en.svg",
+          "data": "/templates/data/requisitos-produto.en.json"
+        },
+        "es": {
+          "title": "Documento de Requisitos (PRD)",
+          "description": "Problema, público y resultado esperado, sin prescribir la solución técnica.",
+          "thumb": "/templates/thumbs/requisitos-produto.es.svg",
+          "data": "/templates/data/requisitos-produto.es.json"
+        },
+        "fr": {
+          "title": "Document d’Exigences (PRD)",
+          "description": "Problème, public et résultat attendu — sans prescrire la solution technique.",
+          "thumb": "/templates/thumbs/requisitos-produto.fr.svg",
+          "data": "/templates/data/requisitos-produto.fr.json"
+        },
+        "de": {
+          "title": "Produktanforderungen (PRD)",
+          "description": "Problem, Zielgruppe und erwartetes Ergebnis — ohne die technische Lösung vorzuschreiben.",
+          "thumb": "/templates/thumbs/requisitos-produto.de.svg",
+          "data": "/templates/data/requisitos-produto.de.json"
+        },
+        "it": {
+          "title": "Documento dei Requisiti (PRD)",
+          "description": "Problema, pubblico e risultato atteso, senza prescrivere la soluzione tecnica.",
+          "thumb": "/templates/thumbs/requisitos-produto.it.svg",
+          "data": "/templates/data/requisitos-produto.it.json"
+        },
+        "nl": {
+          "title": "Producteisen (PRD)",
+          "description": "Probleem, doelgroep en verwacht resultaat — zonder de technische oplossing voor te schrijven.",
+          "thumb": "/templates/thumbs/requisitos-produto.nl.svg",
+          "data": "/templates/data/requisitos-produto.nl.json"
+        },
+        "pl": {
+          "title": "Dokument wymagań (PRD)",
+          "description": "Problem, odbiorcy i oczekiwany rezultat — bez narzucania rozwiązania technicznego.",
+          "thumb": "/templates/thumbs/requisitos-produto.pl.svg",
+          "data": "/templates/data/requisitos-produto.pl.json"
+        },
+        "id": {
+          "title": "Dokumen Kebutuhan Produk (PRD)",
+          "description": "Masalah, audiens, dan hasil yang diharapkan — tanpa menentukan solusi teknisnya.",
+          "thumb": "/templates/thumbs/requisitos-produto.id.svg",
+          "data": "/templates/data/requisitos-produto.id.json"
+        },
+        "vi": {
+          "title": "Tài liệu Yêu cầu Sản phẩm (PRD)",
+          "description": "Vấn đề, đối tượng và kết quả mong đợi — không áp đặt giải pháp kỹ thuật.",
+          "thumb": "/templates/thumbs/requisitos-produto.vi.svg",
+          "data": "/templates/data/requisitos-produto.vi.json"
+        },
+        "ja": {
+          "title": "プロダクト要求仕様 (PRD)",
+          "description": "問題・対象・期待する成果を、技術的解決策を指定せずに書きます。",
+          "thumb": "/templates/thumbs/requisitos-produto.ja.svg",
+          "data": "/templates/data/requisitos-produto.ja.json"
+        },
+        "ko": {
+          "title": "제품 요구사항 (PRD)",
+          "description": "문제, 대상, 기대 결과 — 기술적 해법을 규정하지 않고.",
+          "thumb": "/templates/thumbs/requisitos-produto.ko.svg",
+          "data": "/templates/data/requisitos-produto.ko.json"
+        },
+        "zh": {
+          "title": "产品需求文档 (PRD)",
+          "description": "问题、受众与期望结果——不规定技术方案。",
+          "thumb": "/templates/thumbs/requisitos-produto.zh.svg",
+          "data": "/templates/data/requisitos-produto.zh.json"
+        },
+        "ru": {
+          "title": "Требования к продукту (PRD)",
+          "description": "Проблема, аудитория и ожидаемый результат — без предписания технического решения.",
+          "thumb": "/templates/thumbs/requisitos-produto.ru.svg",
+          "data": "/templates/data/requisitos-produto.ru.json"
+        },
+        "hi": {
+          "title": "उत्पाद आवश्यकताएँ (PRD)",
+          "description": "समस्या, दर्शक और अपेक्षित परिणाम — तकनीकी समाधान तय किए बिना।",
+          "thumb": "/templates/thumbs/requisitos-produto.hi.svg",
+          "data": "/templates/data/requisitos-produto.hi.json"
+        },
+        "tr": {
+          "title": "Ürün Gereksinimleri (PRD)",
+          "description": "Sorun, hedef kitle ve beklenen sonuç — teknik çözümü dayatmadan.",
+          "thumb": "/templates/thumbs/requisitos-produto.tr.svg",
+          "data": "/templates/data/requisitos-produto.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-especificacao-funcionalidade",
+      "slug": "especificacao-funcionalidade",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Especificação de Funcionalidade",
+          "description": "",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.pt-BR.svg",
+          "data": "/templates/data/especificacao-funcionalidade.pt-BR.json"
+        },
+        "en": {
+          "title": "Feature Specification",
+          "description": "Details the behaviour so precisely that two people would build it the same way without talking.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.en.svg",
+          "data": "/templates/data/especificacao-funcionalidade.en.json"
+        },
+        "es": {
+          "title": "Especificación de Funcionalidad",
+          "description": "Detalla el comportamiento hasta que dos personas lo implementen igual sin hablar.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.es.svg",
+          "data": "/templates/data/especificacao-funcionalidade.es.json"
+        },
+        "fr": {
+          "title": "Spécification de Fonctionnalité",
+          "description": "Détaille le comportement au point que deux personnes l’implémenteraient à l’identique sans se parler.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.fr.svg",
+          "data": "/templates/data/especificacao-funcionalidade.fr.json"
+        },
+        "de": {
+          "title": "Feature-Spezifikation",
+          "description": "Beschreibt das Verhalten so genau, dass zwei Personen es ohne Absprache gleich umsetzen.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.de.svg",
+          "data": "/templates/data/especificacao-funcionalidade.de.json"
+        },
+        "it": {
+          "title": "Specifica di Funzionalità",
+          "description": "Dettaglia il comportamento al punto che due persone lo implementerebbero uguale senza parlarsi.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.it.svg",
+          "data": "/templates/data/especificacao-funcionalidade.it.json"
+        },
+        "nl": {
+          "title": "Functiespecificatie",
+          "description": "Beschrijft het gedrag zo precies dat twee mensen het zonder overleg hetzelfde bouwen.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.nl.svg",
+          "data": "/templates/data/especificacao-funcionalidade.nl.json"
+        },
+        "pl": {
+          "title": "Specyfikacja funkcji",
+          "description": "Opisuje zachowanie tak dokładnie, że dwie osoby zbudują je tak samo bez rozmowy.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.pl.svg",
+          "data": "/templates/data/especificacao-funcionalidade.pl.json"
+        },
+        "id": {
+          "title": "Spesifikasi Fitur",
+          "description": "Merinci perilaku sampai dua orang membangunnya sama tanpa berdiskusi.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.id.svg",
+          "data": "/templates/data/especificacao-funcionalidade.id.json"
+        },
+        "vi": {
+          "title": "Đặc tả Tính năng",
+          "description": "Mô tả hành vi chi tiết đến mức hai người làm giống nhau mà không cần trao đổi.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.vi.svg",
+          "data": "/templates/data/especificacao-funcionalidade.vi.json"
+        },
+        "ja": {
+          "title": "機能仕様書",
+          "description": "二人が相談せずに同じ実装になるまで、動作を詳細に書きます。",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.ja.svg",
+          "data": "/templates/data/especificacao-funcionalidade.ja.json"
+        },
+        "ko": {
+          "title": "기능 명세",
+          "description": "두 사람이 대화 없이 똑같이 구현할 만큼 동작을 상세히 적습니다.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.ko.svg",
+          "data": "/templates/data/especificacao-funcionalidade.ko.json"
+        },
+        "zh": {
+          "title": "功能规格说明",
+          "description": "把行为写到两个人不用商量也能实现得一样。",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.zh.svg",
+          "data": "/templates/data/especificacao-funcionalidade.zh.json"
+        },
+        "ru": {
+          "title": "Спецификация функции",
+          "description": "Описывает поведение так, что двое реализуют одинаково, не сговариваясь.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.ru.svg",
+          "data": "/templates/data/especificacao-funcionalidade.ru.json"
+        },
+        "hi": {
+          "title": "फ़ीचर विनिर्देश",
+          "description": "व्यवहार को इतना विस्तार से बताता है कि दो लोग बिना बात किए एक जैसा बनाएँ।",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.hi.svg",
+          "data": "/templates/data/especificacao-funcionalidade.hi.json"
+        },
+        "tr": {
+          "title": "Özellik Şartnamesi",
+          "description": "Davranışı, iki kişinin konuşmadan aynı yapacağı kadar ayrıntılı anlatır.",
+          "thumb": "/templates/thumbs/especificacao-funcionalidade.tr.svg",
+          "data": "/templates/data/especificacao-funcionalidade.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-documentacao-api",
+      "slug": "documentacao-api",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Documentação de API",
+          "description": "",
+          "thumb": "/templates/thumbs/documentacao-api.pt-BR.svg",
+          "data": "/templates/data/documentacao-api.pt-BR.json"
+        },
+        "en": {
+          "title": "API Documentation",
+          "description": "Endpoints, errors and examples so someone can make their first call in five minutes.",
+          "thumb": "/templates/thumbs/documentacao-api.en.svg",
+          "data": "/templates/data/documentacao-api.en.json"
+        },
+        "es": {
+          "title": "Documentación de API",
+          "description": "Endpoints, errores y ejemplos para que alguien haga su primera llamada en cinco minutos.",
+          "thumb": "/templates/thumbs/documentacao-api.es.svg",
+          "data": "/templates/data/documentacao-api.es.json"
+        },
+        "fr": {
+          "title": "Documentation d’API",
+          "description": "Points de terminaison, erreurs et exemples pour réussir le premier appel en cinq minutes.",
+          "thumb": "/templates/thumbs/documentacao-api.fr.svg",
+          "data": "/templates/data/documentacao-api.fr.json"
+        },
+        "de": {
+          "title": "API-Dokumentation",
+          "description": "Endpunkte, Fehler und Beispiele, damit der erste Aufruf in fünf Minuten gelingt.",
+          "thumb": "/templates/thumbs/documentacao-api.de.svg",
+          "data": "/templates/data/documentacao-api.de.json"
+        },
+        "it": {
+          "title": "Documentazione API",
+          "description": "Endpoint, errori ed esempi per fare la prima chiamata in cinque minuti.",
+          "thumb": "/templates/thumbs/documentacao-api.it.svg",
+          "data": "/templates/data/documentacao-api.it.json"
+        },
+        "nl": {
+          "title": "API-documentatie",
+          "description": "Endpoints, fouten en voorbeelden zodat iemand binnen vijf minuten zijn eerste aanroep doet.",
+          "thumb": "/templates/thumbs/documentacao-api.nl.svg",
+          "data": "/templates/data/documentacao-api.nl.json"
+        },
+        "pl": {
+          "title": "Dokumentacja API",
+          "description": "Punkty końcowe, błędy i przykłady, by pierwsze wywołanie udało się w pięć minut.",
+          "thumb": "/templates/thumbs/documentacao-api.pl.svg",
+          "data": "/templates/data/documentacao-api.pl.json"
+        },
+        "id": {
+          "title": "Dokumentasi API",
+          "description": "Endpoint, kesalahan, dan contoh agar panggilan pertama berhasil dalam lima menit.",
+          "thumb": "/templates/thumbs/documentacao-api.id.svg",
+          "data": "/templates/data/documentacao-api.id.json"
+        },
+        "vi": {
+          "title": "Tài liệu API",
+          "description": "Điểm cuối, lỗi và ví dụ để ai đó gọi thành công lần đầu trong năm phút.",
+          "thumb": "/templates/thumbs/documentacao-api.vi.svg",
+          "data": "/templates/data/documentacao-api.vi.json"
+        },
+        "ja": {
+          "title": "APIドキュメント",
+          "description": "エンドポイント・エラー・例。5分で最初の呼び出しができるように。",
+          "thumb": "/templates/thumbs/documentacao-api.ja.svg",
+          "data": "/templates/data/documentacao-api.ja.json"
+        },
+        "ko": {
+          "title": "API 문서",
+          "description": "엔드포인트, 오류, 예시 — 5분 안에 첫 호출을 성공하도록.",
+          "thumb": "/templates/thumbs/documentacao-api.ko.svg",
+          "data": "/templates/data/documentacao-api.ko.json"
+        },
+        "zh": {
+          "title": "API 文档",
+          "description": "端点、错误与示例，让人在五分钟内跑通第一个调用。",
+          "thumb": "/templates/thumbs/documentacao-api.zh.svg",
+          "data": "/templates/data/documentacao-api.zh.json"
+        },
+        "ru": {
+          "title": "Документация API",
+          "description": "Эндпоинты, ошибки и примеры, чтобы первый запрос удался за пять минут.",
+          "thumb": "/templates/thumbs/documentacao-api.ru.svg",
+          "data": "/templates/data/documentacao-api.ru.json"
+        },
+        "hi": {
+          "title": "API दस्तावेज़",
+          "description": "एंडपॉइंट, त्रुटियाँ और उदाहरण, ताकि पहली कॉल पाँच मिनट में चले।",
+          "thumb": "/templates/thumbs/documentacao-api.hi.svg",
+          "data": "/templates/data/documentacao-api.hi.json"
+        },
+        "tr": {
+          "title": "API Dokümantasyonu",
+          "description": "Uç noktalar, hatalar ve örnekler; ilk çağrı beş dakikada çalışsın diye.",
+          "thumb": "/templates/thumbs/documentacao-api.tr.svg",
+          "data": "/templates/data/documentacao-api.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-arquitetura-software",
+      "slug": "arquitetura-software",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Arquitetura de Software",
+          "description": "",
+          "thumb": "/templates/thumbs/arquitetura-software.pt-BR.svg",
+          "data": "/templates/data/arquitetura-software.pt-BR.json"
+        },
+        "en": {
+          "title": "Software Architecture",
+          "description": "The map a newcomer reads before touching the code: components, data flow and decisions.",
+          "thumb": "/templates/thumbs/arquitetura-software.en.svg",
+          "data": "/templates/data/arquitetura-software.en.json"
+        },
+        "es": {
+          "title": "Arquitectura de Software",
+          "description": "El mapa que alguien nuevo lee antes de tocar el código: componentes, flujo de datos y decisiones.",
+          "thumb": "/templates/thumbs/arquitetura-software.es.svg",
+          "data": "/templates/data/arquitetura-software.es.json"
+        },
+        "fr": {
+          "title": "Architecture Logicielle",
+          "description": "La carte qu’un nouveau lit avant de toucher au code : composants, flux de données et décisions.",
+          "thumb": "/templates/thumbs/arquitetura-software.fr.svg",
+          "data": "/templates/data/arquitetura-software.fr.json"
+        },
+        "de": {
+          "title": "Softwarearchitektur",
+          "description": "Die Karte für Neue vor dem ersten Code: Komponenten, Datenfluss und Entscheidungen.",
+          "thumb": "/templates/thumbs/arquitetura-software.de.svg",
+          "data": "/templates/data/arquitetura-software.de.json"
+        },
+        "it": {
+          "title": "Architettura Software",
+          "description": "La mappa che chi arriva legge prima del codice: componenti, flusso dei dati e decisioni.",
+          "thumb": "/templates/thumbs/arquitetura-software.it.svg",
+          "data": "/templates/data/arquitetura-software.it.json"
+        },
+        "nl": {
+          "title": "Softwarearchitectuur",
+          "description": "De kaart die een nieuwkomer leest vóór de code: componenten, gegevensstroom en besluiten.",
+          "thumb": "/templates/thumbs/arquitetura-software.nl.svg",
+          "data": "/templates/data/arquitetura-software.nl.json"
+        },
+        "pl": {
+          "title": "Architektura oprogramowania",
+          "description": "Mapa dla nowej osoby przed kodem: komponenty, przepływ danych i decyzje.",
+          "thumb": "/templates/thumbs/arquitetura-software.pl.svg",
+          "data": "/templates/data/arquitetura-software.pl.json"
+        },
+        "id": {
+          "title": "Arsitektur Perangkat Lunak",
+          "description": "Peta yang dibaca pendatang baru sebelum kode: komponen, alur data, dan keputusan.",
+          "thumb": "/templates/thumbs/arquitetura-software.id.svg",
+          "data": "/templates/data/arquitetura-software.id.json"
+        },
+        "vi": {
+          "title": "Kiến trúc Phần mềm",
+          "description": "Bản đồ người mới đọc trước khi vào mã: thành phần, luồng dữ liệu và quyết định.",
+          "thumb": "/templates/thumbs/arquitetura-software.vi.svg",
+          "data": "/templates/data/arquitetura-software.vi.json"
+        },
+        "ja": {
+          "title": "ソフトウェアアーキテクチャ",
+          "description": "新しい人がコードの前に読む地図：コンポーネント、データの流れ、決定。",
+          "thumb": "/templates/thumbs/arquitetura-software.ja.svg",
+          "data": "/templates/data/arquitetura-software.ja.json"
+        },
+        "ko": {
+          "title": "소프트웨어 아키텍처",
+          "description": "새로 온 사람이 코드보다 먼저 읽는 지도: 구성 요소, 데이터 흐름, 결정.",
+          "thumb": "/templates/thumbs/arquitetura-software.ko.svg",
+          "data": "/templates/data/arquitetura-software.ko.json"
+        },
+        "zh": {
+          "title": "软件架构",
+          "description": "新人在看代码前读的地图：组件、数据流与决策。",
+          "thumb": "/templates/thumbs/arquitetura-software.zh.svg",
+          "data": "/templates/data/arquitetura-software.zh.json"
+        },
+        "ru": {
+          "title": "Архитектура ПО",
+          "description": "Карта для новичка до кода: компоненты, поток данных и решения.",
+          "thumb": "/templates/thumbs/arquitetura-software.ru.svg",
+          "data": "/templates/data/arquitetura-software.ru.json"
+        },
+        "hi": {
+          "title": "सॉफ़्टवेयर आर्किटेक्चर",
+          "description": "नया व्यक्ति कोड से पहले जो नक्शा पढ़े: घटक, डेटा प्रवाह और निर्णय।",
+          "thumb": "/templates/thumbs/arquitetura-software.hi.svg",
+          "data": "/templates/data/arquitetura-software.hi.json"
+        },
+        "tr": {
+          "title": "Yazılım Mimarisi",
+          "description": "Yeni gelenin koddan önce okuduğu harita: bileşenler, veri akışı ve kararlar.",
+          "thumb": "/templates/thumbs/arquitetura-software.tr.svg",
+          "data": "/templates/data/arquitetura-software.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-relatorio-bug",
+      "slug": "relatorio-bug",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Relatório de Bug",
+          "description": "",
+          "thumb": "/templates/thumbs/relatorio-bug.pt-BR.svg",
+          "data": "/templates/data/relatorio-bug.pt-BR.json"
+        },
+        "en": {
+          "title": "Bug Report",
+          "description": "Reproduction steps, environment and severity — because a bug that does not reproduce does not get fixed.",
+          "thumb": "/templates/thumbs/relatorio-bug.en.svg",
+          "data": "/templates/data/relatorio-bug.en.json"
+        },
+        "es": {
+          "title": "Informe de Error",
+          "description": "Pasos de reproducción, entorno y gravedad: un error que no se reproduce no se corrige.",
+          "thumb": "/templates/thumbs/relatorio-bug.es.svg",
+          "data": "/templates/data/relatorio-bug.es.json"
+        },
+        "fr": {
+          "title": "Rapport de Bug",
+          "description": "Étapes de reproduction, environnement et gravité — un bug qui ne se reproduit pas n’est pas corrigé.",
+          "thumb": "/templates/thumbs/relatorio-bug.fr.svg",
+          "data": "/templates/data/relatorio-bug.fr.json"
+        },
+        "de": {
+          "title": "Fehlerbericht",
+          "description": "Reproduktionsschritte, Umgebung und Schweregrad — ein nicht reproduzierbarer Fehler wird nicht behoben.",
+          "thumb": "/templates/thumbs/relatorio-bug.de.svg",
+          "data": "/templates/data/relatorio-bug.de.json"
+        },
+        "it": {
+          "title": "Segnalazione di Bug",
+          "description": "Passaggi di riproduzione, ambiente e gravità: un bug che non si riproduce non si corregge.",
+          "thumb": "/templates/thumbs/relatorio-bug.it.svg",
+          "data": "/templates/data/relatorio-bug.it.json"
+        },
+        "nl": {
+          "title": "Bugrapport",
+          "description": "Reproductiestappen, omgeving en ernst — een bug die niet reproduceert wordt niet gefixt.",
+          "thumb": "/templates/thumbs/relatorio-bug.nl.svg",
+          "data": "/templates/data/relatorio-bug.nl.json"
+        },
+        "pl": {
+          "title": "Zgłoszenie błędu",
+          "description": "Kroki odtworzenia, środowisko i waga — błąd nie do odtworzenia nie zostanie naprawiony.",
+          "thumb": "/templates/thumbs/relatorio-bug.pl.svg",
+          "data": "/templates/data/relatorio-bug.pl.json"
+        },
+        "id": {
+          "title": "Laporan Bug",
+          "description": "Langkah reproduksi, lingkungan, dan keparahan — bug yang tak bisa direproduksi tak diperbaiki.",
+          "thumb": "/templates/thumbs/relatorio-bug.id.svg",
+          "data": "/templates/data/relatorio-bug.id.json"
+        },
+        "vi": {
+          "title": "Báo cáo Lỗi",
+          "description": "Các bước tái hiện, môi trường và mức nghiêm trọng — lỗi không tái hiện thì không được sửa.",
+          "thumb": "/templates/thumbs/relatorio-bug.vi.svg",
+          "data": "/templates/data/relatorio-bug.vi.json"
+        },
+        "ja": {
+          "title": "バグ報告",
+          "description": "再現手順・環境・重大度。再現しないバグは直りません。",
+          "thumb": "/templates/thumbs/relatorio-bug.ja.svg",
+          "data": "/templates/data/relatorio-bug.ja.json"
+        },
+        "ko": {
+          "title": "버그 리포트",
+          "description": "재현 절차, 환경, 심각도 — 재현되지 않는 버그는 고쳐지지 않습니다.",
+          "thumb": "/templates/thumbs/relatorio-bug.ko.svg",
+          "data": "/templates/data/relatorio-bug.ko.json"
+        },
+        "zh": {
+          "title": "缺陷报告",
+          "description": "复现步骤、环境与严重程度——不能复现的缺陷不会被修复。",
+          "thumb": "/templates/thumbs/relatorio-bug.zh.svg",
+          "data": "/templates/data/relatorio-bug.zh.json"
+        },
+        "ru": {
+          "title": "Отчёт об ошибке",
+          "description": "Шаги воспроизведения, окружение и серьёзность — невоспроизводимую ошибку не чинят.",
+          "thumb": "/templates/thumbs/relatorio-bug.ru.svg",
+          "data": "/templates/data/relatorio-bug.ru.json"
+        },
+        "hi": {
+          "title": "बग रिपोर्ट",
+          "description": "दोहराने के चरण, परिवेश और गंभीरता — जो बग दोबारा नहीं होता, ठीक नहीं होता।",
+          "thumb": "/templates/thumbs/relatorio-bug.hi.svg",
+          "data": "/templates/data/relatorio-bug.hi.json"
+        },
+        "tr": {
+          "title": "Hata Raporu",
+          "description": "Yeniden üretme adımları, ortam ve önem — üretilemeyen hata düzeltilmez.",
+          "thumb": "/templates/thumbs/relatorio-bug.tr.svg",
+          "data": "/templates/data/relatorio-bug.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-plano-testes",
+      "slug": "plano-testes",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Plano de Testes",
+          "description": "",
+          "thumb": "/templates/thumbs/plano-testes.pt-BR.svg",
+          "data": "/templates/data/plano-testes.pt-BR.json"
+        },
+        "en": {
+          "title": "Test Plan",
+          "description": "What will be tested and, just as important, what will not — with a pass criterion.",
+          "thumb": "/templates/thumbs/plano-testes.en.svg",
+          "data": "/templates/data/plano-testes.en.json"
+        },
+        "es": {
+          "title": "Plan de Pruebas",
+          "description": "Qué se probará y, tan importante como eso, qué no — con criterio de aprobación.",
+          "thumb": "/templates/thumbs/plano-testes.es.svg",
+          "data": "/templates/data/plano-testes.es.json"
+        },
+        "fr": {
+          "title": "Plan de Tests",
+          "description": "Ce qui sera testé et, tout aussi important, ce qui ne le sera pas — avec un critère de validation.",
+          "thumb": "/templates/thumbs/plano-testes.fr.svg",
+          "data": "/templates/data/plano-testes.fr.json"
+        },
+        "de": {
+          "title": "Testplan",
+          "description": "Was getestet wird und, ebenso wichtig, was nicht — mit Bestehenskriterium.",
+          "thumb": "/templates/thumbs/plano-testes.de.svg",
+          "data": "/templates/data/plano-testes.de.json"
+        },
+        "it": {
+          "title": "Piano di Test",
+          "description": "Cosa sarà testato e, altrettanto importante, cosa no — con criterio di superamento.",
+          "thumb": "/templates/thumbs/plano-testes.it.svg",
+          "data": "/templates/data/plano-testes.it.json"
+        },
+        "nl": {
+          "title": "Testplan",
+          "description": "Wat getest wordt en, net zo belangrijk, wat niet — met een slaagcriterium.",
+          "thumb": "/templates/thumbs/plano-testes.nl.svg",
+          "data": "/templates/data/plano-testes.nl.json"
+        },
+        "pl": {
+          "title": "Plan testów",
+          "description": "Co będzie testowane i — równie ważne — co nie, z kryterium zaliczenia.",
+          "thumb": "/templates/thumbs/plano-testes.pl.svg",
+          "data": "/templates/data/plano-testes.pl.json"
+        },
+        "id": {
+          "title": "Rencana Pengujian",
+          "description": "Yang akan diuji dan, sama pentingnya, yang tidak — dengan kriteria lulus.",
+          "thumb": "/templates/thumbs/plano-testes.id.svg",
+          "data": "/templates/data/plano-testes.id.json"
+        },
+        "vi": {
+          "title": "Kế hoạch Kiểm thử",
+          "description": "Những gì sẽ kiểm thử và, quan trọng không kém, những gì không — kèm tiêu chí đạt.",
+          "thumb": "/templates/thumbs/plano-testes.vi.svg",
+          "data": "/templates/data/plano-testes.vi.json"
+        },
+        "ja": {
+          "title": "テスト計画",
+          "description": "テストする範囲と、同じくらい大事な「しない範囲」。合格基準つき。",
+          "thumb": "/templates/thumbs/plano-testes.ja.svg",
+          "data": "/templates/data/plano-testes.ja.json"
+        },
+        "ko": {
+          "title": "테스트 계획",
+          "description": "테스트할 것과, 그만큼 중요한 테스트하지 않을 것 — 합격 기준과 함께.",
+          "thumb": "/templates/thumbs/plano-testes.ko.svg",
+          "data": "/templates/data/plano-testes.ko.json"
+        },
+        "zh": {
+          "title": "测试计划",
+          "description": "要测什么，以及同样重要的不测什么——附通过标准。",
+          "thumb": "/templates/thumbs/plano-testes.zh.svg",
+          "data": "/templates/data/plano-testes.zh.json"
+        },
+        "ru": {
+          "title": "План тестирования",
+          "description": "Что будет тестироваться и, не менее важно, что нет — с критерием прохождения.",
+          "thumb": "/templates/thumbs/plano-testes.ru.svg",
+          "data": "/templates/data/plano-testes.ru.json"
+        },
+        "hi": {
+          "title": "परीक्षण योजना",
+          "description": "क्या परीक्षण होगा और उतना ही ज़रूरी, क्या नहीं — उत्तीर्ण मानदंड के साथ।",
+          "thumb": "/templates/thumbs/plano-testes.hi.svg",
+          "data": "/templates/data/plano-testes.hi.json"
+        },
+        "tr": {
+          "title": "Test Planı",
+          "description": "Neler test edilecek ve aynı ölçüde önemli, neler edilmeyecek — geçme ölçütüyle.",
+          "thumb": "/templates/thumbs/plano-testes.tr.svg",
+          "data": "/templates/data/plano-testes.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-notas-versao",
+      "slug": "notas-versao",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Notas de Versão",
+          "description": "",
+          "thumb": "/templates/thumbs/notas-versao.pt-BR.svg",
+          "data": "/templates/data/notas-versao.pt-BR.json"
+        },
+        "en": {
+          "title": "Release Notes",
+          "description": "What’s new and what was fixed, written for the people who use it, not for those who built it.",
+          "thumb": "/templates/thumbs/notas-versao.en.svg",
+          "data": "/templates/data/notas-versao.en.json"
+        },
+        "es": {
+          "title": "Notas de la Versión",
+          "description": "Novedades y correcciones escritas para quien usa, no para quien programó.",
+          "thumb": "/templates/thumbs/notas-versao.es.svg",
+          "data": "/templates/data/notas-versao.es.json"
+        },
+        "fr": {
+          "title": "Notes de Version",
+          "description": "Nouveautés et corrections écrites pour ceux qui utilisent, pas pour ceux qui ont codé.",
+          "thumb": "/templates/thumbs/notas-versao.fr.svg",
+          "data": "/templates/data/notas-versao.fr.json"
+        },
+        "de": {
+          "title": "Versionshinweise",
+          "description": "Neuerungen und Korrekturen, geschrieben für die Nutzenden, nicht die Entwickelnden.",
+          "thumb": "/templates/thumbs/notas-versao.de.svg",
+          "data": "/templates/data/notas-versao.de.json"
+        },
+        "it": {
+          "title": "Note di Rilascio",
+          "description": "Novità e correzioni scritte per chi usa, non per chi ha programmato.",
+          "thumb": "/templates/thumbs/notas-versao.it.svg",
+          "data": "/templates/data/notas-versao.it.json"
+        },
+        "nl": {
+          "title": "Releaseopmerkingen",
+          "description": "Nieuws en oplossingen, geschreven voor wie het gebruikt, niet voor wie het bouwde.",
+          "thumb": "/templates/thumbs/notas-versao.nl.svg",
+          "data": "/templates/data/notas-versao.nl.json"
+        },
+        "pl": {
+          "title": "Informacje o wydaniu",
+          "description": "Nowości i poprawki napisane dla użytkowników, nie dla programistów.",
+          "thumb": "/templates/thumbs/notas-versao.pl.svg",
+          "data": "/templates/data/notas-versao.pl.json"
+        },
+        "id": {
+          "title": "Catatan Rilis",
+          "description": "Yang baru dan yang diperbaiki, ditulis untuk pemakai, bukan pemrogram.",
+          "thumb": "/templates/thumbs/notas-versao.id.svg",
+          "data": "/templates/data/notas-versao.id.json"
+        },
+        "vi": {
+          "title": "Ghi chú Phát hành",
+          "description": "Có gì mới và đã sửa gì, viết cho người dùng chứ không cho lập trình viên.",
+          "thumb": "/templates/thumbs/notas-versao.vi.svg",
+          "data": "/templates/data/notas-versao.vi.json"
+        },
+        "ja": {
+          "title": "リリースノート",
+          "description": "新機能と修正を、作った人ではなく使う人に向けて。",
+          "thumb": "/templates/thumbs/notas-versao.ja.svg",
+          "data": "/templates/data/notas-versao.ja.json"
+        },
+        "ko": {
+          "title": "릴리스 노트",
+          "description": "새로운 점과 수정 사항을 개발자가 아니라 사용자를 위해.",
+          "thumb": "/templates/thumbs/notas-versao.ko.svg",
+          "data": "/templates/data/notas-versao.ko.json"
+        },
+        "zh": {
+          "title": "发布说明",
+          "description": "新增与修复，写给使用的人，而不是写代码的人。",
+          "thumb": "/templates/thumbs/notas-versao.zh.svg",
+          "data": "/templates/data/notas-versao.zh.json"
+        },
+        "ru": {
+          "title": "Примечания к выпуску",
+          "description": "Что нового и что исправлено — для пользователей, а не для разработчиков.",
+          "thumb": "/templates/thumbs/notas-versao.ru.svg",
+          "data": "/templates/data/notas-versao.ru.json"
+        },
+        "hi": {
+          "title": "रिलीज़ नोट्स",
+          "description": "नया क्या है और क्या सुधरा — उपयोग करने वालों के लिए, प्रोग्रामरों के लिए नहीं।",
+          "thumb": "/templates/thumbs/notas-versao.hi.svg",
+          "data": "/templates/data/notas-versao.hi.json"
+        },
+        "tr": {
+          "title": "Sürüm Notları",
+          "description": "Yenilikler ve düzeltmeler; kodu yazan için değil, kullanan için yazılmış.",
+          "thumb": "/templates/thumbs/notas-versao.tr.svg",
+          "data": "/templates/data/notas-versao.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-checklist-deploy",
+      "slug": "checklist-deploy",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Checklist de Publicação",
+          "description": "",
+          "thumb": "/templates/thumbs/checklist-deploy.pt-BR.svg",
+          "data": "/templates/data/checklist-deploy.pt-BR.json"
+        },
+        "en": {
+          "title": "Deployment Checklist",
+          "description": "Before, during, after and the rollback plan — the list for the day something goes wrong.",
+          "thumb": "/templates/thumbs/checklist-deploy.en.svg",
+          "data": "/templates/data/checklist-deploy.en.json"
+        },
+        "es": {
+          "title": "Lista de Verificación de Despliegue",
+          "description": "Antes, durante, después y el plan de reversión: la lista para el día en que algo falle.",
+          "thumb": "/templates/thumbs/checklist-deploy.es.svg",
+          "data": "/templates/data/checklist-deploy.es.json"
+        },
+        "fr": {
+          "title": "Checklist de Déploiement",
+          "description": "Avant, pendant, après et le plan de retour arrière — la liste pour le jour où ça casse.",
+          "thumb": "/templates/thumbs/checklist-deploy.fr.svg",
+          "data": "/templates/data/checklist-deploy.fr.json"
+        },
+        "de": {
+          "title": "Deployment-Checkliste",
+          "description": "Vorher, währenddessen, danach und der Rollback-Plan — die Liste für den Tag, an dem etwas schiefgeht.",
+          "thumb": "/templates/thumbs/checklist-deploy.de.svg",
+          "data": "/templates/data/checklist-deploy.de.json"
+        },
+        "it": {
+          "title": "Checklist di Rilascio",
+          "description": "Prima, durante, dopo e il piano di rollback: la lista per il giorno in cui qualcosa va storto.",
+          "thumb": "/templates/thumbs/checklist-deploy.it.svg",
+          "data": "/templates/data/checklist-deploy.it.json"
+        },
+        "nl": {
+          "title": "Deploymentchecklist",
+          "description": "Vooraf, tijdens, daarna en het terugrolplan — de lijst voor de dag dat het misgaat.",
+          "thumb": "/templates/thumbs/checklist-deploy.nl.svg",
+          "data": "/templates/data/checklist-deploy.nl.json"
+        },
+        "pl": {
+          "title": "Lista kontrolna wdrożenia",
+          "description": "Przed, w trakcie, po i plan wycofania — lista na dzień, gdy coś pójdzie źle.",
+          "thumb": "/templates/thumbs/checklist-deploy.pl.svg",
+          "data": "/templates/data/checklist-deploy.pl.json"
+        },
+        "id": {
+          "title": "Daftar Periksa Rilis",
+          "description": "Sebelum, selama, sesudah, dan rencana rollback — daftar untuk hari saat sesuatu kacau.",
+          "thumb": "/templates/thumbs/checklist-deploy.id.svg",
+          "data": "/templates/data/checklist-deploy.id.json"
+        },
+        "vi": {
+          "title": "Danh sách Kiểm tra Triển khai",
+          "description": "Trước, trong, sau và kế hoạch quay lui — danh sách cho ngày mọi thứ trục trặc.",
+          "thumb": "/templates/thumbs/checklist-deploy.vi.svg",
+          "data": "/templates/data/checklist-deploy.vi.json"
+        },
+        "ja": {
+          "title": "デプロイ チェックリスト",
+          "description": "事前・実施中・実施後・切り戻し手順。何かが壊れる日のためのリスト。",
+          "thumb": "/templates/thumbs/checklist-deploy.ja.svg",
+          "data": "/templates/data/checklist-deploy.ja.json"
+        },
+        "ko": {
+          "title": "배포 체크리스트",
+          "description": "이전, 진행 중, 이후, 롤백 계획 — 무언가 잘못되는 날을 위한 목록.",
+          "thumb": "/templates/thumbs/checklist-deploy.ko.svg",
+          "data": "/templates/data/checklist-deploy.ko.json"
+        },
+        "zh": {
+          "title": "发布检查清单",
+          "description": "之前、过程中、之后与回滚方案——为出事那天准备的清单。",
+          "thumb": "/templates/thumbs/checklist-deploy.zh.svg",
+          "data": "/templates/data/checklist-deploy.zh.json"
+        },
+        "ru": {
+          "title": "Чек-лист развёртывания",
+          "description": "До, во время, после и план отката — список на день, когда что-то сломается.",
+          "thumb": "/templates/thumbs/checklist-deploy.ru.svg",
+          "data": "/templates/data/checklist-deploy.ru.json"
+        },
+        "hi": {
+          "title": "तैनाती जाँच-सूची",
+          "description": "पहले, दौरान, बाद और वापसी योजना — उस दिन के लिए सूची जब कुछ गड़बड़ हो।",
+          "thumb": "/templates/thumbs/checklist-deploy.hi.svg",
+          "data": "/templates/data/checklist-deploy.hi.json"
+        },
+        "tr": {
+          "title": "Yayına Alma Kontrol Listesi",
+          "description": "Öncesinde, sırasında, sonrasında ve geri alma planı — işlerin ters gittiği gün için liste.",
+          "thumb": "/templates/thumbs/checklist-deploy.tr.svg",
+          "data": "/templates/data/checklist-deploy.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-leiame-projeto",
+      "slug": "leiame-projeto",
+      "type": "doc",
+      "category": "produto",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "LEIA-ME do Projeto",
+          "description": "",
+          "thumb": "/templates/thumbs/leiame-projeto.pt-BR.svg",
+          "data": "/templates/data/leiame-projeto.pt-BR.json"
+        },
+        "en": {
+          "title": "Project README",
+          "description": "What it is, how to install it and how to use it, in the order a newcomer needs.",
+          "thumb": "/templates/thumbs/leiame-projeto.en.svg",
+          "data": "/templates/data/leiame-projeto.en.json"
+        },
+        "es": {
+          "title": "README del Proyecto",
+          "description": "Qué es, cómo instalarlo y cómo usarlo, en el orden que necesita quien llega.",
+          "thumb": "/templates/thumbs/leiame-projeto.es.svg",
+          "data": "/templates/data/leiame-projeto.es.json"
+        },
+        "fr": {
+          "title": "README du Projet",
+          "description": "Ce que c’est, comment l’installer et l’utiliser, dans l’ordre dont un nouveau a besoin.",
+          "thumb": "/templates/thumbs/leiame-projeto.fr.svg",
+          "data": "/templates/data/leiame-projeto.fr.json"
+        },
+        "de": {
+          "title": "Projekt-README",
+          "description": "Was es ist, wie man es installiert und benutzt — in der Reihenfolge, die Neue brauchen.",
+          "thumb": "/templates/thumbs/leiame-projeto.de.svg",
+          "data": "/templates/data/leiame-projeto.de.json"
+        },
+        "it": {
+          "title": "README del Progetto",
+          "description": "Cos’è, come installarlo e come usarlo, nell’ordine in cui serve a chi arriva.",
+          "thumb": "/templates/thumbs/leiame-projeto.it.svg",
+          "data": "/templates/data/leiame-projeto.it.json"
+        },
+        "nl": {
+          "title": "Project-README",
+          "description": "Wat het is, hoe je het installeert en gebruikt, in de volgorde die een nieuwkomer nodig heeft.",
+          "thumb": "/templates/thumbs/leiame-projeto.nl.svg",
+          "data": "/templates/data/leiame-projeto.nl.json"
+        },
+        "pl": {
+          "title": "README projektu",
+          "description": "Czym jest, jak zainstalować i jak używać — w kolejności potrzebnej nowej osobie.",
+          "thumb": "/templates/thumbs/leiame-projeto.pl.svg",
+          "data": "/templates/data/leiame-projeto.pl.json"
+        },
+        "id": {
+          "title": "README Proyek",
+          "description": "Apa ini, cara memasang, dan cara memakainya, sesuai urutan yang dibutuhkan pendatang baru.",
+          "thumb": "/templates/thumbs/leiame-projeto.id.svg",
+          "data": "/templates/data/leiame-projeto.id.json"
+        },
+        "vi": {
+          "title": "README của Dự án",
+          "description": "Nó là gì, cài thế nào và dùng ra sao, theo thứ tự người mới cần.",
+          "thumb": "/templates/thumbs/leiame-projeto.vi.svg",
+          "data": "/templates/data/leiame-projeto.vi.json"
+        },
+        "ja": {
+          "title": "プロジェクトREADME",
+          "description": "これは何か、どう入れ、どう使うか。新しい人が必要とする順に。",
+          "thumb": "/templates/thumbs/leiame-projeto.ja.svg",
+          "data": "/templates/data/leiame-projeto.ja.json"
+        },
+        "ko": {
+          "title": "프로젝트 README",
+          "description": "무엇인지, 어떻게 설치하고 어떻게 쓰는지 — 처음 오는 사람이 필요한 순서로.",
+          "thumb": "/templates/thumbs/leiame-projeto.ko.svg",
+          "data": "/templates/data/leiame-projeto.ko.json"
+        },
+        "zh": {
+          "title": "项目 README",
+          "description": "这是什么、怎么安装、怎么使用——按新人需要的顺序。",
+          "thumb": "/templates/thumbs/leiame-projeto.zh.svg",
+          "data": "/templates/data/leiame-projeto.zh.json"
+        },
+        "ru": {
+          "title": "README проекта",
+          "description": "Что это, как установить и как пользоваться — в том порядке, в каком нужно новичку.",
+          "thumb": "/templates/thumbs/leiame-projeto.ru.svg",
+          "data": "/templates/data/leiame-projeto.ru.json"
+        },
+        "hi": {
+          "title": "प्रोजेक्ट README",
+          "description": "यह क्या है, कैसे इंस्टॉल करें और कैसे उपयोग करें — उसी क्रम में जो नए व्यक्ति को चाहिए।",
+          "thumb": "/templates/thumbs/leiame-projeto.hi.svg",
+          "data": "/templates/data/leiame-projeto.hi.json"
+        },
+        "tr": {
+          "title": "Proje BENİOKU",
+          "description": "Nedir, nasıl kurulur ve nasıl kullanılır — yeni gelenin ihtiyaç duyduğu sırayla.",
+          "thumb": "/templates/thumbs/leiame-projeto.tr.svg",
+          "data": "/templates/data/leiame-projeto.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-tela-pensamento",
+      "slug": "tela-pensamento",
+      "type": "doc",
+      "category": "originais",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Tela de Pensamento",
+          "description": "",
+          "thumb": "/templates/thumbs/tela-pensamento.pt-BR.svg",
+          "data": "/templates/data/tela-pensamento.pt-BR.json"
+        },
+        "en": {
+          "title": "Thinking Canvas",
+          "description": "Think on paper before deciding, telling fact apart from assumption.",
+          "thumb": "/templates/thumbs/tela-pensamento.en.svg",
+          "data": "/templates/data/tela-pensamento.en.json"
+        },
+        "es": {
+          "title": "Lienzo de Pensamiento",
+          "description": "Piensa por escrito antes de decidir, separando el hecho de la suposición.",
+          "thumb": "/templates/thumbs/tela-pensamento.es.svg",
+          "data": "/templates/data/tela-pensamento.es.json"
+        },
+        "fr": {
+          "title": "Toile de Réflexion",
+          "description": "Pensez par écrit avant de décider, en séparant le fait de l’hypothèse.",
+          "thumb": "/templates/thumbs/tela-pensamento.fr.svg",
+          "data": "/templates/data/tela-pensamento.fr.json"
+        },
+        "de": {
+          "title": "Denk-Canvas",
+          "description": "Denken Sie vor der Entscheidung schriftlich und trennen Sie Fakt von Annahme.",
+          "thumb": "/templates/thumbs/tela-pensamento.de.svg",
+          "data": "/templates/data/tela-pensamento.de.json"
+        },
+        "it": {
+          "title": "Tela del Pensiero",
+          "description": "Pensa per iscritto prima di decidere, separando il fatto dall’ipotesi.",
+          "thumb": "/templates/thumbs/tela-pensamento.it.svg",
+          "data": "/templates/data/tela-pensamento.it.json"
+        },
+        "nl": {
+          "title": "Denkcanvas",
+          "description": "Denk op papier vóór je beslist en scheid feit van aanname.",
+          "thumb": "/templates/thumbs/tela-pensamento.nl.svg",
+          "data": "/templates/data/tela-pensamento.nl.json"
+        },
+        "pl": {
+          "title": "Kanwa myślenia",
+          "description": "Myśl na piśmie przed decyzją, oddzielając fakt od założenia.",
+          "thumb": "/templates/thumbs/tela-pensamento.pl.svg",
+          "data": "/templates/data/tela-pensamento.pl.json"
+        },
+        "id": {
+          "title": "Kanvas Berpikir",
+          "description": "Berpikir secara tertulis sebelum memutuskan, memisahkan fakta dari asumsi.",
+          "thumb": "/templates/thumbs/tela-pensamento.id.svg",
+          "data": "/templates/data/tela-pensamento.id.json"
+        },
+        "vi": {
+          "title": "Khung Suy nghĩ",
+          "description": "Suy nghĩ bằng chữ trước khi quyết định, tách sự thật khỏi giả định.",
+          "thumb": "/templates/thumbs/tela-pensamento.vi.svg",
+          "data": "/templates/data/tela-pensamento.vi.json"
+        },
+        "ja": {
+          "title": "思考キャンバス",
+          "description": "決める前に書いて考え、事実と仮定を分けます。",
+          "thumb": "/templates/thumbs/tela-pensamento.ja.svg",
+          "data": "/templates/data/tela-pensamento.ja.json"
+        },
+        "ko": {
+          "title": "사고 캔버스",
+          "description": "결정하기 전에 글로 생각하며 사실과 가정을 구분하세요.",
+          "thumb": "/templates/thumbs/tela-pensamento.ko.svg",
+          "data": "/templates/data/tela-pensamento.ko.json"
+        },
+        "zh": {
+          "title": "思考画布",
+          "description": "在决定前把思路写下来，把事实和假设分开。",
+          "thumb": "/templates/thumbs/tela-pensamento.zh.svg",
+          "data": "/templates/data/tela-pensamento.zh.json"
+        },
+        "ru": {
+          "title": "Холст размышления",
+          "description": "Думайте письменно до решения, отделяя факт от допущения.",
+          "thumb": "/templates/thumbs/tela-pensamento.ru.svg",
+          "data": "/templates/data/tela-pensamento.ru.json"
+        },
+        "hi": {
+          "title": "चिंतन कैनवास",
+          "description": "निर्णय से पहले लिखकर सोचें, तथ्य को धारणा से अलग करते हुए।",
+          "thumb": "/templates/thumbs/tela-pensamento.hi.svg",
+          "data": "/templates/data/tela-pensamento.hi.json"
+        },
+        "tr": {
+          "title": "Düşünme Tuvali",
+          "description": "Karar vermeden yazarak düşünün; olguyu varsayımdan ayırın.",
+          "thumb": "/templates/thumbs/tela-pensamento.tr.svg",
+          "data": "/templates/data/tela-pensamento.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-tela-decisao",
+      "slug": "tela-decisao",
+      "type": "doc",
+      "category": "originais",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Tela de Decisão",
+          "description": "",
+          "thumb": "/templates/thumbs/tela-decisao.pt-BR.svg",
+          "data": "/templates/data/tela-decisao.pt-BR.json"
+        },
+        "en": {
+          "title": "Decision Canvas",
+          "description": "For, against, risks and impact — for decisions you will have to justify later.",
+          "thumb": "/templates/thumbs/tela-decisao.en.svg",
+          "data": "/templates/data/tela-decisao.en.json"
+        },
+        "es": {
+          "title": "Lienzo de Decisión",
+          "description": "A favor, en contra, riesgos e impacto: para decisiones que tendrás que justificar después.",
+          "thumb": "/templates/thumbs/tela-decisao.es.svg",
+          "data": "/templates/data/tela-decisao.es.json"
+        },
+        "fr": {
+          "title": "Toile de Décision",
+          "description": "Pour, contre, risques et impact — pour les décisions qu’il faudra justifier plus tard.",
+          "thumb": "/templates/thumbs/tela-decisao.fr.svg",
+          "data": "/templates/data/tela-decisao.fr.json"
+        },
+        "de": {
+          "title": "Entscheidungs-Canvas",
+          "description": "Dafür, dagegen, Risiken und Auswirkung — für Entscheidungen, die Sie später rechtfertigen müssen.",
+          "thumb": "/templates/thumbs/tela-decisao.de.svg",
+          "data": "/templates/data/tela-decisao.de.json"
+        },
+        "it": {
+          "title": "Tela della Decisione",
+          "description": "A favore, contro, rischi e impatto: per decisioni che dovrai giustificare dopo.",
+          "thumb": "/templates/thumbs/tela-decisao.it.svg",
+          "data": "/templates/data/tela-decisao.it.json"
+        },
+        "nl": {
+          "title": "Beslissingscanvas",
+          "description": "Voor, tegen, risico’s en impact — voor besluiten die je later moet verantwoorden.",
+          "thumb": "/templates/thumbs/tela-decisao.nl.svg",
+          "data": "/templates/data/tela-decisao.nl.json"
+        },
+        "pl": {
+          "title": "Kanwa decyzji",
+          "description": "Za, przeciw, ryzyka i wpływ — do decyzji, które trzeba będzie uzasadnić.",
+          "thumb": "/templates/thumbs/tela-decisao.pl.svg",
+          "data": "/templates/data/tela-decisao.pl.json"
+        },
+        "id": {
+          "title": "Kanvas Keputusan",
+          "description": "Pro, kontra, risiko, dan dampak — untuk keputusan yang nanti harus dijelaskan.",
+          "thumb": "/templates/thumbs/tela-decisao.id.svg",
+          "data": "/templates/data/tela-decisao.id.json"
+        },
+        "vi": {
+          "title": "Khung Quyết định",
+          "description": "Ủng hộ, phản đối, rủi ro và tác động — cho những quyết định phải giải thích sau này.",
+          "thumb": "/templates/thumbs/tela-decisao.vi.svg",
+          "data": "/templates/data/tela-decisao.vi.json"
+        },
+        "ja": {
+          "title": "意思決定キャンバス",
+          "description": "賛成・反対・リスク・影響。後で説明を求められる決定のために。",
+          "thumb": "/templates/thumbs/tela-decisao.ja.svg",
+          "data": "/templates/data/tela-decisao.ja.json"
+        },
+        "ko": {
+          "title": "의사결정 캔버스",
+          "description": "찬성, 반대, 위험, 영향 — 나중에 근거를 대야 할 결정을 위해.",
+          "thumb": "/templates/thumbs/tela-decisao.ko.svg",
+          "data": "/templates/data/tela-decisao.ko.json"
+        },
+        "zh": {
+          "title": "决策画布",
+          "description": "支持、反对、风险与影响——用于日后需要说明理由的决定。",
+          "thumb": "/templates/thumbs/tela-decisao.zh.svg",
+          "data": "/templates/data/tela-decisao.zh.json"
+        },
+        "ru": {
+          "title": "Холст решения",
+          "description": "За, против, риски и влияние — для решений, которые придётся объяснять.",
+          "thumb": "/templates/thumbs/tela-decisao.ru.svg",
+          "data": "/templates/data/tela-decisao.ru.json"
+        },
+        "hi": {
+          "title": "निर्णय कैनवास",
+          "description": "पक्ष, विपक्ष, जोखिम और प्रभाव — उन निर्णयों के लिए जिन्हें बाद में उचित ठहराना होगा।",
+          "thumb": "/templates/thumbs/tela-decisao.hi.svg",
+          "data": "/templates/data/tela-decisao.hi.json"
+        },
+        "tr": {
+          "title": "Karar Tuvali",
+          "description": "Lehinde, aleyhinde, riskler ve etki — sonradan gerekçelendireceğiniz kararlar için.",
+          "thumb": "/templates/thumbs/tela-decisao.tr.svg",
+          "data": "/templates/data/tela-decisao.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-tela-pesquisa",
+      "slug": "tela-pesquisa",
+      "type": "doc",
+      "category": "originais",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Tela de Pesquisa",
+          "description": "",
+          "thumb": "/templates/thumbs/tela-pesquisa.pt-BR.svg",
+          "data": "/templates/data/tela-pesquisa.pt-BR.json"
+        },
+        "en": {
+          "title": "Research Canvas",
+          "description": "Question, sources, evidence and counter-arguments: what separates research from justification.",
+          "thumb": "/templates/thumbs/tela-pesquisa.en.svg",
+          "data": "/templates/data/tela-pesquisa.en.json"
+        },
+        "es": {
+          "title": "Lienzo de Investigación",
+          "description": "Pregunta, fuentes, evidencias y contraargumentos: lo que separa investigación de justificación.",
+          "thumb": "/templates/thumbs/tela-pesquisa.es.svg",
+          "data": "/templates/data/tela-pesquisa.es.json"
+        },
+        "fr": {
+          "title": "Toile de Recherche",
+          "description": "Question, sources, preuves et contre-arguments : ce qui sépare la recherche de la justification.",
+          "thumb": "/templates/thumbs/tela-pesquisa.fr.svg",
+          "data": "/templates/data/tela-pesquisa.fr.json"
+        },
+        "de": {
+          "title": "Recherche-Canvas",
+          "description": "Frage, Quellen, Belege und Gegenargumente: was Recherche von Rechtfertigung trennt.",
+          "thumb": "/templates/thumbs/tela-pesquisa.de.svg",
+          "data": "/templates/data/tela-pesquisa.de.json"
+        },
+        "it": {
+          "title": "Tela della Ricerca",
+          "description": "Domanda, fonti, prove e controargomenti: ciò che separa la ricerca dalla giustificazione.",
+          "thumb": "/templates/thumbs/tela-pesquisa.it.svg",
+          "data": "/templates/data/tela-pesquisa.it.json"
+        },
+        "nl": {
+          "title": "Onderzoekscanvas",
+          "description": "Vraag, bronnen, bewijs en tegenargumenten: wat onderzoek van rechtvaardiging scheidt.",
+          "thumb": "/templates/thumbs/tela-pesquisa.nl.svg",
+          "data": "/templates/data/tela-pesquisa.nl.json"
+        },
+        "pl": {
+          "title": "Kanwa badania",
+          "description": "Pytanie, źródła, dowody i kontrargumenty: to, co odróżnia badanie od usprawiedliwiania.",
+          "thumb": "/templates/thumbs/tela-pesquisa.pl.svg",
+          "data": "/templates/data/tela-pesquisa.pl.json"
+        },
+        "id": {
+          "title": "Kanvas Riset",
+          "description": "Pertanyaan, sumber, bukti, dan bantahan: yang memisahkan riset dari pembelaan.",
+          "thumb": "/templates/thumbs/tela-pesquisa.id.svg",
+          "data": "/templates/data/tela-pesquisa.id.json"
+        },
+        "vi": {
+          "title": "Khung Nghiên cứu",
+          "description": "Câu hỏi, nguồn, bằng chứng và phản biện: điều tách nghiên cứu khỏi biện minh.",
+          "thumb": "/templates/thumbs/tela-pesquisa.vi.svg",
+          "data": "/templates/data/tela-pesquisa.vi.json"
+        },
+        "ja": {
+          "title": "リサーチキャンバス",
+          "description": "問い・出典・根拠・反証。調査と正当化を分けるもの。",
+          "thumb": "/templates/thumbs/tela-pesquisa.ja.svg",
+          "data": "/templates/data/tela-pesquisa.ja.json"
+        },
+        "ko": {
+          "title": "리서치 캔버스",
+          "description": "질문, 출처, 근거, 반론 — 연구와 변명을 가르는 것.",
+          "thumb": "/templates/thumbs/tela-pesquisa.ko.svg",
+          "data": "/templates/data/tela-pesquisa.ko.json"
+        },
+        "zh": {
+          "title": "研究画布",
+          "description": "问题、来源、证据与反面论据：研究与自我辩护的分界。",
+          "thumb": "/templates/thumbs/tela-pesquisa.zh.svg",
+          "data": "/templates/data/tela-pesquisa.zh.json"
+        },
+        "ru": {
+          "title": "Холст исследования",
+          "description": "Вопрос, источники, доказательства и контраргументы — что отличает исследование от оправдания.",
+          "thumb": "/templates/thumbs/tela-pesquisa.ru.svg",
+          "data": "/templates/data/tela-pesquisa.ru.json"
+        },
+        "hi": {
+          "title": "शोध कैनवास",
+          "description": "प्रश्न, स्रोत, साक्ष्य और प्रतितर्क: जो शोध को औचित्य से अलग करता है।",
+          "thumb": "/templates/thumbs/tela-pesquisa.hi.svg",
+          "data": "/templates/data/tela-pesquisa.hi.json"
+        },
+        "tr": {
+          "title": "Araştırma Tuvali",
+          "description": "Soru, kaynaklar, kanıtlar ve karşı savlar: araştırmayı gerekçelendirmeden ayıran şey.",
+          "thumb": "/templates/thumbs/tela-pesquisa.tr.svg",
+          "data": "/templates/data/tela-pesquisa.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-tela-aprendizado",
+      "slug": "tela-aprendizado",
+      "type": "doc",
+      "category": "originais",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Tela de Aprendizado",
+          "description": "",
+          "thumb": "/templates/thumbs/tela-aprendizado.pt-BR.svg",
+          "data": "/templates/data/tela-aprendizado.pt-BR.json"
+        },
+        "en": {
+          "title": "Learning Canvas",
+          "description": "Summarise in your own words, connect it to what you already know, and end with an action.",
+          "thumb": "/templates/thumbs/tela-aprendizado.en.svg",
+          "data": "/templates/data/tela-aprendizado.en.json"
+        },
+        "es": {
+          "title": "Lienzo de Aprendizaje",
+          "description": "Resume con tus palabras, conéctalo con lo que ya sabes y termina con una acción.",
+          "thumb": "/templates/thumbs/tela-aprendizado.es.svg",
+          "data": "/templates/data/tela-aprendizado.es.json"
+        },
+        "fr": {
+          "title": "Toile d’Apprentissage",
+          "description": "Résumez avec vos mots, reliez à ce que vous savez déjà et terminez par une action.",
+          "thumb": "/templates/thumbs/tela-aprendizado.fr.svg",
+          "data": "/templates/data/tela-aprendizado.fr.json"
+        },
+        "de": {
+          "title": "Lern-Canvas",
+          "description": "Fassen Sie in eigenen Worten zusammen, verknüpfen Sie mit Bekanntem und enden Sie mit einer Aktion.",
+          "thumb": "/templates/thumbs/tela-aprendizado.de.svg",
+          "data": "/templates/data/tela-aprendizado.de.json"
+        },
+        "it": {
+          "title": "Tela dell’Apprendimento",
+          "description": "Riassumi con parole tue, collega a ciò che già sai e chiudi con un’azione.",
+          "thumb": "/templates/thumbs/tela-aprendizado.it.svg",
+          "data": "/templates/data/tela-aprendizado.it.json"
+        },
+        "nl": {
+          "title": "Leercanvas",
+          "description": "Vat samen in eigen woorden, verbind met wat je al weet en eindig met een actie.",
+          "thumb": "/templates/thumbs/tela-aprendizado.nl.svg",
+          "data": "/templates/data/tela-aprendizado.nl.json"
+        },
+        "pl": {
+          "title": "Kanwa nauki",
+          "description": "Streść własnymi słowami, powiąż z tym, co już wiesz, i zakończ działaniem.",
+          "thumb": "/templates/thumbs/tela-aprendizado.pl.svg",
+          "data": "/templates/data/tela-aprendizado.pl.json"
+        },
+        "id": {
+          "title": "Kanvas Belajar",
+          "description": "Ringkas dengan kata-katamu, hubungkan dengan yang sudah kamu tahu, dan tutup dengan tindakan.",
+          "thumb": "/templates/thumbs/tela-aprendizado.id.svg",
+          "data": "/templates/data/tela-aprendizado.id.json"
+        },
+        "vi": {
+          "title": "Khung Học tập",
+          "description": "Tóm tắt bằng lời của bạn, nối với điều đã biết và kết bằng một hành động.",
+          "thumb": "/templates/thumbs/tela-aprendizado.vi.svg",
+          "data": "/templates/data/tela-aprendizado.vi.json"
+        },
+        "ja": {
+          "title": "学習キャンバス",
+          "description": "自分の言葉で要約し、既に知っていることとつなぎ、行動で締めます。",
+          "thumb": "/templates/thumbs/tela-aprendizado.ja.svg",
+          "data": "/templates/data/tela-aprendizado.ja.json"
+        },
+        "ko": {
+          "title": "학습 캔버스",
+          "description": "내 말로 요약하고, 아는 것과 연결하고, 실행으로 마무리하세요.",
+          "thumb": "/templates/thumbs/tela-aprendizado.ko.svg",
+          "data": "/templates/data/tela-aprendizado.ko.json"
+        },
+        "zh": {
+          "title": "学习画布",
+          "description": "用自己的话总结，连接你已知的内容，并以一个行动收尾。",
+          "thumb": "/templates/thumbs/tela-aprendizado.zh.svg",
+          "data": "/templates/data/tela-aprendizado.zh.json"
+        },
+        "ru": {
+          "title": "Холст обучения",
+          "description": "Перескажите своими словами, свяжите с уже известным и завершите действием.",
+          "thumb": "/templates/thumbs/tela-aprendizado.ru.svg",
+          "data": "/templates/data/tela-aprendizado.ru.json"
+        },
+        "hi": {
+          "title": "अधिगम कैनवास",
+          "description": "अपने शब्दों में सारांश लिखें, ज्ञात से जोड़ें और एक क्रिया के साथ समाप्त करें।",
+          "thumb": "/templates/thumbs/tela-aprendizado.hi.svg",
+          "data": "/templates/data/tela-aprendizado.hi.json"
+        },
+        "tr": {
+          "title": "Öğrenme Tuvali",
+          "description": "Kendi cümlelerinizle özetleyin, bildiklerinizle bağlayın ve bir eylemle bitirin.",
+          "thumb": "/templates/thumbs/tela-aprendizado.tr.svg",
+          "data": "/templates/data/tela-aprendizado.tr.json"
+        }
+      }
+    },
+    {
+      "id": "tpl-tela-ia",
+      "slug": "tela-ia",
+      "type": "doc",
+      "category": "originais",
+      "pro": 0,
+      "freeUntil": null,
+      "i18n": {
+        "pt-BR": {
+          "title": "Tela de Trabalho com IA",
+          "description": "",
+          "thumb": "/templates/thumbs/tela-ia.pt-BR.svg",
+          "data": "/templates/data/tela-ia.pt-BR.json"
+        },
+        "en": {
+          "title": "AI Workspace Canvas",
+          "description": "Objective, prompt, output and evaluation — the record of judgement that gets lost when using AI.",
+          "thumb": "/templates/thumbs/tela-ia.en.svg",
+          "data": "/templates/data/tela-ia.en.json"
+        },
+        "es": {
+          "title": "Lienzo de Trabajo con IA",
+          "description": "Objetivo, prompt, resultado y evaluación: el registro del juicio que se pierde al usar IA.",
+          "thumb": "/templates/thumbs/tela-ia.es.svg",
+          "data": "/templates/data/tela-ia.es.json"
+        },
+        "fr": {
+          "title": "Toile de Travail avec l’IA",
+          "description": "Objectif, prompt, résultat et évaluation — la trace du jugement qu’on perd en utilisant l’IA.",
+          "thumb": "/templates/thumbs/tela-ia.fr.svg",
+          "data": "/templates/data/tela-ia.fr.json"
+        },
+        "de": {
+          "title": "KI-Arbeits-Canvas",
+          "description": "Ziel, Prompt, Ergebnis und Bewertung — die Urteilsspur, die beim KI-Einsatz verloren geht.",
+          "thumb": "/templates/thumbs/tela-ia.de.svg",
+          "data": "/templates/data/tela-ia.de.json"
+        },
+        "it": {
+          "title": "Tela di Lavoro con l’IA",
+          "description": "Obiettivo, prompt, risultato e valutazione: la traccia del giudizio che si perde usando l’IA.",
+          "thumb": "/templates/thumbs/tela-ia.it.svg",
+          "data": "/templates/data/tela-ia.it.json"
+        },
+        "nl": {
+          "title": "AI-werkcanvas",
+          "description": "Doel, prompt, resultaat en beoordeling — het spoor van je oordeel dat verdwijnt bij AI-gebruik.",
+          "thumb": "/templates/thumbs/tela-ia.nl.svg",
+          "data": "/templates/data/tela-ia.nl.json"
+        },
+        "pl": {
+          "title": "Kanwa pracy z AI",
+          "description": "Cel, prompt, wynik i ocena — zapis osądu, który ginie przy korzystaniu z AI.",
+          "thumb": "/templates/thumbs/tela-ia.pl.svg",
+          "data": "/templates/data/tela-ia.pl.json"
+        },
+        "id": {
+          "title": "Kanvas Kerja dengan AI",
+          "description": "Tujuan, prompt, hasil, dan evaluasi — catatan penilaian yang hilang saat memakai AI.",
+          "thumb": "/templates/thumbs/tela-ia.id.svg",
+          "data": "/templates/data/tela-ia.id.json"
+        },
+        "vi": {
+          "title": "Khung Làm việc với AI",
+          "description": "Mục tiêu, prompt, kết quả và đánh giá — dấu vết phán đoán bị mất khi dùng AI.",
+          "thumb": "/templates/thumbs/tela-ia.vi.svg",
+          "data": "/templates/data/tela-ia.vi.json"
+        },
+        "ja": {
+          "title": "AI作業キャンバス",
+          "description": "目的・プロンプト・出力・評価。AIを使うと失われる判断の記録。",
+          "thumb": "/templates/thumbs/tela-ia.ja.svg",
+          "data": "/templates/data/tela-ia.ja.json"
+        },
+        "ko": {
+          "title": "AI 작업 캔버스",
+          "description": "목적, 프롬프트, 결과, 평가 — AI를 쓸 때 사라지는 판단의 기록.",
+          "thumb": "/templates/thumbs/tela-ia.ko.svg",
+          "data": "/templates/data/tela-ia.ko.json"
+        },
+        "zh": {
+          "title": "AI 工作画布",
+          "description": "目标、提示词、输出与评估——使用 AI 时最容易丢失的判断记录。",
+          "thumb": "/templates/thumbs/tela-ia.zh.svg",
+          "data": "/templates/data/tela-ia.zh.json"
+        },
+        "ru": {
+          "title": "Холст работы с ИИ",
+          "description": "Цель, промпт, результат и оценка — след суждения, теряющийся при работе с ИИ.",
+          "thumb": "/templates/thumbs/tela-ia.ru.svg",
+          "data": "/templates/data/tela-ia.ru.json"
+        },
+        "hi": {
+          "title": "AI कार्य कैनवास",
+          "description": "उद्देश्य, प्रॉम्प्ट, परिणाम और मूल्यांकन — निर्णय का वह रिकॉर्ड जो AI उपयोग में खो जाता है।",
+          "thumb": "/templates/thumbs/tela-ia.hi.svg",
+          "data": "/templates/data/tela-ia.hi.json"
+        },
+        "tr": {
+          "title": "Yapay Zekâ Çalışma Tuvali",
+          "description": "Amaç, prompt, çıktı ve değerlendirme — yapay zekâ kullanırken kaybolan yargı kaydı.",
+          "thumb": "/templates/thumbs/tela-ia.tr.svg",
+          "data": "/templates/data/tela-ia.tr.json"
+        }
+      }
     }
   ]
 }

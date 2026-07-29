@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">软件架构</text><text class="p" x="40" y="132">新人在动代码前会读的地图。宁可少画几个讲清楚的方块，也别画一张完整却读不懂的图。</text><text class="h2" x="40" y="156">概览</text><rect x="40" y="172" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="208">组件</text><text class="p" x="40" y="234">每个部分做什么，更重要的是，不做什么。</text><text class="h2" x="40" y="258">数据流</text><text class="p" x="40" y="284">信息从哪里进来、存在哪里、又从哪里出去。</text><text class="h2" x="40" y="308">技术决策</text><text class="p" x="40" y="334">塑造其余一切的选择。每一个都值得有自己的决策记录。</text><text class="h2" x="40" y="358">风险</text><rect x="40" y="374" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="410">尚未解决的部分</text><rect x="40" y="426" width="560" height="1" fill="#E8E8E8"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">API 문서</text><text class="p" x="40" y="132">아무 맥락 없이 온 사람이 5분 안에 첫 호출을 성공시킬 수 있도록 쓰세요.</text><text class="h2" x="40" y="156">개요</text><rect x="40" y="172" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="208">인증</text><rect x="40" y="224" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="260">엔드포인트</text><text class="p" x="40" y="286">메서드, 경로, 파라미터, 반환값. 실제 예시 하나가 설명 세 문단보다 낫습니다.</text><text class="h2" x="40" y="310">오류</text><text class="p" x="40" y="336">코드와 각각이 실제로 뜻하는 것 — 다음에 무엇을 할지까지.</text><text class="h2" x="40" y="360">예시</text><rect x="40" y="376" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="412">제한과 할당량</text><rect x="40" y="428" width="560" height="1" fill="#E8E8E8"/>
+</svg>

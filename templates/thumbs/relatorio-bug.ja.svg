@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+<style>
+  .bg{fill:#FFFFFF}
+  .brd{fill:none;stroke:#E6E6E6;stroke-width:2}
+  .ttl{font:700 26px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .sub{font:400 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#8A8A8A}
+  .hdr{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FFFFFF}
+  .cel{font:400 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#333333}
+  .celb{font:700 14px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .h1{font:700 22px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#141414}
+  .h2{font:700 15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#222222}
+  .p{font:400 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#9A9A9A}
+  .tag{font:700 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;fill:#FF6600;letter-spacing:1px}
+</style>
+<rect class="bg" width="800" height="500" rx="14"/>
+<rect class="brd" x="1" y="1" width="798" height="498" rx="14"/>
+<text class="tag" x="40" y="44">NODUS WORKSPACE · DOCUMENTO</text>
+<text class="h1" x="40" y="96">バグ報告</text><text class="p" x="40" y="132">再現しないバグは直りません。説明よりも手順が重要です。</text><text class="h2" x="40" y="156">集計</text><text class="p" x="40" y="182">一文で：何が起きるか、本来どうあるべきか。</text><text class="h2" x="40" y="206">再現手順</text><text class="p" x="40" y="232">初期状態からエラーまで、番号を振って。読む人が製品を一度も開いたことがない前提で書きます。</text><text class="h2" x="40" y="256">期待される動作</text><rect x="40" y="272" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="308">実際の動作</text><rect x="40" y="324" width="560" height="1" fill="#E8E8E8"/><text class="h2" x="40" y="360">環境</text><text class="p" x="40" y="386">ブラウザ、OS、バージョン、言語。多くのバグは特定の組み合わせでしか起きません。</text><text class="h2" x="40" y="410">重大度</text><rect x="40" y="426" width="560" height="1" fill="#E8E8E8"/>
+</svg>
