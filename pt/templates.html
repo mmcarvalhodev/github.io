@@ -60,6 +60,13 @@ a:hover{text-decoration:underline}
 .catnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
 .catnav a{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--sub)}
 .catnav a:hover{border-color:var(--yellow);color:var(--yellow);text-decoration:none}
+/* Filtro por categoria sem JS, via :target. Com uma secção alvo, esconde as
+   outras; sem alvo — e em browsers sem :has() — aparece tudo, que é o estado
+   por omissão e o que o Google vê. As regras de pill activo dependem dos
+   slugs do catálogo, por isso são geradas em galleryPage. */
+.catsec{scroll-margin-top:72px}
+body:has(.catsec:target) .catsec:not(:target){display:none}
+body:not(:has(.catsec:target)) .catnav .cat-all{border-color:var(--yellow);color:var(--yellow)}
 .cat-head{display:flex;align-items:baseline;gap:9px;margin:32px 0 12px;padding-top:8px}
 .cat-head h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
 .cat-head .n{font-size:12px;color:var(--muted)}
@@ -110,7 +117,7 @@ a:hover{text-decoration:underline}
 .back{display:inline-block;margin:26px 0 8px;font-size:13.5px;color:var(--sub)}
 footer{border-top:1px solid var(--border);margin-top:60px;padding:26px 24px;text-align:center;color:var(--muted);font-size:13px}
 footer a{color:var(--muted)}
-</style>
+body:has(#financas:target) .catnav .cat-financas{border-color:var(--yellow);color:var(--yellow)}body:has(#trabalho:target) .catnav .cat-trabalho{border-color:var(--yellow);color:var(--yellow)}body:has(#produtividade:target) .catnav .cat-produtividade{border-color:var(--yellow);color:var(--yellow)}body:has(#ia:target) .catnav .cat-ia{border-color:var(--yellow);color:var(--yellow)}body:has(#casa:target) .catnav .cat-casa{border-color:var(--yellow);color:var(--yellow)}</style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Modelos gratuitos para o NODUS Workspace","description":"Planilhas e documentos gratuitos para o NODUS Workspace — orçamentos, recibos, atas de reunião e mais. Local-first, sem conta.","url":"https://nodus-ai.app/pt/templates.html","inLanguage":"pt","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"Orçamento Mensal","url":"https://nodus-ai.app/pt/templates/orcamento-mensal.html"},{"@type":"ListItem","position":2,"name":"Controle de Despesas","url":"https://nodus-ai.app/pt/templates/controle-despesas.html"},{"@type":"ListItem","position":3,"name":"Lista de Tarefas de Projeto","url":"https://nodus-ai.app/pt/templates/tarefas-projeto.html"},{"@type":"ListItem","position":4,"name":"Controle de Assinaturas","url":"https://nodus-ai.app/pt/templates/controle-assinaturas.html"},{"@type":"ListItem","position":5,"name":"Divisão de Contas em Grupo","url":"https://nodus-ai.app/pt/templates/divisao-contas.html"},{"@type":"ListItem","position":6,"name":"Registro de Horas","url":"https://nodus-ai.app/pt/templates/registro-horas.html"},{"@type":"ListItem","position":7,"name":"Controle de Estoque","url":"https://nodus-ai.app/pt/templates/controle-estoque.html"},{"@type":"ListItem","position":8,"name":"Rastreador de Hábitos","url":"https://nodus-ai.app/pt/templates/rastreador-habitos.html"},{"@type":"ListItem","position":9,"name":"Biblioteca de Prompts","url":"https://nodus-ai.app/pt/templates/biblioteca-prompts.html"},{"@type":"ListItem","position":10,"name":"Comparação de Modelos de IA","url":"https://nodus-ai.app/pt/templates/comparacao-modelos.html"},{"@type":"ListItem","position":11,"name":"Modelo de Prompt","url":"https://nodus-ai.app/pt/templates/modelo-prompt.html"},{"@type":"ListItem","position":12,"name":"Resumo de Conversa com IA","url":"https://nodus-ai.app/pt/templates/resumo-conversa-ia.html"},{"@type":"ListItem","position":13,"name":"Fluxo de Caixa","url":"https://nodus-ai.app/pt/templates/fluxo-caixa.html"},{"@type":"ListItem","position":14,"name":"Metas de Poupança","url":"https://nodus-ai.app/pt/templates/metas-poupanca.html"},{"@type":"ListItem","position":15,"name":"Lista de Compras","url":"https://nodus-ai.app/pt/templates/lista-compras.html"},{"@type":"ListItem","position":16,"name":"Ata de Reunião","url":"https://nodus-ai.app/pt/templates/ata-reuniao.html"},{"@type":"ListItem","position":17,"name":"Relatório de Status Semanal","url":"https://nodus-ai.app/pt/templates/relatorio-status.html"},{"@type":"ListItem","position":18,"name":"Briefing de Projeto","url":"https://nodus-ai.app/pt/templates/briefing-projeto.html"}]}}</script>
 </head>
 <body>
@@ -129,10 +136,11 @@ footer a{color:var(--muted)}
     <div class="count">18 modelos gratuitos</div>
   </div>
   <section class="how"><h2>Como funciona</h2><p>Arraste o botão direto para o painel do Workspace no seu navegador. O modelo abre como um novo arquivo, já preenchido. Nada é enviado para servidor — é criado localmente na sua máquina.</p></section>
-  <nav class="catnav"><a href="#financas">Finanças</a><a href="#trabalho">Trabalho</a><a href="#produtividade">Produtividade</a><a href="#ia">IA</a><a href="#casa">Casa</a></nav>
+  <nav class="catnav"><a href="#" class="cat-all">Todos</a><a href="#financas" class="cat-financas">Finanças</a><a href="#trabalho" class="cat-trabalho">Trabalho</a><a href="#produtividade" class="cat-produtividade">Produtividade</a><a href="#ia" class="cat-ia">IA</a><a href="#casa" class="cat-casa">Casa</a></nav>
   
-  <div class="cat-head" id="financas"><h2>Finanças</h2><span class="n">6</span></div>
-  <div class="grid"><input type="checkbox" class="tgl" id="t-orcamento-mensal">
+  <section class="catsec" id="financas">
+    <div class="cat-head"><h2>Finanças</h2><span class="n">6</span></div>
+    <div class="grid"><input type="checkbox" class="tgl" id="t-orcamento-mensal">
 <label class="tile" for="t-orcamento-mensal">
   <span class="tile-th"><img src="/templates/thumbs/orcamento-mensal.pt-BR.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Orçamento Mensal</span><span class="tile-ty">Planilha</span></span>
@@ -234,9 +242,11 @@ footer a{color:var(--muted)}
     </div>
   </div>
 </div></div>
+  </section>
 
-  <div class="cat-head" id="trabalho"><h2>Trabalho</h2><span class="n">6</span></div>
-  <div class="grid"><input type="checkbox" class="tgl" id="t-tarefas-projeto">
+  <section class="catsec" id="trabalho">
+    <div class="cat-head"><h2>Trabalho</h2><span class="n">6</span></div>
+    <div class="grid"><input type="checkbox" class="tgl" id="t-tarefas-projeto">
 <label class="tile" for="t-tarefas-projeto">
   <span class="tile-th"><img src="/templates/thumbs/tarefas-projeto.pt-BR.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Lista de Tarefas de Projeto</span><span class="tile-ty">Planilha</span></span>
@@ -338,9 +348,11 @@ footer a{color:var(--muted)}
     </div>
   </div>
 </div></div>
+  </section>
 
-  <div class="cat-head" id="produtividade"><h2>Produtividade</h2><span class="n">1</span></div>
-  <div class="grid"><input type="checkbox" class="tgl" id="t-rastreador-habitos">
+  <section class="catsec" id="produtividade">
+    <div class="cat-head"><h2>Produtividade</h2><span class="n">1</span></div>
+    <div class="grid"><input type="checkbox" class="tgl" id="t-rastreador-habitos">
 <label class="tile" for="t-rastreador-habitos">
   <span class="tile-th"><img src="/templates/thumbs/rastreador-habitos.pt-BR.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Rastreador de Hábitos</span><span class="tile-ty">Planilha</span></span>
@@ -357,9 +369,11 @@ footer a{color:var(--muted)}
     </div>
   </div>
 </div></div>
+  </section>
 
-  <div class="cat-head" id="ia"><h2>IA</h2><span class="n">4</span></div>
-  <div class="grid"><input type="checkbox" class="tgl" id="t-biblioteca-prompts">
+  <section class="catsec" id="ia">
+    <div class="cat-head"><h2>IA</h2><span class="n">4</span></div>
+    <div class="grid"><input type="checkbox" class="tgl" id="t-biblioteca-prompts">
 <label class="tile" for="t-biblioteca-prompts">
   <span class="tile-th"><img src="/templates/thumbs/biblioteca-prompts.pt-BR.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Biblioteca de Prompts</span><span class="tile-ty">Planilha</span></span>
@@ -427,9 +441,11 @@ footer a{color:var(--muted)}
     </div>
   </div>
 </div></div>
+  </section>
 
-  <div class="cat-head" id="casa"><h2>Casa</h2><span class="n">1</span></div>
-  <div class="grid"><input type="checkbox" class="tgl" id="t-lista-compras">
+  <section class="catsec" id="casa">
+    <div class="cat-head"><h2>Casa</h2><span class="n">1</span></div>
+    <div class="grid"><input type="checkbox" class="tgl" id="t-lista-compras">
 <label class="tile" for="t-lista-compras">
   <span class="tile-th"><img src="/templates/thumbs/lista-compras.pt-BR.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Lista de Compras</span><span class="tile-ty">Planilha</span></span>
@@ -446,6 +462,7 @@ footer a{color:var(--muted)}
     </div>
   </div>
 </div></div>
+  </section>
 </div>
 <footer>NODUS · <a href="https://nodus-ai.app">nodus-ai.app</a></footer>
 <script>
