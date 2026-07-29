@@ -157,7 +157,11 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
 a{color:var(--yellow);text-decoration:none}
 a:hover{text-decoration:underline}
-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+/* Classe, NÃO o seletor de tipo "nav": a barra de categorias também é um
+   elemento nav, e apanhava o sticky+z-index+fundo daqui — ficava colada ao
+   topo a tapar o dropdown de idiomas (vem depois no DOM, logo ganha o
+   empate de z-index). */
+.site-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px}
 .nav-logo{font-weight:800;color:var(--text);font-size:18px}
 .nav-logo:hover{text-decoration:none}
@@ -257,7 +261,7 @@ ${body}
 
 function nav(t, dir) {
   const home = dir ? `/${dir}/` : '/';
-  return `<nav><div class="nav-inner">
+  return `<nav class="site-nav"><div class="nav-inner">
   <a href="${home}" class="nav-logo">NODUS</a>
   <div class="nav-links">
     <a href="${dir ? `/${dir}/workspace` : '/workspace'}" class="nav-link">NODUS Workspace</a>

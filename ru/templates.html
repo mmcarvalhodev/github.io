@@ -37,7 +37,11 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
 a{color:var(--yellow);text-decoration:none}
 a:hover{text-decoration:underline}
-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+/* Classe, NÃO o seletor de tipo "nav": a barra de categorias também é um
+   elemento nav, e apanhava o sticky+z-index+fundo daqui — ficava colada ao
+   topo a tapar o dropdown de idiomas (vem depois no DOM, logo ganha o
+   empate de z-index). */
+.site-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px}
 .nav-logo{font-weight:800;color:var(--text);font-size:18px}
 .nav-logo:hover{text-decoration:none}
@@ -110,7 +114,7 @@ footer a{color:var(--muted)}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Бесплатные шаблоны для NODUS Workspace","description":"Бесплатные шаблоны таблиц и документов для NODUS Workspace — бюджеты, счета, протоколы встреч и другое. Local-first, без аккаунта.","url":"https://nodus-ai.app/ru/templates.html","inLanguage":"ru","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"Месячный бюджет","url":"https://nodus-ai.app/ru/templates/orcamento-mensal.html"},{"@type":"ListItem","position":2,"name":"Учёт расходов","url":"https://nodus-ai.app/ru/templates/controle-despesas.html"},{"@type":"ListItem","position":3,"name":"Список задач проекта","url":"https://nodus-ai.app/ru/templates/tarefas-projeto.html"},{"@type":"ListItem","position":4,"name":"Учёт подписок","url":"https://nodus-ai.app/ru/templates/controle-assinaturas.html"},{"@type":"ListItem","position":5,"name":"Деление счетов в группе","url":"https://nodus-ai.app/ru/templates/divisao-contas.html"},{"@type":"ListItem","position":6,"name":"Учёт времени","url":"https://nodus-ai.app/ru/templates/registro-horas.html"},{"@type":"ListItem","position":7,"name":"Учёт склада","url":"https://nodus-ai.app/ru/templates/controle-estoque.html"},{"@type":"ListItem","position":8,"name":"Трекер привычек","url":"https://nodus-ai.app/ru/templates/rastreador-habitos.html"},{"@type":"ListItem","position":9,"name":"Библиотека промптов","url":"https://nodus-ai.app/ru/templates/biblioteca-prompts.html"},{"@type":"ListItem","position":10,"name":"Сравнение моделей ИИ","url":"https://nodus-ai.app/ru/templates/comparacao-modelos.html"},{"@type":"ListItem","position":11,"name":"Шаблон промпта","url":"https://nodus-ai.app/ru/templates/modelo-prompt.html"},{"@type":"ListItem","position":12,"name":"Итоги разговора с ИИ","url":"https://nodus-ai.app/ru/templates/resumo-conversa-ia.html"},{"@type":"ListItem","position":13,"name":"Денежный поток","url":"https://nodus-ai.app/ru/templates/fluxo-caixa.html"},{"@type":"ListItem","position":14,"name":"Цели накоплений","url":"https://nodus-ai.app/ru/templates/metas-poupanca.html"},{"@type":"ListItem","position":15,"name":"Список покупок","url":"https://nodus-ai.app/ru/templates/lista-compras.html"},{"@type":"ListItem","position":16,"name":"Протокол встречи","url":"https://nodus-ai.app/ru/templates/ata-reuniao.html"},{"@type":"ListItem","position":17,"name":"Еженедельный отчёт о статусе","url":"https://nodus-ai.app/ru/templates/relatorio-status.html"},{"@type":"ListItem","position":18,"name":"Бриф проекта","url":"https://nodus-ai.app/ru/templates/briefing-projeto.html"}]}}</script>
 </head>
 <body>
-<nav><div class="nav-inner">
+<nav class="site-nav"><div class="nav-inner">
   <a href="/ru/" class="nav-logo">NODUS</a>
   <div class="nav-links">
     <a href="/ru/workspace" class="nav-link">NODUS Workspace</a>

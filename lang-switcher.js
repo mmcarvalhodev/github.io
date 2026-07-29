@@ -56,6 +56,19 @@
       return window.location.pathname;
     }
 
+    // Secção /templates: a galeria e as 18 páginas de modelo existem em TODOS
+    // os idiomas no mesmo caminho. A lista translatedPages não serve aqui
+    // porque só compara o nome do ficheiro e perderia a subpasta — sem isto a
+    // escolha de idioma caía na página inicial. Os ids de categoria no hash
+    // (#financas, #trabalho...) são iguais em todos os idiomas, por isso o
+    // hash sobrevive à troca.
+    var noLang = path.replace(/^\/([a-z]{2})(?=\/)/, function (m, c) {
+      return subdirs.indexOf(c) !== -1 ? '' : m;
+    });
+    if (/^\/templates(\.html)?($|\/)/.test(noLang)) {
+      return (code === 'en' ? noLang : '/' + code + noLang) + hash;
+    }
+
     // Is current page one with full language translations?
     var hasTranslation = translatedPages.indexOf(fileMatch) !== -1;
 

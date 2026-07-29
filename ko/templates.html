@@ -37,7 +37,11 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
 a{color:var(--yellow);text-decoration:none}
 a:hover{text-decoration:underline}
-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+/* Classe, NÃO o seletor de tipo "nav": a barra de categorias também é um
+   elemento nav, e apanhava o sticky+z-index+fundo daqui — ficava colada ao
+   topo a tapar o dropdown de idiomas (vem depois no DOM, logo ganha o
+   empate de z-index). */
+.site-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px}
 .nav-logo{font-weight:800;color:var(--text);font-size:18px}
 .nav-logo:hover{text-decoration:none}
@@ -110,7 +114,7 @@ footer a{color:var(--muted)}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"NODUS Workspace 무료 템플릿","description":"NODUS Workspace용 무료 스프레드시트 및 문서 템플릿 — 예산, 청구서, 회의록 등. 로컬 우선, 계정 불필요.","url":"https://nodus-ai.app/ko/templates.html","inLanguage":"ko","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"월간 예산","url":"https://nodus-ai.app/ko/templates/orcamento-mensal.html"},{"@type":"ListItem","position":2,"name":"지출 관리","url":"https://nodus-ai.app/ko/templates/controle-despesas.html"},{"@type":"ListItem","position":3,"name":"프로젝트 작업 목록","url":"https://nodus-ai.app/ko/templates/tarefas-projeto.html"},{"@type":"ListItem","position":4,"name":"구독 관리","url":"https://nodus-ai.app/ko/templates/controle-assinaturas.html"},{"@type":"ListItem","position":5,"name":"그룹 정산","url":"https://nodus-ai.app/ko/templates/divisao-contas.html"},{"@type":"ListItem","position":6,"name":"근무 시간 기록","url":"https://nodus-ai.app/ko/templates/registro-horas.html"},{"@type":"ListItem","position":7,"name":"재고 관리","url":"https://nodus-ai.app/ko/templates/controle-estoque.html"},{"@type":"ListItem","position":8,"name":"습관 트래커","url":"https://nodus-ai.app/ko/templates/rastreador-habitos.html"},{"@type":"ListItem","position":9,"name":"프롬프트 라이브러리","url":"https://nodus-ai.app/ko/templates/biblioteca-prompts.html"},{"@type":"ListItem","position":10,"name":"AI 모델 비교","url":"https://nodus-ai.app/ko/templates/comparacao-modelos.html"},{"@type":"ListItem","position":11,"name":"프롬프트 템플릿","url":"https://nodus-ai.app/ko/templates/modelo-prompt.html"},{"@type":"ListItem","position":12,"name":"AI 대화 요약","url":"https://nodus-ai.app/ko/templates/resumo-conversa-ia.html"},{"@type":"ListItem","position":13,"name":"현금 흐름","url":"https://nodus-ai.app/ko/templates/fluxo-caixa.html"},{"@type":"ListItem","position":14,"name":"저축 목표","url":"https://nodus-ai.app/ko/templates/metas-poupanca.html"},{"@type":"ListItem","position":15,"name":"장보기 목록","url":"https://nodus-ai.app/ko/templates/lista-compras.html"},{"@type":"ListItem","position":16,"name":"회의록","url":"https://nodus-ai.app/ko/templates/ata-reuniao.html"},{"@type":"ListItem","position":17,"name":"주간 현황 보고","url":"https://nodus-ai.app/ko/templates/relatorio-status.html"},{"@type":"ListItem","position":18,"name":"프로젝트 브리프","url":"https://nodus-ai.app/ko/templates/briefing-projeto.html"}]}}</script>
 </head>
 <body>
-<nav><div class="nav-inner">
+<nav class="site-nav"><div class="nav-inner">
   <a href="/ko/" class="nav-logo">NODUS</a>
   <div class="nav-links">
     <a href="/ko/workspace" class="nav-link">NODUS Workspace</a>

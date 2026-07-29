@@ -37,7 +37,11 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
 a{color:var(--yellow);text-decoration:none}
 a:hover{text-decoration:underline}
-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+/* Classe, NÃO o seletor de tipo "nav": a barra de categorias também é um
+   elemento nav, e apanhava o sticky+z-index+fundo daqui — ficava colada ao
+   topo a tapar o dropdown de idiomas (vem depois no DOM, logo ganha o
+   empate de z-index). */
+.site-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px}
 .nav-logo{font-weight:800;color:var(--text);font-size:18px}
 .nav-logo:hover{text-decoration:none}
@@ -110,7 +114,7 @@ footer a{color:var(--muted)}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"NODUS Workspace के लिए मुफ़्त टेम्पलेट","description":"NODUS Workspace के लिए मुफ़्त स्प्रेडशीट और दस्तावेज़ टेम्पलेट — बजट, चालान, बैठक कार्यवृत्त और बहुत कुछ। लोकल-फ़र्स्ट, बिना खाते के।","url":"https://nodus-ai.app/hi/templates.html","inLanguage":"hi","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"मासिक बजट","url":"https://nodus-ai.app/hi/templates/orcamento-mensal.html"},{"@type":"ListItem","position":2,"name":"व्यय ट्रैकर","url":"https://nodus-ai.app/hi/templates/controle-despesas.html"},{"@type":"ListItem","position":3,"name":"परियोजना कार्य सूची","url":"https://nodus-ai.app/hi/templates/tarefas-projeto.html"},{"@type":"ListItem","position":4,"name":"सदस्यता ट्रैकर","url":"https://nodus-ai.app/hi/templates/controle-assinaturas.html"},{"@type":"ListItem","position":5,"name":"समूह बिल विभाजन","url":"https://nodus-ai.app/hi/templates/divisao-contas.html"},{"@type":"ListItem","position":6,"name":"समय लॉग","url":"https://nodus-ai.app/hi/templates/registro-horas.html"},{"@type":"ListItem","position":7,"name":"इन्वेंटरी ट्रैकर","url":"https://nodus-ai.app/hi/templates/controle-estoque.html"},{"@type":"ListItem","position":8,"name":"आदत ट्रैकर","url":"https://nodus-ai.app/hi/templates/rastreador-habitos.html"},{"@type":"ListItem","position":9,"name":"प्रॉम्प्ट लाइब्रेरी","url":"https://nodus-ai.app/hi/templates/biblioteca-prompts.html"},{"@type":"ListItem","position":10,"name":"AI मॉडल तुलना","url":"https://nodus-ai.app/hi/templates/comparacao-modelos.html"},{"@type":"ListItem","position":11,"name":"प्रॉम्प्ट टेम्पलेट","url":"https://nodus-ai.app/hi/templates/modelo-prompt.html"},{"@type":"ListItem","position":12,"name":"AI बातचीत का सारांश","url":"https://nodus-ai.app/hi/templates/resumo-conversa-ia.html"},{"@type":"ListItem","position":13,"name":"नकदी प्रवाह","url":"https://nodus-ai.app/hi/templates/fluxo-caixa.html"},{"@type":"ListItem","position":14,"name":"बचत लक्ष्य","url":"https://nodus-ai.app/hi/templates/metas-poupanca.html"},{"@type":"ListItem","position":15,"name":"खरीदारी सूची","url":"https://nodus-ai.app/hi/templates/lista-compras.html"},{"@type":"ListItem","position":16,"name":"बैठक कार्यवृत्त","url":"https://nodus-ai.app/hi/templates/ata-reuniao.html"},{"@type":"ListItem","position":17,"name":"साप्ताहिक स्थिति रिपोर्ट","url":"https://nodus-ai.app/hi/templates/relatorio-status.html"},{"@type":"ListItem","position":18,"name":"परियोजना ब्रीफ","url":"https://nodus-ai.app/hi/templates/briefing-projeto.html"}]}}</script>
 </head>
 <body>
-<nav><div class="nav-inner">
+<nav class="site-nav"><div class="nav-inner">
   <a href="/hi/" class="nav-logo">NODUS</a>
   <div class="nav-links">
     <a href="/hi/workspace" class="nav-link">NODUS Workspace</a>

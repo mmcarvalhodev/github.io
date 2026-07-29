@@ -37,7 +37,11 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
 a{color:var(--yellow);text-decoration:none}
 a:hover{text-decoration:underline}
-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+/* Classe, NÃO o seletor de tipo "nav": a barra de categorias também é um
+   elemento nav, e apanhava o sticky+z-index+fundo daqui — ficava colada ao
+   topo a tapar o dropdown de idiomas (vem depois no DOM, logo ganha o
+   empate de z-index). */
+.site-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px}
 .nav-logo{font-weight:800;color:var(--text);font-size:18px}
 .nav-logo:hover{text-decoration:none}
@@ -110,7 +114,7 @@ footer a{color:var(--muted)}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Modèles gratuits pour NODUS Workspace","description":"Modèles gratuits de tableurs et documents pour NODUS Workspace — budgets, factures, comptes rendus et plus. Local-first, sans compte.","url":"https://nodus-ai.app/fr/templates.html","inLanguage":"fr","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"Budget Mensuel","url":"https://nodus-ai.app/fr/templates/orcamento-mensal.html"},{"@type":"ListItem","position":2,"name":"Suivi des Dépenses","url":"https://nodus-ai.app/fr/templates/controle-despesas.html"},{"@type":"ListItem","position":3,"name":"Liste des Tâches du Projet","url":"https://nodus-ai.app/fr/templates/tarefas-projeto.html"},{"@type":"ListItem","position":4,"name":"Suivi des Abonnements","url":"https://nodus-ai.app/fr/templates/controle-assinaturas.html"},{"@type":"ListItem","position":5,"name":"Partage des Dépenses de Groupe","url":"https://nodus-ai.app/fr/templates/divisao-contas.html"},{"@type":"ListItem","position":6,"name":"Suivi du Temps","url":"https://nodus-ai.app/fr/templates/registro-horas.html"},{"@type":"ListItem","position":7,"name":"Suivi des Stocks","url":"https://nodus-ai.app/fr/templates/controle-estoque.html"},{"@type":"ListItem","position":8,"name":"Suivi des Habitudes","url":"https://nodus-ai.app/fr/templates/rastreador-habitos.html"},{"@type":"ListItem","position":9,"name":"Bibliothèque de Prompts","url":"https://nodus-ai.app/fr/templates/biblioteca-prompts.html"},{"@type":"ListItem","position":10,"name":"Comparaison de Modèles d’IA","url":"https://nodus-ai.app/fr/templates/comparacao-modelos.html"},{"@type":"ListItem","position":11,"name":"Modèle de Prompt","url":"https://nodus-ai.app/fr/templates/modelo-prompt.html"},{"@type":"ListItem","position":12,"name":"Résumé de Conversation avec l’IA","url":"https://nodus-ai.app/fr/templates/resumo-conversa-ia.html"},{"@type":"ListItem","position":13,"name":"Flux de Trésorerie","url":"https://nodus-ai.app/fr/templates/fluxo-caixa.html"},{"@type":"ListItem","position":14,"name":"Objectifs d’Épargne","url":"https://nodus-ai.app/fr/templates/metas-poupanca.html"},{"@type":"ListItem","position":15,"name":"Liste de Courses","url":"https://nodus-ai.app/fr/templates/lista-compras.html"},{"@type":"ListItem","position":16,"name":"Compte Rendu de Réunion","url":"https://nodus-ai.app/fr/templates/ata-reuniao.html"},{"@type":"ListItem","position":17,"name":"Rapport Hebdomadaire d’Avancement","url":"https://nodus-ai.app/fr/templates/relatorio-status.html"},{"@type":"ListItem","position":18,"name":"Brief de Projet","url":"https://nodus-ai.app/fr/templates/briefing-projeto.html"}]}}</script>
 </head>
 <body>
-<nav><div class="nav-inner">
+<nav class="site-nav"><div class="nav-inner">
   <a href="/fr/" class="nav-logo">NODUS</a>
   <div class="nav-links">
     <a href="/fr/workspace" class="nav-link">NODUS Workspace</a>

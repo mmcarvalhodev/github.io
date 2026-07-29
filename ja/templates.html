@@ -37,7 +37,11 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
 a{color:var(--yellow);text-decoration:none}
 a:hover{text-decoration:underline}
-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+/* Classe, NÃO o seletor de tipo "nav": a barra de categorias também é um
+   elemento nav, e apanhava o sticky+z-index+fundo daqui — ficava colada ao
+   topo a tapar o dropdown de idiomas (vem depois no DOM, logo ganha o
+   empate de z-index). */
+.site-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px}
 .nav-logo{font-weight:800;color:var(--text);font-size:18px}
 .nav-logo:hover{text-decoration:none}
@@ -110,7 +114,7 @@ footer a{color:var(--muted)}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"NODUS Workspace の無料テンプレート","description":"NODUS Workspace 用の無料スプレッドシート・ドキュメントテンプレート — 予算、請求書、議事録など。ローカルファースト、アカウント不要。","url":"https://nodus-ai.app/ja/templates.html","inLanguage":"ja","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"月間予算","url":"https://nodus-ai.app/ja/templates/orcamento-mensal.html"},{"@type":"ListItem","position":2,"name":"支出管理","url":"https://nodus-ai.app/ja/templates/controle-despesas.html"},{"@type":"ListItem","position":3,"name":"プロジェクトタスク一覧","url":"https://nodus-ai.app/ja/templates/tarefas-projeto.html"},{"@type":"ListItem","position":4,"name":"サブスク管理","url":"https://nodus-ai.app/ja/templates/controle-assinaturas.html"},{"@type":"ListItem","position":5,"name":"グループ割り勘","url":"https://nodus-ai.app/ja/templates/divisao-contas.html"},{"@type":"ListItem","position":6,"name":"作業時間記録","url":"https://nodus-ai.app/ja/templates/registro-horas.html"},{"@type":"ListItem","position":7,"name":"在庫管理","url":"https://nodus-ai.app/ja/templates/controle-estoque.html"},{"@type":"ListItem","position":8,"name":"習慣トラッカー","url":"https://nodus-ai.app/ja/templates/rastreador-habitos.html"},{"@type":"ListItem","position":9,"name":"プロンプト集","url":"https://nodus-ai.app/ja/templates/biblioteca-prompts.html"},{"@type":"ListItem","position":10,"name":"AIモデル比較","url":"https://nodus-ai.app/ja/templates/comparacao-modelos.html"},{"@type":"ListItem","position":11,"name":"プロンプトのひな形","url":"https://nodus-ai.app/ja/templates/modelo-prompt.html"},{"@type":"ListItem","position":12,"name":"AI会話のまとめ","url":"https://nodus-ai.app/ja/templates/resumo-conversa-ia.html"},{"@type":"ListItem","position":13,"name":"資金繰り","url":"https://nodus-ai.app/ja/templates/fluxo-caixa.html"},{"@type":"ListItem","position":14,"name":"貯金の目標","url":"https://nodus-ai.app/ja/templates/metas-poupanca.html"},{"@type":"ListItem","position":15,"name":"買い物リスト","url":"https://nodus-ai.app/ja/templates/lista-compras.html"},{"@type":"ListItem","position":16,"name":"議事録","url":"https://nodus-ai.app/ja/templates/ata-reuniao.html"},{"@type":"ListItem","position":17,"name":"週次ステータス報告","url":"https://nodus-ai.app/ja/templates/relatorio-status.html"},{"@type":"ListItem","position":18,"name":"プロジェクト概要","url":"https://nodus-ai.app/ja/templates/briefing-projeto.html"}]}}</script>
 </head>
 <body>
-<nav><div class="nav-inner">
+<nav class="site-nav"><div class="nav-inner">
   <a href="/ja/" class="nav-logo">NODUS</a>
   <div class="nav-links">
     <a href="/ja/workspace" class="nav-link">NODUS Workspace</a>

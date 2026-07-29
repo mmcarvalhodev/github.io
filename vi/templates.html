@@ -37,7 +37,11 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
 a{color:var(--yellow);text-decoration:none}
 a:hover{text-decoration:underline}
-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+/* Classe, NÃO o seletor de tipo "nav": a barra de categorias também é um
+   elemento nav, e apanhava o sticky+z-index+fundo daqui — ficava colada ao
+   topo a tapar o dropdown de idiomas (vem depois no DOM, logo ganha o
+   empate de z-index). */
+.site-nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px}
 .nav-logo{font-weight:800;color:var(--text);font-size:18px}
 .nav-logo:hover{text-decoration:none}
@@ -110,7 +114,7 @@ footer a{color:var(--muted)}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Mẫu miễn phí cho NODUS Workspace","description":"Mẫu bảng tính và tài liệu miễn phí cho NODUS Workspace — ngân sách, hóa đơn, biên bản họp và hơn thế nữa. Local-first, không cần tài khoản.","url":"https://nodus-ai.app/vi/templates.html","inLanguage":"vi","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"Ngân sách hàng tháng","url":"https://nodus-ai.app/vi/templates/orcamento-mensal.html"},{"@type":"ListItem","position":2,"name":"Theo dõi Chi tiêu","url":"https://nodus-ai.app/vi/templates/controle-despesas.html"},{"@type":"ListItem","position":3,"name":"Danh sách Công việc Dự án","url":"https://nodus-ai.app/vi/templates/tarefas-projeto.html"},{"@type":"ListItem","position":4,"name":"Theo dõi Thuê bao","url":"https://nodus-ai.app/vi/templates/controle-assinaturas.html"},{"@type":"ListItem","position":5,"name":"Chia Tiền Nhóm","url":"https://nodus-ai.app/vi/templates/divisao-contas.html"},{"@type":"ListItem","position":6,"name":"Nhật ký Giờ làm","url":"https://nodus-ai.app/vi/templates/registro-horas.html"},{"@type":"ListItem","position":7,"name":"Quản lý Kho","url":"https://nodus-ai.app/vi/templates/controle-estoque.html"},{"@type":"ListItem","position":8,"name":"Theo dõi Thói quen","url":"https://nodus-ai.app/vi/templates/rastreador-habitos.html"},{"@type":"ListItem","position":9,"name":"Thư viện Prompt","url":"https://nodus-ai.app/vi/templates/biblioteca-prompts.html"},{"@type":"ListItem","position":10,"name":"So sánh Mô hình AI","url":"https://nodus-ai.app/vi/templates/comparacao-modelos.html"},{"@type":"ListItem","position":11,"name":"Mẫu Prompt","url":"https://nodus-ai.app/vi/templates/modelo-prompt.html"},{"@type":"ListItem","position":12,"name":"Tóm tắt Cuộc trò chuyện với AI","url":"https://nodus-ai.app/vi/templates/resumo-conversa-ia.html"},{"@type":"ListItem","position":13,"name":"Dòng Tiền","url":"https://nodus-ai.app/vi/templates/fluxo-caixa.html"},{"@type":"ListItem","position":14,"name":"Mục tiêu Tiết kiệm","url":"https://nodus-ai.app/vi/templates/metas-poupanca.html"},{"@type":"ListItem","position":15,"name":"Danh sách Mua sắm","url":"https://nodus-ai.app/vi/templates/lista-compras.html"},{"@type":"ListItem","position":16,"name":"Biên bản Cuộc họp","url":"https://nodus-ai.app/vi/templates/ata-reuniao.html"},{"@type":"ListItem","position":17,"name":"Báo cáo Tình hình Hàng tuần","url":"https://nodus-ai.app/vi/templates/relatorio-status.html"},{"@type":"ListItem","position":18,"name":"Bản Tóm tắt Dự án","url":"https://nodus-ai.app/vi/templates/briefing-projeto.html"}]}}</script>
 </head>
 <body>
-<nav><div class="nav-inner">
+<nav class="site-nav"><div class="nav-inner">
   <a href="/vi/" class="nav-logo">NODUS</a>
   <div class="nav-links">
     <a href="/vi/workspace" class="nav-link">NODUS Workspace</a>
