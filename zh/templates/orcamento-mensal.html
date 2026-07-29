@@ -62,20 +62,19 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .card-badges{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
 .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-radius:5px;padding:2px 7px;background:rgba(148,163,184,.12);color:var(--sub)}
 .badge.free{background:rgba(16,185,129,.14);color:var(--green)}
-/* mosaico compacto: o thumb é um render 800x500 da planilha — ilegível em
-   miniatura, por isso o azulejo mostra um ícone do tipo e o preview grande
-   fica na fatia que abre ao clicar. Toggle é CSS puro (checkbox + irmão),
-   o conteúdo está sempre no DOM para o Google indexar. */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:10px}
+/* mosaico compacto: o azulejo traz a miniatura real do modelo (o mesmo render
+   8:5 da fatia, reduzido) e o preview grande fica na fatia que abre ao clicar.
+   Toggle é CSS puro (checkbox + irmão), o conteúdo está sempre no DOM para o
+   Google indexar. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:10px}
 .tgl{position:absolute;width:1px;height:1px;opacity:0}
-.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:10px 12px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
 .tile:hover{border-color:var(--yellow)}
-.tile-ico{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.12);color:var(--sub)}
-.tile-ico svg{width:16px;height:16px;display:block}
-.tile.sheet .tile-ico{background:rgba(16,185,129,.14);color:var(--green)}
-.tile.doc .tile-ico{background:rgba(250,204,21,.14);color:var(--yellow)}
+.tile-th{flex:none;width:72px;height:45px;border-radius:6px;overflow:hidden;background:#0e1117;border:1px solid var(--border)}
+.tile-th img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.tile:hover .tile-th{border-color:var(--yellow)}
 .tile-tx{flex:1;min-width:0}
-.tile-tt{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-tt{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden}
 .tile-ty{display:block;font-size:11px;color:var(--muted);line-height:1.4}
 .tile-cv{flex:none;color:var(--muted);transition:transform .18s}
 .tile-cv svg{display:block}
@@ -94,7 +93,6 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .slice .btn{display:block}
 .btn{display:inline-block;text-align:center;background:var(--yellow);color:#0a0c12;font-weight:700;font-size:13.5px;border-radius:9px;padding:10px 16px;cursor:grab}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
-.drag-hint{font-size:11.5px;color:var(--muted);margin-top:7px;text-align:center}
 .detail{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;padding:36px 0 12px;align-items:start}
 @media(max-width:860px){.detail{grid-template-columns:1fr}}
 .detail-thumb{background:#0e1117;border:1px solid var(--border);border-radius:14px;overflow:hidden}
@@ -127,12 +125,11 @@ footer a{color:var(--muted)}
       <div class="detail-thumb"><img src="/templates/thumbs/orcamento-mensal.zh.svg" alt="月度预算" width="800" height="500"></div>
       <h1>月度预算</h1>
       <p class="detail-desc">按类别对比计划支出与实际支出，并查看本月结余。</p>
-      <section class="how"><h2>如何使用</h2><p>把“在 Workspace 中打开”按钮直接拖到浏览器的 Workspace 面板。模板会作为新文件打开，内容已填好。不会上传任何内容 — 文件在你的设备本地生成。</p></section>
+      <section class="how"><h2>如何使用</h2><p>把此按钮直接拖到浏览器的 Workspace 面板。模板会作为新文件打开，内容已填好。不会上传任何内容 — 文件在你的设备本地生成。</p></section>
     </div>
     <aside class="side">
       <div class="card-badges"><span class="badge">表格</span><span class="badge">财务</span><span class="badge free">免费</span></div>
-      <a class="btn" href="/zh/templates/orcamento-mensal.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/orcamento-mensal.html" draggable="true">拖到 NODUS Workspace</a>
       <div class="side-note">还没有 NODUS Workspace？<br>
         <a href="https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim" target="_blank" rel="noopener">免费安装 — Chrome</a> ·
         <a href="https://addons.mozilla.org/firefox/addon/nodus-workspace/" target="_blank" rel="noopener">Firefox</a>

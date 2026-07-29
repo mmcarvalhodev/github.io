@@ -62,20 +62,19 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .card-badges{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
 .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-radius:5px;padding:2px 7px;background:rgba(148,163,184,.12);color:var(--sub)}
 .badge.free{background:rgba(16,185,129,.14);color:var(--green)}
-/* mosaico compacto: o thumb é um render 800x500 da planilha — ilegível em
-   miniatura, por isso o azulejo mostra um ícone do tipo e o preview grande
-   fica na fatia que abre ao clicar. Toggle é CSS puro (checkbox + irmão),
-   o conteúdo está sempre no DOM para o Google indexar. */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:10px}
+/* mosaico compacto: o azulejo traz a miniatura real do modelo (o mesmo render
+   8:5 da fatia, reduzido) e o preview grande fica na fatia que abre ao clicar.
+   Toggle é CSS puro (checkbox + irmão), o conteúdo está sempre no DOM para o
+   Google indexar. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:10px}
 .tgl{position:absolute;width:1px;height:1px;opacity:0}
-.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:10px 12px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
 .tile:hover{border-color:var(--yellow)}
-.tile-ico{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.12);color:var(--sub)}
-.tile-ico svg{width:16px;height:16px;display:block}
-.tile.sheet .tile-ico{background:rgba(16,185,129,.14);color:var(--green)}
-.tile.doc .tile-ico{background:rgba(250,204,21,.14);color:var(--yellow)}
+.tile-th{flex:none;width:72px;height:45px;border-radius:6px;overflow:hidden;background:#0e1117;border:1px solid var(--border)}
+.tile-th img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.tile:hover .tile-th{border-color:var(--yellow)}
 .tile-tx{flex:1;min-width:0}
-.tile-tt{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-tt{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden}
 .tile-ty{display:block;font-size:11px;color:var(--muted);line-height:1.4}
 .tile-cv{flex:none;color:var(--muted);transition:transform .18s}
 .tile-cv svg{display:block}
@@ -94,7 +93,6 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .slice .btn{display:block}
 .btn{display:inline-block;text-align:center;background:var(--yellow);color:#0a0c12;font-weight:700;font-size:13.5px;border-radius:9px;padding:10px 16px;cursor:grab}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
-.drag-hint{font-size:11.5px;color:var(--muted);margin-top:7px;text-align:center}
 .detail{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;padding:36px 0 12px;align-items:start}
 @media(max-width:860px){.detail{grid-template-columns:1fr}}
 .detail-thumb{background:#0e1117;border:1px solid var(--border);border-radius:14px;overflow:hidden}
@@ -126,13 +124,13 @@ footer a{color:var(--muted)}
     <p>免费的表格与文档，开箱即用。拖到 Workspace 面板即可打开，内容已填好。</p>
     <div class="count">18 个免费模板</div>
   </div>
-  <section class="how"><h2>如何使用</h2><p>把“在 Workspace 中打开”按钮直接拖到浏览器的 Workspace 面板。模板会作为新文件打开，内容已填好。不会上传任何内容 — 文件在你的设备本地生成。</p></section>
+  <section class="how"><h2>如何使用</h2><p>把此按钮直接拖到浏览器的 Workspace 面板。模板会作为新文件打开，内容已填好。不会上传任何内容 — 文件在你的设备本地生成。</p></section>
   <nav class="catnav"><a href="#financas">财务</a><a href="#trabalho">工作</a><a href="#produtividade">效率</a><a href="#ia">人工智能</a><a href="#casa">生活</a></nav>
   
   <div class="cat-head" id="financas"><h2>财务</h2><span class="n">6</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-orcamento-mensal">
-<label class="tile sheet" for="t-orcamento-mensal">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-orcamento-mensal">
+  <span class="tile-th"><img src="/templates/thumbs/orcamento-mensal.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">月度预算</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -143,14 +141,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/orcamento-mensal.html">月度预算</a></h3>
       <p class="slice-desc">按类别对比计划支出与实际支出，并查看本月结余。</p>
-      <a class="btn" href="/zh/templates/orcamento-mensal.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/orcamento-mensal.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-controle-despesas">
-<label class="tile sheet" for="t-controle-despesas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-controle-despesas">
+  <span class="tile-th"><img src="/templates/thumbs/controle-despesas.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">支出记录</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -161,14 +158,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/controle-despesas.html">支出记录</a></h3>
       <p class="slice-desc">每笔支出记录一行，按类别的汇总自动生成。</p>
-      <a class="btn" href="/zh/templates/controle-despesas.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/controle-despesas.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-controle-assinaturas">
-<label class="tile sheet" for="t-controle-assinaturas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-controle-assinaturas">
+  <span class="tile-th"><img src="/templates/thumbs/controle-assinaturas.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">订阅管理</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -179,14 +175,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/controle-assinaturas.html">订阅管理</a></h3>
       <p class="slice-desc">查看每月和每年的支出，发现被遗忘订阅的真实成本。</p>
-      <a class="btn" href="/zh/templates/controle-assinaturas.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/controle-assinaturas.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-divisao-contas">
-<label class="tile sheet" for="t-divisao-contas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-divisao-contas">
+  <span class="tile-th"><img src="/templates/thumbs/divisao-contas.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">团体分账</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -197,14 +192,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/divisao-contas.html">团体分账</a></h3>
       <p class="slice-desc">旅行或合租时谁付了什么，以及每个人还应收或应付多少。</p>
-      <a class="btn" href="/zh/templates/divisao-contas.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/divisao-contas.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-fluxo-caixa">
-<label class="tile sheet" for="t-fluxo-caixa">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-fluxo-caixa">
+  <span class="tile-th"><img src="/templates/thumbs/fluxo-caixa.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">现金流</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -215,14 +209,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/fluxo-caixa.html">现金流</a></h3>
       <p class="slice-desc">按日期记录收支，逐行显示累计余额——看清资金何时吃紧。</p>
-      <a class="btn" href="/zh/templates/fluxo-caixa.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/fluxo-caixa.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-metas-poupanca">
-<label class="tile sheet" for="t-metas-poupanca">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-metas-poupanca">
+  <span class="tile-th"><img src="/templates/thumbs/metas-poupanca.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">储蓄目标</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -233,16 +226,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/metas-poupanca.html">储蓄目标</a></h3>
       <p class="slice-desc">每个目标还差多少，以金额和百分比显示，并带期限，避免沦为空泛的承诺。</p>
-      <a class="btn" href="/zh/templates/metas-poupanca.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/metas-poupanca.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="trabalho"><h2>工作</h2><span class="n">6</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-tarefas-projeto">
-<label class="tile sheet" for="t-tarefas-projeto">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-tarefas-projeto">
+  <span class="tile-th"><img src="/templates/thumbs/tarefas-projeto.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">项目任务清单</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -253,14 +245,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/tarefas-projeto.html">项目任务清单</a></h3>
       <p class="slice-desc">用负责人、状态、优先级和截止日期整理任务，进度自动统计。</p>
-      <a class="btn" href="/zh/templates/tarefas-projeto.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/tarefas-projeto.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-registro-horas">
-<label class="tile sheet" for="t-registro-horas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-registro-horas">
+  <span class="tile-th"><img src="/templates/thumbs/registro-horas.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">工时记录</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -271,14 +262,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/registro-horas.html">工时记录</a></h3>
       <p class="slice-desc">按日期和项目记录工时，总计、工作天数和日均自动生成。</p>
-      <a class="btn" href="/zh/templates/registro-horas.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/registro-horas.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-controle-estoque">
-<label class="tile sheet" for="t-controle-estoque">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-controle-estoque">
+  <span class="tile-th"><img src="/templates/thumbs/controle-estoque.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">库存管理</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -289,14 +279,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/controle-estoque.html">库存管理</a></h3>
       <p class="slice-desc">按产品记录入库、出库和结余，低于最低库存时自动提醒。</p>
-      <a class="btn" href="/zh/templates/controle-estoque.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/controle-estoque.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-ata-reuniao">
-<label class="tile doc" for="t-ata-reuniao">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-ata-reuniao">
+  <span class="tile-th"><img src="/templates/thumbs/ata-reuniao.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">会议纪要</span><span class="tile-ty">文档</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -307,14 +296,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">文档</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/ata-reuniao.html">会议纪要</a></h3>
       <p class="slice-desc">当场记录议程、决定和负责人，让这场会议不必再开一次。</p>
-      <a class="btn" href="/zh/templates/ata-reuniao.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/ata-reuniao.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-relatorio-status">
-<label class="tile doc" for="t-relatorio-status">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-relatorio-status">
+  <span class="tile-th"><img src="/templates/thumbs/relatorio-status.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">每周状态报告</span><span class="tile-ty">文档</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -325,14 +313,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">文档</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/relatorio-status.html">每周状态报告</a></h3>
       <p class="slice-desc">有什么进展、什么卡住、哪里需要帮助——每周一页。</p>
-      <a class="btn" href="/zh/templates/relatorio-status.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/relatorio-status.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-briefing-projeto">
-<label class="tile doc" for="t-briefing-projeto">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-briefing-projeto">
+  <span class="tile-th"><img src="/templates/thumbs/briefing-projeto.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">项目简报</span><span class="tile-ty">文档</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -343,16 +330,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">文档</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/briefing-projeto.html">项目简报</a></h3>
       <p class="slice-desc">在任何人动手之前，先对齐目标、受众、范围和成功标准。</p>
-      <a class="btn" href="/zh/templates/briefing-projeto.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/briefing-projeto.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="produtividade"><h2>效率</h2><span class="n">1</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-rastreador-habitos">
-<label class="tile sheet" for="t-rastreador-habitos">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-rastreador-habitos">
+  <span class="tile-th"><img src="/templates/thumbs/rastreador-habitos.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">习惯打卡</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -363,16 +349,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/rastreador-habitos.html">习惯打卡</a></h3>
       <p class="slice-desc">标记坚持习惯的日子，追踪本月目标。</p>
-      <a class="btn" href="/zh/templates/rastreador-habitos.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/rastreador-habitos.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="ia"><h2>人工智能</h2><span class="n">4</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-biblioteca-prompts">
-<label class="tile sheet" for="t-biblioteca-prompts">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-biblioteca-prompts">
+  <span class="tile-th"><img src="/templates/thumbs/biblioteca-prompts.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">提示词库</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -383,14 +368,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/biblioteca-prompts.html">提示词库</a></h3>
       <p class="slice-desc">保存有效的提示词，附上模型、类别和评分，复用而不是重写。</p>
-      <a class="btn" href="/zh/templates/biblioteca-prompts.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/biblioteca-prompts.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-comparacao-modelos">
-<label class="tile sheet" for="t-comparacao-modelos">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-comparacao-modelos">
+  <span class="tile-th"><img src="/templates/thumbs/comparacao-modelos.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">AI 模型对比</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -401,14 +385,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/comparacao-modelos.html">AI 模型对比</a></h3>
       <p class="slice-desc">按带权重的标准对比模型，得出可以站得住脚的最终得分。</p>
-      <a class="btn" href="/zh/templates/comparacao-modelos.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/comparacao-modelos.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-modelo-prompt">
-<label class="tile doc" for="t-modelo-prompt">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-modelo-prompt">
+  <span class="tile-th"><img src="/templates/thumbs/modelo-prompt.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">提示词模板</span><span class="tile-ty">文档</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -419,14 +402,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">文档</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/modelo-prompt.html">提示词模板</a></h3>
       <p class="slice-desc">写好提示词的现成结构：角色、背景、任务、格式与限制。</p>
-      <a class="btn" href="/zh/templates/modelo-prompt.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/modelo-prompt.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-resumo-conversa-ia">
-<label class="tile doc" for="t-resumo-conversa-ia">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-resumo-conversa-ia">
+  <span class="tile-th"><img src="/templates/thumbs/resumo-conversa-ia.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">AI 对话摘要</span><span class="tile-ty">文档</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -437,16 +419,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">文档</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/resumo-conversa-ia.html">AI 对话摘要</a></h3>
       <p class="slice-desc">把冗长的 AI 对话，变成决定、待办与下一步。</p>
-      <a class="btn" href="/zh/templates/resumo-conversa-ia.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/resumo-conversa-ia.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="casa"><h2>生活</h2><span class="n">1</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-lista-compras">
-<label class="tile sheet" for="t-lista-compras">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-lista-compras">
+  <span class="tile-th"><img src="/templates/thumbs/lista-compras.zh.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">购物清单</span><span class="tile-ty">表格</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -457,8 +438,7 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">表格</span><span class="badge free">免费</span></div>
       <h3 class="slice-tt"><a href="/zh/templates/lista-compras.html">购物清单</a></h3>
       <p class="slice-desc">每件商品的数量、单价与小计——结账前就知道要花多少。</p>
-      <a class="btn" href="/zh/templates/lista-compras.html" draggable="true">在 Workspace 中打开</a>
-      <div class="drag-hint">将此按钮拖到 Workspace 面板</div>
+      <a class="btn" href="/zh/templates/lista-compras.html" draggable="true">拖到 NODUS Workspace</a>
     </div>
   </div>
 </div></div>

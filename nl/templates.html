@@ -62,20 +62,19 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .card-badges{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
 .badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-radius:5px;padding:2px 7px;background:rgba(148,163,184,.12);color:var(--sub)}
 .badge.free{background:rgba(16,185,129,.14);color:var(--green)}
-/* mosaico compacto: o thumb é um render 800x500 da planilha — ilegível em
-   miniatura, por isso o azulejo mostra um ícone do tipo e o preview grande
-   fica na fatia que abre ao clicar. Toggle é CSS puro (checkbox + irmão),
-   o conteúdo está sempre no DOM para o Google indexar. */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:10px}
+/* mosaico compacto: o azulejo traz a miniatura real do modelo (o mesmo render
+   8:5 da fatia, reduzido) e o preview grande fica na fatia que abre ao clicar.
+   Toggle é CSS puro (checkbox + irmão), o conteúdo está sempre no DOM para o
+   Google indexar. */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:10px}
 .tgl{position:absolute;width:1px;height:1px;opacity:0}
-.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.tile{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:10px 12px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
 .tile:hover{border-color:var(--yellow)}
-.tile-ico{flex:none;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.12);color:var(--sub)}
-.tile-ico svg{width:16px;height:16px;display:block}
-.tile.sheet .tile-ico{background:rgba(16,185,129,.14);color:var(--green)}
-.tile.doc .tile-ico{background:rgba(250,204,21,.14);color:var(--yellow)}
+.tile-th{flex:none;width:72px;height:45px;border-radius:6px;overflow:hidden;background:#0e1117;border:1px solid var(--border)}
+.tile-th img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.tile:hover .tile-th{border-color:var(--yellow)}
 .tile-tx{flex:1;min-width:0}
-.tile-tt{display:block;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-tt{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.3;overflow:hidden}
 .tile-ty{display:block;font-size:11px;color:var(--muted);line-height:1.4}
 .tile-cv{flex:none;color:var(--muted);transition:transform .18s}
 .tile-cv svg{display:block}
@@ -94,7 +93,6 @@ nav{border-bottom:1px solid var(--border);background:rgba(10,12,18,.9);position:
 .slice .btn{display:block}
 .btn{display:inline-block;text-align:center;background:var(--yellow);color:#0a0c12;font-weight:700;font-size:13.5px;border-radius:9px;padding:10px 16px;cursor:grab}
 .btn:hover{filter:brightness(1.08);text-decoration:none}
-.drag-hint{font-size:11.5px;color:var(--muted);margin-top:7px;text-align:center}
 .detail{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;padding:36px 0 12px;align-items:start}
 @media(max-width:860px){.detail{grid-template-columns:1fr}}
 .detail-thumb{background:#0e1117;border:1px solid var(--border);border-radius:14px;overflow:hidden}
@@ -126,13 +124,13 @@ footer a{color:var(--muted)}
     <p>Gratis spreadsheets en documenten, klaar voor gebruik. Sleep er een naar het Workspace-paneel en hij opent al ingevuld.</p>
     <div class="count">18 gratis sjablonen</div>
   </div>
-  <section class="how"><h2>Hoe het werkt</h2><p>Sleep de knop “Openen in Workspace” rechtstreeks naar het Workspace-paneel in je browser. Het sjabloon opent als een nieuw bestand, al ingevuld. Er wordt niets geüpload — het wordt lokaal op je computer aangemaakt.</p></section>
+  <section class="how"><h2>Hoe het werkt</h2><p>Sleep de knop rechtstreeks naar het Workspace-paneel in je browser. Het sjabloon opent als een nieuw bestand, al ingevuld. Er wordt niets geüpload — het wordt lokaal op je computer aangemaakt.</p></section>
   <nav class="catnav"><a href="#financas">Financiën</a><a href="#trabalho">Werk</a><a href="#produtividade">Productiviteit</a><a href="#ia">AI</a><a href="#casa">Thuis</a></nav>
   
   <div class="cat-head" id="financas"><h2>Financiën</h2><span class="n">6</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-orcamento-mensal">
-<label class="tile sheet" for="t-orcamento-mensal">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-orcamento-mensal">
+  <span class="tile-th"><img src="/templates/thumbs/orcamento-mensal.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Maandbudget</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -143,14 +141,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/orcamento-mensal.html">Maandbudget</a></h3>
       <p class="slice-desc">Vergelijk wat je wilde uitgeven met wat je echt uitgaf, per categorie, en zie je saldo van de maand.</p>
-      <a class="btn" href="/nl/templates/orcamento-mensal.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/orcamento-mensal.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-controle-despesas">
-<label class="tile sheet" for="t-controle-despesas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-controle-despesas">
+  <span class="tile-th"><img src="/templates/thumbs/controle-despesas.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Uitgavenoverzicht</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -161,14 +158,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/controle-despesas.html">Uitgavenoverzicht</a></h3>
       <p class="slice-desc">Noteer elke uitgave op een eigen regel en zie het overzicht automatisch per categorie optellen.</p>
-      <a class="btn" href="/nl/templates/controle-despesas.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/controle-despesas.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-controle-assinaturas">
-<label class="tile sheet" for="t-controle-assinaturas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-controle-assinaturas">
+  <span class="tile-th"><img src="/templates/thumbs/controle-assinaturas.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Abonnementenoverzicht</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -179,14 +175,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/controle-assinaturas.html">Abonnementenoverzicht</a></h3>
       <p class="slice-desc">Zie wat je per maand en per jaar betaalt — en wat vergeten abonnementen echt kosten.</p>
-      <a class="btn" href="/nl/templates/controle-assinaturas.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/controle-assinaturas.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-divisao-contas">
-<label class="tile sheet" for="t-divisao-contas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-divisao-contas">
+  <span class="tile-th"><img src="/templates/thumbs/divisao-contas.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Kosten Delen in de Groep</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -197,14 +192,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/divisao-contas.html">Kosten Delen in de Groep</a></h3>
       <p class="slice-desc">Wie betaalde wat op reis of in een gedeeld huis, en wat iedereen nog krijgt of moet betalen.</p>
-      <a class="btn" href="/nl/templates/divisao-contas.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/divisao-contas.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-fluxo-caixa">
-<label class="tile sheet" for="t-fluxo-caixa">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-fluxo-caixa">
+  <span class="tile-th"><img src="/templates/thumbs/fluxo-caixa.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Kasstroom</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -215,14 +209,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/fluxo-caixa.html">Kasstroom</a></h3>
       <p class="slice-desc">Inkomsten en uitgaven op datum, met een lopend saldo per regel — het beeld van wanneer het geld krap wordt.</p>
-      <a class="btn" href="/nl/templates/fluxo-caixa.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/fluxo-caixa.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-metas-poupanca">
-<label class="tile sheet" for="t-metas-poupanca">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-metas-poupanca">
+  <span class="tile-th"><img src="/templates/thumbs/metas-poupanca.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Spaardoelen</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -233,16 +226,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/metas-poupanca.html">Spaardoelen</a></h3>
       <p class="slice-desc">Hoeveel er nog nodig is per doel, in geld en procenten, met een datum zodat het geen vage belofte blijft.</p>
-      <a class="btn" href="/nl/templates/metas-poupanca.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/metas-poupanca.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="trabalho"><h2>Werk</h2><span class="n">6</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-tarefas-projeto">
-<label class="tile sheet" for="t-tarefas-projeto">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-tarefas-projeto">
+  <span class="tile-th"><img src="/templates/thumbs/tarefas-projeto.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Projecttakenlijst</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -253,14 +245,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/tarefas-projeto.html">Projecttakenlijst</a></h3>
       <p class="slice-desc">Organiseer taken met verantwoordelijke, status, prioriteit en deadline — de voortgang telt vanzelf.</p>
-      <a class="btn" href="/nl/templates/tarefas-projeto.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/tarefas-projeto.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-registro-horas">
-<label class="tile sheet" for="t-registro-horas">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-registro-horas">
+  <span class="tile-th"><img src="/templates/thumbs/registro-horas.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Urenregistratie</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -271,14 +262,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/registro-horas.html">Urenregistratie</a></h3>
       <p class="slice-desc">Leg uren vast per dag en project, met totaal, gewerkte dagen en gemiddelde automatisch.</p>
-      <a class="btn" href="/nl/templates/registro-horas.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/registro-horas.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-controle-estoque">
-<label class="tile sheet" for="t-controle-estoque">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-controle-estoque">
+  <span class="tile-th"><img src="/templates/thumbs/controle-estoque.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Voorraadbeheer</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -289,14 +279,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/controle-estoque.html">Voorraadbeheer</a></h3>
       <p class="slice-desc">Inkomend, uitgaand en saldo per product, met automatische waarschuwing onder het minimum.</p>
-      <a class="btn" href="/nl/templates/controle-estoque.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/controle-estoque.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-ata-reuniao">
-<label class="tile doc" for="t-ata-reuniao">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-ata-reuniao">
+  <span class="tile-th"><img src="/templates/thumbs/ata-reuniao.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Vergadernotulen</span><span class="tile-ty">Document</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -307,14 +296,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Document</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/ata-reuniao.html">Vergadernotulen</a></h3>
       <p class="slice-desc">Agenda, besluiten en verantwoordelijken meteen vastgelegd, zodat de vergadering niet opnieuw hoeft.</p>
-      <a class="btn" href="/nl/templates/ata-reuniao.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/ata-reuniao.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-relatorio-status">
-<label class="tile doc" for="t-relatorio-status">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-relatorio-status">
+  <span class="tile-th"><img src="/templates/thumbs/relatorio-status.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Wekelijkse Statusrapportage</span><span class="tile-ty">Document</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -325,14 +313,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Document</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/relatorio-status.html">Wekelijkse Statusrapportage</a></h3>
       <p class="slice-desc">Wat vooruitging, wat vastliep en waar je hulp nodig hebt — één pagina per week.</p>
-      <a class="btn" href="/nl/templates/relatorio-status.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/relatorio-status.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-briefing-projeto">
-<label class="tile doc" for="t-briefing-projeto">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-briefing-projeto">
+  <span class="tile-th"><img src="/templates/thumbs/briefing-projeto.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Projectbriefing</span><span class="tile-ty">Document</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -343,16 +330,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Document</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/briefing-projeto.html">Projectbriefing</a></h3>
       <p class="slice-desc">Doel, doelgroep, scope en succescriterium afgestemd voordat iemand begint.</p>
-      <a class="btn" href="/nl/templates/briefing-projeto.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/briefing-projeto.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="produtividade"><h2>Productiviteit</h2><span class="n">1</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-rastreador-habitos">
-<label class="tile sheet" for="t-rastreador-habitos">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-rastreador-habitos">
+  <span class="tile-th"><img src="/templates/thumbs/rastreador-habitos.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Gewoontetracker</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -363,16 +349,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/rastreador-habitos.html">Gewoontetracker</a></h3>
       <p class="slice-desc">Markeer de dagen dat je elke gewoonte volhield en volg je doel voor de maand.</p>
-      <a class="btn" href="/nl/templates/rastreador-habitos.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/rastreador-habitos.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="ia"><h2>AI</h2><span class="n">4</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-biblioteca-prompts">
-<label class="tile sheet" for="t-biblioteca-prompts">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-biblioteca-prompts">
+  <span class="tile-th"><img src="/templates/thumbs/biblioteca-prompts.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Promptbibliotheek</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -383,14 +368,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/biblioteca-prompts.html">Promptbibliotheek</a></h3>
       <p class="slice-desc">Bewaar prompts die werken, met model, categorie en score — hergebruiken in plaats van herschrijven.</p>
-      <a class="btn" href="/nl/templates/biblioteca-prompts.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/biblioteca-prompts.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-comparacao-modelos">
-<label class="tile sheet" for="t-comparacao-modelos">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-comparacao-modelos">
+  <span class="tile-th"><img src="/templates/thumbs/comparacao-modelos.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">AI-modellen vergelijken</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -401,14 +385,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/comparacao-modelos.html">AI-modellen vergelijken</a></h3>
       <p class="slice-desc">Vergelijk modellen op criteria met eigen gewichten en kom tot een verdedigbare eindscore.</p>
-      <a class="btn" href="/nl/templates/comparacao-modelos.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/comparacao-modelos.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-modelo-prompt">
-<label class="tile doc" for="t-modelo-prompt">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-modelo-prompt">
+  <span class="tile-th"><img src="/templates/thumbs/modelo-prompt.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Promptsjabloon</span><span class="tile-ty">Document</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -419,14 +402,13 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Document</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/modelo-prompt.html">Promptsjabloon</a></h3>
       <p class="slice-desc">Een kant-en-klare structuur voor betere prompts: rol, context, taak, formaat en beperkingen.</p>
-      <a class="btn" href="/nl/templates/modelo-prompt.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/modelo-prompt.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div>
 <input type="checkbox" class="tgl" id="t-resumo-conversa-ia">
-<label class="tile doc" for="t-resumo-conversa-ia">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 1.9h5.2l3.6 3.6v8.6a.9.9 0 0 1-.9.9H3.6a.9.9 0 0 1-.9-.9V2.8a.9.9 0 0 1 .9-.9z"/><path d="M8.7 2.1v3.5h3.5M5.5 9.2h5M5.5 11.6h5"/></svg></span>
+<label class="tile" for="t-resumo-conversa-ia">
+  <span class="tile-th"><img src="/templates/thumbs/resumo-conversa-ia.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Samenvatting van AI-gesprek</span><span class="tile-ty">Document</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -437,16 +419,15 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Document</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/resumo-conversa-ia.html">Samenvatting van AI-gesprek</a></h3>
       <p class="slice-desc">Zet een lang AI-gesprek om in besluiten, openstaande vragen en volgende stappen.</p>
-      <a class="btn" href="/nl/templates/resumo-conversa-ia.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/resumo-conversa-ia.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div></div>
 
   <div class="cat-head" id="casa"><h2>Thuis</h2><span class="n">1</span></div>
   <div class="grid"><input type="checkbox" class="tgl" id="t-lista-compras">
-<label class="tile sheet" for="t-lista-compras">
-  <span class="tile-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.5"/><path d="M1.6 6.4h12.8M6.2 6.4v7M10.6 6.4v7"/></svg></span>
+<label class="tile" for="t-lista-compras">
+  <span class="tile-th"><img src="/templates/thumbs/lista-compras.nl.svg" alt="" loading="lazy" width="72" height="45"></span>
   <span class="tile-tx"><span class="tile-tt">Boodschappenlijst</span><span class="tile-ty">Spreadsheet</span></span>
   <span class="tile-cv"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.2l4 4 4-4"/></svg></span>
 </label>
@@ -457,8 +438,7 @@ footer a{color:var(--muted)}
       <div class="card-badges"><span class="badge">Spreadsheet</span><span class="badge free">Gratis</span></div>
       <h3 class="slice-tt"><a href="/nl/templates/lista-compras.html">Boodschappenlijst</a></h3>
       <p class="slice-desc">Aantal, stukprijs en totaal per item — je weet wat je uitgeeft vóór de kassa.</p>
-      <a class="btn" href="/nl/templates/lista-compras.html" draggable="true">Openen in Workspace</a>
-      <div class="drag-hint">Sleep deze knop naar het Workspace-paneel</div>
+      <a class="btn" href="/nl/templates/lista-compras.html" draggable="true">Sleep naar NODUS Workspace</a>
     </div>
   </div>
 </div></div>
