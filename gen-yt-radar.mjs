@@ -85,6 +85,7 @@ for (const lang of LANGS){
 
   // -- path fixes --
   headBody = headBody.replace('src="chrome-icon.svg"', 'src="/chrome-icon.svg"');
+  headBody = headBody.replace('src="edge-icon.svg"', 'src="/edge-icon.svg"');
   headBody = headBody.replace('src="firefox-icon.svg"', 'src="/firefox-icon.svg"');
   headBody = headBody.replace(/href="https:\/\/nodus-ai\.app"/g, 'href="https://nodus-ai.app/' + lang + '/"');
   headBody = headBody.replace('href="yt-radar-privacy.html"', 'href="/' + lang + '/yt-radar-privacy"');

@@ -21,6 +21,7 @@ import path from 'path';
 const SITE = 'https://nodus-ai.app';
 const CATALOG = 'templates/index.json';
 const STORE_CHROME = 'https://chromewebstore.google.com/detail/nodus-workspace/igjpedkogacopanobbjbiobnplpklcim';
+const STORE_EDGE = 'https://microsoftedge.microsoft.com/addons/detail/boeijebmdghfekplfmpnaffjmmdgakll';
 const STORE_FIREFOX = 'https://addons.mozilla.org/firefox/addon/nodus-workspace/';
 
 // Pasta do site -> chave no i18n do catálogo. O ÚNICO desencontro é pt -> pt-BR
@@ -431,6 +432,7 @@ function templatePage(t, L, tpl) {
       ${openButton(t, L.dir, tpl.slug)}
       <div class="side-note">${esc(t.noExt)}<br>
         <a href="${STORE_CHROME}" target="_blank" rel="noopener">${esc(t.install)} — Chrome</a> ·
+        <a href="${STORE_EDGE}" target="_blank" rel="noopener">Edge</a> ·
         <a href="${STORE_FIREFOX}" target="_blank" rel="noopener">Firefox</a>
       </div>
     </aside>
